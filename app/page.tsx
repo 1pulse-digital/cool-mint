@@ -1,17 +1,20 @@
 import React from "react";
+import Hero from "@/components/hero";
+import { HeroImages } from "@/components/base/heroImages";
+import { WhyUs } from "@/components/whyUs";
 
-//import Hero from "@/components/hero";
-//import Navbar from "@/components/navbar";
-import { AboutUs } from "@/components/aboutUs";
-//import { Offerings } from "@/components/offerings";
 
 export const Home = () => {
   return (
   <div>
- {/* <Navbar /> */}
-  {/* <Hero /> */}
-  <AboutUs />
-  {/* <Offerings /> */}
+ <Hero /> 
+ <HeroImages />
+ <WhyUs />
+ {/*  <AboutUs />
+  <Cafe />
+  <GetInTouch />
+ <Offerings />  
+ <Footer /> */}
   </div>
   )
 }
