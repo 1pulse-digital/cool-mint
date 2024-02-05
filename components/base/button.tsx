@@ -40,7 +40,7 @@ export const SmallButton = (props: ButtonProps) => {
 };
 
 export const Button = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-4 md:px-5 py-3 w-[178px] shadow hover:shadow-sm text-[14px] font-helvetica disabled:opacity-60 whitespace-nowrap";
+  const baseClassname = "rounded-lg px-4 md:px-5 py-2 space-x-2 shadow hover:shadow-sm text-[14px] font-helvetica disabled:opacity-60 whitespace-nowrap";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -68,18 +68,18 @@ export const Button = (props: ButtonProps) => {
 
 export const SquareButton = (props: ButtonProps) => {
 // const baseClassname = "rounded-full px-4 md:px-10 py-3 shadow hover:shadow-sm text-lg disabled:opacity-60 whitespace-nowrap";
-   const baseClassname = "rounded-lg   px-4 md:px-10 py-3 shadow hover:shadow-sm w-full text-base font-semibold disabled:opacity-60 text-center text-white whitespace-nowrap transition duration-200 ease-in focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200 focus:outline-none bg-primary hover:bg-secondary";
+   const baseClassname = "whitespace-nowrap hover:text-textColor text-[14px] inline-flex items-center justify-center font-helvetica  py-3 border border-none   font-bold ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
   const isDisabled = props.disabled;
 
   const colorClassname = cn(
-    { "bg-primary text-white": isPrimary },
-    { "hover:bg-secondary": (isPrimary && !isDisabled) },
+    { "bg-transparent text-primary": isPrimary },
+    { "hover:bg-transparent": (isPrimary && !isDisabled) },
 
     { "bg-[] border-secondary border-2 text-secondary ": isSecondary },
-    { "hover:bg-secondary hover:text-white": isSecondary && !isDisabled },
+    { "hover:bg-transparent hover:text-white": isSecondary && !isDisabled },
   );
 
   const mergedClassname = tailshake(baseClassname, colorClassname, props.className);
