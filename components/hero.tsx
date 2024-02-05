@@ -15,7 +15,7 @@ const Hero = () => {
           <span>Providing you with the tools, machines and the space for you to  <span className="text-primary">design</span>, 
           <span className="text-primary">build</span> and <span className="text-primary"> fabricate </span>your product, project or idea.</span>
           </p>
-        <div className="z-10 py-5 text-right flex-row flex space-x-4">
+        <div className="z-10 py-5 text-right flex-row flex">
           <div>
             <Link href="/about">
               <Button color="primary">Become a Member</Button></Link>
