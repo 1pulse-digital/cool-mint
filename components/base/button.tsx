@@ -40,7 +40,7 @@ export const SmallButton = (props: ButtonProps) => {
 };
 
 export const Button = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-4 md:px-5 py-2 space-x-2 shadow hover:shadow-sm text-[14px] font-helvetica disabled:opacity-60 whitespace-nowrap";
+  const baseClassname = "rounded-lg px-4 md:px-5 py-2 shadow hover:shadow-sm text-[14px] font-helvetica disabled:opacity-60 whitespace-nowrap";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
