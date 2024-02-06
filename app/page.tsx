@@ -5,6 +5,7 @@ import { WhyUs } from "@/components/whyUs";
 import { Community } from "@/components/community";
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
 import GetInTouch from "@/components/base/getInTouch";
+import Offerings from "@/components/offerings";
 
 
 export const Home = () => {
@@ -13,6 +14,7 @@ export const Home = () => {
  <Hero /> 
  <HeroImages />
  <WhyUs />
+ <Offerings />
  <Community />
  <UpcomingWorkshops />
  <GetInTouch />
