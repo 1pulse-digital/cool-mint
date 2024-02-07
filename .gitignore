@@ -16,10 +16,6 @@
 .env.local
 .env.*.local
 
-# Ignore dependency lock files
-yarn.lock
-package-lock.json
-
 # Ignore system and temporary files
 .DS_Store
 Thumbs.db
@@ -29,12 +25,6 @@ Thumbs.db
 *.swo
 *.tmp
 
-# Ignore configuration files with sensitive information
-config.js
-config.json
-*.config.js
-*.config.json
-
 # Ignore compiled binaries or libraries
 *.pyc
 *.pyo
@@ -43,10 +33,6 @@ config.json
 
 # Ignore user-specific files
 *.iml
-*.log
-
-# Ignore documentation files
-*.md
 
 # Ignore backup files
 *~
