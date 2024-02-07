@@ -6,8 +6,8 @@ import Button, { SquareButton } from "./button";
 const GetInTouch = () => {
   return (
     <div className="bg-background">
-    <div className={"grid content-center px-8 py-8 bg-[#e1e1e1] rounded-2xl mx-1"}>
-      <div className={" z-10 py-8 rounded-full"}>
+    <div className={"grid content-center px-8 py-4 bg-[#e1e1e1] rounded-2xl mx-1"}>
+      <div className={"z-10 py-8 rounded-full"}>
         <h1 className={"text-headings text-center text-background font-helvetica font-bold py-4"}>
          Get In Touch
         </h1>
