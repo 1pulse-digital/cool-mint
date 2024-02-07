@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import 'tailwindcss/tailwind.css';
 import 'tailwindcss-debug-screens';
+import { Footer } from '@/components/detailed/footer';
+
+import Navbar from '@/components/navbar';
+
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,7 +26,11 @@ export default function RootLayout({
     <html lang="en">
     
     <body className={`${isDev ? "debug-screens " : ""}${inter.className}`}>
+      <Navbar /> 
+
         {children}
+        <Footer />
+       
       </body>
      
     </html>
