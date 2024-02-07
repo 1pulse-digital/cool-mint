@@ -7,18 +7,16 @@ import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
 import GetInTouch from "@/components/base/getInTouch";
 import Offerings from "@/components/offerings";
 
-
-export const Home = () => {
+export default function Home() {
   return (
-<div>
- <Hero /> 
- <HeroImages />
- <WhyUs />
- <Offerings />
- <Community />
- <UpcomingWorkshops />
- <GetInTouch />
-</div>
-  )
+    <div>
+      <Hero />
+      <HeroImages />
+      <WhyUs />
+      <Offerings />
+      <Community />
+      <UpcomingWorkshops />
+      <GetInTouch />
+    </div>
+  );
 }
-export default Home;
