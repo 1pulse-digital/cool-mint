@@ -1,8 +1,6 @@
 import React from "react";
 import GetInTouch from "@/components/base/getInTouch";
 import PricingTable from "@/components/base/pricing-table";
-import { Faqs } from "@/components/base/faqs";
-
 
 const Memberships = () => {
   return(
@@ -18,7 +16,6 @@ const Memberships = () => {
           <p className="text-BodyText text-primary text-center font-helvetica font-normal py-8" >Prices include VAT</p>
           </div>
           <div className=" text-center pb-10 px-8"><PricingTable /></div>
-          <Faqs />
         <GetInTouch />
      </div>
   );
