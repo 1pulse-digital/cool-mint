@@ -1,6 +1,6 @@
 import IndustrialMachineTools from "@/components/base/IndustrialMachineTools";
 import Button from "@/components/base/button";
-import { FAQs } from "@/components/base/faqs";
+import { FAQSBanner } from "@/components/base/faqsBanner";
 import { FilterButtons } from "@/components/base/filterButtons";
 import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
@@ -26,7 +26,7 @@ const MachinesTools = () => {
           </div>
         </div>
         </div>
-        <FAQs />
+        <FAQSBanner />
         <GetInTouch />
      </div>
   );
