@@ -8,7 +8,7 @@ import gallery from "../../images/banner.webp"
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { MeetTheTeam } from './meetTheTeam'
+
 
 const Carousel = () => {
   const [emblaRef, embla] = useEmblaCarousel({ loop: false }, [Autoplay()]);
