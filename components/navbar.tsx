@@ -31,15 +31,15 @@ const navigationItems = [
   },
   {
     name: "FAQ",
-    href: "/",
+    href: "/faq",
   },
   {
     name: "Café",
-    href: "/Café",
+    href: "/cafe",
   },
   {
     name: "News",
-    href: "/news",
+    href: "/newsTitle",
   },
   {
     name: "Contact",
@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <div className="bg-background sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="container mx-auto flex justify-between items-center py-4">
         {/* Logo */}
 
         {/* Mobile Menu */}
