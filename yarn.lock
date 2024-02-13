@@ -1631,7 +1631,7 @@ embla-carousel-autoplay@^8.0.0-rc22:
 
 embla-carousel-react@^8.0.0-rc22:
   version "8.0.0-rc22"
-  resolved "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.0.0-rc22.tgz"
+  resolved "https://registry.yarnpkg.com/embla-carousel-react/-/embla-carousel-react-8.0.0-rc22.tgz#cc017e5c370663a9517fa46fba55ea7ad1df5e17"
   integrity sha512-NwmISV0Cw9XVo76Vquz3hJaeZe7qoCRtrzStxlEY7qfZD8WR/f4JlQAso35URTs1BeYVhcuClflelioo+Zmidg==
   dependencies:
     embla-carousel "8.0.0-rc22"
