@@ -3,6 +3,7 @@ import Image from "next/image";
 import gallery from "/images/banner.webp";
 import GetInTouch from "@/components/base/getInTouch";
 import Carousel from "@/components/base/Carousel";
+import { TeamCarousel } from "@/components/base/teamCarousel";
 
 export const About = () => {
   return (
@@ -49,8 +50,9 @@ export const About = () => {
         </p>
       </div>
       <h1 className={"text-headings text-secondary font-helvetica font-bold py-16 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
-      <Carousel />
+      <TeamCarousel />
       <GetInTouch />
+    
     </div>
   );
 };
