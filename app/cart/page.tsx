@@ -9,7 +9,7 @@ const Cart: React.FC = () => {
     <div className={"bg-background py-12 px-8"}>
       <div className="grid content-center font-helvetica sm:p-10 md:max-w-prose">
           <h1 className="text-headings text-secondary font-helvetica font-bold  text-center leading-tight">Your Cart</h1>
-          <ShoppingCart />
+          <ShoppingCart />       
           </div>  
           <div className="flex space-x-12">
           <div className="w-5/6">
