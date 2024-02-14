@@ -39,7 +39,7 @@ const navigationItems = [
   },
   {
     name: "News",
-    href: "/newsTitle",
+    href: "/news",
   },
   {
     name: "Contact",
