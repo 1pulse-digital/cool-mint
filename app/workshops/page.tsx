@@ -1,3 +1,4 @@
+import { FAQSBanner } from "@/components/base/faqsBanner";
 import { FilterButtons } from "@/components/base/filterButtons";
 import GetInTouch from "@/components/base/getInTouch";
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
@@ -12,10 +13,11 @@ const Workshops = () => {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           </p>
           </div>
-          <div className=" text-center pt-10 px-8">
-         <FilterButtons />
+          <div className=" text-center px-8">
+       
          </div>
         <UpcomingWorkshops />
+        <FAQSBanner />
         <GetInTouch />
      </div>
   );
