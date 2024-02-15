@@ -11,7 +11,7 @@ export const FAQSBanner = () => {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
           </p>
           <div className="py-8 text-center ">
-          <Link href="/about">
+          <Link href="/faq">
               <Button color="primary">Learn More</Button></Link>
           </div>
         </div>

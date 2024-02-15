@@ -55,7 +55,7 @@ const Offerings: React.FC = () => {
         title="Membership"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
         linkText="Learn More"
-        linkUrl="/about" 
+        linkUrl="/memberships" 
         ImageSrc="/icons/memberships.png"
        
       />
@@ -64,7 +64,7 @@ const Offerings: React.FC = () => {
         title="Industrial Machines"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
         linkText="Learn More"
-        linkUrl="/about" 
+        linkUrl="/machines" 
         ImageSrc="/icons/machines.png"
        
       />
@@ -74,7 +74,7 @@ const Offerings: React.FC = () => {
         title="Workshops"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
         linkText="Learn More"
-        linkUrl="/about" 
+        linkUrl="/workshops" 
         ImageSrc="/icons/workshops.png"
        
       />
@@ -83,7 +83,7 @@ const Offerings: React.FC = () => {
         title="MIW Café"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
         linkText="Learn More"
-        linkUrl="/about" 
+        linkUrl="/cafe" 
         ImageSrc="/icons/cafe.png"
        
       />

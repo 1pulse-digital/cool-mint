@@ -30,12 +30,12 @@ const Hero = () => {
         </p>
         <div className="z-10 flex flex-row justify-center py-5 text-right">
           <div>
-            <Link href="/about">
+            <Link href="/memberships">
               <Button color="primary">Become a Member</Button>
             </Link>
           </div>
           <div>
-            <Link href="/about">
+            <Link href="/bookTour">
               <SmallButton color="primary">
                 Book a Tour
                 <svg
