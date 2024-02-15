@@ -23,12 +23,12 @@ export function CafeMIW() {
     <div>
     <Tabs defaultValue="machines">
     <div className="pb-16">
-    <Carousel className="mx-10 pt-6">
+    <Carousel className="mx-6 pt-6">
     <CarouselContent className="">
     <CarouselItem>
-      <TabsList className="bg-background">
+      <TabsList className="bg-background space-x-2">
         
-        <TabsTrigger value="machines"><div className="pt-6">
+        <TabsTrigger value="machines"><div className="pt-8">
             <Image
              src={gallery}
              alt="team member"
@@ -37,7 +37,7 @@ export function CafeMIW() {
              width="400"
              height="400"
            /></div></TabsTrigger>
-        <TabsTrigger value="workshops"><div className="pt-6">
+        <TabsTrigger value="workshops"><div className="pt-8">
             <Image
              src={gallery}
              alt="team member"
@@ -46,7 +46,7 @@ export function CafeMIW() {
              width="400"
              height="400"
            /></div></TabsTrigger>
-        <TabsTrigger value="general"><div className="pt-6">
+        <TabsTrigger value="general"><div className="pt-8">
             <Image
              src={gallery}
              alt="team member"
