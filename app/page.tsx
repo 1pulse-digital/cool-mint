@@ -6,6 +6,9 @@ import { Community } from "@/components/community";
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
 import GetInTouch from "@/components/base/getInTouch";
 import Offerings from "@/components/offerings";
+
+
+
 export default function Home() {
   return (
     <div>
