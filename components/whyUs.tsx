@@ -5,8 +5,8 @@ import Button from "./base/button";
 
 export const WhyUs = () => {
   return(
-      <div className={"grid grid-cols-1 bg-background py-20"}>
-        <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose"}>
+      <div className={"bg-background py-20 lg:hidden"}>
+        <div className={"grid content-center font-helvetica p-5"}>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>Why us<span className="text-primary">?</span></h1>
           <p className={"text-BodyText text-textColor text-center font-helvetica font-light"}>
           Made In Workshop (MIW) is a shared workshop and fabrication studio. Not just a workshop with a
