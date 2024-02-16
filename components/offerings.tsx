@@ -50,7 +50,8 @@ const Offerings: React.FC = () => {
       <h1 className="text-headings text-secondary font-helvetica font-bold py-4 text-center">
         Our Offerings<span className="text-primary">?</span>
       </h1>
-
+       <div className="lg:grid grid-cols-2 lg:mx-60">
+      <div className="lg:px-20">
       <OfferingItem
         title="Membership"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
@@ -59,7 +60,8 @@ const Offerings: React.FC = () => {
         ImageSrc="/icons/memberships.png"
        
       />
-
+      </div>
+      <div className="lg:px-20">
 <OfferingItem
         title="Industrial Machines"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
@@ -68,7 +70,9 @@ const Offerings: React.FC = () => {
         ImageSrc="/icons/machines.png"
        
       />
+</div>
 
+<div className="lg:px-20">
 
 <OfferingItem
         title="Workshops"
@@ -78,7 +82,8 @@ const Offerings: React.FC = () => {
         ImageSrc="/icons/workshops.png"
        
       />
-
+</div>
+<div className="lg:px-20">
 <OfferingItem
         title="MIW Café"
         description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
@@ -87,6 +92,8 @@ const Offerings: React.FC = () => {
         ImageSrc="/icons/cafe.png"
        
       />
+      </div>
+      </div>
     </div>
   );
 };
