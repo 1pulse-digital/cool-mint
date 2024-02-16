@@ -4,7 +4,7 @@ import Button, { SmallButton } from "./base/button";
 
 const Hero = () => {
   return (
-    <div className={"relative grid sm:h-screen content-center pt-32 pb-14 px-8 bg-background"}>
+    <div className={"relative grid sm:h-screen content-center pt-32 pb-14 px-8 bg-background lg:h-screen"}>
       <div className={"absolute inset-0 "}></div>
       <div className={"z-10 grid  md:px-28 "}>
         <h1
@@ -57,6 +57,9 @@ const Hero = () => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="pt-60">
+      <hr className="flex-grow h-[1px] bg-textColor border-0 mx-40"></hr>
       </div>
     </div>
   );
