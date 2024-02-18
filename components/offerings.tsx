@@ -47,10 +47,15 @@ const OfferingItem: React.FC<OfferingItemProps> = ({ title, description, linkTex
 const Offerings: React.FC = () => {
   return (
     <div className="font-medium text-primary text-center md:text-left px-10  bg-background">
+      <div className="lg:mx-60 pb-14 xl:mx-80">
       <h1 className="text-headings text-secondary font-helvetica font-bold py-4 text-center">
         Our Offerings<span className="text-primary">?</span>
       </h1>
-       <div className="lg:grid grid-cols-2 lg:mx-60">
+      <p className="text-BodyText text-textColor  text-center font-helvetica font-light">
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+        </p>
+        </div>
+       <div className="lg:grid grid-cols-2 xl:mx-32 lg:mx-30 2xl:px-28">
       <div className="lg:px-20">
       <OfferingItem
         title="Membership"
@@ -94,6 +99,9 @@ const Offerings: React.FC = () => {
       />
       </div>
       </div>
+      <div className="py-20">
+    <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-40 hidden lg:flex xl:flex"></hr>
+  </div>
     </div>
   );
 };

@@ -5,9 +5,9 @@ import gallery from "../images/banner.webp";
 export const Community = () => {
     return(
         <div className={"bg-background px-8"}>
-          <div className={"content-center font-helvetica p-5"}>
+          <div className={"content-center font-helvetica p-5 lg:px-72"}>
             <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight"}>Maker Community.</h1>
-            <p className={"text-BodyText text-textColor text-center font-helvetica font-normal lg:px-96"}>
+            <p className={"text-BodyText text-textColor text-center font-helvetica font-normal"}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
           </p>
           </div>
@@ -34,6 +34,9 @@ export const Community = () => {
           className="rounded-md"/>
           </div>
           </div>
+          <div className="py-20">
+    <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-40 hidden lg:flex xl:flex"></hr>
+  </div>
        </div>
     );
   };
