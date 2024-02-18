@@ -7,11 +7,13 @@ import ScrollToTop from "react-scroll-to-top";
 export const Footer = () => {
     return (
         <div>
-            <div className="bg-background py-10">
-            <div className="text-secondary font-helvetica h-auto px-8">
-            <div>
+            <div className="bg-background py-10 pt-20">
+            <div className="text-secondary font-helvetica h-auto px-8 2xl:mx-40">
+            <div className="2xl:grid grid-cols-2">
+              <div>
                 <p className="text-headings text-secondary font-helvetica font-bold">Subscribe</p>
                 <p className="text-secondary text-[12px] py-2">Subscribe to our newsletter to stay in touch with the latest</p>
+                </div>
             <div ><form>
            <label>
            <div className="sm:col-span-4">
@@ -25,19 +27,25 @@ export const Footer = () => {
 </form>
           </div>
           </div>
-            <div className="grid grid-cols-2 pt-16  ">
+          <div className="pt-20">
+    <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-30 hidden lg:flex xl:flex"></hr>
+  </div>
+            <div className="grid grid-cols-2 2xl:grid-cols-3 pt-16 2xl:pt-8 ">
                 <div>
                     
                 <p className="text-textColor font-helvetica font-bold text-BodyText py-2">Contact</p>
-               <p className="text-[12px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2">
+                <div className="">
+                  <div>
+              <p className="text-[12px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2">
   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
 </svg>Tel: +27 10 745 1577</p>
+</div><div>
                <p className="text-[12px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2 ">
   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
 </svg>
-info@madeinworkshop.co.za</p></div>
-
-                <div className="pl-10">
+info@madeinworkshop.co.za</p></div></div>
+</div>
+                <div className="pl-10  2xl:py-2 2xl:pl-0">
                 <p className="text-textColor font-helvetica font-bold text-BodyText py-2">Visit Us</p>
                <p className="text-xs inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-12 h-6 pr-2">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -45,7 +53,7 @@ info@madeinworkshop.co.za</p></div>
 </svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</p>
                
                 </div>
-                <div className="py-6 ">
+                <div className="py-6  2xl:py-2 2xl:pl-0 ">
                 <p className="text-textColor font-helvetica font-bold text-BodyText ">Quick Links</p>
                <p className="text-xs pt-2">Legal</p>
                <p className="text-xs">Become a Member</p>
@@ -53,7 +61,7 @@ info@madeinworkshop.co.za</p></div>
                <p className="text-xs">Workshops</p>
 
                 </div>
-                <div className="py-6 pl-10">
+                <div className="py-6 pl-10 2xl:py-2 2xl:pl-0">
                     <p className="text-textColor font-helvetica font-bold text-BodyText">Follow Us</p>
                     <div className="flex flex-row space-x-2 py-2">
                     <p> <svg xmlns="http://www.w3.org/2000/svg" width="0.54em" height="1em" viewBox="0 0 896 1664">
@@ -74,7 +82,7 @@ info@madeinworkshop.co.za</p></div>
             
             </div>
                 </div>
-                <div className="py-4">
+                <div className="py-4 2xl:py-2 2xl:pl-0">
                 <p className="text-textColor font-helvetica font-bold text-BodyText">Legal</p>
                <p className="text-xs pt-2">Privacy Policy</p>
                <p className="text-xs">Terms and Conditions</p>
@@ -90,7 +98,7 @@ info@madeinworkshop.co.za</p></div>
 
               {/* Scroll to Top */}
             </div>
-            <ScrollToTop className="" smooth component={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB11" className="w-10 h-10 bg-background">
+            <ScrollToTop className="lg:mx-72" smooth component={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB11" className="w-10 h-10 bg-background">
   <path strokeLinecap="round" strokeLinejoin="round" d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 </svg>
 } />
