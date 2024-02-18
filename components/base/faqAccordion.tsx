@@ -21,10 +21,11 @@ import {
 
   export function FAQAccordion() {
   return (
-    <div className="py-20">
+    <div className="py-20 2xl:mx-40 lg:mx-24">
     <Tabs defaultValue="machines" className="bg-background">
-    <div className="px-6">
-      <TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary">
+    <div className="px-6 2xl:mx-96 lg:mx-60">
+      <p className="text-secondary text-center py-3 text-sm">Filter by</p>
+      <TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary px-2">
         <TabsTrigger value="machines" className="">Machines</TabsTrigger>
         <TabsTrigger value="workshops">Workshops</TabsTrigger>
         <TabsTrigger value="general">General</TabsTrigger>
