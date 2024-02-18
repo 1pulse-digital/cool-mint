@@ -6,10 +6,10 @@ const Hero = () => {
   return (
     <div className={"relative grid sm:h-screen content-center pt-32 pb-14 px-8 bg-background lg:h-screen"}>
       <div className={"absolute inset-0 "}></div>
-      <div className={"z-10 grid  md:px-28 "}>
+      <div className={"z-10 grid   2xl:px-48 2xl:mx-44 xl:mx-28 lg:mx-30 md:mx-44"}>
         <h1
           className={
-            "text-center font-helvetica text-headings font-bold leading-tight text-secondary lg:text-5xl text-2xl"
+            "text-center font-helvetica text-headings font-bold leading-tight text-secondary lg:text-5xl text-2xl lg:px-16 lg:leading-tight"
           }
         >
           The Largest Shared Workshop & Makerspace in South Africa
@@ -20,6 +20,7 @@ const Hero = () => {
             "my-8 text-center font-helvetica text-BodyText font-light text-textColor"
           }
         >
+          <div className="lg:px-36 md:px-24">
           <span>
             Providing you with the tools, machines and the space for you to{" "}
             <span className="font-medium text-primary">design</span>,{" "}
@@ -27,8 +28,9 @@ const Hero = () => {
             <span className="font-medium text-primary"> fabricate </span>your
             product, project or idea.
           </span>
+          </div>
         </p>
-        <div className="z-10 flex flex-row justify-center py-5 text-right">
+        <div className="z-10 flex flex-row justify-center py-5 text-right lg:space-x-4 mb-14 ">
           <div>
             <Link href="/memberships">
               <Button color="primary">Become a Member</Button>
@@ -58,8 +60,14 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="pt-60">
-      <hr className="flex-grow h-[1px] bg-textColor border-0 mx-40"></hr>
+      <div className="py-16 flex justify-center items-center animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-14 h-14">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+
+      </div>
+      <div className="">
+      <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-40 hidden lg:flex xl:flex"></hr>
       </div>
     </div>
   );
