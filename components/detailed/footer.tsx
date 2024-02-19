@@ -3,6 +3,8 @@ import React from "react";
 import Button from "../base/button";
 import Link from "next/link";
 import ScrollToTop from "react-scroll-to-top";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
 export const Footer = () => {
     return (
@@ -12,18 +14,16 @@ export const Footer = () => {
             <div className="2xl:grid grid-cols-2">
               <div>
                 <p className="text-headings text-secondary font-helvetica font-bold">Subscribe</p>
-                <p className="text-secondary text-[12px] py-2">Subscribe to our newsletter to stay in touch with the latest</p>
+                <p className="text-textColor text-[12px] 2xl:text-base  py-2">Subscribe to our newsletter to stay in touch with the latest</p>
                 </div>
             <div ><form>
-           <label>
-           <div className="sm:col-span-4">
-          <label htmlFor="email" className="block text-secondary font-helvetica text-sm font-medium leading-6 ">Email address:</label>
-          <div className="mt-2">
-          <input type="text" name="email" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></input> 
-          </div>
-        </div>
-  </label>
-  <div> <Button color="primary" className="w-full mt-4"> Sign Up</Button></div>
+      <div className="2xl:pt-4">
+      <Label htmlFor="email">Email Address:</Label>
+      <div className="flex w-full  items-center space-x-2 pt-2">
+      <Input type="email" placeholder="henry@madeinworkshop.co.za" className="w-full" />
+      <Button color="primary" className="w-full"> Sign Up</Button>
+    </div>
+    </div>
 </form>
           </div>
           </div>
