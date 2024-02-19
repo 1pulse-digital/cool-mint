@@ -1,5 +1,3 @@
-// IndustrialMachine.tsx
-
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Button from "./button";
@@ -33,6 +31,7 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
 }) => {
   return (
     <div className="bg-[#2c3033] rounded-xl mb-10">
+      <div className="2xl:flex 2xl:mx-60 ">
       <div className="rounded-md">
         <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className="rounded-t-lg"/>
       </div>
@@ -57,6 +56,7 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
             <Button color={"primary"}>Book a Machine</Button>
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );
