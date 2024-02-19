@@ -6,7 +6,7 @@ import Button, { SquareButton } from "./button";
 const GetInTouch = () => {
   return (
     <div className="bg-background">
-    <div className={"grid content-center px-8 bg-[#e1e1e1] rounded-2xl mx-1 lg:invisible"}>
+    <div className={"grid content-center px-8 bg-secondary rounded-2xl mx-1 md:hidden"}>
       <div className={"py-8 rounded-full"}>
         <h1 className={"text-headings text-center text-background font-helvetica font-bold py-4"}>
          Get In Touch
@@ -16,7 +16,7 @@ const GetInTouch = () => {
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
           </span>
         </p>
-        <div className="py-12 text-right flex-row flex space-x-8">
+        <div className="py-12 flex-row flex space-x-8 text-center justify-center items-center">
           <div>
             <Link href="/contact">
               <Button color="primary">Get in Touch</Button></Link>
@@ -32,10 +32,10 @@ const GetInTouch = () => {
     </div>
 
     {/* desktop */}
-    <div className={"grid content-center px-8 bg-[#27272A] rounded-md mx-24 py-10"}>
+    <div className={"hidden  md:block lg:block xl:block 2xl:block grid content-center px-8 bg-[#27272A] rounded-md mx-20 2xl:mx-28 md:mx-8 py-10 xl:mx-24"}>
       <div className={"py-8 rounded-full"}>
         <h1 className={"text-headings text-center text-secondary font-helvetica font-bold py-4"}>
-         Get In Touch
+         Get In Touch<span className="text-primary">.</span>
         </h1>
         <p className={"text-BodyText text-secondary  text-center font-helvetica font-light"}>
           <span>
