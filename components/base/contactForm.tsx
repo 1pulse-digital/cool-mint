@@ -1,80 +1,115 @@
-
 import React from "react";
 import Button from "./button";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Textarea } from "@/components/ui/textarea"
 
 
 export const ContactForm = () => {
 
   return (
-      <div className={"bg-background py-8"}>
+      <div className={"bg-background py-8 2xl:mx-60 xl:mx-40 md:mx-20"}>
          <div className="w-full">
+          
             <form>
-           <label>
-           <div className="pb-6">
-          <label htmlFor="name" className="block text-secondary font-helvetica text-sm font-medium leading-6 ">First Name</label>
-          <div className="mt-2">
-          <input type="text" name="name" placeholder="Henry"  className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></input> 
-          </div>
+            <div className="lg:grid grid-cols-2">
+           <div className="pb-2 ">
+           <Label htmlFor="name" className="text-secondary mt-2">First Name</Label>
+           <div className="mt-2 2xl:mr-6 xl:mr-6">
+      <Input type="name" id="name" placeholder="Henry" className="placeholder:text-xs  placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      </div>
         </div>
-        </label>
 
-        <label>
-         <div className="pb-6">
-          <label htmlFor="surname" className="block text-secondary font-helvetica text-sm font-medium leading-6">Last Name</label>
-          <div className="mt-2">
-          <input type="text" name="surname" placeholder="Levine" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></input> 
-          </div>
+        <div className="pb-2">
+           <Label htmlFor="surname" className="text-secondary mt-2">Last Name</Label>
+           <div className="mt-2">
+      <Input type="surname" id="surname" placeholder="Levine" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      </div>
         </div>
-  </label>
 
-  <label>
-    <div className="pb-6">
-          <label htmlFor="email" className="block text-secondary font-helvetica text-sm font-medium leading-6 ">Email Address</label>
-          <div className="mt-2">
-          <input type="text" name="email" placeholder="HenryLevine1234" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></input> 
-          </div>
+        <div className="pb-2  2xl:mr-6  xl:mr-6">
+           <Label htmlFor="email" className="text-secondary mt-2">Email Address</Label>
+           <div className="mt-2">
+      <Input type="email" id="email" placeholder="henry@madeinworkshop.co.za" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      </div>
         </div>
-  </label>
 
-  <label>
-  <div className="pb-6">
-          <label htmlFor="tel" className="block text-secondary font-helvetica text-sm font-medium leading-6 ">Contact Number</label>
-          <div className="mt-2">
-          <input type="number" name="number" placeholder="0799999998" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></input> 
-          </div>
+        <div className="pb-2">
+           <Label htmlFor="tel" className="text-secondary mt-2">Contact Number</Label>
+           <div className="mt-2">
+      <Input type="tel" id="tel" placeholder="0007977666" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      </div>
         </div>
-  </label>
+
+        </div>
   <div>
   <p className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</p>
+  
   <div className="bg-background text-secondary font-helvetica text-[14px]">
-  <div className="flex flex-row space-x-3">
-  <input type="checkbox" id="Workshops" name="Workshops" value="workshops" className="bg-background"/>
-  <label htmlFor="workshops"> Workshops</label><br/>
-  <input type="checkbox" id="woodwork" name="Woodwork" value="woodwork"/>
-  <label htmlFor="woodwork"> Woodwork</label><br />
-  <input type="checkbox" id="metalwork" name="metalwork" value="metalwork"/>
-  <label htmlFor="metalwork">Metalwork</label>
+  <div className="flex flex-row lg:space-x-8">
+
+  <Checkbox id="workshops" />
+      <label
+        htmlFor="workshops"
+        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+       Workshops
+      </label>
+
+      <Checkbox id="woodwork" />
+      <label
+        htmlFor="woodwork"
+        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+       Woodwork
+      </label>
+
+      <Checkbox id="metalwork" />
+      <label
+        htmlFor="metalwork"
+        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+       Metalwork
+      </label>
+
   </div>
 
-  <div className="flex flex-row space-x-4 py-4">
-  <input type="checkbox" id="cnc" name="cnc" value="cnc" className="bg-background"/>
-  <label htmlFor="cnc">CNC</label><br/>
-  <input type="checkbox" id="engineering" name="engineering" value="engineering"/>
-  <label htmlFor="engineering">Engineering</label><br />
-  <input type="checkbox" id="memberships" name="memberships" value="memberships"/>
-  <label htmlFor="memberships">Memberships</label>
+  <div className="flex flex-row  space-x-5 py-4 lg:space-x-">
+  <Checkbox id="cnc" />
+      <label
+        htmlFor="cnc"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        CNC
+      </label>
+
+      <Checkbox id="engineering" />
+      <label
+        htmlFor="engineering"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Engineering
+      </label>
+      
+      <Checkbox id="memberships" />
+      <label
+        htmlFor="memberships"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Memberships
+      </label>
   </div>
   </div>
   </div>
-  <label>
+
   <div className="pt-6">
-          <label htmlFor="message" className="block text-secondary font-helvetica text-sm font-medium leading-6">Message</label>
-          <div className="mt-2">
-          <textarea name="message" placeholder="HenryLevine1234" className="placeholder:text-xs placeholder:px-3 py-8 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300  text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></textarea>
+  <Label htmlFor="message" className="text-secondary">Message</Label>
+  <div className="mt-2">
+      <Textarea placeholder="Type your message here." id="message" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 lg:py-10 text-secondary shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background" />
+         </div>
           </div>
-        </div>
-  </label>
-  <div> <Button color="primary" className="w-3/5 mt-6">Submit</Button></div>
+  <div> <Button color="primary" className="w-1/3 mt-6">Submit</Button></div>
 </form>
           </div>
      </div>
