@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const HeroImages = () => {
  return (
-  <div className="bg-background  py-10">
+  <div className="bg-background 2xl:h-screen py-10 hidden md:block">
     <div className="grid lg:grid-cols-3 grid-cols-1 lg:mx-40 md:grid-cols-3 lg:space-x-10">
       <div className="hidden md:block">
         <div className="rounded-md">
@@ -28,7 +28,7 @@ export const HeroImages = () => {
           />
         </div>
       </div>
-      <div className="grid content-center font-helvetica p-5 lg:text-start lg:pt-20">
+      <div className="grid content-center font-helvetica p-5 lg:text-start lg:p-20">
         <h1 className="text-headings text-secondary lg:text-start font-helvetica font-bold py-4 text-center">
           Why us<span className="text-primary">?</span>
         </h1>
@@ -43,9 +43,9 @@ export const HeroImages = () => {
         </div>
       </div>
     </div>
-    <div className="py-20">
-    <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-40 hidden lg:flex xl:flex"></hr>
-  </div>
+    <div className="md:mt-20">
+      <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-20 md:px-28"></hr>
+      </div>
   </div>
  );
 };

@@ -4,9 +4,9 @@ import Button, { SmallButton } from "./base/button";
 
 const Hero = () => {
   return (
-    <div className={"relative grid sm:h-screen content-center pt-32 pb-14 px-8 bg-background lg:h-screen"}>
+    <div className={"relative grid lg:h-screen content-center md:h-py-40 sm:py-32 py-20 bg-background place-self-center"}>
       <div className={"absolute inset-0 "}></div>
-      <div className={"z-10 grid   2xl:px-48 2xl:mx-44 xl:mx-28 lg:mx-30 md:mx-44"}>
+      <div className={"z-10 grid 2xl:mx-60 xl:mx-52 lg:mx-24 md:mx-10 sm:mx-10 px-8"}>
         <h1
           className={
             "text-center font-helvetica text-headings font-bold leading-tight text-secondary lg:text-5xl text-2xl lg:px-16 lg:leading-tight"
@@ -20,11 +20,11 @@ const Hero = () => {
             "my-8 text-center font-helvetica text-BodyText font-light text-textColor"
           }
         >
-          <div className="lg:px-36 md:px-24">
+          <div className="lg:px-36 md:px-24 2xl:px-60">
           <span>
-            Providing you with the tools, machines and the space for you to{" "}
-            <span className="font-medium text-primary">design</span>,{" "}
-            <span className="font-medium text-primary">build </span> and
+            Providing you with the tools, machines and the space for you to
+             <span className="font-medium text-primary"> design</span>,
+              <span className="font-medium text-primary"> build </span> and
             <span className="font-medium text-primary"> fabricate </span>your
             product, project or idea.
           </span>
@@ -66,8 +66,8 @@ const Hero = () => {
 </svg>
 
       </div>
-      <div className="">
-      <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-40 hidden lg:flex xl:flex"></hr>
+      <div className="md:mt-20">
+      <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-20 md:px-28"></hr>
       </div>
     </div>
   );

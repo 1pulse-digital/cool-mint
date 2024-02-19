@@ -11,7 +11,8 @@ import Offerings from "@/components/offerings";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-background">
+     <div className="2xl:px-28">
       <Hero />
       <HeroImages />
       <WhyUs />
@@ -35,6 +36,7 @@ export default function Home() {
       </div>
       <UpcomingWorkshops />
       <GetInTouch />
+    </div>
     </div>
   );
 }
