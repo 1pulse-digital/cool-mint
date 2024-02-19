@@ -24,7 +24,7 @@ function PricingTab(props: PricingTabProps) {
           <div className="absolute top-0 right-0 mr-6 -mt-4"></div>
         )}
         <div className="mb-5 text-start font-helvetica">
-          <div className="text-slate-900 dark:text-slate-200  text-start font-semibold mb-1">{props.planName}</div>
+          <div className="text-secondary dark:text-slate-200  text-start font-semibold mb-1">{props.planName}</div>
           <div className="inline-flex items-baseline mb-2">
             <span className="text-primary  text-xl">R</span>
             <span className="text-primary   text-xl">{props.yearly ? props.price.yearly : props.price.monthly}</span>
@@ -59,10 +59,10 @@ export default function PricingTable() {
   const [yearly, setYearly] = useState<boolean>(true);
 
   return (
-    <div>
+    <div className="xl:mx-40 2xl:mx-72 lg:mx-32 md:mx-12 sm:mx-32 mx-8">
       {/* Pricing toggle */}
       <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16"> </div>
-      <div className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start  lg:max-w-none">
+      <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-3 items-start  lg:max-w-none px-0">
         {/* Pricing tab 1 */}
         <PricingTab
           yearly={yearly}
