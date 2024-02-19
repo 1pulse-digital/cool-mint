@@ -10,7 +10,7 @@ const MachinesTools = () => {
   return(
       <div className={"grid grid-cols-1 bg-background py-12"}>
         <div className="px-8 ">
-        <div className={"grid content-center font-helvetica sm:p-10 md:max-w-prose"}>
+        <div className={"grid content-center font-helvetica"}>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight"}>Industrial Tools & Machines</h1>
           <p className={"text-BodyText text-textColor text-center font-helvetica font-light"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
