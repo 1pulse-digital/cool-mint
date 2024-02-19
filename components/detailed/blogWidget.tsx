@@ -32,7 +32,7 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
         />
       </div>
 
-      <div className="grid z-10 absolute h-auto bottom-0 px-5 bg-background opacity-65">
+      <div className="grid z-10 absolute h-auto bottom-0 px-5 bg-background opacity-65 w-full">
         <div className="flex row space-x-4 py-2">
           <p className="text-secondary text-xs py-1 inline-flex items-start">
             {/* Your date icon */}
