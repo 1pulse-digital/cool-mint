@@ -1,11 +1,31 @@
 import React from "react";
 import Image from "next/image";
 import gallery from "../../images/banner.webp";
+import Link from "next/link";
+import BlogWidget from "@/components/detailed/blogWidget";
 
 const NewsTitle = () => {
   return (
-    <div className={"bg-background px-8 py-10"}>
-      <div className={"rounded-md"}>
+    <div className={"bg-background px-8 2xl:py-32 p-10"}>
+      <div className="grid  justify-center items-center 2xl:mx-60">
+      <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
+            <Link href="/">
+          <div>
+            Home 
+            <span className="px-1">|</span>  
+          </div>
+          </Link>
+
+          <Link href="/news">
+           <div className="">News <span className="px-1">|</span>  </div>
+           
+          </Link>
+          <Link href="/news">
+         
+           <div className="text-primary"> Small Business Showcase Made in Workshop</div>
+          </Link>
+          </div>
+      <div className={"rounded-md grid justify-center items-center py-8 w-full"}>
         <Image
           src={gallery}
           alt="made in workshop"
@@ -14,7 +34,7 @@ const NewsTitle = () => {
         />
       </div>
       <div
-        className={"grid content-center font-helvetica sm:p-10 md:max-w-prose"}
+        className={"grid content-center font-helvetica sm:p-10 "}
       >
         <h1
           className={
@@ -71,7 +91,7 @@ const NewsTitle = () => {
 
         <p
           className={
-            "text-start font-helvetica text-[16px] font-light text-secondary"
+            "text-start font-helvetica text-[16px] font-normal text-secondary"
           }
         >
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -92,18 +112,28 @@ const NewsTitle = () => {
           erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
           et ea rebum.
         </p>
+
+        <div className={"rounded-md grid justify-center items-center py-12 w-full"}>
+        <Image
+          src={gallery}
+          alt="made in workshop"
+          placeholder={"blur"}
+          className="rounded-md"
+        />
+      </div>
         <div className="pt-12">
 <hr className="flex-grow h-[1px] bg-textColor border-0"></hr>
 </div>
         <div>
         <h1
           className={
-            "py-10 text-start font-helvetica text-headings font-bold text-secondary"
+            "pt-10 text-start font-helvetica text-headings font-bold text-secondary"
           }
         >
       Latest News
         </h1>
         </div>
+        <div className=" sm:hidden">
         <div>
        <p
           className={
@@ -239,7 +269,44 @@ const NewsTitle = () => {
           </p>
         </div>
         </div>
+        </div>
       </div>
+      <div className="hidden sm:block md:block lg:block xl:block 2xl:block grid 2xl:grid grid-cols-3 xl:grid grid-cols-3 lg:grid grid-cols-3">
+        <div>
+        <BlogWidget
+        imageUrl="/icons/miw.webp"
+        date="3 July 2022"
+        author="Henry Levine"
+        title="Article title that can go onto 2 Lines for 1"
+        categories={["Machines", "General"]}
+        linkUrl="/newsTitle"
+      />
+      </div>
+
+      <div>
+        <BlogWidget
+        imageUrl="/icons/miw.webp"
+        date="3 July 2022"
+        author="Henry Levine"
+        title="Article title that can go onto 2 Lines for 2"
+        categories={["Machines", "General"]}
+        linkUrl="/newsTitle"
+      />
+      </div>
+
+      <div>
+        <BlogWidget
+        imageUrl="/icons/miw.webp"
+        date="3 July 2022"
+        author="Henry Levine"
+        title="Article title that can go onto 2 Lines for 3"
+        categories={["Machines", "General"]}
+        linkUrl="/newsTitle"
+      />
+      </div>
+      </div>
+      </div>
+      
     </div>
   );
 };
