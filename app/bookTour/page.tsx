@@ -16,29 +16,43 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
+import GetInTouch from "@/components/base/getInTouch";
 
 export const BookTour = () => {
     return(
-        <div className={"bg-background py-12"}>
-        <div className={"grid content-center font-helvetaica  sm:p-10 md:max-w-prose px-6"}>
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>Book a Tour</h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light"}>
+        <div className={"bg-background lg:py-32"}>
+          <div className="2xl:mx-60 xl:mx-40  md:mx-32 lg:mx-2 sm:mx-20 px-8 2xl:pb-20">
+        <div className={"grid content-center font-helvetaica px-6"}>
+        <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
+            <Link href="/">
+          <div>
+            Home 
+            <span className="px-1">|</span>  
+          </div>
+          </Link>
+          <Link href="/news">
+           <div className="text-primary">Workshops</div>
+          </Link>
+          </div>
+          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>Book a Tour<span className="text-primary">.</span></h1>
+          <p className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-52 lg:px-40"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           </p>
         </div>
-
+        <div className="lg:px-52 py-10">
         <Tabs defaultValue="monday">
-    <div className="pb-16">
+    <div className="lg:pb-16">
     <Carousel className="mx-3 pt-3">
     <CarouselContent className="">
     <CarouselItem>
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary">
-        <TabsTrigger value="monday" className="p-5">Mon</TabsTrigger>
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary">
+        <TabsTrigger value="monday" className="p-5 ml-2">Mon</TabsTrigger>
         <TabsTrigger value="tuesday"className="p-5">Tue</TabsTrigger>
         <TabsTrigger value="wednesday"className="p-5">Wed</TabsTrigger>
         <TabsTrigger value="thursday"className="p-5">Thu</TabsTrigger>
-        <TabsTrigger value="friday"className="p-5">Fri</TabsTrigger>
+        <TabsTrigger value="friday"className="p-5 mr-2">Fri</TabsTrigger>
       </TabsList>
+      
       </CarouselItem>
       </CarouselContent>
       </Carousel>
@@ -283,7 +297,9 @@ friday */}
       </TabsContent>
      
     </Tabs>
-
+    </div>
+    </div>
+    <GetInTouch />
      </div>
     )
 }
