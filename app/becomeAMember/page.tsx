@@ -3,16 +3,30 @@ import google from "../../images/google.png";
 import Button, { LongButton, SmallButtonOrange } from "@/components/base/button";
 import { InputComponent } from "@/components/base/inputComponents";
 import Link from "next/link";
+import GetInTouch from '@/components/base/getInTouch';
 
 
 const BecomeAMember: React.FC = () => {
   return (
-    <div className={"bg-background py-12 px-8"}>
-      <div className={"grid content-center font-helvetica sm:p-10 md:max-w-prose"}>
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-8 text-center leading-tight"}>Become a Member</h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light"}>
+    <div>
+    <div className={"bg-background py-32 px-8"}>
+      <div className={"grid content-center font-helvetica"}>
+      <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
+            <Link href="/">
+          <div>
+            Home 
+            <span className="px-1">|</span>  
+          </div>
+          </Link>
+          <Link href="/news">
+           <div className="text-primary">Become a member</div>
+          </Link>
+          </div>
+          <h1 className={"text-headings text-secondary font-helvetica font-bold py-2 pb-8 text-center leading-tight"}>Become a Member<span className="text-primary">.</span></h1>
+          <p className={"text-BodyText text-textColor text-center font-helvetica font-normal md:px-28 sm:px-20"}>
           Membership registrations are done at Made in Workshop and includes a tour of the facilitates. 
           </p>
+          <div className="text-center 2xl:mx-72">
           <p className={"text-BodyText text-textColor text-center font-helvetica font-light pt-6 pb-4"}>
           Visit us at
           </p>
@@ -24,12 +38,12 @@ const BecomeAMember: React.FC = () => {
 </svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</p>
 </Link>
           </div> 
-          </div>  
+        
     <div className="py-4">
     <div className="flex items-center justify-center py-4 space-x-4">
     <p className="text-textColor text-BodyText font-helvetica">OR</p>
 </div>
-<div> <Button color="primary" className="w-full mt-4">Book a Tour</Button></div>
+<div className="py-2"> <Button color="primary" className="w-full lg:w-1/3 md:w-1/3 mt-4 sm:w-1/3">Book a Tour</Button></div>
 <div className="flex items-center justify-center"> 
         <Link href="/register">
           <SmallButtonOrange color="primary">Contact us for more information
@@ -38,6 +52,10 @@ const BecomeAMember: React.FC = () => {
 </SmallButtonOrange></Link>
     </div>
           </div>
+          </div>  
+          </div>
+    </div>
+    <GetInTouch />
     </div>
   );
 };
