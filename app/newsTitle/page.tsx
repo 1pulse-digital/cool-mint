@@ -3,6 +3,8 @@ import Image from "next/image";
 import gallery from "../../images/banner.webp";
 import Link from "next/link";
 import BlogWidget from "@/components/detailed/blogWidget";
+import GetInTouch from "@/components/base/getInTouch";
+import Button from "@/components/base/button";
 
 const NewsTitle = () => {
   return (
@@ -304,9 +306,15 @@ const NewsTitle = () => {
         linkUrl="/newsTitle"
       />
       </div>
-      </div>
-      </div>
       
+      </div>
+      <div className="text-center lg:py-20 md:py-10 sm:py-8 py-6">
+            <Link href="/">
+            <Button color={"primary"}>Learn More</Button>
+            </Link>
+            </div>
+      </div>
+      <GetInTouch />
     </div>
   );
 };
