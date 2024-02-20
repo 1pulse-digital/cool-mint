@@ -30,12 +30,12 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
   buttonUrl,
 }) => {
   return (
-    <div className="bg-[#2c3033] rounded-xl mb-10">
+    <div className=" rounded-xl mb-10">
       <div className="2xl:flex 2xl:mx-60 ">
       <div className="rounded-md">
         <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className="rounded-t-lg"/>
       </div>
-      <div className="p-5">
+      <div className="p-5 bg-[#2c3033]">
         <div className={"grid text-start font-helvetica  sm:p-10 md:max-w-prose py-6"}>
           <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>{machineName}</h3>
           <p className="text-primary font-helvetica text-xs py-2 pb-6">{categories}</p>
