@@ -35,41 +35,42 @@ import {
 
 export function TeamCarousel() {
   return (
-    <div className="mb-14">
-    <div className="">
+    <div>
+    <div className="px-40 sm:px-16 grid justify-center items-center md:px-28 xl:mx-20 mb-20">
     <Tabs defaultValue="machines" className="">
-    <div className="pb-16">
-    <Carousel className="mx-16 pt-6">
+    <div className="pb-16 2xl:mx-80">
+    <Carousel className="mx-6">
     <CarouselContent className="">
     <CarouselItem>
-      <TabsList className="bg-background">
+    <TabsList className="bg-background space-x-2 2xl:space-x-9 sm:space-x-4 md:space-x-6">
         
-        <TabsTrigger value="machines"><div>
+        <TabsTrigger value="machines">
+          <div className=" 2xl:pt-80 sm:pt-32 md:pt-44 xl:pt-72 lg:pt-52">
             <Image
              src={gallery}
              alt="team member"
              placeholder={"blur"}
              className="rounded-lg"
-             width={"300"}
-             height="300"
+             width="400"
+             height="400"
            /></div></TabsTrigger>
-        <TabsTrigger value="workshops"><div>
+        <TabsTrigger value="workshops"><div className="pt-8 2xl:pt-80 sm:pt-32 md:pt-44 xl:pt-72 lg:pt-52">
             <Image
              src={gallery}
              alt="team member"
              placeholder={"blur"}
              className="rounded-lg"
-             width={"300"}
-             height="300"
+             width="400"
+             height="400"
            /></div></TabsTrigger>
-        <TabsTrigger value="general"><div>
+        <TabsTrigger value="general"><div className="pt-8 2xl:pt-80 sm:pt-32 md:pt-44 xl:pt-72 lg:pt-52">
             <Image
              src={gallery}
              alt="team member"
              placeholder={"blur"}
              className="rounded-lg"
-             width={"300"}
-             height="300"
+             width="400"
+             height="400"
            /></div></TabsTrigger>
       </TabsList>
       </CarouselItem>
@@ -80,18 +81,18 @@ export function TeamCarousel() {
       </div>
       <TabsContent className="bg-background font-helvetica" value="machines">
         <Card className="bg-background border-0">
-        <div className="bg-[#2c3033] rounded-xl mx-6">
-        <div className="rounded-md"><Image
+        <div className="bg-[#2c3033] 2xl:grid-cols-1 rounded-xl 2xl:mx-60">
+        <div className="rounded-md "><Image
              src={gallery}
              alt="team member"
              placeholder={"blur"}
              className="rounded-t-lg"
            /></div>
-            <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose py-8"}>
+            <div className={"grid content-center font-helvetica p-5 sm:p-10  py-8 bg-[#2c3033] 2xl:p-20"}>
 
              <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>Name: Peter</h3>
              <p className="text-primary font-helvetica text-sm py-2 pb-6">Position</p>
-             <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>
+             <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-normal"}>
              Dummy text is text that is used in the publishing industry or by web designers
               to occupy the space which will later be filled with 'real' content. This is required when, 
               for example, the final text is not yet available. Dummy text is also known as 'fill text'.
@@ -106,18 +107,18 @@ export function TeamCarousel() {
       </TabsContent>
       <TabsContent className="bg-background font-helvetica" value="workshops">
         <Card className="bg-background border-0">
-        <div className="bg-[#2c3033] rounded-xl mx-6">
+        <div className="bg-[#2c3033] 2xl:grid-cols-1 rounded-xl 2xl:mx-60">
         <div className="rounded-md"><Image
              src={gallery}
              alt="team member"
              placeholder={"blur"}
              className="rounded-t-lg"
            /></div>
-            <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose py-8"}>
+            <div className={"grid content-center font-helvetica p-5 py-8 2xl:p-20"}>
 
              <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>Name: Joshua</h3>
              <p className="text-primary font-helvetica text-sm py-2 pb-6">Position</p>
-             <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>
+             <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-normal"}>
              Dummy text is text that is used in the publishing industry or by web designers
               to occupy the space which will later be filled with 'real' content. This is required when, 
               for example, the final text is not yet available. Dummy text is also known as 'fill text'.
@@ -132,18 +133,18 @@ export function TeamCarousel() {
       </TabsContent>
       <TabsContent className="bg-background font-helvetica" value="general">
       <Card className="bg-background border-0">
-        <div className="bg-[#2c3033] rounded-xl mx-6">
+        <div className="bg-[#2c3033] 2xl:grid-cols-1 rounded-xl 2xl:mx-60">
         <div className="rounded-md"><Image
              src={gallery}
              alt="team member"
              placeholder={"blur"}
              className="rounded-t-lg"
            /></div>
-            <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose py-8"}>
+            <div className={"grid content-center font-helvetica p-5 py-8 2xl:p-20"}>
 
              <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>Name: Jack</h3>
              <p className="text-primary font-helvetica text-sm py-2 pb-6">Position</p>
-             <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>
+             <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-normal"}>
              Dummy text is text that is used in the publishing industry or by web designers
               to occupy the space which will later be filled with 'real' content. This is required when, 
               for example, the final text is not yet available. Dummy text is also known as 'fill text'.
