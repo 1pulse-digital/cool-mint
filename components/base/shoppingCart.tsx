@@ -24,9 +24,10 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
   quantity,
 }) => (
   <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
-   <img src={ImageSrc} alt={title} height={80} width={65} className="rounded-xl"  />
+   <img src={ImageSrc} alt={title} height={90} width={100} className="rounded-xl"  />
    <div>
     </div>
+    <div className="md:flex md:space-x-40 2xl:space-x-72 ">
     <div className="text-start">
       <p className="text-xl font-helvetica font-bold text-secondary">{name}</p>
       <div className="flex row space-x-4">
@@ -46,15 +47,18 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
 </svg> QTY: {quantity}
         </p>
       </div>
+      </div>
+      <div>
       <p className="font-bold text-primary text-start text-[16px] pt-2">{price}</p>
-      <p className="text-textColor text-[12px] py-1">{remove}</p>
+      <p className="text-textColor text-[12px] justipy-1">{remove}</p>
+      </div>
     </div>
   </div>
 );
 
 const ShoppingCart: React.FC = () => {
   return (
-    <div className="font-medium text-primary text-center md:text-left  py-14 bg-background">
+    <div className="grid font-medium text-primary text-center md:text-left  py-14 bg-background 2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
       
       <ShoppingCartItem
         ImageSrc="/icons/banner.webp"
