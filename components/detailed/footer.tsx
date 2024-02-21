@@ -13,12 +13,12 @@ export const Footer = () => {
         <div className="h-auto px-8 font-helvetica text-secondary 2xl:mx-40">
           <div className="grid-cols-2 2xl:grid">
             <div>
-              <p className="font-helvetica text-headings font-bold text-secondary">
+              <div className="font-helvetica text-headings font-bold text-secondary">
                 Subscribe<span className="text-primary">.</span>
-              </p>
-              <p className="py-2 text-[12px] text-textColor  2xl:text-base">
+              </div>
+              <div className="py-2 text-[12px] text-textColor  2xl:text-base">
                 Subscribe to our newsletter to stay in touch with the latest
-              </p>
+              </div>
             </div>
             <div>
               <form>
@@ -146,7 +146,7 @@ export const Footer = () => {
                 Follow Us
               </p>
               <div className="flex flex-row space-x-2 py-2">
-                <p>
+                <div>
                   <Link
                     href="https://www.facebook.com/madeinworkshop/"
                     target="_blank"
@@ -164,14 +164,14 @@ export const Footer = () => {
                       />
                     </svg>{" "}
                   </Link>
-                </p>
-                <p>
+                </div>
+                <div>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
                   </svg>
-                </p>
+                </div>
 
-                <p>
+                <div>
                   <Link
                     href="https://www.instagram.com/accounts/login/?next=%2Fmade_in_workshop_za%2F"
                     target="_blank"
@@ -188,8 +188,8 @@ export const Footer = () => {
                       />
                     </svg>
                   </Link>
-                </p>
-                <p>
+                </div>
+                <div>
                   <Link
                     href="https://www.youtube.com/channel/UCed1ydI3MKtleCkstaAJl3Q"
                     target="_blank"
@@ -206,33 +206,33 @@ export const Footer = () => {
                       />
                     </svg>
                   </Link>
-                </p>
+                </div>
               </div>
             </div>
             <div className="py-4 2xl:py-2 2xl:pl-0">
-              <p className="font-helvetica text-BodyText font-bold text-textColor">
+              <div className="font-helvetica text-BodyText font-bold text-textColor">
                 Legal
-              </p>
+              </div>
               <Link href="/">
-                <p className="pt-2 text-xs">Privacy Policy</p>
+                <div className="pt-2 text-xs">Privacy Policy</div>
               </Link>
               <Link href="/">
-                <p className="text-xs">Terms and Conditions</p>
+                <div className="text-xs">Terms and Conditions</div>
               </Link>
             </div>
           </div>
         </div>
       </div>
       <div className="bg-[#929597] px-16 py-4 text-center text-xs">
-        <p className="font-helvetica text-secondary">
+        <div className="font-helvetica text-secondary">
           © 2024 Made in Workshop.{" "}
-        </p>
+        </div>
         <Link
           href="https://www.1pulse.digital/"
           target="_blank"
           className="text-secondary hover:text-primary"
         >
-          <p>Developed and design by 1Pulse Digital</p>
+          <div>Developed and design by 1Pulse Digital</div>
         </Link>
 
         {/* Scroll to Top */}
