@@ -74,7 +74,7 @@ const Login: React.FC = () => {
             GOOGLE
         </span>
           </LongButton></div>
-          <p className="text-textColor text-center font-helvetica py-10 text-xs">By clicking continue, you agree to our <a href="/" className="underline">Terms of Service</a> and <a href="/" className="underline">Privacy Policy</a>.</p>
+          <p className="text-textColor text-center font-helvetica py-10 text-xs">By clicking continue, you agree to our <Link href="/" className="underline">Terms of Service</Link> and <Link href="/" className="underline">Privacy Policy</Link>.</p>
           </div>
           </div>
           </div>
