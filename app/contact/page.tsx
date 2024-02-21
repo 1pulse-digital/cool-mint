@@ -54,7 +54,7 @@ import React from "react";
     </div>
      </div>
      <div className="bg-background border-0 py-6">
-     <div className="mapouter grayscale 2xl:mx-60">
+     <div className="mapouter grayscale 2xl:mx-40">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3583.542461931366!2d27.97206827633481!3d-26.08120535897773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95745507de8113%3A0xa12accebfd06858b!2s10%20Naaf%20St%2C%20Strydompark%2C%20Randburg%2C%202169!5e0!3m2!1sen!2sza!4v1707394967139!5m2!1sen!2sza"
             height="300"
@@ -64,7 +64,7 @@ import React from "react";
           ></iframe>
         </div>
         </div>
-        <div className="bg-background">
+        <div className="bg-background lg:mt-20">
         <GetInTouch />
         </div>
      </div>
