@@ -9,6 +9,7 @@ import Offerings from "@/components/offerings";
 
 export default function Home() {
   return (
+    <div>
     <div className="bg-background px-8 font-helvetica lg:px-32 ">
       <div>
         <Hero />
@@ -26,7 +27,6 @@ export default function Home() {
         </div>
         <Community />
 
-
           <div className="">
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
@@ -34,6 +34,7 @@ export default function Home() {
 
       </div>
       <GetInTouch />
+    </div>
     </div>
   );
 }
