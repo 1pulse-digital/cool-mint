@@ -53,12 +53,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <div className="sticky top-0 z-50 bg-background py-3">
-      <div className="container flex items-center justify-start space-x-16 px-4  py-4 lg:mx-28 lg:space-x-24">
+      <div className="flex items-center justify-between space-x-16 px-4  py-4  lg:mx-28">
         {/* Logo */}
         <div>
-          <a href="/">
+          <Link href="/">
             <Image src={logo} alt="Logo" width={120} height={40} />
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -94,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         <div className="z-20 flex flex-col space-y-4 px-4 font-helvetica font-normal text-secondary">
                           <nav className="grid gap-y-8">
                             {navigationItems.map((item) => (
-                              <a
+                              <Link
                                 key={item.name}
                                 href={item.href}
                                 className="-m-4 flex items-center rounded-md p-3"
@@ -102,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 <span className=" font-helvetica text-base font-normal text-secondary">
                                   {item.name}
                                 </span>
-                              </a>
+                              </Link>
                             ))}
                           </nav>
                           <div className="py-4">
@@ -125,21 +125,21 @@ const Navbar: React.FC<NavbarProps> = () => {
 
         {/* Desktop Menu */}
 
-        <div className="hidden items-start justify-start text-secondary lg:flex lg:space-x-8">
+        <div className="hidden items-start justify-start text-secondary lg:flex lg:space-x-10">
           {navigationItems.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
               className="text-secondary  hover:text-primary active:text-primary"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
           {/* Add more menu items as needed */}
         </div>
 
-        <div className="flex space-x-10">
-          <div className="hidden py-2 md:block lg:block xl:block 2xl:block">
+        <div className="flex space-x-12">
+          <div className="hidden py-2  xl:block 2xl:block">
             <div className="flex flex-row space-x-2 py-3  ">
               <Link
                 href="https://www.facebook.com/madeinworkshop/"
