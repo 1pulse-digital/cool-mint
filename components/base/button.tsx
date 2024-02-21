@@ -95,6 +95,33 @@ export const Button = (props: ButtonProps) => {
   );
 };
 
+export const HeaderButton = (props: ButtonProps) => {
+  const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow hover:shadow-sm text-[10px] font-helvetica w-32 ";
+
+  const isPrimary = props.color === "primary";
+  const isSecondary = props.color === "secondary";
+  const isDisabled = props.disabled;
+
+  const colorClassname = cn(
+    { "bg-primary text-[#2A2A2A]": isPrimary },
+    { "hover:bg-secondary": (isPrimary && !isDisabled) },
+
+    { "bg-[#FDBB10] border-secondary border-2 text-secondary": isSecondary },
+    { "hover:bg-secondary hover:text-white": isSecondary && !isDisabled },
+  );
+
+
+  const mergedClassname = tailshake(baseClassname, colorClassname, props.className);
+  return (
+    <button
+      className={mergedClassname}
+      disabled={props.disabled}
+      onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+};
+
 export const BookingButton = (props: ButtonProps) => {
   const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow hover:shadow-sm text-[10px] font-helvetica";
 
