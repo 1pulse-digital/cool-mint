@@ -96,7 +96,7 @@ export const Button = (props: ButtonProps) => {
 };
 
 export const HeaderButton = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow hover:shadow-sm text-[10px] font-helvetica w-32 ";
+  const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow hover:shadow-sm text-[10px] font-helvetica w-20 ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
