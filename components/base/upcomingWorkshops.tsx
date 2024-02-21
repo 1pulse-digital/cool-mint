@@ -33,15 +33,15 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   bookLink,
   learnMoreLink,
 }) => (
-  <div className="flex space-x-8 py-6 text-sm">
+  <div className="flex space-x-4 py-6 text-sm">
     <p className=" text-2xl font-bold text-secondary">{day}</p>
     <div className="text-start">
-      <div className="lg:flex lg:space-x-36 ">
+      <div className="lg:flex lg:space-x-40">
         <div>
           <div className="grid-cols-2 lg:grid">
             <div className="text-xl font-bold text-textColor">{name}</div>
             <div className="grid hidden pt-4 lg:block">
-              <hr className="h-[1px] w-72 flex-grow border-0 bg-[#A1A1AA]"></hr>
+              <hr className="h-[1px] w-[450px] flex-grow border-0 bg-[#A1A1AA]"></hr>
             </div>
           </div>
           <div className="row flex space-x-4">
@@ -106,17 +106,17 @@ const UpcomingWorkshops: React.FC = () => {
             Upcoming Workshops
           </h1>
         </div>
-        <p className="text-BodyText font-light text-textColor xl:px-40 2xl:px-52">
+        <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna.
       </p>
       </div>
       <Tabs defaultValue="january woodwork">
-        <div className="mx-8 lg:px-32 mt-10">
+        <div className="mt-10">
 
           {/* Filtering by category */}
           
-          <div className="lg:px-60 md:px-28">
+          <div className="lg:px-60 md:px-28 mx-8">
             <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
               <TabsTrigger value="january woodwork" className="">
                 Woodwork
@@ -128,7 +128,7 @@ const UpcomingWorkshops: React.FC = () => {
 
                     {/* Filtering by month */}
 
-          <div className="pb-16 ">
+          <div className="pb-16">
             <Carousel className="mx-3 pt-3">
               <CarouselContent className="">
                 <CarouselItem>
@@ -151,7 +151,7 @@ const UpcomingWorkshops: React.FC = () => {
                   </TabsList>
                 </CarouselItem>
                 <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A]  text-secondary ">
+                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2  text-secondary">
                     <TabsTrigger value="june" className="p-5">
                       Jun
                     </TabsTrigger>
@@ -170,7 +170,7 @@ const UpcomingWorkshops: React.FC = () => {
                   </TabsList>
                 </CarouselItem>
                 <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A]  text-secondary ">
+                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-secondary">
                     <TabsTrigger value="november" className="p-5">
                       Nov
                     </TabsTrigger>
@@ -194,12 +194,13 @@ const UpcomingWorkshops: React.FC = () => {
         </div>
 
         {/* January Workshops */}
+    
         <TabsContent
-          className=""
+          className="bg-background px-10 font-helvetica"
           value="january woodwork"
         >
-          <Card className="">
-            <CardTitle className="py-1  text-start text-lg font-normal text-primary">
+          <Card className="border-0 bg-background">
+            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
               January
             </CardTitle>
             <WorkshopItem
@@ -216,6 +217,7 @@ const UpcomingWorkshops: React.FC = () => {
             />
           </Card>
         </TabsContent>
+
 
         <TabsContent
           className="bg-background px-10 font-helvetica"
