@@ -7,7 +7,7 @@ import Link from "next/link";
 export const HeroImages = () => {
   return (
     <div id="whyus" className="flex h-screen items-center justify-center py-10">
-    <div className="flex flex-wrap justify-center items-stretch md:justify-between lg:space-x-2 w-full max-w-4xl">
+    <div className="flex flex-wrap justify-center items-stretch md:justify-between lg:space-x-2 w-full">
       <div className="flex-1 flex justify-center items-center p-5">
         <div className="rounded-md w-full">
           <Image src={gallery} alt="made in workshop" placeholder="blur" className="rounded-md w-full h-auto" />
