@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import Button, { SquareButton } from "./button";
+import Button, { LongButton, SmallButton, SquareButton } from "./button";
 
 const GetInTouch = () => {
   return (
     <div
-    className="mx-20 flex flex-col items-center justify-center rounded-md bg-[#27272A] px-8 py-10 md:mx-8"
+    className="flex flex-col items-center justify-center rounded-md bg-[#27272A] py-10"
   >
     <div className="rounded-full py-8 text-center">
       <h1 className="py-4 font-helvetica text-headings font-bold text-secondary">
@@ -17,12 +17,12 @@ const GetInTouch = () => {
       <div className="flex flex-row justify-center space-x-12 py-12">
         <div>
           <Link href="/contact">
-            <Button color="primary">Get in Touch</Button>
+            <LongButton color="secondary">Get in Touch</LongButton>
           </Link>
         </div>
         <div>
           <Link href="/bookTour">
-            <SquareButton color="primary">
+            <SmallButton color="primary">
               Learn More
               <svg
                 className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
@@ -39,7 +39,7 @@ const GetInTouch = () => {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </SquareButton>
+            </SmallButton>
           </Link>
         </div>
       </div>
