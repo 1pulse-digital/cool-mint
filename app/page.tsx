@@ -19,24 +19,20 @@ export default function Home() {
       <Offerings />
       <Community />
       <div className="bg-background px-8 text-center font-medium text-primary md:text-left">
-        <h1
-          className={
-            "text-start font-helvetica text-headings font-bold  text-secondary"
-          }
-        >
+        <div className="lg:flex lg:justify-center space-x-4">
+        <h1 className="text-start font-helvetica text-headings font-bold  text-secondary">
           Upcoming
         </h1>
-        <h1
-          className={
-            "pl-16 text-center font-helvetica text-headings font-bold text-secondary"
-          }
-        >
+        <h1 className="lg:pl-0 pl-16 text-center font-helvetica text-headings font-bold text-secondary">
           Workshops<span className="text-primary">.</span>
         </h1>
+        </div>
       </div>
+      <div className="">
       <UpcomingWorkshops />
-      <GetInTouch />
+      </div>
     </div>
+    <GetInTouch />
     </div>
   );
 }
