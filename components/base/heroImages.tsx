@@ -1,45 +1,25 @@
 import React from "react";
 import Image from "next/image";
-import gallery from "../../images/banner.webp";
+import gallery from "../../images/why-us-img.png";
 import Button from "./button";
 import Link from "next/link";
 
 export const HeroImages = () => {
- return (
-  <div id="whyus" className="bg-background lg:h-screen py-10 hidden md:block">
-    <div className="grid lg:grid-cols-3 grid-cols-1 lg:mx-40 md:grid-cols-3 lg:space-x-2">
-      <div className="hidden md:block">
-        <div className="rounded-md">
-          <Image
-            src={gallery}
-            alt="made in workshop"
-            placeholder={"blur"}
-            className="rounded-md"
-            height={300}
-            width={300}
-          />
+  return (
+    <div id="whyus" className="flex h-screen items-center justify-center py-10">
+    <div className="flex flex-wrap justify-center items-stretch md:justify-between lg:space-x-2 w-full max-w-4xl">
+      <div className="flex-1 flex justify-center items-center p-5">
+        <div className="rounded-md w-full">
+          <Image src={gallery} alt="made in workshop" placeholder="blur" className="rounded-md w-full h-auto" />
         </div>
       </div>
-      <div className="hidden md:block lg:pt-20">
-        <div className="rounded-md">
-          <Image
-            src={gallery}
-            alt="made in workshop"
-            placeholder={"blur"}
-            className="rounded-md"
-            height={300}
-            width={300}
-          />
-        </div>
-
-      </div>
-      <div className="grid content-center font-helvetica p-5 lg:p-0 lg:text-start lg:pt-20">
-        <h1 className="text-headings text-secondary lg:text-start font-helvetica font-bold py-4 text-center">
+      <div className="flex-1 flex flex-col justify-center p-5 font-helvetica">
+        <h1 className="py-4 text-center font-helvetica text-headings font-bold text-secondary lg:text-start">
           Why us<span className="text-primary">?</span>
         </h1>
-        <p className="text-BodyText text-textColor lg:text-start text-center font-helvetica font-normal">
-          Made In Workshop (MIW) is a shared workshop and fabrication studio. Not just a workshop with a
-          collection of tools and machines but a community of like-minded fabricators, manufacturers, and designers.
+        <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:text-start">
+          Made In Workshop (MIW) is a shared workshop and fabrication studio. Not just a workshop with a collection of tools and machines but a
+          community of like-minded fabricators, manufacturers, and designers.
         </p>
         <div className="py-8 text-center lg:text-start">
           <Link href="/about">
@@ -48,9 +28,7 @@ export const HeroImages = () => {
         </div>
       </div>
     </div>
-    <div className="md:mt-20">
-      <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 mx-20 md:px-28"></hr>
-      </div>
   </div>
- );
+  
+  );
 };

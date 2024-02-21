@@ -7,32 +7,33 @@ import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
 import GetInTouch from "@/components/base/getInTouch";
 import Offerings from "@/components/offerings";
 
-
-
 export default function Home() {
   return (
-    <div className="bg-background">
-     <div className="2xl:px-28">
-      <Hero />
-      <HeroImages />
-      <WhyUs />
-      <Offerings />
-      <Community />
-      <div className="bg-background px-8 text-center font-medium text-primary md:text-left">
-        <div className="lg:flex lg:justify-center space-x-4">
-        <h1 className="text-start font-helvetica text-headings font-bold  text-secondary">
-          Upcoming
-        </h1>
-        <h1 className="lg:pl-0 pl-16 text-center font-helvetica text-headings font-bold text-secondary">
-          Workshops<span className="text-primary">.</span>
-        </h1>
+    <div className="bg-background px-8 font-helvetica lg:px-32 ">
+      <div>
+        <Hero />
+        <div className="">
+          <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
         </div>
+        <HeroImages />
+        <div className="">
+          <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+        </div>
+        {/* <WhyUs /> */}
+        <Offerings />
+        <div className="">
+          <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+        </div>
+        <Community />
+
+
+          <div className="">
+            <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+          </div>
+          <UpcomingWorkshops />
+
       </div>
-      <div className="">
-      <UpcomingWorkshops />
-      </div>
-    </div>
-    <GetInTouch />
+      <GetInTouch />
     </div>
   );
 }
