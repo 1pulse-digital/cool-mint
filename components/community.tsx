@@ -4,7 +4,7 @@ import gallery from "../images/banner.webp";
 
 export const Community = () => {
     return(
-        <div className={"bg-background px-8"}>
+        <div className={"bg-background px-8 lg:h-screen"}>
           <div className={"content-center font-helvetica p-5 lg:px-72"}>
             <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight"}>Maker Community.</h1>
             <p className={"text-BodyText text-textColor text-center font-helvetica font-normal"}>
