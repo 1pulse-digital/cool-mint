@@ -9,15 +9,18 @@ export const FAQ = () => {
         <div className={"bg-background py-12"}>
         <div className={"grid content-center font-helvetaica  sm:p-10  2xl:mx-80 lg:mx-40 px-8"}>
         <div className="text-xs text-secondary  font-helvetica font-light inline-flex justify-center">
-            <Link href="/">
+            
           <div>
+          <Link href="/">
             Home 
             <span className="px-1">|</span>  
+            </Link>
           </div>
+          <div>
+          <Link href="/faq" className="text-primary">
+          FAQ's
           </Link>
-          <Link href="/faq">
-          <div className="text-primary">FAQ's</div>
-          </Link>
+          </div>
           </div>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>FAQ<span className="text-primary">.</span></h1>
           <p className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-32 lg:px-20 md:px-40 xl:px-52"}>
