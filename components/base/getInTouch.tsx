@@ -32,7 +32,7 @@ const GetInTouch = () => {
     </div>
 
     {/* desktop */}
-    <div className={"hidden  md:block lg:block xl:block 2xl:block grid content-center px-8 bg-[#27272A] rounded-md mx-20 2xl:mx-28 md:mx-8 py-10 xl:mx-24"}>
+    <div className={"hidden  md:block lg:block xl:block 2xl:block grid content-center px-8 bg-[#27272A] rounded-md mx-20 2xl:mx-40 md:mx-8 py-10 xl:mx-24"}>
       <div className={"py-8 rounded-full"}>
         <h1 className={"text-headings text-center text-secondary font-helvetica font-bold py-4"}>
          Get In Touch<span className="text-primary">.</span>
