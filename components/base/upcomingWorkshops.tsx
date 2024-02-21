@@ -99,23 +99,24 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
 
 const UpcomingWorkshops: React.FC = () => {
   return (
-    <div className="py-14 text-center font-medium text-primary   md:text-left ">
-      <div className="px-8 text-center font-medium text-primary md:text-left">
+    <div className="py-14 text-center font-medium text-primary ">
+      <div className="px-8 font-medium text-primary md:text-left">
         <div className="space-x-4 lg:flex lg:justify-center">
-          <h1 className="text-start font-helvetica text-headings font-bold  text-secondary">
-            Upcoming
-          </h1>
-          <h1 className="pl-16 text-center font-helvetica text-headings font-bold text-secondary lg:pl-0">
-            Workshops<span className="text-primary">.</span>
+          <h1 className=" text-headings font-bold  text-secondary">
+            Upcoming Workshops
           </h1>
         </div>
+        <p className="text-BodyText font-light text-textColor xl:px-40 2xl:px-52">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna.
+      </p>
       </div>
       <Tabs defaultValue="january woodwork">
-        <div className="mx-8 lg:px-32 bg-red-500 ">
+        <div className="mx-8 lg:px-32 mt-10">
 
           {/* Filtering by category */}
           
-          <div className="lg:px-60">
+          <div className="lg:px-60 md:px-28">
             <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
               <TabsTrigger value="january woodwork" className="">
                 Woodwork
@@ -198,7 +199,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="january woodwork"
         >
           <Card className="">
-            <CardTitle className="py-1 text-start text-lg font-normal text-primary">
+            <CardTitle className="py-1  text-start text-lg font-normal text-primary">
               January
             </CardTitle>
             <WorkshopItem
