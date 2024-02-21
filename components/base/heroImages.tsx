@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export const HeroImages = () => {
  return (
-  <div className="bg-background 2xl:h-screen py-10 hidden md:block">
-    <div className="grid lg:grid-cols-3 grid-cols-1 lg:mx-40 md:grid-cols-3 lg:space-x-10">
+  <div id="whyus" className="bg-background lg:h-screen py-10 hidden md:block">
+    <div className="grid lg:grid-cols-3 grid-cols-1 lg:mx-40 md:grid-cols-3 lg:space-x-2">
       <div className="hidden md:block">
         <div className="rounded-md">
           <Image
@@ -15,6 +15,8 @@ export const HeroImages = () => {
             alt="made in workshop"
             placeholder={"blur"}
             className="rounded-md"
+            height={300}
+            width={300}
           />
         </div>
       </div>
@@ -25,10 +27,13 @@ export const HeroImages = () => {
             alt="made in workshop"
             placeholder={"blur"}
             className="rounded-md"
+            height={300}
+            width={300}
           />
         </div>
+
       </div>
-      <div className="grid content-center font-helvetica p-5 lg:text-start lg:p-20">
+      <div className="grid content-center font-helvetica p-5 lg:p-0 lg:text-start lg:pt-20">
         <h1 className="text-headings text-secondary lg:text-start font-helvetica font-bold py-4 text-center">
           Why us<span className="text-primary">?</span>
         </h1>
