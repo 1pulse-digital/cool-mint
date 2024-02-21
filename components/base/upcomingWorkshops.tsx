@@ -40,9 +40,15 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   learnMoreLink,
 }) => (
   <div className="flex font-helvetica space-x-8 text-sm py-6">
-    <div className="font-helvetica text-secondary text-2xl font-bold">{day}</div>
+    <p className="font-helvetica text-secondary text-2xl font-bold">{day}</p>
     <div className="text-start">
-      <p className="text-xl font-helvetica font-bold text-textColor">{name}</p>
+      <div className="lg:flex lg:space-x-36 ">
+      <div>
+      <div className="lg:grid grid-cols-2">
+      <div className="text-xl font-helvetica font-bold text-textColor">{name}</div>
+      <div className="pt-4 hidden grid lg:block">
+      <hr className="flex-grow h-[1px] bg-[#A1A1AA] border-0 w-72"></hr></div>
+      </div>
       <div className="flex row space-x-4">
         <p className="text-secondary text-xs py-1 inline-flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-4 h-4 mr-2">
@@ -58,19 +64,23 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
         </p>
       </div>
       <p className="font-normal text-white py-2">{description}</p>
-      <p className="font-bold text-primary text-start text-[16px] pt-4">{price}</p>
+      </div>
+      <div className="">
+      <p className="font-bold text-primary text-start text-[16px] pt-4 lg:pt-0">{price}</p>
       <p className="text-secondary py-1">{spotsLeft}</p>
       <ButtonGroupWorkshops bookLink={bookLink} learnMoreLink={learnMoreLink} />
+      </div>
+      </div>
     </div>
   </div>
 );
 
 const UpcomingWorkshops: React.FC = () => {
   return (
-    <div className="font-medium text-primary text-center md:text-left   py-14 bg-background">
+    <div className="font-medium text-primary text-center md:text-left   py-14 bg-background lg:px-80">
 <Tabs defaultValue="january woodwork">
-  <div className="mx-8">
-<TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary my-6">
+  <div className="mx-8 lg:px-32">
+<TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary my-6 px-2">
         <TabsTrigger value="january woodwork" className="">Woodwork</TabsTrigger>
         <TabsTrigger value="february">Metalwork</TabsTrigger>
         <TabsTrigger value="march">Engineering</TabsTrigger>
@@ -81,13 +91,15 @@ const UpcomingWorkshops: React.FC = () => {
     <CarouselContent className="">
     <CarouselItem>
    
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary ">
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary px-2 py-2">
         <TabsTrigger value="january woodwork" className="p-5">Jan</TabsTrigger>
         <TabsTrigger value="february"className="p-5">Feb</TabsTrigger>
         <TabsTrigger value="march"className="p-5">Mar</TabsTrigger>
         <TabsTrigger value="april"className="p-5">Apr</TabsTrigger>
         <TabsTrigger value="may"className="p-5">May</TabsTrigger>
       </TabsList>
+
+      
       </CarouselItem>
       <CarouselItem>
     <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary ">
@@ -112,6 +124,24 @@ const UpcomingWorkshops: React.FC = () => {
       </div>
 
       {/* January Workshops */}
+      <TabsContent className="bg-background font-helvetica px-10" value="january woodwork" >
+        <Card className="bg-background border-0">
+        <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1">January</CardTitle>
+        <WorkshopItem
+        date="January"
+        day="20"
+        name="CNC Cutter"
+        time="3 hours"
+        instructor="Henry Levine"
+        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+        price="R1,500.00"
+        spotsLeft="5 Spots Left"
+        bookLink="/workshopIndividual"
+        learnMoreLink="/workshopIndividual"
+      />
+    </Card>
+      </TabsContent>
+
       <TabsContent className="bg-background font-helvetica px-10" value="january woodwork" >
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1">January</CardTitle>
