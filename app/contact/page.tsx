@@ -20,36 +20,36 @@ import React from "react";
           </Link>
           </div>
           <h1 className={"text-headings text-secondary font-helvetica font-bold pb-4 text-center"}>Contact<span className="text-primary">.</span></h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light lg:px-40"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-light lg:px-40"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
           tempor invidunt ut labore et dolore magna aliquyam erat
-          </p>
+          </span>
          <div className="text-secondary items-start py-16 2xl:grid grid-cols-2 lg:px-40">
           <div className="2xl:grid grid-rows-2 xl: ">
          <Link href="mailto:info@madeinworkshop.co.za" className="pb-10 2xl:pb-0">
-         <p className="text-[14px] pb-4 inline-flex hover:text-primary"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2 ">
+         <span className="text-[14px] pb-4 inline-flex hover:text-primary"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2 ">
   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-</svg>info@madeinworkshop.co.za</p>
+</svg>info@madeinworkshop.co.za</span>
 </Link>
 
 <Link href="tel:0107451577">
-<p className="text-[14px] pb-4 inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2">
+<span className="text-[14px] pb-4 inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-6 h-4 pr-2">
   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-</svg>Tel: +27 10 745 1577</p>
+</svg>Tel: +27 10 745 1577</span>
 </Link>
 </div>
 <div>
 <Link href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6" target="_blank">
-         <p className="text-[14px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-9 h-6 pr-2">
+         <span className="text-[14px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-9 h-6 pr-2">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-</svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</p>
+</svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</span>
 </Link>
 </div>
          </div>
         </div>
         <div className="2xl:mx-40">
-        <p className={"text-BodyText text-primary font-helvetica font-bold  text-start 2xl:text-center 2xl:text-4xl 2xl:pb-16 xl:mx-40"}>Send us a message</p>
+        <span className={"text-BodyText text-primary font-helvetica font-bold  text-start 2xl:text-center 2xl:text-4xl 2xl:pb-16 xl:mx-40"}>Send us a message</span>
         <ContactForm />
     </div>
      </div>

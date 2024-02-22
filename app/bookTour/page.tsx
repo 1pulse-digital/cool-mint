@@ -18,7 +18,7 @@ import {
   } from "@/components/ui/tabs"
 import GetInTouch from "@/components/base/getInTouch";
 
-export const BookTour = () => {
+const BookTour = () => {
     return(
         <div className={"bg-background lg:py-32"}>
           <div className="2xl:mx-60 xl:mx-40  md:mx-32 lg:mx-2 sm:mx-20 px-8 2xl:pb-20">
@@ -35,9 +35,9 @@ export const BookTour = () => {
           </Link>
           </div>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>Book a Tour<span className="text-primary">.</span></h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-52 lg:px-40"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-52 lg:px-40"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </p>
+          </span>
         </div>
         <div className="lg:px-52 py-10">
         <Tabs defaultValue="monday">

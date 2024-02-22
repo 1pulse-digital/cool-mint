@@ -21,15 +21,15 @@ const OrderConfirmation: React.FC = () => {
 <div>
 <div className="text-start py-2">
   <div>
-  <p className={"text-BodyText font-helvetica font-bold text-start text-textColor"}>Total:</p>
+  <span className={"text-BodyText font-helvetica font-bold text-start text-textColor"}>Total:</span>
   </div>
   <div>
-  <p className={"text-[25px] text-primary font-helvetica font-bold text-start"}>R1,500.00</p>
+  <span className={"text-[25px] text-primary font-helvetica font-bold text-start"}>R1,500.00</span>
   </div>
     </div>
 <div className="text-[16px] text-primary  pb-14 ">
   <div>
-  <p className={"font-helvetica font-bold line-through"}>R1,700.00</p>
+  <span className={"font-helvetica font-bold line-through"}>R1,700.00</span>
   </div>
 </div>
 </div>

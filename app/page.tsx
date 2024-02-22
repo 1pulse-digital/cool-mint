@@ -30,8 +30,19 @@ export default function Home() {
           <div className="">
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
+          <div className="px-8 font-medium text-primary md:text-left">
+        <div className="text-center pt-28">
+          <h1 className="text-headings font-bold  text-secondary">
+            Upcoming Workshops<span className="text-primary">.</span>
+          </h1>
+        
+        <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna.
+      </p>
+      </div>
+      </div>
           <UpcomingWorkshops />
-
       </div>
       <GetInTouch />
     </div>

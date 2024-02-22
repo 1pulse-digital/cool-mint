@@ -2,11 +2,10 @@ import React from "react";
 import Image from "next/image";
 import gallery from "/images/banner.webp";
 import GetInTouch from "@/components/base/getInTouch";
-import Carousel from "@/components/base/Carousel";
 import { TeamCarousel } from "@/components/base/teamCarousel";
 import Link from "next/link";
 
-export const About = () => {
+ const About = () => {
   return (
     <div className="bg-background py-20">
       <div className="hidden ">
@@ -40,7 +39,7 @@ export const About = () => {
         >
           Where it all began<span className="text-primary">.</span>
         </h1>
-        <p
+        <span
           className={
             "text-textColor text-center font-helvetica text-BodyText font-normal"
           }
@@ -54,7 +53,7 @@ export const About = () => {
           Made In Workshop is <span className="text-primary">not just about the tools</span> and <span className="text-primary">machines </span>and not just about
            the <span className="text-primary">workspace</span>, we’re the spark of inspiration that is the culmination 
            of tools, machines, workspace and the community that we are creating.
-        </p>
+        </span>
       </div>
       <h1 className={"text-headings text-secondary font-helvetica font-bold pt-20 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
       </div>

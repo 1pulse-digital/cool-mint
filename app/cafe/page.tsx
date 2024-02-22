@@ -23,9 +23,9 @@ import React from "react";
           </Link>
           </div>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>MIW Café<span className="text-primary">.</span></h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-52 lg:px-32"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-52 lg:px-32"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </p>
+          </span>
         </div>
         <CafeMIW />
      </div>

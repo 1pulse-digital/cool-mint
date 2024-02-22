@@ -52,7 +52,7 @@ const Login: React.FC = () => {
         </div>
    
     <div> 
-    <p className="text-textColor text-start font-helvetica py-3 text-xs">Verification Code:</p></div>
+    <span className="text-textColor text-start font-helvetica py-3 text-xs">Verification Code:</span></div>
     <div className="flex gap-4 max-w-lg mx-auto justify-start items-start font-[sans-serif]">
     <Input type="text" id="number" placeholder="1" className="w-16 h-20 placeholder:text-4xl placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-white block  rounded-md border-0 border-amber-300 py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6 bg-background" />
     <Input type="text" id="number" placeholder="2" className="w-16 h-20 placeholder:text-4xl placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-white block  rounded-md border-0 border-amber-300 py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6 bg-background" />

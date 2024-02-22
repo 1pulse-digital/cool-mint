@@ -46,7 +46,7 @@ const NewsTitle = () => {
           Header/Title
         </h1>
         <div className="row flex space-x-4 pb-8">
-          <p className="inline-flex items-center py-1 text-xs text-secondary">
+          <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -62,8 +62,8 @@ const NewsTitle = () => {
               />
             </svg>
             Date
-          </p>
-          <p className="inline-flex py-1 text-xs text-secondary">
+          </span>
+          <span className="inline-flex py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -79,7 +79,7 @@ const NewsTitle = () => {
               />
             </svg>
             Author
-          </p>
+          </span>
         </div>
         <p
           className={
@@ -89,7 +89,7 @@ const NewsTitle = () => {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua.
-        </p>
+        </span>
 
         <p
           className={
@@ -113,7 +113,7 @@ const NewsTitle = () => {
           diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
           erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
           et ea rebum.
-        </p>
+        </span>
 
         <div className={"rounded-md grid justify-center items-center py-12 w-full"}>
         <Image
@@ -143,9 +143,9 @@ const NewsTitle = () => {
           }
         >
         Article title that can go onto 2 Lines for 3
-        </p>
+        </span>
         <div className="row flex space-x-4">
-          <p className="inline-flex items-center py-1 text-xs text-secondary">
+          <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -161,8 +161,8 @@ const NewsTitle = () => {
               />
             </svg>
             Date
-          </p>
-          <p className="inline-flex py-1 text-xs text-secondary">
+          </span>
+          <span className="inline-flex py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -178,7 +178,7 @@ const NewsTitle = () => {
               />
             </svg>
             Author
-          </p>
+          </span>
         </div>
         </div>
         <div>
@@ -188,9 +188,9 @@ const NewsTitle = () => {
           }
         >
         Article title that can go onto 2 Lines for 3
-        </p>
+        </span>
         <div className="row flex space-x-4">
-          <p className="inline-flex items-center py-1 text-xs text-secondary">
+          <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -206,8 +206,8 @@ const NewsTitle = () => {
               />
             </svg>
             Date
-          </p>
-          <p className="inline-flex py-1 text-xs text-secondary">
+          </span>
+          <span className="inline-flex py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -223,7 +223,7 @@ const NewsTitle = () => {
               />
             </svg>
             Author
-          </p>
+          </span>
         </div>
         </div>
         <div>
@@ -233,9 +233,9 @@ const NewsTitle = () => {
           }
         >
         Article title that can go onto 2 Lines for 3
-        </p>
+        </span>
         <div className="row flex space-x-4">
-          <p className="inline-flex items-center py-1 text-xs text-secondary">
+          <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -251,8 +251,8 @@ const NewsTitle = () => {
               />
             </svg>
             Date
-          </p>
-          <p className="inline-flex py-1 text-xs text-secondary">
+          </span>
+          <span className="inline-flex py-1 text-xs text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -268,7 +268,7 @@ const NewsTitle = () => {
               />
             </svg>
             Author
-          </p>
+          </span>
         </div>
         </div>
         </div>

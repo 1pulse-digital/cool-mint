@@ -31,31 +31,31 @@ const ConfirmedBooking: React.FC = () => {
           <div className="grid justify-center items-center ">
           <div className="flex flex-row text-primary text-center  space-x-7  py-1  pt-4">
   <div>
-  <p className={"text-[16px] font-helvetica font-bold text-start"}>Date:</p>
+  <span className={"text-[16px] font-helvetica font-bold text-start"}>Date:</span>
   </div>
   <div>
-  <p className={"text-[16px] font-helvetica font-bold text-start"}>27 January 2024</p>
+  <span className={"text-[16px] font-helvetica font-bold text-start"}>27 January 2024</span>
   </div>
     </div>
 
 <div className="flex flex-row text-primary  space-x-4  text-[16px] py-1   ">
   <div>
-  <p className={"font-helvetica font-bold"}>Time:</p>
+  <span className={"font-helvetica font-bold"}>Time:</span>
   </div>
   <div className="text-end">
-  <p className={"font-helvetica font-bold"}>9:00 am</p>
+  <span className={"font-helvetica font-bold"}>9:00 am</span>
   </div>
     </div>
     <div className="flex flex-row text-primary text-start  py-1 space-x-4  pt-4">
   <div>
-  <p className={"text-[16px] font-helvetica font-bold text-start"}>Location:</p>
+  <span className={"text-[16px] font-helvetica font-bold text-start"}>Location:</span>
   </div>
   <div className="flex items-start justify-start">
    <Link href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6" target="_blank">
-         <p className="text-[14px] inline-flex items-start -pr-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-9 h-6">
+         <span className="text-[14px] inline-flex items-start -pr-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-9 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-</svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</p>
+</svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</span>
 </Link>
   </div>
     </div>

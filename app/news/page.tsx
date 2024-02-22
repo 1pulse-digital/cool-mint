@@ -32,14 +32,14 @@ const News = () => {
           </Link>
           </div>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>News<span className="text-primary">.</span></h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-60 lg:pb-16 sm:px-16 lg:px-60"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-60 lg:pb-16 sm:px-16 lg:px-60"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </p>
+          </span>
           <div className="py-8 text-center ">
           <div>
-          <p className={"text-[12px] px-4 text-textColor text-center font-helvetica font-normal"}>
+          <span className={"text-[12px] px-4 text-textColor text-center font-helvetica font-normal"}>
         Filter by
-          </p>
+          </span>
     <Tabs defaultValue="news">
     <div className="pb-16">
     <Carousel className="mx-3 pt-3">

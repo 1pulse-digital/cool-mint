@@ -28,9 +28,9 @@ const Register: React.FC = () => {
           </div> 
           <div className="flex-row inline-flex space-x-4">
           <div className="pt-4">
-          <p className={"text-[14px] text-textColor text-center font-helvetica"}>
+          <span className={"text-[14px] text-textColor text-center font-helvetica"}>
           Already have an account?
-          </p>
+          </span>
             </div>
             <div> 
         <Link href="/login">
@@ -50,7 +50,7 @@ const Register: React.FC = () => {
     <div> <Button color="primary" className="w-full mt-4">Register with Email</Button></div>
     <div className="flex items-center justify-center py-10 space-x-4">
     <hr className="flex-grow h-[1px] mx-2 bg-secondary border-0"></hr>
-    <p className="text-textColor text-xs font-helvetica">OR CONTINUE WITH</p>
+    <span className="text-textColor text-xs font-helvetica">OR CONTINUE WITH</span>
     <hr className="flex-grow h-[1px] mx-2 bg-secondary border-0"></hr>
 </div>
  <div className="inline-flex w-full "> 
@@ -67,7 +67,7 @@ const Register: React.FC = () => {
             GOOGLE
         </span>
           </LongButton></div>
-          <p className="text-textColor text-center font-helvetica py-10 text-xs">By clicking continue, you agree to our <Link href="/" className="underline">Terms of Service</Link> and <Link href="/" className="underline">Privacy Policy</Link>.</p>
+          <span className="text-textColor text-center font-helvetica py-10 text-xs">By clicking continue, you agree to our <Link href="/" className="underline">Terms of Service</Link> and <Link href="/" className="underline">Privacy Policy</Link>.</span>
           </div>
           </div>
           </div>

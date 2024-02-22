@@ -16,7 +16,7 @@ import Button, { SmallButtonOrange } from "@/components/base/button";
         <InputComponent label="Email" name="email" placeholder="henry@madeinworkshop.co.za"/>
         <InputComponent label="Contact Number" name="tel" placeholder="0799107666"/>
    <div>
-  <p className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</p>
+  <span className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</span>
   <div className="bg-background text-secondary font-helvetica text-[14px]">
   <div className="flex flex-row space-x-3">
   <input type="checkbox" id="Workshops" name="Workshops" value="workshops" className="bg-background"/>
@@ -37,29 +37,29 @@ import Button, { SmallButtonOrange } from "@/components/base/button";
   </div>
   </div>
   </div>
-  <p className={"text-sm text-primary font-helvetica font-bold py-6 text-start"}>Booking information:</p>
+  <span className={"text-sm text-primary font-helvetica font-bold py-6 text-start"}>Booking information:</span>
   <div className="flex flex-row text-textColor text-start py-1 space-x-20">
   <div>
-  <p className={"text-[16px] font-helvetica font-bold text-start"}>Date:</p>
+  <span className={"text-[16px] font-helvetica font-bold text-start"}>Date:</span>
   </div>
   <div>
-  <p className={"text-[16px] font-helvetica font-bold text-start"}>27 January 2024</p>
+  <span className={"text-[16px] font-helvetica font-bold text-start"}>27 January 2024</span>
   </div>
     </div>
 <div className="flex flex-row text-textColor space-x-20 text-[16px] py-1">
   <div>
-  <p className={"font-helvetica font-bold"}>Time:</p>
+  <span className={"font-helvetica font-bold"}>Time:</span>
   </div>
   <div>
-  <p className={"font-helvetica font-bold"}>9:00 am</p>
+  <span className={"font-helvetica font-bold"}>9:00 am</span>
   </div>
     </div>
     <div className="flex flex-row text-textColor space-x-12 py-1 text-[16px]">
   <div>
-  <p className={"text-[16px] font-helvetica font-bold"}>Location:</p>
+  <span className={"text-[16px] font-helvetica font-bold"}>Location:</span>
   </div>
   <div>
-  <p className={"text-[16px] font-helvetica font-bold"}>2.5 hours</p>
+  <span className={"text-[16px] font-helvetica font-bold"}>2.5 hours</span>
   </div>
     </div>
     </div>

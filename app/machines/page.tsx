@@ -23,9 +23,9 @@ const MachinesTools = () => {
           </div>
           <div className="2xl:mx-60">
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight"}>Industrial Tools & Machines</h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-nromal 2xl:px-60"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-nromal 2xl:px-60"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </p>
+          </span>
          </div>
           <div className="text-center pt-10">
          <IndustrialMachineTools />

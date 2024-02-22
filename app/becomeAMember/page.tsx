@@ -23,25 +23,25 @@ const BecomeAMember: React.FC = () => {
           </Link>
           </div>
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-2 pb-8 text-center leading-tight"}>Become a Member<span className="text-primary">.</span></h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-normal md:px-28 sm:px-20"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-normal md:px-28 sm:px-20"}>
           Membership registrations are done at Made in Workshop and includes a tour of the facilitates. 
-          </p>
+          </span>
           <div className="text-center 2xl:mx-72">
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-light pt-6 pb-4"}>
+          <span className={"text-BodyText text-textColor text-center font-helvetica font-light pt-6 pb-4"}>
           Visit us at
-          </p>
+          </span>
           <div className="text-secondary items-start px-12 ">
           <Link href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6" target="_blank">
-         <p className="text-[14px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-9 h-6 pr-2">
+         <span className="text-[14px] inline-flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-9 h-6 pr-2">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-</svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</p>
+</svg>10 Naaf Street, Strydompark, Randburg, Johanneburg 2169</span>
 </Link>
           </div> 
         
     <div className="py-4">
     <div className="flex items-center justify-center py-4 space-x-4">
-    <p className="text-textColor text-BodyText font-helvetica">OR</p>
+    <span className="text-textColor text-BodyText font-helvetica">OR</span>
 </div>
 <div className="py-2"> <Button color="primary" className="w-full lg:w-1/3 md:w-1/3 mt-4 sm:w-1/3">Book a Tour</Button></div>
 <div className="flex items-center justify-center"> 

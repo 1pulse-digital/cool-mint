@@ -26,7 +26,7 @@ const Workshops = () => {
           >
             Upcoming Workshops <span className="text-primary">.</span>
           </h1>
-          <p
+          <span
             className={
               "text-center font-helvetica text-BodyText font-light text-textColor lg:px-96"
             }
@@ -34,7 +34,7 @@ const Workshops = () => {
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat,
-          </p>
+          </span>
         </div>
         <div className="">
           <UpcomingWorkshops />
