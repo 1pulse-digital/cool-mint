@@ -37,6 +37,7 @@
     "react-scroll-to-top": "^3.0.0",
     "react-tabs": "^6.0.2",
     "shadcn-ui": "^0.8.0",
+    "sharp": "^0.33.2",
     "tailshake": "^0.0.3",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
