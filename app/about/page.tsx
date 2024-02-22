@@ -7,8 +7,9 @@ import Link from "next/link";
 
  const About = () => {
   return (
-    <div className="bg-background py-20">
-      <div className="hidden ">
+    <div className="bg-background font-helvetica lg:px-32">
+      <div className="relative -mt-20 flex flex-col  justify-center lg:h-screen h-auto py-20 px-8 text-center  text-primary">
+      <div className="hidden">
         <Image
           src={gallery}
           alt="made in workshop"
@@ -18,7 +19,7 @@ import Link from "next/link";
       </div>
       <div
         className={
-          "grid content-center p-5 font-helvetica "
+          "grid content-center  font-helvetica "
         }
       > <div className="text-xs text-secondary  font-helvetica font-normal inline-flex justify-center">
       <Link href="/">
@@ -39,7 +40,7 @@ import Link from "next/link";
         >
           Where it all began<span className="text-primary">.</span>
         </h1>
-        <span
+        <p
           className={
             "text-textColor text-center font-helvetica text-BodyText font-normal"
           }
@@ -53,10 +54,15 @@ import Link from "next/link";
           Made In Workshop is <span className="text-primary">not just about the tools</span> and <span className="text-primary">machines </span>and not just about
            the <span className="text-primary">workspace</span>, we’re the spark of inspiration that is the culmination 
            of tools, machines, workspace and the community that we are creating.
-        </span>
+        </p>
       </div>
-      <h1 className={"text-headings text-secondary font-helvetica font-bold pt-20 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
+      
       </div>
+      
+         </div>
+         <div className="">
+          <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+        </div>
       <TeamCarousel />
       <GetInTouch />
     
