@@ -18,7 +18,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
   ImageSrc,
 }) => (
   <div className="flex space-x-8 py-6 text-sm">
-    <div>
+    <div className="2xl:w-20 lg:w-28 w-16 md:w-12">
       <img src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
@@ -54,17 +54,17 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
 
 const Offerings: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center text-primary md:items-start   ">
+    <div className="flex flex-col items-center justify-center lg:h-screen md:h-auto text-center py-20 lg:py-0 text-primary md:items-start">
       <div className="">
         <h1 className="py-4 text-headings font-bold text-secondary">
           Our Offerings<span className="text-primary">?</span>
         </h1>
-        <span className="text-center  text-BodyText font-light text-textColor pb-14 xl:px-40 2xl:px-52 ">
+        <p className="text-center  text-BodyText font-light text-textColor pb-14 xl:px-40 2xl:px-52">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna
-        </span>
+        </p>
       </div>
-      <div className="grid-cols-2 lg:grid">
+      <div className="grid-cols-2 lg:grid md:pt-6">
         <div className="lg:px-20">
           <OfferingItem
             title="Membership"
