@@ -89,7 +89,7 @@ const NewsTitle = () => {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua.
-        </span>
+        </p>
 
         <p
           className={
@@ -113,7 +113,7 @@ const NewsTitle = () => {
           diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
           erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
           et ea rebum.
-        </span>
+        </p>
 
         <div className={"rounded-md grid justify-center items-center py-12 w-full"}>
         <Image
@@ -143,7 +143,7 @@ const NewsTitle = () => {
           }
         >
         Article title that can go onto 2 Lines for 3
-        </span>
+        </p>
         <div className="row flex space-x-4">
           <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
@@ -188,7 +188,7 @@ const NewsTitle = () => {
           }
         >
         Article title that can go onto 2 Lines for 3
-        </span>
+        </p>
         <div className="row flex space-x-4">
           <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
@@ -233,7 +233,7 @@ const NewsTitle = () => {
           }
         >
         Article title that can go onto 2 Lines for 3
-        </span>
+        </p>
         <div className="row flex space-x-4">
           <span className="inline-flex items-center py-1 text-xs text-secondary">
             <svg
