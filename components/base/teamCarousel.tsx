@@ -29,8 +29,8 @@ import {
 export function TeamCarousel() {
   return (
     <div>
-      <div className="mb-20 grid items-center justify-center md:px-40 sm:px-16  h-auto py-20 px-8">
-      <h1 className={"text-headings text-secondary font-helvetica font-bold pt-20 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
+      <div className="py-20 grid items-center justify-center md:px-32 sm:px-16 h-auto px-8">
+      <h1 className={"text-headings text-secondary font-helvetica font-bold pb-16  text-center"}>Meet the Team<span className="text-primary">.</span></h1>
       
         <Tabs defaultValue="machines" className="">
            <div className="pb-16 2xl:mx-60">
@@ -39,7 +39,7 @@ export function TeamCarousel() {
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
                     <TabsTrigger value="machines">
-                      <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 pt-10 ">
                         <Image
                           src={gallery}
                           alt="team member"
@@ -51,7 +51,7 @@ export function TeamCarousel() {
                       </div>
                     </TabsTrigger>
                     <TabsTrigger value="workshops">
-                      <div className="pt-8 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 pt-10">
                         <Image
                           src={gallery}
                           alt="team member"
@@ -63,7 +63,7 @@ export function TeamCarousel() {
                       </div>
                     </TabsTrigger>
                     <TabsTrigger value="general">
-                      <div className="pt-8 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 pt-10">
                         <Image
                           src={gallery}
                           alt="team member"
@@ -86,7 +86,7 @@ export function TeamCarousel() {
             value="machines"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] 2xl:mx-60 2xl:grid-cols-1">
+              <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md ">
                   <Image
                     src={gallery}
