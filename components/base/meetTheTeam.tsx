@@ -50,7 +50,7 @@ export const MeetTheTeam = () => {
             writing melodies in order to have a ready-made text to sing with the
             melody. Dummy texts have been in use by typesetters since the 16th
             century.
-          </span>
+          </p>
         </div>
       </div>
 
@@ -91,7 +91,7 @@ export const MeetTheTeam = () => {
             writing melodies in order to have a ready-made text to sing with the
             melody. Dummy texts have been in use by typesetters since the 16th
             century.
-          </span>
+          </p>
         </div>
       </div>
     </div>
