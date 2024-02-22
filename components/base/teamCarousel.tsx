@@ -29,15 +29,17 @@ import {
 export function TeamCarousel() {
   return (
     <div>
-      <div className="mb-20 grid items-center justify-center px-40 sm:px-16 md:px-28 xl:mx-20">
+      <div className="mb-20 grid items-center justify-center md:px-40 sm:px-16  h-auto py-20 px-8">
+      <h1 className={"text-headings text-secondary font-helvetica font-bold pt-20 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
+      
         <Tabs defaultValue="machines" className="">
-          <div className="pb-16 2xl:mx-80">
-            <Carousel className="mx-6">
+           <div className="pb-16 2xl:mx-60">
+            <Carousel className="mx-10">
               <CarouselContent className="">
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
                     <TabsTrigger value="machines">
-                      <div className=" sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                         <Image
                           src={gallery}
                           alt="team member"
