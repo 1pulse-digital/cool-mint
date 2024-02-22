@@ -65,7 +65,8 @@ const Hero = () => {
         </div>
       </div>
       <div>
-        {/* <div className="animate-bounce flex justify-center items-end">
+        <div className="hidden sm:block">
+         <div className="animate-bounce flex justify-center absolute inset-x-0 bottom-10">
           <Link href="/#whyus">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +83,8 @@ const Hero = () => {
               />
             </svg>
           </Link>
-        </div> */}
+        </div> 
+        </div>
       </div>
     </div>
   );
