@@ -27,7 +27,7 @@ const Memberships = () => {
             "py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary"
           }
         >
-          Memberships <span className="text-primary">.</span>
+          Memberships<span className="text-primary">.</span>
         </h1>
         <p
           className={
