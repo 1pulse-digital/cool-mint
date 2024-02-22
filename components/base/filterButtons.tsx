@@ -5,7 +5,7 @@ export const FilterButtons = () => {
   return(
       <div className={"grid grid-cols-1 bg-background py-8"}>
         <div className="w-full max-w-2xl mx-auto">
-    <p className="text-start text-xs dark:text-gray-400 pb-4">Filter by</p>
+    <span className="text-start text-xs dark:text-gray-400 pb-4">Filter by</span>
     <div className="flex flex-auto justify-evenly border bg-[#2A2A2A] py-1 rounded-md w-full dark:border-gray-600/60 dark:text-white text-sm">
        <Link href="/">
         <button className="border-none py-1 rounded-md w-full hover:bg-background">

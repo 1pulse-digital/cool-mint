@@ -34,18 +34,18 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   learnMoreLink,
 }) => (
   <div className="flex space-x-4 py-6 text-sm">
-    <p className=" text-2xl font-bold text-secondary">{day}</p>
+    <span className=" text-2xl font-bold text-secondary">{day}</span>
     <div className="text-start">
       <div className="lg:flex lg:space-x-40">
         <div>
           <div className="grid-cols-2 lg:grid">
             <div className="text-xl font-bold text-textColor">{name}</div>
             <div className="grid hidden pt-4 lg:block">
-              <hr className="h-[1px] w-[450px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+              <hr className="h-[1px] w-[420px] lg:w-[300px] flex-grow border-0 bg-[#A1A1AA]"></hr>
             </div>
           </div>
           <div className="row flex space-x-4">
-            <p className="inline-flex items-center py-1 text-xs text-secondary">
+            <span className="inline-flex items-center py-1 text-xs text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -61,8 +61,8 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
                 />
               </svg>
               {time}
-            </p>
-            <p className="inline-flex py-1 text-xs text-secondary">
+            </span>
+            <span className="inline-flex py-1 text-xs text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -78,15 +78,15 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
                 />
               </svg>
               {instructor}
-            </p>
+            </span>
           </div>
-          <p className="py-2 font-normal text-white">{description}</p>
+          <span className="py-2 font-normal text-white">{description}</span>
         </div>
         <div className="">
           <p className="pt-4 text-start text-[16px] font-bold text-primary lg:pt-0">
             {price}
           </p>
-          <p className="py-1 text-secondary">{spotsLeft}</p>
+          <span className="py-1 text-secondary">{spotsLeft}</span>
           <ButtonGroupWorkshops
             bookLink={bookLink}
             learnMoreLink={learnMoreLink}
@@ -100,17 +100,6 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
 const UpcomingWorkshops: React.FC = () => {
   return (
     <div className="py-14 text-center font-medium text-primary ">
-      <div className="px-8 font-medium text-primary md:text-left">
-        <div className="space-x-4 lg:flex lg:justify-center">
-          <h1 className=" text-headings font-bold  text-secondary">
-            Upcoming Workshops
-          </h1>
-        </div>
-        <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna.
-      </p>
-      </div>
       <Tabs defaultValue="january woodwork">
         <div className="mt-10">
 

@@ -7,14 +7,14 @@ const GetInTouch = () => {
     <div
     className="flex flex-col items-center justify-center rounded-md bg-[#27272A] py-10"
   >
-    <div className="rounded-full py-8 text-center">
+    <div className="rounded-full py-8 text-center px-4">
       <h1 className="py-4 font-helvetica text-headings font-bold text-secondary">
         Get In Touch<span className="text-primary">.</span>
       </h1>
-      <p className="font-helvetica text-BodyText font-light text-secondary">
+      <span className="font-helvetica text-BodyText font-light text-secondary">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-      </p>
-      <div className="flex flex-row justify-center space-x-12 py-12">
+      </span>
+      <div className="flex flex-row justify-center space-x-2  md:space-x-12 py-12">
         <div>
           <Link href="/contact">
             <LongButton color="secondary">Get in Touch</LongButton>

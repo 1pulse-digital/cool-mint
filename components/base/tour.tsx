@@ -18,10 +18,10 @@ interface TourProps {
   return (
     <div className="bg-background">
       <div className={"px-8"}>
-        <p className={"text-BodyText text-primary text-start font-helvetica font-bold "}>
+        <span className={"text-BodyText text-primary text-start font-helvetica font-bold "}>
           <span>
           </span>
-        </p>
+        </span>
 <div className="text-secondary">
 <div className="grid grid-cols-2 space-x-4">
 

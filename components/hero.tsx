@@ -19,7 +19,7 @@ const Hero = () => {
           The Largest Shared Workshop & Makerspace in South Africa
           <span className="text-primary">.</span>
         </h1>
-        <p
+        <span
           className={
             "my-8 text-center font-helvetica text-BodyText font-light text-textColor"
           }
@@ -33,7 +33,7 @@ const Hero = () => {
               product, project or idea.
             </span>
           </div>
-        </p>
+        </span>
         <div className="z-10 flex justify-center py-5 text-right lg:space-x-4  ">
           <div>
             <Link href="/memberships">

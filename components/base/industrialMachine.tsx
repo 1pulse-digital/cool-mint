@@ -38,15 +38,15 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
       <div className="p-5 bg-[#2c3033]">
         <div className={"grid text-start font-helvetica  sm:p-10 md:max-w-prose py-6"}>
           <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>{machineName}</h3>
-          <p className="text-primary font-helvetica text-xs py-2 pb-6">{categories}</p>
-          <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>{description}</p>
+          <span className="text-primary font-helvetica text-xs py-2 pb-6">{categories}</span>
+          <span className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>{description}</span>
         </div>
         {specGroups.map((specGroup, groupIndex) => (
           <div key={groupIndex} className="grid grid-cols-2  text-start font-helvetica  sm:p-10 md:max-w-prose pb-4">
             {specGroup.specs.map((spec, specIndex) => (
               <div key={specIndex}>
-                <p className="text-primary font-helvetica text-xs">{spec.label}:</p>
-                <p className="text-secondary font-helvetica text-[10px] py-2 pb-2">{spec.value}</p>
+                <span className="text-primary font-helvetica text-xs">{spec.label}:</span>
+                <span className="text-secondary font-helvetica text-[10px] py-2 pb-2">{spec.value}</span>
               </div>
             ))}
           </div>

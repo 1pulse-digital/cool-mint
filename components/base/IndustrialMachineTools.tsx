@@ -53,7 +53,7 @@ const IndustrialMachineTools: React.FC = () => {
 
 <Tabs defaultValue="woodwork" className="bg-background">
     <div className="px-6 2xl:mx-96 lg:mx-60 md:mx-20 sm:mx-8 2xl:px-40">
-      <p className="text-secondary text-center py-3 text-sm">Filter by</p>
+      <span className="text-secondary text-center py-3 text-sm">Filter by</span>
       <TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary px-2">
         <TabsTrigger value="woodwork" className="">Woodwork</TabsTrigger>
         <TabsTrigger value="metalwork">Metalwork</TabsTrigger>

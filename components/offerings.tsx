@@ -26,7 +26,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
       <p className="font-helvetica text-[14px] font-normal text-secondary">
         {description}
       </p>
-      <p>
+      <span>
         <Link href={linkUrl}>
           <SquareButton color="primary">
             {linkText}
@@ -47,7 +47,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
             </svg>
           </SquareButton>
         </Link>
-      </p>
+      </span>
     </div>
   </div>
 );
@@ -59,10 +59,10 @@ const Offerings: React.FC = () => {
         <h1 className="py-4 text-headings font-bold text-secondary">
           Our Offerings<span className="text-primary">?</span>
         </h1>
-        <p className="text-center  text-BodyText font-light text-textColor pb-14 xl:px-40 2xl:px-52 ">
+        <span className="text-center  text-BodyText font-light text-textColor pb-14 xl:px-40 2xl:px-52 ">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna
-        </p>
+        </span>
       </div>
       <div className="grid-cols-2 lg:grid">
         <div className="lg:px-20">

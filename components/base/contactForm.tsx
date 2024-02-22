@@ -44,7 +44,7 @@ export const ContactForm = () => {
 
         </div>
   <div>
-  <p className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</p>
+  <span className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</span>
   
   <div className="bg-background text-secondary font-helvetica text-[14px]">
   <div className="flex flex-row lg:space-x-8">

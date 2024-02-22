@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <div>
       <div className="bg-background py-10 pt-20">
-        <div className="h-auto px-8 font-helvetica text-secondary 2xl:mx-40">
+        <div className="h-auto px-8 font-helvetica text-secondary 2xl:mx-28">
           <div className="grid-cols-2 2xl:grid">
             <div>
               <div className="font-helvetica text-headings font-bold text-secondary">
@@ -44,13 +44,13 @@ export const Footer = () => {
           </div>
           <div className="grid grid-cols-2 pt-16 2xl:grid-cols-3 2xl:pt-8 ">
             <div>
-              <p className="py-2 font-helvetica text-BodyText font-bold text-textColor">
+              <span className="py-2 font-helvetica text-BodyText font-bold text-textColor">
                 Contact
-              </p>
+              </span>
               <div className="">
                 <div>
                   <Link href="tel:0107451577">
-                    <p className="inline-flex text-[12px]">
+                    <span className="inline-flex text-[12px]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -66,12 +66,12 @@ export const Footer = () => {
                         />
                       </svg>
                       Tel: +27 10 745 1577
-                    </p>
+                    </span>
                   </Link>
                 </div>
                 <div>
                   <Link href="mailto:info@madeinworkshop.co.za">
-                    <p className="inline-flex text-[12px]">
+                    <span className="inline-flex text-[12px]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -87,7 +87,7 @@ export const Footer = () => {
                         />
                       </svg>
                       info@madeinworkshop.co.za
-                    </p>
+                    </span>
                   </Link>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export const Footer = () => {
                 href="https://maps.app.goo.gl/SnAiLT9eKz9Z6j789"
                 target="_blank"
               >
-                <p className="inline-flex text-xs">
+                <span className="inline-flex text-xs flex-wrap">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -121,11 +121,11 @@ export const Footer = () => {
                     />
                   </svg>
                   10 Naaf Street, Strydompark, Randburg, Johanneburg 2169
-                </p>
+                </span>
               </Link>
             </div>
-            <div className="py-6  2xl:py-2 2xl:pl-0 ">
-              <p className="font-helvetica text-BodyText font-bold text-textColor ">
+            <div className="py-6 2xl:py-2 2xl:pl-0">
+              <p className="font-helvetica text-BodyText font-bold text-textColor">
                 Quick Links
               </p>
               <Link href="/machines">
@@ -142,9 +142,9 @@ export const Footer = () => {
               </Link>
             </div>
             <div className="py-6 pl-10 2xl:py-2 2xl:pl-0">
-              <p className="font-helvetica text-BodyText font-bold text-textColor">
+              <span className="font-helvetica text-BodyText font-bold text-textColor">
                 Follow Us
-              </p>
+              </span>
               <div className="flex flex-row space-x-2 py-2">
                 <div>
                   <Link
