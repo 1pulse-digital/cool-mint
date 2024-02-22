@@ -1,16 +1,11 @@
 'use client'
-
-import { useState } from 'react';
 import Button from './button';
 import Link from 'next/link';
 
 interface PricingTabProps {
-  yearly: boolean;
-  popular?: boolean;
   planName: string;
   price: {
     monthly: number;
-    yearly: number;
   };
   planDescription: string;
   features: string[];
@@ -18,22 +13,20 @@ interface PricingTabProps {
 
 function PricingTab(props: PricingTabProps) {
   return (
-    <div className={`h-full ${props.popular ? 'dark' : ''}`}>
-      <div className="relative flex flex-col h-full p-6 rounded-2xl  bg-background border  border-primary shadow shadow-slate-950/5">
-        {props.popular && (
+    <div>
+      <div className="relative flex flex-col h-full p-6 py-8 rounded-2xl  bg-background border border-primary">
+        {(
           <div className="absolute top-0 right-0 mr-6 -mt-4"></div>
         )}
         <div className="mb-5 text-start font-helvetica">
           <div className="text-secondary dark:text-slate-200  text-start font-semibold mb-1">{props.planName}</div>
           <div className="inline-flex items-baseline mb-2">
             <span className="text-primary  text-xl">R</span>
-            <span className="text-primary   text-xl">{props.yearly ? props.price.yearly : props.price.monthly}</span>
+            <span className="text-primary   text-xl">{props.price.monthly}</span>
             <span className="text-secondary text-xs px-2 font-medium">per month</span>
           </div>
-         
-          
         </div>
-        <ul className="text-textColor font-helvetica font-light text-[13px] space-y-3 grow">
+        <ul className="text-textColor font-helvetica font-normal text-[13px] space-y-3 grow">
           {props.features.map((feature, index) => {
             return (
               <li key={index} className="flex items-center">
@@ -56,18 +49,17 @@ function PricingTab(props: PricingTabProps) {
 }
 
 export default function PricingTable() {
-  const [yearly, setYearly] = useState<boolean>(true);
-
+  
   return (
     <div className="xl:mx-40 2xl:mx-72 lg:mx-32 md:mx-12 sm:mx-32 mx-8">
       {/* Pricing toggle */}
       <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16"> </div>
-      <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-3 items-start  lg:max-w-none px-0">
+      <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-3 items-start lg:max-w-none px-0">
         {/* Pricing tab 1 */}
         <PricingTab
-          yearly={yearly}
+         
           planName="All Access Workshop"
-          price={{ yearly: 1500.00, monthly: 1500.00 }}
+          price={{ monthly: 1500}}
           planDescription="There are many variations available, but the majority have suffered."
           features={[
             'Dedicated storage and workspace',
@@ -81,10 +73,8 @@ export default function PricingTable() {
 
         {/* Pricing tab 2 */}
         <PricingTab
-          yearly={yearly}
-          popular={true}
           planName="Professional Freelancer"
-          price={{ yearly:4539 , monthly: 0 }}
+          price={{ monthly: 4539 }}
           planDescription="There are many variations available, but the majority have suffered."
           features={[
             'No Storage',
@@ -97,9 +87,8 @@ export default function PricingTable() {
 
         {/* Pricing tab 3 */}
         <PricingTab
-          yearly={yearly}
           planName="Hobbyist"
-          price={{ yearly:1500 , monthly: 0 }}
+          price={{ monthly: 1500 }}
           planDescription="There are many variations available, but the majority have suffered."
           features={[
             'No Storage ',
