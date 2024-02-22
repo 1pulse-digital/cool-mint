@@ -11,35 +11,35 @@ export const Footer = () => {
     <div>
       <div className="bg-background py-10 pt-20">
         <div className="h-auto px-8 font-helvetica text-secondary 2xl:mx-28">
-          <div className="grid-cols-2 2xl:grid">
+          <div className="md:grid grid-cols-2 ">
             <div>
               <div className="font-helvetica text-headings font-bold text-secondary">
                 Subscribe<span className="text-primary">.</span>
               </div>
               <div className="py-2 text-[12px] text-textColor  2xl:text-base">
-                Subscribe to our newsletter to stay in touch with the latest
+                Subscribe to our newsletter to stay in touch with the latest.
               </div>
-            </div>
+              </div>
             <div>
               <form>
-                <div className="2xl:pt-4">
+                <div className="2xl:pt-4  mt-5 sm:mt-0">
                   <Label htmlFor="email">Email Address:</Label>
-                  <div className="flex w-full  items-center space-x-2 pt-2">
+                  <div className="sm:flex w-full items-center sm:space-x-2 pt-2">
                     <Input
                       type="email"
                       placeholder="henry@madeinworkshop.co.za"
                       className="w-full"
                     />
-                    <Button color="primary" className="w-full">
-                      {" "}
+                    <Button color="primary" className="w-full mt-5 sm:mt-0">
                       Sign Up
                     </Button>
                   </div>
                 </div>
               </form>
             </div>
+           
           </div>
-          <div className="pt-20">
+          <div className="pt-0 lg:pt-20">
             <hr className="mx-30 hidden h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex"></hr>
           </div>
           <div className="grid grid-cols-2 pt-16 2xl:grid-cols-3 2xl:pt-8 ">
@@ -47,7 +47,7 @@ export const Footer = () => {
               <span className="py-2 font-helvetica text-BodyText font-bold text-textColor">
                 Contact
               </span>
-              <div className="">
+              <div>
                 <div>
                   <Link href="tel:0107451577">
                     <span className="inline-flex text-[12px]">
@@ -100,7 +100,7 @@ export const Footer = () => {
                 href="https://maps.app.goo.gl/SnAiLT9eKz9Z6j789"
                 target="_blank"
               >
-                <span className="inline-flex text-xs flex-wrap">
+                <span className="inline-flex text-xs">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
