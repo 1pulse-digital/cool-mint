@@ -128,7 +128,7 @@ export function Classes() {
                 }
               >
                 Max 6 pax per session
-              </span>
+              </p>
               <p
                 className={
                   "pt-8 text-start font-helvetica text-BodyText text-sm font-normal text-secondary"
@@ -142,14 +142,14 @@ export function Classes() {
                 texts as lyrics when writing melodies in order to have a
                 ready-made text to sing with the melody. Dummy texts have been
                 in use by typesetters since the 16th century.
-              </span>
+              </p>
               <p
                 className={
                   "pt-6 text-start font-helvetica text-[12px] font-normal text-secondary"
                 }
               >
                 *Please note that this class is not a tradesman qualification.
-              </span>
+              </p>
             </div>
           </Card>
         </TabsContent>
@@ -209,7 +209,7 @@ export function Classes() {
                 }
               >
                 Max 6 pax per session
-              </span>
+              </p>
               <p
                 className={
                   "pt-8 text-start font-helvetica text-BodyText text-sm font-normal text-secondary"
@@ -220,14 +220,14 @@ export function Classes() {
                 with real content. This is required when, for example, the
                 final text is not yet available. Dummy text is also known as
                 fill text.
-              </span>
+              </p>
               <p
                 className={
                   "pt-6 text-start font-helvetica text-[12px] font-normal text-secondary"
                 }
               >
                 *Please note that this class is not a tradesman qualification.
-              </span>
+              </p>
             </div>
           </Card>
         </TabsContent>
@@ -287,7 +287,7 @@ export function Classes() {
                 }
               >
                 Max 6 pax per session
-              </span>
+              </p>
               <p
                 className={
                   "pt-8 text-start font-helvetica text-BodyText text-sm font-normal text-secondary"
@@ -301,14 +301,14 @@ export function Classes() {
                 texts as lyrics when writing melodies in order to have a
                 ready-made text to sing with the melody. Dummy texts have been
                 in use by typesetters since the 16th century.
-              </span>
+              </p>
               <p
                 className={
                   "pt-6 text-start font-helvetica text-[12px] font-normal text-secondary"
                 }
               >
                 *Please note that this class is not a tradesman qualification.
-              </span>
+              </p>
             </div>
           </Card>
         </TabsContent>
