@@ -26,9 +26,10 @@ See:
 1. Create service account
 2. Skip federated identity, just use service account keys
 3. Add the following roles to the service account (the service account is the principle)
- - Artifact Registry Administrator
- - Cloud Run Admin
- - Service Account Token Creator
- - Service Account User
- - Storage Admin
+    - Artifact Registry Administrator
+    - Cloud Run Admin
+    - Service Account Token Creator
+    - Service Account User
+    - Storage Admin
 4. fix the cloud build push by ensuring it ends with ${{ env.SERVICE }}/${{ env.SERVICE }}
+5. Makue sure all the steps uses latest version of the action, i.e google-github-actions/deploy-cloudrun@v2.2.0
