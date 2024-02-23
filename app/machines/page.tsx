@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const MachinesTools = () => {
   return(
-      <div className={"bg-background lg:py-32 px-8"}>
-        <div className="relative -mt-20 flex h-auto">
+      <div className={"bg-background px-8 py-20"}>
+        <div className="flex h-auto">
         <div className={"grid content-center font-helvetica"}>
           <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
             <Link href="/">
