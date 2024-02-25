@@ -10,7 +10,7 @@ import Offerings from "@/components/offerings";
 export default function Home() {
   return (
     <div>
-    <div className="bg-background px-8 font-helvetica lg:px-32 ">
+    <div className="bg-background px-8 font-helvetica lg:px-28 ">
       <div>
         <Hero />
         <div className="">
