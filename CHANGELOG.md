@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.2.0](https://github.com/1pulse-digital/cool-mint/compare/v0.1.0...v0.2.0) (2024-02-26)
+
+
+### Features
+
+* :sparkles: created a new header component ([f70937c](https://github.com/1pulse-digital/cool-mint/commit/f70937cb63a050a3f97d2b633531faa6c1bad771))
+* :sparkles: updated hero background ([114e44c](https://github.com/1pulse-digital/cool-mint/commit/114e44cc76f3d3c15aa980be62ad90f2f7f4ddc9))
+* :sparkles: updated home page ([1855f81](https://github.com/1pulse-digital/cool-mint/commit/1855f81174cab90fcf967a15ac458987d2c66cf9))
+* :sparkles: updated layout component ([4df2867](https://github.com/1pulse-digital/cool-mint/commit/4df2867feb3aa8ca2dd55ca3b4f56154173f5b44))
+* ✨ cart-page update ([87e4971](https://github.com/1pulse-digital/cool-mint/commit/87e49715dd332e96c5d5ad1ea69b8ae86404e1e3))
+* ✨ home page responsive ([fdaa6ca](https://github.com/1pulse-digital/cool-mint/commit/fdaa6ca3323263dc9585e0c76ba32d176f257059))
+* ✨ shopping cart component update ([4759e51](https://github.com/1pulse-digital/cool-mint/commit/4759e5179a8ed859400ccba6347711393a40ca05))
+* ✨ updated become a member page ([8062d15](https://github.com/1pulse-digital/cool-mint/commit/8062d15fb0877ea2e676be59b17a02536137b908))
+* ✨ updated book tour page ([e7cca31](https://github.com/1pulse-digital/cool-mint/commit/e7cca31dc1affee4398feca91a6008efcebc7db3))
+* ✨ updated booking confirmation ([ac7432d](https://github.com/1pulse-digital/cool-mint/commit/ac7432ddf92621aaa54e0da3b1d0dc9f6e71d9be))
+* ✨ updated confirmed booking page ([fcc0134](https://github.com/1pulse-digital/cool-mint/commit/fcc0134f371bf8a9e0de0091c0d6b89599d89902))
+* ✨ updated contact form component ([f421287](https://github.com/1pulse-digital/cool-mint/commit/f421287a1f53faefaa7c690338e4b45e057fc8e1))
+* ✨ updated contact page ([b8536d1](https://github.com/1pulse-digital/cool-mint/commit/b8536d1bb5568bb51b620aa79710d72fbb9b9733))
+* ✨ updated get in touch component ([6f63197](https://github.com/1pulse-digital/cool-mint/commit/6f631974d568edf1b2454c1c5d1ec6da6d678e7b))
+* add sharp for production Docker ([5f17ae0](https://github.com/1pulse-digital/cool-mint/commit/5f17ae0105509a9406a9ef6955de1aa5ee8744fd))
+
+
+### Bug Fixes
+
+* artifact registry push ([c9af341](https://github.com/1pulse-digital/cool-mint/commit/c9af341efe89283e5db719c4bee3095963b8cebb))
+* remove yarn as duplicate lock file ([b5bb2ca](https://github.com/1pulse-digital/cool-mint/commit/b5bb2ca4afcc629c47d0b9f4e311b1fd59581949))
+
 ## 0.1.0 (2024-02-22)
 
 
