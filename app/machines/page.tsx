@@ -37,7 +37,6 @@ const MachinesTools = () => {
           </div>
         </div>
         </div>
-        <GetInTouch />
      </div>
   );
 };

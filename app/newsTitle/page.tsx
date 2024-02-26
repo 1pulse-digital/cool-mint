@@ -314,7 +314,6 @@ const NewsTitle = () => {
             </Link>
             </div>
       </div>
-      <GetInTouch />
     </div>
   );
 };

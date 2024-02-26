@@ -70,10 +70,6 @@ const ConfirmedBooking: React.FC = () => {
     </div>
           </div>
           </div>  
-         
-          <div className="lg:px-28">
-          <GetInTouch />
-          </div>
     </div>
   );
 };

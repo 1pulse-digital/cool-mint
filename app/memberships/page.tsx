@@ -48,7 +48,6 @@ const Memberships = () => {
         </p>
         <PricingTable />
       </div>
-      <GetInTouch />
     </div>
   );
 };

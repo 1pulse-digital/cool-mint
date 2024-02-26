@@ -154,9 +154,6 @@ import GetInTouch from "@/components/base/getInTouch";
     </div>
     </div>
      </div>
-     <div className="2xl:px-28 lg:px-6">
-     <GetInTouch />
-     </div>
      </div>
   );
 };

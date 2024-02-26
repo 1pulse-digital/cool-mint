@@ -29,7 +29,6 @@ import React from "react";
         </div>
         <CafeMIW />
      </div>
-     <GetInTouch />
      </div>
   );
 };

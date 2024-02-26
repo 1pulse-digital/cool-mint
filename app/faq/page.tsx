@@ -38,7 +38,6 @@ const FAQ = () => {
         </span>
       </div>
       <FAQAccordion />
-      <GetInTouch />
     </div>
   );
 };

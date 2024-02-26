@@ -36,11 +36,10 @@ const Workshops = () => {
             erat,
           </span>
         </div>
-        <div className="">
+        <div>
           <UpcomingWorkshops />
         </div>
       </div>
-      <GetInTouch />
     </div>
   );
 };

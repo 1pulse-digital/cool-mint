@@ -155,7 +155,6 @@ const News = () => {
             </Link>
             </div>
         </div>
-        <GetInTouch />
      </div>
   );
 };

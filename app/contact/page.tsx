@@ -65,9 +65,6 @@ import React from "react";
           ></iframe>
         </div>
         </div>
-        <div className="bg-background 2xl:px-28 lg:px-6 lg:pt-20  sm:px-0 pt-8">
-        <GetInTouch />
-        </div>
      </div>
   );
 };

@@ -74,9 +74,6 @@ const Cart: React.FC = () => {
     </div>
      </div>
      </div>
-     <div className="2xl:px-24 lg:px-8 lg:pt-20 pt-16">
-      <GetInTouch />
-     </div>
     </div>
   );
 };

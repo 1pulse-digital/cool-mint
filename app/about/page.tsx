@@ -69,7 +69,6 @@ const About = () => {
         </div>
         <TeamCarousel />
       </div>
-      <GetInTouch />
     </div>
   );
 };

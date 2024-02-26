@@ -256,7 +256,6 @@ const Workshops = () => {
     </Card>
       </TabsContent>
     </Tabs>
-        <GetInTouch />
      </div>
   );
 };
