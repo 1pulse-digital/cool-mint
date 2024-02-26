@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const MachinesTools = () => {
   return(
-      <div className={" bg-background lg:py-32"}>
-        <div className="">
+      <div className={"bg-background px-8 py-20"}>
+        <div className="flex h-auto">
         <div className={"grid content-center font-helvetica"}>
           <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
             <Link href="/">
@@ -23,9 +23,9 @@ const MachinesTools = () => {
           </div>
           <div className="2xl:mx-60">
           <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight"}>Industrial Tools & Machines</h1>
-          <span className={"text-BodyText text-textColor text-center font-helvetica font-nromal 2xl:px-60"}>
+          <p className={"text-BodyText text-textColor text-center font-helvetica font-nromal 2xl:px-60"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </span>
+          </p>
          </div>
           <div className="text-center pt-10">
          <IndustrialMachineTools />

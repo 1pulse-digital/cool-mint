@@ -3,6 +3,7 @@ import { title } from "process";
 
 
 
+
 interface ShoppingCartProps {
   date: string;
   name: string;
@@ -49,8 +50,8 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
       </div>
       </div>
       <div>
-      <span className="font-bold text-primary text-start text-[16px] pt-2">{price}</span>
-      <span className="text-textColor text-[12px] justipy-1">{remove}</span>
+      <p className="font-bold text-primary text-start text-[16px] pt-2">{price} </p>
+      <p className="text-textColor text-[12px] justipy-1 text-start">{remove}</p>
       </div>
     </div>
   </div>
@@ -58,7 +59,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
 
 const ShoppingCart: React.FC = () => {
   return (
-    <div className="grid font-medium text-primary text-center md:text-left  py-14 bg-background 2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
+    <div className="grid font-medium text-primary text-center md:text-left  py-8 bg-background 2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
       
       <ShoppingCartItem
         ImageSrc="/icons/banner.webp"

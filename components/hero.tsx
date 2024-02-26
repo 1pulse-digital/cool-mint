@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       className={
-        "relative -mt-20 grid h-screen  content-center align-middle xl:px-40 2xl:px-52"
+        "relative -mt-20 grid h-screen  content-center align-middle xl:px-40 2xl:px-52 bg-background"
       }
     >
       <div className={"absolute inset-0 "}></div>
@@ -65,7 +65,8 @@ const Hero = () => {
         </div>
       </div>
       <div>
-        {/* <div className="animate-bounce flex justify-center items-end">
+        <div className="hidden sm:block">
+         <div className="animate-bounce flex justify-center absolute inset-x-0 bottom-10">
           <Link href="/#whyus">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +83,8 @@ const Hero = () => {
               />
             </svg>
           </Link>
-        </div> */}
+        </div> 
+        </div>
       </div>
     </div>
   );

@@ -30,27 +30,30 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
   buttonUrl,
 }) => {
   return (
-    <div className=" rounded-xl mb-10">
+    <div className="rounded-xl mb-10">
       <div className="2xl:flex 2xl:mx-60 ">
       <div className="rounded-md">
         <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className="rounded-t-lg"/>
       </div>
-      <div className="p-5 bg-[#2c3033]">
-        <div className={"grid text-start font-helvetica  sm:p-10 md:max-w-prose py-6"}>
+      <div className="p-5 bg-[#2c3033] px-16 py-8">
+        <div className={"grid text-start font-helvetica "}>
           <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>{machineName}</h3>
           <span className="text-primary font-helvetica text-xs py-2 pb-6">{categories}</span>
           <span className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>{description}</span>
         </div>
+        <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start py-6"}>Specs</h3>
+        <div className="flex">
         {specGroups.map((specGroup, groupIndex) => (
-          <div key={groupIndex} className="grid grid-cols-2  text-start font-helvetica  sm:p-10 md:max-w-prose pb-4">
+          <div key={groupIndex} className="grid grid-cols-2  text-start font-helvetica  pb-4">
             {specGroup.specs.map((spec, specIndex) => (
-              <div key={specIndex}>
-                <span className="text-primary font-helvetica text-xs">{spec.label}:</span>
-                <span className="text-secondary font-helvetica text-[10px] py-2 pb-2">{spec.value}</span>
+              <div key={specIndex} >
+                <span className="text-primary font-helvetica text-xs"> {spec.label}:</span>
+                <span className="text-secondary font-helvetica text-[10px] py-2 pb-2"> {spec.value}</span>
               </div>
             ))}
           </div>
         ))}
+        </div>
         <div className="py-4 text-start">
           <Link href={buttonUrl} className="pt-8">
             <Button color={"primary"}>Book a Machine</Button>

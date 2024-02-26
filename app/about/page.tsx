@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <div className="bg-background font-helvetica ">
+    <div className="bg-background font-helvetica">
       <div className="lg:px-32">
         <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-20 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28  2xl:px-80">
           <div className="hidden">

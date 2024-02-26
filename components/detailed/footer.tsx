@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <div>
       <div className="bg-background py-10 pt-20">
-        <div className="h-auto px-8 font-helvetica text-secondary 2xl:mx-28">
+        <div className="h-auto px-8 font-helvetica text-secondary xl:mx-20">
           <div className="md:grid grid-cols-2 ">
             <div>
               <div className="font-helvetica text-headings font-bold text-secondary">

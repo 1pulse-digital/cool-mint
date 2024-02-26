@@ -33,18 +33,18 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   bookLink,
   learnMoreLink,
 }) => (
-  <div className="flex space-x-4 py-6 text-sm">
+  <div className="flex space-x-4 py-6 text-sm  w-full  justify-center">
     <span className=" text-2xl font-bold text-secondary">{day}</span>
-    <div className="text-start">
-      <div className="lg:flex lg:space-x-40">
-        <div>
-          <div className="grid-cols-2 lg:grid">
-            <div className="text-xl font-bold text-textColor">{name}</div>
-            <div className="grid hidden pt-4 lg:block">
-              <hr className="h-[1px] w-[420px] lg:w-[300px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+    <div className="text-start ">
+      <div className="md:flex ">
+        <div className="pr-8 ">
+          <div className=" flex flex-row flex-wrap w-full">
+            <div className="text-xl font-bold text-textColor ">{name}</div>
+            <div className="pt-4 lg:block w-full pb-2">
+              <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
             </div>
           </div>
-          <div className="row flex space-x-4">
+          <div className="row flex space-x-4 ">
             <span className="inline-flex items-center py-1 text-xs text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
               </svg>
               {time}
             </span>
-            <span className="inline-flex py-1 text-xs text-secondary">
+            <span className="inline-flex py-1 text-xs text-secondary ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -99,7 +99,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
 
 const UpcomingWorkshops: React.FC = () => {
   return (
-    <div className="py-14 text-center font-medium text-primary ">
+    <div className="py-14 text-center font-medium text-primary">
       <Tabs defaultValue="january woodwork">
         <div className="mt-10">
 

@@ -45,7 +45,7 @@ const BookTour = () => {
     <Carousel className="mx-3 pt-3">
     <CarouselContent className="">
     <CarouselItem>
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary">
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary py-2">
         <TabsTrigger value="monday" className="p-5 ml-2">Mon</TabsTrigger>
         <TabsTrigger value="tuesday"className="p-5">Tue</TabsTrigger>
         <TabsTrigger value="wednesday"className="p-5">Wed</TabsTrigger>
@@ -295,11 +295,10 @@ friday */}
       /> 
     </Card>
       </TabsContent>
-     
     </Tabs>
     </div>
     </div>
-    <GetInTouch />
+    <div className="2xl:px-24 lg:px-8"><GetInTouch /></div>
      </div>
     )
 }

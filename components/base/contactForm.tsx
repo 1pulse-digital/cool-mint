@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 export const ContactForm = () => {
 
   return (
-      <div className={"bg-background py-8 2xl:mx-60 xl:mx-40 md:mx-20"}>
+      <div className={"bg-background py-8 2xl:mx-60 xl:mx-40 md:mx-20 px-8"}>
          <div className="w-full">
           
             <form>
@@ -44,10 +44,10 @@ export const ContactForm = () => {
 
         </div>
   <div>
-  <span className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</span>
+  <p className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</p>
   
   <div className="bg-background text-secondary font-helvetica text-[14px]">
-  <div className="flex flex-row lg:space-x-8">
+  <div className="flex flex-row space-x-0 lg:space-x-8">
 
   <Checkbox id="workshops" />
       <label
@@ -75,7 +75,7 @@ export const ContactForm = () => {
 
   </div>
 
-  <div className="flex flex-row  space-x-5 py-4 lg:space-x-">
+  <div className="flex flex-row  space-x-3 py-4 lg:space-x-2">
   <Checkbox id="cnc" />
       <label
         htmlFor="cnc"
