@@ -34,7 +34,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   learnMoreLink,
 }) => (
   <div className="flex space-x-4 py-6 text-sm  w-full  justify-center">
-    <span className=" text-2xl font-bold text-secondary">{day}</span>
+    <span className="text-2xl font-bold text-secondary">{day}</span>
     <div className="text-start ">
       <div className="md:flex ">
         <div className="pr-8 ">
@@ -183,7 +183,7 @@ const UpcomingWorkshops: React.FC = () => {
         </div>
 
         {/* January Workshops */}
-    
+    <div className="xl:px-40 2xl:px-60 px-0">
         <TabsContent
           className="bg-background px-10 font-helvetica"
           value="january woodwork"
@@ -646,6 +646,7 @@ const UpcomingWorkshops: React.FC = () => {
             />
           </Card>
         </TabsContent>
+        </div>
       </Tabs>
     </div>
   );
