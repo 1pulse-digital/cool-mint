@@ -22,12 +22,13 @@ const OrderConfirmedItem: React.FC<OrderConfirmedProps> = ({
   quantity,
 }) => (
   <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
-   <img src={ImageSrc} alt={title} height={80} width={65} className="rounded-xl"  />
+   <img src={ImageSrc} alt={title} height={80} width={65} className="rounded-xl"/>
    <div>
     </div>
     <div className="text-start">
       <span className="text-xl font-helvetica font-bold text-secondary">{name}</span>
-      <div className="flex row space-x-4">
+      <div className="sm:flex row sm:space-x-32">
+      <div className="space-x-4">
         <span className="text-secondary text-xs py-1 inline-flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-4 h-4 mr-2">
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -44,14 +45,17 @@ const OrderConfirmedItem: React.FC<OrderConfirmedProps> = ({
 </svg> QTY: {quantity}
         </span>
       </div>
-      <span className="font-bold text-primary text-start text-[16px] pt-2">{price}</span>
-      <span className="text-[#ADFA1C] text-[12px] py-1">{confirm}</span>
+  <div>
+      <p className="font-bold text-primary text-start text-[16px] pt-2">{price}</p>
+      <p className="text-[#ADFA1C] text-[12px] py-1">{confirm}</p>
+      </div>
+      </div>
     </div>
   </div>
 );
 const OrderConfirmed: React.FC = () => {
   return (
-    <div className="font-medium text-primary text-center md:text-left  py-14 bg-background">
+    <div className="font-medium text-primary text-center md:text-left py-14 bg-background">
       
       <OrderConfirmedItem
         ImageSrc="/icons/banner.webp"
