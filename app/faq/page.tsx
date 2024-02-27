@@ -8,7 +8,7 @@ const FAQ = () => {
   return (
     <div className="bg-background py-12">
       <div className="font-helvetaica grid content-center  px-8  sm:p-10 lg:mx-40 2xl:mx-80">
-        <div className="inline-flex justify-center  font-helvetica text-xs font-light text-secondary">
+        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
           <div>
             <Link href="/">
               Home
