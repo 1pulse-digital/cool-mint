@@ -86,7 +86,7 @@ export function TeamCarousel() {
             value="machines"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-80 2xl:grid-cols-1">
+              <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-60 2xl:grid-cols-1">
                 <div className="rounded-md ">
                   <Image
                     src={gallery}
@@ -97,7 +97,7 @@ export function TeamCarousel() {
                 </div>
                 <div
                   className={
-                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-20"
+                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-10"
                   }
                 >
                   <h3
@@ -145,7 +145,7 @@ export function TeamCarousel() {
                 </div>
                 <div
                   className={
-                    "grid content-center p-5 py-8 font-helvetica 2xl:p-20"
+                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-10"
                   }
                 >
                   <h3
@@ -190,7 +190,7 @@ export function TeamCarousel() {
                 </div>
                 <div
                   className={
-                    "grid content-center p-5 py-8 font-helvetica 2xl:p-20"
+                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-10"
                   }
                 >
                   <h3
