@@ -59,7 +59,7 @@ const navigationItems = [
             <div className={"w-44"}>
               <Link href={"/"}>
                 <p>
-                    <Image src={logo} alt="Logo" width={150} height={80} />
+                    <Image src={logo} alt="Logo" width={130} height={80} />
                 </p>
               </Link>
             </div>
@@ -142,7 +142,7 @@ const navigationItems = [
             <a
               key={item.name}
               href={item.href}
-              className={`text-textColor ${window.location.pathname === item.href ? "font-bold text-[#FDBB10]" : "font-medium"} hover:font-bold hover:text-primary lg:text-sm xl:text-base `}
+              className="text-textColor active:text-primary hover:text-primary hover:font-bold lg:text-sm xl:text-base"
             >
               {item.name}
             </a>
@@ -190,7 +190,7 @@ const navigationItems = [
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="0.88em"
-                    height="1.em"
+                    height="1.5em"
                     viewBox="0 0 740 850"
                   >
                     <path
