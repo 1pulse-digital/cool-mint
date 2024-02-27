@@ -27,9 +27,12 @@ interface TourProps {
 
     <div className="pt-1">{starttime} - {endtime}</div>
     <div className="grid justify-end items-end"><Link href={linkUrl}>
-    <BookingButton color="primary">Book</BookingButton></Link></div>           
+    <BookingButton color="primary">Book</BookingButton></Link></div>     
 </div>
-<div className="border-l-[1px] h-8 ml-[50px] border-textColor"></div>
+<div className="pt-4 lg:block w-full pb-2">
+              <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
+            </div>
+
       </div>
     </div>
     </div>
