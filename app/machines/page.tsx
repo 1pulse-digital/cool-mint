@@ -1,8 +1,8 @@
 import React from "react";
 import IndustrialMachineTools from "@/components/base/IndustrialMachineTools";
 import Button from "@/components/base/button";
-import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
+import HeaderTitle from "@/components/base/headerTitle";
 
 
 const MachinesTools = () => {
@@ -21,12 +21,13 @@ const MachinesTools = () => {
            <div className="text-primary">Machines</div>
           </Link>
           </div>
-          <div className="2xl:mx-60">
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight"}>Industrial Tools & Machines</h1>
-          <p className={"text-BodyText text-textColor text-center font-helvetica font-nromal 2xl:px-60"}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </p>
-         </div>
+
+          {/* header title start */}
+          <HeaderTitle title="Industrial Tools & Machines"
+        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+      />
+      {/* header title end */}
+      
           <div className="text-center pt-10">
          <IndustrialMachineTools />
          <div className="pb-16 text-center">
