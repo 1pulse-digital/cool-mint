@@ -14,7 +14,7 @@ interface PricingTabProps {
 function PricingTab(props: PricingTabProps) {
   return (
     <div>
-      <div className="relative flex flex-col h-full p-6 py-8 rounded-2xl  bg-background border border-primary">
+      <div className="relative flex flex-col p-6 py-8 rounded-2xl bg-background border border-primary 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[460px]">
         {(
           <div className="absolute top-0 right-0 mr-6 -mt-4"></div>
         )}
