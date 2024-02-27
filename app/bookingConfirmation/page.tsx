@@ -10,7 +10,7 @@ import GetInTouch from "@/components/base/getInTouch";
     <div className="bg-background">
       <div className={"bg-background py-12 px-8 2xl:mx-80 xl:mx-40 md:mx-20"}>
         <div className={"grid content-center font-helvetica sm:p-10 "}>
-        <div className="text-xs text-secondary  font-helvetica font-light inline-flex justify-center">
+        <div className="text-xs text-secondary  font-helvetica font-normal inline-flex justify-center">
             <Link href="/">
           <div>
             Home 
@@ -57,13 +57,13 @@ import GetInTouch from "@/components/base/getInTouch";
         <div>
   <p className={"text-[14px] text-secondary font-helvetica font-normal py-8 text-start"}>What are you interested in?</p>
   
-  <div className="bg-background text-secondary font-helvetica text-[14px]">
-  <div className="flex flex-row  space-x-0 lg:space-x-12">
+  <div className="bg-background text-secondary font-helvetica text-[14px] flex space-x-8 ">
+
 
   <Checkbox id="workshops" />
       <label
         htmlFor="workshops"
-        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium text-secondary leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
        Workshops
       </label>
@@ -71,7 +71,7 @@ import GetInTouch from "@/components/base/getInTouch";
       <Checkbox id="woodwork" />
       <label
         htmlFor="woodwork"
-        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium text-secondary leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
        Woodwork
       </label>
@@ -79,14 +79,14 @@ import GetInTouch from "@/components/base/getInTouch";
       <Checkbox id="metalwork" />
       <label
         htmlFor="metalwork"
-        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium text-secondary leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
        Metalwork
       </label>
 
-  </div>
+ 
 
-  <div className="flex flex-row  space-x-3 py-4 lg:space-x-20">
+ 
   <Checkbox id="cnc" />
       <label
         htmlFor="cnc"
@@ -110,7 +110,7 @@ import GetInTouch from "@/components/base/getInTouch";
       >
         Memberships
       </label>
-  </div>
+ 
   </div>
   </div>
   <p className={"text-sm text-primary font-helvetica font-bold py-6 text-start"}>Booking information:</p>
