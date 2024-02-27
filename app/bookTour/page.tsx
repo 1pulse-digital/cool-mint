@@ -17,11 +17,12 @@ import {
     TabsTrigger,
   } from "@/components/ui/tabs"
 import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 
 const BookTour = () => {
     return(
         <div className={"bg-background lg:py-32"}>
-          <div className="2xl:mx-60 xl:mx-40  md:mx-32 lg:mx-2 sm:mx-20 px-8 2xl:pb-20">
+          <div className=" xl:mx-40  md:mx-32 lg:mx-2 sm:mx-20 2xl:pb-20">
         <div className={"grid content-center font-helvetaica px-6"}>
         <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
             <Link href="/">
@@ -30,14 +31,18 @@ const BookTour = () => {
             <span className="px-1">|</span>  
           </div>
           </Link>
-          <Link href="/news">
+          <Link href="/workshops">
            <div className="text-primary">Workshops</div>
           </Link>
           </div>
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>Book a Tour<span className="text-primary">.</span></h1>
-          <span className={"text-BodyText text-textColor text-center font-helvetica font-light 2xl:px-52 lg:px-40"}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </span>
+
+
+           {/* header title start */}
+           <HeaderTitle title="Book a Tour"
+        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+      />
+      {/* header title end */}
+          
         </div>
         <div className="lg:px-52 py-10">
         <Tabs defaultValue="monday">
@@ -46,11 +51,11 @@ const BookTour = () => {
     <CarouselContent className="">
     <CarouselItem>
     <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary py-2">
-        <TabsTrigger value="monday" className="p-5 ml-2">Mon</TabsTrigger>
-        <TabsTrigger value="tuesday"className="p-5">Tue</TabsTrigger>
-        <TabsTrigger value="wednesday"className="p-5">Wed</TabsTrigger>
-        <TabsTrigger value="thursday"className="p-5">Thu</TabsTrigger>
-        <TabsTrigger value="friday"className="p-5 mr-2">Fri</TabsTrigger>
+        <TabsTrigger value="monday" className="p-5 ml-2">Jan</TabsTrigger>
+        <TabsTrigger value="tuesday"className="p-5">Feb</TabsTrigger>
+        <TabsTrigger value="wednesday"className="p-5">Mar</TabsTrigger>
+        <TabsTrigger value="thursday"className="p-5">Apr</TabsTrigger>
+        <TabsTrigger value="friday"className="p-5 mr-2">May</TabsTrigger>
       </TabsList>
       
       </CarouselItem>
@@ -61,9 +66,9 @@ const BookTour = () => {
         <Card className="bg-background border-0">
         <CardTitle className="text-primary px-8 font-helvetica py-6">Monday</CardTitle>
         <Tour
-        starttime="08:00"
+        starttime="09:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -72,46 +77,107 @@ const BookTour = () => {
       <TabsContent className="bg-background font-helvetica" value="monday">
         <Card className="bg-background border-0">
         <Tour
-        starttime="08:00"
-        endtime="09:30"
-        linkUrl="/newsTitle"
+        starttime="10:00"
+        endtime="10:30"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
       <TabsContent className="bg-background font-helvetica" value="monday">
         <Card className="bg-background border-0">
         <Tour
-        starttime="08:00"
-        endtime="09:30"
-        linkUrl="/newsTitle"
+        starttime="11:00"
+        endtime="11:30"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
       <TabsContent className="bg-background font-helvetica" value="monday">
         <Card className="bg-background border-0">
         <Tour
-        starttime="08:00"
-        endtime="09:30"
-        linkUrl="/newsTitle"
+        starttime="12:00"
+        endtime="12:30"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
       <TabsContent className="bg-background font-helvetica" value="monday">
         <Card className="bg-background border-0">
         <Tour
-        starttime="08:00"
-        endtime="09:30"
-        linkUrl="/newsTitle"
+        starttime="13:00"
+        endtime="13:30"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
+
+      <TabsContent className="bg-background font-helvetica" value="monday">
+        <Card className="bg-background border-0">
+        <Tour
+        starttime="14:00"
+        endtime="14:30"
+        linkUrl="/bookingConfirmation"
+      /> 
+    </Card>
+      </TabsContent>
+
+      <TabsContent className="bg-background font-helvetica" value="monday">
+        <Card className="bg-background border-0">
+        <Tour
+        starttime="15:00"
+        endtime="15:30"
+        linkUrl="/bookingConfirmation"
+      /> 
+    </Card>
+      </TabsContent>
+
+      <TabsContent className="bg-background font-helvetica" value="monday">
+        <Card className="bg-background border-0">
+        <Tour
+        starttime="16:00"
+        endtime="16:30"
+        linkUrl="/bookingConfirmation"
+      /> 
+    </Card>
+      </TabsContent>
+
+      <TabsContent className="bg-background font-helvetica" value="monday">
+        <Card className="bg-background border-0">
+        <Tour
+        starttime="17:00"
+        endtime="17:30"
+        linkUrl="/bookingConfirmation"
+      /> 
+    </Card>
+      </TabsContent>
+
+      <TabsContent className="bg-background font-helvetica" value="monday">
+        <Card className="bg-background border-0">
+        <Tour
+        starttime="18:00"
+        endtime="18:30"
+        linkUrl="/bookingConfirmation"
+      /> 
+    </Card>
+      </TabsContent>
+
+
+
+
+
+
+
+
+
+
+
       <TabsContent className="bg-background font-helvetica" value="tuesday">
     <Card className="bg-background border-0">
     <CardTitle className="text-primary px-8 font-helvetica py-6">Tuesday</CardTitle>
     <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
      </Card>
       </TabsContent>
@@ -120,7 +186,7 @@ const BookTour = () => {
     <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
      </Card>
       </TabsContent>
@@ -129,7 +195,7 @@ const BookTour = () => {
     <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
      </Card>
       </TabsContent>
@@ -138,7 +204,7 @@ const BookTour = () => {
     <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
      </Card>
       </TabsContent>
@@ -147,7 +213,7 @@ const BookTour = () => {
     <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
      </Card>
       </TabsContent>
@@ -160,7 +226,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -169,7 +235,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -178,7 +244,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -187,7 +253,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -196,7 +262,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -207,7 +273,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -216,7 +282,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -225,7 +291,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -234,7 +300,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -243,7 +309,7 @@ const BookTour = () => {
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -255,7 +321,7 @@ friday */}
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -264,7 +330,7 @@ friday */}
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -273,7 +339,7 @@ friday */}
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -282,7 +348,7 @@ friday */}
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
@@ -291,7 +357,7 @@ friday */}
         <Tour
         starttime="08:00"
         endtime="09:30"
-        linkUrl="/newsTitle"
+        linkUrl="/bookingConfirmation"
       /> 
     </Card>
       </TabsContent>
