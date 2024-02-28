@@ -8,8 +8,8 @@ import Offerings from "@/components/offerings";
 export default function Home() {
   return (
     <div className="bg-background">
-    <div className="px-8 font-helvetica lg:px-28">
-      <div>
+    <div className="font-helvetica lg:px-28">
+      <div className="px-8">
         <Hero />
         <div className="">
           <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
@@ -22,7 +22,7 @@ export default function Home() {
         <div className="">
           <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
         </div>
-        <Community />
+        <Community />    
           <div>
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
