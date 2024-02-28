@@ -32,7 +32,7 @@ export function TeamCarousel() {
   return (
     <div>
       <div className="py-20 grid items-center justify-center md:px-32 sm:px-16 h-auto px-8">
-      <h1 className={"text-headings text-secondary font-helvetica font-bold pb-16  text-center"}>Meet the Team<span className="text-primary">.</span></h1>
+      <h1 className={"text-headings text-secondary font-helvetica font-bold pb-16 sm:pb-2 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
       
         <Tabs defaultValue="machines" className="">
            <div className="pb-16 2xl:mx-60">
