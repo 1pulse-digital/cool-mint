@@ -7,7 +7,7 @@ import HeaderTitle from "@/components/base/headerTitle";
 
 const MachinesTools = () => {
   return(
-      <div className={"bg-background px-8 py-20"}>
+      <div className={"bg-background py-20"}>
         <div className="flex h-auto">
         <div className={"grid content-center font-helvetica"}>
           <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
