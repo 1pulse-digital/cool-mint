@@ -30,10 +30,11 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
   buttonUrl,
 }) => {
   return (
-    <div className="rounded-xl mb-10">
-      <div className="lg:flex 2xl:mx-60">
-      <div className="rounded-md bg-green-300 object-cover" style={{ width: '100%', height: '100%' }}>
-        <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className="rounded-t-lg fill "/>
+    <div className="rounded-xl mb-0">
+      <div>
+      <div className="lg:flex  2xl:mx-60 bg-[#2c3033]">
+      <div className=" lg:rounded-l-lg object-cover">
+        <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className=" lg:rounded-l-lg"   style={{ objectFit: "cover", width: "100%", height: "100%" }}/>
       </div>
       <div className="p-5 bg-[#2c3033] sm:px-16 py-8">
         <div className={"grid text-start font-helvetica "}>
@@ -54,11 +55,12 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
           </div>
         ))}
         </div>
-        <div className="py-4 text-start">
+       {/*  <div className="py-4 text-start">
           <Link href={buttonUrl} className="pt-8">
             <Button color={"primary"}>Book a Machine</Button>
           </Link>
-        </div>
+        </div> */}
+      </div>
       </div>
       </div>
     </div>

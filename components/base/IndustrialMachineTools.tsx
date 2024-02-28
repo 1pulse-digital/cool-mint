@@ -42,7 +42,7 @@ const IndustrialMachineTools: React.FC = () => {
     <div className="bg-background py-8">
 
 <Tabs defaultValue="woodwork" className="bg-background">
-    <div className="px-6 2xl:mx-96 lg:mx-60 md:mx-20 sm:mx-8 2xl:px-40">
+    <div className="px-6 2xl:mx-96 lg:mx-60 md:mx-20 sm:mx-8 2xl:px-40 pb-10">
       <p className="text-secondary text-center py-3 text-sm">Filter by</p>
       <TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary px-2">
         <TabsTrigger value="woodwork" className="">Woodwork</TabsTrigger>
@@ -50,12 +50,12 @@ const IndustrialMachineTools: React.FC = () => {
         <TabsTrigger value="engineering">Engineering</TabsTrigger>
       </TabsList>
       </div>
-      <TabsContent className="bg-background font-helvetica pt-10" value="woodwork">
+      <TabsContent className="bg-background font-helvetica" value="woodwork">
         <Card className="bg-background border-0">
           <CardHeader>
             <CardDescription className="text-textColor">
             <IndustrialMachine
-        machineName="Machine Name 1"
+        machineName="CNC Plasma Cutting"
         categories="Category 1 | Category 2"
         image={machine1Image}
         description="Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content."
@@ -69,31 +69,12 @@ const IndustrialMachineTools: React.FC = () => {
         </Card>
       </TabsContent>
 
-      <TabsContent className="bg-background font-helvetica pt-10" value="woodwork">
+      <TabsContent className="bg-background font-helvetica pt-0" value="woodwork">
         <Card className="bg-background border-0">
           <CardHeader>
             <CardDescription className="text-textColor">
             <IndustrialMachine
-        machineName="Machine Name 1"
-        categories="Category 1 | Category 2"
-        image={machine2Image}
-        description="Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content."
-        specGroups={machine1SpecGroups}
-        buttonUrl={"/about"}
-      />
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-          </CardContent>
-        </Card>
-      </TabsContent>
-
-      <TabsContent className="bg-background font-helvetica pt-10" value="woodwork">
-        <Card className="bg-background border-0">
-          <CardHeader>
-            <CardDescription className="text-textColor">
-            <IndustrialMachine
-        machineName="Machine Name 1"
+        machineName="Machine Name 2"
         categories="Category 1 | Category 2"
         image={machine1Image}
         description="Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content."
@@ -107,12 +88,12 @@ const IndustrialMachineTools: React.FC = () => {
         </Card>
       </TabsContent>
 
-      <TabsContent className="bg-background font-helvetica pt-10" value="woodwork">
+      <TabsContent className="bg-background font-helvetica pt-0" value="woodwork">
         <Card className="bg-background border-0">
           <CardHeader>
             <CardDescription className="text-textColor">
             <IndustrialMachine
-        machineName="Machine Name 1"
+        machineName="Machine Name 3"
         categories="Category 1 | Category 2"
         image={machine1Image}
         description="Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content."
@@ -126,7 +107,26 @@ const IndustrialMachineTools: React.FC = () => {
         </Card>
       </TabsContent>
 
-      <TabsContent className="bg-background font-helvetica pt-10" value="metalwork">
+      <TabsContent className="bg-background font-helvetica pt-0" value="woodwork">
+        <Card className="bg-background border-0">
+          <CardHeader>
+            <CardDescription className="text-textColor">
+            <IndustrialMachine
+        machineName="Machine Name 4"
+        categories="Category 1 | Category 2"
+        image={machine1Image}
+        description="Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content."
+        specGroups={machine1SpecGroups}
+        buttonUrl={"/about"}
+      />
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      <TabsContent className="bg-background font-helvetica pt-0" value="metalwork">
         <Card className="bg-background border-0">
           <CardHeader>
           
@@ -147,7 +147,7 @@ const IndustrialMachineTools: React.FC = () => {
       </TabsContent>
 
 
-      <TabsContent className="bg-background font-helvetica pt-10" value="metalwork">
+      <TabsContent className="bg-background font-helvetica pt-0" value="metalwork">
         <Card className="bg-background border-0">
           <CardHeader>
           
@@ -168,7 +168,7 @@ const IndustrialMachineTools: React.FC = () => {
       </TabsContent>
 
 
-      <TabsContent className="bg-background font-helvetica pt-10" value="metalwork">
+      <TabsContent className="bg-background font-helvetica pt-0" value="metalwork">
         <Card className="bg-background border-0">
           <CardHeader>
           
@@ -188,7 +188,7 @@ const IndustrialMachineTools: React.FC = () => {
         </Card>
       </TabsContent>
 
-      <TabsContent className="bg-background font-helvetica pt-10" value="engineering">
+      <TabsContent className="bg-background font-helvetica pt-0" value="engineering">
         <Card className="bg-background border-0">
           <CardHeader>
             <CardDescription className="text-textColor">
