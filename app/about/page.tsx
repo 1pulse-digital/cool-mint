@@ -69,7 +69,7 @@ const About = () => {
                 <div className="text-primary">About</div>
               </Link>
             </div>
-            <div className="">
+            <div>
               <h1
                 className={
                   "py-1 text-center font-helvetica text-headings font-bold text-secondary"
@@ -90,9 +90,7 @@ const About = () => {
                 customers/members it was also their community.
                 <br />
                 <br />
-                Made In Workshop is
-                <span className="text-primary">
-                  not just about the tools
+                Made In Workshop is<span className="text-primary"> not just about the tools
                 </span>{" "}
                 and <span className="text-primary">machines </span>and not just
                 about the <span className="text-primary">workspace</span>, we&apos;re
