@@ -1,5 +1,4 @@
 import { ContactForm } from "@/components/base/contactForm";
-import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
 import React from "react";
 
@@ -8,7 +7,7 @@ import React from "react";
     <div className="bg-background">
       <div className={"bg-background py-12"}>
         <div className={"grid content-center font-helvetica sm:p-10 2xl:mx-60 xl:mx-40 px-8"}>
-        <div className="text-xs text-secondary  font-helvetica font-light inline-flex justify-center">
+        <div className="text-xs text-secondary  font-helvetica font-normal inline-flex justify-center">
             <Link href="/">
           <div>
             Home 
