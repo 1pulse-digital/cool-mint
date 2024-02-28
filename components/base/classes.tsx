@@ -15,10 +15,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function Classes() {
   return (
-    <div>
+    <div className="mx-28">
       <Tabs defaultValue="class1">
-        <div className="">
-          <Carousel className="mx-16 pt-6">
+        <div className="grid justify-center items-center bg-green-300">
+          <Carousel className="mx-96">
             <CarouselContent className="">
               <CarouselItem>
                 <TabsList className="bg-background">
@@ -75,15 +75,15 @@ export function Classes() {
         </div>
         <TabsContent className="bg-background font-helvetica" value="class1">
           <Card className="border-0 bg-background">
-            <div className={"mx-8 grid content-center py-8 font-helvetica"}>
+            <div className={"mx-8 grid content-center py-8 font-helvetica mx-80 justify-center"}>
               <h3
                 className={
-                  "text-start font-helvetica text-BodyText font-semibold text-textColor"
+                  "text-start sm:text-center font-helvetica text-BodyText font-semibold text-textColor"
                 }
               >
                 Class Name
               </h3>
-              <div className="row flex space-x-4">
+              <div className="row flex space-x-4 sm:text-center">
                 <span className="inline-flex items-center py-1 text-xs text-secondary">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
