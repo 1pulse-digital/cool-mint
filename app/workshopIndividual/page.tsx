@@ -1,8 +1,7 @@
 import { FilterButtons } from "@/components/base/filterButtons";
 import GetInTouch from "@/components/base/getInTouch";
 import IndividualWorkshop from "@/components/base/individualWorkshop";
-import IndividualWorkshops from "@/components/base/individualWorkshop";
-import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
+
 import Link from "next/link";
 
 
@@ -28,11 +27,11 @@ import {
 import React from "react";
 import { Classes } from "@/components/base/classes";
 
-const Workshops = () => {
+const Workshops = () => { 
   return(
       <div className={"bg-background py-12"}>
-        <div className={"grid content-center font-helvetica sm:p-10 md:max-w-prose px-8"}>
-          <div className="text-xs text-secondary text-start font-helvetica font-light inline-flex">
+      <div className={"grid content-center justify-center font-helvetica sm:p-10 px-8"}>
+          <div className="text-xs text-secondary text-start font-helvetica font-normal inline-flex">
             <Link href="/">
           <div>
             Home 
@@ -48,17 +47,19 @@ const Workshops = () => {
           </div>
          
           </div>
-          <div>
+          <div className="text-center ">
             <Classes />
           </div>
+          <div className="mx-80">
           <Tabs defaultValue="january">
   <div className="mx-8">
       </div>
+      
     <div className="pb-8">
     <Carousel className="mx-3 pt-3">
     <CarouselContent className="">
     <CarouselItem>
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary ">
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary ">
         <TabsTrigger value="january" className="p-5">Jan</TabsTrigger>
         <TabsTrigger value="february"className="p-5">Feb</TabsTrigger>
         <TabsTrigger value="march"className="p-5">Mar</TabsTrigger>
@@ -256,6 +257,7 @@ const Workshops = () => {
     </Card>
       </TabsContent>
     </Tabs>
+    </div>
      </div>
   );
 };
