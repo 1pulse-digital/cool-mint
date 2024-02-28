@@ -88,13 +88,14 @@ export function TeamCarousel() {
             value="machines"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-60 2xl:grid-cols-1">
+              <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
                     src={henry}
                     alt="team member"
                     placeholder={"blur"}
                     className="rounded-t-lg"
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </div>
                 <div
@@ -132,13 +133,14 @@ export function TeamCarousel() {
             value="workshops"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] 2xl:mx-60 2xl:grid-cols-1">
+              <div className="rounded-xl bg-[#2c3033] 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
                     src={joshua}
                     alt="team member"
                     placeholder={"blur"}
                     className="rounded-t-lg"
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </div>
                 <div
@@ -179,6 +181,7 @@ export function TeamCarousel() {
                     alt="team member"
                     placeholder={"blur"}
                     className="rounded-t-lg"
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </div>
                 <div
