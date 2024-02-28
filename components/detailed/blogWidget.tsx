@@ -22,7 +22,7 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
   return (
 
     <div className="grid py-10 sm:py-0 h-96 relative mx-4 mb-8">
-      <div className="absolute inset-0 w-auto h-auto grayscale bg-background opacity-95">
+      <div className="absolute inset-0 w-auto h-auto grayscale bg-green-300 opacity-95">
         <Image
           fill
           style={{objectFit:"cover"}}
