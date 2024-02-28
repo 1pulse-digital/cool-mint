@@ -188,8 +188,8 @@ export const Footer = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="1.4em"
-                      height="1.4em"
+                      width="1.3em"
+                      height="1.3em"
                       viewBox="0 0 24 24"
                     >
                       <path
