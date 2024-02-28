@@ -55,7 +55,7 @@ const navigationItems = [
     <div className={"z-30 relative h-[90px] bg-background"}>
       <Popover className="fixed w-full bg-background">
         {({ open }) => (
-          <div className="grid w-full grid-cols-3 px-8 py-4 sm:px-6 2xl:px-28 lg:px-8">
+          <div className="grid w-full grid-cols-3 px-4 py-4 sm:px-6 2xl:px-28 lg:px-8 space-x-4">
             <div className={"w-44"}>
               <Link href={"/"}>
                 <p>
@@ -92,12 +92,12 @@ const navigationItems = [
                     static
                     className="absolute inset-x-0 top-0 p-2 transition origin-top-right transform ">
                     <div
-                      className="bg-[#27272A] md:w-1/3 w-2/3  mt-16  ring-1 ring-black ring-opacity-5">
+                      className="bg-[#27272A] md:w-1/3 w-2/3 mt-16 ring-1 ring-black ring-opacity-5">
                       <div className="px-5 pt-5 pb-6">
                         <div className="flex items-start justify-between">
                           <div className="-mr-2">
                             <Popover.Button
-                              className="inline-flex items-center justify-center p-2 text-gray-400  rounded-md hover:text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-inset focus:ring-gray-500 focus:outline-none">
+                              className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-inset focus:ring-gray-500 focus:outline-none">
                               <span className="sr-only">Close menu</span>
                               <XIcon className="w-6 h-6" aria-hidden="true" />
                             </Popover.Button>
@@ -134,15 +134,15 @@ const navigationItems = [
               </div>
 
               {/* Desktop menu */}
-              <div>
-              <nav className="hidden w-full py-2 text-base gap-x-6 2xl:gap-x-4 xl:gap-x-1 lg:gap-x-0 lg:flex text-primary items-end xl:justify-end justify-end space-x-5 2xl:space-x-6 xl:space-x-6 lg:space-x-5 lg:ml-20 sm:gap-x-4">
+              <div className="">
+              <nav className="hidden py-2 text-base gap-x-6 2xl:gap-x-3 xl:gap-x-1 lg:gap-x-0 lg:flex text-primary items-end xl:justify-end justify-end space-x-5 2xl:space-x-5 xl:space-x-5 lg:space-x-3 sm:gap-x-4">
                
                 {/* Render all the navigationItems as <Link /> components */}
                 {navigationItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-textColor active:text-primary hover:text-primary hover:font-bold lg:text-sm xl:text-base"
+              className="text-textColor active:text-primary hover:text-primary hover:font-bold lg:text-[15px] xl:text-base"
             >
               {item.name}
             </a>
