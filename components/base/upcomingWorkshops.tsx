@@ -33,7 +33,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   bookLink,
   learnMoreLink,
 }) => (
-  <div className="flex space-x-4 py-6 text-sm  w-full  justify-center">
+  <div className="flex space-x-4 text-sm  w-full  justify-center">
     <span className="text-2xl font-bold text-secondary">{day}</span>
     <div className="text-start ">
       <div className="md:flex ">
