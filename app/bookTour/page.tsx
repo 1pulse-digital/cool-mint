@@ -22,7 +22,7 @@ import HeaderTitle from "@/components/base/headerTitle";
 const BookTour = () => {
     return(
         <div className={"bg-background lg:py-32"}>
-          <div className=" xl:mx-40  md:mx-32 lg:mx-2 sm:mx-20 2xl:pb-20">
+          <div className="xl:mx-40 md:mx-16 lg:mx-2 sm:mx-20 2xl:pb-20">
         <div className={"grid content-center font-helvetaica px-6"}>
         <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
             <Link href="/">
