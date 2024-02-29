@@ -8,17 +8,26 @@ const About = () => {
   return (
     <div className="bg-background font-helvetica">
       <div className="lg:px-32">
-
-      {/* <div className="flex space-x-44 ">
-
-<div className="bg-purple-200 absolute"><Image
+        <div className="relative hidden lg:flex">
+        <Image
               src={gallery}
               alt="made in workshop"
               placeholder={"blur"}
-              height={300}
-              width={300}
-            /></div>
-<div className=" bg-yellow-400 w-11/12 justify-center items-center mt-48"> <p
+              height={250}
+              width={250}
+              className="absolute top-12 left-0 -rotate-12 lg:w-40 xl:w-60"
+            />
+            <Image
+              src={gallery}
+              alt="made in workshop"
+              placeholder={"blur"}
+              height={250}
+              width={250}
+              className="absolute mt-[430px] lg:mt-[480px] right-0 rotate-12 lg:w-40 xl:w-60"
+            />
+        </div>
+       
+{/* <div className=" bg-yellow-400 w-1/2 justify-center items-center mt-48 relative"> <p
                 className={
                   "text-center font-helvetica text-BodyText font-normal text-textColor"
                 }
@@ -38,17 +47,10 @@ const About = () => {
                 about the <span className="text-primary">workspace</span>, we&apos;re
                 the spark of inspiration that is the culmination of tools,
                 machines, workspace and the community that we are creating.
-              </p></div>
-<div className="bg-slate-500 relative items-end justify-end grid top-0 left-0 right-0"><Image
-             src={gallery}
-             alt="made in workshop"
-             placeholder={"blur"}
-             height={300}
-             width={300}
-            /></div>
-</div> */}
+              </p></div> */}
 
-        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-20 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28 2xl:px-80">
+
+        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-20 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28 xl:px-80 2xl:px-80">
           <div className="hidden">
             <Image
               src={gallery}
