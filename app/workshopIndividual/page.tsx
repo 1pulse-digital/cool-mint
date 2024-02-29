@@ -47,34 +47,34 @@ const Workshops = () => {
           <div className="text-center ">
             <Classes />
           </div>
-          <div className="mx-80">
+          <div className="lg:mx-40">
           <Tabs defaultValue="january">
   <div className="mx-8">
       </div>
       
-    <div className="pb-8 lg:px-40">
+    <div className="pb-8 2xl:px-40 md:mx-28 sm:mx-32">
     <Carousel className="mx-3 pt-3">
     <CarouselContent className="">
     <CarouselItem>
     <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary py-2">
-        <TabsTrigger value="january" className="p-5 ml-2 ">Jan</TabsTrigger>
+        <TabsTrigger value="january" className="p-5 ml-2">Jan</TabsTrigger>
         <TabsTrigger value="february"className="p-5">Feb</TabsTrigger>
         <TabsTrigger value="march"className="p-5">Mar</TabsTrigger>
         <TabsTrigger value="april"className="p-5">Apr</TabsTrigger>
-        <TabsTrigger value="may"className="p-5">May</TabsTrigger>
+        <TabsTrigger value="may"className="p-5 mr-2">May</TabsTrigger>
       </TabsList>
       </CarouselItem>
       <CarouselItem>
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary ">
-        <TabsTrigger value="june" className="p-5">Jun</TabsTrigger>
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary py-2">
+        <TabsTrigger value="june" className="p-5 ml-2">Jun</TabsTrigger>
         <TabsTrigger value="july"className="p-5">Jul</TabsTrigger>
         <TabsTrigger value="august"className="p-5">Aug</TabsTrigger>
         <TabsTrigger value="september"className="p-5">Sep</TabsTrigger>
-        <TabsTrigger value="october"className="p-5">Oct</TabsTrigger>
+        <TabsTrigger value="october"className="p-5 mr-2">Oct</TabsTrigger>
       </TabsList>
       </CarouselItem>
       <CarouselItem>
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary ">
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18  text-secondary py-2">
         <TabsTrigger value="november" className="p-5">Nov</TabsTrigger>
         <TabsTrigger value="december"className="p-5">Dec</TabsTrigger>
         <TabsTrigger value="january" className="p-5">Jan</TabsTrigger>
