@@ -134,8 +134,8 @@ const navigationItems = [
               </div>
 
               {/* Desktop menu */}
-              <div className="">
-              <nav className="hidden py-2 text-base gap-x-6 2xl:gap-x-3 xl:gap-x-1 lg:gap-x-0 lg:flex text-primary items-end xl:justify-end justify-end space-x-5 2xl:space-x-5 xl:space-x-5 lg:space-x-3 sm:gap-x-4">
+              <div className="lg:ml-[400px]">
+              <nav className="hidden py-2 text-base gap-x-6 2xl:gap-x-3 xl:gap-x-1 lg:gap-x-0 lg:flex text-primary items-end xl:justify-end justify-end space-x-5 2xl:space-x-5 xl:space-x-5 lg:space-x-5 sm:gap-x-4">
                
                 {/* Render all the navigationItems as <Link /> components */}
                 {navigationItems.map((item) => (
