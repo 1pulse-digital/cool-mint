@@ -19,26 +19,27 @@ interface IndividualWorkshopProps {
 }) => {
     const isLastItem = !linkUrl;
   return (
-    <div className="bg-background">
-      <div className={"px-8"}>
+    <div className="bg-background ">
+      <div className={"px-8 lg:mx-40"}>
         <span className={"text-BodyText text-primary text-start font-helvetica font-bold"}>
           <span>
           </span>
         </span>
 <div className="text-secondary">
 <div className="grid grid-cols-2 space-x-4">
-    
     <div className="pt-1">
-        <span className="text-secondary">{day}</span>
-       <span className="text-[14px]">{starttime} - {endtime}</span> 
+        <p className="text-secondary">{day}</p>
+        <div className="pt-4 lg:block w-full pb-2">
+              <hr className="h-[1px] w-full flex-grow border-0 bg-[#A1A1AA]"></hr>
+            </div>
+       <p className="text-[14px]">{starttime} - {endtime}</p> 
         
         </div>
     <div className="grid justify-end items-end"><Link href={linkUrl}>
     <BookingButton color="primary">Book</BookingButton></Link>
-    <span className="text-secondary text-center text-[10px] pt-2">{spotsleft}</span>
+    <p className="text-secondary text-center text-[10px] pt-2">{spotsleft}</p>
     </div>           
 </div>
-<div className="border-l-[1px] h-8 ml-[42px] border-textColor"></div>
       </div>
     </div>
     </div>
