@@ -69,7 +69,7 @@ export const SmallButtonOrange = (props: ButtonProps) => {
 };
 
 export const Button = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-4 md:px-5 py-2 shadow hover:shadow-sm text-md font-helvetica";
+  const baseClassname = "rounded-lg px-4 md:px-8 py-2 shadow hover:shadow-sm text-md font-helvetica";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
