@@ -20,7 +20,7 @@ interface IndividualWorkshopProps {
     const isLastItem = !linkUrl;
   return (
     <div className="bg-background ">
-      <div className={"px-8 lg:mx-40"}>
+      <div className={"px-8 lg:mx-40 sm:px-32"}>
         <span className={"text-BodyText text-primary text-start font-helvetica font-bold"}>
           <span>
           </span>
