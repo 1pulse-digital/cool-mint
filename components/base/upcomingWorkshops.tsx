@@ -45,7 +45,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
             </div>
           </div>
           <div className="row flex space-x-4 ">
-            <span className="inline-flex items-center py-1 text-xs text-secondary">
+            <p className="inline-flex items-center py-1 text-xs text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -61,8 +61,8 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
                 />
               </svg>
               {time}
-            </span>
-            <span className="inline-flex py-1 text-xs text-secondary ">
+            </p>
+            <p className="inline-flex py-1 text-xs text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -78,15 +78,15 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
                 />
               </svg>
               {instructor}
-            </span>
+            </p>
           </div>
-          <span className="py-2 font-normal text-white">{description}</span>
+          <p className="py-2 font-normal text-white">{description}</p>
         </div>
         <div className="">
           <p className="pt-4 text-start text-[16px] font-bold text-primary lg:pt-0">
             {price}
           </p>
-          <span className="py-1 text-secondary">{spotsLeft}</span>
+          <p className="py-1 text-secondary">{spotsLeft}</p>
           <ButtonGroupWorkshops
             bookLink={bookLink}
             learnMoreLink={learnMoreLink}
