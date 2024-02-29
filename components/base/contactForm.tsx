@@ -16,7 +16,7 @@ export const ContactForm = () => {
             <div className="lg:grid grid-cols-2">
            <div className="pb-2 ">
            <Label htmlFor="name" className="text-secondary mt-2">First Name</Label>
-           <div className="mt-2 2xl:mr-6 xl:mr-6">
+           <div className="mt-2 2xl:mr-6 lg:mr-6">
       <Input type="name" id="name" placeholder="Henry" className="placeholder:text-xs  placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
       </div>
         </div>
@@ -28,7 +28,7 @@ export const ContactForm = () => {
       </div>
         </div>
 
-        <div className="pb-2  2xl:mr-6  xl:mr-6">
+        <div className="pb-2 2xl:mr-6 lg:mr-6">
            <Label htmlFor="email" className="text-secondary mt-2">Email Address</Label>
            <div className="mt-2">
       <Input type="email" id="email" placeholder="henry@madeinworkshop.co.za" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
@@ -43,67 +43,67 @@ export const ContactForm = () => {
         </div>
 
         </div>
-  <div>
-  <p className={"text-[14px] text-secondary font-helvetica font-normal py-4 text-start"}>What are you interested in?</p>
-  
-  <div className="bg-background text-secondary font-helvetica text-[14px]">
-  <div className="flex flex-row space-x-0 lg:space-x-8">
+        <div className="">
+            <p
+              className={
+                "py-8 text-start font-helvetica text-[14px] font-normal text-secondary"
+              }
+            >
+              What are you interested in?
+            </p>
 
-  <Checkbox id="workshops" />
-      <label
-        htmlFor="workshops"
-        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-       Workshops
-      </label>
+            <div className="flex lg:space-x-8 bg-background font-helvetica text-[14px] text-secondary flex-wrap space-x-4 space-y-2 lg:flex-nowrap">
+              <Checkbox id="workshops" />
+              <label
+                htmlFor="workshops"
+                className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Workshops
+              </label>
 
-      <Checkbox id="woodwork" />
-      <label
-        htmlFor="woodwork"
-        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-       Woodwork
-      </label>
+              <Checkbox id="woodwork" />
+              <label
+                htmlFor="woodwork"
+                className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Woodwork
+              </label>
 
-      <Checkbox id="metalwork" />
-      <label
-        htmlFor="metalwork"
-        className="text-sm font-medium text-secondary px-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-       Metalwork
-      </label>
+              <Checkbox id="metalwork" />
+              <label
+                htmlFor="metalwork"
+                className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Metalwork
+              </label>
 
-  </div>
+              <Checkbox id="cnc" />
+              <label
+                htmlFor="cnc"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                CNC
+              </label>
 
-  <div className="flex flex-row  space-x-3 py-4 lg:space-x-2">
-  <Checkbox id="cnc" />
-      <label
-        htmlFor="cnc"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        CNC
-      </label>
+              <Checkbox id="engineering" />
+              <label
+                htmlFor="engineering"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Engineering
+              </label>
 
-      <Checkbox id="engineering" />
-      <label
-        htmlFor="engineering"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Engineering
-      </label>
-      
-      <Checkbox id="memberships" />
-      <label
-        htmlFor="memberships"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Memberships
-      </label>
-  </div>
-  </div>
-  </div>
+              <Checkbox id="memberships" />
+              <label
+                htmlFor="memberships"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Memberships
+              </label>
+            </div>
+          </div>
 
-  <div className="pt-6">
+  <div className="pt-10">
   <Label htmlFor="message" className="text-secondary">Message</Label>
   <div className="mt-2">
       <Textarea placeholder="Type your message here." id="message" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 lg:py-10 text-secondary shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background" />
