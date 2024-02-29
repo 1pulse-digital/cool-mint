@@ -15,16 +15,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function Classes() {
   return (
-    <div className="mx-28">
-      <div className="bg-background font-helvetica grid justify-center" value="class1">
+    <div className="lg:mx-28">
+      <div className="bg-background font-helvetica grid justify-center">
           <Card className="border-0 bg-background">
-            <div className={"mx-8 grid content-center py-8 font-helvetica mx-80 justify-center"}>
+            <div className={"mx-8 grid content-center font-helvetica 2xl:mx-80 justify-center"}>
             <h1
                 className={
-                  "text-start sm:text-center font-helvetica text-headings font-semibold text-textColor"
+                  "text-center sm:text-center font-helvetica text-headings font-semibold text-textColor"
                 }
               >
-              Workshops Name<span className="text-primary">.</span>
+             Class Name<span className="text-primary">.</span>
               </h1>
               <div className="row flex space-x-4 justify-center items-center">
                 <span className="inline-flex items-center py-1 text-xs text-secondary">
@@ -91,26 +91,26 @@ export function Classes() {
                   "pt-6 text-center font-helvetica text-[12px] font-normal text-secondary"
                 }
               >
-                *Please note that this class is not a tradesman qualification.
+              *Please note that this class is not a tradesman qualification.
               </p>
             </div>
           </Card>
         </div>
       <Tabs defaultValue="class1">
-        <div className="grid justify-center items-center">
-          <Carousel className="mx-96 py-10">
-            <CarouselContent className="">
+        <div className="grid justify-center items-center sm:mx-52">
+          <Carousel className="mx-10 py-10 2xl:mx-96">
+            <CarouselContent>
               <CarouselItem>
                 <TabsList className="bg-background">
                   <TabsTrigger value="class2">
-                    <div className="pt-52">
+                    <div className="pt-60">
                       <Image
                         src={gallery}
                         alt="team member"
                         placeholder={"blur"}
                         className="rounded-lg"
-                        width="400"
-                        height="400"
+                        width="300"
+                        height="300"
                       />
                     </div>
                   </TabsTrigger>
@@ -119,7 +119,7 @@ export function Classes() {
               <CarouselItem>
                 <TabsList className="bg-background">
                   <TabsTrigger value="class2">
-                    <div className="pt-52">
+                    <div className="pt-60">
                       <Image
                         src={craig}
                         alt="team member"
@@ -135,7 +135,7 @@ export function Classes() {
               <CarouselItem>
                 <TabsList className="bg-background">
                   <TabsTrigger value="class3">
-                    <div className="pt-52">
+                    <div className="pt-60">
                       <Image
                         src={gallery}
                         alt="team member"
