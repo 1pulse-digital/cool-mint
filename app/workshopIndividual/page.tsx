@@ -3,9 +3,6 @@ import GetInTouch from "@/components/base/getInTouch";
 import IndividualWorkshop from "@/components/base/individualWorkshop";
 
 import Link from "next/link";
-
-
-
 import { FAQAccordion } from "@/components/base/faqAccordion";
 import Tour from "@/components/base/tour";
 import BlogWidget from "@/components/detailed/blogWidget";
@@ -55,12 +52,12 @@ const Workshops = () => {
   <div className="mx-8">
       </div>
       
-    <div className="pb-8">
+    <div className="pb-8 lg:px-40">
     <Carousel className="mx-3 pt-3">
     <CarouselContent className="">
     <CarouselItem>
-    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary ">
-        <TabsTrigger value="january" className="p-5">Jan</TabsTrigger>
+    <TabsList className="grid w-full grid-cols-5 bg-[#27272A] h-18 text-secondary py-2">
+        <TabsTrigger value="january" className="p-5 ml-2 ">Jan</TabsTrigger>
         <TabsTrigger value="february"className="p-5">Feb</TabsTrigger>
         <TabsTrigger value="march"className="p-5">Mar</TabsTrigger>
         <TabsTrigger value="april"className="p-5">Apr</TabsTrigger>
@@ -93,13 +90,13 @@ const Workshops = () => {
       <TabsContent className="bg-background font-helvetica" value="january">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">January</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="january">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -107,13 +104,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="february">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">February</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="february">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -121,13 +118,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="march">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">March</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="march">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -135,13 +132,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="april">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">April</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="april">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -149,13 +146,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="may">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">May</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="may">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -163,13 +160,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="june">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">June</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="june">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -177,13 +174,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="july">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">July</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="july">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -191,13 +188,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="august">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">August</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="august">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -205,13 +202,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="september">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">September</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="september">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -219,13 +216,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="october">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">October</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="october">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -233,13 +230,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="november">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">November</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="november">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
@@ -247,13 +244,13 @@ const Workshops = () => {
        <TabsContent className="bg-background font-helvetica" value="december">
         <Card className="bg-background border-0">
         <CardTitle className="text-primary text-start font-normal text-lg font-helvetica py-1 px-8">December</CardTitle>
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
 
       <TabsContent className="bg-background font-helvetica" value="december">
         <Card className="bg-background border-0">
-        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"tt"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
+        <IndividualWorkshop starttime={"09:00"} endtime={"13:00pm"} linkUrl={"/cart"} day={"Saturday, 7th"} spotsleft={"5 Spots Left"} />
     </Card>
       </TabsContent>
     </Tabs>
