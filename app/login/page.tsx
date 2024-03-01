@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 
 const Login: React.FC = () => {
   return (
-    <div className={"bg-background py-10 2xl:h-screen"}>
+    <div className={"bg-background 2xl:h-screen"}>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="hidden md:block">
           <div>
@@ -63,10 +63,10 @@ const Login: React.FC = () => {
           </div>
           <div>
             <div>
-              <Label htmlFor="email" className="mt-2 text-secondary">
+              <Label htmlFor="email" className="mt-1 text-secondary">
                 Email
               </Label>
-              <div className="mt-2">
+              <div className="mt-1">
                 <Input
                   type="email"
                   id="email"
@@ -78,10 +78,10 @@ const Login: React.FC = () => {
             </div>
 
             <div>
-              <Label htmlFor="password" className="mt-2 text-secondary">
+              <Label htmlFor="password" className="mt-1 text-secondary">
                 Password
               </Label>
-              <div className="mt-2">
+              <div className="mt-1">
                 <Input
                   type="password"
                   id="password"
@@ -93,12 +93,12 @@ const Login: React.FC = () => {
             </div>
             <div>
               <Link href="/register">
-              <Button color="primary" className="mt-4 w-full">
+              <Button color="primary" className="mt-2 w-full">
                 Login
               </Button>
               </Link>
             </div>
-            <div className="flex items-center justify-center space-x-4 py-10">
+            <div className="flex items-center justify-center space-x-4 py-8">
               <hr className="mx-2 h-[1px] flex-grow border-0 bg-secondary"></hr>
               <span className="font-helvetica text-xs text-textColor">
                 OR CONTINUE WITH
@@ -127,7 +127,7 @@ const Login: React.FC = () => {
              
             </div>
             </Link>
-            <p className="py-10 text-center font-helvetica text-xs text-textColor">
+            <p className="py-8 text-center font-helvetica text-xs text-textColor">
               By clicking continue, you agree to our{" "}
               <Link href="/" className="underline">
                 Terms of Service
