@@ -5,10 +5,8 @@ import Link from "next/link";
 //import ScrollToTop from "react-scroll-to-top";
 import GetInTouch from "../base/getInTouch";
 
-
 export const Footer = () => {
   return (
-
     <div className="bg-background">
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
@@ -16,20 +14,19 @@ export const Footer = () => {
       <div>
         <hr className="mx-8 h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex 2xl:mx-28"></hr>
       </div>
-
       <div className="space-x-2 px-6 py-12 text-white md:flex md:space-x-12 md:px-10 lg:space-x-32 2xl:mx-16">
         <div>
           <div>
             <div className="font-helvetica text-headings font-bold text-secondary">
               Subscribe<span className="text-primary">.</span>
             </div>
-            <div className="py-2 text-[12px] text-textColor 2xl:text-base pb-4">
+            <div className="py-2 pb-4 text-[12px] text-textColor 2xl:text-base">
               Subscribe to our newsletter to stay in touch with the latest.
             </div>
             <Link href="/contact">
-            <Button color="primary" className="mt-5 w-2/3 sm:mt-0">
-              Sign Up
-            </Button>
+              <Button color="primary" className="mt-5 w-2/3 sm:mt-0">
+                Sign Up
+              </Button>
             </Link>
           </div>
         </div>
@@ -37,7 +34,7 @@ export const Footer = () => {
         <div className="grid grid-cols-2 space-x-0 px-0 pt-10 sm:space-x-0 md:pt-0 lg:space-x-0">
           <div>
             <div className="pb-5">
-              <p className="font-helvetica text-BodyText font-bold text-textColor pb-2">
+              <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
                 Contact
               </p>
               <div>
@@ -88,7 +85,7 @@ export const Footer = () => {
           </div>
           <div>
             <div className="pl-8 sm:pl-0">
-              <p className="font-helvetica text-BodyText font-bold text-textColor pb-2">
+              <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
                 Visit Us
               </p>
               <Link
@@ -126,10 +123,10 @@ export const Footer = () => {
                 Legal
               </div>
               <Link href="/">
-                <div className="pt-2 text-xs">Privacy Policy</div>
+                <p className="py-2 text-xs">Privacy Policy</p>
               </Link>
               <Link href="/">
-                <div className="text-xs">Terms and Conditions</div>
+                <p className="text-xs">Terms and Conditions</p>
               </Link>
             </div>
           </div>
@@ -205,7 +202,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="bg-[#929597] px-16 py-4 text-center text-xs">
-        <div className="font-helvetica text-secondary">
+        <div className="pb-2 font-helvetica text-secondary">
           © 2024 Made in Workshop.
         </div>
         <Link
@@ -213,12 +210,12 @@ export const Footer = () => {
           target="_blank"
           className="text-secondary hover:text-primary"
         >
-          <div>Developed and design by 1Pulse Digital</div>
+          <p>Developed and design by 1Pulse Digital</p>
         </Link>
 
         {/* Scroll to Top */}
       </div>
-  {/*     <div className="hidden bg-black">
+      {/*     <div className="hidden bg-black">
         <ScrollToTop
           className="lg:mx-36"
           smooth
