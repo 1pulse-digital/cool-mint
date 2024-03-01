@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from 'react';
 import ButtonGroupWorkshops from "./buttonGroupWorkshops";
 import { Card, CardTitle } from "@/components/ui/card";
 import {
@@ -18,7 +19,7 @@ interface WorkshopProps {
   price: string;
   spotsLeft: string;
   bookLink: string;
-  learnMoreLink: string;
+  // learnMoreLink: string;
 }
 
 const WorkshopItem: React.FC<WorkshopProps> = ({
@@ -31,7 +32,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   price,
   spotsLeft,
   bookLink,
-  learnMoreLink,
+  // learnMoreLink,
 }) => (
   <div className="flex space-x-4 text-sm  w-full  justify-center">
     <span className="text-2xl font-bold text-secondary">{day}</span>
@@ -89,7 +90,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
           <p className="py-1 text-secondary">{spotsLeft}</p>
           <ButtonGroupWorkshops
             bookLink={bookLink}
-            learnMoreLink={learnMoreLink}
+            // learnMoreLink={learnMoreLink}
           />
         </div>
       </div>
@@ -98,6 +99,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
 );
 
 const UpcomingWorkshops: React.FC = () => {
+  
   return (
     <div className="py-14 text-center font-medium text-primary">
       <Tabs defaultValue="january woodwork">
@@ -105,9 +107,9 @@ const UpcomingWorkshops: React.FC = () => {
 
           {/* Filtering by category */}
           
-          <div className="lg:px-60 md:px-28 mx-8">
+          <div className="2xl:px-96 xl:px-80 lg:px-52 md:px-40 mx-10 sm:px-32">
             <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
-              <TabsTrigger value="january woodwork" className="">
+              <TabsTrigger value="january woodwork">
                 Woodwork
               </TabsTrigger>
               <TabsTrigger value="february">Metalwork</TabsTrigger>
@@ -117,7 +119,7 @@ const UpcomingWorkshops: React.FC = () => {
 
                     {/* Filtering by month */}
 
-          <div className="pb-16">
+          <div className="pb-16 2xl:px-56 xl:px-40  mx-2 sm:px-4">
             <Carousel className="mx-3 pt-3">
               <CarouselContent className="">
                 <CarouselItem>
@@ -189,12 +191,12 @@ const UpcomingWorkshops: React.FC = () => {
           value="january woodwork"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               January
             </CardTitle>
             <WorkshopItem
               date="January"
-              day="20"
+              day="10"
               name="CNC Cutter"
               time="3 hours"
               instructor="Henry Levine"
@@ -202,7 +204,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+             // learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -212,8 +214,8 @@ const UpcomingWorkshops: React.FC = () => {
           className="bg-background px-10 font-helvetica"
           value="january woodwork"
         >
-          <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+          <Card className="border-0 bg-background py-8">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               January
             </CardTitle>
             <WorkshopItem
@@ -226,7 +228,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -236,7 +238,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="january metalwork"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               January
             </CardTitle>
             <WorkshopItem
@@ -249,7 +251,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividualt"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -260,7 +262,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="february"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               February
             </CardTitle>
             <WorkshopItem
@@ -273,30 +275,41 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+             // learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="february"
+        >
+          <Card className="border-0 bg-background py-8">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+              February
+            </CardTitle>
             <WorkshopItem
               date="february"
-              day="16"
-              name="Workshop Name"
+              day="04"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+             // learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
 
         {/* March Workshops */}
         <TabsContent
-          className="bg-background px-10 font-helvetica"
+          className="bg-background px-10 font-helvetica "
           value="march"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               March
             </CardTitle>
             <WorkshopItem
@@ -309,19 +322,30 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="march"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+              March
+            </CardTitle>
             <WorkshopItem
               date="march"
-              day="17"
-              name="Workshop Name"
+              day="05"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -332,7 +356,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="april"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               April
             </CardTitle>
             <WorkshopItem
@@ -345,7 +369,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="april"
@@ -357,7 +381,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -365,7 +389,7 @@ const UpcomingWorkshops: React.FC = () => {
         {/* May Workshops */}
         <TabsContent className="bg-background px-10 font-helvetica" value="may">
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               May
             </CardTitle>
             <WorkshopItem
@@ -378,7 +402,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="may"
@@ -390,7 +414,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -401,7 +425,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="june"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               June
             </CardTitle>
             <WorkshopItem
@@ -414,7 +438,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="june"
@@ -426,7 +450,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -437,7 +461,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="july"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8  text-start font-helvetica text-lg font-normal text-primary">
               July
             </CardTitle>
             <WorkshopItem
@@ -450,7 +474,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="july"
@@ -462,7 +486,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -473,7 +497,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="august"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               August
             </CardTitle>
             <WorkshopItem
@@ -486,7 +510,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="august"
@@ -498,7 +522,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -509,7 +533,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="september"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               September
             </CardTitle>
             <WorkshopItem
@@ -522,7 +546,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="september"
@@ -534,7 +558,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -545,7 +569,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="october"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               October
             </CardTitle>
             <WorkshopItem
@@ -558,7 +582,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="october"
@@ -570,7 +594,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -581,7 +605,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="november"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               November
             </CardTitle>
             <WorkshopItem
@@ -594,7 +618,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="november"
@@ -606,7 +630,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -617,7 +641,7 @@ const UpcomingWorkshops: React.FC = () => {
           value="december"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="py-1 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
               December
             </CardTitle>
             <WorkshopItem
@@ -630,7 +654,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
             <WorkshopItem
               date="december"
@@ -642,7 +666,7 @@ const UpcomingWorkshops: React.FC = () => {
               price="R1,500.00"
               spotsLeft="5 Spots Left"
               bookLink="/workshopIndividual"
-              learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>

@@ -4,17 +4,17 @@ import Button, { SquareButton } from "./button";
 
 interface ButtonGroupWorkshopsProps {
   bookLink: string;
-  learnMoreLink: string;
+  // learnMoreLink: string;
 }
 
-const ButtonGroupWorkshops: React.FC<ButtonGroupWorkshopsProps> = ({ bookLink, learnMoreLink }) => (
-  <div className="z-10 py-5 text-right flex-row flex space-x-6">
+const ButtonGroupWorkshops: React.FC<ButtonGroupWorkshopsProps> = ({ bookLink }) => (
+  <div className="z-10 py-5 text-right flex-row flex space-x-6 w-40">
     <div>
       <Link href={bookLink}>
-        <Button color="primary">Book</Button>
+        <Button color="primary">Book a Spot</Button>
       </Link>
     </div>
-    <div>
+    {/* <div>
       <Link href={learnMoreLink}>
         <SquareButton color="primary">
           Learn More
@@ -35,7 +35,7 @@ const ButtonGroupWorkshops: React.FC<ButtonGroupWorkshopsProps> = ({ bookLink, l
           </svg>
         </SquareButton>
       </Link>
-    </div>
+    </div> */}
   </div>
 );
 
