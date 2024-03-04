@@ -25,7 +25,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
   quantity,
 }) => (
   <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
-   <img src={ImageSrc} alt={title} height={90} width={100} className="rounded-xl"  />
+   <img src={ImageSrc} alt={title} height={60} width={60} className="rounded-xl"  />
    <div>
     </div>
     <div className="md:flex md:space-x-40 2xl:space-x-72 ">
@@ -51,7 +51,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
       </div>
       <div>
       <p className="font-bold text-primary text-start text-[16px] pt-2">{price} </p>
-      <p className="text-textColor text-[12px] justipy-1 text-start">{remove}</p>
+      <p className="text-textColor text-[12px] justify py-1 text-start md:text-end">{remove}</p>
       </div>
     </div>
   </div>

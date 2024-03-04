@@ -76,7 +76,7 @@ const Offerings: React.FC = () => {
         </div>
         <div className="lg:px-20">
           <OfferingItem
-            title="Industrial Machines"
+            title="Machines"
             description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
             linkText="Learn More"
             linkUrl="/machines"

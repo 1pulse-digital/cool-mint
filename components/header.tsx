@@ -55,11 +55,11 @@ const navigationItems = [
     <div className={"z-30 relative h-[90px] bg-background"}>
       <Popover className="fixed w-full bg-background">
         {({ open }) => (
-          <div className="grid w-full grid-cols-3 px-8 py-4 sm:px-6 2xl:px-28">
-            <div className={""}>
+          <div className="grid w-full grid-cols-3 px-4 py-4 sm:px-6 2xl:px-28 lg:px-8 space-x-4">
+            <div className={"w-44"}>
               <Link href={"/"}>
                 <p>
-                    <Image src={logo} alt="Logo" width={120} height={40} />
+                    <Image src={logo} alt="Logo" width={130} height={80} />
                 </p>
               </Link>
             </div>
@@ -68,7 +68,7 @@ const navigationItems = [
 
               {/* Mobile menu */}
 
-              <div className="xl:hidden items-center grid justify-center">
+              <div className="lg:hidden items-center grid justify-center">
 
                 {/* Mobile menu button */}
                 <Popover.Button
@@ -92,12 +92,12 @@ const navigationItems = [
                     static
                     className="absolute inset-x-0 top-0 p-2 transition origin-top-right transform ">
                     <div
-                      className="bg-[#27272A] md:w-1/3 w-2/3  mt-16  ring-1 ring-black ring-opacity-5">
+                      className="bg-[#27272A] md:w-1/3 w-2/3 mt-16 ring-1 ring-black ring-opacity-5">
                       <div className="px-5 pt-5 pb-6">
                         <div className="flex items-start justify-between">
                           <div className="-mr-2">
                             <Popover.Button
-                              className="inline-flex items-center justify-center p-2 text-gray-400  rounded-md hover:text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-inset focus:ring-gray-500 focus:outline-none">
+                              className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-inset focus:ring-gray-500 focus:outline-none">
                               <span className="sr-only">Close menu</span>
                               <XIcon className="w-6 h-6" aria-hidden="true" />
                             </Popover.Button>
@@ -111,7 +111,7 @@ const navigationItems = [
                                 href={item.href}
                                 className="-m-4 flex items-start justify-start rounded-md p-3 px-6"
                               >
-                                <span className=" font-helvetica text-[14px] font-normal text-secondary">
+                                <span className=" font-helvetica text-[14px] font-normal text-textColor">
                                   {item.name}
                                 </span>
                               </a>
@@ -134,19 +134,21 @@ const navigationItems = [
               </div>
 
               {/* Desktop menu */}
-              <nav className="hidden w-full py-2 text-base gap-x-6 2xl:gap-x-4 xl:gap-x-1 xl:flex  text-primary items-center xl:justify-end lg:justify-center space-x-5 sm:gap-x-4">
+              <div className="lg:ml-[400px]">
+              <nav className="hidden py-2 text-base gap-x-6 2xl:gap-x-3 xl:gap-x-1 lg:gap-x-0 lg:flex text-primary items-end xl:justify-end justify-end space-x-5 2xl:space-x-5 xl:space-x-5 lg:space-x-5 sm:gap-x-4">
                
                 {/* Render all the navigationItems as <Link /> components */}
                 {navigationItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-secondary  hover:text-primary active:text-primary"
+              className="text-textColor active:text-primary hover:text-primary hover:font-bold lg:text-[15px] xl:text-base"
             >
               {item.name}
             </a>
           ))}
               </nav>
+              </div>
             </div>
             <div className="flex items-center justify-end gap-x-2 sm:gap-x-4">
                 <div className="hidden sm:block">
@@ -155,8 +157,7 @@ const navigationItems = [
                 href="https://www.facebook.com/madeinworkshop/"
                 target="_blank"
               >
-                <span className="py-0">
-                  {" "}
+                <p className="py-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="0.54em"
@@ -164,11 +165,11 @@ const navigationItems = [
                     viewBox="0 0 896 1664"
                   >
                     <path
-                      fill="#FAFAFA"
+                      fill="#EFEFEF"
                       d="M895 12v264H738q-86 0-116 36t-30 108v189h293l-39 296H592v759H286V905H31V609h255V391q0-186 104-288.5T667 0q147 0 228 12"
                     />
                   </svg>
-                </span>
+                </p>
               </Link>
 
               <Link
@@ -189,11 +190,11 @@ const navigationItems = [
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="0.88em"
-                    height="1.em"
+                    height="1.5em"
                     viewBox="0 0 740 850"
                   >
                     <path
-                      fill="#FAFAFA"
+                      fill="#EFEFEF"
                       d="M372 182q41 0 77 15t63 42t42 63t15 77t-15 76t-42 63t-63 42t-77 16t-77-16t-62-42t-42-63t-16-76t16-77t42-63t62-42t77-15m0 324q26 0 49-10t41-27t27-41t10-49t-10-50t-27-41t-41-27t-49-10t-49 10t-41 27t-27 41t-10 50t10 49t27 41t41 27t49 10m368-314q9 187 0 374q-2 36-17 68t-39 56t-57 40t-68 17q-47 2-93 3t-94 1t-93-1t-94-3q-36-2-68-17t-56-40t-40-56t-17-68q-8-187 0-374q2-36 17-68t40-57t56-39t68-17q187-9 374 0q36 2 68 17t57 39t39 57t17 68m-70 370q9-183 0-367q-1-22-11-42t-25-36t-36-26t-42-11q-46-2-92-3t-92-1t-92 1t-92 3q-22 1-42 11t-35 26t-26 36t-11 42q-9 184 0 368q1 22 11 42t26 35t35 26t42 11q184 9 368 0q22-1 42-11t36-26t25-36t11-42M569 138q18 0 31 13t13 31t-13 31t-31 13t-31-13t-13-31t13-31t31-13"
                     />
                   </svg>
@@ -212,7 +213,7 @@ const navigationItems = [
                     viewBox="0 0 24 24"
                   >
                     <path
-                      fill="#FAFAFA"
+                      fill="#EFEFEF"
                       d="m10 15l5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73"
                     />
                   </svg>
@@ -235,7 +236,7 @@ const navigationItems = [
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
-                  stroke="#FAFAFA"
+                  stroke="#EFEFEF"
                   className="h-6 w-6"
                 >
                   <path

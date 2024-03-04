@@ -21,10 +21,10 @@ import {
 
   export function FAQAccordion() {
   return (
-    <div className="py-20 2xl:mx-40 sm:px-10 xl:mx-28 px-2 ">
+    <div className="py-20 sm:py-2 2xl:mx-40 sm:px-10 xl:mx-28 px-2 ">
     <Tabs defaultValue="machines" className="bg-background">
     <div className="px-6 2xl:mx-96 lg:mx-60 md:mx-20 sm:mx-8">
-      <span className="text-secondary text-center py-3 text-sm">Filter by</span>
+      <p className="text-secondary text-center py-3 text-sm">Filter by</p>
       <TabsList className="grid w-full grid-cols-3 bg-[#27272A] text-secondary px-2">
         <TabsTrigger value="machines" className="">Machines</TabsTrigger>
         <TabsTrigger value="workshops">Workshops</TabsTrigger>
@@ -37,25 +37,56 @@ import {
             <CardTitle className="text-primary">Machines</CardTitle>
             <CardDescription className="text-textColor">
             <Accordion type="single" collapsible className="w-full">
+              <div></div>
         <AccordionItem className="text-textColor"value="item-1">
           <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
           <AccordionContent>
           Lorem ipsum dolor sit amet,
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2">
+        <AccordionItem value="machines">
         <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
           <AccordionContent>
           Lorem ipsum dolor sit amet
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-3">
+        <AccordionItem value="machines">
         <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
           <AccordionContent>
           Lorem ipsum dolor sit amet
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-4">
+        <AccordionItem value="machines">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="machines">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="machines">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="machines">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="machines">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="machines">
         <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
           <AccordionContent>
           Lorem ipsum dolor sit amet
@@ -78,6 +109,36 @@ import {
           <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
           <AccordionContent>
           Lorem ipsum dolor sit amet,
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
@@ -123,7 +184,50 @@ import {
           Lorem ipsum dolor sit amet
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="item-4">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+
         <AccordionItem value="item-3">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+        <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
+          <AccordionContent>
+          Lorem ipsum dolor sit amet
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
         <AccordionTrigger className="text-textColor text-[16px]">Lorem ipsum dolor sit amet</AccordionTrigger>
           <AccordionContent>
           Lorem ipsum dolor sit amet

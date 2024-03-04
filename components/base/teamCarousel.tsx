@@ -1,6 +1,8 @@
 import * as React from "react";
 import Image from "next/image";
-import gallery from "../../images/banner.webp";
+import henry from "../../images/Henry-Levine.webp";
+import joshua from "../../images/Joshua-Lotter.webp";
+import trenton from "../../images/Trenton-Carr.webp";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -30,7 +32,7 @@ export function TeamCarousel() {
   return (
     <div>
       <div className="py-20 grid items-center justify-center md:px-32 sm:px-16 h-auto px-8">
-      <h1 className={"text-headings text-secondary font-helvetica font-bold pb-16  text-center"}>Meet the Team<span className="text-primary">.</span></h1>
+      <h1 className={"text-headings text-secondary font-helvetica font-bold pb-16 sm:pb-2 text-center"}>Meet the Team<span className="text-primary">.</span></h1>
       
         <Tabs defaultValue="machines" className="">
            <div className="pb-16 2xl:mx-60">
@@ -41,36 +43,36 @@ export function TeamCarousel() {
                     <TabsTrigger value="machines">
                       <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 pt-10 ">
                         <Image
-                          src={gallery}
+                          src={henry}
                           alt="team member"
                           placeholder={"blur"}
                           className="rounded-lg"
-                          width="400"
-                          height="400"
+                          width="600"
+                          height="600"
                         />
                       </div>
                     </TabsTrigger>
                     <TabsTrigger value="workshops">
                       <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 pt-10">
                         <Image
-                          src={gallery}
+                          src={joshua}
                           alt="team member"
                           placeholder={"blur"}
                           className="rounded-lg"
-                          width="400"
-                          height="400"
+                          width="600"
+                          height="600"
                         />
                       </div>
                     </TabsTrigger>
                     <TabsTrigger value="general">
                       <div className="sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 pt-10">
                         <Image
-                          src={gallery}
+                          src={trenton}
                           alt="team member"
                           placeholder={"blur"}
                           className="rounded-lg"
-                          width="400"
-                          height="400"
+                          width="600"
+                          height="600"
                         />
                       </div>
                     </TabsTrigger>
@@ -87,17 +89,18 @@ export function TeamCarousel() {
           >
             <Card className="border-0 bg-background">
               <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-80 2xl:grid-cols-1">
-                <div className="rounded-md ">
+                <div className="rounded-md">
                   <Image
-                    src={gallery}
+                    src={henry}
                     alt="team member"
                     placeholder={"blur"}
                     className="rounded-t-lg"
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </div>
                 <div
                   className={
-                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-20"
+                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-10"
                   }
                 >
                   <h3
@@ -105,25 +108,21 @@ export function TeamCarousel() {
                       "text-start font-helvetica text-BodyText font-semibold text-textColor"
                     }
                   >
-                    Name: Peter
+                    Name: Henry Levine
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                    Position
+                    CEO
                   </span>
                   <span
                     className={
                       "text-start font-helvetica text-BodyText text-sm font-normal text-textColor"
                     }
                   >
-                    Dummy text is text that is used in the publishing industry
-                    or by web designers to occupy the space which will later be
-                    filled with real content. This is required when, for
-                    example, the final text is not yet available. Dummy text is
-                    also known as fill text. It is said that song composers of
-                    the past used dummy texts as lyrics when writing melodies in
-                    order to have a ready-made text to sing with the melody.
-                    Dummy texts have been in use by typesetters since the 16th
-                    century.
+                    An ego to own really big machines was probably the real reason Henry started Made In Workshop. 
+                    I liked the ability to make things that other people would normally purchase. 
+                    What was better that I could use this ego to help other people and SMEs
+                     to start and grow their own businesses.
+                      I enjoy being with members, teaching members how to use machines and I also learning from members.
                   </span>
                 </div>
               </div>
@@ -134,18 +133,19 @@ export function TeamCarousel() {
             value="workshops"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] 2xl:mx-60 2xl:grid-cols-1">
+              <div className="rounded-xl bg-[#2c3033] 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
-                    src={gallery}
+                    src={joshua}
                     alt="team member"
                     placeholder={"blur"}
                     className="rounded-t-lg"
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </div>
                 <div
                   className={
-                    "grid content-center p-5 py-8 font-helvetica 2xl:p-20"
+                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-10"
                   }
                 >
                   <h3
@@ -153,25 +153,20 @@ export function TeamCarousel() {
                       "text-start font-helvetica text-BodyText font-semibold text-textColor"
                     }
                   >
-                    Name: Joshua
+                   Joshua Lotter
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                    Position
+                  OPERATIONS MANAGER
                   </span>
                   <span
                     className={
                       "text-start font-helvetica text-BodyText text-sm font-normal text-textColor"
                     }
                   >
-                    Dummy text is text that is used in the publishing industry
-                    or by web designers to occupy the space which will later be
-                    filled with real content. This is required when, for
-                    example, the final text is not yet available. Dummy text is
-                    also known as fill text. It is said that song composers of
-                    the past used dummy texts as lyrics when writing melodies in
-                    order to have a ready-made text to sing with the melody.
-                    Dummy texts have been in use by typesetters since the 16th
-                    century.
+                    Cool, calm and collected. As the Operations Manager, I am second in command at MIW. 
+                    I am involved in managing the operations process, embracing design, planning, performance improvement,
+                     and maintaining general operations of the facility as well as the machines. 
+                    Whether I get a small chuckle or solve bigger problems, I enjoying making a positive impact by helping others around me.
                   </span>
                 </div>
               </div>
@@ -182,15 +177,16 @@ export function TeamCarousel() {
               <div className="rounded-xl bg-[#2c3033] 2xl:mx-60 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
-                    src={gallery}
+                    src={trenton}
                     alt="team member"
                     placeholder={"blur"}
                     className="rounded-t-lg"
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </div>
                 <div
                   className={
-                    "grid content-center p-5 py-8 font-helvetica 2xl:p-20"
+                    "grid content-center bg-[#2c3033] p-5 py-8  font-helvetica sm:p-10 2xl:p-10"
                   }
                 >
                   <h3
@@ -198,25 +194,18 @@ export function TeamCarousel() {
                       "text-start font-helvetica text-BodyText font-semibold text-textColor"
                     }
                   >
-                    Name: Jack
+                   Trenton Carr
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                    Position
+                  INSTRUCTOR
                   </span>
                   <span
                     className={
                       "text-start font-helvetica text-BodyText text-sm font-normal text-textColor"
                     }
                   >
-                    Dummy text is text that is used in the publishing industry
-                    or by web designers to occupy the space which will later be
-                    filled with real content. This is required when, for
-                    example, the final text is not yet available. Dummy text is
-                    also known as fill text. It is said that song composers of
-                    the past used dummy texts as lyrics when writing melodies in
-                    order to have a ready-made text to sing with the melody.
-                    Dummy texts have been in use by typesetters since the 16th
-                    century.
+                   I endeavour to bring interesting industrial 
+                   and mechanical designs to life by sucking the knowledge out of anyone willing to share at Made in Workshop.
                   </span>
                 </div>
               </div>

@@ -2,55 +2,45 @@
 import React from "react";
 import Button from "../base/button";
 import Link from "next/link";
-import ScrollToTop from "react-scroll-to-top";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+//import ScrollToTop from "react-scroll-to-top";
+import GetInTouch from "../base/getInTouch";
 
 export const Footer = () => {
   return (
-    <div>
-      <div className="bg-background py-10 pt-20">
-        <div className="h-auto px-8 font-helvetica text-secondary xl:mx-20">
-          <div className="md:grid grid-cols-2 ">
-            <div>
-              <div className="font-helvetica text-headings font-bold text-secondary">
-                Subscribe<span className="text-primary">.</span>
-              </div>
-              <div className="py-2 text-[12px] text-textColor  2xl:text-base">
-                Subscribe to our newsletter to stay in touch with the latest.
-              </div>
-              </div>
-            <div>
-              <form>
-                <div className="2xl:pt-4  mt-5 sm:mt-0">
-                  <Label htmlFor="email">Email Address:</Label>
-                  <div className="sm:flex w-full items-center sm:space-x-2 pt-2">
-                    <Input
-                      type="email"
-                      placeholder="henry@madeinworkshop.co.za"
-                      className="w-full"
-                    />
-                    <Button color="primary" className="w-full mt-5 sm:mt-0">
-                      Sign Up
-                    </Button>
-                  </div>
-                </div>
-              </form>
+    <div className="bg-background">
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
+      <div>
+        <hr className="mx-8 h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex 2xl:mx-28"></hr>
+      </div>
+      <div className="space-x-2 px-6 py-12 text-white md:flex md:space-x-12 md:px-10 lg:space-x-32 2xl:mx-16">
+        <div>
+          <div>
+            <div className="font-helvetica text-headings font-bold text-secondary">
+              Subscribe<span className="text-primary">.</span>
             </div>
-           
+            <div className="py-2 pb-4 text-[12px] text-textColor 2xl:text-base">
+              Subscribe to our newsletter to stay in touch with the latest.
+            </div>
+            <Link href="/contact">
+              <Button color="primary" className="mt-5 w-2/3 sm:mt-0">
+                Sign Up
+              </Button>
+            </Link>
           </div>
-          <div className="pt-0 lg:pt-20">
-            <hr className="mx-30 hidden h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex"></hr>
-          </div>
-          <div className="grid grid-cols-2 pt-16 2xl:grid-cols-3 2xl:pt-8 ">
-            <div>
-              <span className="py-2 font-helvetica text-BodyText font-bold text-textColor">
+        </div>
+
+        <div className="grid grid-cols-2 space-x-0 px-0 pt-10 sm:space-x-0 md:pt-0 lg:space-x-0">
+          <div>
+            <div className="pb-5">
+              <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
                 Contact
-              </span>
+              </p>
               <div>
                 <div>
                   <Link href="tel:0107451577">
-                    <span className="inline-flex text-[12px]">
+                    <p className="inline-flex text-[12px]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -66,12 +56,12 @@ export const Footer = () => {
                         />
                       </svg>
                       Tel: +27 10 745 1577
-                    </span>
+                    </p>
                   </Link>
                 </div>
                 <div>
                   <Link href="mailto:info@madeinworkshop.co.za">
-                    <span className="inline-flex text-[12px]">
+                    <p className="inline-flex text-[12px]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -87,20 +77,22 @@ export const Footer = () => {
                         />
                       </svg>
                       info@madeinworkshop.co.za
-                    </span>
+                    </p>
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="pl-10  2xl:py-2 2xl:pl-0">
-              <p className="py-2 font-helvetica text-BodyText font-bold text-textColor">
+          </div>
+          <div>
+            <div className="pl-8 sm:pl-0">
+              <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
                 Visit Us
               </p>
               <Link
                 href="https://maps.app.goo.gl/SnAiLT9eKz9Z6j789"
                 target="_blank"
               >
-                <span className="inline-flex text-xs">
+                <p className="inline-flex text-xs">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -121,37 +113,34 @@ export const Footer = () => {
                     />
                   </svg>
                   10 Naaf Street, Strydompark, Randburg, Johanneburg 2169
-                </span>
+                </p>
               </Link>
             </div>
-            <div className="py-6 2xl:py-2 2xl:pl-0">
+          </div>
+          <div>
+            <div className="py-4 pt-8 sm:pt-0">
+              <div className="font-helvetica text-BodyText font-bold text-textColor">
+                Legal
+              </div>
+              <Link href="/">
+                <p className="py-2 text-xs">Privacy Policy</p>
+              </Link>
+              <Link href="/">
+                <p className="text-xs">Terms and Conditions</p>
+              </Link>
+            </div>
+          </div>
+          <div className="pl-8 sm:pl-0">
+            <div className="py-4 pt-8 sm:pt-0">
               <p className="font-helvetica text-BodyText font-bold text-textColor">
-                Quick Links
-              </p>
-              <Link href="/machines">
-                <p className="pt-2 text-xs">Machines</p>
-              </Link>
-              <Link href="/memberships">
-                <p className="text-xs">Become a Member</p>
-              </Link>
-              <Link href="/bookTour">
-                <p className="text-xs">Book a Tour</p>
-              </Link>
-              <Link href="/workshops">
-                <p className="text-xs">Workshops</p>
-              </Link>
-            </div>
-            <div className="py-6 pl-10 2xl:py-2 2xl:pl-0">
-              <span className="font-helvetica text-BodyText font-bold text-textColor">
                 Follow Us
-              </span>
+              </p>
               <div className="flex flex-row space-x-2 py-2">
                 <div>
                   <Link
                     href="https://www.facebook.com/madeinworkshop/"
                     target="_blank"
                   >
-                    {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="0.54em"
@@ -162,7 +151,7 @@ export const Footer = () => {
                         fill="#FDBB11"
                         d="M895 12v264H738q-86 0-116 36t-30 108v189h293l-39 296H592v759H286V905H31V609h255V391q0-186 104-288.5T667 0q147 0 228 12"
                       />
-                    </svg>{" "}
+                    </svg>
                   </Link>
                 </div>
                 <div>
@@ -196,8 +185,8 @@ export const Footer = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="1.4em"
-                      height="1.4em"
+                      width="1.3em"
+                      height="1.3em"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -209,35 +198,24 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="py-4 2xl:py-2 2xl:pl-0">
-              <div className="font-helvetica text-BodyText font-bold text-textColor">
-                Legal
-              </div>
-              <Link href="/">
-                <div className="pt-2 text-xs">Privacy Policy</div>
-              </Link>
-              <Link href="/">
-                <div className="text-xs">Terms and Conditions</div>
-              </Link>
-            </div>
           </div>
         </div>
       </div>
       <div className="bg-[#929597] px-16 py-4 text-center text-xs">
-        <div className="font-helvetica text-secondary">
-          © 2024 Made in Workshop.{" "}
+        <div className="pb-2 font-helvetica text-secondary">
+          © 2024 Made in Workshop.
         </div>
         <Link
           href="https://www.1pulse.digital/"
           target="_blank"
           className="text-secondary hover:text-primary"
         >
-          <div>Developed and design by 1Pulse Digital</div>
+          <p>Developed and design by 1Pulse Digital</p>
         </Link>
 
         {/* Scroll to Top */}
       </div>
-      <div className="hidden bg-black">
+      {/*     <div className="hidden bg-black">
         <ScrollToTop
           className="lg:mx-36"
           smooth
@@ -258,7 +236,7 @@ export const Footer = () => {
             </svg>
           }
         />
-      </div>
+      </div> */}
     </div>
   );
 };

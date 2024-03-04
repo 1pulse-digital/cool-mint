@@ -19,7 +19,7 @@ export const HeroImages = () => {
         </h1>
         <p className="text-center font-helvetica sm:text-start md:text-start text-BodyText font-normal text-textColor lg:text-start">
           Made In Workshop (MIW) is a shared workshop and fabrication studio. Not just a workshop with a collection of tools and machines but a
-          community of like-minded fabricators, manufacturers, and designers.
+          community of <span className="text-primary">like-minded</span> fabricators, manufacturers, and designers.
         </p>
         <div className="py-8 text-center md:text-start sm:text-start lg:text-start">
           <Link href="/about">

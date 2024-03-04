@@ -14,15 +14,15 @@ interface PricingTabProps {
 function PricingTab(props: PricingTabProps) {
   return (
     <div>
-      <div className="relative flex flex-col h-full p-6 py-8 rounded-2xl  bg-background border border-primary">
+      <div className="relative flex flex-col p-6 py-8 rounded-2xl bg-background border border-primary 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]">
         {(
           <div className="absolute top-0 right-0 mr-6 -mt-4"></div>
         )}
         <div className="mb-5 text-start font-helvetica">
-          <div className="text-secondary dark:text-slate-200  text-start font-semibold mb-1">{props.planName}</div>
+          <div className="text-secondary dark:text-slate-200 text-start font-semibold mb-1">{props.planName}</div>
           <div className="inline-flex items-baseline mb-2">
-            <span className="text-primary  text-xl">R</span>
-            <span className="text-primary   text-xl">{props.price.monthly}</span>
+            <span className="text-primary text-xl">R</span>
+            <span className="text-primary text-xl">{props.price.monthly}</span>
             <span className="text-secondary text-xs px-2 font-medium">per month</span>
           </div>
         </div>
@@ -31,15 +31,15 @@ function PricingTab(props: PricingTabProps) {
             return (
               <li key={index} className="flex items-center">
                 <svg className="w-3 h-3 fill-primary mr-3 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                  <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z"/>
                 </svg>
-                <span>{feature}</span>
+                <p>{feature}</p>
               </li>
             );
           })}
         </ul>
         <div className="pt-8 text-start">
-        <Link href="/">
+        <Link href="/becomeAMember">
         <Button color={'primary'}>Sign Up</Button>
         </Link>
         </div>
@@ -54,7 +54,7 @@ export default function PricingTable() {
     <div className="xl:mx-40 2xl:mx-72 lg:mx-32 md:mx-12 sm:mx-32 mx-8">
       {/* Pricing toggle */}
       <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16"> </div>
-      <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-3 items-start lg:max-w-none px-0">
+      <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-2 items-start lg:max-w-none px-0">
         {/* Pricing tab 1 */}
         <PricingTab
          

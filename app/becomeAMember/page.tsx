@@ -56,7 +56,6 @@ const BecomeAMember: React.FC = () => {
           </div>  
           </div>
     </div>
-    <div className="2xl:px-24 lg:px-8"><GetInTouch /></div>
     </div>
   );
 };
