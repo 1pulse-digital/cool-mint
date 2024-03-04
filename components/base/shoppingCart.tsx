@@ -1,5 +1,6 @@
 import React from "react";
 import { title } from "process";
+import Image from 'next/image';
 
 
 
@@ -25,7 +26,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
   quantity,
 }) => (
   <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
-   <img src={ImageSrc} alt={title} height={60} width={60} className="rounded-xl"  />
+   <Image src={ImageSrc} alt={title} height={60} width={60} className="rounded-xl"  />
    <div>
     </div>
     <div className="md:flex md:space-x-40 2xl:space-x-72 ">

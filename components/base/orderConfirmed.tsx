@@ -1,5 +1,7 @@
 import React from "react";
 import { title } from "process";
+import Image from 'next/image';
+
 
 interface OrderConfirmedProps {
   date: string;
@@ -22,7 +24,7 @@ const OrderConfirmedItem: React.FC<OrderConfirmedProps> = ({
   quantity,
 }) => (
   <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
-   <img src={ImageSrc} alt={title} height={80} width={65} className="rounded-xl"/>
+   <Image src={ImageSrc} alt={title} height={80} width={65} className="rounded-xl"/>
    <div>
     </div>
     <div className="text-start">
