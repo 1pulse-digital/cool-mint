@@ -23,7 +23,7 @@ const GetInTouch = () => {
         <div>
           <Link href="/bookTour">
             <SmallButton color="primary">
-              Learn More
+              Book a Tour
               <svg
                 className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
                 aria-hidden="true"
