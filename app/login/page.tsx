@@ -5,7 +5,7 @@ import Button, {
   SmallButtonOrange,
 } from "@/components/base/button";
 import Link from "next/link";
-import gallery from "../../images/banner.webp";
+import login from "../../images/login.png";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -14,11 +14,11 @@ const Login: React.FC = () => {
     <div className={"bg-background 2xl:h-screen"}>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="hidden md:block">
-          <div>
-            <Image src={gallery} alt="made in workshop" placeholder={"blur"} />
+          <div className="object-cover w-full h-full">
+            <Image src={login} alt="made in workshop" placeholder={"blur"} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
           </div>
         </div>
-        <div className="grid px-8 md:px-16 2xl:mx-52 2xl:place-content-end 2xl:px-0">
+        <div className="grid px-8 md:px-16 2xl:mx-52 2xl:place-content-center 2xl:px-0">
           <div className={"grid content-center font-helvetica"}>
             <h1
               className={
@@ -40,7 +40,7 @@ const Login: React.FC = () => {
             </div>
             <div>
               <Link href="/register">
-                <SmallButtonOrange color="primary">
+                <SmallButtonOrange color="primary" className="font-bold">
                   Create an account
                   <svg
                     className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
                 <Input
                   type="email"
                   id="email"
-                  placeholder="henry@madeinworkshop.co.za"
+                  placeholder="Email"
                   className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
