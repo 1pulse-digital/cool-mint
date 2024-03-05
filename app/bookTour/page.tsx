@@ -1,8 +1,5 @@
 import React from "react";
-import { FAQAccordion } from "@/components/base/faqAccordion";
 import Tour from "@/components/base/tour";
-import BlogWidget from "@/components/detailed/blogWidget";
-import Button from "@/components/base/button";
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
 import {
@@ -11,8 +8,8 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import GetInTouch from "@/components/base/getInTouch";
 import HeaderTitle from "@/components/base/headerTitle";
+import GetInTouch from "@/components/base/getInTouch";
 
 const BookTour = () => {
   return (
@@ -46,38 +43,38 @@ const BookTour = () => {
                   <CarouselItem>
                     <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] py-2 text-secondary">
                       <TabsTrigger value="monday" className="ml-2 p-5">
-                        Jan
+                        Mon
                       </TabsTrigger>
                       <TabsTrigger value="tuesday" className="p-5">
-                        Feb
+                        Tue
                       </TabsTrigger>
                       <TabsTrigger value="wednesday" className="p-5">
-                        Mar
+                        Wed
                       </TabsTrigger>
                       <TabsTrigger value="thursday" className="p-5">
-                        Apr
+                        Thur
                       </TabsTrigger>
                       <TabsTrigger value="friday" className="mr-2 p-5">
-                        May
+                        Fri
                       </TabsTrigger>
                     </TabsList>
                   </CarouselItem>
                   <CarouselItem>
                     <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] py-2 text-secondary">
                       <TabsTrigger value="monday" className="ml-2 p-5">
-                        Jun
+                        Sat
                       </TabsTrigger>
                       <TabsTrigger value="tuesday" className="p-5">
-                        Jul
+                        Sun
                       </TabsTrigger>
                       <TabsTrigger value="wednesday" className="p-5">
-                        Aug
+                        Mon
                       </TabsTrigger>
                       <TabsTrigger value="thursday" className="p-5">
-                        Sep
+                        Tue
                       </TabsTrigger>
                       <TabsTrigger value="friday" className="mr-2 p-5">
-                        Oct
+                        Wed
                       </TabsTrigger>
                     </TabsList>
                   </CarouselItem>
@@ -492,6 +489,9 @@ friday */}
             </TabsContent>
           </Tabs>
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );
