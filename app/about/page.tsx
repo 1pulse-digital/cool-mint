@@ -3,6 +3,7 @@ import Image from "next/image";
 import gallery from "/images/banner.webp";
 import { TeamCarousel } from "@/components/base/teamCarousel";
 import Link from "next/link";
+import GetInTouch from "@/components/base/getInTouch";
 
 const About = () => {
   return (
@@ -106,6 +107,9 @@ const About = () => {
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
         <TeamCarousel />
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );
