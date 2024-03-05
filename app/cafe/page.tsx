@@ -1,4 +1,5 @@
 import { CafeMIW } from "@/components/base/cafeMIW";
+import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
 import React from "react";
 
@@ -26,6 +27,9 @@ import React from "react";
           </span>
         </div>
         <CafeMIW />
+        <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
      </div>
      </div>
   );
