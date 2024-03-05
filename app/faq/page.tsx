@@ -2,6 +2,7 @@
 import React from "react";
 import { FAQAccordion } from "@/components/base/faqAccordion";
 import Link from "next/link";
+import GetInTouch from "@/components/base/getInTouch";
 
 const FAQ = () => {
   return (
@@ -37,6 +38,9 @@ const FAQ = () => {
         </span>
       </div>
       <FAQAccordion />
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
     </div>
   );
 };
