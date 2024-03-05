@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/base/contactForm";
+import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
 import React from "react";
 
@@ -136,6 +137,9 @@ const Contact = () => {
             loading="lazy"
           ></iframe>
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );
