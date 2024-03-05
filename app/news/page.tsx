@@ -15,6 +15,7 @@ import {
     TabsTrigger,
   } from "@/components/ui/tabs"
 import HeaderTitle from "@/components/base/headerTitle";
+import GetInTouch from "@/components/base/getInTouch";
 
 
 const News = () => {
@@ -251,6 +252,9 @@ const News = () => {
             </Link>
             </div>
         </div>
+        <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
      </div>
   );
 };
