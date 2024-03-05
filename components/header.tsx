@@ -26,8 +26,8 @@ const navigationItems = [
     href: "/memberships",
   },
   {
-    name: "Workshops",
-    href: "/workshops",
+    name: "Classes",
+    href: "/classes",
   },
   {
     name: "FAQ",
