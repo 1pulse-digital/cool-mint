@@ -1,6 +1,7 @@
 import React from "react";
 import PricingTable from "@/components/base/pricing-table";
 import Link from "next/link";
+import GetInTouch from "@/components/base/getInTouch";
 
 const Memberships = () => {
   return (
@@ -35,7 +36,7 @@ const Memberships = () => {
           }
         >
           We have membership options that cover all types of customers ranging
-          from <span className="text-primary"> professionals</span> to{" "}
+          from <span className="text-primary"> professionals</span> to
           <span className="text-primary"> hobbyists</span> . Our Membership
           model was designed to work in perfect synchronisation with your
           business cycle. Days do not have to be used in consecutive order and
@@ -48,6 +49,9 @@ const Memberships = () => {
           Prices include VAT.
         </p>
         <PricingTable />
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );
