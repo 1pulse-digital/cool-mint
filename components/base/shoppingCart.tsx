@@ -12,7 +12,7 @@ interface ShoppingCartProps {
   ImageSrc: string;
   price: string;
   remove: string;
-  quantity: string;
+  host: string;
   
 }
 
@@ -23,13 +23,13 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
   time,
   price,
   remove,
-  quantity,
+  host,
 }) => (
-  <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
-   <Image src={ImageSrc} alt={title} height={60} width={60} className="rounded-xl"  />
+  <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6 flex-wrap">
+   <Image src={ImageSrc} alt={title} height={60} width={90} className="rounded-xl"  />
    <div>
     </div>
-    <div className="md:flex md:space-x-40 2xl:space-x-72 ">
+    <div className="md:flex md:space-x-40 2xl:space-x-72 py-4 sm:py-0">
     <div className="text-start">
       <span className="text-xl font-helvetica font-bold text-secondary">{name}</span>
       <div className="flex row space-x-4">
@@ -46,7 +46,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
         <span className="text-secondary text-xs py-1 inline-flex">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FDBB10" className="w-4 h-4 mr-2">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-</svg> QTY: {quantity}
+</svg>{host}
         </span>
       </div>
       </div>
@@ -69,7 +69,7 @@ const ShoppingCart: React.FC = () => {
         time="3 hours"
         price="R1,500.00"
         remove="Remove"
-        quantity="2"
+        host="Henry Levine"
       />
 
 
@@ -80,7 +80,7 @@ const ShoppingCart: React.FC = () => {
         time="3 hours"
         price="R1,200.00"
         remove="Remove"
-        quantity="1"
+        host="Henry Levine"
       />
     </div>
   );
