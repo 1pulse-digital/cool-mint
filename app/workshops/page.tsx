@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
+import GetInTouch from "@/components/base/getInTouch";
 
 const Workshops = () => {
   return (
@@ -37,6 +38,9 @@ const Workshops = () => {
         <div>
           <UpcomingWorkshops />
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );
