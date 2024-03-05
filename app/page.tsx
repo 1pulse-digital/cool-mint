@@ -4,22 +4,23 @@ import { HeroImages } from "@/components/base/heroImages";
 import { Community } from "@/components/community";
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
 import Offerings from "@/components/offerings";
+import GetInTouch from "@/components/base/getInTouch";
 
 export default function Home() {
   return (
     <div className="bg-background">
     <div className="font-helvetica lg:px-28">
-      <div className="px-8">
+      <div className="px-8">       
         <Hero />
-        <div className="">
+        <div>
           <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
         </div>
         <HeroImages />
-        <div className="">
+        <div>
           <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
         </div>
         <Offerings />
-        <div className="">
+        <div>
           <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
         </div>
         <Community />    
@@ -40,6 +41,9 @@ export default function Home() {
       </div>
       <UpcomingWorkshops />
     </div>
+    <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
     </div>
   );
 }
