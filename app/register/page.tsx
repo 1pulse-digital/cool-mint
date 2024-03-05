@@ -2,11 +2,10 @@
 import Image from 'next/image';
 import google from "../../images/google.png";
 import Button, { LongButton, SmallButtonOrange } from "@/components/base/button";
-import { InputComponent } from "@/components/base/inputComponents";
 import Link from "next/link";
-import gallery from "../../images/banner.webp";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import login from "../../images/login.png";
 
 
 const Register: React.FC = () => {
@@ -14,15 +13,11 @@ const Register: React.FC = () => {
     <div className={"bg-background py-10"}>
       <div className="grid grid-cols-1 md:grid-cols-2">
        <div className="hidden md:block">
-        <div>
-          <Image
-            src={gallery}
-            alt="made in workshop"
-            placeholder={"blur"}
-          />
-        </div>
+       <div className="object-cover w-full h-full">
+            <Image src={login} alt="made in workshop" placeholder={"blur"} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+          </div>
       </div>
-      <div className="grid 2xl:mx-52 xl:mx-20 2xl:place-content-end px-8 2xl:px-0 md:px-16">
+      <div className="grid px-8 md:px-16 2xl:mx-52 2xl:place-content-center 2xl:px-0">
       <div className={"grid content-center font-helvetica  md:max-w-prose"}>
       <h1 className={"text-headings text-secondary font-helvetica font-bold py-2 lg:py-0 md:py-0 text-center sm:text-start md:text-start"}>Create an account</h1>
           </div> 
