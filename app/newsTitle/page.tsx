@@ -4,43 +4,45 @@ import gallery from "../../images/Small-Business-Showcase-Made-In-Workshop-ppf2p
 import Link from "next/link";
 import BlogWidget from "@/components/detailed/blogWidget";
 import Button from "@/components/base/button";
+import GetInTouch from "@/components/base/getInTouch";
 
 const NewsTitle = () => {
   return (
-    <div className={"bg-background p-10 px-8 py-32"}>
-      <div className="grid  items-center justify-center 2xl:mx-60">
-        <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
-          <Link href="/">
-            <div>
-              Home
-              <span className="px-1">|</span>
-            </div>
-          </Link>
-
-          <Link href="/news">
-            <div className="">
-              News <span className="px-1">|</span>{" "}
-            </div>
-          </Link>
-          <Link href="/news">
-            <div className="text-primary">
-              Small Business Showcase Made in Workshop
-            </div>
-          </Link>
-        </div>
-        <div className="py-8">
-          <Image
-            src={gallery}
-            alt="made in workshop"
-            placeholder={"blur"}
-            className="rounded-md"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-          />
-        </div>
+    <div className={"bg-background"}>
+      <div className="px-6 py-6 2xl:mx-28">
+        <Image
+          src={gallery}
+          alt="made in workshop"
+          placeholder={"blur"}
+          className="rounded-md"
+          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+        />
+      </div>
+      <div className="grid items-center justify-center px-8 sm:px-4 2xl:mx-40">
+    
         <div className={"grid content-center font-helvetica sm:p-10 "}>
+          <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-secondary">
+            <Link href="/">
+              <div>
+                Home
+                <span className="px-1">|</span>
+              </div>
+            </Link>
+
+            <Link href="/news">
+              <div className="">
+                News <span className="px-1">|</span>{" "}
+              </div>
+            </Link>
+            <Link href="/news">
+              <div className="text-primary">
+                Small Business Showcase Made in Workshop
+              </div>
+            </Link>
+          </div>
           <h1
             className={
-              "text-start font-helvetica text-headings font-bold text-secondary"
+              "text-start font-helvetica text-headings font-bold leading-tight text-secondary"
             }
           >
             Small business showcase: Made in workshop
@@ -140,7 +142,7 @@ const NewsTitle = () => {
               Latest News
             </h1>
           </div>
-          <div className=" sm:hidden">
+          <div className="sm:hidden">
             <div>
               <p
                 className={
@@ -317,6 +319,9 @@ const NewsTitle = () => {
             <Button color={"primary"}>Learn More</Button>
           </Link>
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );
