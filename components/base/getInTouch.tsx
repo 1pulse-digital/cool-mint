@@ -5,7 +5,7 @@ import Button, { LongButton, SmallButton, SquareButton } from "./button";
 const GetInTouch = () => {
   return (
     <div
-    className="flex flex-col items-center justify-center rounded-md bg-[#27272A] mx-8 lg:mx-2 font-helvetica px-8"
+    className="flex items-center justify-center rounded-md bg-[#27272A] mx-8 lg:mx-2 font-helvetica px-8 flex-wrap"
   >
     <div className="rounded-full py-8 text-center px-4">
       <h1 className="py-4 font-helvetica text-headings font-bold text-secondary">
@@ -23,7 +23,7 @@ const GetInTouch = () => {
         <div>
           <Link href="/bookTour">
             <SmallButton color="primary">
-              Learn More
+              Book a Tour
               <svg
                 className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
                 aria-hidden="true"

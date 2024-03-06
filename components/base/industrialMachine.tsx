@@ -32,8 +32,8 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
   return (
     <div className="rounded-xl mb-0">
       <div>
-      <div className="lg:flex  2xl:mx-60 bg-[#2c3033]">
-      <div className=" lg:rounded-l-lg object-cover">
+      <div className="lg:flex 2xl:mx-60 bg-[#2c3033]">
+      <div className="lg:rounded-l-lg object-cover">
         <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className=" lg:rounded-l-lg" style={{ objectFit: "cover", width: "100%", height: "100%" }}/>
       </div>
       <div className="p-5 bg-[#2c3033] sm:px-16 py-8">

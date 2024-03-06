@@ -24,11 +24,10 @@ export function CafeMIW() {
     <div className="sm:px-16 grid justify-center items-center md:px-20 xl:mx-20">
     <Tabs defaultValue="machines">
     <div className="pb-16">
-    <Carousel className="mx-6 pt-0 2xl:pt-20">
+    <Carousel className="mx-6 pt-0">
     <CarouselContent className="">
     <CarouselItem>
       <TabsList className="bg-background space-x-2 2xl:space-x-9 sm:space-x-4 md:space-x-6">
-        
         <TabsTrigger value="machines"><div className="pt-28 2xl:pt-80 sm:pt-32 md:pt-44 xl:pt-72 lg:pt-52">
             <Image
              src={gallery}

@@ -3,6 +3,7 @@ import IndustrialMachineTools from "@/components/base/IndustrialMachineTools";
 import Button from "@/components/base/button";
 import Link from "next/link";
 import HeaderTitle from "@/components/base/headerTitle";
+import GetInTouch from "@/components/base/getInTouch";
 
 
 const MachinesTools = () => {
@@ -38,6 +39,9 @@ const MachinesTools = () => {
           </div>
         </div>
         </div>
+        <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
      </div>
   );
 };

@@ -1,4 +1,6 @@
 import { CafeMIW } from "@/components/base/cafeMIW";
+import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 import Link from "next/link";
 import React from "react";
 
@@ -8,7 +10,7 @@ import React from "react";
   return(
     <div>
       <div className={"bg-background py-20 px-6"}>
-      <div className={"grid content-center font-helvetica pb-16 2xl:mx-72 sm:mx-20 md:mx-28 lg:mx-44"}>
+      <div className={"grid content-center font-helvetica pb-16 "}>
         <div className="text-xs text-secondary  font-helvetica font-normal inline-flex justify-center">
             <Link href="/">
           <div>
@@ -20,12 +22,20 @@ import React from "react";
           <div className="text-primary">Made in Workshop Cafe</div>
           </Link>
           </div>
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>MIW Café<span className="text-primary">.</span></h1>
-          <span className={"text-BodyText text-textColor text-center font-helvetica font-normal 2xl:px-52 lg:px-32"}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          </span>
+          <div>
+       <HeaderTitle title="MIW Café"
+        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat."
+      />
+      </div>
         </div>
+        <div className="2xl:mx-72 sm:mx-20 md:mx-28 lg:mx-44">
         <CafeMIW />
+        </div>
+        <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
      </div>
      </div>
   );

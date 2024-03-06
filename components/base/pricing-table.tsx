@@ -4,17 +4,21 @@ import Link from 'next/link';
 
 interface PricingTabProps {
   planName: string;
-  price: {
-    monthly: number;
-  };
+  popular?: boolean
+  price:  string;
   planDescription: string;
   features: string[];
 }
 
 function PricingTab(props: PricingTabProps) {
   return (
-    <div>
+    <div className={`h-full ${props.popular ? 'dark' : ''}`}>
       <div className="relative flex flex-col p-6 py-8 rounded-2xl bg-background border border-primary 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]">
+      {props.popular && (
+          <div className="absolute top-0 right-0 mr-6 -mt-4">
+            <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-emerald-500 text-white rounded-full shadow-sm shadow-slate-950/5">Most Popular</div>
+          </div>
+        )}
         {(
           <div className="absolute top-0 right-0 mr-6 -mt-4"></div>
         )}
@@ -22,8 +26,8 @@ function PricingTab(props: PricingTabProps) {
           <div className="text-secondary dark:text-slate-200 text-start font-semibold mb-1">{props.planName}</div>
           <div className="inline-flex items-baseline mb-2">
             <span className="text-primary text-xl">R</span>
-            <span className="text-primary text-xl">{props.price.monthly}</span>
-            <span className="text-secondary text-xs px-2 font-medium">per month</span>
+            <span className="text-primary text-xl">{props.price}</span>
+            <span className="text-secondary text-xs px-2 font-medium">/ per month</span>
           </div>
         </div>
         <ul className="text-textColor font-helvetica font-normal text-[13px] space-y-3 grow">
@@ -51,7 +55,7 @@ function PricingTab(props: PricingTabProps) {
 export default function PricingTable() {
   
   return (
-    <div className="xl:mx-40 2xl:mx-72 lg:mx-32 md:mx-12 sm:mx-32 mx-8">
+    <div className="xl:mx-40 2xl:mx-72 lg:mx-16 md:mx-12 sm:mx-32 mx-8">
       {/* Pricing toggle */}
       <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16"> </div>
       <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-2 items-start lg:max-w-none px-0">
@@ -59,7 +63,7 @@ export default function PricingTable() {
         <PricingTab
          
           planName="All Access Workshop"
-          price={{ monthly: 1500}}
+          price= "8358 to R10999"
           planDescription="There are many variations available, but the majority have suffered."
           features={[
             'Dedicated storage and workspace',
@@ -73,12 +77,13 @@ export default function PricingTable() {
 
         {/* Pricing tab 2 */}
         <PricingTab
+         popular={true}
           planName="Professional Freelancer"
-          price={{ monthly: 4539 }}
+          price= "4992"
           planDescription="There are many variations available, but the majority have suffered."
           features={[
             'No Storage',
-            'R499 joining fee for first time members',
+            'R549 joining fee for first time members',
             '15 day access valid over 2 months',
             'Multiuser access',
             'Unlimited access to tools and machines',
@@ -87,12 +92,13 @@ export default function PricingTable() {
 
         {/* Pricing tab 3 */}
         <PricingTab
+       
           planName="Hobbyist"
-          price={{ monthly: 1500 }}
+          price= "1507"
           planDescription="There are many variations available, but the majority have suffered."
           features={[
             'No Storage ',
-            'R499 joining fee for first time members',
+            'R549 joining fee for first time members',
             '3 day access valid over 1 month',
             'Multiuser access',
             'Unlimited access to tools and machines',

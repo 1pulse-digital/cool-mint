@@ -203,7 +203,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
              // learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -216,7 +216,6 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background py-8">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              January
             </CardTitle>
             <WorkshopItem
               date="January"
@@ -227,7 +226,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -250,7 +249,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividualt"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -274,7 +273,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
              // learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -286,7 +285,6 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background py-8">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              February
             </CardTitle>
             <WorkshopItem
               date="february"
@@ -297,7 +295,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
              // learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -321,7 +319,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -333,7 +331,6 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              March
             </CardTitle>
             <WorkshopItem
               date="march"
@@ -344,7 +341,7 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -357,63 +354,89 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              April
+            April
             </CardTitle>
             <WorkshopItem
-              date="april"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
-              //learnMoreLink="/workshopIndividual"
-            />
-            <WorkshopItem
-              date="april"
-              day="18"
-              name="Workshop Name"
-              time="3 hours"
-              instructor="Henry Levine"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price="R1,500.00"
-              spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
 
-        {/* May Workshops */}
-        <TabsContent className="bg-background px-10 font-helvetica" value="may">
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="april"
+        >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              May
+            
             </CardTitle>
             <WorkshopItem
-              date="may"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+        
+
+        {/* May Workshops */}
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="may"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+           May
+            </CardTitle>
             <WorkshopItem
-              date="may"
-              day="19"
-              name="Workshop Name"
+              date="march"
+              day="05"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="may"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
+            <WorkshopItem
+              date="march"
+              day="05"
+              name="Cutter"
+              time="3 hours"
+              instructor="Henry Levine"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price="R1,500.00"
+              spotsLeft="5 Spots Left"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -426,30 +449,41 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              June
+           June
             </CardTitle>
             <WorkshopItem
-              date="june"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="june"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
             <WorkshopItem
-              date="june"
-              day="19"
-              name="Workshop Name"
+              date="march"
+              day="05"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -461,31 +495,42 @@ const UpcomingWorkshops: React.FC = () => {
           value="july"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="pb-8  text-start font-helvetica text-lg font-normal text-primary">
-              July
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            July
             </CardTitle>
             <WorkshopItem
-              date="july"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="july"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
             <WorkshopItem
-              date="july"
-              day="19"
-              name="Workshop Name"
+              date="march"
+              day="05"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -498,30 +543,41 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              August
+            August
             </CardTitle>
             <WorkshopItem
-              date="august"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="august"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
             <WorkshopItem
-              date="august"
-              day="19"
-              name="Workshop Name"
+              date="march"
+              day="05"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -534,35 +590,45 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              September
+            September
             </CardTitle>
             <WorkshopItem
-              date="september"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
-              //learnMoreLink="/workshopIndividual"
-            />
-            <WorkshopItem
-              date="september"
-              day="19"
-              name="Workshop Name"
-              time="3 hours"
-              instructor="Henry Levine"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price="R1,500.00"
-              spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
 
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="september"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
+            <WorkshopItem
+              date="march"
+              day="05"
+              name="Cutter"
+              time="3 hours"
+              instructor="Henry Levine"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price="R1,500.00"
+              spotsLeft="5 Spots Left"
+              bookLink="/classesIndividual"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
         {/* October Workshops */}
         <TabsContent
           className="bg-background px-10 font-helvetica"
@@ -570,35 +636,45 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              October
+            October
             </CardTitle>
             <WorkshopItem
-              date="october"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
-              //learnMoreLink="/workshopIndividual"
-            />
-            <WorkshopItem
-              date="october"
-              day="19"
-              name="Workshop Name"
-              time="3 hours"
-              instructor="Henry Levine"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price="R1,500.00"
-              spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
 
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="october"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
+            <WorkshopItem
+              date="march"
+              day="05"
+              name="Cutter"
+              time="3 hours"
+              instructor="Henry Levine"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price="R1,500.00"
+              spotsLeft="5 Spots Left"
+              bookLink="/classesIndividual"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
         {/* November Workshops */}
         <TabsContent
           className="bg-background px-10 font-helvetica"
@@ -606,66 +682,88 @@ const UpcomingWorkshops: React.FC = () => {
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              November
+            November
             </CardTitle>
             <WorkshopItem
-              date="november"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
-              //learnMoreLink="/workshopIndividual"
-            />
-            <WorkshopItem
-              date="november"
-              day="19"
-              name="Workshop Name"
-              time="3 hours"
-              instructor="Henry Levine"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price="R1,500.00"
-              spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
 
-        {/* May Workshops */}
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="november"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
+            <WorkshopItem
+              date="march"
+              day="05"
+              name="Cutter"
+              time="3 hours"
+              instructor="Henry Levine"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price="R1,500.00"
+              spotsLeft="5 Spots Left"
+              bookLink="/classesIndividual"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+
+        {/* Dec Workshops */}
         <TabsContent
           className="bg-background px-10 font-helvetica"
           value="december"
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              December
+          December
             </CardTitle>
             <WorkshopItem
-              date="december"
-              day="07"
+              date="march"
+              day="05"
               name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica py-8"
+          value="december"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            
+            </CardTitle>
             <WorkshopItem
-              date="december"
-              day="19"
-              name="Workshop Name"
+              date="march"
+              day="05"
+              name="Cutter"
               time="3 hours"
               instructor="Henry Levine"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/workshopIndividual"
+              bookLink="/classesIndividual"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>

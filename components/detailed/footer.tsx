@@ -8,9 +8,6 @@ import GetInTouch from "../base/getInTouch";
 export const Footer = () => {
   return (
     <div className="bg-background">
-      <div className="py-20 lg:px-8 2xl:px-24">
-        <GetInTouch />
-      </div>
       <div>
         <hr className="mx-8 h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex 2xl:mx-28"></hr>
       </div>
@@ -31,7 +28,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 space-x-0 px-0 pt-10 sm:space-x-0 md:pt-0 lg:space-x-0">
+        <div className="grid sm:grid-cols-2 grid-cols-1 space-x-0 px-0 pt-10 sm:space-x-0 md:pt-0 lg:space-x-0">
           <div>
             <div className="pb-5">
               <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
@@ -84,7 +81,7 @@ export const Footer = () => {
             </div>
           </div>
           <div>
-            <div className="pl-8 sm:pl-0">
+            <div className="">
               <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
                 Visit Us
               </p>
@@ -99,7 +96,7 @@ export const Footer = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="#FDBB10"
-                    className="h-6 w-12 pr-2"
+                    className="h-6 w-8 pr-2"
                   >
                     <path
                       strokeLinecap="round"
@@ -118,7 +115,7 @@ export const Footer = () => {
             </div>
           </div>
           <div>
-            <div className="py-4 pt-8 sm:pt-0">
+            <div className="py-4 pt-6 sm:pt-0">
               <div className="font-helvetica text-BodyText font-bold text-textColor">
                 Legal
               </div>
@@ -130,8 +127,8 @@ export const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="pl-8 sm:pl-0">
-            <div className="py-4 pt-8 sm:pt-0">
+          <div className="sm:px-1">
+            <div className="py-4 pt-5 sm:pt-0">
               <p className="font-helvetica text-BodyText font-bold text-textColor">
                 Follow Us
               </p>

@@ -2,11 +2,10 @@
 import Image from 'next/image';
 import google from "../../images/google.png";
 import Button, { LongButton, SmallButtonOrange } from "@/components/base/button";
-import { InputComponent } from "@/components/base/inputComponents";
 import Link from "next/link";
-import gallery from "../../images/banner.webp";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import login from "../../images/login.png";
 
 
 const Register: React.FC = () => {
@@ -14,15 +13,11 @@ const Register: React.FC = () => {
     <div className={"bg-background py-10"}>
       <div className="grid grid-cols-1 md:grid-cols-2">
        <div className="hidden md:block">
-        <div>
-          <Image
-            src={gallery}
-            alt="made in workshop"
-            placeholder={"blur"}
-          />
-        </div>
+       <div className="object-cover w-full h-full">
+            <Image src={login} alt="made in workshop" placeholder={"blur"} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+          </div>
       </div>
-      <div className="grid 2xl:mx-52 xl:mx-20 2xl:place-content-end px-8 2xl:px-0 md:px-16">
+      <div className="grid px-8 md:px-16 2xl:mx-52 2xl:place-content-center 2xl:px-0">
       <div className={"grid content-center font-helvetica  md:max-w-prose"}>
       <h1 className={"text-headings text-secondary font-helvetica font-bold py-2 lg:py-0 md:py-0 text-center sm:text-start md:text-start"}>Create an account</h1>
           </div> 
@@ -44,7 +39,7 @@ const Register: React.FC = () => {
     <div>
            <Label htmlFor="email" className="text-secondary mt-2">Email</Label>
            <div className="mt-2">
-      <Input type="email" id="email" placeholder="henry@madeinworkshop.co.za" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      <Input type="email" id="email" placeholder="Email" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
       </div>
         </div>
     <div> <Button color="primary" className="w-full mt-4">Register with Email</Button></div>
@@ -53,7 +48,9 @@ const Register: React.FC = () => {
     <p className="text-textColor text-xs font-helvetica">OR CONTINUE WITH</p>
     <hr className="flex-grow h-[1px] mx-2 bg-secondary border-0"></hr>
 </div>
- <div className="inline-flex w-full "> 
+<Link href="/verify">
+ <div className="inline-flex w-full"> 
+ 
           <LongButton color="secondary" className="w-full flex items-center justify-center">
             <p className="flex items-center">
             <Image 
@@ -66,7 +63,7 @@ const Register: React.FC = () => {
             />
             GOOGLE
         </p>
-          </LongButton></div>
+          </LongButton></div></Link>
           <p className="text-textColor text-center font-helvetica py-10 text-xs">By clicking continue, you agree to our <Link href="/" className="underline">Terms of Service</Link> and <Link href="/" className="underline">Privacy Policy</Link>.</p>
           </div>
           </div>

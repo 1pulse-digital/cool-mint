@@ -1,8 +1,5 @@
 import React from "react";
-import { FAQAccordion } from "@/components/base/faqAccordion";
 import Tour from "@/components/base/tour";
-import BlogWidget from "@/components/detailed/blogWidget";
-import Button from "@/components/base/button";
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
 import {
@@ -11,13 +8,13 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import GetInTouch from "@/components/base/getInTouch";
 import HeaderTitle from "@/components/base/headerTitle";
+import GetInTouch from "@/components/base/getInTouch";
 
 const BookTour = () => {
   return (
-    <div className={"bg-background lg:py-32"}>
-      <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-40 2xl:pb-20">
+    <div className={"bg-background lg:py-20"}>
+      <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
         <div className={"font-helvetaica grid content-center px-6"}>
           <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
             <Link href="/">
@@ -27,7 +24,7 @@ const BookTour = () => {
               </div>
             </Link>
             <Link href="/workshops">
-              <div className="text-primary">Workshops</div>
+              <div className="text-primary">Classes</div>
             </Link>
           </div>
 
@@ -44,44 +41,50 @@ const BookTour = () => {
               <Carousel className="mx-3 pt-3">
                 <CarouselContent className="">
                   <CarouselItem>
-                    <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] py-2 text-secondary">
+                    <TabsList className="h-18 grid w-full grid-cols-7 bg-[#27272A] py-2 text-secondary">
                       <TabsTrigger value="monday" className="ml-2 p-5">
-                        Jan
+                        Mon
                       </TabsTrigger>
                       <TabsTrigger value="tuesday" className="p-5">
-                        Feb
+                        Tue
                       </TabsTrigger>
                       <TabsTrigger value="wednesday" className="p-5">
-                        Mar
+                        Wed
                       </TabsTrigger>
                       <TabsTrigger value="thursday" className="p-5">
-                        Apr
+                        Thur
                       </TabsTrigger>
                       <TabsTrigger value="friday" className="mr-2 p-5">
-                        May
+                        Fri
+                      </TabsTrigger>
+                      <TabsTrigger value="saturday" className="mr-2 p-5">
+                        Sat
+                      </TabsTrigger>
+                      <TabsTrigger value="sunday" className="mr-2 p-5">
+                        Sun
                       </TabsTrigger>
                     </TabsList>
                   </CarouselItem>
-                  <CarouselItem>
+                 {/*  <CarouselItem>
                     <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] py-2 text-secondary">
                       <TabsTrigger value="monday" className="ml-2 p-5">
-                        Jun
+                        Sat
                       </TabsTrigger>
                       <TabsTrigger value="tuesday" className="p-5">
-                        Jul
+                        Sun
                       </TabsTrigger>
                       <TabsTrigger value="wednesday" className="p-5">
-                        Aug
+                        Mon
                       </TabsTrigger>
                       <TabsTrigger value="thursday" className="p-5">
-                        Sep
+                        Tue
                       </TabsTrigger>
                       <TabsTrigger value="friday" className="mr-2 p-5">
-                        Oct
+                        Wed
                       </TabsTrigger>
                     </TabsList>
-                  </CarouselItem>
-                  <CarouselItem>
+                  </CarouselItem> */}
+                  {/* <CarouselItem>
                     <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] py-2 text-secondary">
                       <TabsTrigger value="friday" className="ml-2  p-5">
                         Nov
@@ -99,7 +102,7 @@ const BookTour = () => {
                         Mar
                       </TabsTrigger>
                     </TabsList>
-                  </CarouselItem>
+                  </CarouselItem> */}
                 </CarouselContent>
               </Carousel>
             </div>
@@ -109,7 +112,7 @@ const BookTour = () => {
             >
               <Card className="border-0 bg-background">
                 <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  Monday
+                 January
                 </CardTitle>
                 <Tour
                   starttime="09:00"
@@ -240,7 +243,7 @@ const BookTour = () => {
             >
               <Card className="border-0 bg-background">
                 <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  Tuesday
+                  January
                 </CardTitle>
                 <Tour
                   starttime="08:00"
@@ -304,7 +307,7 @@ const BookTour = () => {
             >
               <Card className="border-0 bg-background">
                 <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  Wednesday
+                January
                 </CardTitle>
                 <Tour
                   starttime="08:00"
@@ -368,7 +371,7 @@ const BookTour = () => {
             >
               <Card className="border-0 bg-background">
                 <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  Thursday
+                January
                 </CardTitle>
                 <Tour
                   starttime="08:00"
@@ -433,7 +436,7 @@ friday */}
             >
               <Card className="border-0 bg-background">
                 <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  Friday
+                January
                 </CardTitle>
                 <Tour
                   starttime="08:00"
@@ -490,8 +493,145 @@ friday */}
                 />
               </Card>
             </TabsContent>
+
+          
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="saturday"
+            >
+              <Card className="border-0 bg-background">
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                January
+                </CardTitle>
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="saturday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="saturday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="saturday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="saturday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+
+
+          
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="sunday"
+            >
+              <Card className="border-0 bg-background">
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                January
+                </CardTitle>
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="sunday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="sunday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="sunday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent
+              className="bg-background font-helvetica"
+              value="sunday"
+            >
+              <Card className="border-0 bg-background">
+                <Tour
+                  starttime="08:00"
+                  endtime="09:30"
+                  linkUrl="/bookingConfirmation"
+                />
+              </Card>
+            </TabsContent>
+
+
+
           </Tabs>
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );

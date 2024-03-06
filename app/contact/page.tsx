@@ -1,14 +1,16 @@
 import { ContactForm } from "@/components/base/contactForm";
+import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 import Link from "next/link";
 import React from "react";
 
 const Contact = () => {
   return (
     <div className="bg-background">
-      <div className={"bg-background py-12"}>
+      <div className={"bg-background py-20"}>
         <div
           className={
-            "grid content-center px-8 font-helvetica sm:p-10 xl:mx-40 2xl:mx-60"
+            "grid content-center px-8 font-helvetica"
           }
         >
           <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
@@ -22,28 +24,20 @@ const Contact = () => {
               <div className="text-primary">Contact</div>
             </Link>
           </div>
-          <h1
-            className={
-              "pb-4 text-center font-helvetica text-headings font-bold text-secondary"
-            }
-          >
-            Contact<span className="text-primary">.</span>
-          </h1>
-          <p
-            className={
-              "text-center font-helvetica text-BodyText font-light text-textColor lg:px-40 md:px-40"
-            }
-          >
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat
-          </p>
 
-          <div className="grid items-start py-16 text-secondary lg:px-60 sm:grid-cols-2 md:px-32 sm:px-12 ">
+          <div>
+       <HeaderTitle title="Contact"
+        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat."
+      />
+      </div>
+      <div className=" sm:p-10 xl:mx-40 2xl:mx-60">
+          <div className="grid items-start py-16 text-secondary lg:px-60 sm:grid-cols-2 md:px-32 sm:px-12">
             <div className="grid-rows-2 sm:grid">
               <Link
                 href="mailto:info@madeinworkshop.co.za"
-                className=" 2xl:pb-0"
+                className="2xl:pb-0"
               >
                 <p className="inline-flex  text-[14px] hover:text-primary">
                   <svg
@@ -136,6 +130,10 @@ const Contact = () => {
             loading="lazy"
           ></iframe>
         </div>
+      </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );

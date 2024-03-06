@@ -42,7 +42,7 @@ const BookingConfirmation = () => {
                 <Input
                   type="name"
                   id="name"
-                  placeholder="Henry"
+                  placeholder="Name"
                   className="block  w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
@@ -57,7 +57,7 @@ const BookingConfirmation = () => {
                 <Input
                   type="surname"
                   id="surname"
-                  placeholder="Levine"
+                  placeholder="surname"
                   className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
@@ -72,7 +72,7 @@ const BookingConfirmation = () => {
                 <Input
                   type="email"
                   id="email"
-                  placeholder="henry@madeinworkshop.co.za"
+                  placeholder="Email"
                   className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
@@ -87,7 +87,7 @@ const BookingConfirmation = () => {
                 <Input
                   type="tel"
                   id="tel"
-                  placeholder="0007977666"
+                  placeholder="Tel"
                   className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
@@ -97,13 +97,13 @@ const BookingConfirmation = () => {
           <div>
             <p
               className={
-                "py-8 text-start font-helvetica text-[14px] font-normal text-secondary"
+                "py-0 mb-8 text-start font-helvetica text-[14px] font-normal text-secondary"
               }
             >
               What are you interested in?
             </p>
 
-            <div className="flex lg:space-x-8 bg-background font-helvetica text-[14px] text-secondary flex-wrap space-x-4 space-y-2 lg:flex-nowrap">
+            <div className="flex lg:space-x-8 bg-background font-helvetica text-[14px] text-secondary flex-wrap space-x-4 lg:flex-nowrap">
               <Checkbox id="workshops" />
               <label
                 htmlFor="workshops"
@@ -155,13 +155,13 @@ const BookingConfirmation = () => {
           </div>
           <p
             className={
-              "py-6 text-start font-helvetica text-sm font-bold text-primary"
+              "pt-8 pb-2 text-start font-helvetica text-sm font-bold text-primary"
             }
           >
             Booking information:
           </p>
-          <div className="">
-            <div className="flex flex-row space-x-20 py-1 text-start text-textColor lg:space-x-80">
+          <div>
+            <div className="flex flex-row space-x-10 py-1 text-start text-textColor ">
               <div>
                 <p
                   className={"text-start font-helvetica text-[16px] font-bold"}
@@ -177,7 +177,7 @@ const BookingConfirmation = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-row space-x-20 py-1 text-[16px] text-textColor lg:space-x-80">
+            <div className="flex flex-row space-x-10 py-1 text-[16px] text-textColor">
               <div>
                 <span className={"font-helvetica font-bold"}>Time:</span>
               </div>
@@ -185,7 +185,7 @@ const BookingConfirmation = () => {
                 <span className={"font-helvetica font-bold"}>9:00 am</span>
               </div>
             </div>
-            <div className="flex flex-row space-x-12 py-1 text-[16px] text-textColor lg:space-x-72">
+            <div className="flex flex-row space-x-2 py-1 text-[16px] text-textColor">
               <div>
                 <span className={"font-helvetica text-[16px] font-bold"}>
                   Location:
@@ -230,6 +230,9 @@ const BookingConfirmation = () => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div>
   );

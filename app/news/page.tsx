@@ -15,12 +15,13 @@ import {
     TabsTrigger,
   } from "@/components/ui/tabs"
 import HeaderTitle from "@/components/base/headerTitle";
+import GetInTouch from "@/components/base/getInTouch";
 
 
 const News = () => {
   return(
-      <div className={"bg-background py-20"}>
-        <div className={"grid content-center font-helvetica sm:p-10 2xl:mx-32 xl:mx-0 lg:mx-10 md:mx-0"}>
+      <div className={"bg-background py-10"}>
+        <div className={"grid content-center font-helvetica sm:p-10"}>
         <div className="text-xs text-secondary  font-helvetica font-normal inline-flex justify-center">
             <Link href="/">
           <div>
@@ -37,8 +38,7 @@ const News = () => {
         description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
       />
       {/* header title end */}
-          
-          <div className="py-8 text-center">
+          <div className="py-8 text-center 2xl:mx-32 xl:mx-0 lg:mx-10 md:mx-0">
           <div className="px-2">
           <span className={"text-[12px] px-4 text-textColor text-center font-helvetica font-normal"}>
         Filter by
@@ -67,7 +67,7 @@ const News = () => {
         imageUrl="/icons/miw.webp"
         date="3 July 2022"
         author="Henry Levine"
-        title="Article title that can go onto 2 Lines for 3"
+        title="Does South African Manufacturing Have A Problem?"
         categories={["Machines", "General"]}
         linkUrl="/newsTitle"
       />
@@ -79,69 +79,7 @@ const News = () => {
       <TabsContent className="bg-background font-helvetica" value="news">
     <Card className="bg-background border-0">
         <BlogWidget
-        imageUrl="/icons/craig.webp"
-        date="3 January 2024"
-        author="Parson Gapa"
-        title="Small business showcase: Made in workshop"
-        categories={["News", "Workshops"]}
-        linkUrl="/newsTitle"
-      /> 
-     </Card>
-      </TabsContent>
-      </div>
-
-      <div>
-      <TabsContent className="bg-background font-helvetica" value="news">
-    <Card className="bg-background border-0">
-        <BlogWidget
-        imageUrl="/icons/craig.webp"
-        date="3 January 2024"
-        author="Parson Gapa"
-        title="Small business showcase: Made in workshop"
-        categories={["News", "Workshops"]}
-        linkUrl="/newsTitle"
-      /> 
-     </Card>
-      </TabsContent>
-      </div>
-
-      <div>
-      <TabsContent className="bg-background font-helvetica" value="news">
-    <Card className="bg-background border-0">
-        <BlogWidget
-        imageUrl="/icons/craig.webp"
-        date="3 January 2024"
-        author="Parson Gapa"
-        title="Small business showcase: Made in workshop"
-        categories={["News", "Workshops"]}
-        linkUrl="/newsTitle"
-      /> 
-     </Card>
-      </TabsContent>
-      </div>
-
-      <div>
-      <TabsContent className="bg-background font-helvetica" value="news">
-    <Card className="bg-background border-0">
-        <BlogWidget
-        imageUrl="/icons/craig.webp"
-        date="3 January 2024"
-        author="Parson Gapa"
-        title="Small business showcase: Made in workshop"
-        categories={["News", "Workshops"]}
-        linkUrl="/newsTitle"
-      /> 
-     </Card>
-      </TabsContent>
-      </div>
-
-
-
-      <div>
-      <TabsContent className="bg-background font-helvetica" value="news">
-    <Card className="bg-background border-0">
-        <BlogWidget
-        imageUrl="/icons/banner.webp"
+        imageUrl="/icons/made-in-workshop-building-1.webp"
         date="3 January 2024"
         author="Parson Gapa"
         title="Made In Workshop Is The Largest DIY Workshop And Makerspace In South Africa"
@@ -152,15 +90,92 @@ const News = () => {
       </TabsContent>
       </div>
 
+      <div>
+      <TabsContent className="bg-background font-helvetica" value="news">
+    <Card className="bg-background border-0">
+        <BlogWidget
+        imageUrl="/icons/made-in-workshop-is-expanding.webp"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Made In Workshop (MIW) Is Expanding Its Equipment Offered To Its Members."
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      /> 
+     </Card>
+      </TabsContent>
+      </div>
+
+      <div>
+      <TabsContent className="bg-background font-helvetica" value="news">
+    <Card className="bg-background border-0">
+        <BlogWidget
+        imageUrl="/icons/Small-Business-Showcase-Made-In-Workshop.png"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Small business showcase: Made in workshop"
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      /> 
+     </Card>
+      </TabsContent>
+      </div>
+
+      <div>
+      <TabsContent className="bg-background font-helvetica" value="news">
+    <Card className="bg-background border-0">
+        <BlogWidget
+        imageUrl="/icons/Made-In-Workshop-at-your-door-step.webp"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Made In Workshop – a manufacturing Mecca, right on your doorstep"
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      /> 
+     </Card>
+      </TabsContent>
+      </div>
+
+
+
+      <div>
+      <TabsContent className="bg-background font-helvetica" value="news">
+    <Card className="bg-background border-0">
+        <BlogWidget
+        imageUrl="/icons/MIW_tools_image.webp"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Maker Space Movement in South Africa – 2020 and beyond"
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      /> 
+     </Card>
+      </TabsContent>
+      </div>
+
 
       <div>
       <TabsContent className="bg-background font-helvetica" value="events">
         <Card className="bg-background border-0">
        <BlogWidget
-        imageUrl="/icons/craig.webp"
+        imageUrl="/icons/Makerspace-image.webp"
         date="3 January 2024"
         author="Parson Gapa"
-        title="Made in Workshop"
+        title="Henry happens"
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      />
+    </Card>
+      </TabsContent>
+      </div>
+
+      <div>
+      <TabsContent className="bg-background font-helvetica" value="events">
+        <Card className="bg-background border-0">
+       <BlogWidget
+        imageUrl="/icons/A-Dover-Simulator-created-by-Brad-which-was-built-to-train-student-operators-on-the-mines.webp"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Want to be an industrial design success? Diversify, says Design For Industry’s Brad Johnston"
         categories={["News", "Workshops"]}
         linkUrl="/newsTitle"
       />
@@ -175,22 +190,7 @@ const News = () => {
         imageUrl="/icons/craig.webp"
         date="3 January 2024"
         author="Parson Gapa"
-        title="Made in Workshop"
-        categories={["News", "Workshops"]}
-        linkUrl="/newsTitle"
-      />
-    </Card>
-      </TabsContent>
-      </div>
-
-      <div>
-      <TabsContent className="bg-background font-helvetica" value="events">
-        <Card className="bg-background border-0">
-       <BlogWidget
-        imageUrl="/icons/craig.webp"
-        date="3 January 2024"
-        author="Parson Gapa"
-        title="Made in Workshop"
+        title="Craig’s on fire!"
         categories={["News", "Workshops"]}
         linkUrl="/newsTitle"
       />
@@ -202,10 +202,10 @@ const News = () => {
       <TabsContent className="bg-background font-helvetica" value="diy">
       <Card className="bg-background border-0">
         <BlogWidget
-        imageUrl="/icons/banner.webp"
+        imageUrl="/icons/The-CONCREAT-cutlery-set.webp"
         date="Second Date"
         author="Second Author"
-        title="Made In Workshop Is The Largest DIY Workshop And Makerspace In South Africa"
+        title="Getting creative with… concrete?"
         categories={["Workshops", "News"]}
         linkUrl="/newsTitle"
       />
@@ -217,10 +217,10 @@ const News = () => {
       <TabsContent className="bg-background font-helvetica" value="diy">
       <Card className="bg-background border-0">
         <BlogWidget
-        imageUrl="/icons/banner.webp"
+        imageUrl="/icons/Niks-CNC-plotter-parts.webp"
         date="Second Date"
         author="Second Author"
-        title="Made In Workshop Is The Largest DIY Workshop And Makerspace In South Africa"
+        title="The curious, mathematical mind of Nik Ivanovic"
         categories={["Workshops", "News"]}
         linkUrl="/newsTitle"
       />
@@ -231,10 +231,10 @@ const News = () => {
       <TabsContent className="bg-background font-helvetica" value="diy">
       <Card className="bg-background border-0">
         <BlogWidget
-        imageUrl="/icons/banner.webp"
+        imageUrl="/icons/Bettlebot-images.webp"
         date="Second Date"
         author="Second Author"
-        title="Made In Workshop Is The Largest DIY Workshop And Makerspace In South Africa"
+        title="The BeetleBot: the bug that teaches the basics of robotics"
         categories={["Workshops", "News"]}
         linkUrl="/newsTitle"
       />
@@ -251,6 +251,9 @@ const News = () => {
             </Link>
             </div>
         </div>
+        <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
      </div>
   );
 };

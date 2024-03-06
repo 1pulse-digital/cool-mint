@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SquareButton } from "./base/button";
+import Image from 'next/image';
 
 interface OfferingItemProps {
   title: string;
@@ -19,7 +20,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
 }) => (
   <div className="flex space-x-8 py-6 text-sm">
     <div className="2xl:w-20 lg:w-28 w-16 md:w-12">
-      <img src={ImageSrc} alt={title} height={30} width={110} />
+      <Image src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
       <p className="font-helvetica text-xl font-bold text-textColor">{title}</p>
