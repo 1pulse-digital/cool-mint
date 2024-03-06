@@ -3,11 +3,12 @@ import React from "react";
 import { FAQAccordion } from "@/components/base/faqAccordion";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 
 const FAQ = () => {
   return (
-    <div className="bg-background py-20">
-      <div className="font-helvetaica grid content-center px-8 sm:p-10 lg:mx-40 2xl:mx-80">
+    <div className="bg-background py-10">
+      <div className="font-helvetaica grid content-center px-8 sm:p-10 ">
         <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
           <div>
             <Link href="/">
@@ -21,23 +22,18 @@ const FAQ = () => {
             </Link>
           </div>
         </div>
-        <h1
-          className={
-            "py-4 text-center font-helvetica text-headings font-bold text-secondary"
-          }
-        >
-          FAQ<span className="text-primary">.</span>
-        </h1>
-        <span
-          className={
-            "text-center font-helvetica text-BodyText font-light text-textColor md:px-24 lg:px-20 xl:px-52 2xl:px-32"
-          }
-        >
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
-        </span>
+
+        <div>
+       <HeaderTitle title="FAQ"
+        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat."
+      />
       </div>
+      </div>
+      <div className="">
       <FAQAccordion />
+      </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
