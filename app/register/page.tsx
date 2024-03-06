@@ -39,7 +39,7 @@ const Register: React.FC = () => {
     <div>
            <Label htmlFor="email" className="text-secondary mt-2">Email</Label>
            <div className="mt-2">
-      <Input type="email" id="email" placeholder="henry@madeinworkshop.co.za" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      <Input type="email" id="email" placeholder="Email" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
       </div>
         </div>
     <div> <Button color="primary" className="w-full mt-4">Register with Email</Button></div>
@@ -48,7 +48,9 @@ const Register: React.FC = () => {
     <p className="text-textColor text-xs font-helvetica">OR CONTINUE WITH</p>
     <hr className="flex-grow h-[1px] mx-2 bg-secondary border-0"></hr>
 </div>
- <div className="inline-flex w-full "> 
+<Link href="/verify">
+ <div className="inline-flex w-full"> 
+ 
           <LongButton color="secondary" className="w-full flex items-center justify-center">
             <p className="flex items-center">
             <Image 
@@ -61,7 +63,7 @@ const Register: React.FC = () => {
             />
             GOOGLE
         </p>
-          </LongButton></div>
+          </LongButton></div></Link>
           <p className="text-textColor text-center font-helvetica py-10 text-xs">By clicking continue, you agree to our <Link href="/" className="underline">Terms of Service</Link> and <Link href="/" className="underline">Privacy Policy</Link>.</p>
           </div>
           </div>
