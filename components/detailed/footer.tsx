@@ -127,7 +127,7 @@ export const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="">
+          <div className="sm:px-1">
             <div className="py-4 pt-5 sm:pt-0">
               <p className="font-helvetica text-BodyText font-bold text-textColor">
                 Follow Us
