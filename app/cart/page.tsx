@@ -5,13 +5,14 @@ import ShoppingCart from '@/components/base/shoppingCart';
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 
 
 const Cart: React.FC = () => {
   return (
     <div className={"bg-background py-20"}>
       <div className="2xl:mx-36 xl:mx-28 px-8">
-      <div className="grid content-center font-helvetica sm:mx-20 md:mx-20">
+      <div className="grid content-center font-helvetica ">
       <div className="text-xs text-secondary font-helvetica font-normal inline-flex justify-center items-center">
             <Link href="/">
           <div>
@@ -23,16 +24,19 @@ const Cart: React.FC = () => {
            <div className="text-primary">Cart</div>
           </Link>
           </div>
-          <h1 className="text-headings text-secondary font-helvetica font-bold text-center leading-tight">Your Cart<span className="text-primary">.</span></h1>
+
+          <div>
+       <HeaderTitle title="Your Cart"
+        description=""
+      />
+      </div>
+          
           <ShoppingCart />       
-         
-          
-          
           <div className="sm:px-20">
           <div className="grid md:flex md:space-x-20 md:justify-center xl:space-x-24 2xl:space-x-32">
           <div className="flex sm:space-x-12 space-x-2 place-items-center">
           
-          <div className="pb-2 2xl:w-96 px:w-40 ">
+          <div className="pb-2 2xl:w-96">
            <Label htmlFor="discount" className="text-secondary mt-2">Add Discount Code:</Label>
            <div className="mt-2">
       <Input type="surname" id="surname" placeholder="disc@20" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>
@@ -66,7 +70,7 @@ const Cart: React.FC = () => {
 
 
 
-<div className="sm:flex items-start sm:space-x-0  md:mx-0 lg:px-32 sm:pt-8 pt-0 ">
+<div className="sm:flex items-start sm:space-x-5  md:mx-0 lg:px-32 sm:pt-8 pt-0 ">
 <div className="lg:w-full"> 
 <Link href="/login">  
 <Button color="primary" className=" mt-4">Proceed to Checkout</Button></Link></div>
