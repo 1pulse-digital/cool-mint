@@ -161,10 +161,9 @@ export const LongButton = (props: ButtonProps) => {
     { "bg-primary text-[#09090B]": isPrimary },
     { "hover:bg-secondary": (isPrimary && !isDisabled) },
 
-    { "bg-[#ffffff] border-secondary border-2 text-background ": isSecondary },
-    { "hover:bg-secondary hover:text-primary": isSecondary && !isDisabled },
+    { "bg-[#ffffff] border-secondary  text-background ": isSecondary },
+    { "hover:bg-primary hover:text-background": isSecondary && !isDisabled },
   );
-
 
   const mergedClassname = tailshake(baseClassname, colorClassname, props.className);
   return (
