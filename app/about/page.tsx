@@ -16,7 +16,7 @@ const About = () => {
               placeholder={"blur"}
               height={250}
               width={250}
-              className="absolute top-12 left-0 -rotate-12 lg:w-40 xl:w-60 rounded-lg"
+              className="absolute top-8 left-0 -rotate-12 lg:w-40 xl:w-60 rounded-lg 2xl:mt-16"
             />
             <Image
               src={gallery}
@@ -24,7 +24,7 @@ const About = () => {
               placeholder={"blur"}
               height={250}
               width={250}
-              className="absolute mt-[430px] lg:mt-[480px] right-0 rotate-12 lg:w-40 xl:w-60 rounded-lg"
+              className="absolute mt-[430px] lg:mt-[460px] xl:mt-[380px] 2xl:mt-[480px] right-0 rotate-12 lg:w-40 xl:w-60 rounded-lg"
             />
         </div>
        
