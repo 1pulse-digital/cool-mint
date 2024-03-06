@@ -120,15 +120,18 @@ const NewsTitle = () => {
 
           <div
             className={
-              "grid w-full items-center justify-center rounded-md py-12"
+              "grid w-full items-center  rounded-md py-12"
             }
           >
-            <Image
-              src={gallery}
-              alt="made in workshop"
-              placeholder={"blur"}
-              className="rounded-md"
-            />
+            
+        <Image
+          src={gallery}
+          alt="made in workshop"
+          placeholder={"blur"}
+          className="rounded-md"
+          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+        />
+    
           </div>
           <div className="pt-12">
             <hr className="h-[1px] flex-grow border-0 bg-textColor"></hr>
@@ -282,36 +285,36 @@ const NewsTitle = () => {
         </div>
         <div className="grid hidden grid-cols-3 grid-cols-3 grid-cols-3 sm:block md:block lg:block lg:grid xl:block xl:grid 2xl:block 2xl:grid">
           <div>
-            <BlogWidget
-              imageUrl="/icons/miw.webp"
-              date="3 July 2022"
-              author="Henry Levine"
-              title="Article title that can go onto 2 Lines for 1"
-              categories={["Machines", "General"]}
-              linkUrl="/newsTitle"
-            />
+          <BlogWidget
+        imageUrl="/icons/miw.webp"
+        date="3 July 2022"
+        author="Henry Levine"
+        title="Does South African Manufacturing Have A Problem?"
+        categories={["Machines", "General"]}
+        linkUrl="/newsTitle"
+      />
           </div>
 
           <div>
-            <BlogWidget
-              imageUrl="/icons/miw.webp"
-              date="3 July 2022"
-              author="Henry Levine"
-              title="Article title that can go onto 2 Lines for 2"
-              categories={["Machines", "General"]}
-              linkUrl="/newsTitle"
-            />
+          <BlogWidget
+        imageUrl="/icons/made-in-workshop-building-1.webp"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Made In Workshop Is The Largest DIY Workshop And Makerspace In South Africa"
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      /> 
           </div>
 
           <div>
-            <BlogWidget
-              imageUrl="/icons/miw.webp"
-              date="3 July 2022"
-              author="Henry Levine"
-              title="Article title that can go onto 2 Lines for 3"
-              categories={["Machines", "General"]}
-              linkUrl="/newsTitle"
-            />
+          <BlogWidget
+        imageUrl="/icons/made-in-workshop-is-expanding.webp"
+        date="3 January 2024"
+        author="Parson Gapa"
+        title="Made In Workshop (MIW) Is Expanding Its Equipment Offered To Its Members."
+        categories={["News", "Workshops"]}
+        linkUrl="/newsTitle"
+      /> 
           </div>
         </div>
         <div className="py-6 text-center sm:py-8 md:py-10 lg:py-20">
