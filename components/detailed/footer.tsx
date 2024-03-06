@@ -119,7 +119,7 @@ export const Footer = () => {
               <div className="font-helvetica text-BodyText font-bold text-textColor">
                 Legal
               </div>
-              <Link href="/">
+              <Link href="/privacyPolicy">
                 <p className="py-2 text-xs">Privacy Policy</p>
               </Link>
               <Link href="/">
@@ -207,7 +207,7 @@ export const Footer = () => {
           target="_blank"
           className="text-secondary hover:text-primary"
         >
-          <p>Developed and design by 1Pulse Digital</p>
+          <p>Web Design and Development by 1Pulse Digital</p>
         </Link>
 
         {/* Scroll to Top */}
