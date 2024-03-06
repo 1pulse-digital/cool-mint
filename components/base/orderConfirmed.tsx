@@ -23,7 +23,7 @@ const OrderConfirmedItem: React.FC<OrderConfirmedProps> = ({
   confirm,
   quantity,
 }) => (
-  <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6">
+  <div className="flex font-helvetica space-x-2 rounded-2xl text-sm py-6">
    <Image src={ImageSrc} alt={title} height={80} width={65} className="rounded-xl"/>
    <div>
     </div>
