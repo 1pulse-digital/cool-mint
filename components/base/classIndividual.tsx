@@ -85,7 +85,8 @@ const ClassItem: React.FC<ClassProps> = ({
 const ClassIndividual: React.FC = () => {
   
   return (
-    <div className="py-14 text-center font-medium text-primary">
+    <div id="book">
+    <div className="py-20 text-center font-medium text-primary">
       <Tabs defaultValue="january">
         <div>
           <div className="pb-16 2xl:px-56 xl:px-40  mx-2 sm:px-4">
@@ -447,6 +448,7 @@ const ClassIndividual: React.FC = () => {
        
         </div>
       </Tabs>
+    </div>
     </div>
   );
 };
