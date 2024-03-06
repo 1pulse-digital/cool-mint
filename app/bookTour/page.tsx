@@ -13,7 +13,7 @@ import GetInTouch from "@/components/base/getInTouch";
 
 const BookTour = () => {
   return (
-    <div className={"bg-background lg:py-32"}>
+    <div className={"bg-background lg:py-20"}>
       <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
         <div className={"font-helvetaica grid content-center px-6"}>
           <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
@@ -24,7 +24,7 @@ const BookTour = () => {
               </div>
             </Link>
             <Link href="/workshops">
-              <div className="text-primary">Workshops</div>
+              <div className="text-primary">Classes</div>
             </Link>
           </div>
 

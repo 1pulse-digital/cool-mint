@@ -6,10 +6,11 @@ import Button, {
 import Link from "next/link";
 import OrderConfirmed from "@/components/base/orderConfirmed";
 import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 
 const OrderConfirmation: React.FC = () => {
   return (
-    <div className={"bg-background px-8 py-12"}>
+    <div className={"bg-background px-8 py-20"}>
       <div className="grid content-center items-center text-center font-helvetica sm:p-10">
         <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
           <Link href="/">
@@ -22,9 +23,12 @@ const OrderConfirmation: React.FC = () => {
             <div className="text-primary">Order Confirmation</div>
           </Link>
         </div>
-        <h1 className="text-center font-helvetica text-headings font-bold  leading-tight text-secondary">
-          Order Confirmation<span className="text-primary">.</span>
-        </h1>
+
+        <div>
+       <HeaderTitle title="Order Confirmation"
+        description=""
+      />
+      </div>
         <div className="flex items-center justify-center py-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"

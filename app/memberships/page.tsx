@@ -2,13 +2,14 @@ import React from "react";
 import PricingTable from "@/components/base/pricing-table";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 
 const Memberships = () => {
   return (
-    <div className={"bg-background py-20"}>
+    <div className={"bg-background py-10"}>
       <div
         className={
-          "grid content-center px-8 font-helvetica sm:p-10 sm:px-24 md:px-28 lg:px-52 xl:mx-32 2xl:mx-60"
+          "grid content-center px-8 font-helvetica sm:p-10 "
         }
       >
         <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
@@ -23,28 +24,12 @@ const Memberships = () => {
           </Link>
         </div>
        <div>
-        <h1
-          className={
-            "py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary"
-          }
-        >
-          Memberships<span className="text-primary">.</span>
-        </h1>
-        <p
-          className={
-            "pb-8 text-center font-helvetica text-BodyText font-normal text-textColor sm:pb-0"
-          }
-        >
-          We have membership options that cover all types of customers ranging
-          from <span className="text-primary"> professionals</span> to
-          <span className="text-primary"> hobbyists</span> . Our Membership
-          model was designed to work in perfect synchronisation with your
-          business cycle. Days do not have to be used in consecutive order and
-          can be used by multiple users on the same day.
-        </p>
+       <HeaderTitle title="Memberships"
+        description="We have membership options that cover all types of customers ranging from professionals to hobbyists . Our Membership model was designed to work in perfect synchronisation with your business cycle. Days do not have to be used in consecutive order and can be used by multiple users on the same day."
+      />
       </div>
       </div>
-      <div className="pb-20">
+      <div className="pb-20 pt-8 sm:pt-0">
         <p className="text-center font-helvetica text-BodyText font-normal text-primary">
           Prices include VAT.
         </p>
