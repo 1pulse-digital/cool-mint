@@ -108,7 +108,7 @@ export function TeamCarousel() {
                       "text-start font-helvetica text-BodyText font-semibold text-textColor"
                     }
                   >
-                    Name: Henry Levine
+                   Henry Levine
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     CEO
@@ -174,7 +174,7 @@ export function TeamCarousel() {
           </TabsContent>
           <TabsContent className="bg-background font-helvetica" value="general">
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] 2xl:mx-60 2xl:grid-cols-1">
+              <div className="rounded-xl bg-[#2c3033] 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
                     src={trenton}
