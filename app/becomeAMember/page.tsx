@@ -7,11 +7,12 @@ import Button, {
 import { InputComponent } from "@/components/base/inputComponents";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
+import HeaderTitle from "@/components/base/headerTitle";
 
 const BecomeAMember: React.FC = () => {
   return (
     <div className="bg-background">
-      <div className={"px-8 py-32"}>
+      <div className={"px-8 py-20"}>
         <div className={"grid content-center font-helvetica"}>
           <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
             <Link href="/">
@@ -24,21 +25,12 @@ const BecomeAMember: React.FC = () => {
               <div className="text-primary">Become a member</div>
             </Link>
           </div>
-          <h1
-            className={
-              "py-2 pb-8 text-center font-helvetica text-headings font-bold leading-tight text-secondary"
-            }
-          >
-            Become a Member<span className="text-primary">.</span>
-          </h1>
-          <p
-            className={
-              "text-center font-helvetica text-BodyText font-normal text-textColor sm:px-20 md:px-28"
-            }
-          >
-            Membership registrations are done at Made in Workshop and includes a
-            tour of the facilitates.
-          </p>
+          <div>
+       <HeaderTitle title=" Become a Member"
+        description=" Membership registrations are done at Made in Workshop and includes a
+        tour of the facilitates."
+      />
+      </div>
           <div className="text-center 2xl:mx-72">
             <p
               className={
