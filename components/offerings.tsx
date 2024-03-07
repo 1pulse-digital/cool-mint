@@ -87,10 +87,10 @@ const Offerings: React.FC = () => {
 
         <div className="lg:px-20">
           <OfferingItem
-            title="Workshops"
+            title="Classes"
             description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
             linkText="Learn More"
-            linkUrl="/workshops"
+            linkUrl="/classes"
             ImageSrc="/icons/workshops.png"
           />
         </div>

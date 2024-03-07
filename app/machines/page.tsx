@@ -29,7 +29,7 @@ const MachinesTools = () => {
       />
       {/* header title end */}
       
-          <div className="text-center pt-10">
+          <div className="text-center pt-10 2xl:px-16 xl:px-40 lg:px-32 sm:px-6 md:px-20">
          <IndustrialMachineTools />
          <div className="pb-16 text-center">
           <Link href="/">

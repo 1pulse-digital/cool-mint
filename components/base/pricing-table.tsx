@@ -11,12 +11,13 @@ interface PricingTabProps {
 }
 
 function PricingTab(props: PricingTabProps) {
+  const isPopular = props.popular;
   return (
-    <div className={`h-full ${props.popular ? 'dark' : ''}`}>
+    <div className={`h-full ${isPopular ? 'dark' : ''} ${isPopular ? 'border-4 border-primary' : 'border'} rounded-2xl bg-background ${isPopular ? 'border-bold' : 'border-primary'} 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]`}>
       <div className="relative flex flex-col p-6 py-8 rounded-2xl bg-background border border-primary 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]">
       {props.popular && (
           <div className="absolute top-0 right-0 mr-6 -mt-4">
-            <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-emerald-500 text-white rounded-full shadow-sm shadow-slate-950/5">Most Popular</div>
+            <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-secondary text-background rounded-full shadow-sm shadow-slate-950/5">Most Popular</div>
           </div>
         )}
         {(
