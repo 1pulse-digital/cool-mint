@@ -41,7 +41,7 @@ export const SmallButton = (props: ButtonProps) => {
 
 export const SmallButtonOrange = (props: ButtonProps) => {
 
-  const baseClassname = "whitespace-nowrap hover:text-primary text-[12px] inline-flex items-center  justify-center font-helvetica  py-3 border border-transparent rounded-full shadow-sm  font-semi-bold ";
+  const baseClassname = "whitespace-nowrap hover:text-primary text-[12px] inline-flex items-center  justify-center font-helvetica  py-3 border border-none rounded-full  font-semi-bold ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
