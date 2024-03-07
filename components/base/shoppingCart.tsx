@@ -29,7 +29,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
    <Image src={ImageSrc} alt={title} height={60} width={90} className="rounded-xl"  />
    <div>
     </div>
-    <div className="md:flex md:space-x-40 2xl:space-x-72 py-4 sm:py-0">
+    <div className="md:flex md:space-x-40 2xl:space-x-32 py-4 sm:py-0">
     <div className="text-start">
       <span className="text-xl font-helvetica font-bold text-secondary">{name}</span>
       <div className="flex row space-x-4">

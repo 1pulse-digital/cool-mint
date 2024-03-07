@@ -30,16 +30,16 @@ const navigationItems = [
     href: "/classes",
   },
   {
-    name: "FAQ",
-    href: "/faq",
-  },
-  {
     name: "Café",
     href: "/cafe",
   },
   {
     name: "News",
     href: "/news",
+  },
+  {
+    name: "FAQ",
+    href: "/faq",
   },
   {
     name: "Contact",

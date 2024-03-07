@@ -18,7 +18,7 @@ const Login: React.FC = () => {
             <Image src={login} alt="made in workshop" placeholder={"blur"} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
           </div>
         </div>
-        <div className="grid px-8 md:px-16 2xl:mx-52 2xl:place-content-center 2xl:px-0">
+        <div className="grid px-8 md:px-16 2xl:mx-52 place-content-center 2xl:px-0">
           <div className={"grid content-center font-helvetica"}>
             <h1
               className={

@@ -23,7 +23,7 @@ export function CafeMIW() {
   return (
     <div className="sm:px-16 grid justify-center items-center md:px-20 xl:mx-20">
     <Tabs defaultValue="machines">
-    <div className="pb-16">
+    <div className="pb-8">
     <Carousel className="mx-6 pt-0">
     <CarouselContent className="">
     <CarouselItem>
