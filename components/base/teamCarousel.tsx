@@ -4,7 +4,7 @@ import henry from "../../images/Henry-Levine.webp";
 import joshua from "../../images/Joshua-Lotter.webp";
 import trenton from "../../images/Trenton-Carr.webp";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -12,21 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 export function TeamCarousel() {
   return (
@@ -133,7 +119,7 @@ export function TeamCarousel() {
             value="workshops"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] 2xl:mx-80 2xl:grid-cols-1">
+            <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
                     src={joshua}
@@ -174,7 +160,7 @@ export function TeamCarousel() {
           </TabsContent>
           <TabsContent className="bg-background font-helvetica" value="general">
             <Card className="border-0 bg-background">
-              <div className="rounded-xl bg-[#2c3033] 2xl:mx-80 2xl:grid-cols-1">
+            <div className="rounded-xl bg-[#2c3033] xl:mx-28 2xl:mx-80 2xl:grid-cols-1">
                 <div className="rounded-md">
                   <Image
                     src={trenton}
