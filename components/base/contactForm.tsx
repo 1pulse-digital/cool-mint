@@ -9,17 +9,9 @@ import { Textarea } from "@/components/ui/textarea"
 export const ContactForm = () => {
 
   return (
-      <div className={"bg-background py-8 px-8 sm:px-0 md:px-0"}>
+      <div className={"bg-background px-8 sm:px-0 md:px-0 md:py-12 lg:py-0 py-6"}>
          <div className="w-full">
-          <div className="pb-5 text-start">
-         <p
-            className={
-              "font-helvetica font-bold text-primary 2xl:pb-4 text-3xl 2xl:text-start sm:text-4xl"
-            }
-          >
-            Send us a message
-          </p>
-          </div>
+          
             <form>
             <div className="lg:grid grid-cols-2">
            <div className="pb-1">
