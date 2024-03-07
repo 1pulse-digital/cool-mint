@@ -1,6 +1,5 @@
 import { ContactForm } from "@/components/base/contactForm";
 import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
 import Link from "next/link";
 import React from "react";
 
