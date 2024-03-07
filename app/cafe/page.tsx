@@ -10,7 +10,7 @@ import React from "react";
   return(
     <div>
       <div className={"bg-background py-20 px-6"}>
-      <div className={"grid content-center font-helvetica pb-16 "}>
+      <div className={"grid content-center font-helvetica pb-8 md:pb-2 xl:pb-0 2xl:pb-0"}>
         <div className="text-xs text-secondary  font-helvetica font-normal inline-flex justify-center">
             <Link href="/">
           <div>
