@@ -4,7 +4,6 @@ import "./globals.css";
 import { Footer } from "@/components/detailed/footer";
 import Header from "@/components/header";
 
-
 const inter = Inter({ subsets: ["latin"] });
 const isDev = process?.env.NODE_ENV === "development";
 
