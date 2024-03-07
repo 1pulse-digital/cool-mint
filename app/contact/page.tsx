@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <div className="bg-background">
       <div className="grid lg:grid-cols-2 grid-cols-1 lg:px-12 2xl:px-52 xl:px-32 sm:px-12 py-20 lg:space-x-10">
-        <div className="grid place-items-center  sm:px-0">
+        <div className="sm:px-0  2xl:mr-32 xl:mr-16 lg:mr-10">
 
         <div
           className={
@@ -38,7 +38,7 @@ const Contact = () => {
           <div>
       </div>
       <div className=" ">
-          <div className="flex items-start sm:py-12 text-secondary py-8 space-x-6">
+          <div className="flex-col items-start sm:py-6 text-secondary py-8 space-y-3 sm:space-x-0">
             <div className="">
               <Link
                 href="mailto:info@madeinworkshop.co.za"
@@ -62,9 +62,10 @@ const Contact = () => {
                   info@madeinworkshop.co.za
                 </p>
               </Link>
-
+              </div>
+              <div className="">
               <Link href="tel:0107451577">
-                <p className="inline-flex pb-4 text-[14px]">
+                <p className="inline-flex  text-[14px]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -115,11 +116,25 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <div className={"bg-background"}>
+       
+      <div className="border-0 bg-background  ">
+        <div className="mapouter grayscale">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3583.542461931366!2d27.97206827633481!3d-26.08120535897773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95745507de8113%3A0xa12accebfd06858b!2s10%20Naaf%20St%2C%20Strydompark%2C%20Randburg%2C%202169!5e0!3m2!1sen!2sza!4v1707394967139!5m2!1sen!2sza"
+            height="300"
+            width="100%"
+            scrolling="no"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      </div>
         </div>
         <div>
           <ContactForm /></div>
       </div>
-      <div className={"bg-background"}>
+      {/* <div className={"bg-background"}>
        
       <div className="border-0 bg-background px-8 2xl:px-0 ">
         <div className="mapouter grayscale 2xl:mx-32">
@@ -132,8 +147,8 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
-      </div>
-      <div className="py-20 lg:px-8 2xl:px-24">
+      </div> */}
+      <div className="py-6 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>
