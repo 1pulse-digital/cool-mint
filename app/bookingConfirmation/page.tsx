@@ -103,55 +103,73 @@ const BookingConfirmation = () => {
               What are you interested in?
             </p>
 
-            <div className="flex lg:space-x-8 bg-background font-helvetica text-[14px] text-secondary flex-wrap space-x-4 lg:flex-nowrap">
-              <Checkbox id="workshops" />
-              <label
-                htmlFor="workshops"
-                className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Workshops
-              </label>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-1 bg-background font-helvetica text-[14px] text-secondary space-y-2">
+    {/* Checkbox Set 1 */}
+    <div className="flex items-center space-x-2">
+      <Checkbox id="workshops" />
+      <label
+        htmlFor="workshops"
+        className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Workshops
+      </label>
+    </div>
 
-              <Checkbox id="woodwork" />
-              <label
-                htmlFor="woodwork"
-                className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Woodwork
-              </label>
+    {/* Checkbox Set 2 */}
+    <div className="flex items-center space-x-2">
+      <Checkbox id="woodwork" />
+      <label
+        htmlFor="woodwork"
+        className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Woodwork
+      </label>
+    </div>
 
-              <Checkbox id="metalwork" />
-              <label
-                htmlFor="metalwork"
-                className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Metalwork
-              </label>
+    {/* Checkbox Set 3 */}
+    <div className="flex items-center space-x-2">
+      <Checkbox id="metalwork" />
+      <label
+        htmlFor="metalwork"
+        className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Metalwork
+      </label>
+    </div>
 
-              <Checkbox id="cnc" />
-              <label
-                htmlFor="cnc"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                CNC
-              </label>
+    {/* Checkbox Set 4 */}
+    <div className="flex items-center space-x-2">
+      <Checkbox id="cnc" />
+      <label
+        htmlFor="cnc"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        CNC
+      </label>
+    </div>
 
-              <Checkbox id="engineering" />
-              <label
-                htmlFor="engineering"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Engineering
-              </label>
+    {/* Checkbox Set 5 */}
+    <div className="flex items-center space-x-2">
+      <Checkbox id="engineering" />
+      <label
+        htmlFor="engineering"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Engineering
+      </label>
+    </div>
 
-              <Checkbox id="memberships" />
-              <label
-                htmlFor="memberships"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Memberships
-              </label>
-            </div>
+    {/* Checkbox Set 6 */}
+    <div className="flex items-center space-x-2">
+      <Checkbox id="memberships" />
+      <label
+        htmlFor="memberships"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Memberships
+      </label>
+    </div>
+  </div>
           </div>
           <p
             className={
