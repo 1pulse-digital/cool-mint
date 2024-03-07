@@ -7,39 +7,44 @@ import React from "react";
 const Contact = () => {
   return (
     <div className="bg-background">
-      <div className={"bg-background py-20"}>
+      <div className="grid lg:grid-cols-2 grid-cols-1 lg:px-12 2xl:px-52 xl:px-32 sm:px-12 py-20 lg:space-x-10">
+        <div className="grid place-items-center  sm:px-0">
+
         <div
           className={
-            "grid content-center px-8 font-helvetica"
+            "px-8 md:px-0 font-helvetica"
           }
         >
-          <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
             <Link href="/">
               <div>
                 Home
                 <span className="px-1">|</span>
               </div>
             </Link>
-            <Link href="/">
+            <Link href="/contact">
               <div className="text-primary">Contact</div>
             </Link>
           </div>
-
-          <div>
-       <HeaderTitle title="Contact"
-        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-        erat."
-      />
+          <div className="text-start ">
+          <h1 className="text-headings font-bold  text-secondary">
+          Contact Us<span className="text-primary">.</span>
+          </h1>
+        <p className="text-BodyText font-normal text-textColor text-wrap pt-6">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna.
+      </p>
       </div>
-      <div className=" sm:p-10 xl:mx-40 2xl:mx-60">
-          <div className="grid items-start py-16 text-secondary lg:px-60 sm:grid-cols-2 md:px-32 sm:px-12">
-            <div className="grid-rows-2 sm:grid">
+          <div>
+      </div>
+      <div className=" ">
+          <div className="flex items-start sm:py-12 text-secondary py-8 space-x-6">
+            <div className="">
               <Link
                 href="mailto:info@madeinworkshop.co.za"
                 className="2xl:pb-0"
               >
-                <p className="inline-flex  text-[14px] hover:text-primary">
+                <p className="inline-flex text-[14px] hover:text-primary pb-4 sm:pb-0 md:pr-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -109,18 +114,14 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="text-center 2xl:mx-40">
-          <p
-            className={
-              "text-center font-helvetica text-BodyText font-bold  text-primary xl:mx-40 2xl:pb-16 2xl:text-center 2xl:text-4xl"
-            }
-          >
-            Send us a message
-          </p>
-        </div>
-        <ContactForm />
       </div>
-      <div className="border-0 bg-background px-8 py-6 2xl:px-0 ">
+        </div>
+        <div>
+          <ContactForm /></div>
+      </div>
+      <div className={"bg-background"}>
+       
+      <div className="border-0 bg-background px-8 2xl:px-0 ">
         <div className="mapouter grayscale 2xl:mx-32">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3583.542461931366!2d27.97206827633481!3d-26.08120535897773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95745507de8113%3A0xa12accebfd06858b!2s10%20Naaf%20St%2C%20Strydompark%2C%20Randburg%2C%202169!5e0!3m2!1sen!2sza!4v1707394967139!5m2!1sen!2sza"
