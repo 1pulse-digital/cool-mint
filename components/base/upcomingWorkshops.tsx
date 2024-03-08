@@ -20,6 +20,7 @@ interface WorkshopProps {
   price: string;
   spotsLeft: string;
   bookLink: string;
+  classLink: string;
   // learnMoreLink: string;
 }
 
@@ -33,6 +34,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
   price,
   spotsLeft,
   bookLink,
+  classLink,
   // learnMoreLink,
 }) => (
   <div className="flex space-x-4 text-sm  w-full  justify-center">
@@ -41,7 +43,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
       <div className="md:flex ">
         <div className="pr-8 ">
           <div className=" flex flex-row flex-wrap w-full">
-            <Link href={bookLink}>
+            <Link href={classLink}>
             <div className="text-xl font-bold text-textColor">{name}</div></Link>
             <div className="pt-4 lg:block w-full pb-2">
               <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
@@ -103,7 +105,7 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
 const UpcomingWorkshops: React.FC = () => {
   
   return (
-    <div className="py-14 text-center font-medium text-primary">
+    <div className="py-1 text-center font-medium text-primary">
       <Tabs defaultValue="january woodwork">
         <div className="mt-10">
 
@@ -205,7 +207,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
              // learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -228,7 +231,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -251,7 +255,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -275,7 +280,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
              // learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -297,7 +303,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
              // learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -321,7 +328,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -343,7 +351,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -367,7 +376,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -390,7 +400,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -415,7 +426,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -438,7 +450,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -462,7 +475,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -485,7 +499,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -509,7 +524,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -532,7 +548,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -556,7 +573,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -579,7 +597,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -603,7 +622,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -626,7 +646,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -649,7 +670,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -672,7 +694,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -695,7 +718,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -718,7 +742,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -742,7 +767,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
@@ -765,7 +791,8 @@ const UpcomingWorkshops: React.FC = () => {
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price="R1,500.00"
               spotsLeft="5 Spots Left"
-              bookLink="/classesIndividual#book"
+              classLink="/classesIndividual"
+              bookLink="/cart"
               //learnMoreLink="/workshopIndividual"
             />
           </Card>
