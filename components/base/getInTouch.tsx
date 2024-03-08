@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Button, { LongButton, SmallButton, SquareButton } from "./button";
+import { LongButton, SquareButton } from "./button";
 
 const GetInTouch = () => {
   return (
@@ -22,7 +22,7 @@ const GetInTouch = () => {
         </div>
         <div>
           <Link href="/bookTour">
-            <SmallButton color="primary">
+            <SquareButton color="primary">
               Book a Tour
               <svg
                 className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
@@ -39,7 +39,7 @@ const GetInTouch = () => {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </SmallButton>
+            </SquareButton>
           </Link>
         </div>
       </div>
