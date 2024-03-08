@@ -179,23 +179,18 @@ const Header: React.FC<HeaderProps> = () => {
                               </Link>
 
                               <Link
-                                href="https://www.youtube.com/channel/UCed1ydI3MKtleCkstaAJl3Q"
-                                target="_blank"
-                              >
-                                <span className="py-0">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="1.4em"
-                                    height="1.4em"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path
-                                      fill="#EFEFEF"
-                                      d="m10 15l5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73"
-                                    />
-                                  </svg>
-                                </span>
-                              </Link>
+                    href="https://za.linkedin.com/company/made-in-workshop"
+                    target="_blank"
+                  >
+                     <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-4 w-5"
+        fill="#FDBB11"
+        viewBox="0 0 24 24"
+      >
+        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+      </svg>
+                  </Link>
                             </div>
                           </div>
                           <div className="hidden md:block">
@@ -236,7 +231,7 @@ const Header: React.FC<HeaderProps> = () => {
                     href="https://www.facebook.com/madeinworkshop/"
                     target="_blank"
                   >
-                <svg className="h-6 w-5" fill="white" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="white" viewBox="0 0 24 24">
               <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
             </svg>
             </Link> 
@@ -263,22 +258,17 @@ const Header: React.FC<HeaderProps> = () => {
                   </div>
                   <div>
                   <Link
-                    href="https://www.youtube.com/channel/UCed1ydI3MKtleCkstaAJl3Q"
+                    href="https://za.linkedin.com/company/made-in-workshop"
                     target="_blank"
                   >
-                    <span className="py-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1.4em"
-                        height="1.4em"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill="#EFEFEF"
-                          d="m10 15l5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73"
-                        />
-                      </svg>
-                    </span>
+                     <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-4 w-4"
+        fill="#EFEFEF"
+        viewBox="0 0 24 24"
+      >
+        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+      </svg>
                   </Link>
                   </div>
                 </div>
