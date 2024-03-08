@@ -179,7 +179,7 @@ export const LongButton = (props: ButtonProps) => {
 
 export const SquareButton = (props: ButtonProps) => {
 // const baseClassname = "rounded-full px-4 md:px-10 py-3 shadow hover:shadow-sm text-lg disabled:opacity-60 whitespace-nowrap";
-   const baseClassname = "whitespace-nowrap hover:text-textColor text-[14px] inline-flex items-center justify-center font-helvetica  py-3 border border-none   font-bold ";
+   const baseClassname = "whitespace-nowrap hover:text-secondary text-[14px] inline-flex items-center justify-center font-helvetica  py-3 border border-none   font-bold ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
