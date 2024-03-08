@@ -13,8 +13,8 @@ interface PricingTabProps {
 function PricingTab(props: PricingTabProps) {
   const isPopular = props.popular;
   return (
-    <div className={`h-full ${isPopular ? 'dark' : ''} ${isPopular ? 'border-4 border-primary' : 'border'} rounded-2xl bg-background ${isPopular ? 'border-bold' : 'border-primary'} 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]`}>
-      <div className="relative flex flex-col p-6 py-8 rounded-2xl bg-background border border-primary 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]">
+    <div className={`h-full ${isPopular ? 'dark' : ''} ${isPopular ? 'border-4 border-primary' : 'border border-primary border-opacity-60'} rounded-2xl bg-background ${isPopular ? 'border-bold' : 'border-primary'} 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]`}>
+      <div className="relative flex flex-col p-6 py-8 rounded-2xl 2xl:h-96 xl:h-[400px] lg:h-[460px] md:h-[400px]">
       {props.popular && (
           <div className="absolute top-0 right-0 mr-6 -mt-4">
             <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-secondary text-background rounded-full shadow-sm shadow-slate-950/5">Most Popular</div>
@@ -24,7 +24,7 @@ function PricingTab(props: PricingTabProps) {
           <div className="absolute top-0 right-0 mr-6 -mt-4"></div>
         )}
         <div className="mb-5 text-start font-helvetica">
-          <div className="text-secondary dark:text-slate-200 text-start font-semibold mb-1">{props.planName}</div>
+          <div className="text-secondary font-helvetica text-lg text-start font-semibold mb-1">{props.planName}</div>
           <div className="inline-flex items-baseline mb-2">
             <span className="text-primary text-xl">R</span>
             <span className="text-primary text-xl">{props.price}</span>
@@ -63,7 +63,7 @@ export default function PricingTable() {
         {/* Pricing tab 1 */}
         <PricingTab
          
-          planName="All Access Workshop"
+          planName="Monthly Membership"
           price= "8358 to R10999"
           planDescription="There are many variations available, but the majority have suffered."
           features={[
@@ -79,7 +79,7 @@ export default function PricingTable() {
         {/* Pricing tab 2 */}
         <PricingTab
          popular={true}
-          planName="Professional Freelancer"
+          planName="15 Day Membership"
           price= "4992"
           planDescription="There are many variations available, but the majority have suffered."
           features={[
@@ -94,7 +94,7 @@ export default function PricingTable() {
         {/* Pricing tab 3 */}
         <PricingTab
        
-          planName="Hobbyist"
+          planName="3 Day Membership"
           price= "1507"
           planDescription="There are many variations available, but the majority have suffered."
           features={[
