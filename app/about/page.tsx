@@ -24,7 +24,7 @@ const About = () => {
             placeholder={"blur"}
             height={250}
             width={250}
-            className="absolute right-0 mt-[430px] rotate-12 rounded-lg lg:mt-[660px] lg:w-40 xl:mt-[450px] xl:w-60 2xl:mt-[480px]"
+            className="absolute right-0 mt-[430px] rotate-12 rounded-lg lg:mt-[560px] lg:w-40 xl:mt-[450px] xl:w-60 2xl:mt-[480px]"
           />
         </div>
         <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28 xl:px-80 2xl:px-80">
