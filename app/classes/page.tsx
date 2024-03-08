@@ -28,11 +28,10 @@ const Workshops = () => {
         erat."
       />
       </div>
-        
         </div>
-        <div className="lg:mx-16">
+        <div className="lg:mx-32">
           <UpcomingWorkshops />
-        </div>
+        </div>        
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
