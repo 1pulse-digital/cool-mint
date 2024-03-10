@@ -14,7 +14,7 @@ const GetInTouch = () => {
       <span className="font-helvetica text-BodyText font-light text-secondary">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
       </span>
-      <div className="flex flex-row justify-center space-x-2  md:space-x-12 py-12">
+      <div className="flex flex-row justify-center space-x-4 md:space-x-12 py-12">
         <div>
           <Link href="/contact">
             <LongButton color="secondary">Get in Touch</LongButton>
