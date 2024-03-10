@@ -31,14 +31,14 @@ export const ContactForm = () => {
         <div className="pb-1 2xl:mr-6 lg:mr-6">
            <Label htmlFor="email" className="text-secondary mt-2">Email Address</Label>
            <div className="mt-2">
-      <Input type="email" id="email" placeholder="Email" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      <Input type="email" id="email" placeholder="Email Address" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
       </div>
         </div>
 
         <div className="pb-1">
            <Label htmlFor="tel" className="text-secondary mt-2">Contact Number</Label>
            <div className="mt-2">
-      <Input type="tel" id="tel" placeholder="Tel" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
+      <Input type="tel" id="tel" placeholder="Contact Number" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"></Input>/
       </div>
         </div>
 
@@ -124,10 +124,20 @@ export const ContactForm = () => {
 
   <div className="pt-8">
   <Label htmlFor="message" className="text-secondary">Message</Label>
-  <div className="mt-2">
-      <Textarea placeholder="Type your message here." id="message" className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 lg:py-10 text-secondary shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background" />
+
+<div className="mt-2">
+      <Textarea placeholder="Type your message here." id="message" className="placeholder-top placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 lg:py-4 text-secondary shadow-sm ring-1 ring-inset ring-[#707070]  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background" />
          </div>
           </div>
+          <div className="flex items-center pt-6 text-secondary space-x-2">
+      <Checkbox id="newsletter" />
+      <label
+        htmlFor="newsletter"
+        className="text-sm font-medium leading-normal peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Subscribe to our newsletter to stay in touch with the latest.
+      </label>
+    </div>
   <div> <Button color="primary" className="w-1/3 mt-6">Submit</Button></div>
 </form>
           </div>
