@@ -86,10 +86,10 @@ const ClassIndividual: React.FC = () => {
   
   return (
     <div id="book">
-    <div className="py-20 text-center font-medium text-primary">
+    <div className="py-8 sm:py-0 text-center font-medium text-primary">
       <Tabs defaultValue="january">
         <div>
-          <div className="pb-16 2xl:px-56 xl:px-40  mx-2 sm:px-4">
+          <div className="pb-10 2xl:px-56 xl:px-40  mx-2 sm:px-4">
             <Carousel className="mx-3 pt-3">
               <CarouselContent className="">
                 <CarouselItem>
@@ -161,102 +161,13 @@ const ClassIndividual: React.FC = () => {
           value="january"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-            </CardTitle>
-            <ClassItem
-              date="January"
-              day=""
-              name="Saturday, 7th"
-              time="10:00 - 13:00pm"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price=""
-              spotsLeft="5 Spots Left"
-              bookLink="/cart"
-             // learnMoreLink="/workshopIndividual"
-            />
-          </Card>
-        </TabsContent>
-
-
-        <TabsContent
-          className="bg-background px-10 font-helvetica"
-          value="january"
-        >
-          <Card className="border-0 bg-background py-8">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              
-            </CardTitle>
-            <ClassItem
-              date="January"
-              day=""
-              name="Saturday, 7th"
-              time="10:00 - 13:00pm"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price=""
-              spotsLeft="5 Spots Left"
-              bookLink="/cart"
-              //learnMoreLink="/workshopIndividual"
-            />
-          </Card>
-        </TabsContent>
-
-
-        <TabsContent
-          className="bg-background px-10 font-helvetica"
-          value="february"
-        >
-          <Card className="border-0 bg-background">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-            </CardTitle>
-            <ClassItem
-              date="february"
-              day=""
-              name="Saturday, 8th"
-              time="10:00 - 13:00pm"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price=""
-              spotsLeft="5 Spots Left"
-              bookLink="/cart"
-             // learnMoreLink="/workshopIndividual"
-            />
-          </Card>
-        </TabsContent>
-
-
-        <TabsContent
-          className="bg-background px-10 font-helvetica"
-          value="february"
-        >
-          <Card className="border-0 bg-background py-8">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">January
             </CardTitle>
             <ClassItem
               date="January"
               day=""
               name="Saturday, 10th"
-              time="10:00 - 13:00pm"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price=""
-              spotsLeft="5 Spots Left"
-              bookLink="/cart"
-              //learnMoreLink="/workshopIndividual"
-            />
-          </Card>
-        </TabsContent>
-
-        <TabsContent
-          className="bg-background px-10 font-helvetica"
-          value="march"
-        >
-          <Card className="border-0 bg-background">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-            </CardTitle>
-            <ClassItem
-              date="february"
-              day=""
-              name="Saturday, 20th"
-              time="10:00 - 13:00pm"
+              time="10:00 - 10:30pm"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price=""
               spotsLeft="5 Spots Left"
@@ -266,42 +177,38 @@ const ClassIndividual: React.FC = () => {
           </Card>
         </TabsContent>
 
-
         <TabsContent
           className="bg-background px-10 font-helvetica"
-          value="march"
-        >
-          <Card className="border-0 bg-background py-8">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              
-            </CardTitle>
-            <ClassItem
-              date="January"
-              day=""
-              name="Saturday, 25th"
-              time="10:00 - 13:00pm"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price=""
-              spotsLeft="5 Spots Left"
-              bookLink="/cart"
-              //learnMoreLink="/workshopIndividual"
-            />
-          </Card>
-        </TabsContent>
-
-
-        <TabsContent
-          className="bg-background px-10 font-helvetica"
-          value="april"
+          value="february"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">February
             </CardTitle>
             <ClassItem
               date="february"
               day=""
-              name="Saturday, 20th"
-              time="10:00 - 13:00pm"
+              name="Saturday, 2nd"
+              time="10:00 - 10:30pm"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price=""
+              spotsLeft="5 Spots Left"
+              bookLink="/cart"
+             // learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="march"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">March
+            </CardTitle>
+            <ClassItem
+              date="february"
+              day=""
+              name="Saturday, 5th"
+              time="10:00 - 10:30pm"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price=""
               spotsLeft="5 Spots Left"
@@ -311,20 +218,19 @@ const ClassIndividual: React.FC = () => {
           </Card>
         </TabsContent>
 
-
         <TabsContent
           className="bg-background px-10 font-helvetica"
           value="april"
         >
-          <Card className="border-0 bg-background py-8">
+          <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              
+              April
             </CardTitle>
             <ClassItem
               date="January"
               day=""
               name="Saturday, 25th"
-              time="10:00 - 13:00pm"
+              time="10:00 - 10:30pm"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price=""
               spotsLeft="5 Spots Left"
@@ -339,7 +245,7 @@ const ClassIndividual: React.FC = () => {
           value="may"
         >
           <Card className="border-0 bg-background">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">May
             </CardTitle>
             <ClassItem
               date="february"
@@ -354,43 +260,20 @@ const ClassIndividual: React.FC = () => {
             />
           </Card>
         </TabsContent>
-
-
-        <TabsContent
-          className="bg-background px-10 font-helvetica"
-          value="may"
-        >
-          <Card className="border-0 bg-background">
-            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-            </CardTitle>
-            <ClassItem
-              date="february"
-              day=""
-              name="Saturday, 20th"
-              time="10:00 - 13:00pm"
-              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-              price=""
-              spotsLeft="5 Spots Left"
-              bookLink="/cart"
-             // learnMoreLink="/workshopIndividual"
-            />
-          </Card>
-        </TabsContent>
-
 
         <TabsContent
           className="bg-background px-10 font-helvetica"
           value="june"
         >
-          <Card className="border-0 bg-background py-8">
+          <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              
+            June
             </CardTitle>
             <ClassItem
               date="January"
               day=""
               name="Saturday, 25th"
-              time="10:00 - 13:00pm"
+              time="10:00 - 10:30pm"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price=""
               spotsLeft="5 Spots Left"
@@ -402,21 +285,66 @@ const ClassIndividual: React.FC = () => {
 
         <TabsContent
           className="bg-background px-10 font-helvetica"
-          value="march"
+          value="july"
         >
           <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            July
             </CardTitle>
             <ClassItem
-              date="february"
+              date="January"
               day=""
-              name="Saturday, 20th"
-              time="10:00 - 13:00pm"
+              name="Saturday, 25th"
+              time="10:00 - 10:30pm"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price=""
               spotsLeft="5 Spots Left"
               bookLink="/cart"
-             // learnMoreLink="/workshopIndividual"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="august"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            August
+            </CardTitle>
+            <ClassItem
+              date="January"
+              day=""
+              name="Saturday, 25th"
+              time="10:00 - 10:30pm"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price=""
+              spotsLeft="5 Spots Left"
+              bookLink="/cart"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="september"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            September
+            </CardTitle>
+            <ClassItem
+              date="January"
+              day=""
+              name="Saturday, 25th"
+              time="10:00 - 10:30pm"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price=""
+              spotsLeft="5 Spots Left"
+              bookLink="/cart"
+              //learnMoreLink="/workshopIndividual"
             />
           </Card>
         </TabsContent>
@@ -424,17 +352,61 @@ const ClassIndividual: React.FC = () => {
 
         <TabsContent
           className="bg-background px-10 font-helvetica"
-          value="june"
+          value="october"
         >
-          <Card className="border-0 bg-background py-8">
+          <Card className="border-0 bg-background">
             <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-              
+            October
             </CardTitle>
             <ClassItem
               date="January"
               day=""
               name="Saturday, 25th"
-              time="10:00 - 13:00pm"
+              time="10:00 - 10:30pm"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price=""
+              spotsLeft="5 Spots Left"
+              bookLink="/cart"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="november"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            November
+            </CardTitle>
+            <ClassItem
+              date="January"
+              day=""
+              name="Saturday, 25th"
+              time="10:00 - 10:30pm"
+              description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
+              price=""
+              spotsLeft="5 Spots Left"
+              bookLink="/cart"
+              //learnMoreLink="/workshopIndividual"
+            />
+          </Card>
+        </TabsContent>
+
+        <TabsContent
+          className="bg-background px-10 font-helvetica"
+          value="december"
+        >
+          <Card className="border-0 bg-background">
+            <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+            December
+            </CardTitle>
+            <ClassItem
+              date="January"
+              day=""
+              name="Saturday, 25th"
+              time="10:00 - 10:30pm"
               description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
               price=""
               spotsLeft="5 Spots Left"

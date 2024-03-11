@@ -3,8 +3,6 @@ import { title } from "process";
 import Image from 'next/image';
 
 
-
-
 interface ShoppingCartProps {
   date: string;
   name: string;
@@ -25,7 +23,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
   remove,
   host,
 }) => (
-  <div className="flex font-helvetica space-x-2 rounded-2xl  text-sm py-6 flex-wrap">
+  <div className="flex font-helvetica space-x-2 rounded-2xl text-sm py-6 flex-wrap">
    <Image src={ImageSrc} alt={title} height={60} width={90} className="rounded-xl"  />
    <div>
     </div>
@@ -60,7 +58,7 @@ const ShoppingCartItem: React.FC<ShoppingCartProps> = ({
 
 const ShoppingCart: React.FC = () => {
   return (
-    <div className="grid font-medium text-primary text-center md:text-left  py-8 bg-background 2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
+    <div className="grid font-medium text-primary text-center md:text-left pt-4 bg-background 2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:start">
       
       <ShoppingCartItem
         ImageSrc="/icons/banner.webp"

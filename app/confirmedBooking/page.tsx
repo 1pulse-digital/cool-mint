@@ -1,13 +1,13 @@
+import React from "react";
 import Button, {
-  LongButton,
   SmallButtonOrange,
 } from "@/components/base/button";
 import Link from "next/link";
 
 const ConfirmedBooking: React.FC = () => {
   return (
-    <div className={"bg-background py-32"}>
-      <div className="grid content-center items-center justify-center px-8  font-helvetica">
+    <div className={"bg-background py-20"}>
+      <div className="grid content-center items-center justify-center px-8 font-helvetica">
         <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
           <Link href="/">
             <div>
@@ -29,7 +29,7 @@ const ConfirmedBooking: React.FC = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="h-8 w-20"
+            className="h-12 w-40"
           >
             <path
               strokeLinecap="round"
@@ -38,9 +38,9 @@ const ConfirmedBooking: React.FC = () => {
             />
           </svg>
         </div>
-
-        <div className="grid content-center items-center justify-center">
-          <div className="flex flex-row space-x-16 py-1 pt-4 text-center text-primary lg:space-x-60">
+   <div className="grid content-center items-center place-items-center">
+        <div className="">
+          <div className="flex flex-row space-x-4 py-1 pt-4 text-center text-primary justify-center">
             <div>
               <span
                 className={"text-start font-helvetica text-[16px] font-bold"}
@@ -58,44 +58,44 @@ const ConfirmedBooking: React.FC = () => {
               </span>
             </div>
           </div>
-          <div className="flex flex-row space-x-8 py-1 text-[16px] text-primary">
-            <div className="flex space-x-16 lg:space-x-60 ">
+          <div className="flex flex-row  py-1 text-[16px] text-primary justify-center">
+            <div className="flex space-x-4">
               <div>
                 <span className={"font-helvetica font-bold"}>Time:</span>
               </div>
-              <div className="text-end">
+              <div className="">
                 <span className={"font-helvetica font-bold text-secondary"}>
                   9:00 am
                 </span>
               </div>
             </div>
           </div>
-          <div className="flex flex-row space-x-8 py-1  pt-4 text-start text-primary lg:space-x-52">
+          <div className="flex  py-1  pt-4  text-primary justify-center space-x-4">
             <div>
               <span
-                className={"text-start font-helvetica text-[16px] font-bold"}
+                className={" font-helvetica text-[16px] font-bold"}
               >
                 Location:
               </span>
             </div>
-            <div className="flex items-start justify-start font-bold text-secondary">
+            <div className="flex justify-center font-bold text-secondary flex-wrap">
               <Link
                 href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6"
                 target="_blank"
               >
-                <p className="inline-flex items-start text-[16px] ">
+                <div className="flex flex-wrap items-center text-[16px]">
                   10 Naaf Street, Strydompark, Randburg, Johanneburg 2169
-                </p>
+                </div>
               </Link>
             </div>
           </div>
         </div>
-        <div className=" pt-10">
+        <div className="pt-10">
           <div className="mb-20 items-start justify-start py-4 text-center sm:text-start md:flex md:space-x-8 lg:justify-start lg:px-0">
             <Link href="/">
-              <div>
-                {" "}
-                <Button color="primary" className="w-full ">
+              <div className="">
+                
+                <Button color="primary" className="w-80 ">
                   Add to calendar
                 </Button>
               </div>
@@ -123,6 +123,7 @@ const ConfirmedBooking: React.FC = () => {
               </Link>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

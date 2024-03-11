@@ -1,6 +1,5 @@
 import { ContactForm } from "@/components/base/contactForm";
 import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
 import Link from "next/link";
 import React from "react";
 
@@ -8,11 +7,11 @@ const Contact = () => {
   return (
     <div className="bg-background">
       <div className="grid lg:grid-cols-2 grid-cols-1 lg:px-12 2xl:px-52 xl:px-32 sm:px-12 py-20 lg:space-x-10">
-        <div className="sm:px-0  2xl:mr-32 xl:mr-16 lg:mr-10">
+        <div className="sm:px-0 2xl:mr-32 xl:mr-16 lg:mr-10">
 
         <div
           className={
-            "px-8 md:px-0 font-helvetica"
+            "px-8 sm:px-0 md:px-0 font-helvetica"
           }
         >
           <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
@@ -30,21 +29,21 @@ const Contact = () => {
           <h1 className="text-headings font-bold  text-secondary">
           Contact Us<span className="text-primary">.</span>
           </h1>
-        <p className="text-BodyText font-normal text-textColor text-wrap pt-6">
+      {/*   <p className="text-BodyText font-normal text-textColor text-wrap pt-6">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna.
-      </p>
+      </p> */}
       </div>
           <div>
       </div>
-      <div className=" ">
-          <div className="flex-col items-start sm:py-6 text-secondary py-8 space-y-3 sm:space-x-0">
-            <div className="">
+      <div>
+          <div className="flex-col items-start justify-start sm:py-6 text-secondary py-8 space-y-2 sm:space-x-0">
+            <div>
               <Link
                 href="mailto:info@madeinworkshop.co.za"
                 className="2xl:pb-0"
               >
-                <p className="inline-flex text-[14px] hover:text-primary pb-4 sm:pb-0 md:pr-5">
+                <p className="inline-flex text-[14px] hover:text-primary pb-1 sm:pb-0 md:pr-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -63,9 +62,9 @@ const Contact = () => {
                 </p>
               </Link>
               </div>
-              <div className="">
+              <div>
               <Link href="tel:0107451577">
-                <p className="inline-flex  text-[14px]">
+                <p className="inline-flex text-[14px]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -96,7 +95,7 @@ const Contact = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="#FDBB10"
-                    className="h-6 w-9 pr-2"
+                    className="h-6 w-6 pr-1"
                   >
                     <path
                       strokeLinecap="round"
@@ -148,7 +147,7 @@ const Contact = () => {
         </div>
       </div>
       </div> */}
-      <div className="py-6 lg:px-8 2xl:px-24">
+      <div className=" pb-32 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>

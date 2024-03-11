@@ -1,30 +1,8 @@
-import { FilterButtons } from "@/components/base/filterButtons";
-import GetInTouch from "@/components/base/getInTouch";
-import IndividualWorkshop from "@/components/base/individualWorkshop";
-
 import Link from "next/link";
-import { FAQAccordion } from "@/components/base/faqAccordion";
-import Tour from "@/components/base/tour";
-import BlogWidget from "@/components/detailed/blogWidget";
-import Button from "@/components/base/button";
-
-import { Card, CardTitle } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
-  import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-  } from "@/components/ui/tabs"
-
 import React from "react";
 import { Classes } from "@/components/base/classes";
-import UpcomingWorkshops from "@/components/base/upcomingWorkshops";
 import ClassIndividual from "@/components/base/classIndividual";
+import GetInTouch from "@/components/base/getInTouch";
 
 const Workshops = () => { 
   return(
@@ -52,6 +30,9 @@ const Workshops = () => {
      <ClassIndividual />
  
     </div>
+    <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
+      </div>
      </div>
   );
 };

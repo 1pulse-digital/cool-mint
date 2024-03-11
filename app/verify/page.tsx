@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 
 const Login: React.FC = () => {
   return (
-    <div className={"bg-background py-10"}>
+    <div className={"bg-background"}>
       <div className="grid grid-cols-1 md:grid-cols-2">
        <div className="hidden md:block">
        <div className="object-cover w-full h-full">
