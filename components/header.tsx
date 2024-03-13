@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = () => {
       <Popover className="fixed w-full bg-background">
         {({ open }) => (
           <div className="grid w-full grid-cols-3 space-x-4 px-4 py-4 sm:px-6 lg:px-8 2xl:px-28">
-            <div className={"w-44"}>
+            <div className={"w-40"}>
               <Link href={"/"}>
                 <p>
                   <Image src={logo} alt="Logo" width={130} height={80} />
@@ -119,14 +119,14 @@ const Header: React.FC<HeaderProps> = () => {
                       </div>
 
                       <div className="space-y-6 px-5 py-6">
-                        <div className="w-full ">
+                        <div className="hidden w-full sm:block ">
                           <Link href="/login">
                             <Button color={"primary"}>Login</Button>
                           </Link>
                         </div>
-                        <div className="flex  items-center justify-start gap-x-2 sm:gap-x-4">
+                        <div className="flex items-center justify-start gap-x-2 sm:gap-x-4">
                           <div className="">
-                            <div className="flex flex-row space-x-3">
+                            <div className="flex flex-row space-x-2">
                               <Link
                                 href="https://www.facebook.com/madeinworkshop/"
                                 target="_blank"
@@ -135,7 +135,7 @@ const Header: React.FC<HeaderProps> = () => {
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="0.54em"
-                                    height="1em"
+                                    height="1.2em"
                                     viewBox="0 0 896 1664"
                                   >
                                     <path
@@ -179,27 +179,27 @@ const Header: React.FC<HeaderProps> = () => {
                               </Link>
 
                               <Link
-                    href="https://za.linkedin.com/company/made-in-workshop"
-                    target="_blank"
-                  >
-                     <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-5"
-        fill="#FDBB11"
-        viewBox="0 0 24 24"
-      >
-        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-      </svg>
-                  </Link>
+                                href="https://za.linkedin.com/company/made-in-workshop"
+                                target="_blank"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-4 w-5"
+                                  fill="#EFEFEF"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                </svg>
+                              </Link>
                             </div>
                           </div>
-                          <div className="hidden md:block">
+                          {/* <div className="hidden md:block">
                             <Link href="/login">
                               <HeaderButton color={"primary"}>
-                                Login
+                                Login2
                               </HeaderButton>
                             </Link>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -208,72 +208,75 @@ const Header: React.FC<HeaderProps> = () => {
               </div>
 
               {/* Desktop menu */}
-              <div className="lg:ml-[400px]">
-                <nav className="hidden items-center justify-center lg:justify-end lg:items-end  gap-x-6 space-x-5 py-2 text-base text-primary sm:gap-x-4 lg:flex lg:gap-x-0 lg:space-x-5 xl:justify-end xl:gap-x-1 xl:space-x-6 2xl:gap-x-3 2xl:space-x-6">
-                  {/* Render all the navigationItems as <Link /> components */}
-                  {navigationItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={`link ${pathname === item.href ? "font-bold text-primary lg:text-[15px] xl:text-base" : "text-secondary hover:font-bold hover:text-primary lg:text-[15px] xl:text-base"}`}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </nav>
+
+              <div className="hidden justify-center gap-x-0 space-x-5 py-2 text-base text-primary last:items-center lg:flex lg:items-center  lg:gap-x-0 lg:space-x-4 xl:flex xl:items-center xl:gap-x-1 xl:space-x-8 2xl:flex 2xl:gap-x-3 2xl:space-x-6">
+                {navigationItems.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`link ${pathname === item.href ? "font-bold text-primary lg:text-[15px] xl:text-base" : "text-secondary hover:font-bold hover:text-primary lg:text-[15px] xl:text-base"}`}
+                  >
+                    {item.name}
+                  </a>
+                ))}
               </div>
             </div>
-            <div className="flex  items-center justify-end gap-x-2 sm:gap-x-4">
+            <div className="flex items-center justify-end gap-x-2 sm:gap-x-4">
               <div className="hidden sm:block">
-                <div className="flex flex-row space-x-4">
-                <div>
-                <Link
-                    href="https://www.facebook.com/madeinworkshop/"
-                    target="_blank"
-                  >
-                <svg className="h-5 w-5" fill="white" viewBox="0 0 24 24">
-              <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-            </svg>
-            </Link> 
-                  </div>
+                <div className="flex flex-row space-x-4 lg:space-x-2">
                   <div>
-                  <Link
-                    href="https://www.instagram.com/accounts/login/?next=%2Fmade_in_workshop_za%2F"
-                    target="_blank"
-                  >
-                    <span className="py-0">
+                    <Link
+                      href="https://www.facebook.com/madeinworkshop/"
+                      target="_blank"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="0.88em"
-                        height="1.5em"
-                        viewBox="0 0 740 850"
+                        className="h-5 w-4"
+                        fill="#EFEFEF"
+                        viewBox="0 0 24 24"
                       >
-                        <path
-                          fill="#EFEFEF"
-                          d="M372 182q41 0 77 15t63 42t42 63t15 77t-15 76t-42 63t-63 42t-77 16t-77-16t-62-42t-42-63t-16-76t16-77t42-63t62-42t77-15m0 324q26 0 49-10t41-27t27-41t10-49t-10-50t-27-41t-41-27t-49-10t-49 10t-41 27t-27 41t-10 50t10 49t27 41t41 27t49 10m368-314q9 187 0 374q-2 36-17 68t-39 56t-57 40t-68 17q-47 2-93 3t-94 1t-93-1t-94-3q-36-2-68-17t-56-40t-40-56t-17-68q-8-187 0-374q2-36 17-68t40-57t56-39t68-17q187-9 374 0q36 2 68 17t57 39t39 57t17 68m-70 370q9-183 0-367q-1-22-11-42t-25-36t-36-26t-42-11q-46-2-92-3t-92-1t-92 1t-92 3q-22 1-42 11t-35 26t-26 36t-11 42q-9 184 0 368q1 22 11 42t26 35t35 26t42 11q184 9 368 0q22-1 42-11t36-26t25-36t11-42M569 138q18 0 31 13t13 31t-13 31t-31 13t-31-13t-13-31t13-31t31-13"
-                        />
+                        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                       </svg>
-                    </span>
-                  </Link>
+                    </Link>
                   </div>
                   <div>
-                  <Link
-                    href="https://za.linkedin.com/company/made-in-workshop"
-                    target="_blank"
-                  >
-                     <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-4"
-        fill="#EFEFEF"
-        viewBox="0 0 24 24"
-      >
-        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-      </svg>
-                  </Link>
+                    <Link
+                      href="https://www.instagram.com/accounts/login/?next=%2Fmade_in_workshop_za%2F"
+                      target="_blank"
+                    >
+                      <span className="py-0">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="0.88em"
+                          height="1.5em"
+                          viewBox="0 0 740 850"
+                        >
+                          <path
+                            fill="#EFEFEF"
+                            d="M372 182q41 0 77 15t63 42t42 63t15 77t-15 76t-42 63t-63 42t-77 16t-77-16t-62-42t-42-63t-16-76t16-77t42-63t62-42t77-15m0 324q26 0 49-10t41-27t27-41t10-49t-10-50t-27-41t-41-27t-49-10t-49 10t-41 27t-27 41t-10 50t10 49t27 41t41 27t49 10m368-314q9 187 0 374q-2 36-17 68t-39 56t-57 40t-68 17q-47 2-93 3t-94 1t-93-1t-94-3q-36-2-68-17t-56-40t-40-56t-17-68q-8-187 0-374q2-36 17-68t40-57t56-39t68-17q187-9 374 0q36 2 68 17t57 39t39 57t17 68m-70 370q9-183 0-367q-1-22-11-42t-25-36t-36-26t-42-11q-46-2-92-3t-92-1t-92 1t-92 3q-22 1-42 11t-35 26t-26 36t-11 42q-9 184 0 368q1 22 11 42t26 35t35 26t42 11q184 9 368 0q22-1 42-11t36-26t25-36t11-42M569 138q18 0 31 13t13 31t-13 31t-31 13t-31-13t-13-31t13-31t31-13"
+                          />
+                        </svg>
+                      </span>
+                    </Link>
+                  </div>
+                  <div>
+                    <Link
+                      href="https://za.linkedin.com/company/made-in-workshop"
+                      target="_blank"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-4"
+                        fill="#EFEFEF"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                      </svg>
+                    </Link>
                   </div>
                 </div>
               </div>
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <Link href="/login">
                   <HeaderButton color={"primary"}>Login</HeaderButton>
                 </Link>
