@@ -6,11 +6,11 @@ const Hero = () => {
   return (
     <div
       className={
-        "relative -mt-20 grid h-screen  content-center align-middle xl:px-40 2xl:px-52 bg-background"
+        "relative sm:-mt-20 -mt-10 grid h-screen content-center align-middle xl:px-40 2xl:px-52 bg-background"
       }
     >
       <div className={"absolute inset-0"}></div>
-      <div className={"z-10 grid "}>
+      <div className={"z-10 grid"}>
         <h1
           className={
             "text-center font-helvetica text-2xl text-headings font-bold leading-tight text-secondary lg:text-5xl  lg:leading-tight"
@@ -34,7 +34,7 @@ const Hero = () => {
             </span>
           </div>
         </span>
-        <div className="z-10 flex justify-center py-5 text-right lg:space-x-4  ">
+        <div className="z-10 flex justify-center py-5 text-right lg:space-x-4 md:space-x-6">
           <div>
             <Link href="/memberships">
               <Button color="primary">Become a Member</Button>
