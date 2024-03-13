@@ -29,7 +29,7 @@ const Memberships = () => {
       />
       </div>
       </div>
-      <div className="pb-10">
+      <div className="pb-10 md:pt-12 lg:pt-0">
         <PricingTable />
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
