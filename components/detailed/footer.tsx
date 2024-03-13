@@ -122,7 +122,7 @@ export const Footer = () => {
               <Link href="/privacyPolicy">
                 <p className="py-2 text-xs">Privacy Policy</p>
               </Link>
-              <Link href="/">
+              <Link href="/termsConditions">
                 <p className="text-xs">Terms and Conditions</p>
               </Link>
             </div>
@@ -132,7 +132,7 @@ export const Footer = () => {
               <p className="font-helvetica text-BodyText font-bold text-textColor">
                 Follow Us
               </p>
-              <div className="flex flex-row space-x-2 py-2">
+              <div className="flex flex-row space-x-2 py-2 place-items-center">
                 <div>
                   <Link
                     href="https://www.facebook.com/madeinworkshop/"
@@ -164,7 +164,7 @@ export const Footer = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="0.88em"
+                      width="0.9em"
                       height="1.2em"
                       viewBox="0 0 740 850"
                     >
@@ -182,7 +182,7 @@ export const Footer = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="1.3em"
+                      width="1.5em"
                       height="1.3em"
                       viewBox="0 0 24 24"
                     >
@@ -200,7 +200,7 @@ export const Footer = () => {
                   >
                      <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-5"
+        className="h-4 w-4"
         fill="#FDBB11"
         viewBox="0 0 24 24"
       >
