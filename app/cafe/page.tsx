@@ -7,8 +7,8 @@ import React from "react";
 
 const Cafe = () => {
   return (
-    <div>
-      <div className={"bg-background px-6 py-20"}>
+    <div className="bg-background ">
+      <div className={"px-6 sm:py-20 py-10"}>
         <div
           className={
             "grid content-center pb-8 font-helvetica md:pb-2 xl:pb-0 2xl:pb-0"
@@ -39,13 +39,13 @@ const Cafe = () => {
             </div>
           </div>
         </div>
-        <div className="sm:mx-20 md:mx-28 lg:mx-44 2xl:mx-72">
+        <div className="sm:mx-20 md:mx-6 lg:mx-44 2xl:mx-72">
           <CafeMIW />
         </div>
-        <div className="py-20 lg:px-8 2xl:px-24">
+       </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
           <GetInTouch />
         </div>
-      </div>
     </div>
   );
 };
