@@ -9,14 +9,14 @@ const About = () => {
   return (
     <div className="bg-background font-helvetica">
       <div className="lg:px-32">
-        <div className="relative hidden lg:flex">
+        <div className="relative hidden rounded-lg lg:flex">
           <Image
             src={gallery}
             alt="made in workshop"
             placeholder={"blur"}
             height={250}
             width={250}
-            className="absolute left-0 top-8 -rotate-12 rounded-lg lg:w-40 lg:pt-20 xl:w-60 2xl:mt-16"
+            className="absolute left-0 top-8 -rotate-12 rounded-lg lg:w-40  xl:w-60 2xl:mt-16"
           />
           <Image
             src={gallery}
