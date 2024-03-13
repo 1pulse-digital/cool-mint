@@ -5,7 +5,7 @@ import { LongButton, SquareButton } from "./button";
 const GetInTouch = () => {
   return (
     <div
-    className="flex items-center justify-center rounded-md bg-[#27272A] mx-8 lg:mx-2 font-helvetica px-8 flex-wrap"
+    className="flex items-center justify-center rounded-md bg-[#27272A] mx-6 lg:mx-2 font-helvetica px-4 flex-wrap md:mx-10"
   >
     <div className="rounded-full py-8 text-center px-4">
       <h1 className="py-4 font-helvetica text-headings font-bold text-secondary">
