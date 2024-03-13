@@ -317,7 +317,7 @@ const NewsTitle = () => {
       /> 
           </div>
         </div>
-        <div className="py-6 text-center sm:py-8 md:py-10 lg:py-20">
+        <div className="pt-12 sm:pt-0 text-center sm:py-8 md:py-10 lg:py-20">
           <Link href="/">
             <Button color={"primary"}>Learn More</Button>
           </Link>
