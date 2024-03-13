@@ -17,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export function TeamCarousel() {
   return (
     <div>
-      <div className="grid h-auto items-center justify-center px-8 py-20 sm:px-16 md:px-20">
+      <div className="grid h-auto items-center justify-center px-8 sm:py-20 py-10 sm:px-16 md:px-20">
         <h1
           className={
             "pb-16 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
@@ -119,8 +119,6 @@ export function TeamCarousel() {
             value="workshops"
           >
             <Card className="border-0 bg-background">
-             
-             
             <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
@@ -163,7 +161,7 @@ export function TeamCarousel() {
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={trenton}
-                    alt="henry"
+                    alt="trenton"
                     placeholder="blur"
                     className="h-full w-full object-cover lg:rounded-l-lg"
                     style={{
