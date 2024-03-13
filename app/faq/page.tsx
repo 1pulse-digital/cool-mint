@@ -7,7 +7,8 @@ import HeaderTitle from "@/components/base/headerTitle";
 
 const FAQ = () => {
   return (
-    <div className="bg-background py-20">
+    <div className="bg-background sm:py-20 py-10">
+      <div>
       <div className="font-helvetaica grid content-center px-8">
         <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
           <div>
@@ -31,10 +32,11 @@ const FAQ = () => {
       />
       </div>
       </div>
-      <div className="py-4">
+      <div>
       <FAQAccordion />
       </div>
-      <div className="py-20 lg:px-8 2xl:px-24">
+      </div>
+      <div className="sm:py-20 py-10 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>
