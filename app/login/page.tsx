@@ -5,20 +5,25 @@ import Button, {
   SmallButtonOrange,
 } from "@/components/base/button";
 import Link from "next/link";
-import login from "../../images/login.png";
+import login from "../../images/background.png";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const Login: React.FC = () => {
   return (
-    <div className={"bg-background 2xl:h-screen"}>
+    <div className={"bg-background"}>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="hidden md:block">
-          <div className="object-cover w-full h-full">
-            <Image src={login} alt="made in workshop" placeholder={"blur"} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+          <div className="h-full w-full object-cover">
+            <Image
+              src={login}
+              alt="made in workshop"
+              placeholder={"blur"}
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
           </div>
         </div>
-        <div className="grid px-8 md:px-16 2xl:mx-52 place-content-center 2xl:px-0">
+        <div className="grid place-content-center px-8 md:px-16 2xl:mx-52 2xl:px-0">
           <div className={"grid content-center font-helvetica"}>
             <h1
               className={
@@ -71,7 +76,7 @@ const Login: React.FC = () => {
                   type="email"
                   id="email"
                   placeholder="Email"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
               </div>
@@ -86,16 +91,16 @@ const Login: React.FC = () => {
                   type="password"
                   id="password"
                   placeholder="*************"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
               </div>
             </div>
             <div>
               <Link href="/register">
-              <Button color="primary" className="mt-2 w-full">
-                Login
-              </Button>
+                <Button color="primary" className="mt-2 w-full">
+                  Login
+                </Button>
               </Link>
             </div>
             <div className="flex items-center justify-center space-x-4 py-8">
@@ -106,8 +111,7 @@ const Login: React.FC = () => {
               <hr className="mx-2 h-[1px] flex-grow border-0 bg-secondary"></hr>
             </div>
             <Link href="/verify">
-            <div className="inline-flex w-full ">
-              
+              <div className="inline-flex w-full ">
                 <LongButton
                   color="secondary"
                   className="flex w-full items-center justify-center"
@@ -124,8 +128,7 @@ const Login: React.FC = () => {
                     GOOGLE
                   </p>
                 </LongButton>
-             
-            </div>
+              </div>
             </Link>
             <p className="py-8 text-center font-helvetica text-xs text-textColor">
               By clicking continue, you agree to our{" "}

@@ -3,7 +3,7 @@ import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
 import HeaderTitle from "@/components/base/headerTitle";
 
-const PrivacyPolicy = () => {
+const TermsConditions = () => {
   return (
     <div className="bg-background py-20">
       <div className="px-8 font-helvetica sm:px-10 md:px-10 lg:px-10 xl:px-12 2xl:px-28">
@@ -15,11 +15,11 @@ const PrivacyPolicy = () => {
             </div>
           </Link>
           <Link href="/">
-            <div className="text-primary">Privacy Policy</div>
+            <div className="text-primary">Terms and Conditions</div>
           </Link>
         </div>
         <p className="font-helvetical pb-8 text-4xl font-bold text-secondary">
-          Privacy Policy{" "}
+          Terms and Conditions
         </p>
         <p className="text-base font-normal text-secondary ">
           We have created this privacy statement for online ecommerce in order
@@ -348,4 +348,4 @@ const PrivacyPolicy = () => {
     </div>
   );
 };
-export default PrivacyPolicy;
+export default TermsConditions;

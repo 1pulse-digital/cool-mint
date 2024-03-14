@@ -36,11 +36,12 @@ const Cart: React.FC = () => {
           <div className="grid md:flex md:space-x-32">
             <div className="flex place-items-center space-x-2 sm:space-x-10 2xl:space-x-1">
               <div className="bg-grey-500 flex space-x-6">
-               <div className="py-3">
+              
+                 <div className="py-3">
                 <Label htmlFor="discount" className="mt-2 text-secondary">
                   Add Discount Code:
                 </Label>
-                <div className="sm:w-60">
+                <div className="sm:w-60 mt-2">
                   <Input
                     type="surname"
                     id="surname"
@@ -48,7 +49,7 @@ const Cart: React.FC = () => {
                     className="block rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                   ></Input>
                 </div>
-              </div>
+              </div> 
               <div className="pt-8">
                 <Link href="/register">
                   <SmallButtonOrange color="primary" className="font-bold">
@@ -116,7 +117,7 @@ const Cart: React.FC = () => {
             </Link>
           </div>
           <div className="items-start justify-start py-2 sm:items-center sm:justify-center">
-            <Link href="/workshops">
+            <Link href="/classes">
               <SmallButtonOrange
                 color="primary"
                 className="font-helvetica font-bold"

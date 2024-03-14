@@ -6,8 +6,8 @@ import HeaderTitle from "@/components/base/headerTitle";
 
 const Workshops = () => {
   return (
-    <div className={"grid grid-cols-1 bg-background py-20"}>
-      <div className="">
+    <div className={"bg-background"}>
+      <div className="grid grid-cols-1 sm:py-20 py-10">
         <div className={"grid content-center px-8 font-helvetica"}>
           <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
             <Link href="/">
