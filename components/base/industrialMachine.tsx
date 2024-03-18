@@ -32,18 +32,18 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
   return (
     <div className="rounded-xl mb-0">
       <div>
-      <div className="lg:flex 2xl:mx-60 bg-[#2c3033]">
-      <div className="lg:rounded-l-lg object-cover">
-        <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className=" lg:rounded-l-lg" style={{ objectFit: "cover", width: "100%", height: "100%" }}/>
+      <div className="lg:flex 2xl:mx-60 bg-[#2c3033] rounded-lg">
+      <div className="lg:rounded-l-lg object-cover rounded-t-lg">
+        <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className="rounded-t-lg sm:rounded-t-lg lg:rounded-l-lg" style={{ objectFit: "cover", width: "100%", height: "100%" }}/>
       </div>
-      <div className="p-5 bg-[#2c3033] sm:px-16 py-8">
-        <div className={"grid text-start font-helvetica "}>
+      <div className="p-5 bg-[#2c3033] sm:px-8 py-8 rounded-lg">
+        <div className={"grid text-start font-helvetica"}>
           <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>{machineName}</h3>
           <p className="text-primary font-helvetica text-xs py-2 pb-6">{categories}</p>
           <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-normal"}>{description}</p>
         </div>
         <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start py-6"}>Specs</h3>
-        <div className=" space-x-10">
+        <div className="space-x-10">
         {specGroups.map((specGroup, groupIndex) => (
           <div key={groupIndex} className="grid grid-cols-2 text-start font-helvetica  pb-4">
             {specGroup.specs.map((spec, specIndex) => (
