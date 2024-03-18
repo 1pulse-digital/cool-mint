@@ -21,7 +21,8 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
 }) => {
   return (
     <div className="relative mx-4 mb-8 grid h-96 py-10 sm:py-0">
-      <div className="relative">
+      <Link href={"/newsTitle"}>
+      <div className="">
         <div className="absolute inset-0 h-full w-full">
           <Image
             fill
@@ -33,6 +34,7 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
         </div>
         <div className="absolute inset-0 rounded-md bg-gradient-to-b from-transparent to-black opacity-100"></div>
       </div>
+      </Link>
       <div className="absolute bottom-0 z-10 grid h-auto w-full  px-5">
         <div className="row flex space-x-4 py-2">
           <p className="inline-flex items-start py-1 text-xs text-secondary">
