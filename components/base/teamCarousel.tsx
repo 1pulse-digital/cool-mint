@@ -17,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export function TeamCarousel() {
   return (
     <div>
-      <div className="grid h-auto items-center justify-center px-8 sm:py-20 py-10 sm:px-16 md:px-20">
+      <div className="grid h-auto items-center justify-center px-8 sm:py-20 py-10 sm:px-16 md:px-20 lg:px-0">
         <h1
           className={
             "pb-16 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
@@ -26,10 +26,10 @@ export function TeamCarousel() {
           Meet the Team<span className="text-primary">.</span>
         </h1>
 
-        <Tabs defaultValue="machines" className="">
-          <div className="pb-16 2xl:mx-60">
+        <Tabs defaultValue="machines">
+          <div className="pb-16">
             <Carousel className="mx-10">
-              <CarouselContent className="">
+              <CarouselContent>
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
                     <TabsTrigger value="machines">
@@ -80,13 +80,13 @@ export function TeamCarousel() {
             value="machines"
           >
             <Card className="border-0 bg-background">
-              <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
+              <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-10 rounded-lg">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={henry}
                     alt="henry"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -94,7 +94,7 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
                     Henry Levine
                   </h3>
@@ -119,13 +119,13 @@ export function TeamCarousel() {
             value="workshops"
           >
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-lg">
                   <Image
                     src={joshua}
                     alt="henry"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -133,7 +133,7 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
                   Joshua Lotter
                   </h3>
@@ -157,13 +157,13 @@ export function TeamCarousel() {
           </TabsContent>
           <TabsContent className="bg-background font-helvetica" value="general">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={trenton}
                     alt="trenton"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -171,7 +171,7 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
                   Trenton Carr
                   </h3>
