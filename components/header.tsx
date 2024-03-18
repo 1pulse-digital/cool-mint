@@ -56,8 +56,8 @@ const Header: React.FC<HeaderProps> = () => {
     <div className={"relative z-30 h-[90px] bg-background"}>
       <Popover className="fixed w-full bg-background">
         {({ open }) => (
-          <div className="grid w-full grid-cols-3 space-x-4 px-4 py-4 sm:px-6 lg:px-8 2xl:px-28">
-            <div className={"w-40"}>
+          <div className="flex justify-between w-full sm:space-x-4  px-4 py-4 sm:px-6 lg:px-8 2xl:px-28">
+            <div className={"w-40 "}>
               <Link href={"/"}>
                 <p>
                   <Image src={logo} alt="Logo" width={130} height={80} />
@@ -68,9 +68,9 @@ const Header: React.FC<HeaderProps> = () => {
             <div className={"my-auto"}>
               {/* Mobile menu */}
 
-              <div className="grid items-center justify-center lg:hidden">
+              <div className="grid place-items-center justify-center lg:hidden">
                 {/* Mobile menu button */}
-                <Popover.Button className="inline-flex items-center  justify-center rounded-md bg-background p-2 text-gray-400 hover:bg-background hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
+                <Popover.Button className="inline-flex mr-24  sm:mr-0 items-center justify-center rounded-md bg-background p-2 text-gray-400 hover:bg-background hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -209,7 +209,7 @@ const Header: React.FC<HeaderProps> = () => {
 
               {/* Desktop menu */}
 
-              <div className="hidden justify-center gap-x-0 space-x-5 py-2 text-base text-primary last:items-center lg:flex lg:items-center  lg:gap-x-0 lg:space-x-4 xl:flex xl:items-center xl:gap-x-1 xl:space-x-8 2xl:flex 2xl:gap-x-3 2xl:space-x-6">
+              <div className="hidden justify-center gap-x-0 space-x-5 py-2 text-base text-primary last:items-center lg:flex lg:items-center  lg:gap-x-0 lg:space-x-4 xl:flex xl:items-center xl:gap-x-1 xl:space-x-8 ">
                 {navigationItems.map((item) => (
                   <a
                     key={item.name}
@@ -221,7 +221,7 @@ const Header: React.FC<HeaderProps> = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center justify-end gap-x-2 sm:gap-x-4">
+            <div className="flex items-center gap-x-2 sm:gap-x-4 sm:space-x-0">
               <div className="hidden sm:block">
                 <div className="flex flex-row space-x-4 lg:space-x-2">
                   <div>
@@ -312,3 +312,4 @@ const Header: React.FC<HeaderProps> = () => {
 };
 
 export default Header;
+
