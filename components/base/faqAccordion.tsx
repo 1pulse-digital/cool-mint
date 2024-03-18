@@ -36,7 +36,7 @@ export function FAQAccordion() {
                 <Accordion type="single" collapsible className="w-full">
                   <div></div>
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor{" "}
                     </AccordionTrigger>
                     <AccordionContent>
@@ -44,7 +44,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-2">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sitt
                     </AccordionTrigger>
                     <AccordionContent>
@@ -52,7 +52,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-3">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -60,7 +60,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-4">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -68,7 +68,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-5">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -76,7 +76,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="machines">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -84,7 +84,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-6">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -92,7 +92,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-7">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -100,7 +100,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-8">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -120,7 +120,7 @@ export function FAQAccordion() {
               <CardDescription className="text-textColor">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -128,7 +128,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -136,7 +136,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-3">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -144,7 +144,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-4">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -152,7 +152,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-5">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -160,7 +160,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-6">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -168,7 +168,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-7">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -176,7 +176,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-8">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -184,7 +184,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-9">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -204,7 +204,7 @@ export function FAQAccordion() {
               <CardDescription className="text-textColor">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -212,7 +212,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -220,7 +220,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-3">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -228,7 +228,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-4">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -236,7 +236,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-5">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -245,7 +245,7 @@ export function FAQAccordion() {
                   </AccordionItem>
 
                   <AccordionItem value="item-6">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -253,7 +253,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-7">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -261,7 +261,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-8">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -269,7 +269,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-9">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -277,7 +277,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-10">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
@@ -285,7 +285,7 @@ export function FAQAccordion() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-11">
-                    <AccordionTrigger className="text-[16px] text-textColor">
+                    <AccordionTrigger className="text-[16px] text-textColor font-bold">
                       Lorem ipsum dolor sit amet
                     </AccordionTrigger>
                     <AccordionContent>
