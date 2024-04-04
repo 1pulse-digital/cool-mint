@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const ContactForm = () => {
   return (
-    <div className={"bg-background px-6 py-6 sm:px-0 md:px-0 md:py-12 lg:py-0"}>
+    <div className={"bg-background px-6 py-6 sm:px-0 md:px-0 md:py-0 lg:py-0"}>
       <div className="w-full">
         <form>
           <div className="grid-cols-2 lg:grid">
@@ -20,7 +20,7 @@ export const ContactForm = () => {
                   type="name"
                   id="name"
                   placeholder="First Name"
-                  className="block  w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -35,7 +35,7 @@ export const ContactForm = () => {
                   type="surname"
                   id="surname"
                   placeholder="Last Name"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset  ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -50,7 +50,7 @@ export const ContactForm = () => {
                   type="email"
                   id="email"
                   placeholder="Email Address"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -65,7 +65,7 @@ export const ContactForm = () => {
                   type="tel"
                   id="tel"
                   placeholder="Contact Number"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset  ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -158,7 +158,7 @@ export const ContactForm = () => {
               <Textarea
                 placeholder="Type your message here."
                 id="message"
-                className="placeholder-top block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs placeholder:text-white  focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 lg:py-4"
+                className="placeholder-top block w-full bg-background py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs placeholder:text-white  lg:py-4"
               />
             </div>
           </div>
