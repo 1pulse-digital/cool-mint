@@ -43,7 +43,7 @@ const BookingConfirmation = () => {
                   type="name"
                   id="name"
                   placeholder="Name"
-                  className="block  w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -58,7 +58,7 @@ const BookingConfirmation = () => {
                   type="surname"
                   id="surname"
                   placeholder="surname"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -73,7 +73,7 @@ const BookingConfirmation = () => {
                   type="email"
                   id="email"
                   placeholder="Email"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
@@ -88,7 +88,7 @@ const BookingConfirmation = () => {
                   type="tel"
                   id="tel"
                   placeholder="Tel"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
                 /
               </div>
