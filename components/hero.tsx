@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       className={
-        "relative sm:-mt-20 -mt-10 grid h-screen content-center align-middle xl:px-40 2xl:px-52 bg-background"
+        "relative sm:-mt-20 py-8 sm:py-0 grid sm:h-screen content-center align-middle xl:px-40 2xl:px-52 bg-background"
       }
     >
       <div className={"absolute inset-0"}></div>
