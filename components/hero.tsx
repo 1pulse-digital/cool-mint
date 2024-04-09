@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       className={
-        "relative sm:-mt-20 py-8 sm:py-0 grid sm:h-screen content-center align-middle xl:px-40 2xl:px-52 bg-background"
+        "relative grid content-center bg-background py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 xl:px-40 2xl:px-52"
       }
     >
       <div className={"absolute inset-0"}></div>
@@ -26,15 +26,29 @@ const Hero = () => {
         >
           <div className="md:px-28">
             <span>
-              Providing you with the tools, machines and the space for you to
-              <span className="font-medium text-primary"> design</span>,
-              <span className="font-medium text-primary"> build </span> and
-              <span className="font-medium text-primary"> fabricate </span>your
-              product, project or idea.
+              Providing you with access to industrial tools and machinery, all
+              within a{" "}
+              <span className="font-medium text-primary">
+                {" "}
+                vibrant shared workshop environment{" "}
+              </span>
+              , allowing you to bring your ideas to life. Whether you're a
+              <span className="font-medium text-primary">
+                {" "}
+                professional manufacturer{" "}
+              </span>
+              ,<span className="font-medium text-primary">
+                {" "}
+                a hobbyist{" "}
+              </span>,{" "}
+              <span className="font-medium text-primary"> a maker</span>, or
+              somewhere{" "}
+              <span className="font-medium text-primary"> in between </span>,
+              let our shared workshop be your new creative home.
             </span>
           </div>
         </span>
-        <div className="z-10 flex justify-center py-5 text-right lg:space-x-4 md:space-x-6">
+        <div className="z-10 flex justify-center py-5 text-right md:space-x-6 lg:space-x-4">
           <div>
             <Link href="/memberships">
               <Button color="primary">Become a Member</Button>
@@ -66,24 +80,24 @@ const Hero = () => {
       </div>
       <div>
         <div className="hidden sm:block">
-         <div className="animate-bounce flex justify-center absolute inset-x-0 bottom-10">
-          <Link href="/#whyus">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#FDBB10"
-              className="h-14 w-14"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-              />
-            </svg>
-          </Link>
-        </div> 
+          <div className="absolute inset-x-0 bottom-10 flex animate-bounce justify-center">
+            <Link href="/#whyus">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#FDBB10"
+                className="h-14 w-14"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
