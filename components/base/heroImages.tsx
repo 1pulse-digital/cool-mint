@@ -20,15 +20,20 @@ export const HeroImages = () => {
         </div>
         <div className="p-5 font-helvetica sm:flex sm:flex-1 sm:flex-col sm:justify-center">
           <h1 className="py-4 text-center font-helvetica text-headings font-bold text-secondary sm:text-start md:text-start lg:text-start">
-            Why us<span className="text-primary">?</span>
+            Why choose our Makerspace<span className="text-primary">?</span>
           </h1>
           <p className="text-center font-helvetica text-BodyText font-normal text-textColor sm:text-start md:text-start lg:text-start">
-            Made In Workshop (MIW) is a shared workshop and fabrication studio.
-            Not just a workshop with a collection of tools and machines but a
-            community of like-minded{" "}
-            <span className="text-primary">fabricators</span>,{" "}
-            <span className="text-primary">manufacturers</span> and{" "}
-            <span className="text-primary">designers</span>.
+            Our space is more than just a collection of industrial machinery and
+            tooling; it is a hub for{" "}
+            <span className="text-primary">collaboration</span> and{" "}
+            <span className="text-primary">innovation</span>. Becoming a member
+            means you're not only accessing a workspace, tools, and machines but
+            also joining a vibrant community of{" "}
+            <span className="text-primary">like-minded individuals</span> who
+            thrive on the exchange of ideas, skills, and inspiration. It's an
+            environment where everyone, from beginners to seasoned
+            manufacturers, can come together to{" "}
+            <span className="text-primary">explore, create, and innovate.</span>
           </p>
           <div className="py-8 text-center sm:text-start md:text-start lg:text-start">
             <Link href="/about">
