@@ -28,9 +28,10 @@ const Cafe = () => {
           <div>
             <HeaderTitle
               title="MIW Café"
-              description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-        erat."
+              description="Looking for the perfect spot to take a breather, spark some creativity, 
+              or just enjoy a great cup of coffee? Our on-site café is in the factory, where visitors and 
+              members can connect, share ideas, or simply relax. Whether you're in the midst of a project or just starting 
+              your day, our café offers a warm, welcoming space to recharge and mingle with fellow creators."
             />
             <div className="grid place-content-center pt-8">
               <Link href="/">
