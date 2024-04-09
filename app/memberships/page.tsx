@@ -2,16 +2,12 @@ import React from "react";
 import PricingTable from "@/components/base/pricing-table";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
+
 
 const Memberships = () => {
   return (
     <div className={"bg-background py-10"}>
-      <div
-        className={
-          "grid content-center px-8 font-helvetica sm:pt-10"
-        }
-      >
+      <div className={"grid content-center px-8 font-helvetica sm:pt-10"}>
         <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
           <Link href="/">
             <div>
@@ -23,11 +19,22 @@ const Memberships = () => {
             <div className="text-primary">Pricing</div>
           </Link>
         </div>
-       <div>
-       <HeaderTitle title="Memberships"
-        description="We have membership options that cover all types of customers ranging from professionals to hobbyists . Our Membership model was designed to work in perfect synchronisation with your business cycle. Days do not have to be used in consecutive order and can be used by multiple users on the same day. Prices include VAT."
-      />
-      </div>
+        <div>
+          <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+              Memberships<span className="text-primary">.</span>
+            </h1>
+            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+              Our workshop offers a unique makerspace equipped with industrial
+              machines and tools made available to you. Our Memberships are
+              designed for manufacturers, DIY enthusiasts, hobbyists,
+              freelancers and anyone looking for workshop space.
+              <br />
+              <br />
+              Join our community and find your perfect fit.
+            </p>
+          </div>
+        </div>
       </div>
       <div className="pb-10 md:pt-12 lg:pt-0">
         <PricingTable />
