@@ -21,7 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export function TeamCarousel() {
   return (
     <div>
-      <div className="grid h-auto items-center justify-center px-8 sm:py-20 py-10 sm:px-16 md:px-20 lg:px-0">
+      <div className="grid h-auto items-center justify-center px-8 py-10 sm:px-16 sm:py-20 md:px-20 lg:px-0">
         <h1
           className={
             "pb-16 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
@@ -72,13 +72,12 @@ export function TeamCarousel() {
                         />
                       </div>
                     </TabsTrigger>
-                   
                   </TabsList>
                 </CarouselItem>
 
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                  <TabsTrigger value="ericsson">
+                    <TabsTrigger value="ericsson">
                       <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                         <Image
                           src={ericsson}
@@ -114,12 +113,40 @@ export function TeamCarousel() {
                         />
                       </div>
                     </TabsTrigger>
-                    
+                  </TabsList>
+                </CarouselItem>
+
+                <CarouselItem>
+                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
                     <TabsTrigger value="nomonde">
                       <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                         <Image
                           src={nomonde}
                           alt="nomonde"
+                          placeholder={"blur"}
+                          className="rounded-lg"
+                          width="600"
+                          height="600"
+                        />
+                      </div>
+                    </TabsTrigger>
+                    <TabsTrigger value="charley">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                        <Image
+                          src={jesse}
+                          alt="jesse"
+                          placeholder={"blur"}
+                          className="rounded-lg"
+                          width="600"
+                          height="600"
+                        />
+                      </div>
+                    </TabsTrigger>
+                    <TabsTrigger value="deneo">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                        <Image
+                          src={deneo}
+                          alt="deneo"
                           placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
@@ -134,18 +161,15 @@ export function TeamCarousel() {
               <CarouselNext />
             </Carousel>
           </div>
-          <TabsContent
-            className="bg-background font-helvetica"
-            value="henry"
-          >
+          <TabsContent className="bg-background font-helvetica" value="henry">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-lg">
                   <Image
                     src={henry}
                     alt="henry"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -153,38 +177,35 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                  Henry Levine
+                    Henry Levine
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  CEO
+                    CEO
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  An ego to own really big machines was probably the real
-                    reason Henry started Made In Workshop. I liked the ability
-                    to make things that other people would normally purchase.
-                    What was better that I could use this ego to help other
-                    people and SMEs to start and grow their own businesses. I
-                    enjoy being with members, teaching members how to use
-                    machines and I also learning from members.
+                    Henry qualified with a diploma in Mechanical engineering in
+                    1997, shortly after he got into IT and eventually managed
+                    his own Print Services firm for 15 years. His passion for
+                    engineering, fabrication and the creation of physical
+                    products inspired what we now know as Made In Workshop. His
+                    passion for Made In Workshop has grown the space into the
+                    largest makerspace in the country.
                   </span>
                 </div>
               </div>
             </Card>
           </TabsContent>
-          <TabsContent
-            className="bg-background font-helvetica"
-            value="joshua"
-          >
+          <TabsContent className="bg-background font-helvetica" value="joshua">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-lg">
                   <Image
                     src={joshua}
                     alt="henry"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -192,21 +213,23 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                  Joshua Lotter
+                    Joshua Lotter
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  OPERATIONS MANAGER
+                    COO
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  Cool, calm and collected. As the Operations Manager, I am
-                    second in command at MIW. I am involved in managing the
-                    operations process, embracing design, planning, performance
-                    improvement, and maintaining general operations of the
-                    facility as well as the machines. Whether I get a small
-                    chuckle or solve bigger problems, I enjoying making a
-                    positive impact by helping others around me.
+                    As the second-in-command at Made in Workshop, Josh ensures
+                    everything runs seamlessly. His expertise in design and
+                    planning enhances our members' workshop experience,
+                    alongside maintaining all our workshop&apos;s essential
+                    functions. Although the role carries significant weight, he
+                    infuses humour into his day-to-day activities. His passion
+                    lies in positively impacting the daily lives of those around
+                    him, whether through a witty remark or navigating complex
+                    manufacturing strategies.
                   </span>
                 </div>
               </div>
@@ -214,13 +237,13 @@ export function TeamCarousel() {
           </TabsContent>
           <TabsContent className="bg-background font-helvetica" value="jesse">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={jesse}
                     alt="jesse"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -228,17 +251,18 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                  Jesse 
+                    Jesse Hutton
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  INSTRUCTOR
+                    Workshop Assistant
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  I endeavour to bring interesting industrial and mechanical
-                    designs to life by sucking the knowledge out of anyone
-                    willing to share at Made in Workshop.
+                    Jesse is another full-time workshop assistant. As an
+                    accomplished amateur TIG welder, he is keen on learning more
+                    about making. His curious nature and eagerness to help make
+                    him an asset to all new and old members at Made In Workshop.
                   </span>
                 </div>
               </div>
@@ -246,13 +270,13 @@ export function TeamCarousel() {
           </TabsContent>
           <TabsContent className="bg-background font-helvetica" value="ciza">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={ciza}
                     alt="ciza"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -260,17 +284,20 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                  Ciza
+                    Siza Simlne
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  INSTRUCTOR
+                    Café Manager
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  I endeavour to bring interesting industrial and mechanical
-                    designs to life by sucking the knowledge out of anyone
-                    willing to share at Made in Workshop.
+                    Siza runs the front of house at Made in Workshop, which
+                    includes our café and reception area. Her contagious smile
+                    greets everyone who walks through the entrance, whether they
+                    are making a delivery or placing a lunch order. She manages
+                    our kitchen and staff and ensures everything is attended to
+                    and runs smoothly.
                   </span>
                 </div>
               </div>
@@ -279,13 +306,13 @@ export function TeamCarousel() {
 
           <TabsContent className="bg-background font-helvetica" value="deneo">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={deneo}
                     alt="deneo"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -293,17 +320,19 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                 Deneo
+                    Deneo (Surname)
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  INSTRUCTOR
+                    Workshop Caretaker
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  I endeavour to bring interesting industrial and mechanical
-                    designs to life by sucking the knowledge out of anyone
-                    willing to share at Made in Workshop.
+                    Deneo looks after the day-to-day upkeep of Made In Workshop,
+                    ensuring all the spaces are clean and tidy. In a space
+                    consistently in a state of controlled chaos, she is the
+                    constant force resetting and rearranging to ensure all
+                    members have a clean and tidy environment for making.
                   </span>
                 </div>
               </div>
@@ -312,13 +341,13 @@ export function TeamCarousel() {
 
           <TabsContent className="bg-background font-helvetica" value="nomonde">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={nomonde}
                     alt="nomonde"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -326,32 +355,37 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                 Nomonde
+                    Nomonde (Surname)
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  INSTRUCTOR
+                    Café Chef
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  I endeavour to bring interesting industrial and mechanical
-                    designs to life by sucking the knowledge out of anyone
-                    willing to share at Made in Workshop.
+                    Nomonde, the culinary artist behind the scenes at the café,
+                    effortlessly manoeuvres among pots and pans with graceful
+                    efficiency. During our lunchtime rush, her calm approach
+                    ensures all orders are hot and waiting for their midday
+                    pick-up.
                   </span>
                 </div>
               </div>
             </Card>
           </TabsContent>
 
-          <TabsContent className="bg-background font-helvetica" value="ericsson">
+          <TabsContent
+            className="bg-background font-helvetica"
+            value="ericsson"
+          >
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
                     src={ericsson}
                     alt="ericsson"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -359,17 +393,61 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                  Ericsson
+                    Ericson Dlamini
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                  INSTRUCTOR
+                    Workshop Assistant
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                  I endeavour to bring interesting industrial and mechanical
-                    designs to life by sucking the knowledge out of anyone
-                    willing to share at Made in Workshop.
+                    From humble beginnings as a former kitchen staff member,
+                    Ericson has evolved into our full-time workshop assistant.
+                    As an integral part of workshop maintenance, Ericson
+                    possesses comprehensive knowledge of all machinery
+                    operations. All members welcome his calm demeanour in an
+                    environment that can be very stressful.
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="charley">
+            <Card className="border-0 bg-background">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
+                <div className="md:w-1/3 lg:rounded-l-lg">
+                  <Image
+                    src={jesse}
+                    alt="jesse"
+                    placeholder="blur"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                    Charley Cooper
+                  </h3>
+                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
+                    Part-time Workshop Assistant
+                  </span>
+                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                    Charley has an Honors degree in Applied Linguistics and
+                    taught English and Woodwork for twenty years in various
+                    schools and for Education projects connected to Wits
+                    University. He then spent the next twenty years involved in
+                    system engineering and programming Variable Logic
+                    Controllers in the HVAC Industry for various companies. For
+                    the past four years, he&apos;s been involved in carpentry
+                    projects, mainly restoring old furniture, doors, etc. He is
+                    also a journalist and has been published since 1992 in
+                    various newspapers and magazines, mainly in connection with
+                    motorcycling since that time.
                   </span>
                 </div>
               </div>
@@ -380,5 +458,3 @@ export function TeamCarousel() {
     </div>
   );
 }
- 
-
