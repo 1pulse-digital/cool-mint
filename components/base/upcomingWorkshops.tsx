@@ -111,7 +111,7 @@ const UpcomingWorkshops: React.FC = () => {
 
           {/* Filtering by category */}
           
-          <div className="2xl:px-96 xl:px-80 lg:px-52 md:px-40 mx-10 sm:px-32">
+          <div className="2xl:px-96 xl:px-80 md:px-40 mx-10 sm:px-20">
             <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
               <TabsTrigger value="january woodwork">
                 Woodwork

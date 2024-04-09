@@ -1,8 +1,12 @@
 import * as React from "react";
 import Image from "next/image";
-import henry from "../../images/Henry-Levine.webp";
-import joshua from "../../images/Joshua-Lotter.webp";
-import trenton from "../../images/Trenton-Carr.webp";
+import henry from "../../images/Henry.jpg";
+import joshua from "../../images/Josh.jpg";
+import jesse from "../../images/Jesse.jpg";
+import ciza from "../../images/Ciza.jpg";
+import deneo from "../../images/Deneo.jpg";
+import ericsson from "../../images/Ericsson.jpg";
+import nomonde from "../../images/Nomonde.jpg";
 
 import { Card } from "@/components/ui/card";
 import {
@@ -17,7 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export function TeamCarousel() {
   return (
     <div>
-      <div className="grid h-auto items-center justify-center px-8 sm:py-20 py-10 sm:px-16 md:px-20">
+      <div className="grid h-auto items-center justify-center px-8 sm:py-20 py-10 sm:px-16 md:px-20 lg:px-0">
         <h1
           className={
             "pb-16 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
@@ -26,17 +30,17 @@ export function TeamCarousel() {
           Meet the Team<span className="text-primary">.</span>
         </h1>
 
-        <Tabs defaultValue="machines" className="">
-          <div className="pb-16 2xl:mx-60">
+        <Tabs defaultValue="henry">
+          <div className="pb-16">
             <Carousel className="mx-10">
-              <CarouselContent className="">
+              <CarouselContent>
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                    <TabsTrigger value="machines">
-                      <div className="pt-10 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 ">
+                    <TabsTrigger value="henry">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 ">
                         <Image
                           src={henry}
-                          alt="team member"
+                          alt="henry"
                           placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
@@ -44,11 +48,11 @@ export function TeamCarousel() {
                         />
                       </div>
                     </TabsTrigger>
-                    <TabsTrigger value="workshops">
-                      <div className="pt-10 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                    <TabsTrigger value="joshua">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                         <Image
                           src={joshua}
-                          alt="team member"
+                          alt="joshua"
                           placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
@@ -56,11 +60,66 @@ export function TeamCarousel() {
                         />
                       </div>
                     </TabsTrigger>
-                    <TabsTrigger value="general">
-                      <div className="pt-10 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                    <TabsTrigger value="jesse">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                         <Image
-                          src={trenton}
-                          alt="team member"
+                          src={jesse}
+                          alt="jesse"
+                          placeholder={"blur"}
+                          className="rounded-lg"
+                          width="600"
+                          height="600"
+                        />
+                      </div>
+                    </TabsTrigger>
+                   
+                  </TabsList>
+                </CarouselItem>
+
+                <CarouselItem>
+                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
+                  <TabsTrigger value="ericsson">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                        <Image
+                          src={ericsson}
+                          alt="ericsson"
+                          placeholder={"blur"}
+                          className="rounded-lg"
+                          width="600"
+                          height="600"
+                        />
+                      </div>
+                    </TabsTrigger>
+                    <TabsTrigger value="ciza">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 ">
+                        <Image
+                          src={ciza}
+                          alt="ciza"
+                          placeholder={"blur"}
+                          className="rounded-lg"
+                          width="600"
+                          height="600"
+                        />
+                      </div>
+                    </TabsTrigger>
+                    <TabsTrigger value="deneo">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                        <Image
+                          src={deneo}
+                          alt="deneo"
+                          placeholder={"blur"}
+                          className="rounded-lg"
+                          width="600"
+                          height="600"
+                        />
+                      </div>
+                    </TabsTrigger>
+                    
+                    <TabsTrigger value="nomonde">
+                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                        <Image
+                          src={nomonde}
+                          alt="nomonde"
                           placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
@@ -77,16 +136,16 @@ export function TeamCarousel() {
           </div>
           <TabsContent
             className="bg-background font-helvetica"
-            value="machines"
+            value="henry"
           >
             <Card className="border-0 bg-background">
-              <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-lg">
                   <Image
                     src={henry}
                     alt="henry"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -94,15 +153,15 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                    Henry Levine
+                  Henry Levine
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                    CEO
+                  CEO
                   </span>
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
-                    An ego to own really big machines was probably the real
+                  An ego to own really big machines was probably the real
                     reason Henry started Made In Workshop. I liked the ability
                     to make things that other people would normally purchase.
                     What was better that I could use this ego to help other
@@ -116,16 +175,16 @@ export function TeamCarousel() {
           </TabsContent>
           <TabsContent
             className="bg-background font-helvetica"
-            value="workshops"
+            value="joshua"
           >
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-lg">
                   <Image
                     src={joshua}
                     alt="henry"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -133,7 +192,7 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
                   Joshua Lotter
                   </h3>
@@ -151,19 +210,17 @@ export function TeamCarousel() {
                   </span>
                 </div>
               </div>
-             
-             
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica" value="general">
+          <TabsContent className="bg-background font-helvetica" value="jesse">
             <Card className="border-0 bg-background">
-            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
-                    src={trenton}
-                    alt="trenton"
+                    src={jesse}
+                    alt="jesse"
                     placeholder="blur"
-                    className="h-full w-full object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -171,9 +228,140 @@ export function TeamCarousel() {
                     }}
                   />
                 </div>
-                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
-                  Trenton Carr
+                  Jesse 
+                  </h3>
+                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
+                  INSTRUCTOR
+                  </span>
+                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  I endeavour to bring interesting industrial and mechanical
+                    designs to life by sucking the knowledge out of anyone
+                    willing to share at Made in Workshop.
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+          <TabsContent className="bg-background font-helvetica" value="ciza">
+            <Card className="border-0 bg-background">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-l-lg">
+                  <Image
+                    src={ciza}
+                    alt="ciza"
+                    placeholder="blur"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  Ciza
+                  </h3>
+                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
+                  INSTRUCTOR
+                  </span>
+                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  I endeavour to bring interesting industrial and mechanical
+                    designs to life by sucking the knowledge out of anyone
+                    willing to share at Made in Workshop.
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="deneo">
+            <Card className="border-0 bg-background">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-l-lg">
+                  <Image
+                    src={deneo}
+                    alt="deneo"
+                    placeholder="blur"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                 Deneo
+                  </h3>
+                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
+                  INSTRUCTOR
+                  </span>
+                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  I endeavour to bring interesting industrial and mechanical
+                    designs to life by sucking the knowledge out of anyone
+                    willing to share at Made in Workshop.
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="nomonde">
+            <Card className="border-0 bg-background">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-l-lg">
+                  <Image
+                    src={nomonde}
+                    alt="nomonde"
+                    placeholder="blur"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                 Nomonde
+                  </h3>
+                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
+                  INSTRUCTOR
+                  </span>
+                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  I endeavour to bring interesting industrial and mechanical
+                    designs to life by sucking the knowledge out of anyone
+                    willing to share at Made in Workshop.
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="ericsson">
+            <Card className="border-0 bg-background">
+            <div className="bg-[#2c3033] md:mx-2 md:flex lg:mx-0 rounded-lg">
+                <div className="md:w-1/3 lg:rounded-l-lg">
+                  <Image
+                    src={ericsson}
+                    alt="ericsson"
+                    placeholder="blur"
+                    className="h-full w-full object-cover lg:rounded-l-lg rounded-t-lg"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="grid content-center bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3 rounded-lg">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  Ericsson
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                   INSTRUCTOR
@@ -192,3 +380,5 @@ export function TeamCarousel() {
     </div>
   );
 }
+ 
+

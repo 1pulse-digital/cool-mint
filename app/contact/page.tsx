@@ -141,7 +141,7 @@ const Contact = () => {
         </div>
       </div>
       </div> */}
-      <div className="py-20 lg:px-8 2xl:px-24">
+      <div className="sm:py-20 pb-20 sm:pb-0 md:py-0 md:pb-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>

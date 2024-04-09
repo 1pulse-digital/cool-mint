@@ -46,7 +46,7 @@ const Cart: React.FC = () => {
                     type="surname"
                     id="surname"
                     placeholder="discount@2024"
-                    className="block rounded-md border-0 border-amber-300 bg-background py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                    className="block w-full placeholder:text-xs text-secondary"
                   ></Input>
                 </div>
               </div> 

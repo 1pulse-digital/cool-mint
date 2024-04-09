@@ -56,7 +56,7 @@ function PricingTab(props: PricingTabProps) {
 export default function PricingTable() {
   
   return (
-    <div className="xl:mx-40 2xl:mx-72 lg:mx-16 md:mx-12 sm:mx-32 mx-8">
+    <div className="xl:mx-40 lg:mx-16 md:mx-12 sm:mx-32 mx-8">
       {/* Pricing toggle */}
       <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16"> </div>
       <div className="mx-auto grid gap-6 lg:grid-cols-3 md:grid-cols-2 items-start lg:max-w-none px-0">

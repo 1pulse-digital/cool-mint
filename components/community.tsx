@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import gallery from "../images/maker-community-img.png";
+import community from "../images/Maker-Community-High-Res.png";
 
 export const Community = () => {
   return (
@@ -13,10 +13,9 @@ export const Community = () => {
         eirmod tempor invidunt ut labore et dolore magna.
       </span>
       <div className="mt-10 flex justify-center rounded-md  ">
-        {/* Ensure the Image component is used appropriately with your setup */}
         <Image
-          src={gallery}
-          alt="made in workshop"
+          src={community}
+          alt="community"
           placeholder="blur"
           className="rounded-md"
         />

@@ -16,58 +16,58 @@ const orders = [
 {
   order: "INV001",
   paymentStatus: "Paid",
-  totalAmount: "R250.00",
+  totalAmount: "R1599.00",
   paymentMethod: "Credit Card",
-  productType: "Monthly Membership",
-  orderDate: "20 March 2024",
+  productType: "Intro to Welding: Youth Class",
+  orderDate: "31 March 2024",
 },
 {
   order: "INV002",
-  paymentStatus: "Pending",
-  totalAmount: "R150.00",
-  paymentMethod: "PayPal",
-  productType: "Monthly Membership",
+  paymentStatus: "Paid",
+  totalAmount: "R1799.00",
+  paymentMethod: "Payfast",
+  productType: "TIG Welding: Mild steel",
   orderDate: "20 March 2024",
 },
 {
   order: "INV003",
-  paymentStatus: "Unpaid",
-  totalAmount: "R350.00",
+  paymentStatus: "Paid",
+  totalAmount: "R1399.00",
   paymentMethod: "Bank Transfer",
-  productType: "Monthly Membership",
-  orderDate: "20 March 2024",
+  productType: "Intro to Metal Working",
+  orderDate: "15 March 2024",
 },
 {
   order: "INV004",
   paymentStatus: "Paid",
-  totalAmount: "R450.00",
+  totalAmount: "R1540.00",
   paymentMethod: "Credit Card",
-  productType: "Monthly Membership",
-  orderDate: "20 March 2024",
+  productType: "MIG Welding 101",
+  orderDate: "01 March 2024",
 },
 {
   order: "INV005",
   paymentStatus: "Paid",
-  totalAmount: "R550.00",
-  paymentMethod: "PayPal",
-  productType: "Monthly Membership",
-  orderDate: "20 March 2024",
+  totalAmount: "R1799.00",
+  paymentMethod: "Payfast",
+  productType: "TIG Welding: Mild steel",
+  orderDate: "25 February 2024",
 },
 {
   order: "INV006",
-  paymentStatus: "Pending",
-  totalAmount: "R200.00",
+  paymentStatus: "Paid",
+  totalAmount: "R1799.00",
   paymentMethod: "Bank Transfer",
-  productType: "Monthly Membership",
-  orderDate: "20 March 2024",
+  productType: "TIG Welding: Mild steel",
+  orderDate: "12 February 2024",
 },
 {
   order: "INV007",
-  paymentStatus: "Unpaid",
-  totalAmount: "R300.00",
+  paymentStatus: "Paid",
+  totalAmount: "R1540.00",
   paymentMethod: "Credit Card",
-  productType: "Monthly Membership",
-  orderDate: "20 March 2024",
+  productType: "MIG Welding 101",
+  orderDate: "05 February 2024",
 },
 ]
 
@@ -115,7 +115,7 @@ export function OrderHis() {
       <TableFooter>
         <TableRow>
           <TableCell colSpan={5}>Total</TableCell>
-          <TableCell className="font-bold">R2,500.00</TableCell>
+          <TableCell className="font-bold">R11,475.00</TableCell>
         </TableRow>
       </TableFooter>
     </Table>

@@ -33,7 +33,7 @@ const News = () => {
           description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
         />
         {/* header title end */}
-        <div className="py-8 text-center md:mx-0 lg:mx-10 xl:mx-0 2xl:mx-32">
+        <div className="py-8 text-center md:mx-0 xl:mx-20 2xl:mx-32">
           <div className="px-2">
             <span
               className={
@@ -47,7 +47,7 @@ const News = () => {
                 <Carousel className="mx-3 pt-3">
                   <CarouselContent className="">
                     <CarouselItem>
-                      <div className="px-8 sm:px-16 md:px-40 lg:px-60 2xl:px-96">
+                      <div className="px-8 sm:px-16 md:px-40  2xl:px-96 pb-8 sm:pb-0">
                         <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-3 text-secondary">
                           <TabsTrigger value="news" className="">
                             News

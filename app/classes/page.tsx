@@ -29,7 +29,7 @@ const Workshops = () => {
       />
       </div>
         </div>
-        <div className="lg:mx-32">
+        <div className="lg:mx-20 xl:mx-2">
           <UpcomingWorkshops />
         </div>        
       </div>
