@@ -30,11 +30,12 @@ export default function Home() {
           <div className="px-8 font-medium text-primary md:text-left">
             <div className="pt-28 text-center">
               <h1 className="text-headings font-bold  text-secondary">
-                Upcoming Workshops<span className="text-primary">.</span>
+                Upcoming Classes<span className="text-primary">.</span>
               </h1>
               <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna.
+                Whether you want to learn a new skill, refine your craft or meet
+                other creative individuals, we have something for everyone.
+                Check out our upcoming classes and book your spot today.
               </p>
             </div>
           </div>
@@ -42,7 +43,7 @@ export default function Home() {
         <UpcomingWorkshops />
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
-        <GetInTouch />
+      <GetInTouch />
       </div>
     </div>
   );
