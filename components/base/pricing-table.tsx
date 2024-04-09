@@ -31,6 +31,7 @@ function PricingTab(props: PricingTabProps) {
             <span className="text-secondary text-xs px-2 font-medium">/ per month</span>
           </div>
         </div>
+        
         <ul className="text-textColor font-helvetica font-normal text-[13px] space-y-3 grow">
           {props.features.map((feature, index) => {
             return (
