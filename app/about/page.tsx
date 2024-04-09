@@ -62,20 +62,26 @@ const About = () => {
                   "text-center font-helvetica text-BodyText font-normal text-textColor"
                 }
               >
-                In 2016 Made In Workshop opened its doors with only a small
-                laser cutter, 3D printers and miscellaneous hand tools and
-                machines. As members came and went, Made In Workshop moulded a
-                space that was not only an essential asset to our
-                customers/members it was also their community.
+                Since opening our doors in 2017 with just a small laser cutter,
+                3D printers, and a selection of hand tools and machines,
+                we&apos;ve grown into more than just a workshop; we&apos;ve
+                become a pivotal part of our members&apos; lives and our
+                ever-growing makerspace community. Our evolution has been deeply
+                influenced by the diverse individuals who&apos;ve joined us,
+                moulding our space into an essential resource and a hub of{" "}
+                <span className="text-primary">creativity</span> and{" "}
+                <span className="text-primary">collaboration</span>.
                 <br />
                 <br />
-                Made In Workshop is not just about the tools and machines and
-                not just about the workspace,{" "}
-                <span className="text-primary">
-                  we&apos;re the spark of inspiration that is the culmination of
-                  tools, machines, workspace and the community that we are
-                  creating.
-                </span>
+                At our core, we believe that we&apos;re not just about providing
+                tools, machines, or space. We represent the spark of inspiration
+                that comes to life when these resources are combined with the
+                community we&apos;ve built. We are a{" "}
+                <span className="text-primary">collective</span>
+                dedicated to innovation, a place where{" "}
+                <span className="text-primary">creativity is nurtured</span>,
+                and a makerspace community that welcomes anyone driven to
+                create.
               </p>
             </div>
           </div>

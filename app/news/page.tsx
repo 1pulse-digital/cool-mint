@@ -30,7 +30,7 @@ const News = () => {
         {/* header title start */}
         <HeaderTitle
           title="News"
-          description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+          description="Stay updated with the latest at Made In Workshop! Our blog page brings you the freshest updates, stories, and insights from our community, events, and the world of making."
         />
         {/* header title end */}
         <div className="py-8 text-center md:mx-0 xl:mx-20 2xl:mx-32">

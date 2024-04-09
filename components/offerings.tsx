@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SquareButton } from "./base/button";
-import Image from 'next/image';
+import Image from "next/image";
 
 interface OfferingItemProps {
   title: string;
@@ -19,7 +19,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
   ImageSrc,
 }) => (
   <div className="flex space-x-8 py-6 text-sm">
-    <div className="2xl:w-20 lg:w-28 w-16 md:w-12">
+    <div className="w-16 md:w-12 lg:w-28 2xl:w-20">
       <Image src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
@@ -55,21 +55,21 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
 
 const Offerings: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center lg:h-screen md:h-auto text-center py-20 lg:py-0 text-primary md:items-start">
+    <div className="flex flex-col items-center justify-center py-20 text-center text-primary md:h-auto md:items-start lg:h-screen lg:py-0">
       <div className="">
         <h1 className="py-4 text-headings font-bold text-secondary">
           Our Offerings<span className="text-primary">?</span>
         </h1>
-        <p className="text-center  text-BodyText font-light text-textColor pb-14 xl:px-40 2xl:px-52">
+        <p className="pb-14  text-center text-BodyText font-light text-textColor xl:px-40 2xl:px-52">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna
         </p>
       </div>
-      <div className="grid-cols-2 lg:grid md:pt-6">
+      <div className="grid-cols-2 md:pt-6 lg:grid">
         <div className="lg:px-20">
           <OfferingItem
-            title="Membership"
-            description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
+            title="Memberships"
+            description="Our memberships provide flexible access to our facilities, exclusive discounts on classes and a community of makers and mentors to support your project. Our memberships are tailored to fit all your making needs."
             linkText="Learn More"
             linkUrl="/memberships"
             ImageSrc="/icons/memberships.png"
@@ -77,8 +77,8 @@ const Offerings: React.FC = () => {
         </div>
         <div className="lg:px-20">
           <OfferingItem
-            title="Machines"
-            description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
+            title="Industrial Machines"
+            description="From CNC machines to laser cutters to general hand tools, our shared workshops are equipped with high-quality industrial machines and tooling, ready to handle any project you bring."
             linkText="Learn More"
             linkUrl="/machines"
             ImageSrc="/icons/machines.png"
@@ -88,7 +88,7 @@ const Offerings: React.FC = () => {
         <div className="lg:px-20">
           <OfferingItem
             title="Classes"
-            description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
+            description="Our classes cover a wide variety of making processes and techniques on all equipment available in the workshop. These classes are led by industry experts and range from beginner-friendly introductions to advanced skills training."
             linkText="Learn More"
             linkUrl="/classes"
             ImageSrc="/icons/workshops.png"
@@ -97,7 +97,7 @@ const Offerings: React.FC = () => {
         <div className="lg:px-20">
           <OfferingItem
             title="MIW Café"
-            description="We have membership options that cover all types of customers ranging form professionals to hobbyists."
+            description="Need a break or a place to brainstorm? Our café is the perfect spot to recharge, meet fellow makers, or enjoy a good cup of coffee."
             linkText="Learn More"
             linkUrl="/cafe"
             ImageSrc="/icons/cafe.png"

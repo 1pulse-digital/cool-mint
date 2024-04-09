@@ -26,7 +26,7 @@ const BecomeAMember: React.FC = () => {
             </Link>
           </div>
           <div>
-       <HeaderTitle title=" Become a Member"
+       <HeaderTitle title="Become a Member"
         description=" Membership registrations are done at Made in Workshop and includes a
         tour of the facilitates."
       />

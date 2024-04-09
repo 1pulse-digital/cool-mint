@@ -25,11 +25,14 @@ const MachinesTools = () => {
           {/* header title start */}
           <HeaderTitle
             title="Industrial Tools & Machines"
-            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+            description="We hire industrial machines to support a wide range of projects. Our selection includes Laser Cutters, 
+            3D Printers, CNC Routers, Woodworking, and Metalworking equipment, catering to beginners and seasoned professionals. 
+            Each machine is maintained to the highest standards, ensuring constant efficiency and precision. 
+            Explore our diverse range of industrial machines for hire, and let us help bring your project to life."
           />
           {/* header title end */}
 
-          <div className="sm:pt-10 text-center sm:px-6 md:px-20 lg:px-10">
+          <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10">
             <IndustrialMachineTools />
             <div className="pb-16 text-center">
               <Link href="/">
@@ -39,7 +42,7 @@ const MachinesTools = () => {
           </div>
         </div>
       </div>
-      <div className="sm:py-20 py-10 lg:px-8 2xl:px-24">
+      <div className="py-10 sm:py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>
