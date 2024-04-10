@@ -15,7 +15,7 @@ export const Community = () => {
         and collaboration that contributes significantly to the local economy
         and community.
       </span>
-      <div className="mt-10 flex justify-center rounded-md  ">
+      <div className="mt-10 flex justify-center rounded-md">
         <Image
           src={community}
           alt="community"
