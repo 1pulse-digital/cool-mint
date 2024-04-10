@@ -19,7 +19,6 @@ const Register: React.FC = () => {
             <Image
               src={login}
               alt="made in workshop"
-              placeholder={"blur"}
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
             />
           </div>
@@ -104,8 +103,7 @@ const Register: React.FC = () => {
                   <p className="flex items-center">
                     <Image
                       src={google}
-                      alt="team member"
-                      placeholder="blur"
+                      alt="google"
                       className="ml-2 mr-2 rounded-t-lg"
                       height={20}
                       width={20}
