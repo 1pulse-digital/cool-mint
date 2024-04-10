@@ -1,7 +1,12 @@
 import * as React from "react";
 import Image from "next/image";
-import gallery from "../../images/banner.webp";
-import craig from "../../images/craig.webp";
+import sandwich from "../../images/cafe/Cheese-&-Tomato-Sandwich.jpg";
+import chips from "../../images/cafe/Chips-and-Sandwich.jpg";
+import coffee from "../../images/cafe/Cups-of-Coffee.jpg";
+import bacon from "../../images/cafe/Egg,-Bacon-and-Cheese-Sandwich.jpg";
+import cheese from "../../images/cafe/Ham-and-Cheese-Sandwich.jpg";
+import plateofchips from "../../images/cafe/Plate-of-Chips.jpg";
+
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -16,42 +21,77 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export function CafeMIW() {
   return (
     <div className="grid items-center justify-center sm:px-16 md:px-20 xl:mx-20">
-      <Tabs defaultValue="machines">
+      <Tabs defaultValue="sandwich">
         <div className="pb-8">
           <Carousel className="mx-6 pt-0">
             <CarouselContent className="">
               <CarouselItem>
                 <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                  <TabsTrigger value="machines">
+                  <TabsTrigger value="sandwich">
                     <div className="pt-28 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                       <Image
-                        src={gallery}
-                        alt="team member"
-                        placeholder={"blur"}
+                        src={sandwich}
+                        alt="Cheese-&-Tomato-Sandwich"
                         className="rounded-lg"
                         width="400"
                         height="400"
                       />
                     </div>
                   </TabsTrigger>
-                  <TabsTrigger value="workshops">
+                  <TabsTrigger value="chips">
                     <div className="pt-28 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                       <Image
-                        src={gallery}
-                        alt="team member"
-                        placeholder={"blur"}
+                        src={chips}
+                        alt="Chips-and-Sandwich"
                         className="rounded-lg"
                         width="400"
                         height="400"
                       />
                     </div>
                   </TabsTrigger>
-                  <TabsTrigger value="general">
+                  <TabsTrigger value="coffee">
                     <div className="pt-28 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                       <Image
-                        src={gallery}
-                        alt="team member"
-                        placeholder={"blur"}
+                        src={coffee}
+                        alt="Cups-of-Coffee"
+                        className="rounded-lg"
+                        width="400"
+                        height="400"
+                      />
+                    </div>
+                  </TabsTrigger>
+                </TabsList>
+              </CarouselItem>
+
+              <CarouselItem>
+                <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
+                  <TabsTrigger value="bacon">
+                    <div className="pt-28 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <Image
+                        src={bacon}
+                        alt="Egg,-Bacon-and-Cheese-Sandwich"
+                        className="rounded-lg"
+                        width="400"
+                        height="400"
+                      />
+                    </div>
+                  </TabsTrigger>
+                  <TabsTrigger value="cheese">
+                    <div className="pt-28 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <Image
+                        src={cheese}
+                        alt="Ham-and-Cheese-Sandwich"
+                        className="rounded-lg"
+                        width="400"
+                        height="400"
+                      />
+                    </div>
+                  </TabsTrigger>
+                  <TabsTrigger value="plateofchips">
+                    <div className="pt-28 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                      <Image
+                        src={plateofchips}
+                        alt="Plate-of-Chips"
                         className="rounded-lg"
                         width="400"
                         height="400"
@@ -68,15 +108,14 @@ export function CafeMIW() {
         <div className="flex justify-center">
           <TabsContent
             className="bg-background font-helvetica"
-            value="machines"
+            value="sandwich"
           >
             <Card className="border-0 bg-background">
               <div className=" rounded-xl ">
                 <div className="rounded-md">
                   <Image
-                    src={gallery}
-                    alt="team member"
-                    placeholder={"blur"}
+                    src={sandwich}
+                    alt="Chips-and-Sandwich"
                     className="rounded-lg"
                   />
                 </div>
@@ -85,29 +124,69 @@ export function CafeMIW() {
           </TabsContent>
           <TabsContent
             className="bg-background font-helvetica"
-            value="workshops"
+            value="chips"
           >
             <Card className="border-0 bg-background">
               <div className="rounded-xl bg-[#2c3033]">
                 <div className="rounded-lg">
                   <Image
-                    src={craig}
-                    alt="team member"
-                    placeholder={"blur"}
+                    src={chips}
+                    alt="Chips-and-Sandwich"
                     className="rounded-lg"
                   />
                 </div>
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica" value="general">
+          <TabsContent className="bg-background font-helvetica" value="coffee">
             <Card className="border-0 bg-background">
               <div className="rounded-xl bg-[#2c3033]">
                 <div className="rounded-md">
                   <Image
-                    src={gallery}
-                    alt="team member"
-                    placeholder={"blur"}
+                    src={coffee}
+                    alt="Cups-of-Coffee"
+                    className="rounded-lg"
+                  />
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="cheese">
+            <Card className="border-0 bg-background">
+              <div className="rounded-xl bg-[#2c3033]">
+                <div className="rounded-md">
+                  <Image
+                    src={cheese}
+                    alt="Ham-and-Cheese-Sandwich"
+                    className="rounded-lg"
+                  />
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="bacon">
+            <Card className="border-0 bg-background">
+              <div className="rounded-xl bg-[#2c3033]">
+                <div className="rounded-md">
+                  <Image
+                    src={bacon}
+                    alt="Egg,-Bacon-and-Cheese-Sandwich"
+                    className="rounded-lg"
+                  />
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent className="bg-background font-helvetica" value="plateofchips">
+            <Card className="border-0 bg-background">
+              <div className="rounded-xl bg-[#2c3033]">
+                <div className="rounded-md">
+                  <Image
+                    src={plateofchips}
+                    alt="Plate-of-Chips"
                     className="rounded-lg"
                   />
                 </div>
