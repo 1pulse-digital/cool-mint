@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import whyus from "../../images/Why-Us-High-Res.png";
+import whyus from "../../images/home/Why-Us.png";
 import Button from "./button";
 import Link from "next/link";
 
@@ -13,7 +13,6 @@ export const HeroImages = () => {
             <Image
               src={whyus}
               alt="why us"
-              placeholder="blur"
               className="h-auto w-full rounded-md"
             />
           </div>
@@ -27,10 +26,10 @@ export const HeroImages = () => {
             tooling; it is a hub for{" "}
             <span className="text-primary">collaboration</span> and{" "}
             <span className="text-primary">innovation</span>. Becoming a member
-            means you're not only accessing a workspace, tools, and machines but
+            means you&apos;re not only accessing a workspace, tools, and machines but
             also joining a vibrant community of{" "}
             <span className="text-primary">like-minded individuals</span> who
-            thrive on the exchange of ideas, skills, and inspiration. It's an
+            thrive on the exchange of ideas, skills, and inspiration. It&apos;s an
             environment where everyone, from beginners to seasoned
             manufacturers, can come together to{" "}
             <span className="text-primary">explore, create, and innovate.</span>
