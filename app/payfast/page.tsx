@@ -9,7 +9,6 @@ const Payfast = () => {
          <Image
           src={gallery}
           alt="made in workshop"
-          placeholder={"blur"}
         />
      </div>
   );
