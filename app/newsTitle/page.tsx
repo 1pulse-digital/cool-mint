@@ -13,7 +13,6 @@ const NewsTitle = () => {
         <Image
           src={gallery}
           alt="made in workshop"
-          placeholder={"blur"}
           className="rounded-md"
           style={{ objectFit: "cover", width: "100%", height: "100%" }}
         />
@@ -122,7 +121,6 @@ const NewsTitle = () => {
               <Image
                 src={gallery}
                 alt="made in workshop"
-                placeholder={"blur"}
                 className="rounded-md"
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
