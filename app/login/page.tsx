@@ -18,7 +18,6 @@ const Login: React.FC = () => {
             <Image
               src={login}
               alt="made in workshop"
-              placeholder={"blur"}
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
             />
           </div>
@@ -40,7 +39,7 @@ const Login: React.FC = () => {
                   "pb-6 text-center font-helvetica text-[13px] text-textColor"
                 }
               >
-                Don’t have an account?
+                Don&apos;t have an account?
               </p>
             </div>
             <div>
@@ -120,7 +119,6 @@ const Login: React.FC = () => {
                     <Image
                       src={google}
                       alt="team member"
-                      placeholder="blur"
                       className="ml-2 mr-2 rounded-t-lg"
                       height={20}
                       width={20}
