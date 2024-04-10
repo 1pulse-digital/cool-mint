@@ -2,6 +2,7 @@ import React from "react";
 import machine1Image from "../../images/CNC-Machining-Center.webp";
 import machine2Image from "../../images/cnc-router.webp";
 import drumsander from "../../images/drumsander.webp";
+import cncmachining from "../../images/CNC-Machining-Center-1.webp";
 import IndustrialMachine from "./industrialMachine";
 import {
   Card,
@@ -13,14 +14,12 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const IndustrialMachineTools: React.FC = () => {
-  const machine1Specs = [
-    { label: "Working Area", value: "1100mm x 1400mm" },
-    { label: "Additional Notes", value: "CNC Software (UCCNC)" },
-    { label: "Software", value: "CNC Software (UCCNC)" },
 
-    { label: "Working Area1", value: "1100mm x 1400mm" },
-    { label: "Additional Notes3", value: "CNC Software (UCCNC)" },
-    { label: "Software2", value: "CNC Software (UCCNC)" },
+  const drumsanderSpecs = [
+    { label: "Working Area", value: "1.3 meters wide" },
+    { label: "Additional Notes", value: "twin drum action (currently set to 80 and 120 grit)" },
+    { label: "Additional Notes", value: "Feeder table" },
+    
   ];
 
   const machine2Specs = [
@@ -33,23 +32,32 @@ const IndustrialMachineTools: React.FC = () => {
   ];
 
   const CNCPlasmaSpecs = [
-    { label: "Software", value: " USB Stick" },
-    { label: "Working Area", value: "1100mm X 1400mm" },
+    { label: "Interface", value: " USB Stick" },
     { label: "Additional Notes", value: "Language G & M, 3 Phase Power" },
+    { label: "Working Area", value: "1100mm X 1400mm" },
   ];
 
   const CNCRouterSpecs = [
     { label: "Interface", value: " USB Stick" },
-    { label: "Working Area", value: "1100mm X 1400mm" },
-    { label: "Accuracy", value: "0.02mm" },
-    { label: "Spindal", value: "9Kw, 21000 RPM" },
     { label: "Additional Notes", value: "Language G & M, 3 Phase Power" },
+    { label: "Working Area", value: "1100mm X 1400mm" },
+    { label: "Spindal", value: "9Kw, 21000 RPM" },
+    { label: "Accuracy", value: "0.02mm" },
   ];
 
-  const machine1SpecGroups = [{ specs: machine1Specs }];
+  const CNCMachiningSpecs = [
+    { label: "Interface", value: " USB Stick" },
+    { label: "Additional Notes", value: "Language G & M, 3 Phase Power, 16 Tool Holder" },
+    { label: "Working Area", value: "920mm X 320mm" },
+    { label: "Spindal Speed", value: "80 – 8000 RPM" },
+    { label: "Load Capacity", value: "300 KGs" },
+  ];
+
+  const drumsanderSpecGroups = [{ specs: drumsanderSpecs }];
   const machine2SpecGroups = [{ specs: machine2Specs }];
   const CNCPlasmaSpecGroups = [{ specs: CNCPlasmaSpecs }];
   const CNCRouterSpecGroups = [{ specs: CNCRouterSpecs }];
+  const CNCMachiningSpecGroups = [{ specs: CNCMachiningSpecs }];
 
   return (
     <div className="bg-background py-8">
@@ -65,16 +73,15 @@ const IndustrialMachineTools: React.FC = () => {
           </TabsList>
         </div>
         <TabsContent className="bg-background font-helvetica" value="woodwork">
-          <Card className="border-0 rounded-lg bg-background">
+          <Card className="rounded-lg border-0 bg-background">
             <CardHeader>
               <CardDescription className="text-textColor">
                 <IndustrialMachine
                   machineName="Drum Sander"
                   categories="Category 1 | Category 2"
                   image={drumsander}
-                  description=" HCL’s Camworks post processor the Omni is now capable of 2D and 3D machining. 
-        Not just straight forward cutting, but the delicate machining of 3D features such as fillets."
-                  specGroups={machine2SpecGroups}
+                  description="Used to sand to 120 grit large flat surfaces such as table tops, doors and cutting boards etc."
+                  specGroups={drumsanderSpecGroups}
                   buttonUrl={"/about"}
                 />
               </CardDescription>
@@ -100,6 +107,7 @@ const IndustrialMachineTools: React.FC = () => {
                 />
               </CardDescription>
             </CardHeader>
+
             <CardContent className="space-y-2"></CardContent>
           </Card>
         </TabsContent>
@@ -115,8 +123,9 @@ const IndustrialMachineTools: React.FC = () => {
                   machineName="CNC Router"
                   categories="Category 1 | Category 2"
                   image={drumsander}
-                  description="The Omni would be just a normal traditional CNC router but with the addition of 
-        HCL’s Camworks post processor the Omni is now capable of 2D and 3D machining."
+                  description="The Omni would be just a normal traditional CNC router but with the addition of HCL’s 
+                  Camworks post processor the Omni is now capable of 2D and 3D machining. Not just straight
+                   forward cutting, but the delicate machining of 3D features such as fillets and other complicated geometry."
                   specGroups={CNCRouterSpecGroups}
                   buttonUrl={"/about"}
                 />
@@ -130,15 +139,18 @@ const IndustrialMachineTools: React.FC = () => {
           className="bg-background pt-0 font-helvetica"
           value="woodwork"
         >
-          <Card className="border-0 bg-background rounded-lg ">
+          <Card className="rounded-lg border-0 bg-background ">
             <CardHeader>
               <CardDescription className="text-textColor">
                 <IndustrialMachine
-                  machineName="Machine Name 4"
+                  machineName="CNC Machining Center"
                   categories="Category 1 | Category 2"
-                  image={machine1Image}
-                  description="Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content."
-                  specGroups={machine1SpecGroups}
+                  image={cncmachining}
+                  description="The XH7132 is a high precision full 3 axes vertical machining center with a 
+                  GSK control system. It is not limited to machining only metals such as aluminum and 
+                  steel but also soft materials such as plastics and wood. Specialised cutters such as face mills and chamfer cutters are included however
+                  HSS end mills, drill bits are excluded. They may be purchased from us in our store."
+                  specGroups={CNCMachiningSpecGroups}
                   buttonUrl={"/about"}
                 />
               </CardDescription>
