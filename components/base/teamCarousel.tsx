@@ -1,12 +1,12 @@
 import * as React from "react";
 import Image from "next/image";
-import henry from "../../images/Henry.jpg";
-import joshua from "../../images/Josh.jpg";
-import jesse from "../../images/Jesse.jpg";
-import ciza from "../../images/Ciza.jpg";
-import deneo from "../../images/Deneo.jpg";
-import ericsson from "../../images/Ericsson.jpg";
-import nomonde from "../../images/Nomonde.jpg";
+import henry from "../../images/team/Henry.jpg";
+import joshua from "../../images/team/Josh.jpg";
+import jesse from "../../images/team/Jesse.jpg";
+import ciza from "../../images/team/Ciza.jpg";
+import deneo from "../../images/team/Deneo.jpg";
+import ericsson from "../../images/team/Ericsson.jpg";
+import nomonde from "../../images/team/Nomonde.jpg";
 
 import { Card } from "@/components/ui/card";
 import {
@@ -41,7 +41,6 @@ export function TeamCarousel() {
                         <Image
                           src={henry}
                           alt="henry"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -53,7 +52,6 @@ export function TeamCarousel() {
                         <Image
                           src={joshua}
                           alt="joshua"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -65,7 +63,6 @@ export function TeamCarousel() {
                         <Image
                           src={jesse}
                           alt="jesse"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -74,7 +71,6 @@ export function TeamCarousel() {
                     </TabsTrigger>
                   </TabsList>
                 </CarouselItem>
-
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
                     <TabsTrigger value="ericsson">
@@ -82,7 +78,6 @@ export function TeamCarousel() {
                         <Image
                           src={ericsson}
                           alt="ericsson"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -94,7 +89,6 @@ export function TeamCarousel() {
                         <Image
                           src={ciza}
                           alt="ciza"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -106,7 +100,6 @@ export function TeamCarousel() {
                         <Image
                           src={deneo}
                           alt="deneo"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -123,7 +116,6 @@ export function TeamCarousel() {
                         <Image
                           src={nomonde}
                           alt="nomonde"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -135,7 +127,6 @@ export function TeamCarousel() {
                         <Image
                           src={jesse}
                           alt="jesse"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -147,7 +138,6 @@ export function TeamCarousel() {
                         <Image
                           src={deneo}
                           alt="deneo"
-                          placeholder={"blur"}
                           className="rounded-lg"
                           width="600"
                           height="600"
@@ -168,7 +158,6 @@ export function TeamCarousel() {
                   <Image
                     src={henry}
                     alt="henry"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -204,7 +193,6 @@ export function TeamCarousel() {
                   <Image
                     src={joshua}
                     alt="henry"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -223,7 +211,7 @@ export function TeamCarousel() {
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
                     As the second-in-command at Made in Workshop, Josh ensures
                     everything runs seamlessly. His expertise in design and
-                    planning enhances our members' workshop experience,
+                    planning enhances our members&apos; workshop experience,
                     alongside maintaining all our workshop&apos;s essential
                     functions. Although the role carries significant weight, he
                     infuses humour into his day-to-day activities. His passion
@@ -242,7 +230,6 @@ export function TeamCarousel() {
                   <Image
                     src={jesse}
                     alt="jesse"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -275,7 +262,6 @@ export function TeamCarousel() {
                   <Image
                     src={ciza}
                     alt="ciza"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -311,7 +297,6 @@ export function TeamCarousel() {
                   <Image
                     src={deneo}
                     alt="deneo"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -346,7 +331,6 @@ export function TeamCarousel() {
                   <Image
                     src={nomonde}
                     alt="nomonde"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -384,7 +368,6 @@ export function TeamCarousel() {
                   <Image
                     src={ericsson}
                     alt="ericsson"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -420,7 +403,6 @@ export function TeamCarousel() {
                   <Image
                     src={jesse}
                     alt="jesse"
-                    placeholder="blur"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
