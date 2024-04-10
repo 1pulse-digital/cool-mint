@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import community from "../images/Maker-Community-High-Res.png";
+import community from "../images/home/Maker-Community.png";
 
 export const Community = () => {
   return (
@@ -9,7 +9,7 @@ export const Community = () => {
         Makerspace Community<span className="text-primary">.</span>
       </h1>
       <span className="text-center  text-BodyText font-light text-textColor xl:px-40 2xl:px-52">
-        The makerspace community is more than a trend; it's a movement towards
+        The makerspace community is more than a trend; it&apos;s a movement towards
         innovation, entrepreneurship and education. Made in Workshop is proud to
         be at the forefront of this movement, fostering a culture of creativity
         and collaboration that contributes significantly to the local economy
@@ -19,7 +19,6 @@ export const Community = () => {
         <Image
           src={community}
           alt="community"
-          placeholder="blur"
           className="rounded-md"
         />
       </div>
