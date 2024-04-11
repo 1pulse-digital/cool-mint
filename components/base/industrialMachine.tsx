@@ -1,7 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import Button from "./button";
-import Link from "next/link";
+
 
 interface Spec {
   label: string;
@@ -27,41 +26,71 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({
   image,
   description,
   specGroups,
-  buttonUrl,
+ 
 }) => {
   return (
-    <div className="rounded-xl mb-0">
+    <div className="mb-0 rounded-xl">
       <div>
-      <div className="lg:flex 2xl:mx-60 bg-[#2c3033] rounded-lg">
-      <div className="lg:rounded-l-lg object-cover rounded-t-lg">
-        <Image src={image} alt={`Machine: ${machineName}`} placeholder="blur" className="rounded-t-lg sm:rounded-t-lg lg:rounded-l-lg" style={{ objectFit: "cover", width: "100%", height: "100%" }}/>
-      </div>
-      <div className="p-5 bg-[#2c3033] sm:px-8 py-8 rounded-lg">
-        <div className={"grid text-start font-helvetica"}>
-          <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>{machineName}</h3>
-          <p className="text-primary font-helvetica text-xs py-2 pb-6">{categories}</p>
-          <p className={"text-BodyText text-textColor text-start text-sm font-helvetica font-normal"}>{description}</p>
-        </div>
-        <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start py-6"}>Specs</h3>
-        <div className="space-x-10">
-        {specGroups.map((specGroup, groupIndex) => (
-          <div key={groupIndex} className="grid grid-cols-2 text-start font-helvetica  pb-4">
-            {specGroup.specs.map((spec, specIndex) => (
-              <div key={specIndex} >
-                <p className="text-primary font-helvetica text-xs"> {spec.label}:</p>
-                <p className="text-secondary font-helvetica text-[10px] py-2 pb-2"> {spec.value}</p>
-              </div>
-            ))}
+        <div className="rounded-lg bg-[#2c3033] lg:flex 2xl:mx-60">
+          <div className="rounded-t-lg object-cover lg:rounded-l-lg">
+            <Image
+              src={image}
+              alt={`Machine: ${machineName}`}
+              placeholder="blur"
+              className="rounded-t-lg sm:rounded-t-lg lg:rounded-l-lg"
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
           </div>
-        ))}
+          <div className="rounded-lg bg-[#2c3033] p-5 py-8 sm:px-8">
+            <div className={"grid text-start font-helvetica"}>
+              <h3
+                className={
+                  "text-start font-helvetica text-BodyText font-semibold text-textColor"
+                }
+              >
+                {machineName}
+              </h3>
+              <p className="py-2 pb-6 font-helvetica text-xs text-primary">
+                {categories}
+              </p>
+              <p
+                className={
+                  "text-start font-helvetica text-BodyText text-sm font-normal text-textColor"
+                }
+              >
+                {description}
+              </p>
+            </div>
+            <h3
+              className={
+                "py-6 text-start font-helvetica text-BodyText font-semibold text-textColor"
+              }
+            >
+              Specs
+            </h3>
+            <div className="space-x-10">
+              {specGroups.map((specGroup, groupIndex) => (
+                <div
+                  key={groupIndex}
+                  className="grid grid-cols-2 pb-4 text-start  font-helvetica"
+                >
+                  {specGroup.specs.map((spec, specIndex) => (
+                    <div key={specIndex}>
+                      <p className="font-helvetica text-xs text-primary">
+                        {" "}
+                        {spec.label}:
+                      </p>
+                      <p className="py-2 pb-2 font-helvetica text-[10px] text-secondary">
+                        {" "}
+                        {spec.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-       {/*  <div className="py-4 text-start">
-          <Link href={buttonUrl} className="pt-8">
-            <Button color={"primary"}>Book a Machine</Button>
-          </Link>
-        </div> */}
-      </div>
-      </div>
       </div>
     </div>
   );
