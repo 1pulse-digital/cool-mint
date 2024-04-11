@@ -4,8 +4,14 @@ import Button from "@/components/base/button";
 import Link from "next/link";
 import HeaderTitle from "@/components/base/headerTitle";
 import GetInTouch from "@/components/base/getInTouch";
+import { listMachines } from "./actions";
 
-const MachinesTools = () => {
+export default async function Page() {
+  const response = await listMachines({
+    filter: "",
+    pageSize: 10,
+    pageToken: "",
+  });
   return (
     <div className={"bg-background py-10 sm:py-20"}>
       <div className="flex h-auto">
@@ -33,7 +39,7 @@ const MachinesTools = () => {
           {/* header title end */}
 
           <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10">
-            <IndustrialMachineTools />
+            <IndustrialMachineTools machines={response.Machines} />
             <div className="pb-16 text-center">
               <Link href="/">
                 <Button color={"primary"}>Learn More</Button>
@@ -47,6 +53,4 @@ const MachinesTools = () => {
       </div>
     </div>
   );
-};
-
-export default MachinesTools;
+}
