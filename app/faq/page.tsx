@@ -7,36 +7,32 @@ import HeaderTitle from "@/components/base/headerTitle";
 
 const FAQ = () => {
   return (
-    <div className="bg-background sm:py-20 py-10">
+    <div className="bg-background py-10 sm:py-20">
       <div>
-      <div className="font-helvetaica grid content-center px-8">
-        <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
-          <div>
-            <Link href="/">
-              Home
-              <span className="px-1">|</span>
-            </Link>
+        <div className="font-helvetaica grid content-center px-8">
+          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
+            <div>
+              <Link href="/">
+                Home
+                <span className="px-1">|</span>
+              </Link>
+            </div>
+            <div>
+              <Link href="/faq" className="text-primary">
+                FAQ&apos;s
+              </Link>
+            </div>
           </div>
+
           <div>
-            <Link href="/faq" className="text-primary">
-              FAQ&apos;s
-            </Link>
+            <HeaderTitle title="FAQ" description="" />
           </div>
         </div>
-
         <div>
-       <HeaderTitle title="FAQ"
-        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-        erat."
-      />
+          <FAQAccordion />
+        </div>
       </div>
-      </div>
-      <div>
-      <FAQAccordion />
-      </div>
-      </div>
-      <div className="sm:py-20 py-10 lg:px-8 2xl:px-24">
+      <div className="py-10 sm:py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>
