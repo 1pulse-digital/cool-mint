@@ -1,18 +1,12 @@
-import React from "react";
-import machine1Image from "../../images/CNC-Machining-Center.webp";
-import machine2Image from "../../images/cnc-router.webp";
-import drumsander from "../../images/drumsander.webp";
-import cncmachining from "../../images/CNC-Machining-Center-1.webp";
-import IndustrialMachine from "./industrialMachine";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Machine } from "@/lib/fusion/workshop/machine.pb";
+import IndustrialMachine from "./industrialMachine";
 
 interface IndustrialMachineToolsProps {
   machines: Machine[];
