@@ -13,9 +13,9 @@ export interface Session {
   name: string;
   uid: string;
   /**
-   * Class is the name of the class that the session is part of
+   * Parent is the name of the class that the session is part of
    */
-  class: string;
+  parent: string;
   /**
    * Date and time of the session in RFC3339 format
    * The time component represents the start time of the session
@@ -59,7 +59,7 @@ export const Session = {
     return {
       name: "",
       uid: "",
-      class: "",
+      parent: "",
       date: "",
       confirmedAttendees: 0,
       ...msg,
@@ -79,8 +79,8 @@ export const Session = {
     if (msg.uid) {
       writer.writeString(2, msg.uid);
     }
-    if (msg.class) {
-      writer.writeString(3, msg.class);
+    if (msg.parent) {
+      writer.writeString(3, msg.parent);
     }
     if (msg.date) {
       writer.writeString(4, msg.date);
@@ -110,7 +110,7 @@ export const Session = {
           break;
         }
         case 3: {
-          msg.class = reader.readString();
+          msg.parent = reader.readString();
           break;
         }
         case 4: {
@@ -157,7 +157,7 @@ export const SessionJSON = {
     return {
       name: "",
       uid: "",
-      class: "",
+      parent: "",
       date: "",
       confirmedAttendees: 0,
       ...msg,
@@ -175,8 +175,8 @@ export const SessionJSON = {
     if (msg.uid) {
       json["uid"] = msg.uid;
     }
-    if (msg.class) {
-      json["class"] = msg.class;
+    if (msg.parent) {
+      json["parent"] = msg.parent;
     }
     if (msg.date) {
       json["date"] = msg.date;
@@ -199,9 +199,9 @@ export const SessionJSON = {
     if (_uid_) {
       msg.uid = _uid_;
     }
-    const _class_ = json["class"];
-    if (_class_) {
-      msg.class = _class_;
+    const _parent_ = json["parent"];
+    if (_parent_) {
+      msg.parent = _parent_;
     }
     const _date_ = json["date"];
     if (_date_) {

@@ -23,10 +23,9 @@ export interface ListSessionsRequest {
    */
   filter: string;
   /**
-   * Reference must be set to the masterClass.name to match
-   * filter where 'class' == Reference
+   * Parent references a masterClass.name
    */
-  reference: string;
+  parent: string;
   /**
    * The maximum number of items to return.
    */
@@ -340,7 +339,7 @@ export const ListSessionsRequest = {
   ): ListSessionsRequest {
     return {
       filter: "",
-      reference: "",
+      parent: "",
       pageSize: 0,
       pageToken: "",
       ...msg,
@@ -357,8 +356,8 @@ export const ListSessionsRequest = {
     if (msg.filter) {
       writer.writeString(1, msg.filter);
     }
-    if (msg.reference) {
-      writer.writeString(2, msg.reference);
+    if (msg.parent) {
+      writer.writeString(2, msg.parent);
     }
     if (msg.pageSize) {
       writer.writeInt32(3, msg.pageSize);
@@ -384,7 +383,7 @@ export const ListSessionsRequest = {
           break;
         }
         case 2: {
-          msg.reference = reader.readString();
+          msg.parent = reader.readString();
           break;
         }
         case 3: {
@@ -842,7 +841,7 @@ export const ListSessionsRequestJSON = {
   ): ListSessionsRequest {
     return {
       filter: "",
-      reference: "",
+      parent: "",
       pageSize: 0,
       pageToken: "",
       ...msg,
@@ -859,8 +858,8 @@ export const ListSessionsRequestJSON = {
     if (msg.filter) {
       json["filter"] = msg.filter;
     }
-    if (msg.reference) {
-      json["reference"] = msg.reference;
+    if (msg.parent) {
+      json["parent"] = msg.parent;
     }
     if (msg.pageSize) {
       json["pageSize"] = msg.pageSize;
@@ -882,9 +881,9 @@ export const ListSessionsRequestJSON = {
     if (_filter_) {
       msg.filter = _filter_;
     }
-    const _reference_ = json["reference"];
-    if (_reference_) {
-      msg.reference = _reference_;
+    const _parent_ = json["parent"];
+    if (_parent_) {
+      msg.parent = _parent_;
     }
     const _pageSize_ = json["pageSize"] ?? json["page_size"];
     if (_pageSize_) {

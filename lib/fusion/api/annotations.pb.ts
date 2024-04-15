@@ -11,6 +11,8 @@ import * as protoscript from "protoscript";
 
 export interface field {}
 
+export interface service {}
+
 export interface roles {
   list: string;
   create: string;
@@ -22,6 +24,7 @@ export interface roles {
 export interface repository {
   collection: string;
   requiredRoles: roles;
+  customNameValidation: boolean;
 }
 
 export interface generate {}
@@ -71,6 +74,51 @@ export const field = {
     _msg: field,
     _reader: protoscript.BinaryReader,
   ): field {
+    return _msg;
+  },
+};
+
+export const service = {
+  /**
+   * Serializes service to protobuf.
+   */
+  encode: function (_msg?: PartialDeep<service>): Uint8Array {
+    return new Uint8Array();
+  },
+
+  /**
+   * Deserializes service from protobuf.
+   */
+  decode: function (_bytes?: ByteSource): service {
+    return {};
+  },
+
+  /**
+   * Initializes service with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<service>): service {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<service>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    _msg: service,
+    _reader: protoscript.BinaryReader,
+  ): service {
     return _msg;
   },
 };
@@ -198,6 +246,7 @@ export const repository = {
     return {
       collection: "",
       requiredRoles: roles.initialize(),
+      customNameValidation: false,
       ...msg,
     };
   },
@@ -214,6 +263,9 @@ export const repository = {
     }
     if (msg.requiredRoles) {
       writer.writeMessage(2, msg.requiredRoles, roles._writeMessage);
+    }
+    if (msg.customNameValidation) {
+      writer.writeBool(3, msg.customNameValidation);
     }
     return writer;
   },
@@ -234,6 +286,10 @@ export const repository = {
         }
         case 2: {
           reader.readMessage(msg.requiredRoles, roles._readMessage);
+          break;
+        }
+        case 3: {
+          msg.customNameValidation = reader.readBool();
           break;
         }
         default: {
@@ -330,6 +386,47 @@ export const fieldJSON = {
    * @private
    */
   _readMessage: function (msg: field, _json: any): field {
+    return msg;
+  },
+};
+
+export const serviceJSON = {
+  /**
+   * Serializes service to JSON.
+   */
+  encode: function (_msg?: PartialDeep<service>): string {
+    return "{}";
+  },
+
+  /**
+   * Deserializes service from JSON.
+   */
+  decode: function (_json?: string): service {
+    return {};
+  },
+
+  /**
+   * Initializes service with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<service>): service {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<service>,
+  ): Record<string, unknown> {
+    return {};
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (msg: service, _json: any): service {
     return msg;
   },
 };
@@ -439,6 +536,7 @@ export const repositoryJSON = {
     return {
       collection: "",
       requiredRoles: rolesJSON.initialize(),
+      customNameValidation: false,
       ...msg,
     };
   },
@@ -459,6 +557,9 @@ export const repositoryJSON = {
         json["requiredRoles"] = _requiredRoles_;
       }
     }
+    if (msg.customNameValidation) {
+      json["customNameValidation"] = msg.customNameValidation;
+    }
     return json;
   },
 
@@ -473,6 +574,10 @@ export const repositoryJSON = {
     const _requiredRoles_ = json["requiredRoles"];
     if (_requiredRoles_) {
       rolesJSON._readMessage(msg.requiredRoles, _requiredRoles_);
+    }
+    const _customNameValidation_ = json["customNameValidation"];
+    if (_customNameValidation_) {
+      msg.customNameValidation = _customNameValidation_;
     }
     return msg;
   },
