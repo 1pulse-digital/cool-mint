@@ -19,6 +19,7 @@ interface IndustrialMachineProps {
 const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
   return (
     <div className="mb-0 rounded-xl">
+    <div className="mb-0 rounded-xl">
       <div>
         <div className="rounded-lg bg-[#2c3033] lg:flex 2xl:mx-60">
           <AspectRatio ratio={16 / 9}>

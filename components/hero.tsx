@@ -32,7 +32,7 @@ const Hero = () => {
                 {" "}
                 vibrant shared workshop environment{" "}
               </span>
-              , allowing you to bring your ideas to life. Whether you're a
+              , allowing you to bring your ideas to life. Whether you&apos;re a
               <span className="font-medium text-primary">
                 {" "}
                 professional manufacturer{" "}

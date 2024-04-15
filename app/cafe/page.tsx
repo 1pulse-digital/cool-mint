@@ -33,11 +33,11 @@ const Cafe = () => {
               members can connect, share ideas, or simply relax. Whether you're in the midst of a project or just starting 
               your day, our café offers a warm, welcoming space to recharge and mingle with fellow creators."
             />
-            <div className="grid place-content-center pt-8">
+          {/*   <div className="grid place-content-center pt-8">
               <Link href="/">
                 <Button color="primary"> Download Menu </Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="sm:mx-20 md:mx-6 lg:mx-44 2xl:mx-72">

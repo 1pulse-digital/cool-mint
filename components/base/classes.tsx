@@ -102,7 +102,6 @@ export function Classes() {
                       <Image
                         src={gallery}
                         alt="team member"
-                        placeholder={"blur"}
                         className="rounded-lg"
                         width="400"
                         height="400"
@@ -118,7 +117,6 @@ export function Classes() {
                       <Image
                         src={craig}
                         alt="team member"
-                        placeholder={"blur"}
                         className="rounded-lg"
                         width="400"
                         height="400"
@@ -134,7 +132,6 @@ export function Classes() {
                       <Image
                         src={gallery}
                         alt="team member"
-                        placeholder={"blur"}
                         className="rounded-lg"
                         width="400"
                         height="400"
@@ -168,7 +165,6 @@ export function Classes() {
                 <Image
                   src={gallery}
                   alt="team member"
-                  placeholder={"blur"}
                   className="rounded-t-lg"
                 />
               </div>
@@ -182,7 +178,6 @@ export function Classes() {
                 <Image
                   src={gallery}
                   alt="team member"
-                  placeholder={"blur"}
                   className="rounded-t-lg"
                 />
               </div>

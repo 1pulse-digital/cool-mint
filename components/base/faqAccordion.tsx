@@ -18,7 +18,7 @@ export function FAQAccordion() {
   return (
     <div className="px-2 py-6 sm:px-10 sm:py-2 xl:mx-28 2xl:mx-40">
       <Tabs defaultValue="machines" className="bg-background">
-        <div className="px-6 sm:mx-8 md:mx-20 lg:mx-60 2xl:mx-96">
+        <div className="px-4 sm:mx-8 md:mx-20 lg:mx-60 2xl:mx-96">
           <p className="py-3 text-center text-xs text-textColor">Filter by</p>
           <TabsList className="grid w-full grid-cols-4 bg-[#27272A] px-2 text-secondary">
             <TabsTrigger value="machines" className="">
@@ -42,13 +42,13 @@ export function FAQAccordion() {
                     </AccordionTrigger>
                     <AccordionContent>
                       Yes, but you must complete a mandatory orientation for
-                      each type of machine you're interested in using to ensure
+                      each type of machine you&apos;re interested in using to ensure
                       safety and proficiency.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-2">
                     <AccordionTrigger className="text-[16px] font-bold text-textColor">
-                      What if I don't know how to use a machine or tool?
+                      What if I don&apos;t know how to use a machine or tool?
                     </AccordionTrigger>
                     <AccordionContent>
                       Our team is here to help and train you on all of our
@@ -84,7 +84,7 @@ export function FAQAccordion() {
                       completed the class?
                     </AccordionTrigger>
                     <AccordionContent>
-                      No, you don't. Made in Workshop is not a TVET college, nor
+                      No, you don&apos;t. Made in Workshop is not a TVET college, nor
                       are we associated with merSETA, and therefore, it would be
                       illegal to give a certificate.
                     </AccordionContent>
@@ -141,7 +141,7 @@ export function FAQAccordion() {
                       Can I bring my materials to work with in the factory?
                     </AccordionTrigger>
                     <AccordionContent>
-                      Yes, you're welcome to bring your materials. However, we
+                      Yes, you&apos;re welcome to bring your materials. However, we
                       recommend checking with our staff first to ensure
                       compatibility with our machines.
                     </AccordionContent>
@@ -152,7 +152,7 @@ export function FAQAccordion() {
                     </AccordionTrigger>
                     <AccordionContent>
                       Absolutely! Our café offers free Wi-Fi to all our guests,
-                      whether you're working on your next project or just
+                      whether you&apos;re working on your next project or just
                       enjoying a coffee break.
                     </AccordionContent>
                   </AccordionItem>

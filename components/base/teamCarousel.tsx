@@ -1,12 +1,14 @@
 import * as React from "react";
-import Image from "next/image";
-import henry from "../../images/Henry.jpg";
-import joshua from "../../images/Josh.jpg";
-import jesse from "../../images/Jesse.jpg";
-import ciza from "../../images/Ciza.jpg";
-import deneo from "../../images/Deneo.jpg";
-import ericsson from "../../images/Ericsson.jpg";
-import nomonde from "../../images/Nomonde.jpg";
+import Image, { StaticImageData } from "next/image";
+import henry from "../../images/team/Henry.jpg";
+import joshua from "../../images/team/Josh.jpg";
+import jesse from "../../images/team/Jesse.jpg";
+import ciza from "../../images/team/Ciza.jpg";
+import deneo from "../../images/team/Deneo.jpg";
+import ericsson from "../../images/team/Ericsson.jpg";
+import nomonde from "../../images/team/Nomonde.jpg";
+import placeholder from "../../images/team/team-placeholder.png";
+import placeholder1 from "../../images/team/team-placeholder-1.png";
 
 import { Card } from "@/components/ui/card";
 import {
@@ -18,13 +20,74 @@ import {
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+interface TeamItem {
+  name: string;
+  alt: string;
+  src: StaticImageData;
+}
+
+
 export function TeamCarousel() {
+
+  const items: TeamItem[] = [
+    {
+      name: "henry",
+      alt: "henry",
+      src: henry,
+    },
+
+    {
+      name: "joshua",
+      alt: "joshua",
+      src: joshua,
+    },
+
+    {
+      name: "jesse",
+      alt: "jesse",
+      src: jesse,
+    },
+
+    {
+      name: "ericsson",
+      alt: "ericsson",
+      src: ericsson,
+    },
+
+    {
+      name: "ciza",
+      alt: "ciza",
+      src: ciza,
+    },
+
+    {
+      name: "deneo",
+      alt: "deneo",
+      src: deneo,
+    },
+    {
+      name: "nomonde",
+      alt: "nomonde",
+      src: nomonde,
+    },
+    {
+      name: "placeholder",
+      alt: "placeholder",
+      src: placeholder,
+    },
+    {
+      name: "placeholder1",
+      alt: "placeholder1",
+      src: placeholder1,
+    },
+  ];
+
   return (
     <div>
       <div className="grid h-auto items-center justify-center px-8 py-10 sm:px-16 sm:py-20 md:px-20 lg:px-0">
         <h1
           className={
-            "pb-16 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
+            "pb-8 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
           }
         >
           Meet the Team<span className="text-primary">.</span>
@@ -36,140 +99,71 @@ export function TeamCarousel() {
               <CarouselContent>
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                    <TabsTrigger value="henry">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 ">
+                  {items.slice(0, 3).map((item, index) => (
+                    <TabsTrigger key={index} value={item.name}>
+                      <div className="pt-24 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                         <Image
-                          src={henry}
-                          alt="henry"
-                          placeholder={"blur"}
+                          src={item.src}
+                          alt={item.alt}
                           className="rounded-lg"
                           width="600"
                           height="600"
                         />
                       </div>
                     </TabsTrigger>
-                    <TabsTrigger value="joshua">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={joshua}
-                          alt="joshua"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger value="jesse">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={jesse}
-                          alt="jesse"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
+                  ))}
                   </TabsList>
                 </CarouselItem>
 
                 <CarouselItem>
-                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                    <TabsTrigger value="ericsson">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={ericsson}
-                          alt="ericsson"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger value="ciza">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80 ">
-                        <Image
-                          src={ciza}
-                          alt="ciza"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger value="deneo">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={deneo}
-                          alt="deneo"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                  </TabsList>
-                </CarouselItem>
+                <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
 
-                <CarouselItem>
-                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                    <TabsTrigger value="nomonde">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={nomonde}
-                          alt="nomonde"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger value="charley">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={jesse}
-                          alt="jesse"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger value="deneo">
-                      <div className="pt-20 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={deneo}
-                          alt="deneo"
-                          placeholder={"blur"}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                  </TabsList>
-                </CarouselItem>
+              {items.slice(3, 6).map((item, index) => (
+                <TabsTrigger key={index} value={item.name}>
+                  <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      className="rounded-lg"
+                      width="600"
+                      height="600"
+                    />
+                  </div>
+                </TabsTrigger>
+              ))}  
+                </TabsList>
+              </CarouselItem>
+              <CarouselItem>
+                <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
+                  
+              {items.slice(6, 9).map((item, index) => (
+                <TabsTrigger key={index} value={item.name}>
+                  <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      className="rounded-lg"
+                      width="600"
+                      height="600"
+                    />
+                  </div>
+                </TabsTrigger>
+              ))}  
+                </TabsList>
+              </CarouselItem>
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
             </Carousel>
           </div>
-          <TabsContent className="bg-background font-helvetica" value="henry">
+          <TabsContent className="bg-background font-helvetica mx-10" value="henry">
             <Card className="border-0 bg-background">
-              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-lg">
+              <div className="rounded-lg bg-[#2c3033]  md:flex lg:mx-0">
+                <div className="md:w-1/3 md:rounded-lg">
                   <Image
                     src={henry}
                     alt="henry"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full  object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -197,15 +191,14 @@ export function TeamCarousel() {
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica" value="joshua">
+          <TabsContent className="bg-background font-helvetica mx-10" value="joshua">
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-lg">
+                <div className="md:w-1/3 md:rounded-lg">
                   <Image
                     src={joshua}
                     alt="henry"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -223,7 +216,7 @@ export function TeamCarousel() {
                   <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
                     As the second-in-command at Made in Workshop, Josh ensures
                     everything runs seamlessly. His expertise in design and
-                    planning enhances our members' workshop experience,
+                    planning enhances our members&apos; workshop experience,
                     alongside maintaining all our workshop&apos;s essential
                     functions. Although the role carries significant weight, he
                     infuses humour into his day-to-day activities. His passion
@@ -235,15 +228,14 @@ export function TeamCarousel() {
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica" value="jesse">
+          <TabsContent className="bg-background font-helvetica mx-10" value="jesse">
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+                <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={jesse}
                     alt="jesse"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -268,15 +260,14 @@ export function TeamCarousel() {
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica" value="ciza">
+          <TabsContent className="bg-background font-helvetica mx-10" value="ciza">
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+                <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={ciza}
                     alt="ciza"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -304,15 +295,14 @@ export function TeamCarousel() {
             </Card>
           </TabsContent>
 
-          <TabsContent className="bg-background font-helvetica" value="deneo">
+          <TabsContent className="bg-background font-helvetica mx-10" value="deneo">
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+                <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={deneo}
                     alt="deneo"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -339,15 +329,14 @@ export function TeamCarousel() {
             </Card>
           </TabsContent>
 
-          <TabsContent className="bg-background font-helvetica" value="nomonde">
+          <TabsContent className="bg-background font-helvetica mx-10" value="nomonde">
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+                <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={nomonde}
                     alt="nomonde"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -375,17 +364,15 @@ export function TeamCarousel() {
           </TabsContent>
 
           <TabsContent
-            className="bg-background font-helvetica"
-            value="ericsson"
+            className="bg-background font-helvetica mx-10" value="ericsson"
           >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 lg:rounded-l-lg">
+                <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={ericsson}
                     alt="ericsson"
-                    placeholder="blur"
-                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -413,14 +400,53 @@ export function TeamCarousel() {
             </Card>
           </TabsContent>
 
-          <TabsContent className="bg-background font-helvetica" value="charley">
+          {/* <TabsContent className="bg-background font-helvetica" value="">
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 lg:rounded-l-lg">
                   <Image
-                    src={jesse}
-                    alt="jesse"
-                    placeholder="blur"
+                    src={placeholder}
+                    alt="placeholder"
+                    className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                    Charley 
+                  </h3>
+                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
+                    Part-time Workshop Assistant
+                  </span>
+                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                    Charley has an Honors degree in Applied Linguistics and
+                    taught English and Woodwork for twenty years in various
+                    schools and for Education projects connected to Wits
+                    University. He then spent the next twenty years involved in
+                    system engineering and programming Variable Logic
+                    Controllers in the HVAC Industry for various companies. For
+                    the past four years, he&apos;s been involved in carpentry
+                    projects, mainly restoring old furniture, doors, etc. He is
+                    also a journalist and has been published since 1992 in
+                    various newspapers and magazines, mainly in connection with
+                    motorcycling since that time.
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </TabsContent> 
+
+          <TabsContent className="bg-background font-helvetica" value="">
+            <Card className="border-0 bg-background">
+              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
+                <div className="md:w-1/3 lg:rounded-l-lg">
+                  <Image
+                    src={placeholder1}
+                    alt="placeholder1"
                     className="h-full w-full rounded-t-lg object-cover lg:rounded-l-lg"
                     style={{
                       objectFit: "cover",
@@ -452,7 +478,7 @@ export function TeamCarousel() {
                 </div>
               </div>
             </Card>
-          </TabsContent>
+          </TabsContent>  */}
         </Tabs>
       </div>
     </div>

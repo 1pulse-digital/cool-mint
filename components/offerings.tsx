@@ -55,15 +55,11 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
 
 const Offerings: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-20 text-center text-primary md:h-auto md:items-start lg:h-screen lg:py-0">
+    <div className="flex flex-col items-center justify-center py-20 text-center text-primary md:h-auto lg:h-screen lg:py-0">
       <div className="">
         <h1 className="py-4 text-headings font-bold text-secondary">
           Our Offerings<span className="text-primary">?</span>
         </h1>
-        <p className="pb-14  text-center text-BodyText font-light text-textColor xl:px-40 2xl:px-52">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna
-        </p>
       </div>
       <div className="grid-cols-2 md:pt-6 lg:grid">
         <div className="lg:px-20">
