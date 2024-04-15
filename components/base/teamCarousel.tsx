@@ -7,8 +7,6 @@ import ciza from "../../images/team/Ciza.jpg";
 import deneo from "../../images/team/Deneo.jpg";
 import ericsson from "../../images/team/Ericsson.jpg";
 import nomonde from "../../images/team/Nomonde.jpg";
-import placeholder from "../../images/team/team-placeholder.png";
-import placeholder1 from "../../images/team/team-placeholder-1.png";
 
 import { Card } from "@/components/ui/card";
 import {
@@ -26,9 +24,7 @@ interface TeamItem {
   src: StaticImageData;
 }
 
-
 export function TeamCarousel() {
-
   const items: TeamItem[] = [
     {
       name: "henry",
@@ -70,16 +66,6 @@ export function TeamCarousel() {
       alt: "nomonde",
       src: nomonde,
     },
-    {
-      name: "placeholder",
-      alt: "placeholder",
-      src: placeholder,
-    },
-    {
-      name: "placeholder1",
-      alt: "placeholder1",
-      src: placeholder1,
-    },
   ];
 
   return (
@@ -99,71 +85,72 @@ export function TeamCarousel() {
               <CarouselContent>
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                  {items.slice(0, 3).map((item, index) => (
-                    <TabsTrigger key={index} value={item.name}>
-                      <div className="pt-24 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                        <Image
-                          src={item.src}
-                          alt={item.alt}
-                          className="rounded-lg"
-                          width="600"
-                          height="600"
-                        />
-                      </div>
-                    </TabsTrigger>
-                  ))}
+                    {items.slice(0, 3).map((item, index) => (
+                      <TabsTrigger key={index} value={item.name}>
+                        <div className="pt-24 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            className="rounded-lg"
+                            width="600"
+                            height="600"
+                          />
+                        </div>
+                      </TabsTrigger>
+                    ))}
                   </TabsList>
                 </CarouselItem>
 
                 <CarouselItem>
-                <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-
-              {items.slice(3, 6).map((item, index) => (
-                <TabsTrigger key={index} value={item.name}>
-                  <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      className="rounded-lg"
-                      width="600"
-                      height="600"
-                    />
-                  </div>
-                </TabsTrigger>
-              ))}  
-                </TabsList>
-              </CarouselItem>
-              <CarouselItem>
-                <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                  
-              {items.slice(6, 9).map((item, index) => (
-                <TabsTrigger key={index} value={item.name}>
-                  <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      className="rounded-lg"
-                      width="600"
-                      height="600"
-                    />
-                  </div>
-                </TabsTrigger>
-              ))}  
-                </TabsList>
-              </CarouselItem>
+                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
+                    {items.slice(3, 6).map((item, index) => (
+                      <TabsTrigger key={index} value={item.name}>
+                        <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            className="rounded-lg"
+                            width="600"
+                            height="600"
+                          />
+                        </div>
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </CarouselItem>
+                <CarouselItem>
+                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
+                    {items.slice(6, 9).map((item, index) => (
+                      <TabsTrigger key={index} value={item.name}>
+                        <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            className="rounded-lg"
+                            width="600"
+                            height="600"
+                          />
+                        </div>
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </CarouselItem>
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
             </Carousel>
           </div>
-          <TabsContent className="bg-background font-helvetica mx-10" value="henry">
+          <TabsContent
+            className="mx-10 bg-background font-helvetica"
+            value="henry"
+          >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033]  md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-lg">
                   <Image
                     src={henry}
                     alt="henry"
-                    className="h-full w-full  object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full  rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -191,14 +178,17 @@ export function TeamCarousel() {
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica mx-10" value="joshua">
+          <TabsContent
+            className="mx-10 bg-background font-helvetica"
+            value="joshua"
+          >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-lg">
                   <Image
                     src={joshua}
                     alt="henry"
-                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -228,14 +218,17 @@ export function TeamCarousel() {
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica mx-10" value="jesse">
+          <TabsContent
+            className="mx-10 bg-background font-helvetica"
+            value="jesse"
+          >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={jesse}
                     alt="jesse"
-                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -260,14 +253,17 @@ export function TeamCarousel() {
               </div>
             </Card>
           </TabsContent>
-          <TabsContent className="bg-background font-helvetica mx-10" value="ciza">
+          <TabsContent
+            className="mx-10 bg-background font-helvetica"
+            value="ciza"
+          >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={ciza}
                     alt="ciza"
-                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -295,14 +291,17 @@ export function TeamCarousel() {
             </Card>
           </TabsContent>
 
-          <TabsContent className="bg-background font-helvetica mx-10" value="deneo">
+          <TabsContent
+            className="mx-10 bg-background font-helvetica"
+            value="deneo"
+          >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={deneo}
                     alt="deneo"
-                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -329,14 +328,17 @@ export function TeamCarousel() {
             </Card>
           </TabsContent>
 
-          <TabsContent className="bg-background font-helvetica mx-10" value="nomonde">
+          <TabsContent
+            className="mx-10 bg-background font-helvetica"
+            value="nomonde"
+          >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-l-lg">
                   <Image
                     src={nomonde}
                     alt="nomonde"
-                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -364,7 +366,8 @@ export function TeamCarousel() {
           </TabsContent>
 
           <TabsContent
-            className="bg-background font-helvetica mx-10" value="ericsson"
+            className="mx-10 bg-background font-helvetica"
+            value="ericsson"
           >
             <Card className="border-0 bg-background">
               <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
@@ -372,7 +375,7 @@ export function TeamCarousel() {
                   <Image
                     src={ericsson}
                     alt="ericsson"
-                    className="h-full w-full object-cover md:rounded-lg rounded-t-lg"
+                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
                     style={{
                       objectFit: "cover",
                       width: "100%",
