@@ -1,7 +1,7 @@
 import { ClientConfiguration } from "twirpscript"
 
 export const config: ClientConfiguration = {
-  baseURL: "http://localhost:8080",
+  baseURL: "https://fusion-cva6vopela-bq.a.run.app",
   prefix: "/api/v1",
   headers: {
     Authorization: "Bearer token",
