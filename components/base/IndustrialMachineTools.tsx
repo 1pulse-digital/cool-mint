@@ -21,8 +21,8 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
 
   const defaultCategory = categories[0];
 
-  // TODO: @Parson140 - Remove all the font-helvetica class names. It should be set in the global styles
   // TODO: @Parson140 - Remove all the hardcoded colors such as bg-[#27272A] we should only use the colors from the theme
+  //                    See https://ui.shadcn.com/docs/theming#list-of-variables
   return (
     <div className="bg-background py-8">
       <Tabs defaultValue={defaultCategory} className="bg-background">
