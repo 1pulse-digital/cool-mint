@@ -91,10 +91,12 @@ export async function listMachines(
 ): Promise<ListMachinesResponse> {
   try {
     console.log("ListMachines")
-    return await ListMachines(request, {
+    const response = await ListMachines(request, {
       rpcTransport: transport(["machines"]),
       headers: await authHeader(),
     })
+    console.log("ListMachines response", response)
+    return response
   } catch (e: unknown) {
     console.log("ListMachines error", e)
     if (e instanceof TwirpError) {
