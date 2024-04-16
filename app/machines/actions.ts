@@ -90,11 +90,13 @@ export async function listMachines(
   request: ListMachinesRequest,
 ): Promise<ListMachinesResponse> {
   try {
+    console.log("ListMachines")
     return await ListMachines(request, {
       rpcTransport: transport(["machines"]),
       headers: await authHeader(),
     })
   } catch (e: unknown) {
+    console.log("ListMachines error", e)
     if (e instanceof TwirpError) {
       throw new Error(`${e.msg}`)
     }
