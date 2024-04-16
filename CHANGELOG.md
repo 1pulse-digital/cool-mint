@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/1pulse-digital/cool-mint/compare/v0.4.0...v0.4.1) (2024-04-16)
+
+
+### Bug Fixes
+
+* machine filtering ([2408290](https://github.com/1pulse-digital/cool-mint/commit/24082901a5e10095a7b4b27b1ce1073d298434ae))
+
 ## [0.4.0](https://github.com/1pulse-digital/cool-mint/compare/v0.3.0...v0.4.0) (2024-04-16)
 
 
