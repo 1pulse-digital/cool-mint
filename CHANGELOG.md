@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.4.0](https://github.com/1pulse-digital/cool-mint/compare/v0.3.0...v0.4.0) (2024-04-16)
+
+
+### Features
+
+* ✨ added-descriptions and copy ([c70ca24](https://github.com/1pulse-digital/cool-mint/commit/c70ca24d35d1370866ee19910211f82a928bec7c))
+* ✨ adjusted-padding ([125030c](https://github.com/1pulse-digital/cool-mint/commit/125030cdb24c45f420eb5861646bc3e3a9404f69))
+* ✨ cleaned-code-mapping image-items ([edda925](https://github.com/1pulse-digital/cool-mint/commit/edda92539db2446eb40664785468f4d35f36b3d5))
+* ✨ removed-header-dummy text ([89fbe6b](https://github.com/1pulse-digital/cool-mint/commit/89fbe6bcd1f93b698b7ecec515eb70a29334116d))
+* ✨ removed-header-dummy-text ([937ed0e](https://github.com/1pulse-digital/cool-mint/commit/937ed0e0a12655f93c6f96f90360bf2166c2a898))
+* ✨ repositioned-absolute-images ([0a98fe6](https://github.com/1pulse-digital/cool-mint/commit/0a98fe6510a36ffab269d79c7a1218444b3ca729))
+* ✨ updated team members profiles ([9257fbc](https://github.com/1pulse-digital/cool-mint/commit/9257fbcbcf79abe1fb7a70514289e973e316172e))
+
+
+### Bug Fixes
+
+* machine filtering on category ([e03e037](https://github.com/1pulse-digital/cool-mint/commit/e03e037c85817d4db55aad1a519085d297a50bf6))
+* merge conflict problems ([3264ff8](https://github.com/1pulse-digital/cool-mint/commit/3264ff8fae08f1b83274d810983771bedd740e22))
+* remove the broken placeholders ([a795cde](https://github.com/1pulse-digital/cool-mint/commit/a795cde8526929ffe81a151c52de0b65ddb7fec7))
+* target ES2020 to enable compiling BigInt ([2a34eec](https://github.com/1pulse-digital/cool-mint/commit/2a34eec0107eb3e5ead7a2a9e96b7fa38b66ffee))
+* update fusion lib ([9386846](https://github.com/1pulse-digital/cool-mint/commit/9386846e0af7c67a32938e0d86b18ba69517fc1f))
+* use fusion in the cloud ([c50f7ed](https://github.com/1pulse-digital/cool-mint/commit/c50f7ed6ca15bed43cb3b095078d31e5dd55c75f))
+
 ## [0.3.0](https://github.com/1pulse-digital/cool-mint/compare/v0.2.0...v0.3.0) (2024-04-11)
 
 
