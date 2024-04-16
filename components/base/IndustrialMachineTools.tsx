@@ -42,19 +42,23 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
             className="bg-background font-helvetica"
             value={category}
           >
-            {machines.map((machine, index) => (
-              <Card
-                key={machine.uid}
-                className="rounded-lg border-0 bg-background"
-              >
-                <CardHeader>
-                  <CardDescription className="text-textColor">
-                    <IndustrialMachine machine={machine} />
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2"></CardContent>
-              </Card>
-            ))}
+            {machines
+              .filter((machine) => {
+                machine.categories.includes(category);
+              })
+              .map((machine, index) => (
+                <Card
+                  key={machine.uid}
+                  className="rounded-lg border-0 bg-background"
+                >
+                  <CardHeader>
+                    <CardDescription className="text-textColor">
+                      <IndustrialMachine machine={machine} />
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-2"></CardContent>
+                </Card>
+              ))}
           </TabsContent>
         ))}
       </Tabs>
