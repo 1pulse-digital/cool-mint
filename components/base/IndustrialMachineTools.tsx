@@ -3,23 +3,23 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Machine } from "@/lib/fusion/workshop/machine.pb";
-import IndustrialMachine from "./industrialMachine";
+} from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Machine } from "@/lib/fusion/workshop/machine.pb"
+import IndustrialMachine from "./industrialMachine"
 
 interface IndustrialMachineToolsProps {
-  machines: Machine[];
+  machines: Machine[]
 }
 const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
-  const { machines } = props;
+  const { machines } = props
 
   // get all the categories of all machines and remove duplicates
   const categories = Array.from(
     new Set(machines.flatMap((machine) => machine.categories)),
-  );
+  )
 
-  const defaultCategory = categories[0];
+  const defaultCategory = categories[0]
 
   // TODO: @Parson140 - Remove all the hardcoded colors such as bg-[#27272A] we should only use the colors from the theme
   //                    See https://ui.shadcn.com/docs/theming#list-of-variables
@@ -36,17 +36,18 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
             ))}
           </TabsList>
         </div>
-        {categories.map((category) => (
-          <TabsContent
-            key={category}
-            className="bg-background font-helvetica"
-            value={category}
-          >
-            {machines
-              .filter((machine) => {
-                machine.categories.includes(category);
-              })
-              .map((machine, index) => (
+        {categories.map((category) => {
+          const filteredMachines = machines.filter((machine) =>
+            machine.categories.includes(category),
+          )
+          console.log(`machines in category ${category}:`, filteredMachines)
+          return (
+            <TabsContent
+              key={category}
+              className="bg-background font-helvetica"
+              value={category}
+            >
+              {filteredMachines.map((machine, index) => (
                 <Card
                   key={machine.uid}
                   className="rounded-lg border-0 bg-background"
@@ -59,11 +60,12 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
                   <CardContent className="space-y-2"></CardContent>
                 </Card>
               ))}
-          </TabsContent>
-        ))}
+            </TabsContent>
+          )
+        })}
       </Tabs>
     </div>
-  );
-};
+  )
+}
 
-export default IndustrialMachineTools;
+export default IndustrialMachineTools
