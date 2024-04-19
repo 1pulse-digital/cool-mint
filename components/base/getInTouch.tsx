@@ -12,7 +12,8 @@ const GetInTouch = () => {
         Get In Touch<span className="text-primary">.</span>
       </h1>
       <span className="font-helvetica text-BodyText font-light text-secondary">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+      We’d love to hear from you, whether you want to <span className="text-primary">learn more about us or chat over a cup of coffee</span>, our doors are always open.
+
       </span>
       <div className="flex flex-row justify-center space-x-4 md:space-x-12 py-12">
         <div>
