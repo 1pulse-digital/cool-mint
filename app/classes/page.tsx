@@ -25,12 +25,9 @@ const Workshops = () => {
           <div className="2xl:mx-40 xl:mx-60 lg:mx-40 md:mx-16 px-6">
       <h1 className="text-headings text-secondary font-helvetica font-bold py-4 text-center leading-tight">Upcoming Classes<span className="text-primary">.</span></h1>
       <p className="text-BodyText text-textColor text-center font-helvetica font-normal 2xl:px-60">
-     <br/> Getting to grips with industrial machines and tools is key to turning your big ideas into reality. With this in mind, 
-      Our classes are geared to empower and train individuals to grow their skills and learn new ones while embracing the do-it-yourself revolution.
-      <br/><br/>
-We&apos;ve lined up several classes to help you boost your skills, learn about safety, and get the most out of our tools and machinery.
-<br/>
-<br/>What is the purpose of classes? Our classes are designed to teach basic manufacturing skills through hands-on learning and offer important fundamental skills for anyone looking to upskill themselves or make their own things.
+      Our classes are geared towards <span className="text-primary">empowering and training</span> individuals to grow their skills and learn new ones. 
+      We embrace the <span className="text-primary">do-it-yourself revolution</span> and host numerous classes to help you get the most out of our tools and machinery. 
+      Master fundamental manufacturing skills, learn about safety and upskill  yourself and team through our hands-on learning experiences.
 </p>
       
     </div>
