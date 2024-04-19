@@ -22,17 +22,8 @@ export const HeroImages = () => {
             Why choose our Makerspace<span className="text-primary">?</span>
           </h1>
           <p className="text-center font-helvetica text-BodyText font-normal text-textColor sm:text-start md:text-start lg:text-start">
-            Our space is more than just a collection of industrial machinery and
-            tooling; it is a hub for{" "}
-            <span className="text-primary">collaboration</span> and{" "}
-            <span className="text-primary">innovation</span>. Becoming a member
-            means you&apos;re not only accessing a workspace, tools, and machines but
-            also joining a vibrant community of{" "}
-            <span className="text-primary">like-minded individuals</span> who
-            thrive on the exchange of ideas, skills, and inspiration. It&apos;s an
-            environment where everyone, from beginners to seasoned
-            manufacturers, can come together to{" "}
-            <span className="text-primary">explore, create, and innovate.</span>
+          Our members not only have access to our impressive collection of tools and machinery; they also{" "}
+            <span className="text-primary">become part of a community</span> of like-minded individuals. From <span className="text-primary"> beginners to expert manufacturers</span>, everyone comes together to explore, create, and innovate.
           </p>
           <div className="py-8 text-center sm:text-start md:text-start lg:text-start">
             <Link href="/about">
