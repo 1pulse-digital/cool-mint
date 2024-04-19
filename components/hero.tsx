@@ -26,25 +26,8 @@ const Hero = () => {
         >
           <div className="md:px-28">
             <span>
-              Providing you with access to industrial tools and machinery, all
-              within a{" "}
-              <span className="font-medium text-primary">
-                {" "}
-                vibrant shared workshop environment{" "}
-              </span>
-              , allowing you to bring your ideas to life. Whether you&apos;re a
-              <span className="font-medium text-primary">
-                {" "}
-                professional manufacturer{" "}
-              </span>
-              ,<span className="font-medium text-primary">
-                {" "}
-                a hobbyist{" "}
-              </span>,{" "}
-              <span className="font-medium text-primary"> a maker</span>, or
-              somewhere{" "}
-              <span className="font-medium text-primary"> in between </span>,
-              let our shared workshop be your new creative home.
+            Providing professional manufacturers, hobbyists, and makers with<span className="font-medium text-primary"> access to industrial tools and machinery.
+              </span> Our vibrant shared workshop is your new creative home, where your ideas come to life.
             </span>
           </div>
         </span>
