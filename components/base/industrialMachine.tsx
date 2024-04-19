@@ -20,8 +20,9 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
   return (
     <div className="mb-0 rounded-xl">
       <div>
-        <div className="rounded-lg bg-[#2c3033] lg:flex 2xl:mx-60">
-          <AspectRatio ratio={16 / 9}>
+        <div className="rounded-lg bg-[#2c3033] lg:flex 2xl:mx-40">
+          <div className="lg:w-2/5 ">
+          <AspectRatio ratio={4 / 3}>
             <Image
               src={machine.gallery.thumbnail.url}
               alt={machine.gallery.thumbnail.description || machine.displayName}
@@ -30,6 +31,7 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
               className="rounded-t-lg object-cover sm:rounded-t-lg lg:rounded-l-lg"
             />
           </AspectRatio>
+          </div>
           <div className="rounded-lg bg-[#2c3033] p-5 py-8 sm:px-8">
             <div className={"grid text-start font-helvetica"}>
               <h3
@@ -58,7 +60,7 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
               Specs
             </h3>
             <div className="space-x-10">
-              <div className="grid grid-cols-2 pb-4 text-start  font-helvetica">
+              <div className="grid grid-cols-3 pb-4 md:pb-0 text-start  font-helvetica">
                 {machine.attributes.map((attribute, idx) => (
                   <div key={idx}>
                     <p className="font-helvetica text-xs text-primary">
