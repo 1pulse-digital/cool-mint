@@ -26,13 +26,15 @@ const Cafe = () => {
             </Link>
           </div>
           <div>
-            <HeaderTitle
-              title="MIW Café"
-              description="Looking for the perfect spot to take a breather, spark some creativity, 
-              or just enjoy a great cup of coffee? Our on-site café is in the factory, where visitors and 
-              members can connect, share ideas, or simply relax. Whether you're in the midst of a project or just starting 
-              your day, our café offers a warm, welcoming space to recharge and mingle with fellow creators."
-            />
+          <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+            MIW Café<span className="text-primary">.</span>
+            </h1>
+            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+            Our in-house café is the ideal spot to take a breather, spark some creativity, or enjoy a great cup of coffee! Visitors and members are welcomed to <span className="text-primary">connect, share ideas, or simply relax</span>.
+            </p>
+          </div>
+           
           {/*   <div className="grid place-content-center pt-8">
               <Link href="/">
                 <Button color="primary"> Download Menu </Button>
