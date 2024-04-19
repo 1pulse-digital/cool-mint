@@ -33,9 +33,8 @@ export default function Home() {
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
               <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
-                Whether you want to learn a new skill, refine your craft or meet
-                other creative individuals, we have something for everyone.
-                Check out our upcoming classes and book your spot today.
+              Whether you want to learn a <span className="text-primary">new skill, refine your craft or meet other creative individuals</span>, we have something for everyone. 
+              Check out our upcoming classes and book your spot today.
               </p>
             </div>
           </div>
