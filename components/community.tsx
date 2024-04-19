@@ -9,11 +9,8 @@ export const Community = () => {
         Makerspace Community<span className="text-primary">.</span>
       </h1>
       <span className="text-center  text-BodyText font-light text-textColor xl:px-40 2xl:px-52">
-        The makerspace community is more than a trend; it&apos;s a movement towards
-        innovation, entrepreneurship and education. Made in Workshop is proud to
-        be at the forefront of this movement, fostering a culture of creativity
-        and collaboration that contributes significantly to the local economy
-        and community.
+      Made In Workshop is proud to be at the forefront of the <span className="text-primary">maker movement</span>, fostering a culture of <span className="text-primary">creativity and collaboration</span>. 
+      Contributing to our economy and community through innovation, entrepreneurship, and education.
       </span>
       <div className="mt-10 flex justify-center rounded-md">
         <Image
