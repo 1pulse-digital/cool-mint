@@ -28,16 +28,16 @@ export default async function Page() {
             </Link>
           </div>
 
-          {/* header title start */}
-          <HeaderTitle
-            title="Industrial Tools & Machines"
-            description="We hire industrial machines to support a wide range of projects. Our selection includes Laser Cutters, 
-            3D Printers, CNC Routers, Woodworking, and Metalworking equipment, catering to beginners and seasoned professionals. 
-            Each machine is maintained to the highest standards, ensuring constant efficiency and precision. 
-            Explore our diverse range of industrial machines for hire, and let us help bring your project to life."
-          />
-          {/* header title end */}
-
+          <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+            Industrial Tools & Machines<span className="text-primary">.</span>
+            </h1>
+            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+            We hire a wide range of industrial machinery catering to all disciplines, such as woodworking, metalworking, engineering and CNC.  
+            Each machine is <span className="text-primary">maintained to the highest standard</span> ensuring constant efficiency and precision. 
+            Explore our range for hire and let us bring your project to life.
+            </p>
+          </div>
           <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10">
             <IndustrialMachineTools machines={response.Machines} />
             <div className="pb-16 text-center">
