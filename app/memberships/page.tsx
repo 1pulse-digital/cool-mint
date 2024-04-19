@@ -25,10 +25,8 @@ const Memberships = () => {
               Memberships<span className="text-primary">.</span>
             </h1>
             <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
-              Our workshop offers a unique makerspace equipped with industrial
-              machines and tools made available to you. Our Memberships are
-              designed for manufacturers, DIY enthusiasts, hobbyists,
-              freelancers and anyone looking for workshop space.
+            Our unique makerspace is equipped with industrial tools and machinery designed for <span className="text-primary">manufacturers, 
+            DIY enthusiasts, hobbyists, freelancers</span>, and anyone looking for workshop space.
               <br />
               <br />
               Join our community and find your perfect fit.
