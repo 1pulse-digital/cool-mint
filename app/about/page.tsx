@@ -9,31 +9,9 @@ import GetInTouch from "@/components/base/getInTouch";
 const About = () => {
   return (
     <div className="bg-background font-helvetica">
-      <div className="lg:px-20 2xl:px-52">
-        <div className="relative hidden rounded-lg lg:flex">
-          <Image
-            src={building}
-            alt="made in workshop building"
-            height={250}
-            width={250}
-            className="absolute left-0 top-4 -rotate-12 rounded-lg lg:w-40 xl:w-60 2xl:mt-16"
-          />
-          <Image
-            src={workshop}
-            alt="workshop"
-            height={250}
-            width={250}
-            className="absolute right-0 mt-[430px] rotate-12 rounded-lg lg:mt-[580px] lg:w-40 xl:mt-[450px] xl:w-60"
-          />
-        </div>
-        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28 xl:px-80 2xl:px-80">
-          <div className="hidden">
-            <Image
-              src={building}
-              alt="made in workshop building"
-              className=""
-            />
-          </div>
+      <div className="lg:px-20">
+       
+        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28 xl:px-80 2xl:px-80"> 
           <div className={"grid content-center  font-helvetica"}>
             <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
               <Link href="/">
