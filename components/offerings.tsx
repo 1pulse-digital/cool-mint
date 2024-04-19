@@ -65,7 +65,7 @@ const Offerings: React.FC = () => {
         <div className="lg:px-20">
           <OfferingItem
             title="Memberships"
-            description="Our memberships provide flexible access to our facilities, exclusive discounts on classes and a community of makers and mentors to support your project. Our memberships are tailored to fit all your making needs."
+            description="Members have flexible access to our facilities, class discounts and support from mentors through tailored packages to suit your needs."
             linkText="Learn More"
             linkUrl="/memberships"
             ImageSrc="/icons/memberships.png"
@@ -74,7 +74,7 @@ const Offerings: React.FC = () => {
         <div className="lg:px-20">
           <OfferingItem
             title="Industrial Machines"
-            description="From CNC machines to laser cutters to general hand tools, our shared workshops are equipped with high-quality industrial machines and tooling, ready to handle any project you bring."
+            description="Our workshops have a range of high-quality industrial machines, from CNC machinery to specialised equipment for all disciplines."
             linkText="Learn More"
             linkUrl="/machines"
             ImageSrc="/icons/machines.png"
@@ -84,7 +84,7 @@ const Offerings: React.FC = () => {
         <div className="lg:px-20">
           <OfferingItem
             title="Classes"
-            description="Our classes cover a wide variety of making processes and techniques on all equipment available in the workshop. These classes are led by industry experts and range from beginner-friendly introductions to advanced skills training."
+            description="We host classes covering all tools and machinery in our workshops, led by industry experts, catering to participants from beginners to advanced levels."
             linkText="Learn More"
             linkUrl="/classes"
             ImageSrc="/icons/workshops.png"
