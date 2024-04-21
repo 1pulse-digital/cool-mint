@@ -85,13 +85,13 @@ const WorkshopItem: React.FC<WorkshopProps> = ({
               {instructor}
             </p>
           </div>
-          <p className="py-2 font-normal text-white">{description}</p>
+          <p className="py-2 font-normal text-white sm:text-Body text-sm">{description}</p>
         </div>
         <div className="">
           <p className="pt-4 text-start text-[16px] font-bold text-primary lg:pt-0">
             {price}
           </p>
-          <p className="py-1 text-secondary">{spotsLeft}</p>
+          <p className="py-1 text-secondary sm:text-Body text-sm">{spotsLeft}</p>
           <ButtonGroupWorkshops
             bookLink={bookLink}
             // learnMoreLink={learnMoreLink}
