@@ -24,7 +24,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
     </div>
     <div className="text-start">
       <p className="font-helvetica text-xl font-bold text-textColor">{title}</p>
-      <p className="font-helvetica text-[14px] font-normal text-secondary">
+      <p className="font-helvetica text-Body font-normal text-secondary">
         {description}
       </p>
       <span>
