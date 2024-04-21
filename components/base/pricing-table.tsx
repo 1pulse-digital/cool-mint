@@ -14,12 +14,12 @@ function PricingTab(props: PricingTabProps) {
   const isPopular = props.popular;
   return (
     <div
-      className={`h-full ${isPopular ? "dark" : ""} ${isPopular ? "border-4 border-primary" : "border border-primary border-opacity-60"} rounded-2xl bg-background ${isPopular ? "border-bold" : "border-primary"} md:h-[640px] lg:h-[740px] xl:h-[680px] 2xl:h-[600px]`}
+      className={`h-full ${isPopular ? "dark" : ""} ${isPopular ? "border-4 border-primary" : "border border-primary border-opacity-60"} rounded-2xl bg-background ${isPopular ? "border-bold" : "border-primary"} md:h-[680px] lg:h-[780px] xl:h-[720px] 2xl:h-[600px]`}
     >
       <div className="relative flex flex-col rounded-2xl p-6 py-8 md:h-[400px] lg:h-[460px] xl:h-[400px] 2xl:h-96">
         {props.popular && (
           <div className="absolute right-0 top-0 -mt-4 mr-6">
-            <div className="inline-flex items-center rounded-full bg-secondary px-3 py-1.5 text-xs font-semibold text-background shadow-sm shadow-slate-950/5">
+            <div className="inline-flex items-center rounded-full bg-secondary px-3 py-1.5 sm:text-Body text-sm font-semibold text-background shadow-sm shadow-slate-950/5">
               Most Popular
             </div>
           </div>
@@ -32,15 +32,14 @@ function PricingTab(props: PricingTabProps) {
           <div className="mb-2 inline-flex items-baseline">
             <span className="text-xl text-primary">R</span>
             <span className="text-xl text-primary">{props.price}</span>
-            <span className="px-2 text-xs font-medium text-secondary">
+            <span className="px-2 sm:text-Body text-sm font-medium text-secondary">
               / per month
             </span>
           </div>
-          <p className="pt-8 text-textColor">{props.planDescription}</p>{" "}
-          {/* Display plan description */}
+          <p className="pt-8 text-textColor sm:text-Body text-sm">{props.planDescription}</p>{" "}
         </div>
 
-        <ul className="grow space-y-3 font-helvetica text-[13px] font-normal text-textColor">
+        <ul className="grow space-y-3 font-helvetica sm:text-Body text-sm font-normal text-textColor">
           {props.features.map((feature, index) => {
             return (
               <li key={index} className="flex items-center">
