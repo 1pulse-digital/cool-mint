@@ -2,7 +2,6 @@ import React from "react";
 import IndustrialMachineTools from "@/components/base/IndustrialMachineTools";
 import Button from "@/components/base/button";
 import Link from "next/link";
-import HeaderTitle from "@/components/base/headerTitle";
 import GetInTouch from "@/components/base/getInTouch";
 import { listMachines } from "./actions";
 
