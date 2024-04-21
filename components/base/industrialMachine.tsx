@@ -41,12 +41,12 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
               >
                 {machine.displayName}
               </h3>
-              <p className="py-2 pb-6 font-helvetica text-xs text-primary">
+              <p className="py-2 pb-6 font-helvetica sm:text-Body text-sm text-primary">
                 {machine.categories.join(" | ")}
               </p>
               <p
                 className={
-                  "text-start font-helvetica text-BodyText text-sm font-normal text-textColor"
+                  "text-start font-helvetica sm:text-Body text-sm font-normal text-textColor"
                 }
               >
                 {machine.description}
@@ -60,14 +60,14 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
               Specs
             </h3>
             <div className="space-x-10">
-              <div className="grid grid-cols-3 pb-4 md:pb-0 text-start  font-helvetica">
+              <div className="grid grid-cols-3 pb-4 md:pb-0 text-start font-helvetica">
                 {machine.attributes.map((attribute, idx) => (
                   <div key={idx}>
-                    <p className="font-helvetica text-xs text-primary">
+                    <p className="font-helvetica sm:text-Body text-sm text-primary">
                       {" "}
                       {attribute.name}:
                     </p>
-                    <p className="py-2 pb-2 font-helvetica text-[10px] text-secondary">
+                    <p className="py-2 pb-2 font-helvetica text-[14px] text-secondary">
                       {" "}
                       {attribute.value}
                     </p>
