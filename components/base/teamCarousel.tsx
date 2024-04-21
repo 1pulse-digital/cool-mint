@@ -165,7 +165,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     CEO
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica sm:text-Body text-sm font-normal text-textColor">
                     Henry qualified with a diploma in Mechanical engineering in
                     1997, shortly after he got into IT and eventually managed
                     his own Print Services firm for 15 years. His passion for
@@ -203,7 +203,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     COO
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica sm:text-Body text-sm font-normal text-textColor">
                     As the second-in-command at Made in Workshop, Josh ensures
                     everything runs seamlessly. His expertise in design and
                     planning enhances our members&apos; workshop experience,
@@ -243,7 +243,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Assistant
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica sm:text-Body text-smfont-normal text-textColor">
                     Jesse is another full-time workshop assistant. As an
                     accomplished amateur TIG welder, he is keen on learning more
                     about making. His curious nature and eagerness to help make
@@ -278,7 +278,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Café Manager
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica sm:text-Body text-sm font-normal text-textColor">
                     Siza runs the front of house at Made in Workshop, which
                     includes our café and reception area. Her contagious smile
                     greets everyone who walks through the entrance, whether they
@@ -316,7 +316,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Caretaker
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica sm:text-Body text-sm font-normal text-textColor">
                     Deneo looks after the day-to-day upkeep of Made In Workshop,
                     ensuring all the spaces are clean and tidy. In a space
                     consistently in a state of controlled chaos, she is the
@@ -353,7 +353,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Café Chef
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica text-Body font-normal text-textColor">
                     Nomonde, the culinary artist behind the scenes at the café,
                     effortlessly manoeuvres among pots and pans with graceful
                     efficiency. During our lunchtime rush, her calm approach
@@ -390,7 +390,7 @@ export function TeamCarousel() {
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Assistant
                   </span>
-                  <span className="text-start font-helvetica text-BodyText text-sm font-normal text-textColor">
+                  <span className="text-start font-helvetica sm:text-Body text-sm font-normal text-textColor">
                     From humble beginnings as a former kitchen staff member,
                     Ericson has evolved into our full-time workshop assistant.
                     As an integral part of workshop maintenance, Ericson
