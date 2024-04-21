@@ -25,8 +25,9 @@ const config = {
         background: "#09090B",
       },
       fontSize: {
-        'headings': '2.5rem', // Customize the font size for h1 (2xl) - adjust as needed
-        'BodyText': '1.25rem', // Customize the font size for h2 (xl) - adjust as needed
+        'headings': '2.5rem', 
+        'BodyText': '1.25rem', 
+        'Body': '1rem', 
       },
       fontFamily: {
         helvetica: "'Helvetica', sans-serif",
