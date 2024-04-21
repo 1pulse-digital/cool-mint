@@ -1,7 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import building from "../../images/about/Made-in-Workshop-building.jpg";
-import workshop from "../../images/about/Workshop-Picture.jpg";
 import { TeamCarousel } from "@/components/base/teamCarousel";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
