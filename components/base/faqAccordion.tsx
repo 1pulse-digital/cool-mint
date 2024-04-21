@@ -37,20 +37,20 @@ export function FAQAccordion() {
                 <Accordion type="single" collapsible className="w-full">
                   <div></div>
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       Can I use any machine as soon as I become a member?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       Yes, but you must complete a mandatory orientation for
                       each type of machine you&apos;re interested in using to ensure
                       safety and proficiency.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-2">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       What if I don&apos;t know how to use a machine or tool?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       Our team is here to help and train you on all of our
                       machines and software at no extra cost.
                     </AccordionContent>
@@ -69,21 +69,21 @@ export function FAQAccordion() {
               <CardDescription className="text-textColor">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       Do I need to be a member to enrol in classes?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       No, our classes are open to members and non-members,
                       making it easy for anyone interested in learning new
                       skills or improving existing ones.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       Do i get a certificate or a qualification once I&apos;ve
                       completed the class?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       No, you don&apos;t. Made in Workshop is not a TVET college, nor
                       are we associated with merSETA, and therefore, it would be
                       illegal to give a certificate.
@@ -105,10 +105,10 @@ export function FAQAccordion() {
               <CardDescription className="text-textColor">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       What are the benefits of becoming a member?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       Members enjoy unlimited access to our facilities,
                       exclusive discounts on classes and machine hire, and
                     </AccordionContent>
@@ -126,31 +126,31 @@ export function FAQAccordion() {
               <CardDescription className="text-textColor">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem className="text-textColor" value="item-1">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       Are there any age restrictions for accessing the factory
                       or café?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       The factory is accessible to individuals 18 and over, but
                       our café welcomes guests of all ages. An adult in the café
                       area must accompany minors.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-2">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       Can I bring my materials to work with in the factory?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       Yes, you&apos;re welcome to bring your materials. However, we
                       recommend checking with our staff first to ensure
                       compatibility with our machines.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem className="text-textColor" value="item-3">
-                    <AccordionTrigger className="text-[16px] font-bold text-textColor">
+                    <AccordionTrigger className="sm:text-Body text-sm font-bold text-textColor">
                       Is there Wi-Fi available at the café?
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="sm:text-Body text-sm">
                       Absolutely! Our café offers free Wi-Fi to all our guests,
                       whether you&apos;re working on your next project or just
                       enjoying a coffee break.
