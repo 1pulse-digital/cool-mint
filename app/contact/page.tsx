@@ -24,10 +24,6 @@ const Contact = () => {
               <h1 className="text-headings font-bold  text-secondary">
                 Contact Us<span className="text-primary">.</span>
               </h1>
-              {/*   <p className="text-BodyText font-normal text-textColor text-wrap pt-6">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna.
-      </p> */}
             </div>
             <div></div>
             <div>
@@ -37,14 +33,14 @@ const Contact = () => {
                     href="mailto:info@madeinworkshop.co.za"
                     className="2xl:pb-0"
                   >
-                    <p className="inline-flex pb-1 text-[14px] hover:text-primary sm:pb-0 md:pr-5">
+                    <p className="inline-flex pb-1 text-Body hover:text-primary sm:pb-0 md:pr-5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="#FDBB10"
-                        className="h-4 w-6 pr-2 "
+                        className="h-6 w-6 pr-2 "
                       >
                         <path
                           strokeLinecap="round"
@@ -58,14 +54,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <Link href="tel:0107451577">
-                    <p className="inline-flex text-[14px]">
+                    <p className="inline-flex text-Body">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="#FDBB10"
-                        className="h-4 w-6 pr-2"
+                        className="h-6 w-6 pr-2"
                       >
                         <path
                           strokeLinecap="round"
@@ -82,14 +78,14 @@ const Contact = () => {
                     href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6"
                     target="_blank"
                   >
-                    <span className="inline-flex text-[14px]">
+                    <span className="inline-flex text-Body">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="#FDBB10"
-                        className="h-6 w-6 pr-1"
+                        className="h-6 sm:w-6 pr-1"
                       >
                         <path
                           strokeLinecap="round"
