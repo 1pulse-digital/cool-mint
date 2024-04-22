@@ -1,14 +1,13 @@
-import React from "react";
-import { TeamCarousel } from "@/components/base/teamCarousel";
-import Link from "next/link";
-import GetInTouch from "@/components/base/getInTouch";
+import React from "react"
+import { TeamCarousel } from "@/components/base/teamCarousel"
+import Link from "next/link"
+import GetInTouch from "@/components/base/getInTouch"
 
 const About = () => {
   return (
     <div className="bg-background font-helvetica">
-      <div className="lg:px-20">
-       
-        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-36 lg:px-28 xl:px-80 2xl:px-80"> 
+      <div className="lg:px-40">
+        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-10">
           <div className={"grid content-center  font-helvetica"}>
             <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
               <Link href="/">
@@ -62,12 +61,12 @@ const About = () => {
         <div className="px-8">
           <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
         </div>
-        <TeamCarousel />
       </div>
+      <TeamCarousel />
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>
-  );
-};
-export default About;
+  )
+}
+export default About
