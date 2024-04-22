@@ -1,10 +1,6 @@
-import Image from "next/image";
-import google from "../../images/google.png";
 import Button, {
-  LongButton,
   SmallButtonOrange,
 } from "@/components/base/button";
-import { InputComponent } from "@/components/base/inputComponents";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
 import HeaderTitle from "@/components/base/headerTitle";
@@ -28,7 +24,7 @@ const BecomeAMember: React.FC = () => {
           <div>
        <HeaderTitle title="Become a Member"
         description=" Membership registrations are done at Made in Workshop and includes a
-        tour of the facilitates."
+        tour of the facilities."
       />
       </div>
           <div className="text-center 2xl:mx-72">
