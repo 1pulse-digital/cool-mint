@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       className={
-        "relative grid content-center bg-background py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 xl:px-40 2xl:px-52"
+        "relative grid content-center bg-background py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 md:px-2 2xl:px-40"
       }
     >
       <div className={"absolute inset-0"}></div>
@@ -21,7 +21,7 @@ const Hero = () => {
         </h1>
         <span
           className={
-            "my-8 text-center font-helvetica text-BodyText font-light text-textColor"
+            "my-8 text-center font-helvetica text-BodyText font-normal text-textColor"
           }
         >
           <div className="md:px-28">
