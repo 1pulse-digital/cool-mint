@@ -1,7 +1,6 @@
-import Button, { HeaderButton, LongButton } from "@/components/base/button";
+//import Button, { HeaderButton, LongButton } from "@/components/base/button";
 import { CafeMIW } from "@/components/base/cafeMIW";
 import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
 import Link from "next/link";
 import React from "react";
 
@@ -26,7 +25,7 @@ const Cafe = () => {
             </Link>
           </div>
           <div>
-          <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+          <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40 pb-6">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
             MIW Café<span className="text-primary">.</span>
             </h1>
@@ -42,7 +41,7 @@ const Cafe = () => {
             </div> */}
           </div>
         </div>
-        <div className="sm:mx-20 md:mx-6 lg:mx-44 2xl:mx-72">
+        <div className="sm:mx-20 md:mx-6 lg:mx-24 2xl:mx-52">
           <CafeMIW />
         </div>
        </div>
