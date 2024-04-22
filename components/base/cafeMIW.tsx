@@ -1,26 +1,26 @@
-import * as React from "react";
-import Image, { StaticImageData } from "next/image";
-import sandwich from "../../images/cafe/Cheese-&-Tomato-Sandwich.jpg";
-import chips from "../../images/cafe/Chips-and-Sandwich.jpg";
-import coffee from "../../images/cafe/Cups-of-Coffee.jpg";
-import bacon from "../../images/cafe/Egg,-Bacon-and-Cheese-Sandwich.jpg";
-import cheese from "../../images/cafe/Ham-and-Cheese-Sandwich.jpg";
-import plateofchips from "../../images/cafe/Plate-of-Chips.jpg";
+import * as React from "react"
+import Image, { StaticImageData } from "next/image"
+import sandwich from "../../images/cafe/Cheese-&-Tomato-Sandwich.jpg"
+import chips from "../../images/cafe/Chips-and-Sandwich.jpg"
+import coffee from "../../images/cafe/Cups-of-Coffee.jpg"
+import bacon from "../../images/cafe/Egg,-Bacon-and-Cheese-Sandwich.jpg"
+import cheese from "../../images/cafe/Ham-and-Cheese-Sandwich.jpg"
+import plateofchips from "../../images/cafe/Plate-of-Chips.jpg"
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@/components/ui/carousel"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface CafeItem {
-  name: string;
-  alt: string;
-  src: StaticImageData;
+  name: string
+  alt: string
+  src: StaticImageData
 }
 
 export function CafeMIW() {
@@ -60,14 +60,14 @@ export function CafeMIW() {
       alt: "Plate-of-Chips",
       src: plateofchips,
     },
-  ];
+  ]
 
   return (
-    <div className="grid items-center justify-center sm:px-16 md:px-20 xl:mx-20">
+    <div className="grid items-center justify-center px-6 sm:px-8 md:px-20 xl:mx-20">
       <Tabs defaultValue="sandwich">
-        <div className="pb-8">
+        <div className="pb-0 md:pb-3 2xl:pb-5">
           <Carousel className="mx-6 pt-0">
-            <CarouselContent className="">
+            <CarouselContent>
               <CarouselItem>
                 <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
                   {items.slice(0, 3).map((item, index) => (
@@ -131,5 +131,5 @@ export function CafeMIW() {
         </div>
       </Tabs>
     </div>
-  );
+  )
 }
