@@ -76,7 +76,7 @@ export function TeamCarousel() {
 
   return (
     <div>
-      <div className="grid h-auto items-center justify-center px-8 py-10 sm:px-16 sm:py-20 md:px-16 lg:px-20 xl:px-40 2xl:px-72">
+      <div className="grid h-auto items-center justify-center px-8 py-10 sm:px-16 sm:py-20 md:px-16 lg:px-12 xl:px-40 2xl:px-72">
         <h1
           className={
             "pb-8 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
@@ -150,11 +150,11 @@ export function TeamCarousel() {
           {/* Henry Levine */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="henry"
           >
             <Card className="border-0 bg-background">
-              <div className="rounded-lg bg-[#2c3033]  md:flex lg:mx-0">
+              <div className="rounded-lg bg-[#2c3033] md:flex lg:mx-0">
                 <div className="md:w-1/3 md:rounded-lg">
                   <Image
                     src={henry}
@@ -191,7 +191,7 @@ export function TeamCarousel() {
           {/* Joshua Lotter */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="joshua"
           >
             <Card className="border-0 bg-background">
@@ -234,7 +234,7 @@ export function TeamCarousel() {
           {/* Jesse Hutton */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="jesse"
           >
             <Card className="border-0 bg-background">
@@ -272,7 +272,7 @@ export function TeamCarousel() {
           {/* Siza Simlne */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="siza"
           >
             <Card className="border-0 bg-background">
@@ -312,7 +312,7 @@ export function TeamCarousel() {
           {/* Deneo */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="deneo"
           >
             <Card className="border-0 bg-background">
@@ -351,7 +351,7 @@ export function TeamCarousel() {
           {/* Nomonde Nenene */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="nomonde"
           >
             <Card className="border-0 bg-background">
@@ -390,7 +390,7 @@ export function TeamCarousel() {
           {/* Ericson Dlamini */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="ericsson"
           >
             <Card className="border-0 bg-background">
@@ -430,7 +430,7 @@ export function TeamCarousel() {
           {/* Charles Cooper */}
 
           <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0"
+            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
             value="charles"
           >
             <Card className="border-0 bg-background">
