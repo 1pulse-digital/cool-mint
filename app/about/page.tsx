@@ -49,8 +49,8 @@ const About = () => {
                 tools, machines, or space. We represent the spark of inspiration
                 that comes to life when these resources are combined with the
                 community we&apos;ve built. We are a{" "}
-                <span className="text-primary">collective</span>
-                dedicated to innovation, a place where{" "}
+                <span className="text-primary">collective </span>
+                 dedicated to innovation, a place where{" "}
                 <span className="text-primary">creativity is nurtured</span>,
                 and a makerspace community that welcomes anyone driven to
                 create.
