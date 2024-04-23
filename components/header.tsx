@@ -1,12 +1,12 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { Fragment, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import logo from "../images/miw-logo.webp";
-import Button, { HeaderButton } from "./base/button";
-import { usePathname } from "next/navigation";
+"use client"
+import Link from "next/link"
+import Image from "next/image"
+import { Fragment, useState } from "react"
+import { Popover, Transition } from "@headlessui/react"
+import { MenuIcon, XIcon } from "@heroicons/react/outline"
+import logo from "../images/miw-logo.webp"
+import Button, { HeaderButton } from "./base/button"
+import { usePathname } from "next/navigation"
 
 const navigationItems = [
   {
@@ -45,19 +45,20 @@ const navigationItems = [
     name: "Contact",
     href: "/contact",
   },
-];
+]
 
 interface HeaderProps {}
 const Header: React.FC<HeaderProps> = () => {
-  const [] = useState(false);
-  const pathname = usePathname();
-
+  const [] = useState(false)
+  const pathname = usePathname()
+ 
   return (
+    
     <div className={"relative z-30 h-[90px] bg-background"}>
       <Popover className="fixed w-full bg-background">
         {({ open }) => (
-          <div className="flex justify-between w-full sm:space-x-4  px-4 py-4 sm:px-6 lg:px-8 2xl:px-28">
-            <div className={"w-40 "}>
+          <div className="flex w-full justify-between px-4  py-4 sm:space-x-4 sm:px-6 lg:px-8 2xl:px-28">
+            <div className={"w-40"}>
               <Link href={"/"}>
                 <p>
                   <Image src={logo} alt="Logo" width={130} height={80} />
@@ -67,10 +68,9 @@ const Header: React.FC<HeaderProps> = () => {
 
             <div className={"my-auto"}>
               {/* Mobile menu */}
-
               <div className="grid place-items-center justify-center lg:hidden">
                 {/* Mobile menu button */}
-                <Popover.Button className="inline-flex mr-24  sm:mr-0 items-center justify-center rounded-md bg-background p-2 text-gray-400 hover:bg-background hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
+                <Popover.Button className="mr-24 inline-flex  items-center justify-center rounded-md bg-background p-2 text-gray-400 hover:bg-background hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:mr-0">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = () => {
                     static
                     className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition "
                   >
-                    <div className="mt-16 w-2/3 bg-[#27272A] ring-1 ring-black ring-opacity-5 md:w-1/3">
+                    <div className="mt-16 mx-6 w-2/3 bg-[#27272A] ring-1 ring-black ring-opacity-5 sm:w-1/3">
                       <div className="px-5 pb-6 pt-5">
                         <div className="flex items-start justify-between">
                           <div className="-mr-2">
@@ -118,13 +118,13 @@ const Header: React.FC<HeaderProps> = () => {
                         </div>
                       </div>
 
-                      <div className="space-y-6 px-5 py-6">
-                        <div className="hidden w-full sm:block ">
+                      <div className="space-y-6 px-5 py-2 pb-6">
+                        <div className="w-full sm:block">
                           <Link href="/login">
                             <Button color={"primary"}>Login</Button>
                           </Link>
                         </div>
-                        <div className="flex items-center justify-start gap-x-2 sm:gap-x-4">
+                        <div className="flex items-center justify-start gap-x-2 sm:hidden">
                           <div className="">
                             <div className="flex flex-row space-x-2">
                               <Link
@@ -193,20 +193,20 @@ const Header: React.FC<HeaderProps> = () => {
                               </Link>
                             </div>
                           </div>
-                          {/* <div className="hidden md:block">
+                          {/*  <div className="hidden md:block">
                             <Link href="/login">
                               <HeaderButton color={"primary"}>
                                 Login2
                               </HeaderButton>
                             </Link>
-                          </div> */}
+                          </div>  */}
                         </div>
                       </div>
                     </div>
                   </Popover.Panel>
                 </Transition>
               </div>
-
+              
               {/* Desktop menu */}
 
               <div className="hidden justify-center gap-x-0 space-x-5 py-2 text-base text-primary last:items-center lg:flex lg:items-center  lg:gap-x-0 lg:space-x-4 xl:flex xl:items-center xl:gap-x-1 xl:space-x-8 ">
@@ -308,8 +308,7 @@ const Header: React.FC<HeaderProps> = () => {
         )}
       </Popover>
     </div>
-  );
-};
+  )
+}
 
 export default Header;
-
