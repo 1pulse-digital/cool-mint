@@ -11,7 +11,7 @@ export const ContactForm = () => {
       <div className="w-full">
         <form>
           <div className="grid-cols-2 lg:grid">
-            <div className="pb-1">
+            <div className="pb-6">
               <Label htmlFor="name" className="mt-2 text-secondary">
                 First Name
               </Label>
@@ -22,7 +22,7 @@ export const ContactForm = () => {
                   placeholder="First Name"
                   className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
-                /
+               
               </div>
             </div>
 
@@ -37,7 +37,7 @@ export const ContactForm = () => {
                   placeholder="Last Name"
                   className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
-                /
+                
               </div>
             </div>
 
@@ -52,7 +52,7 @@ export const ContactForm = () => {
                   placeholder="Email Address"
                   className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
-                /
+                
               </div>
             </div>
 
@@ -67,14 +67,13 @@ export const ContactForm = () => {
                   placeholder="Contact Number"
                   className="block w-full placeholder:text-xs text-secondary"
                 ></Input>
-                /
               </div>
             </div>
           </div>
           <div>
             <p
               className={
-                "pb-6 text-start font-helvetica text-[14px] font-normal text-secondary"
+                "pb-6 pt-8 text-start font-helvetica text-[14px] font-normal text-secondary"
               }
             >
               What are you interested in?
