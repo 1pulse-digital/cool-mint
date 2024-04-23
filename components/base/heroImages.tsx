@@ -17,7 +17,7 @@ export const HeroImages = () => {
             />
           </div>
         </div>
-        <div className="p-5 font-helvetica sm:flex sm:flex-1 sm:flex-col sm:justify-center">
+        <div className="p-0 sm:p-5 font-helvetica sm:flex sm:flex-1 sm:flex-col sm:justify-center">
           <h1 className="py-4 text-center font-helvetica text-headings font-bold text-secondary sm:text-start md:text-start lg:text-start">
             Why choose our Makerspace<span className="text-primary">?</span>
           </h1>
