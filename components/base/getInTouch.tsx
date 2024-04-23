@@ -11,8 +11,8 @@ const GetInTouch = () => {
       <h1 className="py-4 font-helvetica text-headings font-bold text-secondary">
         Get In Touch<span className="text-primary">.</span>
       </h1>
-      <span className="font-helvetica text-BodyText font-light text-secondary">
-      We’d love to hear from you, whether you want to <span className="text-primary">learn more about us or chat over a cup of coffee</span>, our doors are always open.
+      <span className="font-helvetica text-BodyText font-normal text-secondary">
+      We&apos;d love to hear from you, whether you want to <span className="text-primary">learn more about us or chat over a cup of coffee</span>, our doors are always open.
 
       </span>
       <div className="flex flex-row justify-center space-x-4 md:space-x-12 py-12">
