@@ -119,7 +119,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="md:pt-10 lg:pt-0">
           <ContactForm />
         </div>
       </div>
