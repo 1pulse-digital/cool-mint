@@ -21,7 +21,7 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
     <div className="mb-0 rounded-xl">
       <div>
         <div className="rounded-lg bg-[#2c3033] lg:flex 2xl:mx-40">
-          <div className="w-full lg:w-3/5">
+          <div className="w-full">
             <AspectRatio ratio={4 / 3}>
               <Image
                 src={machine.gallery.thumbnail.url}
@@ -34,7 +34,7 @@ const IndustrialMachine: React.FC<IndustrialMachineProps> = ({ machine }) => {
               />
             </AspectRatio>
           </div>
-          <div className="w-full rounded-lg bg-[#2c3033] p-5 py-8 sm:px-8 lg:w-2/3">
+          <div className="w-full rounded-lg bg-[#2c3033] p-5 py-8 sm:px-8 ">
             <div className={"grid text-start font-helvetica"}>
               <h3
                 className={
