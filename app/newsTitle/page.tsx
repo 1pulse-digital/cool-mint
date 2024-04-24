@@ -9,7 +9,7 @@ import GetInTouch from "@/components/base/getInTouch";
 const NewsTitle = () => {
   return (
     <div className={"bg-background"}>
-      <div className="h-[350px] px-6 py-6 2xl:mx-28">
+      <div className="h-[500px] px-6 py-6 2xl:mx-44">
         <Image
           src={gallery}
           alt="made in workshop"
