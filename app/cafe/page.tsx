@@ -25,7 +25,7 @@ const Cafe = () => {
             </Link>
           </div>
           <div>
-            <div className="px-0 pb-0 sm:px-6 sm:pb-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+            <div className="px-0 pb-0 sm:px-6 sm:pb-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-0">
               <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
                 MIW Café<span className="text-primary">.</span>
               </h1>
