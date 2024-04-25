@@ -63,10 +63,10 @@ export function CafeMIW() {
   ]
 
   return (
-    <div className="grid items-center justify-center px-6 sm:px-8 md:px-20 xl:mx-20">
+    <div className="grid items-center justify-center px-4 sm:px-8 md:px-20 xl:mx-20">
       <Tabs defaultValue="sandwich">
         <div className="pb-0 md:pb-3 2xl:pb-5">
-          <Carousel className="mx-6 pt-0">
+          <Carousel className="mx-10 2xl:px-20 pt-0">
             <CarouselContent>
               <CarouselItem>
                 <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
@@ -77,8 +77,8 @@ export function CafeMIW() {
                           src={item.src}
                           alt={item.alt}
                           className="rounded-lg"
-                          width="400"
-                          height="400"
+                          width="600"
+                          height="600"
                         />
                       </div>
                     </TabsTrigger>
@@ -95,8 +95,8 @@ export function CafeMIW() {
                           src={item.src}
                           alt={item.alt}
                           className="rounded-lg"
-                          width="400"
-                          height="400"
+                          width="600"
+                          height="600"
                         />
                       </div>
                     </TabsTrigger>
