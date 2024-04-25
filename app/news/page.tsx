@@ -28,7 +28,7 @@ const News = () => {
           </Link>
         </div>
 
-        <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+        <div className="px-6 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-0">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
             News<span className="text-primary">.</span>
             </h1>
@@ -50,7 +50,7 @@ const News = () => {
                 <Carousel className="mx-3 pt-3">
                   <CarouselContent className="">
                     <CarouselItem>
-                      <div className="px-8 sm:px-16 md:px-40  2xl:px-96 pb-8 sm:pb-0">
+                      <div className="px-8 sm:px-16 md:px-20 2xl:px-60 xl:px-20 lg:px-20 pb-8 sm:pb-0">
                         <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-3 text-secondary">
                           <TabsTrigger value="news" className="">
                             News
@@ -229,7 +229,7 @@ const News = () => {
                 <div>
                   <TabsContent
                     className="bg-background font-helvetica"
-                    value=""
+                    value="diy"
                   >
                     <Card className="border-0 bg-background">
                       <BlogWidget
