@@ -123,7 +123,7 @@ const Contact = () => {
           <ContactForm />
         </div>
       </div>
-      <div className="pb-20 sm:py-20 sm:pb-0 md:py-0 md:pb-20 lg:px-8 2xl:px-24">
+      <div className="pb-20 sm:pb-20 md:py-0 md:pb-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
     </div>
