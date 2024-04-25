@@ -9,7 +9,7 @@ import GetInTouch from "@/components/base/getInTouch";
 const NewsTitle = () => {
   return (
     <div className={"bg-background"}>
-      <div className="h-[500px] px-6 py-6 2xl:mx-44">
+      <div className="h-[500px] px-6 py-6 2xl:mx-40 sm:px-16">
         <Image
           src={gallery}
           alt="made in workshop"
@@ -115,17 +115,6 @@ const NewsTitle = () => {
             magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
             justo duo dolores et ea rebum.
           </p>
-
-          <div className={"grid w-full items-center rounded-md py-12"}>
-            <div className="h-[250px]">
-              <Image
-                src={gallery}
-                alt="made in workshop"
-                className="rounded-md"
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              />
-            </div>
-          </div>
           <div className="pt-12">
             <hr className="h-[1px] flex-grow border-0 bg-textColor"></hr>
           </div>
