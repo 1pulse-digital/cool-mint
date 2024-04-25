@@ -37,7 +37,7 @@ export default async function Page() {
             Explore our range for hire and let us bring your project to life.
             </p>
           </div>
-          <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10">
+          <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10 2xl:px-0">
             <IndustrialMachineTools machines={response.Machines} />
             <div className="pb-16 text-center">
               <Link href="/">
