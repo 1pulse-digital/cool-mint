@@ -3,7 +3,6 @@ import React from "react"
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops"
 import GetInTouch from "@/components/base/getInTouch"
 
-
 const Workshops = () => {
   return (
     <div className={"bg-background"}>
@@ -21,7 +20,7 @@ const Workshops = () => {
             </Link>
           </div>
           <div>
-            <div className="px-0 sm:px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
+            <div className="xl:mx0 px-0 sm:px-6 md:mx-16 lg:mx-40 2xl:mx-0">
               <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
@@ -39,15 +38,15 @@ const Workshops = () => {
             </div>
           </div>
         </div>
-        <div className="lg:mx-20 xl:mx-2">
+        <div className="lg:mx-20 xl:mx-40">
           <UpcomingWorkshops />
         </div>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
-        <GetInTouch />
+      <GetInTouch />
       </div>
     </div>
   )
 }
 
-export default Workshops;
+export default Workshops
