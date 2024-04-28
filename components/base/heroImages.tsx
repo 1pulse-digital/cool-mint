@@ -8,7 +8,7 @@ export const HeroImages = () => {
   return (
     <div id="whyus" className="flex h-screen items-center justify-center py-10">
       <div className="flex w-full flex-wrap items-stretch justify-center md:justify-between lg:space-x-2 ">
-        <div className="flex hidden flex-1 items-center justify-center p-5 sm:block">
+        <div className=" flex-1 items-center justify-center p-5 sm:block">
           <div className="hidden w-full rounded-md sm:block">
             <Image
               src={whyus}
@@ -18,7 +18,7 @@ export const HeroImages = () => {
           </div>
         </div>
         <div className="p-0 sm:p-5 font-helvetica sm:flex sm:flex-1 sm:flex-col sm:justify-center">
-          <h1 className="py-4 text-center font-helvetica text-headings font-bold text-secondary sm:text-start md:text-start lg:text-start">
+          <h1 className="py-4 text-center font-helvetica text-headings font-bold text-secondary xl:text-5xlsm:text-start md:text-start lg:text-start">
             Why choose our Makerspace<span className="text-primary">?</span>
           </h1>
           <p className="text-center font-helvetica text-BodyText font-normal text-textColor sm:text-start md:text-start lg:text-start">
