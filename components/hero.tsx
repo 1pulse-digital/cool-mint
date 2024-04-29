@@ -1,19 +1,19 @@
-import React from "react";
-import Link from "next/link";
-import Button, { SmallButton } from "./base/button";
+import React from "react"
+import Link from "next/link"
+import Button, { SmallButton } from "./base/button"
 
 const Hero = () => {
   return (
     <div
       className={
-        "relative grid content-center bg-background py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 md:px-2 2xl:px-40"
+        "relative grid content-center py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 md:px-28 2xl:px-40"
       }
     >
       <div className={"absolute inset-0"}></div>
       <div className={"z-10 grid"}>
         <h1
           className={
-            "text-center font-helvetica text-2xl text-headings font-bold leading-tight text-secondary lg:text-5xl  lg:leading-tight"
+            "text-center font-helvetica  text-2xl text-headings font-bold leading-tight text-secondary lg:leading-tight  xl:text-5xl"
           }
         >
           The Largest Shared Workshop & Makerspace in South Africa
@@ -21,13 +21,18 @@ const Hero = () => {
         </h1>
         <span
           className={
-            "my-8 text-center font-helvetica text-BodyText font-normal text-textColor"
+            "py-8 text-center font-helvetica text-BodyText font-normal text-textColor"
           }
         >
-          <div className="md:px-28">
+          <div className="md:px-14">
             <span>
-            Providing professional manufacturers, hobbyists, and makers with<span className="font-medium text-primary"> access to industrial tools and machinery.
-              </span> Our vibrant shared workshop is your new creative home, where your ideas come to life.
+              Providing professional manufacturers, hobbyists, and makers with
+              <span className="font-medium text-primary">
+                {" "}
+                access to industrial tools and machinery.
+              </span>{" "}
+              Our vibrant shared workshop is your new creative home, where your
+              ideas come to life.
             </span>
           </div>
         </span>
@@ -84,7 +89,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

@@ -4,7 +4,7 @@ import community from "../images/home/Maker-Community.png";
 
 export const Community = () => {
   return (
-    <div className="flex h-screen flex-col items-center justify-center p-5 font-helvetica">
+    <div className="flex py-20 flex-col items-center justify-center p-5 font-helvetica">
       <h1 className="py-4 text-center text-headings font-bold leading-tight text-secondary">
         Makerspace Community<span className="text-primary">.</span>
       </h1>
@@ -12,7 +12,7 @@ export const Community = () => {
       Made In Workshop is proud to be at the forefront of the <span className="text-primary">maker movement</span>, fostering a culture of <span className="text-primary">creativity and collaboration</span>. 
       Contributing to our economy and community through innovation, entrepreneurship, and education.
       </span>
-      <div className="mt-10 flex justify-center rounded-md">
+      <div className="py-10 flex justify-center rounded-md">
         <Image
           src={community}
           alt="community"
