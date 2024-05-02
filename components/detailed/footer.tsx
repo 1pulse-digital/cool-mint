@@ -213,7 +213,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#929597] px-16 py-4 text-center text-xs">
+      <div className="bg-[#27272a] px-16 py-4 text-center text-xs">
         <div className="pb-2 font-helvetica text-secondary">
           © 2024 Made in Workshop.
         </div>
