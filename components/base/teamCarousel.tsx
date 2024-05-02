@@ -179,8 +179,8 @@ export function TeamCarousel() {
                     1997, shortly after he got into IT and eventually managed
                     his own Print Services firm for 15 years. His passion for
                     engineering, fabrication and the creation of physical
-                    products inspired what we now know as Made In Workshop. His
-                    passion for Made In Workshop has grown the space into the
+                    products inspired what we now know as Made in Workshop. His
+                    passion for Made in Workshop has grown the space into the
                     largest makerspace in the country.
                   </span>
                 </div>
@@ -337,7 +337,7 @@ export function TeamCarousel() {
                     Workshop Caretaker
                   </span>
                   <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
-                    Deneo looks after the day-to-day upkeep of Made In Workshop,
+                    Deneo looks after the day-to-day upkeep of Made in Workshop,
                     ensuring all the spaces are clean and tidy. In a space
                     consistently in a state of controlled chaos, she is the
                     constant force resetting and rearranging to ensure all
