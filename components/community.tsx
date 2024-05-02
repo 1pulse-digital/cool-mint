@@ -9,7 +9,7 @@ export const Community = () => {
         Makerspace Community<span className="text-primary">.</span>
       </h1>
       <span className="text-center  text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
-      Made In Workshop is proud to be at the forefront of the <span className="text-primary">maker movement</span>, fostering a culture of <span className="text-primary">creativity and collaboration</span>. 
+      Made in Workshop is proud to be at the forefront of the <span className="text-primary">maker movement</span>, fostering a culture of <span className="text-primary">creativity and collaboration</span>. 
       Contributing to our economy and community through innovation, entrepreneurship, and education.
       </span>
       <div className="py-10 flex justify-center rounded-md">
