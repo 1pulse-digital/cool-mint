@@ -27,7 +27,7 @@ export default function Home() {
           <div>
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
-          <div className="px-8 font-medium text-primary md:text-left">
+          <div className="px-8 sm:px-4 md:px-8 font-medium text-primary md:text-left">
             <div className="pt-28 text-center">
               <h1 className="text-headings font-bold  text-secondary">
                 Upcoming Classes<span className="text-primary">.</span>
