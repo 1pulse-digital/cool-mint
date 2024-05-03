@@ -25,7 +25,7 @@ const Cafe = () => {
             </Link>
           </div>
           <div>
-            <div className="px-0 pb-0 sm:px-6 sm:pb-6 md:mx-16 lg:mx-40 xl:mx-48 2xl:mx-20">
+            <div className="px-0 pb-0 sm:px-5 sm:pb-6 md:mx-16 lg:mx-40 xl:mx-48 2xl:mx-20">
               <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
                 MIW Café<span className="text-primary">.</span>
               </h1>
@@ -47,7 +47,7 @@ const Cafe = () => {
             </div> */}
           </div>
         </div>
-        <div className="sm:mx-20 md:mx-6 lg:mx-24 2xl:mx-52">
+        <div className="sm:mx-10 md:mx-6 lg:mx-24 2xl:mx-52">
           <CafeMIW />
         </div>
       </div>
