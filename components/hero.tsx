@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       className={
-        "relative grid content-center py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 md:px-28 2xl:px-40"
+        "relative grid content-center py-8 align-middle sm:-mt-20 sm:h-screen sm:py-0 md:px-14 "
       }
     >
       <div className={"absolute inset-0"}></div>
@@ -24,7 +24,7 @@ const Hero = () => {
             "py-8 text-center font-helvetica text-BodyText font-normal text-textColor"
           }
         >
-          <div className="md:px-14">
+          <div className="md:px-8 xl:px-40 2xl:px-52">
             <span>
               Providing professional manufacturers, hobbyists, and makers with
               <span className="font-medium text-primary">
