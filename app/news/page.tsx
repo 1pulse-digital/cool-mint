@@ -27,8 +27,7 @@ const News = () => {
             <div className="text-primary">News</div>
           </Link>
         </div>
-
-        <div className="px-6 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-0">
+        <div className="px-6 sm:px-2 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-0">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
             News<span className="text-primary">.</span>
             </h1>
