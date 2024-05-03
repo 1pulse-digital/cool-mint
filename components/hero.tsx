@@ -13,7 +13,7 @@ const Hero = () => {
       <div className={"z-10 grid"}>
         <h1
           className={
-            "text-center font-helvetica  text-2xl text-headings font-bold leading-tight text-secondary lg:leading-tight  xl:text-5xl"
+            "text-center font-helvetica text-2xl text-headings font-bold leading-tight text-secondary lg:leading-tight xl:text-5xl"
           }
         >
           The Largest Shared Workshop & Makerspace in South Africa
