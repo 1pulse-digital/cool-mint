@@ -7,8 +7,8 @@ const About = () => {
   return (
     <div className="bg-background font-helvetica">
       <div className="lg:px-48 xl:px-40 2xl:mx-40">
-        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-28 sm:py-20 md:h-screen md:px-10">
-          <div className={"grid content-center  font-helvetica"}>
+        <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-14 sm:py-20 md:h-screen md:px-10">
+          <div className={"grid content-center font-helvetica"}>
             <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
               <Link href="/">
                 <div>
@@ -20,7 +20,7 @@ const About = () => {
                 <div className="text-primary">About</div>
               </Link>
             </div>
-            <div>
+            <div className="md:px-12 lg:px-0">
               <h1
                 className={
                   "py-1 text-center font-helvetica text-headings font-bold text-secondary pb-3"
