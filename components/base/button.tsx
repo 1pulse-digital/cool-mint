@@ -12,7 +12,7 @@ export interface ButtonProps {
 
 export const SmallButton = (props: ButtonProps) => {
 
-  const baseClassname = "whitespace-nowrap hover:text-primary text-[16px] inline-flex items-center px-4 justify-center font-helvetica  py-3 border border-transparent rounded-full shadow-sm  font-bold ";
+  const baseClassname = "whitespace-nowrap hover:text-primary text-[14px] sm:text-[16px] inline-flex items-center px-4 justify-center font-helvetica  py-3 border border-transparent rounded-full shadow-sm  font-bold ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -69,7 +69,7 @@ export const SmallButtonOrange = (props: ButtonProps) => {
 };
 
 export const Button = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-4 md:px-8 py-2 shadow hover:shadow-sm text-[16px] font-helvetica";
+  const baseClassname = "rounded-lg px-4 md:px-8 py-2 shadow hover:shadow-sm text-[14px] sm:text-[16px] font-helvetica";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -77,7 +77,7 @@ export const Button = (props: ButtonProps) => {
 
   const colorClassname = cn(
     { "bg-primary text-[#2A2A2A] ": isPrimary },
-    { "hover:bg-secondary ]": (isPrimary && !isDisabled) },
+    { "hover:bg-secondary]": (isPrimary && !isDisabled) },
 
     { "bg-[#FDBB10] border-secondary border-2 text-secondary ": isSecondary },
     { "hover:bg-secondary hover:text-white": isSecondary && !isDisabled },
@@ -96,7 +96,7 @@ export const Button = (props: ButtonProps) => {
 };
 
 export const HeaderButton = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow hover:shadow-sm text-[10px] font-helvetica w-20 ";
+  const baseClassname = "rounded-lg px-12 md:px-5 py-1 shadow hover:shadow-sm text-[10px] font-helvetica w-20 ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
