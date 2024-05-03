@@ -4,7 +4,7 @@ import community from "../images/home/Maker-Community.png";
 
 export const Community = () => {
   return (
-    <div className="flex py-20 flex-col items-center justify-center p-5 font-helvetica">
+    <div className="flex py-20 flex-col items-center justify-center p-5 sm:p-0 sm:py-8 md:p-5 font-helvetica">
       <h1 className="py-4 text-center text-headings font-bold leading-tight text-secondary">
         Makerspace Community<span className="text-primary">.</span>
       </h1>
