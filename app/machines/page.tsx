@@ -27,11 +27,11 @@ export default async function Page() {
             </Link>
           </div>
 
-          <div className="px-6 md:mx-16 lg:mx-20 xl:mx-60 2xl:mx-0">
+          <div className="px-6 md:mx-16 lg:mx-48 xl:mx-40 2xl:px-52">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
             Industrial Tools & Machines<span className="text-primary">.</span>
             </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+            <p className="text-center font-helvetica text-BodyText font-normal text-textColor">
             We hire a wide range of industrial machinery catering to all disciplines, such as woodworking, metalworking, engineering and CNC.  
             Each machine is <span className="text-primary">maintained to the highest standard</span> ensuring constant efficiency and precision. 
             Explore our range for hire and let us bring your project to life.
