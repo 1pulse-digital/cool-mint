@@ -19,7 +19,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
   ImageSrc,
 }) => (
   <div className="flex space-x-8 py-6 text-sm">
-    <div className="w-16 md:w-12 lg:w-32 2xl:w-20">
+    <div className="w-32 sm:w-20 md:w-16 lg:w-32 2xl:w-20">
       <Image src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
