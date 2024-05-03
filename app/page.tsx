@@ -32,7 +32,7 @@ export default function Home() {
               <h1 className="text-headings font-bold  text-secondary">
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
-              <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-40">
+              <p className="text-BodyText font-normal text-textColor lg:px-40 xl:px-40 2xl:px-40">
               Whether you want to learn a <span className="text-primary">new skill, refine your craft or meet other creative individuals</span>, we have something for everyone. 
               Check out our upcoming classes and book your spot today.
               </p>
