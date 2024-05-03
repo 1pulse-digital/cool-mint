@@ -20,7 +20,7 @@ const Memberships = () => {
           </Link>
         </div>
         <div>
-          <div className="sm:px-6 px-0 md:mx-16 lg:mx-40 xl:mx-20 2xl:px-0">
+          <div className="sm:px-4 px-0 md:mx-16 lg:mx-40 xl:mx-20 2xl:px-0">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
               Memberships<span className="text-primary">.</span>
             </h1>
