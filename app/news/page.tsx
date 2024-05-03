@@ -32,7 +32,7 @@ const News = () => {
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
             News<span className="text-primary">.</span>
             </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+            <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:px-20 2xl:px-72">
             Stay updated with the latest at Made in Workshop! Our blog page brings you the <span className="text-primary">freshest updates, stories, and insights</span> from our community, events, and the world of making.
             </p>
           </div>
