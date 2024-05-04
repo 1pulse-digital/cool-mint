@@ -25,11 +25,11 @@ const Cafe = () => {
             </Link>
           </div>
           <div>
-            <div className="px-0 pb-0 sm:px-6 sm:pb-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-0">
+            <div className="px-0 pb-0 sm:px-5 sm:pb-6 md:mx-16 lg:mx-40 xl:mx-48 2xl:mx-20">
               <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
                 MIW Café<span className="text-primary">.</span>
               </h1>
-              <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+              <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:px-14 2xl:px-60">
                 Our in-house café is the ideal spot to take a breather, spark
                 some creativity, or enjoy a great cup of coffee! Visitors and
                 members are welcomed to{" "}
@@ -47,7 +47,7 @@ const Cafe = () => {
             </div> */}
           </div>
         </div>
-        <div className="sm:mx-20 md:mx-6 lg:mx-24 2xl:mx-52">
+        <div className="sm:mx-10 md:mx-6 lg:mx-24 2xl:mx-52">
           <CafeMIW />
         </div>
       </div>

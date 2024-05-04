@@ -19,7 +19,7 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
   ImageSrc,
 }) => (
   <div className="flex space-x-8 py-6 text-sm">
-    <div className="w-16 md:w-12 lg:w-28 2xl:w-20">
+    <div className="w-32 sm:w-20 md:w-16 lg:w-32 2xl:w-20">
       <Image src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
@@ -62,7 +62,7 @@ const Offerings: React.FC = () => {
         </h1>
       </div>
       <div className="grid-cols-2 md:pt-6 lg:grid">
-        <div className="lg:px-20">
+        <div className="lg:px-4">
           <OfferingItem
             title="Memberships"
             description="Members have flexible access to our facilities, class discounts and support from mentors through tailored packages to suit your needs."
@@ -71,7 +71,7 @@ const Offerings: React.FC = () => {
             ImageSrc="/icons/memberships.png"
           />
         </div>
-        <div className="lg:px-20">
+        <div className="lg:px-4">
           <OfferingItem
             title="Industrial Machines"
             description="Our workshops have a range of high-quality industrial machines, from CNC machinery to specialised equipment for all disciplines."
@@ -81,7 +81,7 @@ const Offerings: React.FC = () => {
           />
         </div>
 
-        <div className="lg:px-20">
+        <div className="lg:px-4">
           <OfferingItem
             title="Classes"
             description="We host classes covering all tools and machinery in our workshops, led by industry experts, catering to participants from beginners to advanced levels."
@@ -90,7 +90,7 @@ const Offerings: React.FC = () => {
             ImageSrc="/icons/workshops.png"
           />
         </div>
-        <div className="lg:px-20">
+        <div className="lg:px-4">
           <OfferingItem
             title="MIW Café"
             description="Need a break or a place to brainstorm? Our café is the perfect spot to recharge, meet fellow makers, or enjoy a good cup of coffee."

@@ -111,7 +111,8 @@ const UpcomingWorkshops: React.FC = () => {
 
           {/* Filtering by category */}
           
-          <div className="2xl:px-96 xl:px-80 md:px-40 mx-10 sm:px-20">
+          <div className="2xl:px-60 xl:px-28 md:px-40 mx-10 sm:px-20">
+          <p className="text-center text-xs text-textColor">Filter by</p>
             <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
               <TabsTrigger value="january woodwork">
                 Woodwork
@@ -121,9 +122,9 @@ const UpcomingWorkshops: React.FC = () => {
             </TabsList>
           </div>
 
-                    {/* Filtering by month */}
+          {/* Filtering by month */}
 
-          <div className="pb-16 2xl:px-56 xl:px-40  mx-2 sm:px-4">
+          <div className="pb-16 2xl:px-0 xl:px-0  mx-2 sm:px-4">
             <Carousel className="mx-3 pt-3">
               <CarouselContent className="">
                 <CarouselItem>
@@ -189,7 +190,7 @@ const UpcomingWorkshops: React.FC = () => {
         </div>
 
         {/* January Workshops */}
-    <div className="xl:px-40 2xl:px-60 px-0">
+    <div className="xl:px-0 2xl:px-40 px-0">
         <TabsContent
           className="bg-background px-10 font-helvetica"
           value="january woodwork"

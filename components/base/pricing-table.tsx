@@ -14,7 +14,7 @@ function PricingTab(props: PricingTabProps) {
   const isPopular = props.popular;
   return (
     <div
-      className={`h-full ${isPopular ? "dark" : ""} ${isPopular ? "border-4 border-primary" : "border border-primary border-opacity-60"} rounded-2xl bg-background ${isPopular ? "border-bold" : "border-primary"} md:h-[680px] lg:h-[780px] xl:h-[720px] 2xl:h-[600px]`}
+      className={`h-full ${isPopular ? "dark" : ""} ${isPopular ? "border-4 border-primary" : "border border-primary border-opacity-60"} rounded-2xl bg-background ${isPopular ? "border-bold" : "border-primary"} md:h-[680px] lg:h-[700px] xl:h-[640px] 2xl:h-[600px]`}
     >
       <div className="relative flex flex-col rounded-2xl p-6 py-8 md:h-[400px] lg:h-[460px] xl:h-[400px] 2xl:h-96">
         {props.popular && (
@@ -68,10 +68,9 @@ function PricingTab(props: PricingTabProps) {
 
 export default function PricingTable() {
   return (
-    <div className="mx-8 sm:mx-32 md:mx-12 lg:mx-16 xl:mx-40">
+    <div className="mx-8 sm:mx-12 md:mx-12 lg:mx-8 xl:mx-16 2xl:mx-40">
       {/* Pricing toggle */}
       <div className="m-auto mb-8 flex max-w-[14rem] justify-center lg:mb-16">
-        {" "}
       </div>
       <div className="mx-auto grid items-start gap-6 px-0 md:grid-cols-2 lg:max-w-none lg:grid-cols-3">
         {/* Pricing tab 1 */}

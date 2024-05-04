@@ -9,7 +9,7 @@ import GetInTouch from "@/components/base/getInTouch";
 export default function Home() {
   return (
     <div className="bg-background">
-      <div className="font-helvetica lg:px-28">
+      <div className="font-helvetica lg:px-10 2xl:px-32">
         <div className="px-8">
           <Hero />
           <div>
@@ -27,12 +27,12 @@ export default function Home() {
           <div>
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
-          <div className="px-8 font-medium text-primary md:text-left">
+          <div className="px-8 sm:px-4 md:px-8 font-medium text-primary md:text-left">
             <div className="pt-28 text-center">
               <h1 className="text-headings font-bold  text-secondary">
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
-              <p className="text-BodyText font-normal text-textColor xl:px-40 2xl:px-52">
+              <p className="text-BodyText font-normal text-textColor lg:px-40 xl:px-40 2xl:px-40">
               Whether you want to learn a <span className="text-primary">new skill, refine your craft or meet other creative individuals</span>, we have something for everyone. 
               Check out our upcoming classes and book your spot today.
               </p>

@@ -20,11 +20,11 @@ const Memberships = () => {
           </Link>
         </div>
         <div>
-          <div className="sm:px-6 px-0 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-0">
+          <div className="sm:px-4 px-0 md:mx-16 lg:mx-40 xl:mx-20 2xl:px-0">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
               Memberships<span className="text-primary">.</span>
             </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+            <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:px-12 xl:px-24 2xl:px-60">
             Our unique makerspace is equipped with industrial tools and machinery designed for <span className="text-primary">manufacturers, 
             DIY enthusiasts, hobbyists, freelancers</span>, and anyone looking for workshop space.
               <br />

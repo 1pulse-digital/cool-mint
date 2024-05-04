@@ -33,7 +33,7 @@ const BookTour = () => {
             Book a Tour<span className="text-primary">.</span>
             </h1>
             <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
-            Interested in learning more about Made In Workshop? 
+            Interested in learning more about Made in Workshop? 
             Come visit our facility at<span className="text-primary"> 10 Naaf Street, Strydompark, Randburg</span>  and take a tour with one of our team members.
             </p>
           </div>
