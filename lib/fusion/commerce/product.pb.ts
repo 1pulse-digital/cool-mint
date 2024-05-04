@@ -13,16 +13,14 @@ export interface Product {
   name: string;
   uid: string;
   displayName: string;
+  type: string;
   description: string;
-  variants: Variant[];
-}
-
-export interface Variant {
-  name: string;
-  uid: string;
-  displayName: string;
-  description: string;
+  shortDescription: string;
   sku: string;
+  price: bigint;
+  regularPrice: bigint;
+  salePrice: bigint;
+  stockQuantity: bigint;
 }
 
 //========================================//
@@ -58,8 +56,14 @@ export const Product = {
       name: "",
       uid: "",
       displayName: "",
+      type: "",
       description: "",
-      variants: [],
+      shortDescription: "",
+      sku: "",
+      price: 0n,
+      regularPrice: 0n,
+      salePrice: 0n,
+      stockQuantity: 0n,
       ...msg,
     };
   },
@@ -80,15 +84,29 @@ export const Product = {
     if (msg.displayName) {
       writer.writeString(3, msg.displayName);
     }
-    if (msg.description) {
-      writer.writeString(4, msg.description);
+    if (msg.type) {
+      writer.writeString(4, msg.type);
     }
-    if (msg.variants?.length) {
-      writer.writeRepeatedMessage(
-        5,
-        msg.variants as any,
-        Variant._writeMessage,
-      );
+    if (msg.description) {
+      writer.writeString(5, msg.description);
+    }
+    if (msg.shortDescription) {
+      writer.writeString(6, msg.shortDescription);
+    }
+    if (msg.sku) {
+      writer.writeString(7, msg.sku);
+    }
+    if (msg.price) {
+      writer.writeInt64String(8, msg.price.toString() as any);
+    }
+    if (msg.regularPrice) {
+      writer.writeInt64String(9, msg.regularPrice.toString() as any);
+    }
+    if (msg.salePrice) {
+      writer.writeInt64String(10, msg.salePrice.toString() as any);
+    }
+    if (msg.stockQuantity) {
+      writer.writeInt64String(11, msg.stockQuantity.toString() as any);
     }
     return writer;
   },
@@ -116,113 +134,35 @@ export const Product = {
           break;
         }
         case 4: {
-          msg.description = reader.readString();
+          msg.type = reader.readString();
           break;
         }
         case 5: {
-          const m = Variant.initialize();
-          reader.readMessage(m, Variant._readMessage);
-          msg.variants.push(m);
-          break;
-        }
-        default: {
-          reader.skipField();
-          break;
-        }
-      }
-    }
-    return msg;
-  },
-};
-
-export const Variant = {
-  /**
-   * Serializes Variant to protobuf.
-   */
-  encode: function (msg: PartialDeep<Variant>): Uint8Array {
-    return Variant._writeMessage(
-      msg,
-      new protoscript.BinaryWriter(),
-    ).getResultBuffer();
-  },
-
-  /**
-   * Deserializes Variant from protobuf.
-   */
-  decode: function (bytes: ByteSource): Variant {
-    return Variant._readMessage(
-      Variant.initialize(),
-      new protoscript.BinaryReader(bytes),
-    );
-  },
-
-  /**
-   * Initializes Variant with all fields set to their default value.
-   */
-  initialize: function (msg?: Partial<Variant>): Variant {
-    return {
-      name: "",
-      uid: "",
-      displayName: "",
-      description: "",
-      sku: "",
-      ...msg,
-    };
-  },
-
-  /**
-   * @private
-   */
-  _writeMessage: function (
-    msg: PartialDeep<Variant>,
-    writer: protoscript.BinaryWriter,
-  ): protoscript.BinaryWriter {
-    if (msg.name) {
-      writer.writeString(1, msg.name);
-    }
-    if (msg.uid) {
-      writer.writeString(2, msg.uid);
-    }
-    if (msg.displayName) {
-      writer.writeString(3, msg.displayName);
-    }
-    if (msg.description) {
-      writer.writeString(4, msg.description);
-    }
-    if (msg.sku) {
-      writer.writeString(5, msg.sku);
-    }
-    return writer;
-  },
-
-  /**
-   * @private
-   */
-  _readMessage: function (
-    msg: Variant,
-    reader: protoscript.BinaryReader,
-  ): Variant {
-    while (reader.nextField()) {
-      const field = reader.getFieldNumber();
-      switch (field) {
-        case 1: {
-          msg.name = reader.readString();
-          break;
-        }
-        case 2: {
-          msg.uid = reader.readString();
-          break;
-        }
-        case 3: {
-          msg.displayName = reader.readString();
-          break;
-        }
-        case 4: {
           msg.description = reader.readString();
           break;
         }
-        case 5: {
+        case 6: {
+          msg.shortDescription = reader.readString();
+          break;
+        }
+        case 7: {
           msg.sku = reader.readString();
+          break;
+        }
+        case 8: {
+          msg.price = BigInt(reader.readInt64String());
+          break;
+        }
+        case 9: {
+          msg.regularPrice = BigInt(reader.readInt64String());
+          break;
+        }
+        case 10: {
+          msg.salePrice = BigInt(reader.readInt64String());
+          break;
+        }
+        case 11: {
+          msg.stockQuantity = BigInt(reader.readInt64String());
           break;
         }
         default: {
@@ -262,8 +202,14 @@ export const ProductJSON = {
       name: "",
       uid: "",
       displayName: "",
+      type: "",
       description: "",
-      variants: [],
+      shortDescription: "",
+      sku: "",
+      price: 0n,
+      regularPrice: 0n,
+      salePrice: 0n,
+      stockQuantity: 0n,
       ...msg,
     };
   },
@@ -282,11 +228,29 @@ export const ProductJSON = {
     if (msg.displayName) {
       json["displayName"] = msg.displayName;
     }
+    if (msg.type) {
+      json["type"] = msg.type;
+    }
     if (msg.description) {
       json["description"] = msg.description;
     }
-    if (msg.variants?.length) {
-      json["variants"] = msg.variants.map(VariantJSON._writeMessage);
+    if (msg.shortDescription) {
+      json["shortDescription"] = msg.shortDescription;
+    }
+    if (msg.sku) {
+      json["sku"] = msg.sku;
+    }
+    if (msg.price) {
+      json["price"] = String(msg.price);
+    }
+    if (msg.regularPrice) {
+      json["regularPrice"] = String(msg.regularPrice);
+    }
+    if (msg.salePrice) {
+      json["salePrice"] = String(msg.salePrice);
+    }
+    if (msg.stockQuantity) {
+      json["stockQuantity"] = String(msg.stockQuantity);
     }
     return json;
   },
@@ -307,97 +271,37 @@ export const ProductJSON = {
     if (_displayName_) {
       msg.displayName = _displayName_;
     }
-    const _description_ = json["description"];
-    if (_description_) {
-      msg.description = _description_;
-    }
-    const _variants_ = json["variants"];
-    if (_variants_) {
-      for (const item of _variants_) {
-        const m = VariantJSON.initialize();
-        VariantJSON._readMessage(m, item);
-        msg.variants.push(m);
-      }
-    }
-    return msg;
-  },
-};
-
-export const VariantJSON = {
-  /**
-   * Serializes Variant to JSON.
-   */
-  encode: function (msg: PartialDeep<Variant>): string {
-    return JSON.stringify(VariantJSON._writeMessage(msg));
-  },
-
-  /**
-   * Deserializes Variant from JSON.
-   */
-  decode: function (json: string): Variant {
-    return VariantJSON._readMessage(VariantJSON.initialize(), JSON.parse(json));
-  },
-
-  /**
-   * Initializes Variant with all fields set to their default value.
-   */
-  initialize: function (msg?: Partial<Variant>): Variant {
-    return {
-      name: "",
-      uid: "",
-      displayName: "",
-      description: "",
-      sku: "",
-      ...msg,
-    };
-  },
-
-  /**
-   * @private
-   */
-  _writeMessage: function (msg: PartialDeep<Variant>): Record<string, unknown> {
-    const json: Record<string, unknown> = {};
-    if (msg.name) {
-      json["name"] = msg.name;
-    }
-    if (msg.uid) {
-      json["uid"] = msg.uid;
-    }
-    if (msg.displayName) {
-      json["displayName"] = msg.displayName;
-    }
-    if (msg.description) {
-      json["description"] = msg.description;
-    }
-    if (msg.sku) {
-      json["sku"] = msg.sku;
-    }
-    return json;
-  },
-
-  /**
-   * @private
-   */
-  _readMessage: function (msg: Variant, json: any): Variant {
-    const _name_ = json["name"];
-    if (_name_) {
-      msg.name = _name_;
-    }
-    const _uid_ = json["uid"];
-    if (_uid_) {
-      msg.uid = _uid_;
-    }
-    const _displayName_ = json["displayName"];
-    if (_displayName_) {
-      msg.displayName = _displayName_;
+    const _type_ = json["type"];
+    if (_type_) {
+      msg.type = _type_;
     }
     const _description_ = json["description"];
     if (_description_) {
       msg.description = _description_;
+    }
+    const _shortDescription_ = json["shortDescription"];
+    if (_shortDescription_) {
+      msg.shortDescription = _shortDescription_;
     }
     const _sku_ = json["sku"];
     if (_sku_) {
       msg.sku = _sku_;
+    }
+    const _price_ = json["price"];
+    if (_price_) {
+      msg.price = BigInt(_price_);
+    }
+    const _regularPrice_ = json["regularPrice"];
+    if (_regularPrice_) {
+      msg.regularPrice = BigInt(_regularPrice_);
+    }
+    const _salePrice_ = json["salePrice"];
+    if (_salePrice_) {
+      msg.salePrice = BigInt(_salePrice_);
+    }
+    const _stockQuantity_ = json["stockQuantity"];
+    if (_stockQuantity_) {
+      msg.stockQuantity = BigInt(_stockQuantity_);
     }
     return msg;
   },
