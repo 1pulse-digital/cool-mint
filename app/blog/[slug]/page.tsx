@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import matter from 'gray-matter';
 import path from "path";
-
+import Markdown from "markdown-to-jsx";
 
 interface PostPageProps {
   params: {
@@ -15,7 +15,7 @@ interface PostPageProps {
 const getPostContent = (slug: string) => {
   const decodedSlug = decodeURIComponent(slug);
   const folder = path.join(process.cwd(), 'posts');
-  const file = path.join(folder, `${decodedSlug}.mdx`);
+  const file = path.join(folder, `${decodedSlug}.md`);
   const fileContents = fs.readFileSync(file, 'utf8');
   // Use gray-matter to parse the post metadata section
   const { data, content } = matter(fileContents);
@@ -50,6 +50,8 @@ const PostPage = async (props: PostPageProps) => {
           style={{ objectFit: "cover", width: "100%", height: "100%" }}
         />
       </div>
+     
+    
       <div className="grid items-center justify-center px-8 sm:px-4 2xl:mx-40">
         <div className={"grid content-center font-helvetica sm:p-10 "}>
           <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-secondary">
@@ -128,7 +130,7 @@ const PostPage = async (props: PostPageProps) => {
               "text-start font-helvetica text-[16px] font-normal text-secondary"
             }
           >
-            {content.content}
+           <Markdown>{content.content}</Markdown>
           </p>
           <div className="pt-12">
             <hr className="h-[1px] flex-grow border-0 bg-textColor"></hr>
