@@ -1,5 +1,5 @@
 const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
+  extension: /\.md$/,
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
@@ -7,7 +7,7 @@ const withMDX = require('@next/mdx')({
 });
 
 const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['js', 'jsx', 'md', 'ts', 'tsx'],
   output: "standalone",
   images: {
     remotePatterns: [
