@@ -21,7 +21,7 @@ export async function getPosts() {
 
   return Promise.all(
     posts
-      .filter((file) => path.extname(file) === ".mdx")
+      .filter((file) => path.extname(file) === ".md")
       .map(async (file) => {
         const filePath = `./posts/${file}`;
         const fileContent = await fs.readFile(filePath, "utf8");
