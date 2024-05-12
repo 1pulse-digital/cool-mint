@@ -1,115 +1,110 @@
-import React, { useState } from "react"
-import ButtonGroupWorkshops from "./buttonGroupWorkshops"
 import { Card, CardTitle } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
+import { Session } from "@/lib/fusion/masterClass/session.pb"
+import { format } from "date-fns"
 import Link from "next/link"
+import React from "react"
+import { Clock2, User, CalendarClock } from "lucide-react"
+import ButtonGroupWorkshops from "./buttonGroupWorkshops"
 
 interface WorkshopProps {
-  date: string
-  day: string
-  name: string
-  time: string
-  instructor: string
-  description: string
-  price: string
-  spotsLeft: string
-  bookLink: string
-  classLink: string
-  // learnMoreLink: string;
+  masterClass: MasterClass
+  session: Session
 }
 
+const moneyFormatter = Intl.NumberFormat("en-ZA", {
+  style: "currency",
+  currency: "ZAR",
+  currencyDisplay: "symbol",
+  currencySign: "standard",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+})
+
 const WorkshopItem: React.FC<WorkshopProps> = ({
-  date,
-  day,
-  name,
-  time,
-  instructor,
-  description,
-  price,
-  spotsLeft,
-  bookLink,
-  classLink,
+  masterClass,
+  session,
   // learnMoreLink,
-}) => (
-  <div className="flex w-full justify-center  space-x-4  text-sm">
-    <span className="text-2xl font-bold text-secondary">{day}</span>
-    <div className="text-start ">
-      <div className="md:flex ">
-        <div className="pr-8 ">
-          <div className=" flex w-full flex-row flex-wrap">
-            <Link href={classLink}>
-              <div className="text-xl font-bold text-textColor">{name}</div>
-            </Link>
-            <div className="w-full pb-2 pt-4 lg:block">
-              <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
+}) => {
+  const date = new Date(session.date)
+  const day = format(date, "eee")
+  const stamp = format(date, "h:mm a")
+  return (
+    <div className="flex w-full gap-x-4">
+      <span className="text-2xl font-bold text-secondary">{day}</span>
+      <div className="grow">
+        <div className="flex w-full flex-row flex-wrap">
+          <Link href={"https://google.co.za"}>
+            <div className="text-xl font-bold text-textColor">
+              {masterClass.displayName}
             </div>
+          </Link>
+          <div className="w-full pb-2 pt-4 lg:block">
+            <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
-          <div className="row flex space-x-4 ">
-            <p className="inline-flex items-center py-1 text-xs text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#FDBB10"
-                className="mr-2 h-4 w-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                />
-              </svg>
-              {time}
-            </p>
-            <p className="inline-flex py-1 text-xs text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#FDBB10"
-                className="mr-2 h-4 w-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                />
-              </svg>
-              {instructor}
-            </p>
+        </div>
+        <div className="flex space-x-4 text-xs text-secondary">
+          <div className="flex space-x-2">
+            <CalendarClock size={16} className="text-primary" />
+            <p>{stamp}</p>
           </div>
-          <p className="py-2 text-sm font-normal text-white sm:text-Body">
-            {description}
-          </p>
+          <div className="flex space-x-2">
+            <Clock2 size={16} className="text-primary" />
+            <p>{masterClass.duration / 60} hours</p>
+          </div>
+          <div className="flex space-x-2">
+            <User size={16} className="text-primary" />
+            <p>{masterClass.presenter}</p>
+          </div>
         </div>
-        <div className="">
-          <p className="pt-4 text-start text-[16px] font-bold text-primary lg:pt-0">
-            {price}
-          </p>
-          <p className="py-1 text-sm text-secondary sm:text-Body">
-            {spotsLeft}
-          </p>
-          <ButtonGroupWorkshops
-            bookLink={bookLink}
-            // learnMoreLink={learnMoreLink}
-          />
-        </div>
+        <p className="py-2 text-sm font-normal text-white sm:text-base">
+          {masterClass.description}
+        </p>
+      </div>
+      <div className="ml-4">
+        <p className="text- pt-4 font-bold text-primary lg:pt-0">
+          {moneyFormatter.format(masterClass.standardPrice / 100n)}
+        </p>
+        <p className="py-1 text-base text-secondary">
+          {masterClass.maxAttendees - session.confirmedAttendees} Spots Left
+        </p>
+        <ButtonGroupWorkshops
+          bookLink={"https://www.google.com"}
+          // learnMoreLink={learnMoreLink}
+        />
       </div>
     </div>
-  </div>
-)
+  )
+}
+interface UpcomingWorkshopsProps {
+  sessions: Session[]
+  masterClasses: MasterClass[]
+}
 
-const UpcomingWorkshops: React.FC = () => {
+const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
+  masterClasses,
+  sessions,
+}) => {
+  // const dates = sessions.map((session) => session.date)
+  // const months = dates.map((dateS) => format(new Date(dateS), "MMMM"))
+  // const categories = masterClasses.map((masterClass) => masterClass.tags)
+
+  const sessionMap = new Map<string, Session[]>()
+  let defaultMonth: string = ""
+  sessions.forEach((session) => {
+    const month = format(new Date(session.date), "MMMM")
+    defaultMonth = defaultMonth ?? month
+    if (sessionMap.has(month)) {
+      sessionMap.get(month)?.push(session)
+    } else {
+      sessionMap.set(month, [session])
+    }
+  })
+
   return (
-    <div className="py-1 text-center font-medium text-primary">
-      <Tabs defaultValue="january woodwork">
+    <div className="py-1 font-medium text-primary">
+      <Tabs defaultValue={defaultMonth}>
         <div className="mt-10">
           {/* Filtering by category */}
 
@@ -125,656 +120,38 @@ const UpcomingWorkshops: React.FC = () => {
           {/* Filtering by month */}
 
           <div className="mx-2 pb-16 sm:px-4  xl:px-0 2xl:px-0">
-            <Carousel className="mx-3 pt-3">
-              <CarouselContent className="">
-                <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A]  px-2 py-2 text-secondary">
-                    <TabsTrigger value="january woodwork" className="p-5">
-                      Jan
-                    </TabsTrigger>
-                    <TabsTrigger value="february" className="p-5">
-                      Feb
-                    </TabsTrigger>
-                    <TabsTrigger value="march" className="p-5">
-                      Mar
-                    </TabsTrigger>
-                    <TabsTrigger value="april" className="p-5">
-                      Apr
-                    </TabsTrigger>
-                    <TabsTrigger value="may" className="p-5">
-                      May
-                    </TabsTrigger>
-                  </TabsList>
-                </CarouselItem>
-                <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2  text-secondary">
-                    <TabsTrigger value="june" className="p-5">
-                      Jun
-                    </TabsTrigger>
-                    <TabsTrigger value="july" className="p-5">
-                      Jul
-                    </TabsTrigger>
-                    <TabsTrigger value="august" className="p-5">
-                      Aug
-                    </TabsTrigger>
-                    <TabsTrigger value="september" className="p-5">
-                      Sep
-                    </TabsTrigger>
-                    <TabsTrigger value="october" className="p-5">
-                      Oct
-                    </TabsTrigger>
-                  </TabsList>
-                </CarouselItem>
-                <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-secondary">
-                    <TabsTrigger value="november" className="p-5">
-                      Nov
-                    </TabsTrigger>
-                    <TabsTrigger value="december" className="p-5">
-                      Dec
-                    </TabsTrigger>
-                    <TabsTrigger value="january" className="p-5">
-                      Jan
-                    </TabsTrigger>
-                    <TabsTrigger value="february" className="p-5">
-                      Feb
-                    </TabsTrigger>
-                    <TabsTrigger value="march" className="p-5">
-                      Mar
-                    </TabsTrigger>
-                  </TabsList>
-                </CarouselItem>
-              </CarouselContent>
-            </Carousel>
+            <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-secondary">
+              {Array.from(sessionMap.keys()).map((month) => (
+                <TabsTrigger key={month} value={month} className="p-5">
+                  {month}
+                </TabsTrigger>
+              ))}
+            </TabsList>
           </div>
         </div>
 
-        {/* January Workshops */}
         <div className="px-0 xl:px-0 2xl:px-40">
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="january woodwork"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                January
-              </CardTitle>
-              <WorkshopItem
-                date="January"
-                day="10"
-                name="CNC Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                // learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="january woodwork"
-          >
-            <Card className="border-0 bg-background py-8">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="January"
-                day="20"
-                name="CNC Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="january metalwork"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                January
-              </CardTitle>
-              <WorkshopItem
-                date="January"
-                day="20"
-                name="CNC Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* February Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="february"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                February
-              </CardTitle>
-              <WorkshopItem
-                date="february"
-                day="02"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                // learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="february"
-          >
-            <Card className="border-0 bg-background py-8">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="february"
-                day="04"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                // learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* March Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica "
-            value="march"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                March
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="march"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* April Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="april"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                April
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="april"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* May Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="may"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                May
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="may"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* June Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="june"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                June
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="june"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* July Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="july"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                July
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="july"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* August Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="august"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                August
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="august"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* September Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="september"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                September
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="september"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-          {/* October Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="october"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                October
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="october"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-          {/* November Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="november"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                November
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="november"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          {/* Dec Workshops */}
-          <TabsContent
-            className="bg-background px-10 font-helvetica"
-            value="december"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                December
-              </CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
-
-          <TabsContent
-            className="bg-background px-10 py-8 font-helvetica"
-            value="december"
-          >
-            <Card className="border-0 bg-background">
-              <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary"></CardTitle>
-              <WorkshopItem
-                date="march"
-                day="05"
-                name="Cutter"
-                time="3 hours"
-                instructor="Henry Levine"
-                description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum has been the industry's standard."
-                price="R1,500.00"
-                spotsLeft="5 Spots Left"
-                classLink="/classesIndividual"
-                bookLink="/cart"
-                //learnMoreLink="/workshopIndividual"
-              />
-            </Card>
-          </TabsContent>
+          {Array.from(sessionMap.keys()).map((month) => (
+            <TabsContent key={month} value={month} className="px-10">
+              {sessionMap.get(month)?.map((session) => {
+                const masterClass = masterClasses.find(
+                  (masterClass) => session.parent === masterClass.name,
+                )
+                if (masterClass === undefined) {
+                  console.error("Master class not found for session", session)
+                  return null
+                }
+                return (
+                  <Card className="border-0 bg-background" key={session.name}>
+                    <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
+                      {format(new Date(session.date), "MMM do")}
+                    </CardTitle>
+                    <WorkshopItem masterClass={masterClass} session={session} />
+                  </Card>
+                )
+              })}
+            </TabsContent>
+          ))}
         </div>
       </Tabs>
     </div>

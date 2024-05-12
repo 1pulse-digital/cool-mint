@@ -2,8 +2,11 @@ import Link from "next/link"
 import React from "react"
 import UpcomingWorkshops from "@/components/base/upcomingWorkshops"
 import GetInTouch from "@/components/base/getInTouch"
+import { upcomingSessions } from "./actions"
 
-const Workshops = () => {
+export default async function Page() {
+  const response = await upcomingSessions({})
+
   return (
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
@@ -39,14 +42,12 @@ const Workshops = () => {
           </div>
         </div>
         <div className="lg:mx-20 xl:mx-40">
-          <UpcomingWorkshops />
+          <UpcomingWorkshops sessions={response.sessions} masterClasses={response.masterClasses} />
         </div>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
-      <GetInTouch />
+        <GetInTouch />
       </div>
     </div>
   )
 }
-
-export default Workshops
