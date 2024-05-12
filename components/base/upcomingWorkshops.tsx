@@ -26,7 +26,7 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
   let defaultMonth: string = ""
   sessions.forEach((session) => {
     const month = format(new Date(session.date), "MMMM")
-    defaultMonth = defaultMonth ?? month
+    defaultMonth = defaultMonth || month
     if (sessionMap.has(month)) {
       sessionMap.get(month)?.push(session)
     } else {
@@ -40,14 +40,14 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
         <div className="mt-10">
           {/* Filtering by category */}
 
-          <div className="mx-10 sm:px-20 md:px-40 xl:px-28 2xl:px-60">
-            <p className="text-center text-xs text-textColor">Filter by</p>
-            <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
+          {/* <div className="mx-10 sm:px-20 md:px-40 xl:px-28 2xl:px-60"> */}
+          {/* <p className="text-center text-xs text-textColor">Filter by</p> */}
+          {/* <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
               <TabsTrigger value="january woodwork">Woodwork</TabsTrigger>
               <TabsTrigger value="february">Metalwork</TabsTrigger>
               <TabsTrigger value="march">Engineering</TabsTrigger>
-            </TabsList>
-          </div>
+            </TabsList> */}
+          {/* </div> */}
 
           {/* Filtering by month */}
 
