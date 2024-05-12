@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/1pulse-digital/cool-mint/compare/v0.5.0...v0.6.0) (2024-05-12)
+
+
+### Features
+
+* add upcoming classes to home screen ([88937ab](https://github.com/1pulse-digital/cool-mint/commit/88937abfa0f8b58078fc2ca8f9d5bacbf43919ac))
+* upcoming workshops ([2347a4e](https://github.com/1pulse-digital/cool-mint/commit/2347a4ed00e87841b8dd5103ab995341c0177ab3))
+
+
+### Bug Fixes
+
+* remove filtering of upcoming classes ([abb1942](https://github.com/1pulse-digital/cool-mint/commit/abb1942732c4995e8719aa54e043dbe5b9f5ac6b))
+* set the API_URL env var ([57401ae](https://github.com/1pulse-digital/cool-mint/commit/57401aec6d9a5b9adefb03e36df0281afabbb299))
+
 ## [0.5.0](https://github.com/1pulse-digital/cool-mint/compare/v0.4.1...v0.5.0) (2024-05-04)
 
 
