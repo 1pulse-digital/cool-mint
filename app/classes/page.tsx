@@ -1,6 +1,6 @@
 import Link from "next/link"
 import React from "react"
-import UpcomingWorkshops from "@/components/base/upcomingWorkshops"
+import {UpcomingWorkshops} from "@/components/base/upcomingWorkshops"
 import GetInTouch from "@/components/base/getInTouch"
 import { upcomingSessions } from "./actions"
 
