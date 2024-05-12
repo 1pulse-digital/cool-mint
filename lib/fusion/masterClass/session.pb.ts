@@ -14,6 +14,7 @@ export interface Session {
   uid: string;
   /**
    * Parent is the name of the class that the session is part of
+   * TODO: Do we need this since it's kind of implied that name = {parent/id..}
    */
   parent: string;
   /**

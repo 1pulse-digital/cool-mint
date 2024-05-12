@@ -6,6 +6,7 @@ import type { ByteSource, PartialDeep } from "protoscript";
 import * as protoscript from "protoscript";
 
 import * as mediaGallery from "../media/gallery.pb";
+import * as auditEntry from "../audit/entry.pb";
 
 //========================================//
 //                 Types                  //
@@ -26,6 +27,7 @@ export interface Machine {
   categories: MachineCategory[];
   attributes: MachineAttribute[];
   gallery: mediaGallery.Gallery;
+  auditEntry: auditEntry.Entry;
 }
 
 //========================================//
@@ -187,6 +189,7 @@ export const Machine = {
       categories: [],
       attributes: [],
       gallery: mediaGallery.Gallery.initialize(),
+      auditEntry: auditEntry.Entry.initialize(),
       ...msg,
     };
   },
@@ -222,6 +225,9 @@ export const Machine = {
     }
     if (msg.gallery) {
       writer.writeMessage(7, msg.gallery, mediaGallery.Gallery._writeMessage);
+    }
+    if (msg.auditEntry) {
+      writer.writeMessage(8, msg.auditEntry, auditEntry.Entry._writeMessage);
     }
     return writer;
   },
@@ -270,6 +276,10 @@ export const Machine = {
         }
         case 7: {
           reader.readMessage(msg.gallery, mediaGallery.Gallery._readMessage);
+          break;
+        }
+        case 8: {
+          reader.readMessage(msg.auditEntry, auditEntry.Entry._readMessage);
           break;
         }
         default: {
@@ -420,6 +430,7 @@ export const MachineJSON = {
       categories: [],
       attributes: [],
       gallery: mediaGallery.GalleryJSON.initialize(),
+      auditEntry: auditEntry.EntryJSON.initialize(),
       ...msg,
     };
   },
@@ -453,6 +464,12 @@ export const MachineJSON = {
       const _gallery_ = mediaGallery.GalleryJSON._writeMessage(msg.gallery);
       if (Object.keys(_gallery_).length > 0) {
         json["gallery"] = _gallery_;
+      }
+    }
+    if (msg.auditEntry) {
+      const _auditEntry_ = auditEntry.EntryJSON._writeMessage(msg.auditEntry);
+      if (Object.keys(_auditEntry_).length > 0) {
+        json["auditEntry"] = _auditEntry_;
       }
     }
     return json;
@@ -493,6 +510,10 @@ export const MachineJSON = {
     const _gallery_ = json["gallery"];
     if (_gallery_) {
       mediaGallery.GalleryJSON._readMessage(msg.gallery, _gallery_);
+    }
+    const _auditEntry_ = json["auditEntry"];
+    if (_auditEntry_) {
+      auditEntry.EntryJSON._readMessage(msg.auditEntry, _auditEntry_);
     }
     return msg;
   },
