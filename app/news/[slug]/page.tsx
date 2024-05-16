@@ -5,6 +5,7 @@ import Link from "next/link";
 import matter from 'gray-matter';
 import path from "path";
 import Markdown from "markdown-to-jsx";
+import GetInTouch from "@/components/base/getInTouch";
 
 interface PostPageProps {
   params: {
@@ -62,12 +63,12 @@ const PostPage = async (props: PostPageProps) => {
               </div>
             </Link>
 
-            <Link href="/blog">
+            <Link href="/news">
               <div className="">
                 News <span className="px-1">|</span>{" "}
               </div>
             </Link>
-            <Link href="/blog">
+            <Link href="/news">
               <div className="text-primary">
                 {content.title}
               </div>
@@ -219,6 +220,9 @@ const PostPage = async (props: PostPageProps) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="py-20 lg:px-8 2xl:px-24">
+        <GetInTouch />
       </div>
     </div >
   );
