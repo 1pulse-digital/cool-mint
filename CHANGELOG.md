@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.7.0](https://github.com/1pulse-digital/cool-mint/compare/v0.6.0...v0.7.0) (2024-05-16)
+
+
+### Features
+
+* ✨ added entry.pb.ts page ([51a0dcd](https://github.com/1pulse-digital/cool-mint/commit/51a0dcd73f10e985244fa87b80e8b9c35e723e16))
+* ✨ updated-blog-news ([6f74f57](https://github.com/1pulse-digital/cool-mint/commit/6f74f575a148db4bb97fbe9707ded36c90169e47))
+* ✨ updated-blog-news ([d03ffee](https://github.com/1pulse-digital/cool-mint/commit/d03ffee4bb80a51c0978c346cf0a9570f3ecde38))
+
 ## [0.6.0](https://github.com/1pulse-digital/cool-mint/compare/v0.5.0...v0.6.0) (2024-05-12)
 
 
