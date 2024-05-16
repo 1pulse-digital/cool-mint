@@ -14,7 +14,7 @@ export interface Entry {
   dateModified: string;
   createdBy: string;
   modifiedBy: string;
-  version: string;
+  version: bigint;
 }
 
 //========================================//
@@ -51,7 +51,7 @@ export const Entry = {
       dateModified: "",
       createdBy: "",
       modifiedBy: "",
-      version: "",
+      version: 0n,
       ...msg,
     };
   },
@@ -76,7 +76,7 @@ export const Entry = {
       writer.writeString(4, msg.modifiedBy);
     }
     if (msg.version) {
-      writer.writeString(5, msg.version);
+      writer.writeInt64String(5, msg.version.toString() as any);
     }
     return writer;
   },
@@ -105,7 +105,7 @@ export const Entry = {
           break;
         }
         case 5: {
-          msg.version = reader.readString();
+          msg.version = BigInt(reader.readInt64String());
           break;
         }
         default: {
@@ -146,7 +146,7 @@ export const EntryJSON = {
       dateModified: "",
       createdBy: "",
       modifiedBy: "",
-      version: "",
+      version: 0n,
       ...msg,
     };
   },
@@ -169,7 +169,7 @@ export const EntryJSON = {
       json["modifiedBy"] = msg.modifiedBy;
     }
     if (msg.version) {
-      json["version"] = msg.version;
+      json["version"] = String(msg.version);
     }
     return json;
   },
@@ -196,7 +196,7 @@ export const EntryJSON = {
     }
     const _version_ = json["version"];
     if (_version_) {
-      msg.version = _version_;
+      msg.version = BigInt(_version_);
     }
     return msg;
   },
