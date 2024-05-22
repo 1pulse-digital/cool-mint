@@ -32,6 +32,6 @@ export async function handleLogout() {
 }
 
 export async function authHeader(): Promise<Record<string, string>> {
-  const token = cookies().get("token")?.value
+  const token = cookies().get("token")?.value ?? "made-in-workshop"
   return { Authorization: `Bearer ${token}` }
 }
