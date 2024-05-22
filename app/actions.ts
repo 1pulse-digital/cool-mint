@@ -1,14 +1,18 @@
 "use server"
 
+import { IdTokenResult } from "firebase/auth"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
 // handleLogin will set the token cookie and redirect to the admin page
-export async function handleLogin(token: string) {
-  cookies().set("token", token, {
+export async function handleLogin(tokenResult: IdTokenResult) {
+  const expires = new Date(tokenResult.expirationTime).getTime()
+  const maxAge = Math.floor((expires - Date.now()) / 1000) - 30
+  cookies().set("token", tokenResult.token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    maxAge: 60 * 60 * 24 * 1, // One day
+    maxAge: maxAge,
+    // maxAge: 60 * 60 * 24 * 1, // One day
     path: "/",
   })
 
@@ -24,10 +28,10 @@ export async function handleLogout() {
     path: "/",
   })
 
-  redirect("/signIn")
+  redirect("/login")
 }
 
 export async function authHeader(): Promise<Record<string, string>> {
   const token = cookies().get("token")?.value
-  return { Authorization: `Bearer ${token || "made-in-workshop"}` }
+  return { Authorization: `Bearer ${token}` }
 }
