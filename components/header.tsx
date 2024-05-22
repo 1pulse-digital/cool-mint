@@ -5,8 +5,8 @@ import { Fragment, useState } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import logo from "../images/miw-logo.webp"
-import Button, { HeaderButton } from "./base/button"
 import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
 
 const navigationItems = [
   {
@@ -193,13 +193,6 @@ const Header: React.FC<HeaderProps> = () => {
                               </Link>
                             </div>
                           </div>
-                          {/*  <div className="hidden md:block">
-                            <Link href="/login">
-                              <HeaderButton color={"primary"}>
-                                Login2
-                              </HeaderButton>
-                            </Link>
-                          </div>  */}
                         </div>
                       </div>
                     </div>
@@ -208,7 +201,6 @@ const Header: React.FC<HeaderProps> = () => {
               </div>
               
               {/* Desktop menu */}
-
               <div className="hidden justify-center gap-x-0 space-x-5 py-2 text-base text-primary last:items-center lg:flex lg:items-center  lg:gap-x-0 lg:space-x-4 xl:flex xl:items-center xl:gap-x-1 xl:space-x-8 ">
                 {navigationItems.map((item) => (
                   <a
@@ -278,7 +270,7 @@ const Header: React.FC<HeaderProps> = () => {
               </div>
               <div className="hidden lg:block">
                 <Link href="/login">
-                  <HeaderButton color={"primary"}>Login</HeaderButton>
+                  <Button>Login</Button>
                 </Link>
               </div>
 
