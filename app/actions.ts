@@ -16,7 +16,7 @@ export async function handleLogin(tokenResult: IdTokenResult) {
     path: "/",
   })
 
-  redirect("/admin")
+  // redirect("/admin")
 }
 
 // handleLogout will clear the token cookie and redirect to the sign in page
