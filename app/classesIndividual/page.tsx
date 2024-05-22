@@ -8,7 +8,7 @@ const Workshops = () => {
   return(
       <div className={"bg-background py-12"}>
       <div className={"grid content-center justify-center font-helvetica sm:p-10 px-8"}>
-        <div className="text-xs text-secondary text-center justify-center font-helvetica font-normal inline-flex py-2">
+        <div className="text-xs text-foreground text-center justify-center font-helvetica font-normal inline-flex py-2">
             <Link href="/">
           <div>
             Home 

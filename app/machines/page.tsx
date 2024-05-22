@@ -15,7 +15,7 @@ export default async function Page() {
     <div className={"bg-background py-10 sm:py-20"}>
       <div className="flex h-auto">
         <div className={"grid content-center font-helvetica"}>
-          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -27,10 +27,10 @@ export default async function Page() {
             </Link>
           </div>
           <div className="px-6 sm:px-14 md:mx-16 lg:mx-48 xl:mx-40 2xl:px-52">
-            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
             Industrial Tools & Machines<span className="text-primary">.</span>
             </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-textColor">
+            <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground">
             We hire a wide range of industrial machinery catering to all disciplines, such as woodworking, metalworking, engineering and CNC.  
             Each machine is <span className="text-primary">maintained to the highest standard</span> ensuring constant efficiency and precision. 
             Explore our range for hire and let us bring your project to life.

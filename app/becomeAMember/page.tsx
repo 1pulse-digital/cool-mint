@@ -10,7 +10,7 @@ const BecomeAMember: React.FC = () => {
     <div className="bg-background">
       <div className={"px-8 py-20"}>
         <div className={"grid content-center font-helvetica"}>
-          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -30,12 +30,12 @@ const BecomeAMember: React.FC = () => {
           <div className="text-center 2xl:mx-72">
             <p
               className={
-                "pb-4 pt-6 text-center font-helvetica text-BodyText font-light text-textColor"
+                "pb-4 pt-6 text-center font-helvetica text-BodyText font-light text-muted-foreground"
               }
             >
               Visit us at
             </p>
-            <div className="items-start px-12 text-secondary ">
+            <div className="items-start px-12 text-foreground ">
               <Link
                 href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6"
                 target="_blank"
@@ -66,7 +66,7 @@ const BecomeAMember: React.FC = () => {
             </div>
             <div className="py-4">
               <div className="flex items-center justify-center space-x-4 py-4">
-                <p className="font-helvetica text-BodyText text-textColor">
+                <p className="font-helvetica text-BodyText text-muted-foreground">
                   OR{" "}
                 </p>
               </div>

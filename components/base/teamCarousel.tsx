@@ -79,7 +79,7 @@ export function TeamCarousel() {
       <div className="grid h-auto items-center justify-center px-8 py-10 sm:px-16 sm:py-20 md:px-16 lg:px-12 xl:px-40 2xl:px-72">
         <h1
           className={
-            "pb-8 text-center font-helvetica text-headings font-bold text-secondary sm:pb-2"
+            "pb-8 text-center font-helvetica text-headings font-bold text-foreground sm:pb-2"
           }
         >
           Meet the Team<span className="text-primary">.</span>
@@ -168,13 +168,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Henry Levine
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     CEO
                   </span>
-                  <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
+                  <span className="text-start font-helvetica text-sm font-normal text-muted-foreground sm:text-Body">
                     Henry qualified with a diploma in Mechanical engineering in
                     1997, shortly after he got into IT and eventually managed
                     his own Print Services firm for 15 years. His passion for
@@ -209,13 +209,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Joshua Lotter
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     COO
                   </span>
-                  <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
+                  <span className="text-start font-helvetica text-sm font-normal text-muted-foreground sm:text-Body">
                     As the second-in-command at Made in Workshop, Josh ensures
                     everything runs seamlessly. His expertise in design and
                     planning enhances our members&apos; workshop experience,
@@ -252,13 +252,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Jesse Hutton
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Assistant
                   </span>
-                  <span className="text-smfont-normal text-start font-helvetica text-textColor sm:text-Body">
+                  <span className="text-smfont-normal text-start font-helvetica text-muted-foreground sm:text-Body">
                     Jesse is another full-time workshop assistant. As an
                     accomplished amateur TIG welder, he is keen on learning more
                     about making. His curious nature and eagerness to help make
@@ -290,13 +290,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Siza Simlne
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Café Manager
                   </span>
-                  <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
+                  <span className="text-start font-helvetica text-sm font-normal text-muted-foreground sm:text-Body">
                     Siza runs the front of house at Made in Workshop, which
                     includes our café and reception area. Her contagious smile
                     greets everyone who walks through the entrance, whether they
@@ -330,13 +330,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Deneo (Surname)
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Caretaker
                   </span>
-                  <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
+                  <span className="text-start font-helvetica text-sm font-normal text-muted-foreground sm:text-Body">
                     Deneo looks after the day-to-day upkeep of Made in Workshop,
                     ensuring all the spaces are clean and tidy. In a space
                     consistently in a state of controlled chaos, she is the
@@ -369,13 +369,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Nomonde Nenene
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Café Chef
                   </span>
-                  <span className="text-start font-helvetica text-Body font-normal text-textColor">
+                  <span className="text-start font-helvetica text-Body font-normal text-muted-foreground">
                     Nomonde, the culinary artist behind the scenes at the café,
                     effortlessly manoeuvres among pots and pans with graceful
                     efficiency. During our lunchtime rush, her calm approach
@@ -408,13 +408,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Ericson Dlamini
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Assistant
                   </span>
-                  <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
+                  <span className="text-start font-helvetica text-sm font-normal text-muted-foreground sm:text-Body">
                     From humble beginnings as a former kitchen staff member,
                     Ericson has evolved into our full-time workshop assistant.
                     As an integral part of workshop maintenance, Ericson
@@ -448,13 +448,13 @@ export function TeamCarousel() {
                   />
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-textColor">
+                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
                     Charles Cooper
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Part-time Workshop Assistant
                   </span>
-                  <span className="text-start font-helvetica text-sm font-normal text-textColor sm:text-Body">
+                  <span className="text-start font-helvetica text-sm font-normal text-muted-foreground sm:text-Body">
                     Charley has an Honors degree in Applied Linguistics and
                     taught English and Woodwork for twenty years in various
                     schools and for Education projects connected to Wits

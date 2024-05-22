@@ -11,7 +11,7 @@ export default async function Page() {
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
         <div className={"grid content-center px-8 font-helvetica"}>
-          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -24,10 +24,10 @@ export default async function Page() {
           </div>
           <div>
             <div className="xl:mx0 px-0 sm:px-6 md:mx-16 lg:mx-40 2xl:mx-20">
-              <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+              <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
-              <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:px-14 2xl:px-60">
+              <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground lg:px-14 2xl:px-60">
                 Our classes are geared towards{" "}
                 <span className="text-primary">empowering and training</span>{" "}
                 individuals to grow their skills and learn new ones. We embrace

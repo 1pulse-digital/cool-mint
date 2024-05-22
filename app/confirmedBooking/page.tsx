@@ -8,7 +8,7 @@ const ConfirmedBooking: React.FC = () => {
   return (
     <div className={"bg-background py-20"}>
       <div className="grid content-center items-center justify-center px-8 font-helvetica">
-        <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
+        <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home
@@ -19,7 +19,7 @@ const ConfirmedBooking: React.FC = () => {
             <div className="text-primary">Booking Confirmed</div>
           </Link>
         </div>
-        <h1 className="py-8 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+        <h1 className="py-8 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
           Booking Confirmed
         </h1>
         <div className="flex items-center justify-center py-4 text-[#ADFA1C]">
@@ -51,7 +51,7 @@ const ConfirmedBooking: React.FC = () => {
             <div>
               <span
                 className={
-                  "text-start font-helvetica text-[16px] font-bold text-secondary"
+                  "text-start font-helvetica text-[16px] font-bold text-foreground"
                 }
               >
                 27 January 2024
@@ -64,7 +64,7 @@ const ConfirmedBooking: React.FC = () => {
                 <span className={"font-helvetica font-bold"}>Time:</span>
               </div>
               <div className="">
-                <span className={"font-helvetica font-bold text-secondary"}>
+                <span className={"font-helvetica font-bold text-foreground"}>
                   9:00 am
                 </span>
               </div>
@@ -78,7 +78,7 @@ const ConfirmedBooking: React.FC = () => {
                 Location:
               </span>
             </div>
-            <div className="flex justify-center font-bold text-secondary flex-wrap">
+            <div className="flex justify-center font-bold text-foreground flex-wrap">
               <Link
                 href="https://maps.app.goo.gl/j4SW9cavsiZCNjMT6"
                 target="_blank"

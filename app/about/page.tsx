@@ -9,7 +9,7 @@ const About = () => {
       <div className="lg:px-48 xl:px-40 2xl:mx-40">
         <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-14 sm:py-20 md:h-screen md:px-10">
           <div className={"grid content-center font-helvetica"}>
-            <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
+            <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
               <Link href="/">
                 <div>
                   Home
@@ -23,7 +23,7 @@ const About = () => {
             <div className="md:px-12 lg:px-0">
               <h1
                 className={
-                  "py-1 text-center font-helvetica text-headings font-bold text-secondary pb-3"
+                  "py-1 text-center font-helvetica text-headings font-bold text-foreground pb-3"
                 }
               >
                 Where it all began
@@ -31,7 +31,7 @@ const About = () => {
               </h1>
               <p
                 className={
-                  "text-center font-helvetica text-BodyText font-normal text-textColor"
+                  "text-center font-helvetica text-BodyText font-normal text-muted-foreground"
                 }
               >
                 Since opening our doors in 2017 with just a small laser cutter,

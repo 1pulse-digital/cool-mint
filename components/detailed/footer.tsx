@@ -14,10 +14,10 @@ export const Footer = () => {
       <div className="space-x-2 px-6 py-12 text-white md:flex md:space-x-12 md:px-10 lg:space-x-32 2xl:mx-16">
         <div>
           <div>
-            <div className="font-helvetica text-headings font-bold text-secondary">
+            <div className="font-helvetica text-headings font-bold text-foreground">
               Subscribe<span className="text-primary">.</span>
             </div>
-            <div className="py-2 pb-4 text-[12px] text-textColor 2xl:text-base">
+            <div className="py-2 pb-4 text-[12px] text-muted-foreground 2xl:text-base">
               Subscribe to our newsletter to stay in touch with the latest.
             </div>
             <Link href="/contact">
@@ -31,7 +31,7 @@ export const Footer = () => {
         <div className="grid sm:grid-cols-2 grid-cols-1 space-x-0 px-0 pt-10 sm:space-x-0 md:pt-0 lg:space-x-0">
           <div>
             <div className="pb-5">
-              <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
+              <p className="pb-2 font-helvetica text-BodyText font-bold text-muted-foreground">
                 Contact
               </p>
               <div>
@@ -82,7 +82,7 @@ export const Footer = () => {
           </div>
           <div>
             <div>
-              <p className="pb-2 font-helvetica text-BodyText font-bold text-textColor">
+              <p className="pb-2 font-helvetica text-BodyText font-bold text-muted-foreground">
                 Visit Us
               </p>
               <Link
@@ -116,7 +116,7 @@ export const Footer = () => {
           </div>
           <div>
             <div className="py-4 pt-6 sm:pt-0">
-              <div className="font-helvetica text-BodyText font-bold text-textColor">
+              <div className="font-helvetica text-BodyText font-bold text-muted-foreground">
                 Legal
               </div>
               <Link href="/privacyPolicy">
@@ -129,7 +129,7 @@ export const Footer = () => {
           </div>
           <div className="sm:px-1">
             <div className="py-4 pt-5 sm:pt-0">
-              <p className="font-helvetica text-BodyText font-bold text-textColor">
+              <p className="font-helvetica text-BodyText font-bold text-muted-foreground">
                 Follow Us
               </p>
               <div className="flex flex-row space-x-2 py-2 place-items-center">
@@ -214,13 +214,13 @@ export const Footer = () => {
         </div>
       </div>
       <div className="bg-[#27272a] px-16 py-4 text-center text-xs">
-        <div className="pb-2 font-helvetica text-secondary">
+        <div className="pb-2 font-helvetica text-foreground">
           © 2024 Made in Workshop.
         </div>
         <Link
           href="https://www.1pulse.digital/"
           target="_blank"
-          className="text-secondary hover:text-primary"
+          className="text-foreground hover:text-primary"
         >
           <p>Web Design and Development by 1Pulse Digital</p>
         </Link>

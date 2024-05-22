@@ -31,10 +31,10 @@ export default async function Page() {
           </div>
           <div className="px-8 font-medium text-primary sm:px-4 md:px-8 md:text-left">
             <div className="pt-28 text-center">
-              <h1 className="text-headings font-bold  text-secondary">
+              <h1 className="text-headings font-bold  text-foreground">
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
-              <p className="text-BodyText font-normal text-textColor lg:px-40 xl:px-40 2xl:px-40">
+              <p className="text-BodyText font-normal text-muted-foreground lg:px-40 xl:px-40 2xl:px-40">
                 Whether you want to learn a{" "}
                 <span className="text-primary">
                   new skill, refine your craft or meet other creative

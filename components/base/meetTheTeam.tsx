@@ -7,7 +7,7 @@ export const MeetTheTeam = () => {
     <div className="bg-background py-8">
       <h1
         className={
-          "py-16 text-center font-helvetica text-headings font-bold text-secondary"
+          "py-16 text-center font-helvetica text-headings font-bold text-foreground"
         }
       >
         Meet the Team<span className="text-primary">.</span>
@@ -29,7 +29,7 @@ export const MeetTheTeam = () => {
         >
           <h3
             className={
-              "text-start font-helvetica text-BodyText font-semibold text-textColor"
+              "text-start font-helvetica text-BodyText font-semibold text-muted-foreground"
             }
           >
             Name
@@ -39,7 +39,7 @@ export const MeetTheTeam = () => {
           </span>
           <p
             className={
-              "text-start font-helvetica text-BodyText text-sm font-light text-textColor"
+              "text-start font-helvetica text-BodyText text-sm font-light text-muted-foreground"
             }
           >
             Dummy text is text that is used in the publishing industry or by web
@@ -70,7 +70,7 @@ export const MeetTheTeam = () => {
         >
           <h3
             className={
-              "text-start font-helvetica text-BodyText font-semibold text-textColor"
+              "text-start font-helvetica text-BodyText font-semibold text-muted-foreground"
             }
           >
             Name
@@ -80,7 +80,7 @@ export const MeetTheTeam = () => {
           </span>
           <p
             className={
-              "text-start font-helvetica text-BodyText text-sm font-light text-textColor"
+              "text-start font-helvetica text-BodyText text-sm font-light text-muted-foreground"
             }
           >
             Dummy text is text that is used in the publishing industry or by web

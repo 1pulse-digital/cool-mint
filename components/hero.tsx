@@ -13,7 +13,7 @@ const Hero = () => {
       <div className={"z-10 grid"}>
         <h1
           className={
-            "text-center font-helvetica text-2xl text-headings font-bold leading-tight text-secondary lg:leading-tight xl:text-5xl"
+            "text-center font-helvetica text-2xl text-headings font-bold leading-tight text-foreground lg:leading-tight xl:text-5xl"
           }
         >
           The Largest Shared Workshop & Makerspace in South Africa
@@ -21,7 +21,7 @@ const Hero = () => {
         </h1>
         <span
           className={
-            "py-8 text-center font-helvetica text-BodyText font-normal text-textColor"
+            "py-8 text-center font-helvetica text-BodyText font-normal text-muted-foreground"
           }
         >
           <div className="md:px-8 xl:px-40 2xl:px-52">

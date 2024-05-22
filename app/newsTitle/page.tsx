@@ -19,7 +19,7 @@ const NewsTitle = () => {
       </div>
       <div className="grid items-center justify-center px-8 sm:px-4 2xl:mx-40">
         <div className={"grid content-center font-helvetica sm:p-10 "}>
-          <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -40,14 +40,14 @@ const NewsTitle = () => {
           </div>
           <h1
             className={
-              "text-start font-helvetica text-headings font-bold leading-tight text-secondary"
+              "text-start font-helvetica text-headings font-bold leading-tight text-foreground"
             }
           >
             Small business showcase: Made in workshop
             <span className="leading-snug text-primary">.</span>
           </h1>
           <div className="row flex space-x-4 pb-8">
-            <span className="inline-flex items-center py-1 text-xs text-secondary">
+            <span className="inline-flex items-center py-1 text-xs text-foreground">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -64,7 +64,7 @@ const NewsTitle = () => {
               </svg>
               Date
             </span>
-            <span className="inline-flex py-1 text-xs text-secondary">
+            <span className="inline-flex py-1 text-xs text-foreground">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -84,7 +84,7 @@ const NewsTitle = () => {
           </div>
           <p
             className={
-              "pb-8 text-start font-helvetica text-BodyText font-light text-textColor"
+              "pb-8 text-start font-helvetica text-BodyText font-light text-muted-foreground"
             }
           >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -94,7 +94,7 @@ const NewsTitle = () => {
 
           <p
             className={
-              "text-start font-helvetica text-[16px] font-normal text-secondary"
+              "text-start font-helvetica text-[16px] font-normal text-foreground"
             }
           >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -116,12 +116,12 @@ const NewsTitle = () => {
             justo duo dolores et ea rebum.
           </p>
           <div className="pt-12">
-            <hr className="h-[1px] flex-grow border-0 bg-textColor"></hr>
+            <hr className="h-[1px] flex-grow border-0 bg-muted-foreground"></hr>
           </div>
           <div>
             <h1
               className={
-                "pt-10 text-start font-helvetica text-headings font-bold text-secondary"
+                "pt-10 text-start font-helvetica text-headings font-bold text-foreground"
               }
             >
               Latest News
@@ -131,13 +131,13 @@ const NewsTitle = () => {
             <div>
               <p
                 className={
-                  "py-2 text-start font-helvetica text-BodyText font-bold text-textColor"
+                  "py-2 text-start font-helvetica text-BodyText font-bold text-muted-foreground"
                 }
               >
                 Article title that can go onto 2 Lines for 3
               </p>
               <div className="row flex space-x-4">
-                <span className="inline-flex items-center py-1 text-xs text-secondary">
+                <span className="inline-flex items-center py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -154,7 +154,7 @@ const NewsTitle = () => {
                   </svg>
                   Date
                 </span>
-                <span className="inline-flex py-1 text-xs text-secondary">
+                <span className="inline-flex py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -176,13 +176,13 @@ const NewsTitle = () => {
             <div>
               <p
                 className={
-                  "pt-14 text-start font-helvetica text-BodyText font-bold text-textColor"
+                  "pt-14 text-start font-helvetica text-BodyText font-bold text-muted-foreground"
                 }
               >
                 Article title that can go onto 2 Lines for 3
               </p>
               <div className="row flex space-x-4">
-                <span className="inline-flex items-center py-1 text-xs text-secondary">
+                <span className="inline-flex items-center py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -199,7 +199,7 @@ const NewsTitle = () => {
                   </svg>
                   Date
                 </span>
-                <span className="inline-flex py-1 text-xs text-secondary">
+                <span className="inline-flex py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -221,13 +221,13 @@ const NewsTitle = () => {
             <div>
               <p
                 className={
-                  "pt-14 text-start font-helvetica text-BodyText font-bold text-textColor"
+                  "pt-14 text-start font-helvetica text-BodyText font-bold text-muted-foreground"
                 }
               >
                 Article title that can go onto 2 Lines for 3
               </p>
               <div className="row flex space-x-4">
-                <span className="inline-flex items-center py-1 text-xs text-secondary">
+                <span className="inline-flex items-center py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -244,7 +244,7 @@ const NewsTitle = () => {
                   </svg>
                   Date
                 </span>
-                <span className="inline-flex py-1 text-xs text-secondary">
+                <span className="inline-flex py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

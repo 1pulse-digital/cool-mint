@@ -22,7 +22,7 @@ export const InputComponent: React.FC<InputComponentProps> = ({ label, name, pla
   return (
     <label>
       <div className="pb-6">
-        <label htmlFor={name} className="block text-secondary font-helvetica text-sm font-medium leading-6">
+        <label htmlFor={name} className="block text-foreground font-helvetica text-sm font-medium leading-6">
           {label}
         </label>
         <div className="mt-2">

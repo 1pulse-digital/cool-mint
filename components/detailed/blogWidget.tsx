@@ -37,7 +37,7 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
       </Link>
       <div className="absolute bottom-0 z-10 grid h-auto w-full  px-5">
         <div className="row flex space-x-4 py-2">
-          <p className="inline-flex items-start py-1 text-xs text-secondary">
+          <p className="inline-flex items-start py-1 text-xs text-foreground">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -54,7 +54,7 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
             </svg>
             {date}
           </p>
-          <p className="inline-flex py-1 text-xs text-secondary">
+          <p className="inline-flex py-1 text-xs text-foreground">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -73,11 +73,11 @@ const BlogWidget: React.FC<BlogWidgetProps> = ({
           </p>
         </div>
         <Link href={linkUrl}>
-          <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-secondary hover:text-primary">
+          <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-foreground hover:text-primary">
             {title}
           </p>
         </Link>
-        <div className="pb-8 pt-2 text-start text-[12px] text-secondary">
+        <div className="pb-8 pt-2 text-start text-[12px] text-foreground">
           <p>{categories.join(" | ")}</p>
         </div>
       </div>

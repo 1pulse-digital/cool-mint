@@ -91,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   >
                     <div className="ml-2 mt-20 w-3/5 overflow-hidden rounded-lg bg-[#27272A] pb-8 pt-2 shadow-md">
                       <div className="z-20 flex flex-col items-start justify-between px-5 pt-4">
-                        <div className="z-20 flex flex-col space-y-4 px-4 font-helvetica font-normal text-secondary">
+                        <div className="z-20 flex flex-col space-y-4 px-4 font-helvetica font-normal text-foreground">
                           <nav className="grid gap-y-8">
                             {navigationItems.map((item) => (
                               <Link
@@ -99,7 +99,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 href={item.href}
                                 className="-m-4 flex items-center rounded-md p-3"
                               >
-                                <span className=" font-helvetica text-base font-normal text-secondary">
+                                <span className=" font-helvetica text-base font-normal text-foreground">
                                   {item.name}
                                 </span>
                               </Link>
@@ -125,12 +125,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 
         {/* Desktop Menu */}
 
-        <div className="hidden items-start text-[14px] justify-start text-secondary lg:flex lg:space-x-10 flex-wrap">
+        <div className="hidden items-start text-[14px] justify-start text-foreground lg:flex lg:space-x-10 flex-wrap">
           {navigationItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-secondary  hover:text-primary active:text-primary"
+              className="text-foreground  hover:text-primary active:text-primary"
             >
               {item.name}
             </Link>

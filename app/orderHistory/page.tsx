@@ -15,7 +15,7 @@ const OrderHistory = () => {
           "grid content-center px-8 font-helvetica sm:pt-10 py-10"
         }
       >
-        <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
+        <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home

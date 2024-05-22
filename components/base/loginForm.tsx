@@ -63,14 +63,14 @@ export const LoginForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-secondary">Email</FormLabel>
+              <FormLabel className="text-foreground">Email</FormLabel>
               <FormControl>
                 <Input
                   placeholder="user@example.com"
                   type="email"
                   autoComplete="username"
                   {...field}
-                  className="w-full bg-background text-secondary border-0 border-amber-300 rounded-md py-1.5 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-sm  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="w-full bg-background text-foreground border-0 border-amber-300 rounded-md py-1.5 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-sm  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 />
               </FormControl>
 
@@ -83,21 +83,21 @@ export const LoginForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-secondary">Password</FormLabel>
+              <FormLabel className="text-foreground">Password</FormLabel>
               <FormControl>
                 <Input
                   placeholder="password"
                   type="password"
                   {...field}
                   autoComplete="current-password"
-                  className="w-full bg-background text-secondary border-0 border-amber-300 rounded-md py-1.5 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-sm  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="w-full bg-background text-foreground border-0 border-amber-300 rounded-md py-1.5 shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-sm  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="w-full bg-[#fdbb10] hover:bg-secondary text-background">Sign In</Button>
+        <Button className="w-full bg-[#fdbb10] hover:bg-foreground text-background">Sign In</Button>
       </form>
     </Form>
   )

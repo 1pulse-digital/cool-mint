@@ -74,18 +74,18 @@ const orders = [
 export function OrderHis() {
   return (
     <div
-    className="overflow-x-auto  rounded-md bg-[#27272A] text-secondary font-helvetica flex-wrap "
+    className="overflow-x-auto  rounded-md bg-[#27272A] text-foreground font-helvetica flex-wrap "
   >
     <Table className="min-w-full">
       <TableCaption></TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[200px] sm:w-auto capitalize text-secondary font-bold">Order Number</TableHead>
-          <TableHead className="text-secondary font-bold">Method</TableHead>
-          <TableHead className=" text-secondary font-bold">Product Type</TableHead>
-          <TableHead className=" text-secondary font-bold">Order Date</TableHead>
-          <TableHead className="text-secondary font-bold">Status</TableHead>
-          <TableHead className=" text-secondary font-bold">Total</TableHead>
+          <TableHead className="w-[200px] sm:w-auto capitalize text-foreground font-bold">Order Number</TableHead>
+          <TableHead className="text-foreground font-bold">Method</TableHead>
+          <TableHead className=" text-foreground font-bold">Product Type</TableHead>
+          <TableHead className=" text-foreground font-bold">Order Date</TableHead>
+          <TableHead className="text-foreground font-bold">Status</TableHead>
+          <TableHead className=" text-foreground font-bold">Total</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

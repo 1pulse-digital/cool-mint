@@ -20,7 +20,7 @@ export default async function Page() {
   return (
     <div className={"bg-background py-10"}>
       <div className={"grid content-center font-helvetica sm:p-10"}>
-        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
+        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home
@@ -32,10 +32,10 @@ export default async function Page() {
           </Link>
         </div>
         <div className="px-6 sm:px-2 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-0">
-          <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+          <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
             News<span className="text-primary">.</span>
           </h1>
-          <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:px-20 2xl:px-72">
+          <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground lg:px-20 2xl:px-72">
             Stay updated with the latest at Made in Workshop! Our blog page
             brings you the{" "}
             <span className="text-primary">
@@ -51,7 +51,7 @@ export default async function Page() {
           <div className="px-2">
             <span
               className={
-                "px-4 text-center font-helvetica text-[12px] font-normal text-textColor"
+                "px-4 text-center font-helvetica text-[12px] font-normal text-muted-foreground"
               }
             >
               Filter by
@@ -62,7 +62,7 @@ export default async function Page() {
                   <CarouselContent className="">
                     <CarouselItem>
                       <div className="px-8 pb-8 sm:px-16 sm:pb-0 md:px-20 lg:px-20 xl:px-20 2xl:px-60">
-                        <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-3 text-secondary">
+                        <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-3 text-foreground">
                           <TabsTrigger value="news" className="">
                             News
                           </TabsTrigger>
@@ -103,7 +103,7 @@ export default async function Page() {
                                 </Link>
                                 <div className="absolute bottom-0 z-10 grid h-auto w-full px-5">
                                   <div className="row flex space-x-4 py-2">
-                                    <p className="inline-flex items-start py-1 text-xs text-secondary">
+                                    <p className="inline-flex items-start py-1 text-xs text-foreground">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -120,7 +120,7 @@ export default async function Page() {
                                       </svg>
                                       {post.date}
                                     </p>
-                                    <p className="inline-flex py-1 text-xs text-secondary">
+                                    <p className="inline-flex py-1 text-xs text-foreground">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -138,10 +138,10 @@ export default async function Page() {
                                       {post.author}
                                     </p>
                                   </div>
-                                  <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-secondary hover:text-primary">
+                                  <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-foreground hover:text-primary">
                                     {post.title}
                                   </p>
-                                  <div className="pb-8 pt-2 text-start text-[12px] text-secondary">
+                                  <div className="pb-8 pt-2 text-start text-[12px] text-foreground">
                                     <p>{post.categories}</p>
                                   </div>
                                 </div>
@@ -180,7 +180,7 @@ export default async function Page() {
                                 </Link>
                                 <div className="absolute bottom-0 z-10 grid h-auto w-full px-5">
                                   <div className="row flex space-x-4 py-2">
-                                    <p className="inline-flex items-start py-1 text-xs text-secondary">
+                                    <p className="inline-flex items-start py-1 text-xs text-foreground">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -197,7 +197,7 @@ export default async function Page() {
                                       </svg>
                                       {post.date}
                                     </p>
-                                    <p className="inline-flex py-1 text-xs text-secondary">
+                                    <p className="inline-flex py-1 text-xs text-foreground">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -215,10 +215,10 @@ export default async function Page() {
                                       {post.author}
                                     </p>
                                   </div>
-                                  <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-secondary hover:text-primary">
+                                  <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-foreground hover:text-primary">
                                     {post.title}
                                   </p>
-                                  <div className="pb-8 pt-2 text-start text-[12px] text-secondary">
+                                  <div className="pb-8 pt-2 text-start text-[12px] text-foreground">
                                     <p>{post.categories}</p>
                                   </div>
                                 </div>
@@ -257,7 +257,7 @@ export default async function Page() {
                                 </Link>
                                 <div className="absolute bottom-0 z-10 grid h-auto w-full px-5">
                                   <div className="row flex space-x-4 py-2">
-                                    <p className="inline-flex items-start py-1 text-xs text-secondary">
+                                    <p className="inline-flex items-start py-1 text-xs text-foreground">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -274,7 +274,7 @@ export default async function Page() {
                                       </svg>
                                       {post.date}
                                     </p>
-                                    <p className="inline-flex py-1 text-xs text-secondary">
+                                    <p className="inline-flex py-1 text-xs text-foreground">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -292,10 +292,10 @@ export default async function Page() {
                                       {post.author}
                                     </p>
                                   </div>
-                                  <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-secondary hover:text-primary">
+                                  <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-foreground hover:text-primary">
                                     {post.title}
                                   </p>
-                                  <div className="pb-8 pt-2 text-start text-[12px] text-secondary">
+                                  <div className="pb-8 pt-2 text-start text-[12px] text-foreground">
                                     <p>{post.categories}</p>
                                   </div>
                                 </div>

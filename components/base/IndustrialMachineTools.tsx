@@ -27,8 +27,8 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
     <div className="bg-background py-8">
       <Tabs defaultValue={defaultCategory} className="bg-background">
         <div className="px-6 pb-10 sm:mx-8 md:mx-8 lg:px-20 2xl:mx-96 xl:mx-40">
-        <p className="py-3 text-center text-xs text-textColor">Filter by</p>
-          <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-2 text-secondary">
+        <p className="py-3 text-center text-xs text-muted-foreground">Filter by</p>
+          <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-2 text-foreground">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category}>
                 {category}
@@ -53,7 +53,7 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
                   className="rounded-lg border-0 bg-background"
                 >
                   <CardHeader>
-                    <CardDescription className="text-textColor">
+                    <CardDescription className="text-muted-foreground">
                       <IndustrialMachine machine={machine} />
                     </CardDescription>
                   </CardHeader>

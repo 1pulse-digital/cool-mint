@@ -25,10 +25,10 @@ interface IndividualWorkshopProps {
           <span>
           </span>
         </span>
-<div className="text-secondary">
+<div className="text-foreground">
 <div className="grid grid-cols-2 space-x-4">
     <div className="pt-1">
-        <p className="text-secondary">{day}</p>
+        <p className="text-foreground">{day}</p>
         <div className="pt-4 lg:block w-full pb-2">
               <hr className="h-[1px] w-full flex-grow border-0 bg-[#A1A1AA]"></hr>
             </div>
@@ -37,7 +37,7 @@ interface IndividualWorkshopProps {
         </div>
     <div className="grid justify-end items-end"><Link href={linkUrl}>
     <BookingButton color="primary">Book</BookingButton></Link>
-    <p className="text-secondary text-center text-[10px] pt-2">{spotsleft}</p>
+    <p className="text-foreground text-center text-[10px] pt-2">{spotsleft}</p>
     </div>           
 </div>
       </div>

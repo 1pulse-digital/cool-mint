@@ -16,7 +16,7 @@ const BookTour = () => {
     <div className={"bg-background lg:py-20"}>
       <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
         <div className={"font-helvetaica grid content-center px-6"}>
-          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -29,10 +29,10 @@ const BookTour = () => {
           </div>
 
           <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
-            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
             Book a Tour<span className="text-primary">.</span>
             </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-textColor 2xl:px-60">
+            <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground 2xl:px-60">
             Interested in learning more about Made in Workshop? 
             Come visit our facility at<span className="text-primary"> 10 Naaf Street, Strydompark, Randburg</span>  and take a tour with one of our team members.
             </p>
@@ -44,7 +44,7 @@ const BookTour = () => {
               <Carousel className="mx-3 pt-3">
                 <CarouselContent className="">
                   <CarouselItem>
-                    <TabsList className="h-18 grid w-full grid-cols-7 bg-[#27272A] py-2 text-secondary">
+                    <TabsList className="h-18 grid w-full grid-cols-7 bg-[#27272A] py-2 text-foreground">
                       <TabsTrigger value="monday" className="ml-2 p-5">
                         Mon
                       </TabsTrigger>

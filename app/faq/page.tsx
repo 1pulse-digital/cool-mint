@@ -10,7 +10,7 @@ const FAQ = () => {
     <div className="bg-background py-10 sm:py-20">
       <div>
         <div className="font-helvetaica grid content-center px-8">
-          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
             <div>
               <Link href="/">
                 Home

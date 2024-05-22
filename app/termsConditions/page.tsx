@@ -7,7 +7,7 @@ const TermsConditions = () => {
   return (
     <div className="bg-background py-20">
       <div className="px-8 font-helvetica sm:px-10 md:px-10 lg:px-10 xl:px-12 2xl:px-28">
-        <div className="inline-flex items-start justify-start  pb-2 font-helvetica text-xs font-normal text-secondary">
+        <div className="inline-flex items-start justify-start  pb-2 font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home
@@ -18,10 +18,10 @@ const TermsConditions = () => {
             <div className="text-primary">Terms and Conditions</div>
           </Link>
         </div>
-        <p className="font-helvetical pb-8 text-4xl font-bold text-secondary">
+        <p className="font-helvetical pb-8 text-4xl font-bold text-foreground">
           Terms and Conditions
         </p>
-        <p className="text-base font-normal text-secondary ">
+        <p className="text-base font-normal text-foreground ">
           We have created this privacy statement for online ecommerce in order
           to demonstrate our firm and continuing commitment to the privacy of
           personal information provided by those visiting our website. We hold

@@ -22,7 +22,7 @@ interface TourProps {
           <span>
           </span>
         </span>
-<div className="text-secondary">
+<div className="text-foreground">
 <div className="grid grid-cols-2 space-x-4">
 
     <div className="pt-1">{starttime} - {endtime}</div>

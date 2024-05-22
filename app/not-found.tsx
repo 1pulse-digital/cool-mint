@@ -9,8 +9,8 @@ function notFound() {
         <span className={"text-BodyText text-primary text-center font-helvetica font-light"}>
          404
           </span>
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>Page not found</h1>
-          <span className={"text-BodyText text-textColor text-center font-helvetica font-light"}>
+          <h1 className={"text-headings text-foreground font-helvetica font-bold py-4 text-center"}>Page not found</h1>
+          <span className={"text-BodyText text-muted-foreground text-center font-helvetica font-light"}>
           Sorry, we couldn&apos;t find the page you&apos;re looking for.
           </span>
           <div className="py-8 text-center ">

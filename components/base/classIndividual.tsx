@@ -35,18 +35,18 @@ const ClassItem: React.FC<ClassProps> = ({
   // learnMoreLink,
 }) => (
   <div className="flex space-x-4 text-sm  w-full  justify-center">
-    <span className="text-2xl font-bold text-secondary">{day}</span>
+    <span className="text-2xl font-bold text-foreground">{day}</span>
     <div className="text-start">
       <div className="md:flex ">
         <div className="pr-8 ">
           <div className=" flex flex-row flex-wrap w-full">
-            <div className="text-xl font-bold text-textColor ">{name}</div>
+            <div className="text-xl font-bold text-muted-foreground ">{name}</div>
             <div className="pt-4 lg:block w-full pb-2">
               <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
             </div>
           </div>
           <div className="row flex space-x-4 ">
-            <p className="inline-flex items-center py-1 text-xs text-secondary">
+            <p className="inline-flex items-center py-1 text-xs text-foreground">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -75,7 +75,7 @@ const ClassItem: React.FC<ClassProps> = ({
           <p className="text-start text-[16px] font-bold text-primary lg:pt-0">
             {price}
           </p>
-          <p className=" text-secondary">{spotsLeft}</p>
+          <p className=" text-foreground">{spotsLeft}</p>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@ const ClassIndividual: React.FC = () => {
             <Carousel className="mx-3 pt-3">
               <CarouselContent className="">
                 <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A]  px-2 py-2 text-secondary">
+                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A]  px-2 py-2 text-foreground">
                     <TabsTrigger value="january" className="p-5">
                       Jan
                     </TabsTrigger>
@@ -112,7 +112,7 @@ const ClassIndividual: React.FC = () => {
                   </TabsList>
                 </CarouselItem>
                 <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2  text-secondary">
+                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2  text-foreground">
                     <TabsTrigger value="june" className="p-5">
                       Jun
                     </TabsTrigger>
@@ -131,7 +131,7 @@ const ClassIndividual: React.FC = () => {
                   </TabsList>
                 </CarouselItem>
                 <CarouselItem>
-                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-secondary">
+                  <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-foreground">
                     <TabsTrigger value="november" className="p-5">
                       Nov
                     </TabsTrigger>

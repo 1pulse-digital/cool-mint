@@ -26,7 +26,7 @@ export function Classes() {
       />
       </div>
               <div className="row flex space-x-4 justify-center items-center">
-                <span className="inline-flex items-center py-1 text-xs text-secondary">
+                <span className="inline-flex items-center py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -43,7 +43,7 @@ export function Classes() {
                   </svg>
                   3 hours
                 </span>
-                <span className="inline-flex py-1 text-xs text-secondary">
+                <span className="inline-flex py-1 text-xs text-foreground">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -66,14 +66,14 @@ export function Classes() {
               </span>
               <p
                 className={
-                  "text-center font-helvetica text-[12px] font-normal text-secondary"
+                  "text-center font-helvetica text-[12px] font-normal text-foreground"
                 }
               >
                 Max 6 pax per session
               </p>
               <p
                 className={
-                  "pt-8 text-center font-helvetica text-BodyText text-base font-normal text-secondary lg:mx-24"
+                  "pt-8 text-center font-helvetica text-BodyText text-base font-normal text-foreground lg:mx-24"
                 }
               >
                 Dummy text is text that is used in the publishing industry or by
@@ -83,7 +83,7 @@ export function Classes() {
               </p>
               <p
                 className={
-                  "pt-6 text-center font-helvetica text-sm font-bold text-secondary"
+                  "pt-6 text-center font-helvetica text-sm font-bold text-foreground"
                 }
               >
               *Please note that this class is not a tradesman qualification.

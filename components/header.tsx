@@ -109,7 +109,7 @@ const Header: React.FC<HeaderProps> = () => {
                                 href={item.href}
                                 className="-m-4 flex items-start justify-start rounded-md p-3 px-6"
                               >
-                                <span className=" font-helvetica text-[14px] font-normal text-textColor">
+                                <span className=" font-helvetica text-[14px] font-normal text-muted-foreground">
                                   {item.name}
                                 </span>
                               </a>
@@ -214,7 +214,7 @@ const Header: React.FC<HeaderProps> = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`link ${pathname === item.href ? "font-bold text-primary lg:text-[15px] xl:text-base" : "text-secondary hover:font-bold hover:text-primary lg:text-[15px] xl:text-base"}`}
+                    className={`link ${pathname === item.href ? "font-bold text-primary lg:text-[15px] xl:text-base" : "text-foreground hover:font-bold hover:text-primary lg:text-[15px] xl:text-base"}`}
                   >
                     {item.name}
                   </a>

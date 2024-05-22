@@ -19,27 +19,27 @@ function PricingTab(props: PricingTabProps) {
       <div className="relative flex flex-col rounded-2xl p-6 py-8 md:h-[400px] lg:h-[460px] xl:h-[400px] 2xl:h-96">
         {props.popular && (
           <div className="absolute right-0 top-0 -mt-4 mr-6">
-            <div className="inline-flex items-center rounded-full bg-secondary px-3 py-1.5 sm:text-Body text-sm font-semibold text-background shadow-sm shadow-slate-950/5">
+            <div className="inline-flex items-center rounded-full bg-foreground px-3 py-1.5 sm:text-Body text-sm font-semibold text-background shadow-sm shadow-slate-950/5">
               Most Popular
             </div>
           </div>
         )}
         {<div className="absolute right-0 top-0 -mt-4 mr-6"></div>}
         <div className="mb-5 text-start font-helvetica">
-          <div className="mb-1 text-start font-helvetica text-lg font-semibold text-secondary">
+          <div className="mb-1 text-start font-helvetica text-lg font-semibold text-foreground">
             {props.planName}
           </div>
           <div className="mb-2 inline-flex items-baseline">
             <span className="text-xl text-primary">R</span>
             <span className="text-xl text-primary">{props.price}</span>
-            <span className="px-2 sm:text-Body text-sm font-medium text-secondary">
+            <span className="px-2 sm:text-Body text-sm font-medium text-foreground">
               / per month
             </span>
           </div>
-          <p className="pt-8 text-textColor sm:text-Body text-sm">{props.planDescription}</p>{" "}
+          <p className="pt-8 text-muted-foreground sm:text-Body text-sm">{props.planDescription}</p>{" "}
         </div>
 
-        <ul className="grow space-y-3 font-helvetica sm:text-Body text-sm font-normal text-textColor">
+        <ul className="grow space-y-3 font-helvetica sm:text-Body text-sm font-normal text-muted-foreground">
           {props.features.map((feature, index) => {
             return (
               <li key={index} className="flex items-center">
@@ -55,7 +55,7 @@ function PricingTab(props: PricingTabProps) {
             );
           })}
         </ul>
-        <p className="pt-8 font-helvetica text-textColor">{props.planIdeal}</p>
+        <p className="pt-8 font-helvetica text-muted-foreground">{props.planIdeal}</p>
         <div className="pt-8 text-start">
           <Link href="/becomeAMember">
             <Button color={"primary"}>Sign Up</Button>

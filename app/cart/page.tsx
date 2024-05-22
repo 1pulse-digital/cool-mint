@@ -12,7 +12,7 @@ const Cart: React.FC = () => {
       <div className={"bg-background px-8"}>
       <div className="xl:mx-28 2xl:mx-36">
         <div className="grid content-center font-helvetica ">
-          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -38,7 +38,7 @@ const Cart: React.FC = () => {
               <div className="bg-grey-500 flex space-x-6">
               
                  <div className="py-3">
-                <Label htmlFor="discount" className="mt-2 text-secondary">
+                <Label htmlFor="discount" className="mt-2 text-foreground">
                   Add Discount Code:
                 </Label>
                 <div className="sm:w-60 mt-2">
@@ -46,7 +46,7 @@ const Cart: React.FC = () => {
                     type="surname"
                     id="surname"
                     placeholder="discount@2024"
-                    className="block w-full placeholder:text-xs text-secondary"
+                    className="block w-full placeholder:text-xs text-foreground"
                   ></Input>
                 </div>
               </div> 
@@ -82,7 +82,7 @@ const Cart: React.FC = () => {
                 <div>
                   <span
                     className={
-                      "text-start font-helvetica text-BodyText text-secondary"
+                      "text-start font-helvetica text-BodyText text-foreground"
                     }
                   >
                     Total:
@@ -98,7 +98,7 @@ const Cart: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="pb-4 text-[16px]  text-textColor sm:pb-0">
+              <div className="pb-4 text-[16px]  text-muted-foreground sm:pb-0">
                 <div>
                   <span className={"font-helvetica font-bold line-through"}>
                     R1,700.00

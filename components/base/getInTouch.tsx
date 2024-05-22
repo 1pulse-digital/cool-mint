@@ -8,10 +8,10 @@ const GetInTouch = () => {
     className="flex items-center justify-center rounded-md bg-[#27272A] mx-6 lg:mx-2 font-helvetica px-2 flex-wrap md:mx-10"
   >
     <div className="rounded-lg py-8 text-center px-4">
-      <h1 className="py-4 font-helvetica text-headings font-bold text-secondary">
+      <h1 className="py-4 font-helvetica text-headings font-bold text-foreground">
         Get In Touch<span className="text-primary">.</span>
       </h1>
-      <span className="font-helvetica text-BodyText font-normal text-secondary">
+      <span className="font-helvetica text-BodyText font-normal text-foreground">
       Whether you want to <span className="text-primary">learn more about us or chat over a cup of coffee</span>, our doors are always open.
 
       </span>

@@ -6,8 +6,8 @@ export const FAQSBanner = () => {
   return (
       <div className={"grid grid-cols-1 bg-[#2A2A2A] px-8 "}>
         <div className={"grid content-center font-helvetica p-5"}>
-          <h1 className={"text-headings text-secondary font-helvetica font-bold py-4 text-center"}>FAQs</h1>
-          <span className={"text-BodyText text-textColor text-center font-helvetica font-light"}>
+          <h1 className={"text-headings text-foreground font-helvetica font-bold py-4 text-center"}>FAQs</h1>
+          <span className={"text-BodyText text-muted-foreground text-center font-helvetica font-light"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
           </span>
           <div className="py-8 text-center ">

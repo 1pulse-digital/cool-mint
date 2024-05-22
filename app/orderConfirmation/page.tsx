@@ -12,7 +12,7 @@ const OrderConfirmation: React.FC = () => {
   return (
     <div className={"bg-background px-8 py-20"}>
       <div className="grid content-center items-center text-center font-helvetica sm:p-10">
-        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
+        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home
@@ -48,7 +48,7 @@ const OrderConfirmation: React.FC = () => {
         </div>
       </div>
       {/* <div className="py-4">
-<hr className="flex-grow h-[1px] bg-textColor border-0"></hr>
+<hr className="flex-grow h-[1px] bg-muted-foreground border-0"></hr>
 </div> */}
       <div className="sm:flex sm:justify-center sm:space-x-52">
         <div className="">
@@ -60,7 +60,7 @@ const OrderConfirmation: React.FC = () => {
           <div>
             <span
               className={
-                "text-start font-helvetica text-BodyText font-bold text-textColor"
+                "text-start font-helvetica text-BodyText font-bold text-muted-foreground"
               }
             >
               Total:

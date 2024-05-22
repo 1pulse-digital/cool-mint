@@ -13,7 +13,7 @@ const BookingConfirmation = () => {
     <div className="bg-background">
       <div className={"bg-background px-8 py-12 md:mx-20 xl:mx-40 2xl:mx-80"}>
         <div className={"grid content-center font-helvetica sm:p-10 "}>
-          <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -26,7 +26,7 @@ const BookingConfirmation = () => {
           </div>
           <h1
             className={
-              "py-4 pb-10 text-center font-helvetica text-headings font-bold text-secondary"
+              "py-4 pb-10 text-center font-helvetica text-headings font-bold text-foreground"
             }
           >
             Booking Confirmation<span className="text-primary">.</span>
@@ -35,7 +35,7 @@ const BookingConfirmation = () => {
         <div>
           <div className="grid-cols-2 md:grid">
             <div className="pb-2 md:mr-6">
-              <Label htmlFor="name" className="mt-2 text-secondary">
+              <Label htmlFor="name" className="mt-2 text-foreground">
                 First Name
               </Label>
               <div className="mt-2">
@@ -43,14 +43,14 @@ const BookingConfirmation = () => {
                   type="name"
                   id="name"
                   placeholder="Name"
-                  className="block w-full placeholder:text-xs text-secondary"
+                  className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
                 /
               </div>
             </div>
 
             <div className="pb-2">
-              <Label htmlFor="surname" className="mt-2 text-secondary">
+              <Label htmlFor="surname" className="mt-2 text-foreground">
                 Last Name
               </Label>
               <div className="mt-2">
@@ -58,14 +58,14 @@ const BookingConfirmation = () => {
                   type="surname"
                   id="surname"
                   placeholder="surname"
-                  className="block w-full placeholder:text-xs text-secondary"
+                  className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
                 /
               </div>
             </div>
 
             <div className="pb-2 md:mr-6">
-              <Label htmlFor="email" className="mt-2 text-secondary">
+              <Label htmlFor="email" className="mt-2 text-foreground">
                 Email Address
               </Label>
               <div className="mt-2">
@@ -73,14 +73,14 @@ const BookingConfirmation = () => {
                   type="email"
                   id="email"
                   placeholder="Email"
-                  className="block w-full placeholder:text-xs text-secondary"
+                  className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
                 /
               </div>
             </div>
 
             <div className="pb-2">
-              <Label htmlFor="tel" className="mt-2 text-secondary">
+              <Label htmlFor="tel" className="mt-2 text-foreground">
                 Contact Number
               </Label>
               <div className="mt-2">
@@ -88,7 +88,7 @@ const BookingConfirmation = () => {
                   type="tel"
                   id="tel"
                   placeholder="Tel"
-                  className="block w-full placeholder:text-xs text-secondary"
+                  className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
                 /
               </div>
@@ -97,19 +97,19 @@ const BookingConfirmation = () => {
           <div>
             <p
               className={
-                "py-0 mb-8 text-start font-helvetica text-[14px] font-normal text-secondary"
+                "py-0 mb-8 text-start font-helvetica text-[14px] font-normal text-foreground"
               }
             >
               What are you interested in?
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-1 bg-background font-helvetica text-[14px] text-secondary space-y-2">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-1 bg-background font-helvetica text-[14px] text-foreground space-y-2">
     {/* Checkbox Set 1 */}
     <div className="flex items-center space-x-2">
       <Checkbox id="workshops" />
       <label
         htmlFor="workshops"
-        className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         Workshops
       </label>
@@ -120,7 +120,7 @@ const BookingConfirmation = () => {
       <Checkbox id="woodwork" />
       <label
         htmlFor="woodwork"
-        className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         Woodwork
       </label>
@@ -131,7 +131,7 @@ const BookingConfirmation = () => {
       <Checkbox id="metalwork" />
       <label
         htmlFor="metalwork"
-        className="text-sm font-medium leading-none text-secondary peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         Metalwork
       </label>
@@ -179,7 +179,7 @@ const BookingConfirmation = () => {
             Booking information:
           </p>
           <div>
-            <div className="flex flex-row space-x-10 py-1 text-start text-textColor ">
+            <div className="flex flex-row space-x-10 py-1 text-start text-muted-foreground ">
               <div>
                 <p
                   className={"text-start font-helvetica text-[16px] font-bold"}
@@ -195,7 +195,7 @@ const BookingConfirmation = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-row space-x-10 py-1 text-[16px] text-textColor">
+            <div className="flex flex-row space-x-10 py-1 text-[16px] text-muted-foreground">
               <div>
                 <span className={"font-helvetica font-bold"}>Time:</span>
               </div>
@@ -203,7 +203,7 @@ const BookingConfirmation = () => {
                 <span className={"font-helvetica font-bold"}>9:00 am</span>
               </div>
             </div>
-            <div className="flex flex-row space-x-2 py-1 text-[16px] text-textColor">
+            <div className="flex flex-row space-x-2 py-1 text-[16px] text-muted-foreground">
               <div>
                 <span className={"font-helvetica text-[16px] font-bold"}>
                   Location:

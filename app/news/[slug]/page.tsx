@@ -55,7 +55,7 @@ const PostPage = async (props: PostPageProps) => {
     
       <div className="grid items-center justify-center px-8 sm:px-4 2xl:mx-40">
         <div className={"grid content-center font-helvetica sm:p-10 "}>
-          <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-secondary">
+          <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-foreground">
             <Link href="/">
               <div>
                 Home
@@ -76,14 +76,14 @@ const PostPage = async (props: PostPageProps) => {
           </div>
           <h1
             className={
-              "text-start font-helvetica text-headings font-bold leading-tight text-secondary"
+              "text-start font-helvetica text-headings font-bold leading-tight text-foreground"
             }
           >
             {content.title}
             <span className="leading-snug text-primary">.</span>
           </h1>
           <div className="row flex space-x-4 pb-8">
-            <span className="inline-flex items-center py-1 text-xs text-secondary">
+            <span className="inline-flex items-center py-1 text-xs text-foreground">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -100,7 +100,7 @@ const PostPage = async (props: PostPageProps) => {
               </svg>
               {content.date}
             </span>
-            <span className="inline-flex py-1 text-xs text-secondary">
+            <span className="inline-flex py-1 text-xs text-foreground">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -120,7 +120,7 @@ const PostPage = async (props: PostPageProps) => {
           </div>
           <p
             className={
-              "pb-8 text-start font-helvetica text-BodyText font-light text-textColor"
+              "pb-8 text-start font-helvetica text-BodyText font-light text-muted-foreground"
             }
           >
             {content.description}
@@ -128,13 +128,13 @@ const PostPage = async (props: PostPageProps) => {
 
           <p
             className={
-              "text-start font-helvetica text-[16px] font-normal text-secondary"
+              "text-start font-helvetica text-[16px] font-normal text-foreground"
             }
           >
            <Markdown>{content.content}</Markdown>
           </p>
           <div className="pt-12">
-            <hr className="h-[1px] flex-grow border-0 bg-textColor"></hr>
+            <hr className="h-[1px] flex-grow border-0 bg-muted-foreground"></hr>
           </div>
 
           {/* Latest News Start */}
@@ -142,12 +142,12 @@ const PostPage = async (props: PostPageProps) => {
           <div>
             <h1
               className={
-                "py-10 text-start font-helvetica text-headings font-bold text-secondary"
+                "py-10 text-start font-helvetica text-headings font-bold text-foreground"
               }
             >
               Latest News
             </h1>
-            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 text-secondary w-full">
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 text-foreground w-full">
               {posts
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .slice(0, 3) // latest three posts
@@ -171,7 +171,7 @@ const PostPage = async (props: PostPageProps) => {
                         </Link>
                         <div className="absolute bottom-0 z-10 grid h-auto w-full  px-5">
                           <div className="row flex space-x-4 py-2">
-                            <p className="inline-flex items-start py-1 text-xs text-secondary">
+                            <p className="inline-flex items-start py-1 text-xs text-foreground">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -188,7 +188,7 @@ const PostPage = async (props: PostPageProps) => {
                               </svg>
                               {post.date}
                             </p>
-                            <p className="inline-flex py-1 text-xs text-secondary">
+                            <p className="inline-flex py-1 text-xs text-foreground">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -206,10 +206,10 @@ const PostPage = async (props: PostPageProps) => {
                               {post.author}
                             </p>
                           </div>
-                          <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-secondary hover:text-primary">
+                          <p className="pb-1 text-start font-helvetica text-[18px] font-bold leading-tight text-foreground hover:text-primary">
                             {post.title}
                           </p>
-                          <div className="pb-8 pt-2 text-start text-[12px] text-secondary">
+                          <div className="pb-8 pt-2 text-start text-[12px] text-foreground">
                             <p>{post.categories}</p>
                           </div>
                         </div>

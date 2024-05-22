@@ -8,7 +8,7 @@ const Memberships = () => {
   return (
     <div className={"bg-background py-10"}>
       <div className={"grid content-center px-8 font-helvetica sm:pt-10"}>
-        <div className="inline-flex justify-center font-helvetica text-xs font-normal text-secondary">
+        <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home
@@ -21,10 +21,10 @@ const Memberships = () => {
         </div>
         <div>
           <div className="sm:px-4 px-0 md:mx-16 lg:mx-40 xl:mx-20 2xl:px-0">
-            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-secondary">
+            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
               Memberships<span className="text-primary">.</span>
             </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-textColor lg:px-12 xl:px-24 2xl:px-60">
+            <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground lg:px-12 xl:px-24 2xl:px-60">
             Our unique makerspace is equipped with industrial tools and machinery designed for <span className="text-primary">manufacturers, 
             DIY enthusiasts, hobbyists, freelancers</span>, and anyone looking for workshop space.
               <br />

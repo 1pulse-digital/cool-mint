@@ -23,8 +23,8 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
       <Image src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
-      <p className="font-helvetica text-xl font-bold text-textColor">{title}</p>
-      <p className="font-helvetica text-Body font-normal text-secondary">
+      <p className="font-helvetica text-xl font-bold text-muted-foreground">{title}</p>
+      <p className="font-helvetica text-Body font-normal text-foreground">
         {description}
       </p>
       <span>
@@ -57,7 +57,7 @@ const Offerings: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center text-primary md:h-auto lg:h-screen lg:py-0">
       <div className="">
-        <h1 className="py-4 text-headings font-bold text-secondary">
+        <h1 className="py-4 text-headings font-bold text-foreground">
           Our Offerings<span className="text-primary">?</span>
         </h1>
       </div>

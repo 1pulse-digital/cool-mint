@@ -64,9 +64,9 @@ const Carousel = () => {
            /></div>
             <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose py-8"}>
 
-             <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>Parson</h3>
+             <h3 className={"text-BodyText text-muted-foreground font-helvetica font-semibold text-start"}>Parson</h3>
              <span className="text-primary font-helvetica text-sm py-2 pb-6">Position</span>
-             <span className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>
+             <span className={"text-BodyText text-muted-foreground text-start text-sm font-helvetica font-light"}>
              Dummy text is text that is used in the publishing industry or by web designers
               to occupy the space which will later be filled with real content. This is required when, 
               for example, the final text is not yet available. Dummy text is also known as fill text.
@@ -88,9 +88,9 @@ const Carousel = () => {
            /></div>
             <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose py-8"}>
 
-             <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>Peter</h3>
+             <h3 className={"text-BodyText text-muted-foreground font-helvetica font-semibold text-start"}>Peter</h3>
              <span className="text-primary font-helvetica text-sm py-2 pb-6">Position</span>
-             <span className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>
+             <span className={"text-BodyText text-muted-foreground text-start text-sm font-helvetica font-light"}>
              Dummy text is text that is used in the publishing industry or by web designers
               to occupy the space which will later be filled with real content. This is required when, 
               for example, the final text is not yet available. Dummy text is also known as fill text.
@@ -112,9 +112,9 @@ const Carousel = () => {
            /></div>
             <div className={"grid content-center font-helvetica p-5 sm:p-10 md:max-w-prose py-8"}>
 
-             <h3 className={"text-BodyText text-textColor font-helvetica font-semibold text-start"}>Isaac</h3>
+             <h3 className={"text-BodyText text-muted-foreground font-helvetica font-semibold text-start"}>Isaac</h3>
              <span className="text-primary font-helvetica text-sm py-2 pb-6">Position</span>
-             <span className={"text-BodyText text-textColor text-start text-sm font-helvetica font-light"}>
+             <span className={"text-BodyText text-muted-foreground text-start text-sm font-helvetica font-light"}>
              Dummy text is text that is used in the publishing industry or by web designers
               to occupy the space which will later be filled with real content. This is required when, 
               for example, the final text is not yet available. Dummy text is also known as fill text.
