@@ -1,12 +1,16 @@
 "use client"
-import Link from "next/link"
-import Image from "next/image"
-import { Fragment, useState } from "react"
+
+import { Button } from "@/components/ui/button"
+import { useUser } from "@/contexts/user"
+import { Role } from "@/lib/fusion/auth/role.pb"
 import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
-import logo from "../images/miw-logo.webp"
+import Image from "next/image"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
+import { Fragment, useEffect, useState } from "react"
+import logo from "../images/miw-logo.webp"
+import { UserNav } from "./user-nav"
 
 const navigationItems = [
   {
@@ -49,12 +53,23 @@ const navigationItems = [
 
 interface HeaderProps {}
 const Header: React.FC<HeaderProps> = () => {
+  const [role, setRole] = useState<Role>(Role.NONE)
+  const user = useUser()
   const [] = useState(false)
   const pathname = usePathname()
- 
+  useEffect(() => {
+    if (!user) {
+      setRole(Role.NONE)
+      return
+    }
+    user.getIdTokenResult().then((idToken) => {
+      const role = (idToken.claims["role"] as Role) || Role.NONE
+      setRole(role)
+    })
+  }, [user])
+
   return (
-    
-    <div className={"relative z-30 h-[90px] bg-background"}>
+    <div className={"relative z-30 h-[90px]"}>
       <Popover className="fixed w-full bg-background">
         {({ open }) => (
           <div className="flex w-full justify-between px-4  py-4 sm:space-x-4 sm:px-6 lg:px-8 2xl:px-28">
@@ -70,7 +85,7 @@ const Header: React.FC<HeaderProps> = () => {
               {/* Mobile menu */}
               <div className="grid place-items-center justify-center lg:hidden">
                 {/* Mobile menu button */}
-                <Popover.Button className="mr-24 inline-flex  items-center justify-center rounded-md bg-background p-2 text-gray-400 hover:bg-background hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:mr-0">
+                <Popover.Button className="mr-24 inline-flex items-center justify-center rounded-md bg-background p-2 text-gray-400 hover:bg-background hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:mr-0">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -91,7 +106,7 @@ const Header: React.FC<HeaderProps> = () => {
                     static
                     className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition "
                   >
-                    <div className="mt-16 mx-6 w-2/3 bg-[#27272A] ring-1 ring-black ring-opacity-5 sm:w-1/3">
+                    <div className="mx-6 mt-16 w-2/3 bg-[#27272A] ring-1 ring-black ring-opacity-5 sm:w-1/3">
                       <div className="px-5 pb-6 pt-5">
                         <div className="flex items-start justify-between">
                           <div className="-mr-2">
@@ -121,7 +136,7 @@ const Header: React.FC<HeaderProps> = () => {
                       <div className="space-y-6 px-5 py-2 pb-6">
                         <div className="w-full sm:block">
                           <Link href="/login">
-                            <Button color={"primary"}>Login</Button>
+                            <Button>Login</Button>
                           </Link>
                         </div>
                         <div className="flex items-center justify-start gap-x-2 sm:hidden">
@@ -199,7 +214,7 @@ const Header: React.FC<HeaderProps> = () => {
                   </Popover.Panel>
                 </Transition>
               </div>
-              
+
               {/* Desktop menu */}
               <div className="hidden justify-center gap-x-0 space-x-5 py-2 text-base text-primary last:items-center lg:flex lg:items-center  lg:gap-x-0 lg:space-x-4 xl:flex xl:items-center xl:gap-x-1 xl:space-x-8 ">
                 {navigationItems.map((item) => (
@@ -269,9 +284,11 @@ const Header: React.FC<HeaderProps> = () => {
                 </div>
               </div>
               <div className="hidden lg:block">
-                <Link href="/login">
-                  <Button>Login</Button>
-                </Link>
+                {!user && (
+                  <Link href="/login">
+                    <Button>Login</Button>
+                  </Link>
+                )}
               </div>
 
               {/* Shopping Cart  */}
@@ -295,6 +312,7 @@ const Header: React.FC<HeaderProps> = () => {
                   </span>
                 </Link>
               </div>
+              {user && <UserNav role={role} />}
             </div>
           </div>
         )}
@@ -303,4 +321,4 @@ const Header: React.FC<HeaderProps> = () => {
   )
 }
 
-export default Header;
+export default Header
