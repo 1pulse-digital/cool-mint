@@ -18,14 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="http://localhost:3000/_next/static/media/MiW%20Favicon.08e4e686.svg"
-      />
-
+    <html lang="en" className="">
       <body className={`${isDev ? "debug-screens " : ""}${inter.className}`}>
         <Header />
         {children}
