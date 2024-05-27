@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="">
-      <body className={cn(
-        "min-h-screen bg-background antialiased",
-        inter.className,
-        {"debug-screens": isDev}
-      )}>
+      <body
+        className={cn("h-screen bg-background antialiased", inter.className, {
+          "debug-screens": isDev,
+        })}
+      >
         <UserProvider>
           <Header />
           {children}
