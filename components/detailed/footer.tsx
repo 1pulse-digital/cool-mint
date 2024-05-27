@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <div className="bg-background">
+    <div>
       <div>
         <hr className="mx-8 h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex 2xl:mx-28"></hr>
       </div>
