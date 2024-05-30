@@ -27,8 +27,6 @@ export async function handleLogout() {
     maxAge: 0, // One day
     path: "/",
   })
-
-  redirect("/login")
 }
 
 export async function authHeader(): Promise<Record<string, string>> {
