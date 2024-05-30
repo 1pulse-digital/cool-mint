@@ -11,12 +11,12 @@ interface SignOutResult {
   error: AuthError | Error | null
 }
 
-export default async function signOut(): Promise<SignOutResult> {
+export default async function signOut(msg?: string): Promise<SignOutResult> {
   let error: AuthError | Error | null = null
   try {
-    await firebaseSignOut(auth)
     await handleLogout()
-    toast.success("You have been signed out.")
+    await firebaseSignOut(auth)
+    toast.success(msg ?? "You have been signed out.")
   } catch (e) {
     error = e as AuthError | Error
   }
