@@ -12,6 +12,7 @@ export { MIN_SUPPORTED_VERSION_0_0_56 } from "twirpscript";
 import type { ClientConfiguration } from "twirpscript";
 import * as masterClassSession from "./session.pb";
 import * as masterClassMasterClass from "./masterClass.pb";
+import * as commerceProduct from "../commerce/product.pb";
 
 //========================================//
 //                 Types                  //
@@ -22,6 +23,10 @@ export interface UpcomingSessionsRequest {}
 export interface UpcomingSessionResponse {
   sessions: masterClassSession.Session[];
   masterClasses: masterClassMasterClass.MasterClass[];
+}
+
+export interface GetProductRequest {
+  name: string;
 }
 
 //========================================//
@@ -43,6 +48,21 @@ export async function UpcomingSessions(
   return UpcomingSessionResponse.decode(response);
 }
 
+/**
+ * GetProduct returns the product linked to the session
+ */
+export async function GetProduct(
+  getProductRequest: GetProductRequest,
+  config?: ClientConfiguration,
+): Promise<commerceProduct.Product> {
+  const response = await PBrequest(
+    "/masterClass.SessionManager/GetProduct",
+    GetProductRequest.encode(getProductRequest),
+    config,
+  );
+  return commerceProduct.Product.decode(response);
+}
+
 //========================================//
 //       SessionManager JSON Client       //
 //========================================//
@@ -62,6 +82,21 @@ export async function UpcomingSessionsJSON(
   return UpcomingSessionResponseJSON.decode(response);
 }
 
+/**
+ * GetProduct returns the product linked to the session
+ */
+export async function GetProductJSON(
+  getProductRequest: GetProductRequest,
+  config?: ClientConfiguration,
+): Promise<commerceProduct.Product> {
+  const response = await JSONrequest(
+    "/masterClass.SessionManager/GetProduct",
+    GetProductRequestJSON.encode(getProductRequest),
+    config,
+  );
+  return commerceProduct.ProductJSON.decode(response);
+}
+
 //========================================//
 //             SessionManager             //
 //========================================//
@@ -74,6 +109,13 @@ export interface SessionManager<Context = unknown> {
     upcomingSessionsRequest: UpcomingSessionsRequest,
     context: Context,
   ) => Promise<UpcomingSessionResponse> | UpcomingSessionResponse;
+  /**
+   * GetProduct returns the product linked to the session
+   */
+  GetProduct: (
+    getProductRequest: GetProductRequest,
+    context: Context,
+  ) => Promise<commerceProduct.Product> | commerceProduct.Product;
 }
 
 export function createSessionManager<Context>(
@@ -92,6 +134,15 @@ export function createSessionManager<Context>(
         output: {
           protobuf: UpcomingSessionResponse,
           json: UpcomingSessionResponseJSON,
+        },
+      },
+      GetProduct: {
+        name: "GetProduct",
+        handler: service.GetProduct,
+        input: { protobuf: GetProductRequest, json: GetProductRequestJSON },
+        output: {
+          protobuf: commerceProduct.Product,
+          json: commerceProduct.ProductJSON,
         },
       },
     },
@@ -242,6 +293,74 @@ export const UpcomingSessionResponse = {
   },
 };
 
+export const GetProductRequest = {
+  /**
+   * Serializes GetProductRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<GetProductRequest>): Uint8Array {
+    return GetProductRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes GetProductRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): GetProductRequest {
+    return GetProductRequest._readMessage(
+      GetProductRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes GetProductRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<GetProductRequest>): GetProductRequest {
+    return {
+      name: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetProductRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.name) {
+      writer.writeString(1, msg.name);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetProductRequest,
+    reader: protoscript.BinaryReader,
+  ): GetProductRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.name = reader.readString();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
@@ -365,6 +484,62 @@ export const UpcomingSessionResponseJSON = {
         masterClassMasterClass.MasterClassJSON._readMessage(m, item);
         msg.masterClasses.push(m);
       }
+    }
+    return msg;
+  },
+};
+
+export const GetProductRequestJSON = {
+  /**
+   * Serializes GetProductRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<GetProductRequest>): string {
+    return JSON.stringify(GetProductRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes GetProductRequest from JSON.
+   */
+  decode: function (json: string): GetProductRequest {
+    return GetProductRequestJSON._readMessage(
+      GetProductRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes GetProductRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<GetProductRequest>): GetProductRequest {
+    return {
+      name: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetProductRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.name) {
+      json["name"] = msg.name;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetProductRequest,
+    json: any,
+  ): GetProductRequest {
+    const _name_ = json["name"];
+    if (_name_) {
+      msg.name = _name_;
     }
     return msg;
   },
