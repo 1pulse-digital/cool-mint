@@ -21,15 +21,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="">
+    <html lang="en">
       <body
         className={cn("h-screen bg-background antialiased", inter.className, {
           "debug-screens": isDev,
         })}
       >
         <UserProvider>
-          <Header />
-          {children}
+          <div className="flex flex-col h-full">
+            <Header />
+            {children}
+          </div>
           <Footer />
 
           <Toaster />
