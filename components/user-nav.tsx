@@ -5,15 +5,18 @@ import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useUser } from "@/contexts/user"
 import signOut from "@/lib/firebase/auth/sign-out"
 import { Role } from "@/lib/fusion/auth/role.pb"
+import { CreditCard, User } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { MouseEventHandler } from "react"
 
 // generateAvatarFallback generates a 2-letter fallback for the user's avatar
@@ -38,7 +41,8 @@ const handleLogout: MouseEventHandler<HTMLDivElement> = async (e) => {
   await signOut()
 }
 
-export const UserNav = (props: {role: Role}) => {
+export const UserNav = (props: { role: Role }) => {
+  const router = useRouter()
   const user = useUser()
   const fallback = generateFallbackName(user?.displayName, user?.email)
   return (
@@ -60,14 +64,24 @@ export const UserNav = (props: {role: Role}) => {
             <p className="text-xs leading-none text-muted-foreground">
               {user?.email ?? ""}
             </p>
-            <p className="text-xs leading-none text-muted-foreground">
-              ({props.role})
-            </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem onClick={() => router.push("/profile")}>
+            <User className="mr-2 h-4 w-4" />
+            <span>Profile</span>
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push("/orders")}>
+            <CreditCard className="mr-2 h-4 w-4" />
+            <span>Orders</span>
+            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>
-          Log out
+          Logout
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
