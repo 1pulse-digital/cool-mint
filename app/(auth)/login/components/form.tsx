@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import signIn from "@/lib/firebase/auth/sign-in"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FirebaseError } from "firebase/app"
+import { useRouter, useSearchParams } from "next/navigation"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
@@ -24,6 +25,10 @@ const schema = z.object({
 type LoginFormValues = z.infer<typeof schema>
 
 export const LoginForm = () => {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirect = searchParams.get("redirect") || '/'
+
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(schema),
     defaultValues: { email: "", password: "" },
@@ -36,7 +41,7 @@ export const LoginForm = () => {
     try {
       const response = await signIn(values.email, values.password)
       if (response.error === null) {
-        // do nothing, the auth state will be updated automatically
+        router.push(redirect)
       } else {
         toast.error(response.error.message)
       }
