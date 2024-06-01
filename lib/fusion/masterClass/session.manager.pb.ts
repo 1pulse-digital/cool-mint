@@ -49,7 +49,8 @@ export async function UpcomingSessions(
 }
 
 /**
- * GetProduct returns the product linked to the session
+ * (WIP) GetProduct returns the product linked to the session
+ * Use with caution, this is a WIP and might be removed.
  */
 export async function GetProduct(
   getProductRequest: GetProductRequest,
@@ -83,7 +84,8 @@ export async function UpcomingSessionsJSON(
 }
 
 /**
- * GetProduct returns the product linked to the session
+ * (WIP) GetProduct returns the product linked to the session
+ * Use with caution, this is a WIP and might be removed.
  */
 export async function GetProductJSON(
   getProductRequest: GetProductRequest,
@@ -110,7 +112,8 @@ export interface SessionManager<Context = unknown> {
     context: Context,
   ) => Promise<UpcomingSessionResponse> | UpcomingSessionResponse;
   /**
-   * GetProduct returns the product linked to the session
+   * (WIP) GetProduct returns the product linked to the session
+   * Use with caution, this is a WIP and might be removed.
    */
   GetProduct: (
     getProductRequest: GetProductRequest,

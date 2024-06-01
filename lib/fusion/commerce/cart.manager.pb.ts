@@ -28,13 +28,14 @@ export interface RemoveFromCartRequest {
 
 export interface ClearCartRequest {}
 
+export interface MyCartRequest {}
+
 //========================================//
 //      CartManager Protobuf Client       //
 //========================================//
 
 /**
  * AddToCart adds the specified quantity of the product to the user's cart
- * The cart is identified by the uid in the JWT token
  */
 export async function AddToCart(
   addToCartRequest: AddToCartRequest,
@@ -50,7 +51,6 @@ export async function AddToCart(
 
 /**
  * RemoveFromCart removes the specified quantity of the product from the user's cart
- * The cart is identified by the uid in the JWT token
  */
 export async function RemoveFromCart(
   removeFromCartRequest: RemoveFromCartRequest,
@@ -79,13 +79,27 @@ export async function ClearCart(
   return commerceCart.Cart.decode(response);
 }
 
+/**
+ * MyCart returns the user's cart
+ */
+export async function MyCart(
+  myCartRequest: MyCartRequest,
+  config?: ClientConfiguration,
+): Promise<commerceCart.Cart> {
+  const response = await PBrequest(
+    "/commerce.CartManager/MyCart",
+    MyCartRequest.encode(myCartRequest),
+    config,
+  );
+  return commerceCart.Cart.decode(response);
+}
+
 //========================================//
 //        CartManager JSON Client         //
 //========================================//
 
 /**
  * AddToCart adds the specified quantity of the product to the user's cart
- * The cart is identified by the uid in the JWT token
  */
 export async function AddToCartJSON(
   addToCartRequest: AddToCartRequest,
@@ -101,7 +115,6 @@ export async function AddToCartJSON(
 
 /**
  * RemoveFromCart removes the specified quantity of the product from the user's cart
- * The cart is identified by the uid in the JWT token
  */
 export async function RemoveFromCartJSON(
   removeFromCartRequest: RemoveFromCartRequest,
@@ -130,14 +143,32 @@ export async function ClearCartJSON(
   return commerceCart.CartJSON.decode(response);
 }
 
+/**
+ * MyCart returns the user's cart
+ */
+export async function MyCartJSON(
+  myCartRequest: MyCartRequest,
+  config?: ClientConfiguration,
+): Promise<commerceCart.Cart> {
+  const response = await JSONrequest(
+    "/commerce.CartManager/MyCart",
+    MyCartRequestJSON.encode(myCartRequest),
+    config,
+  );
+  return commerceCart.CartJSON.decode(response);
+}
+
 //========================================//
 //              CartManager               //
 //========================================//
 
+/**
+ * CartManager manages a user's cart by inspecting the uid in the context
+ * This requires the uid and email to be set in the Context, usually in earlier middleware
+ */
 export interface CartManager<Context = unknown> {
   /**
    * AddToCart adds the specified quantity of the product to the user's cart
-   * The cart is identified by the uid in the JWT token
    */
   AddToCart: (
     addToCartRequest: AddToCartRequest,
@@ -145,7 +176,6 @@ export interface CartManager<Context = unknown> {
   ) => Promise<commerceCart.Cart> | commerceCart.Cart;
   /**
    * RemoveFromCart removes the specified quantity of the product from the user's cart
-   * The cart is identified by the uid in the JWT token
    */
   RemoveFromCart: (
     removeFromCartRequest: RemoveFromCartRequest,
@@ -156,6 +186,13 @@ export interface CartManager<Context = unknown> {
    */
   ClearCart: (
     clearCartRequest: ClearCartRequest,
+    context: Context,
+  ) => Promise<commerceCart.Cart> | commerceCart.Cart;
+  /**
+   * MyCart returns the user's cart
+   */
+  MyCart: (
+    myCartRequest: MyCartRequest,
     context: Context,
   ) => Promise<commerceCart.Cart> | commerceCart.Cart;
 }
@@ -183,6 +220,12 @@ export function createCartManager<Context>(service: CartManager<Context>) {
         name: "ClearCart",
         handler: service.ClearCart,
         input: { protobuf: ClearCartRequest, json: ClearCartRequestJSON },
+        output: { protobuf: commerceCart.Cart, json: commerceCart.CartJSON },
+      },
+      MyCart: {
+        name: "MyCart",
+        handler: service.MyCart,
+        input: { protobuf: MyCartRequest, json: MyCartRequestJSON },
         output: { protobuf: commerceCart.Cart, json: commerceCart.CartJSON },
       },
     },
@@ -392,6 +435,51 @@ export const ClearCartRequest = {
   },
 };
 
+export const MyCartRequest = {
+  /**
+   * Serializes MyCartRequest to protobuf.
+   */
+  encode: function (_msg?: PartialDeep<MyCartRequest>): Uint8Array {
+    return new Uint8Array();
+  },
+
+  /**
+   * Deserializes MyCartRequest from protobuf.
+   */
+  decode: function (_bytes?: ByteSource): MyCartRequest {
+    return {};
+  },
+
+  /**
+   * Initializes MyCartRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<MyCartRequest>): MyCartRequest {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<MyCartRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    _msg: MyCartRequest,
+    _reader: protoscript.BinaryReader,
+  ): MyCartRequest {
+    return _msg;
+  },
+};
+
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
@@ -560,6 +648,47 @@ export const ClearCartRequestJSON = {
    * @private
    */
   _readMessage: function (msg: ClearCartRequest, _json: any): ClearCartRequest {
+    return msg;
+  },
+};
+
+export const MyCartRequestJSON = {
+  /**
+   * Serializes MyCartRequest to JSON.
+   */
+  encode: function (_msg?: PartialDeep<MyCartRequest>): string {
+    return "{}";
+  },
+
+  /**
+   * Deserializes MyCartRequest from JSON.
+   */
+  decode: function (_json?: string): MyCartRequest {
+    return {};
+  },
+
+  /**
+   * Initializes MyCartRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<MyCartRequest>): MyCartRequest {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<MyCartRequest>,
+  ): Record<string, unknown> {
+    return {};
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (msg: MyCartRequest, _json: any): MyCartRequest {
     return msg;
   },
 };
