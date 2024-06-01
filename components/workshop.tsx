@@ -21,7 +21,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
 }) => {
   const handleAddToCart = async () => {
     await addToCart({
-      productName: session.name,
+      productName: session.product,
       quantity: 1n,
     })
     toast.success("Added to cart")

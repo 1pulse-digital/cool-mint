@@ -26,6 +26,10 @@ export interface Session {
    * Confirmed attendees
    */
   confirmedAttendees: number;
+  /**
+   * Product is the linked product for the session
+   */
+  product: string;
 }
 
 //========================================//
@@ -63,6 +67,7 @@ export const Session = {
       parent: "",
       date: "",
       confirmedAttendees: 0,
+      product: "",
       ...msg,
     };
   },
@@ -88,6 +93,9 @@ export const Session = {
     }
     if (msg.confirmedAttendees) {
       writer.writeInt32(5, msg.confirmedAttendees);
+    }
+    if (msg.product) {
+      writer.writeString(6, msg.product);
     }
     return writer;
   },
@@ -120,6 +128,10 @@ export const Session = {
         }
         case 5: {
           msg.confirmedAttendees = reader.readInt32();
+          break;
+        }
+        case 6: {
+          msg.product = reader.readString();
           break;
         }
         default: {
@@ -161,6 +173,7 @@ export const SessionJSON = {
       parent: "",
       date: "",
       confirmedAttendees: 0,
+      product: "",
       ...msg,
     };
   },
@@ -184,6 +197,9 @@ export const SessionJSON = {
     }
     if (msg.confirmedAttendees) {
       json["confirmedAttendees"] = msg.confirmedAttendees;
+    }
+    if (msg.product) {
+      json["product"] = msg.product;
     }
     return json;
   },
@@ -211,6 +227,10 @@ export const SessionJSON = {
     const _confirmedAttendees_ = json["confirmedAttendees"];
     if (_confirmedAttendees_) {
       msg.confirmedAttendees = protoscript.parseNumber(_confirmedAttendees_);
+    }
+    const _product_ = json["product"];
+    if (_product_) {
+      msg.product = _product_;
     }
     return msg;
   },
