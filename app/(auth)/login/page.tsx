@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { LoginForm } from "./components/form"
 import { Button } from "@/components/ui/button"
 import { MoveRight } from "lucide-react"
+import Link from "next/link"
+import { LoginForm } from "./components/form"
 
 const Page = () => {
   return (
@@ -9,8 +9,8 @@ const Page = () => {
       <h1 className="py-4 text-center text-3xl font-bold text-foreground md:text-start">
         Login
       </h1>
-      <div className="flex items-center gap-4 min-w-[360px]">
-        <p className="text-sm text-muted-foreground grow">
+      <div className="flex min-w-[360px] items-center gap-4">
+        <p className="grow text-sm text-muted-foreground">
           Don&rsquo;t have an account?
         </p>
         <Link href="/register">
