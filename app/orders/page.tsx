@@ -1,9 +1,7 @@
 import React from "react";
-import PricingTable from "@/components/base/pricing-table";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
 import HeaderTitle from "@/components/base/headerTitle";
-import OrderHis from "@/components/base/orderHis";
 import OrdersTable from "@/components/base/orders-table";
 
  
