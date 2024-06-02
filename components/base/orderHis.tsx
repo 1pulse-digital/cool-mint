@@ -1,6 +1,4 @@
 import React from "react";
-import Link from "next/link";
-import { LongButton, SquareButton } from "./button";
 import {
   Table,
   TableBody,
