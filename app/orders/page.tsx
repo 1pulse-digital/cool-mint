@@ -4,6 +4,7 @@ import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
 import HeaderTitle from "@/components/base/headerTitle";
 import OrderHis from "@/components/base/orderHis";
+import OrdersTable from "@/components/base/orders-table";
 
  
 
@@ -33,7 +34,7 @@ const OrderHistory = () => {
       </div>
       </div>
       <div className="pt-10 md:pt-12 lg:pt-0 px-6 md:px-10 2xl:px-28 ">
-        <OrderHis/>
+        <OrdersTable/>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
