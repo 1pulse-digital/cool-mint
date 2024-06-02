@@ -17,6 +17,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       if (user) {
         setUser(user)
       } else {
+        // router.push("/login")
         setUser(null)
       }
     })
