@@ -1,5 +1,5 @@
 ---
-title: Made In Workshop (MIW) Is Expanding Its Equipment Offered To Its Members.
+title: Made In Workshop (MIW) Is Expanding Its Equipment Offered To Its Members
 description: Since its founding in 2017, Made in Workshop has always insisted on brand new, high-end industrial machines and equipment that would not be normally available to SMEs and individuals. Since its founding in 2017, Made in Workshop has always insisted on brand new, high-end industrial machines and equipment that would not be normally available to SMEs and individuals.
 date: 19 November 2021
 author: Parson Gapa

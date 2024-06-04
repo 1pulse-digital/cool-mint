@@ -31,11 +31,13 @@ export default function RootLayout({
           <div className="flex flex-col h-full">
             <Header />
             {children}
+            <Footer />
           </div>
-          <Footer />
+          
 
           <Toaster />
         </UserProvider>
+        
       </body>
     </html>
   )
