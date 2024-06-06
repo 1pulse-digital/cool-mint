@@ -17,7 +17,7 @@ It is important to note that productive capabilities are not fixed, but are dyna
 A maker space, like Made In Workshop, can play a role in improving productive capabilities by providing access to resources, knowledge, and expertise that can help 
 individuals and small businesses to design, prototype, and manufacture new products. Some ways Made In workshop helps individuals and Companies<br/><br/>
 
-1. *** Access to tools and equipment:**<br/>
+1. **Access to tools and equipment:**<br/>
 Maker spaces provide access to a wide range of tools and equipment, such as 3D printers, CNC machines, and laser cutters, that can be used to design and prototype new products. This can improve physical capital by allowing individuals and small businesses to access the equipment andtechnologies they need to produce goods and services.<br/><br/>
 2. **Access to knowledge and expertise:** <br/>Maker spaces bring together a community of individuals with diverse skills and knowledge, providing an opportunity for individuals to learn from others and to share their own knowledge and expertise. This can improve human capital by increasing the skills and knowledge of the workforce.<br/><br/>
 3. **Low-cost prototyping:** <br/>Maker spaces can provide individuals and small businesses with a low-cost way to prototype new products, which can help to reduce the risk and cost of product development. This can improve organizational capital by allowing businesses to experiment and learn from new product development.<br/><br/>

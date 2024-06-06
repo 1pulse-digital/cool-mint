@@ -1,6 +1,6 @@
 ---
 title: A story of a side hustle
-description: Made In Workshop is a dynamic and innovative community workspace designed for individuals with a passion for craftsmanship and creativity.  
+description: Made In Workshop is a dynamic and innovative community workspace designed for individuals with a passion for craftsmanship and creativity.
 date: February 3, 2023
 author: Henry Levine
 imageUrl: /icons/Website News_A story of a side hustle_Thumbnail.jpg
@@ -8,15 +8,13 @@ categories: DIY
 filter: diy
 ---
 
-Made In Workshop is a dynamic and innovative community workspace designed for individuals with a passion for craftsmanship and creativity. It serves as a hub for makers, artisans, and DIY enthusiasts and yes, side hustlers, seeking an environment equipped with state-of-the-art tools and resources. Whether you're a seasoned 
-craftsman or a first time creator, Made In Workshop offers a collaborative space where members can bring their ideas to life. With access to a wide range of specialized equipment, expert guidance, and a supportive community of like-minded individuals, Made In Workshop empowers its members to explore their creative potential, undertake ambitious projects, and turn their hobbies into successful ventures.<br/><br/>
+Made In Workshop is a dynamic and innovative community workspace designed for individuals with a passion for craftsmanship and creativity. It serves as a hub for makers, artisans, and DIY enthusiasts and yes, side hustlers, seeking an environment equipped with state-of-the-art tools and resources. Whether you're a seasoned craftsman or a first time creator, Made In Workshop offers a collaborative space where members can bring their ideas to life. With access to a wide range of specialized equipment, expert guidance, and a supportive community of like-minded individuals, Made In Workshop empowers its members to explore their creative potential, undertake ambitious projects, and turn their hobbies into successful ventures.<br/><br/>
 
 Creating and selling unique products is a straightforward and viable method to generate additional income. This practice has been a part of human culture since ancient times. Selecting an appropriate product for the right market can lead to substantial profit margins. Moreover, if you manage to perfectly align the market demand, marketing, and efficient manufacturing, this side venture has the potential to evolve into a primary source of income.<br/><br/>
 
 Instead of drafting a typical, lengthy article filled with unverified information, let’s dive deeper with a practical example. Taking inspiration from one of our members currently manufacturing metalwork products, specifically furniture. Due to the over saturated market and shrinking profit margins of the furniture industry, shifting focus to a product in demand, such as professional welding tables for manufacturing, was a logical choice. The shift in production aimed at crafting robust steel welding benches seemed to promise significantly higher profit margins.<br/><br/>
 
 Relying on the data to validates the change, we have put together the basic costing breakdown for the production of 3 tables:<br/><br/>
-          
 
 (All costing is VAT inclusive)<br/><br/>
 

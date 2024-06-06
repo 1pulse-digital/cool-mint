@@ -1,6 +1,6 @@
 ---
 title: Made In Workshop's solar installation
-description: South Africa is known for its infamous power outages, more commonly referred to as load shedding. 
+description: South Africa is known for its infamous power outages, more commonly referred to as load shedding.
 date: May 12, 2023
 author: Henry Levine
 imageUrl: /icons/Website News_de-indistrialisation_Thumbnail.jpg
@@ -8,7 +8,7 @@ categories: Events
 filter: events
 ---
 
- The consistent threat of load shedding has led many to seek alternative sources of energy, especially business that rely heavily on electricity to run their businesses. During a stage 6 schedule Made In Workshop was down for 4 to 6 hours a day, along with irregular restoration times resulted in the majority of a working day lost.<br/><br/>
+The consistent threat of load shedding has led many to seek alternative sources of energy, especially business that rely heavily on electricity to run their businesses. During a stage 6 schedule Made In Workshop was down for 4 to 6 hours a day, along with irregular restoration times resulted in the majority of a working day lost.<br/><br/>
 
 Rather than sitting around complaining about the forces out of our control, Made In Workshop decided to find a sustainable solution that we could trust and rely on. That is where the switch to solar power started to take shape, there are many critical factors that we had to consider for an industrial context.<br/><br/>
 
@@ -18,4 +18,4 @@ Through guidance and testing, we were able to calculate the financial return on 
 
 Switching to solar power at this scale is a challenging journey, but with proper auditing, engineering and logistical planning it has become a viable energy source for many companies looking to escape load shedding. Made In Workshop and all its members get the opportunity to keep their businesses moving.<br/><br/>
 
-Henry Levine, CEO of Made In Workshop
+Henry Levine, CEO of Made In Workshop.
