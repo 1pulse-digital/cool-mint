@@ -153,7 +153,7 @@ const PostPage = async (props: PostPageProps) => {
                 .slice(0, 3) // latest three posts
                 .map((post) => (
                   <article key={post.slug}>
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/news/${post.slug}`}>
                       <div className="relative mx-4 mb-8 grid h-96 py-10 sm:py-0">
                         <Link href={"/newsTitle"}>
                           <div>
