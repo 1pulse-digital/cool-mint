@@ -25,13 +25,17 @@ export interface ConfirmOrderResponse {
   status: string;
 }
 
-export interface RetrieveMyOrderRequest {
+export interface RetrieveMyOrdersRequest {
   /**
    * The fully fledged resource name of the orders to retrieve.
    * TODO: #33 define resource relationship and comment protos
    * Format: sessions/{session}/orders/{order}
    */
   name: string;
+}
+
+export interface RetrieveMyOrdersResponse {
+  orders: commerceOrder.Order[];
 }
 
 //========================================//
@@ -50,16 +54,21 @@ export async function ConfirmOrder(
   return ConfirmOrderResponse.decode(response);
 }
 
+/**
+ * rpc RetrieveMyOrders(RetrieveMyOrdersRequest) returns (RetrieveMyOrdersResponse) {
+ *     option (auth.required.role) = GUEST;
+ * }
+ */
 export async function RetrieveMyOrders(
-  retrieveMyOrderRequest: RetrieveMyOrderRequest,
+  retrieveMyOrdersRequest: RetrieveMyOrdersRequest,
   config?: ClientConfiguration,
-): Promise<commerceOrder.Order> {
+): Promise<RetrieveMyOrdersResponse> {
   const response = await PBrequest(
     "/commerce.OrderManager/RetrieveMyOrders",
-    RetrieveMyOrderRequest.encode(retrieveMyOrderRequest),
+    RetrieveMyOrdersRequest.encode(retrieveMyOrdersRequest),
     config,
   );
-  return commerceOrder.Order.decode(response);
+  return RetrieveMyOrdersResponse.decode(response);
 }
 
 //========================================//
@@ -78,16 +87,21 @@ export async function ConfirmOrderJSON(
   return ConfirmOrderResponseJSON.decode(response);
 }
 
+/**
+ * rpc RetrieveMyOrders(RetrieveMyOrdersRequest) returns (RetrieveMyOrdersResponse) {
+ *     option (auth.required.role) = GUEST;
+ * }
+ */
 export async function RetrieveMyOrdersJSON(
-  retrieveMyOrderRequest: RetrieveMyOrderRequest,
+  retrieveMyOrdersRequest: RetrieveMyOrdersRequest,
   config?: ClientConfiguration,
-): Promise<commerceOrder.Order> {
+): Promise<RetrieveMyOrdersResponse> {
   const response = await JSONrequest(
     "/commerce.OrderManager/RetrieveMyOrders",
-    RetrieveMyOrderRequestJSON.encode(retrieveMyOrderRequest),
+    RetrieveMyOrdersRequestJSON.encode(retrieveMyOrdersRequest),
     config,
   );
-  return commerceOrder.OrderJSON.decode(response);
+  return RetrieveMyOrdersResponseJSON.decode(response);
 }
 
 //========================================//
@@ -99,10 +113,15 @@ export interface OrderManager<Context = unknown> {
     confirmOrderRequest: ConfirmOrderRequest,
     context: Context,
   ) => Promise<ConfirmOrderResponse> | ConfirmOrderResponse;
+  /**
+   * rpc RetrieveMyOrders(RetrieveMyOrdersRequest) returns (RetrieveMyOrdersResponse) {
+   *     option (auth.required.role) = GUEST;
+   * }
+   */
   RetrieveMyOrders: (
-    retrieveMyOrderRequest: RetrieveMyOrderRequest,
+    retrieveMyOrdersRequest: RetrieveMyOrdersRequest,
     context: Context,
-  ) => Promise<commerceOrder.Order> | commerceOrder.Order;
+  ) => Promise<RetrieveMyOrdersResponse> | RetrieveMyOrdersResponse;
 }
 
 export function createOrderManager<Context>(service: OrderManager<Context>) {
@@ -122,12 +141,12 @@ export function createOrderManager<Context>(service: OrderManager<Context>) {
         name: "RetrieveMyOrders",
         handler: service.RetrieveMyOrders,
         input: {
-          protobuf: RetrieveMyOrderRequest,
-          json: RetrieveMyOrderRequestJSON,
+          protobuf: RetrieveMyOrdersRequest,
+          json: RetrieveMyOrdersRequestJSON,
         },
         output: {
-          protobuf: commerceOrder.Order,
-          json: commerceOrder.OrderJSON,
+          protobuf: RetrieveMyOrdersResponse,
+          json: RetrieveMyOrdersResponseJSON,
         },
       },
     },
@@ -286,33 +305,33 @@ export const ConfirmOrderResponse = {
   },
 };
 
-export const RetrieveMyOrderRequest = {
+export const RetrieveMyOrdersRequest = {
   /**
-   * Serializes RetrieveMyOrderRequest to protobuf.
+   * Serializes RetrieveMyOrdersRequest to protobuf.
    */
-  encode: function (msg: PartialDeep<RetrieveMyOrderRequest>): Uint8Array {
-    return RetrieveMyOrderRequest._writeMessage(
+  encode: function (msg: PartialDeep<RetrieveMyOrdersRequest>): Uint8Array {
+    return RetrieveMyOrdersRequest._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes RetrieveMyOrderRequest from protobuf.
+   * Deserializes RetrieveMyOrdersRequest from protobuf.
    */
-  decode: function (bytes: ByteSource): RetrieveMyOrderRequest {
-    return RetrieveMyOrderRequest._readMessage(
-      RetrieveMyOrderRequest.initialize(),
+  decode: function (bytes: ByteSource): RetrieveMyOrdersRequest {
+    return RetrieveMyOrdersRequest._readMessage(
+      RetrieveMyOrdersRequest.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes RetrieveMyOrderRequest with all fields set to their default value.
+   * Initializes RetrieveMyOrdersRequest with all fields set to their default value.
    */
   initialize: function (
-    msg?: Partial<RetrieveMyOrderRequest>,
-  ): RetrieveMyOrderRequest {
+    msg?: Partial<RetrieveMyOrdersRequest>,
+  ): RetrieveMyOrdersRequest {
     return {
       name: "",
       ...msg,
@@ -323,7 +342,7 @@ export const RetrieveMyOrderRequest = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<RetrieveMyOrderRequest>,
+    msg: PartialDeep<RetrieveMyOrdersRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
     if (msg.name) {
@@ -336,14 +355,90 @@ export const RetrieveMyOrderRequest = {
    * @private
    */
   _readMessage: function (
-    msg: RetrieveMyOrderRequest,
+    msg: RetrieveMyOrdersRequest,
     reader: protoscript.BinaryReader,
-  ): RetrieveMyOrderRequest {
+  ): RetrieveMyOrdersRequest {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
           msg.name = reader.readString();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const RetrieveMyOrdersResponse = {
+  /**
+   * Serializes RetrieveMyOrdersResponse to protobuf.
+   */
+  encode: function (msg: PartialDeep<RetrieveMyOrdersResponse>): Uint8Array {
+    return RetrieveMyOrdersResponse._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes RetrieveMyOrdersResponse from protobuf.
+   */
+  decode: function (bytes: ByteSource): RetrieveMyOrdersResponse {
+    return RetrieveMyOrdersResponse._readMessage(
+      RetrieveMyOrdersResponse.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes RetrieveMyOrdersResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<RetrieveMyOrdersResponse>,
+  ): RetrieveMyOrdersResponse {
+    return {
+      orders: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<RetrieveMyOrdersResponse>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.orders?.length) {
+      writer.writeRepeatedMessage(
+        1,
+        msg.orders as any,
+        commerceOrder.Order._writeMessage,
+      );
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: RetrieveMyOrdersResponse,
+    reader: protoscript.BinaryReader,
+  ): RetrieveMyOrdersResponse {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          const m = commerceOrder.Order.initialize();
+          reader.readMessage(m, commerceOrder.Order._readMessage);
+          msg.orders.push(m);
           break;
         }
         default: {
@@ -484,30 +579,30 @@ export const ConfirmOrderResponseJSON = {
   },
 };
 
-export const RetrieveMyOrderRequestJSON = {
+export const RetrieveMyOrdersRequestJSON = {
   /**
-   * Serializes RetrieveMyOrderRequest to JSON.
+   * Serializes RetrieveMyOrdersRequest to JSON.
    */
-  encode: function (msg: PartialDeep<RetrieveMyOrderRequest>): string {
-    return JSON.stringify(RetrieveMyOrderRequestJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<RetrieveMyOrdersRequest>): string {
+    return JSON.stringify(RetrieveMyOrdersRequestJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes RetrieveMyOrderRequest from JSON.
+   * Deserializes RetrieveMyOrdersRequest from JSON.
    */
-  decode: function (json: string): RetrieveMyOrderRequest {
-    return RetrieveMyOrderRequestJSON._readMessage(
-      RetrieveMyOrderRequestJSON.initialize(),
+  decode: function (json: string): RetrieveMyOrdersRequest {
+    return RetrieveMyOrdersRequestJSON._readMessage(
+      RetrieveMyOrdersRequestJSON.initialize(),
       JSON.parse(json),
     );
   },
 
   /**
-   * Initializes RetrieveMyOrderRequest with all fields set to their default value.
+   * Initializes RetrieveMyOrdersRequest with all fields set to their default value.
    */
   initialize: function (
-    msg?: Partial<RetrieveMyOrderRequest>,
-  ): RetrieveMyOrderRequest {
+    msg?: Partial<RetrieveMyOrdersRequest>,
+  ): RetrieveMyOrdersRequest {
     return {
       name: "",
       ...msg,
@@ -518,7 +613,7 @@ export const RetrieveMyOrderRequestJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<RetrieveMyOrderRequest>,
+    msg: PartialDeep<RetrieveMyOrdersRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
     if (msg.name) {
@@ -531,12 +626,74 @@ export const RetrieveMyOrderRequestJSON = {
    * @private
    */
   _readMessage: function (
-    msg: RetrieveMyOrderRequest,
+    msg: RetrieveMyOrdersRequest,
     json: any,
-  ): RetrieveMyOrderRequest {
+  ): RetrieveMyOrdersRequest {
     const _name_ = json["name"];
     if (_name_) {
       msg.name = _name_;
+    }
+    return msg;
+  },
+};
+
+export const RetrieveMyOrdersResponseJSON = {
+  /**
+   * Serializes RetrieveMyOrdersResponse to JSON.
+   */
+  encode: function (msg: PartialDeep<RetrieveMyOrdersResponse>): string {
+    return JSON.stringify(RetrieveMyOrdersResponseJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes RetrieveMyOrdersResponse from JSON.
+   */
+  decode: function (json: string): RetrieveMyOrdersResponse {
+    return RetrieveMyOrdersResponseJSON._readMessage(
+      RetrieveMyOrdersResponseJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes RetrieveMyOrdersResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<RetrieveMyOrdersResponse>,
+  ): RetrieveMyOrdersResponse {
+    return {
+      orders: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<RetrieveMyOrdersResponse>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.orders?.length) {
+      json["orders"] = msg.orders.map(commerceOrder.OrderJSON._writeMessage);
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: RetrieveMyOrdersResponse,
+    json: any,
+  ): RetrieveMyOrdersResponse {
+    const _orders_ = json["orders"];
+    if (_orders_) {
+      for (const item of _orders_) {
+        const m = commerceOrder.OrderJSON.initialize();
+        commerceOrder.OrderJSON._readMessage(m, item);
+        msg.orders.push(m);
+      }
     }
     return msg;
   },

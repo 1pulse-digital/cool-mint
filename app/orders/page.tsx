@@ -3,10 +3,16 @@ import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
 import HeaderTitle from "@/components/base/headerTitle";
 import OrdersTable from "@/components/base/orders-table";
+import { retrieveMyOrders } from "./actions";
 
  
 
-const OrderHistory = () => {
+const OrderHistory = async () => {
+
+  const orders = await retrieveMyOrders({
+    name: "",
+  })
+
   return (
     <div className={"bg-background"}>
       <div
@@ -32,7 +38,7 @@ const OrderHistory = () => {
       </div>
       </div>
       <div className="pt-10 md:pt-12 lg:pt-0 px-6 md:px-10 2xl:px-28 ">
-        <OrdersTable/>
+        <OrdersTable orders={orders}/>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
