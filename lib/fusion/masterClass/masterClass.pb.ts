@@ -22,6 +22,7 @@ export interface MasterClass {
    * StandardPrice is the standard price of the master class (When no discount is applied)
    */
   standardPrice: bigint;
+  salePrice: bigint;
   /**
    * Duration of a session in minutes
    */
@@ -84,6 +85,7 @@ export const MasterClass = {
       uid: "",
       displayName: "",
       standardPrice: 0n,
+      salePrice: 0n,
       duration: 0,
       presenter: "",
       maxAttendees: 0,
@@ -114,26 +116,29 @@ export const MasterClass = {
     if (msg.standardPrice) {
       writer.writeInt64String(4, msg.standardPrice.toString() as any);
     }
+    if (msg.salePrice) {
+      writer.writeInt64String(5, msg.salePrice.toString() as any);
+    }
     if (msg.duration) {
-      writer.writeInt32(5, msg.duration);
+      writer.writeInt32(6, msg.duration);
     }
     if (msg.presenter) {
-      writer.writeString(6, msg.presenter);
+      writer.writeString(7, msg.presenter);
     }
     if (msg.maxAttendees) {
-      writer.writeInt32(7, msg.maxAttendees);
+      writer.writeInt32(8, msg.maxAttendees);
     }
     if (msg.description) {
-      writer.writeString(8, msg.description);
+      writer.writeString(9, msg.description);
     }
     if (msg.shortDescription) {
-      writer.writeString(9, msg.shortDescription);
+      writer.writeString(10, msg.shortDescription);
     }
     if (msg.tags?.length) {
-      writer.writeRepeatedString(10, msg.tags);
+      writer.writeRepeatedString(11, msg.tags);
     }
     if (msg.gallery) {
-      writer.writeMessage(11, msg.gallery, mediaGallery.Gallery._writeMessage);
+      writer.writeMessage(12, msg.gallery, mediaGallery.Gallery._writeMessage);
     }
     return writer;
   },
@@ -165,30 +170,34 @@ export const MasterClass = {
           break;
         }
         case 5: {
-          msg.duration = reader.readInt32();
+          msg.salePrice = BigInt(reader.readInt64String());
           break;
         }
         case 6: {
-          msg.presenter = reader.readString();
+          msg.duration = reader.readInt32();
           break;
         }
         case 7: {
-          msg.maxAttendees = reader.readInt32();
+          msg.presenter = reader.readString();
           break;
         }
         case 8: {
-          msg.description = reader.readString();
+          msg.maxAttendees = reader.readInt32();
           break;
         }
         case 9: {
-          msg.shortDescription = reader.readString();
+          msg.description = reader.readString();
           break;
         }
         case 10: {
-          msg.tags.push(reader.readString());
+          msg.shortDescription = reader.readString();
           break;
         }
         case 11: {
+          msg.tags.push(reader.readString());
+          break;
+        }
+        case 12: {
           reader.readMessage(msg.gallery, mediaGallery.Gallery._readMessage);
           break;
         }
@@ -233,6 +242,7 @@ export const MasterClassJSON = {
       uid: "",
       displayName: "",
       standardPrice: 0n,
+      salePrice: 0n,
       duration: 0,
       presenter: "",
       maxAttendees: 0,
@@ -262,6 +272,9 @@ export const MasterClassJSON = {
     }
     if (msg.standardPrice) {
       json["standardPrice"] = String(msg.standardPrice);
+    }
+    if (msg.salePrice) {
+      json["salePrice"] = String(msg.salePrice);
     }
     if (msg.duration) {
       json["duration"] = msg.duration;
@@ -309,6 +322,10 @@ export const MasterClassJSON = {
     const _standardPrice_ = json["standardPrice"];
     if (_standardPrice_) {
       msg.standardPrice = BigInt(_standardPrice_);
+    }
+    const _salePrice_ = json["salePrice"];
+    if (_salePrice_) {
+      msg.salePrice = BigInt(_salePrice_);
     }
     const _duration_ = json["duration"];
     if (_duration_) {

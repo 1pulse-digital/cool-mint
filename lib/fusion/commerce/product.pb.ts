@@ -9,23 +9,107 @@ import * as protoscript from "protoscript";
 //                 Types                  //
 //========================================//
 
+/**
+ * ProductType represents the type of a product
+ * extend as needed
+ */
+export type ProductType = "TYPE_UNSPECIFIED" | "TYPE_WORKSHOP";
+
 export interface Product {
   name: string;
   uid: string;
   displayName: string;
-  type: string;
+  type: ProductType;
   description: string;
   shortDescription: string;
+  /**
+   * sku is the stock keeping unit
+   * it MUST be unique
+   * it can be set by the user, and will typically be a barcode value
+   * if the product has variants, the sku MUST be empty, and the sku of the variants will be used
+   */
   sku: string;
+  /**
+   * price is the current price of the product
+   */
   price: bigint;
+  /**
+   * regularPrice is the regular price of the product, i.e when it is not on sale
+   */
   regularPrice: bigint;
+  /**
+   * salePrice is the price of the product when it is on sale
+   */
   salePrice: bigint;
+  /**
+   * stockQuantity is the total quantity of the product in stock
+   */
   stockQuantity: bigint;
+  /**
+   * reservedQuantity is the total quantity of the product that has been reserved, but not yet purchased
+   */
+  reservedQuantity: bigint;
+  variants: Variant[];
+}
+
+/**
+ * Variant represents a product variant, such as size or color.
+ */
+export interface Variant {
+  name: string;
+  uid: string;
+  displayName: string;
+  description: string;
+  sku: string;
 }
 
 //========================================//
 //        Protobuf Encode / Decode        //
 //========================================//
+
+export const ProductType = {
+  TYPE_UNSPECIFIED: "TYPE_UNSPECIFIED",
+  /**
+   * TYPE_PHYSICAL = 1;
+   * TYPE_DIGITAL = 2; // pdf or other digital product
+   * TYPE_SERVICE = 3;
+   */
+  TYPE_WORKSHOP: "TYPE_WORKSHOP",
+  /**
+   * @private
+   */
+  _fromInt: function (i: number): ProductType {
+    switch (i) {
+      case 0: {
+        return "TYPE_UNSPECIFIED";
+      }
+      case 4: {
+        return "TYPE_WORKSHOP";
+      }
+      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+      default: {
+        return i as unknown as ProductType;
+      }
+    }
+  },
+  /**
+   * @private
+   */
+  _toInt: function (i: ProductType): number {
+    switch (i) {
+      case "TYPE_UNSPECIFIED": {
+        return 0;
+      }
+      case "TYPE_WORKSHOP": {
+        return 4;
+      }
+      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+      default: {
+        return i as unknown as number;
+      }
+    }
+  },
+} as const;
 
 export const Product = {
   /**
@@ -56,7 +140,7 @@ export const Product = {
       name: "",
       uid: "",
       displayName: "",
-      type: "",
+      type: ProductType._fromInt(0),
       description: "",
       shortDescription: "",
       sku: "",
@@ -64,6 +148,8 @@ export const Product = {
       regularPrice: 0n,
       salePrice: 0n,
       stockQuantity: 0n,
+      reservedQuantity: 0n,
+      variants: [],
       ...msg,
     };
   },
@@ -84,8 +170,8 @@ export const Product = {
     if (msg.displayName) {
       writer.writeString(3, msg.displayName);
     }
-    if (msg.type) {
-      writer.writeString(4, msg.type);
+    if (msg.type && ProductType._toInt(msg.type)) {
+      writer.writeEnum(4, ProductType._toInt(msg.type));
     }
     if (msg.description) {
       writer.writeString(5, msg.description);
@@ -107,6 +193,16 @@ export const Product = {
     }
     if (msg.stockQuantity) {
       writer.writeInt64String(11, msg.stockQuantity.toString() as any);
+    }
+    if (msg.reservedQuantity) {
+      writer.writeInt64String(12, msg.reservedQuantity.toString() as any);
+    }
+    if (msg.variants?.length) {
+      writer.writeRepeatedMessage(
+        13,
+        msg.variants as any,
+        Variant._writeMessage,
+      );
     }
     return writer;
   },
@@ -134,7 +230,7 @@ export const Product = {
           break;
         }
         case 4: {
-          msg.type = reader.readString();
+          msg.type = ProductType._fromInt(reader.readEnum());
           break;
         }
         case 5: {
@@ -165,6 +261,116 @@ export const Product = {
           msg.stockQuantity = BigInt(reader.readInt64String());
           break;
         }
+        case 12: {
+          msg.reservedQuantity = BigInt(reader.readInt64String());
+          break;
+        }
+        case 13: {
+          const m = Variant.initialize();
+          reader.readMessage(m, Variant._readMessage);
+          msg.variants.push(m);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const Variant = {
+  /**
+   * Serializes Variant to protobuf.
+   */
+  encode: function (msg: PartialDeep<Variant>): Uint8Array {
+    return Variant._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes Variant from protobuf.
+   */
+  decode: function (bytes: ByteSource): Variant {
+    return Variant._readMessage(
+      Variant.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes Variant with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<Variant>): Variant {
+    return {
+      name: "",
+      uid: "",
+      displayName: "",
+      description: "",
+      sku: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<Variant>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.name) {
+      writer.writeString(1, msg.name);
+    }
+    if (msg.uid) {
+      writer.writeString(2, msg.uid);
+    }
+    if (msg.displayName) {
+      writer.writeString(3, msg.displayName);
+    }
+    if (msg.description) {
+      writer.writeString(4, msg.description);
+    }
+    if (msg.sku) {
+      writer.writeString(5, msg.sku);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: Variant,
+    reader: protoscript.BinaryReader,
+  ): Variant {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.name = reader.readString();
+          break;
+        }
+        case 2: {
+          msg.uid = reader.readString();
+          break;
+        }
+        case 3: {
+          msg.displayName = reader.readString();
+          break;
+        }
+        case 4: {
+          msg.description = reader.readString();
+          break;
+        }
+        case 5: {
+          msg.sku = reader.readString();
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -178,6 +384,50 @@ export const Product = {
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
+
+export const ProductTypeJSON = {
+  TYPE_UNSPECIFIED: "TYPE_UNSPECIFIED",
+  /**
+   * TYPE_PHYSICAL = 1;
+   * TYPE_DIGITAL = 2; // pdf or other digital product
+   * TYPE_SERVICE = 3;
+   */
+  TYPE_WORKSHOP: "TYPE_WORKSHOP",
+  /**
+   * @private
+   */
+  _fromInt: function (i: number): ProductType {
+    switch (i) {
+      case 0: {
+        return "TYPE_UNSPECIFIED";
+      }
+      case 4: {
+        return "TYPE_WORKSHOP";
+      }
+      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+      default: {
+        return i as unknown as ProductType;
+      }
+    }
+  },
+  /**
+   * @private
+   */
+  _toInt: function (i: ProductType): number {
+    switch (i) {
+      case "TYPE_UNSPECIFIED": {
+        return 0;
+      }
+      case "TYPE_WORKSHOP": {
+        return 4;
+      }
+      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+      default: {
+        return i as unknown as number;
+      }
+    }
+  },
+} as const;
 
 export const ProductJSON = {
   /**
@@ -202,7 +452,7 @@ export const ProductJSON = {
       name: "",
       uid: "",
       displayName: "",
-      type: "",
+      type: ProductType._fromInt(0),
       description: "",
       shortDescription: "",
       sku: "",
@@ -210,6 +460,8 @@ export const ProductJSON = {
       regularPrice: 0n,
       salePrice: 0n,
       stockQuantity: 0n,
+      reservedQuantity: 0n,
+      variants: [],
       ...msg,
     };
   },
@@ -228,7 +480,7 @@ export const ProductJSON = {
     if (msg.displayName) {
       json["displayName"] = msg.displayName;
     }
-    if (msg.type) {
+    if (msg.type && ProductTypeJSON._toInt(msg.type)) {
       json["type"] = msg.type;
     }
     if (msg.description) {
@@ -252,6 +504,12 @@ export const ProductJSON = {
     if (msg.stockQuantity) {
       json["stockQuantity"] = String(msg.stockQuantity);
     }
+    if (msg.reservedQuantity) {
+      json["reservedQuantity"] = String(msg.reservedQuantity);
+    }
+    if (msg.variants?.length) {
+      json["variants"] = msg.variants.map(VariantJSON._writeMessage);
+    }
     return json;
   },
 
@@ -273,7 +531,7 @@ export const ProductJSON = {
     }
     const _type_ = json["type"];
     if (_type_) {
-      msg.type = _type_;
+      msg.type = ProductType._fromInt(_type_);
     }
     const _description_ = json["description"];
     if (_description_) {
@@ -302,6 +560,98 @@ export const ProductJSON = {
     const _stockQuantity_ = json["stockQuantity"];
     if (_stockQuantity_) {
       msg.stockQuantity = BigInt(_stockQuantity_);
+    }
+    const _reservedQuantity_ = json["reservedQuantity"];
+    if (_reservedQuantity_) {
+      msg.reservedQuantity = BigInt(_reservedQuantity_);
+    }
+    const _variants_ = json["variants"];
+    if (_variants_) {
+      for (const item of _variants_) {
+        const m = VariantJSON.initialize();
+        VariantJSON._readMessage(m, item);
+        msg.variants.push(m);
+      }
+    }
+    return msg;
+  },
+};
+
+export const VariantJSON = {
+  /**
+   * Serializes Variant to JSON.
+   */
+  encode: function (msg: PartialDeep<Variant>): string {
+    return JSON.stringify(VariantJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes Variant from JSON.
+   */
+  decode: function (json: string): Variant {
+    return VariantJSON._readMessage(VariantJSON.initialize(), JSON.parse(json));
+  },
+
+  /**
+   * Initializes Variant with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<Variant>): Variant {
+    return {
+      name: "",
+      uid: "",
+      displayName: "",
+      description: "",
+      sku: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (msg: PartialDeep<Variant>): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.name) {
+      json["name"] = msg.name;
+    }
+    if (msg.uid) {
+      json["uid"] = msg.uid;
+    }
+    if (msg.displayName) {
+      json["displayName"] = msg.displayName;
+    }
+    if (msg.description) {
+      json["description"] = msg.description;
+    }
+    if (msg.sku) {
+      json["sku"] = msg.sku;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (msg: Variant, json: any): Variant {
+    const _name_ = json["name"];
+    if (_name_) {
+      msg.name = _name_;
+    }
+    const _uid_ = json["uid"];
+    if (_uid_) {
+      msg.uid = _uid_;
+    }
+    const _displayName_ = json["displayName"];
+    if (_displayName_) {
+      msg.displayName = _displayName_;
+    }
+    const _description_ = json["description"];
+    if (_description_) {
+      msg.description = _description_;
+    }
+    const _sku_ = json["sku"];
+    if (_sku_) {
+      msg.sku = _sku_;
     }
     return msg;
   },

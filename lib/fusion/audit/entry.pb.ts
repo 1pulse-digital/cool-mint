@@ -15,6 +15,8 @@ export interface Entry {
   createdBy: string;
   modifiedBy: string;
   version: bigint;
+  uid: string;
+  etag: string;
 }
 
 //========================================//
@@ -52,6 +54,8 @@ export const Entry = {
       createdBy: "",
       modifiedBy: "",
       version: 0n,
+      uid: "",
+      etag: "",
       ...msg,
     };
   },
@@ -77,6 +81,12 @@ export const Entry = {
     }
     if (msg.version) {
       writer.writeInt64String(5, msg.version.toString() as any);
+    }
+    if (msg.uid) {
+      writer.writeString(7, msg.uid);
+    }
+    if (msg.etag) {
+      writer.writeString(6, msg.etag);
     }
     return writer;
   },
@@ -106,6 +116,14 @@ export const Entry = {
         }
         case 5: {
           msg.version = BigInt(reader.readInt64String());
+          break;
+        }
+        case 7: {
+          msg.uid = reader.readString();
+          break;
+        }
+        case 6: {
+          msg.etag = reader.readString();
           break;
         }
         default: {
@@ -147,6 +165,8 @@ export const EntryJSON = {
       createdBy: "",
       modifiedBy: "",
       version: 0n,
+      uid: "",
+      etag: "",
       ...msg,
     };
   },
@@ -170,6 +190,12 @@ export const EntryJSON = {
     }
     if (msg.version) {
       json["version"] = String(msg.version);
+    }
+    if (msg.uid) {
+      json["uid"] = msg.uid;
+    }
+    if (msg.etag) {
+      json["etag"] = msg.etag;
     }
     return json;
   },
@@ -197,6 +223,14 @@ export const EntryJSON = {
     const _version_ = json["version"];
     if (_version_) {
       msg.version = BigInt(_version_);
+    }
+    const _uid_ = json["uid"];
+    if (_uid_) {
+      msg.uid = _uid_;
+    }
+    const _etag_ = json["etag"];
+    if (_etag_) {
+      msg.etag = _etag_;
     }
     return msg;
   },

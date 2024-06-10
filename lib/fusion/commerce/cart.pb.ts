@@ -21,9 +21,17 @@ export interface Cart {
 }
 
 export interface CartItem {
-  productName: string;
-  quantity: bigint;
+  /**
+   * product is the product.name identifier
+   */
+  product: string;
+  /**
+   * displayName is the product.displayName
+   */
+  displayName: string;
   price: bigint;
+  quantity: bigint;
+  sku: string;
 }
 
 //========================================//
@@ -163,9 +171,11 @@ export const CartItem = {
    */
   initialize: function (msg?: Partial<CartItem>): CartItem {
     return {
-      productName: "",
-      quantity: 0n,
+      product: "",
+      displayName: "",
       price: 0n,
+      quantity: 0n,
+      sku: "",
       ...msg,
     };
   },
@@ -177,14 +187,20 @@ export const CartItem = {
     msg: PartialDeep<CartItem>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.productName) {
-      writer.writeString(1, msg.productName);
+    if (msg.product) {
+      writer.writeString(1, msg.product);
     }
-    if (msg.quantity) {
-      writer.writeInt64String(2, msg.quantity.toString() as any);
+    if (msg.displayName) {
+      writer.writeString(2, msg.displayName);
     }
     if (msg.price) {
       writer.writeInt64String(3, msg.price.toString() as any);
+    }
+    if (msg.quantity) {
+      writer.writeInt64String(4, msg.quantity.toString() as any);
+    }
+    if (msg.sku) {
+      writer.writeString(5, msg.sku);
     }
     return writer;
   },
@@ -200,15 +216,23 @@ export const CartItem = {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.productName = reader.readString();
+          msg.product = reader.readString();
           break;
         }
         case 2: {
-          msg.quantity = BigInt(reader.readInt64String());
+          msg.displayName = reader.readString();
           break;
         }
         case 3: {
           msg.price = BigInt(reader.readInt64String());
+          break;
+        }
+        case 4: {
+          msg.quantity = BigInt(reader.readInt64String());
+          break;
+        }
+        case 5: {
+          msg.sku = reader.readString();
           break;
         }
         default: {
@@ -343,9 +367,11 @@ export const CartItemJSON = {
    */
   initialize: function (msg?: Partial<CartItem>): CartItem {
     return {
-      productName: "",
-      quantity: 0n,
+      product: "",
+      displayName: "",
       price: 0n,
+      quantity: 0n,
+      sku: "",
       ...msg,
     };
   },
@@ -357,14 +383,20 @@ export const CartItemJSON = {
     msg: PartialDeep<CartItem>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.productName) {
-      json["productName"] = msg.productName;
+    if (msg.product) {
+      json["product"] = msg.product;
+    }
+    if (msg.displayName) {
+      json["displayName"] = msg.displayName;
+    }
+    if (msg.price) {
+      json["price"] = String(msg.price);
     }
     if (msg.quantity) {
       json["quantity"] = String(msg.quantity);
     }
-    if (msg.price) {
-      json["price"] = String(msg.price);
+    if (msg.sku) {
+      json["sku"] = msg.sku;
     }
     return json;
   },
@@ -373,17 +405,25 @@ export const CartItemJSON = {
    * @private
    */
   _readMessage: function (msg: CartItem, json: any): CartItem {
-    const _productName_ = json["productName"] ?? json["product_name"];
-    if (_productName_) {
-      msg.productName = _productName_;
+    const _product_ = json["product"];
+    if (_product_) {
+      msg.product = _product_;
+    }
+    const _displayName_ = json["displayName"];
+    if (_displayName_) {
+      msg.displayName = _displayName_;
+    }
+    const _price_ = json["price"];
+    if (_price_) {
+      msg.price = BigInt(_price_);
     }
     const _quantity_ = json["quantity"];
     if (_quantity_) {
       msg.quantity = BigInt(_quantity_);
     }
-    const _price_ = json["price"];
-    if (_price_) {
-      msg.price = BigInt(_price_);
+    const _sku_ = json["sku"];
+    if (_sku_) {
+      msg.sku = _sku_;
     }
     return msg;
   },

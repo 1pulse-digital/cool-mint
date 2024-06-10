@@ -17,12 +17,21 @@ import * as commerceCart from "./cart.pb";
 //========================================//
 
 export interface AddToCartRequest {
-  productName: string;
+  eTag: string;
+  /**
+   * product is the product.name to add to the cart
+   */
+  product: string;
   quantity: bigint;
+  variant: string;
 }
 
 export interface RemoveFromCartRequest {
-  productName: string;
+  eTag: string;
+  /**
+   * product is the product.name to remove from the cart
+   */
+  product: string;
   quantity: bigint;
 }
 
@@ -262,8 +271,10 @@ export const AddToCartRequest = {
    */
   initialize: function (msg?: Partial<AddToCartRequest>): AddToCartRequest {
     return {
-      productName: "",
+      eTag: "",
+      product: "",
       quantity: 0n,
+      variant: "",
       ...msg,
     };
   },
@@ -275,11 +286,17 @@ export const AddToCartRequest = {
     msg: PartialDeep<AddToCartRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.productName) {
-      writer.writeString(1, msg.productName);
+    if (msg.eTag) {
+      writer.writeString(1, msg.eTag);
+    }
+    if (msg.product) {
+      writer.writeString(2, msg.product);
     }
     if (msg.quantity) {
-      writer.writeInt64String(2, msg.quantity.toString() as any);
+      writer.writeInt64String(3, msg.quantity.toString() as any);
+    }
+    if (msg.variant) {
+      writer.writeString(4, msg.variant);
     }
     return writer;
   },
@@ -295,11 +312,19 @@ export const AddToCartRequest = {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.productName = reader.readString();
+          msg.eTag = reader.readString();
           break;
         }
         case 2: {
+          msg.product = reader.readString();
+          break;
+        }
+        case 3: {
           msg.quantity = BigInt(reader.readInt64String());
+          break;
+        }
+        case 4: {
+          msg.variant = reader.readString();
           break;
         }
         default: {
@@ -340,7 +365,8 @@ export const RemoveFromCartRequest = {
     msg?: Partial<RemoveFromCartRequest>,
   ): RemoveFromCartRequest {
     return {
-      productName: "",
+      eTag: "",
+      product: "",
       quantity: 0n,
       ...msg,
     };
@@ -353,11 +379,14 @@ export const RemoveFromCartRequest = {
     msg: PartialDeep<RemoveFromCartRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.productName) {
-      writer.writeString(1, msg.productName);
+    if (msg.eTag) {
+      writer.writeString(1, msg.eTag);
+    }
+    if (msg.product) {
+      writer.writeString(2, msg.product);
     }
     if (msg.quantity) {
-      writer.writeInt64String(2, msg.quantity.toString() as any);
+      writer.writeInt64String(3, msg.quantity.toString() as any);
     }
     return writer;
   },
@@ -373,10 +402,14 @@ export const RemoveFromCartRequest = {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.productName = reader.readString();
+          msg.eTag = reader.readString();
           break;
         }
         case 2: {
+          msg.product = reader.readString();
+          break;
+        }
+        case 3: {
           msg.quantity = BigInt(reader.readInt64String());
           break;
         }
@@ -507,8 +540,10 @@ export const AddToCartRequestJSON = {
    */
   initialize: function (msg?: Partial<AddToCartRequest>): AddToCartRequest {
     return {
-      productName: "",
+      eTag: "",
+      product: "",
       quantity: 0n,
+      variant: "",
       ...msg,
     };
   },
@@ -520,11 +555,17 @@ export const AddToCartRequestJSON = {
     msg: PartialDeep<AddToCartRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.productName) {
-      json["productName"] = msg.productName;
+    if (msg.eTag) {
+      json["eTag"] = msg.eTag;
+    }
+    if (msg.product) {
+      json["product"] = msg.product;
     }
     if (msg.quantity) {
       json["quantity"] = String(msg.quantity);
+    }
+    if (msg.variant) {
+      json["variant"] = msg.variant;
     }
     return json;
   },
@@ -533,13 +574,21 @@ export const AddToCartRequestJSON = {
    * @private
    */
   _readMessage: function (msg: AddToCartRequest, json: any): AddToCartRequest {
-    const _productName_ = json["productName"] ?? json["product_name"];
-    if (_productName_) {
-      msg.productName = _productName_;
+    const _eTag_ = json["eTag"];
+    if (_eTag_) {
+      msg.eTag = _eTag_;
+    }
+    const _product_ = json["product"];
+    if (_product_) {
+      msg.product = _product_;
     }
     const _quantity_ = json["quantity"];
     if (_quantity_) {
       msg.quantity = BigInt(_quantity_);
+    }
+    const _variant_ = json["variant"];
+    if (_variant_) {
+      msg.variant = _variant_;
     }
     return msg;
   },
@@ -570,7 +619,8 @@ export const RemoveFromCartRequestJSON = {
     msg?: Partial<RemoveFromCartRequest>,
   ): RemoveFromCartRequest {
     return {
-      productName: "",
+      eTag: "",
+      product: "",
       quantity: 0n,
       ...msg,
     };
@@ -583,8 +633,11 @@ export const RemoveFromCartRequestJSON = {
     msg: PartialDeep<RemoveFromCartRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.productName) {
-      json["productName"] = msg.productName;
+    if (msg.eTag) {
+      json["eTag"] = msg.eTag;
+    }
+    if (msg.product) {
+      json["product"] = msg.product;
     }
     if (msg.quantity) {
       json["quantity"] = String(msg.quantity);
@@ -599,9 +652,13 @@ export const RemoveFromCartRequestJSON = {
     msg: RemoveFromCartRequest,
     json: any,
   ): RemoveFromCartRequest {
-    const _productName_ = json["productName"] ?? json["product_name"];
-    if (_productName_) {
-      msg.productName = _productName_;
+    const _eTag_ = json["eTag"];
+    if (_eTag_) {
+      msg.eTag = _eTag_;
+    }
+    const _product_ = json["product"];
+    if (_product_) {
+      msg.product = _product_;
     }
     const _quantity_ = json["quantity"];
     if (_quantity_) {

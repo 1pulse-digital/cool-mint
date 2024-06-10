@@ -37,22 +37,26 @@ export interface Order {
   transactionID: string;
   datePaid: string;
   dateCompleted: string;
-  cartHash: string;
   lineItems: LineItem[];
 }
 
 export interface LineItem {
-  uid: string;
-  productName: string;
-  productID: string;
-  variationID: string;
+  /**
+   * product is the product.name
+   */
+  product: string;
+  productDisplayName: string;
+  /**
+   * variant is product.variant.name (if any)
+   */
+  variant: string;
   quantity: bigint;
   subtotal: bigint;
   subtotalTax: bigint;
   total: bigint;
   totalTax: bigint;
   sku: string;
-  price: string;
+  price: bigint;
 }
 
 export interface Address {
@@ -190,7 +194,6 @@ export const Order = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
-      cartHash: "",
       lineItems: [],
       ...msg,
     };
@@ -241,9 +244,6 @@ export const Order = {
     }
     if (msg.dateCompleted) {
       writer.writeString(15, msg.dateCompleted);
-    }
-    if (msg.cartHash) {
-      writer.writeString(16, msg.cartHash);
     }
     if (msg.lineItems?.length) {
       writer.writeRepeatedMessage(
@@ -314,10 +314,6 @@ export const Order = {
           msg.dateCompleted = reader.readString();
           break;
         }
-        case 16: {
-          msg.cartHash = reader.readString();
-          break;
-        }
         case 6: {
           const m = LineItem.initialize();
           reader.readMessage(m, LineItem._readMessage);
@@ -360,17 +356,16 @@ export const LineItem = {
    */
   initialize: function (msg?: Partial<LineItem>): LineItem {
     return {
-      uid: "",
-      productName: "",
-      productID: "",
-      variationID: "",
+      product: "",
+      productDisplayName: "",
+      variant: "",
       quantity: 0n,
       subtotal: 0n,
       subtotalTax: 0n,
       total: 0n,
       totalTax: 0n,
       sku: "",
-      price: "",
+      price: 0n,
       ...msg,
     };
   },
@@ -382,17 +377,14 @@ export const LineItem = {
     msg: PartialDeep<LineItem>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.uid) {
-      writer.writeString(1, msg.uid);
+    if (msg.product) {
+      writer.writeString(2, msg.product);
     }
-    if (msg.productName) {
-      writer.writeString(2, msg.productName);
+    if (msg.productDisplayName) {
+      writer.writeString(3, msg.productDisplayName);
     }
-    if (msg.productID) {
-      writer.writeString(3, msg.productID);
-    }
-    if (msg.variationID) {
-      writer.writeString(4, msg.variationID);
+    if (msg.variant) {
+      writer.writeString(4, msg.variant);
     }
     if (msg.quantity) {
       writer.writeInt64String(5, msg.quantity.toString() as any);
@@ -413,7 +405,7 @@ export const LineItem = {
       writer.writeString(10, msg.sku);
     }
     if (msg.price) {
-      writer.writeString(11, msg.price);
+      writer.writeInt64String(11, msg.price.toString() as any);
     }
     return writer;
   },
@@ -428,20 +420,16 @@ export const LineItem = {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
-        case 1: {
-          msg.uid = reader.readString();
-          break;
-        }
         case 2: {
-          msg.productName = reader.readString();
+          msg.product = reader.readString();
           break;
         }
         case 3: {
-          msg.productID = reader.readString();
+          msg.productDisplayName = reader.readString();
           break;
         }
         case 4: {
-          msg.variationID = reader.readString();
+          msg.variant = reader.readString();
           break;
         }
         case 5: {
@@ -469,7 +457,7 @@ export const LineItem = {
           break;
         }
         case 11: {
-          msg.price = reader.readString();
+          msg.price = BigInt(reader.readInt64String());
           break;
         }
         default: {
@@ -809,7 +797,6 @@ export const OrderJSON = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
-      cartHash: "",
       lineItems: [],
       ...msg,
     };
@@ -869,9 +856,6 @@ export const OrderJSON = {
     }
     if (msg.dateCompleted) {
       json["dateCompleted"] = msg.dateCompleted;
-    }
-    if (msg.cartHash) {
-      json["cartHash"] = msg.cartHash;
     }
     if (msg.lineItems?.length) {
       json["lineItems"] = msg.lineItems.map(LineItemJSON._writeMessage);
@@ -935,10 +919,6 @@ export const OrderJSON = {
     if (_dateCompleted_) {
       msg.dateCompleted = _dateCompleted_;
     }
-    const _cartHash_ = json["cartHash"];
-    if (_cartHash_) {
-      msg.cartHash = _cartHash_;
-    }
     const _lineItems_ = json["lineItems"];
     if (_lineItems_) {
       for (const item of _lineItems_) {
@@ -974,17 +954,16 @@ export const LineItemJSON = {
    */
   initialize: function (msg?: Partial<LineItem>): LineItem {
     return {
-      uid: "",
-      productName: "",
-      productID: "",
-      variationID: "",
+      product: "",
+      productDisplayName: "",
+      variant: "",
       quantity: 0n,
       subtotal: 0n,
       subtotalTax: 0n,
       total: 0n,
       totalTax: 0n,
       sku: "",
-      price: "",
+      price: 0n,
       ...msg,
     };
   },
@@ -996,17 +975,14 @@ export const LineItemJSON = {
     msg: PartialDeep<LineItem>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.uid) {
-      json["uid"] = msg.uid;
+    if (msg.product) {
+      json["product"] = msg.product;
     }
-    if (msg.productName) {
-      json["productName"] = msg.productName;
+    if (msg.productDisplayName) {
+      json["productDisplayName"] = msg.productDisplayName;
     }
-    if (msg.productID) {
-      json["productID"] = msg.productID;
-    }
-    if (msg.variationID) {
-      json["variationID"] = msg.variationID;
+    if (msg.variant) {
+      json["variant"] = msg.variant;
     }
     if (msg.quantity) {
       json["quantity"] = String(msg.quantity);
@@ -1027,7 +1003,7 @@ export const LineItemJSON = {
       json["sku"] = msg.sku;
     }
     if (msg.price) {
-      json["price"] = msg.price;
+      json["price"] = String(msg.price);
     }
     return json;
   },
@@ -1036,21 +1012,17 @@ export const LineItemJSON = {
    * @private
    */
   _readMessage: function (msg: LineItem, json: any): LineItem {
-    const _uid_ = json["uid"];
-    if (_uid_) {
-      msg.uid = _uid_;
+    const _product_ = json["product"];
+    if (_product_) {
+      msg.product = _product_;
     }
-    const _productName_ = json["productName"];
-    if (_productName_) {
-      msg.productName = _productName_;
+    const _productDisplayName_ = json["productDisplayName"];
+    if (_productDisplayName_) {
+      msg.productDisplayName = _productDisplayName_;
     }
-    const _productID_ = json["productID"];
-    if (_productID_) {
-      msg.productID = _productID_;
-    }
-    const _variationID_ = json["variationID"];
-    if (_variationID_) {
-      msg.variationID = _variationID_;
+    const _variant_ = json["variant"];
+    if (_variant_) {
+      msg.variant = _variant_;
     }
     const _quantity_ = json["quantity"];
     if (_quantity_) {
@@ -1078,7 +1050,7 @@ export const LineItemJSON = {
     }
     const _price_ = json["price"];
     if (_price_) {
-      msg.price = _price_;
+      msg.price = BigInt(_price_);
     }
     return msg;
   },

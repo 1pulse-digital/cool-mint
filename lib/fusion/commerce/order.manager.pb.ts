@@ -16,47 +16,102 @@ import * as commerceOrder from "./order.pb";
 //                 Types                  //
 //========================================//
 
-export interface ConfirmOrderRequest {
-  orderId: string;
-}
-
-export interface ConfirmOrderResponse {
-  orderId: string;
-  status: string;
-}
-
-export interface RetrieveMyOrderRequest {
+export interface PlaceOrderRequest {
   /**
-   * The fully fledged resource name of the orders to retrieve.
-   * TODO: #33 define resource relationship and comment protos
-   * Format: sessions/{session}/orders/{order}
+   * eTag is the auditEntry.Etag value, used to ensure the cart is not modified, (in another session forr example)
    */
-  name: string;
+  eTag: string;
+}
+
+export interface PlaceOrderResponse {
+  paymentID: string;
+  order: commerceOrder.Order;
+}
+
+export interface ConfirmOrderRequest {
+  /**
+   * order is the order.name to confirm
+   */
+  order: string;
+}
+
+export interface CancelOrderRequest {
+  /**
+   * order is the order.name to cancel
+   */
+  order: string;
+}
+
+export interface RefundOrderRequest {
+  /**
+   * order is the order.name to refund
+   */
+  order: string;
 }
 
 //========================================//
 //      OrderManager Protobuf Client      //
 //========================================//
 
+/**
+ * PlaceoOrder will create a new order in a pending state
+ * The ctx.userid cart will be cleared and the product stock will be reserved
+ * A Payfast payment id and the order is returned
+ */
+export async function PlaceOrder(
+  placeOrderRequest: PlaceOrderRequest,
+  config?: ClientConfiguration,
+): Promise<PlaceOrderResponse> {
+  const response = await PBrequest(
+    "/commerce.OrderManager/PlaceOrder",
+    PlaceOrderRequest.encode(placeOrderRequest),
+    config,
+  );
+  return PlaceOrderResponse.decode(response);
+}
+
+/**
+ * ConfirmOrder confirms a pending order, and sets the order status to paid
+ * The reserved stock will be used to update the product stock (reduce stock)
+ */
 export async function ConfirmOrder(
   confirmOrderRequest: ConfirmOrderRequest,
   config?: ClientConfiguration,
-): Promise<ConfirmOrderResponse> {
+): Promise<commerceOrder.Order> {
   const response = await PBrequest(
     "/commerce.OrderManager/ConfirmOrder",
     ConfirmOrderRequest.encode(confirmOrderRequest),
     config,
   );
-  return ConfirmOrderResponse.decode(response);
+  return commerceOrder.Order.decode(response);
 }
 
-export async function RetrieveMyOrders(
-  retrieveMyOrderRequest: RetrieveMyOrderRequest,
+/**
+ * CancelOrder will cancel a pending order, and set the order status to cancelled
+ * The reserved stock will be released and the cart will be restored
+ */
+export async function CancelOrder(
+  cancelOrderRequest: CancelOrderRequest,
   config?: ClientConfiguration,
 ): Promise<commerceOrder.Order> {
   const response = await PBrequest(
-    "/commerce.OrderManager/RetrieveMyOrders",
-    RetrieveMyOrderRequest.encode(retrieveMyOrderRequest),
+    "/commerce.OrderManager/CancelOrder",
+    CancelOrderRequest.encode(cancelOrderRequest),
+    config,
+  );
+  return commerceOrder.Order.decode(response);
+}
+
+/**
+ * RefundOrder will only mark the order as refunded, the payment will be handled by the payment gateway
+ */
+export async function RefundOrder(
+  refundOrderRequest: RefundOrderRequest,
+  config?: ClientConfiguration,
+): Promise<commerceOrder.Order> {
+  const response = await PBrequest(
+    "/commerce.OrderManager/RefundOrder",
+    RefundOrderRequest.encode(refundOrderRequest),
     config,
   );
   return commerceOrder.Order.decode(response);
@@ -66,25 +121,65 @@ export async function RetrieveMyOrders(
 //        OrderManager JSON Client        //
 //========================================//
 
+/**
+ * PlaceoOrder will create a new order in a pending state
+ * The ctx.userid cart will be cleared and the product stock will be reserved
+ * A Payfast payment id and the order is returned
+ */
+export async function PlaceOrderJSON(
+  placeOrderRequest: PlaceOrderRequest,
+  config?: ClientConfiguration,
+): Promise<PlaceOrderResponse> {
+  const response = await JSONrequest(
+    "/commerce.OrderManager/PlaceOrder",
+    PlaceOrderRequestJSON.encode(placeOrderRequest),
+    config,
+  );
+  return PlaceOrderResponseJSON.decode(response);
+}
+
+/**
+ * ConfirmOrder confirms a pending order, and sets the order status to paid
+ * The reserved stock will be used to update the product stock (reduce stock)
+ */
 export async function ConfirmOrderJSON(
   confirmOrderRequest: ConfirmOrderRequest,
   config?: ClientConfiguration,
-): Promise<ConfirmOrderResponse> {
+): Promise<commerceOrder.Order> {
   const response = await JSONrequest(
     "/commerce.OrderManager/ConfirmOrder",
     ConfirmOrderRequestJSON.encode(confirmOrderRequest),
     config,
   );
-  return ConfirmOrderResponseJSON.decode(response);
+  return commerceOrder.OrderJSON.decode(response);
 }
 
-export async function RetrieveMyOrdersJSON(
-  retrieveMyOrderRequest: RetrieveMyOrderRequest,
+/**
+ * CancelOrder will cancel a pending order, and set the order status to cancelled
+ * The reserved stock will be released and the cart will be restored
+ */
+export async function CancelOrderJSON(
+  cancelOrderRequest: CancelOrderRequest,
   config?: ClientConfiguration,
 ): Promise<commerceOrder.Order> {
   const response = await JSONrequest(
-    "/commerce.OrderManager/RetrieveMyOrders",
-    RetrieveMyOrderRequestJSON.encode(retrieveMyOrderRequest),
+    "/commerce.OrderManager/CancelOrder",
+    CancelOrderRequestJSON.encode(cancelOrderRequest),
+    config,
+  );
+  return commerceOrder.OrderJSON.decode(response);
+}
+
+/**
+ * RefundOrder will only mark the order as refunded, the payment will be handled by the payment gateway
+ */
+export async function RefundOrderJSON(
+  refundOrderRequest: RefundOrderRequest,
+  config?: ClientConfiguration,
+): Promise<commerceOrder.Order> {
+  const response = await JSONrequest(
+    "/commerce.OrderManager/RefundOrder",
+    RefundOrderRequestJSON.encode(refundOrderRequest),
     config,
   );
   return commerceOrder.OrderJSON.decode(response);
@@ -95,12 +190,36 @@ export async function RetrieveMyOrdersJSON(
 //========================================//
 
 export interface OrderManager<Context = unknown> {
+  /**
+   * PlaceoOrder will create a new order in a pending state
+   * The ctx.userid cart will be cleared and the product stock will be reserved
+   * A Payfast payment id and the order is returned
+   */
+  PlaceOrder: (
+    placeOrderRequest: PlaceOrderRequest,
+    context: Context,
+  ) => Promise<PlaceOrderResponse> | PlaceOrderResponse;
+  /**
+   * ConfirmOrder confirms a pending order, and sets the order status to paid
+   * The reserved stock will be used to update the product stock (reduce stock)
+   */
   ConfirmOrder: (
     confirmOrderRequest: ConfirmOrderRequest,
     context: Context,
-  ) => Promise<ConfirmOrderResponse> | ConfirmOrderResponse;
-  RetrieveMyOrders: (
-    retrieveMyOrderRequest: RetrieveMyOrderRequest,
+  ) => Promise<commerceOrder.Order> | commerceOrder.Order;
+  /**
+   * CancelOrder will cancel a pending order, and set the order status to cancelled
+   * The reserved stock will be released and the cart will be restored
+   */
+  CancelOrder: (
+    cancelOrderRequest: CancelOrderRequest,
+    context: Context,
+  ) => Promise<commerceOrder.Order> | commerceOrder.Order;
+  /**
+   * RefundOrder will only mark the order as refunded, the payment will be handled by the payment gateway
+   */
+  RefundOrder: (
+    refundOrderRequest: RefundOrderRequest,
     context: Context,
   ) => Promise<commerceOrder.Order> | commerceOrder.Order;
 }
@@ -109,22 +228,34 @@ export function createOrderManager<Context>(service: OrderManager<Context>) {
   return {
     name: "commerce.OrderManager",
     methods: {
+      PlaceOrder: {
+        name: "PlaceOrder",
+        handler: service.PlaceOrder,
+        input: { protobuf: PlaceOrderRequest, json: PlaceOrderRequestJSON },
+        output: { protobuf: PlaceOrderResponse, json: PlaceOrderResponseJSON },
+      },
       ConfirmOrder: {
         name: "ConfirmOrder",
         handler: service.ConfirmOrder,
         input: { protobuf: ConfirmOrderRequest, json: ConfirmOrderRequestJSON },
         output: {
-          protobuf: ConfirmOrderResponse,
-          json: ConfirmOrderResponseJSON,
+          protobuf: commerceOrder.Order,
+          json: commerceOrder.OrderJSON,
         },
       },
-      RetrieveMyOrders: {
-        name: "RetrieveMyOrders",
-        handler: service.RetrieveMyOrders,
-        input: {
-          protobuf: RetrieveMyOrderRequest,
-          json: RetrieveMyOrderRequestJSON,
+      CancelOrder: {
+        name: "CancelOrder",
+        handler: service.CancelOrder,
+        input: { protobuf: CancelOrderRequest, json: CancelOrderRequestJSON },
+        output: {
+          protobuf: commerceOrder.Order,
+          json: commerceOrder.OrderJSON,
         },
+      },
+      RefundOrder: {
+        name: "RefundOrder",
+        handler: service.RefundOrder,
+        input: { protobuf: RefundOrderRequest, json: RefundOrderRequestJSON },
         output: {
           protobuf: commerceOrder.Order,
           json: commerceOrder.OrderJSON,
@@ -137,6 +268,150 @@ export function createOrderManager<Context>(service: OrderManager<Context>) {
 //========================================//
 //        Protobuf Encode / Decode        //
 //========================================//
+
+export const PlaceOrderRequest = {
+  /**
+   * Serializes PlaceOrderRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<PlaceOrderRequest>): Uint8Array {
+    return PlaceOrderRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes PlaceOrderRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): PlaceOrderRequest {
+    return PlaceOrderRequest._readMessage(
+      PlaceOrderRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes PlaceOrderRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<PlaceOrderRequest>): PlaceOrderRequest {
+    return {
+      eTag: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<PlaceOrderRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.eTag) {
+      writer.writeString(1, msg.eTag);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: PlaceOrderRequest,
+    reader: protoscript.BinaryReader,
+  ): PlaceOrderRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.eTag = reader.readString();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const PlaceOrderResponse = {
+  /**
+   * Serializes PlaceOrderResponse to protobuf.
+   */
+  encode: function (msg: PartialDeep<PlaceOrderResponse>): Uint8Array {
+    return PlaceOrderResponse._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes PlaceOrderResponse from protobuf.
+   */
+  decode: function (bytes: ByteSource): PlaceOrderResponse {
+    return PlaceOrderResponse._readMessage(
+      PlaceOrderResponse.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes PlaceOrderResponse with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<PlaceOrderResponse>): PlaceOrderResponse {
+    return {
+      paymentID: "",
+      order: commerceOrder.Order.initialize(),
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<PlaceOrderResponse>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.paymentID) {
+      writer.writeString(1, msg.paymentID);
+    }
+    if (msg.order) {
+      writer.writeMessage(2, msg.order, commerceOrder.Order._writeMessage);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: PlaceOrderResponse,
+    reader: protoscript.BinaryReader,
+  ): PlaceOrderResponse {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.paymentID = reader.readString();
+          break;
+        }
+        case 2: {
+          reader.readMessage(msg.order, commerceOrder.Order._readMessage);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
 
 export const ConfirmOrderRequest = {
   /**
@@ -166,7 +441,7 @@ export const ConfirmOrderRequest = {
     msg?: Partial<ConfirmOrderRequest>,
   ): ConfirmOrderRequest {
     return {
-      orderId: "",
+      order: "",
       ...msg,
     };
   },
@@ -178,8 +453,8 @@ export const ConfirmOrderRequest = {
     msg: PartialDeep<ConfirmOrderRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.orderId) {
-      writer.writeString(1, msg.orderId);
+    if (msg.order) {
+      writer.writeString(1, msg.order);
     }
     return writer;
   },
@@ -195,7 +470,7 @@ export const ConfirmOrderRequest = {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.orderId = reader.readString();
+          msg.order = reader.readString();
           break;
         }
         default: {
@@ -208,36 +483,33 @@ export const ConfirmOrderRequest = {
   },
 };
 
-export const ConfirmOrderResponse = {
+export const CancelOrderRequest = {
   /**
-   * Serializes ConfirmOrderResponse to protobuf.
+   * Serializes CancelOrderRequest to protobuf.
    */
-  encode: function (msg: PartialDeep<ConfirmOrderResponse>): Uint8Array {
-    return ConfirmOrderResponse._writeMessage(
+  encode: function (msg: PartialDeep<CancelOrderRequest>): Uint8Array {
+    return CancelOrderRequest._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes ConfirmOrderResponse from protobuf.
+   * Deserializes CancelOrderRequest from protobuf.
    */
-  decode: function (bytes: ByteSource): ConfirmOrderResponse {
-    return ConfirmOrderResponse._readMessage(
-      ConfirmOrderResponse.initialize(),
+  decode: function (bytes: ByteSource): CancelOrderRequest {
+    return CancelOrderRequest._readMessage(
+      CancelOrderRequest.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes ConfirmOrderResponse with all fields set to their default value.
+   * Initializes CancelOrderRequest with all fields set to their default value.
    */
-  initialize: function (
-    msg?: Partial<ConfirmOrderResponse>,
-  ): ConfirmOrderResponse {
+  initialize: function (msg?: Partial<CancelOrderRequest>): CancelOrderRequest {
     return {
-      orderId: "",
-      status: "",
+      order: "",
       ...msg,
     };
   },
@@ -246,14 +518,11 @@ export const ConfirmOrderResponse = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ConfirmOrderResponse>,
+    msg: PartialDeep<CancelOrderRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.orderId) {
-      writer.writeString(1, msg.orderId);
-    }
-    if (msg.status) {
-      writer.writeString(2, msg.status);
+    if (msg.order) {
+      writer.writeString(1, msg.order);
     }
     return writer;
   },
@@ -262,18 +531,14 @@ export const ConfirmOrderResponse = {
    * @private
    */
   _readMessage: function (
-    msg: ConfirmOrderResponse,
+    msg: CancelOrderRequest,
     reader: protoscript.BinaryReader,
-  ): ConfirmOrderResponse {
+  ): CancelOrderRequest {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.orderId = reader.readString();
-          break;
-        }
-        case 2: {
-          msg.status = reader.readString();
+          msg.order = reader.readString();
           break;
         }
         default: {
@@ -286,35 +551,33 @@ export const ConfirmOrderResponse = {
   },
 };
 
-export const RetrieveMyOrderRequest = {
+export const RefundOrderRequest = {
   /**
-   * Serializes RetrieveMyOrderRequest to protobuf.
+   * Serializes RefundOrderRequest to protobuf.
    */
-  encode: function (msg: PartialDeep<RetrieveMyOrderRequest>): Uint8Array {
-    return RetrieveMyOrderRequest._writeMessage(
+  encode: function (msg: PartialDeep<RefundOrderRequest>): Uint8Array {
+    return RefundOrderRequest._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes RetrieveMyOrderRequest from protobuf.
+   * Deserializes RefundOrderRequest from protobuf.
    */
-  decode: function (bytes: ByteSource): RetrieveMyOrderRequest {
-    return RetrieveMyOrderRequest._readMessage(
-      RetrieveMyOrderRequest.initialize(),
+  decode: function (bytes: ByteSource): RefundOrderRequest {
+    return RefundOrderRequest._readMessage(
+      RefundOrderRequest.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes RetrieveMyOrderRequest with all fields set to their default value.
+   * Initializes RefundOrderRequest with all fields set to their default value.
    */
-  initialize: function (
-    msg?: Partial<RetrieveMyOrderRequest>,
-  ): RetrieveMyOrderRequest {
+  initialize: function (msg?: Partial<RefundOrderRequest>): RefundOrderRequest {
     return {
-      name: "",
+      order: "",
       ...msg,
     };
   },
@@ -323,11 +586,11 @@ export const RetrieveMyOrderRequest = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<RetrieveMyOrderRequest>,
+    msg: PartialDeep<RefundOrderRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.name) {
-      writer.writeString(1, msg.name);
+    if (msg.order) {
+      writer.writeString(1, msg.order);
     }
     return writer;
   },
@@ -336,14 +599,14 @@ export const RetrieveMyOrderRequest = {
    * @private
    */
   _readMessage: function (
-    msg: RetrieveMyOrderRequest,
+    msg: RefundOrderRequest,
     reader: protoscript.BinaryReader,
-  ): RetrieveMyOrderRequest {
+  ): RefundOrderRequest {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.name = reader.readString();
+          msg.order = reader.readString();
           break;
         }
         default: {
@@ -359,6 +622,129 @@ export const RetrieveMyOrderRequest = {
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
+
+export const PlaceOrderRequestJSON = {
+  /**
+   * Serializes PlaceOrderRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<PlaceOrderRequest>): string {
+    return JSON.stringify(PlaceOrderRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes PlaceOrderRequest from JSON.
+   */
+  decode: function (json: string): PlaceOrderRequest {
+    return PlaceOrderRequestJSON._readMessage(
+      PlaceOrderRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes PlaceOrderRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<PlaceOrderRequest>): PlaceOrderRequest {
+    return {
+      eTag: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<PlaceOrderRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.eTag) {
+      json["eTag"] = msg.eTag;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: PlaceOrderRequest,
+    json: any,
+  ): PlaceOrderRequest {
+    const _eTag_ = json["eTag"];
+    if (_eTag_) {
+      msg.eTag = _eTag_;
+    }
+    return msg;
+  },
+};
+
+export const PlaceOrderResponseJSON = {
+  /**
+   * Serializes PlaceOrderResponse to JSON.
+   */
+  encode: function (msg: PartialDeep<PlaceOrderResponse>): string {
+    return JSON.stringify(PlaceOrderResponseJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes PlaceOrderResponse from JSON.
+   */
+  decode: function (json: string): PlaceOrderResponse {
+    return PlaceOrderResponseJSON._readMessage(
+      PlaceOrderResponseJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes PlaceOrderResponse with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<PlaceOrderResponse>): PlaceOrderResponse {
+    return {
+      paymentID: "",
+      order: commerceOrder.OrderJSON.initialize(),
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<PlaceOrderResponse>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.paymentID) {
+      json["paymentID"] = msg.paymentID;
+    }
+    if (msg.order) {
+      const _order_ = commerceOrder.OrderJSON._writeMessage(msg.order);
+      if (Object.keys(_order_).length > 0) {
+        json["order"] = _order_;
+      }
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: PlaceOrderResponse,
+    json: any,
+  ): PlaceOrderResponse {
+    const _paymentID_ = json["paymentID"];
+    if (_paymentID_) {
+      msg.paymentID = _paymentID_;
+    }
+    const _order_ = json["order"];
+    if (_order_) {
+      commerceOrder.OrderJSON._readMessage(msg.order, _order_);
+    }
+    return msg;
+  },
+};
 
 export const ConfirmOrderRequestJSON = {
   /**
@@ -385,7 +771,7 @@ export const ConfirmOrderRequestJSON = {
     msg?: Partial<ConfirmOrderRequest>,
   ): ConfirmOrderRequest {
     return {
-      orderId: "",
+      order: "",
       ...msg,
     };
   },
@@ -397,8 +783,8 @@ export const ConfirmOrderRequestJSON = {
     msg: PartialDeep<ConfirmOrderRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.orderId) {
-      json["orderId"] = msg.orderId;
+    if (msg.order) {
+      json["order"] = msg.order;
     }
     return json;
   },
@@ -410,41 +796,38 @@ export const ConfirmOrderRequestJSON = {
     msg: ConfirmOrderRequest,
     json: any,
   ): ConfirmOrderRequest {
-    const _orderId_ = json["orderId"] ?? json["order_id"];
-    if (_orderId_) {
-      msg.orderId = _orderId_;
+    const _order_ = json["order"];
+    if (_order_) {
+      msg.order = _order_;
     }
     return msg;
   },
 };
 
-export const ConfirmOrderResponseJSON = {
+export const CancelOrderRequestJSON = {
   /**
-   * Serializes ConfirmOrderResponse to JSON.
+   * Serializes CancelOrderRequest to JSON.
    */
-  encode: function (msg: PartialDeep<ConfirmOrderResponse>): string {
-    return JSON.stringify(ConfirmOrderResponseJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<CancelOrderRequest>): string {
+    return JSON.stringify(CancelOrderRequestJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes ConfirmOrderResponse from JSON.
+   * Deserializes CancelOrderRequest from JSON.
    */
-  decode: function (json: string): ConfirmOrderResponse {
-    return ConfirmOrderResponseJSON._readMessage(
-      ConfirmOrderResponseJSON.initialize(),
+  decode: function (json: string): CancelOrderRequest {
+    return CancelOrderRequestJSON._readMessage(
+      CancelOrderRequestJSON.initialize(),
       JSON.parse(json),
     );
   },
 
   /**
-   * Initializes ConfirmOrderResponse with all fields set to their default value.
+   * Initializes CancelOrderRequest with all fields set to their default value.
    */
-  initialize: function (
-    msg?: Partial<ConfirmOrderResponse>,
-  ): ConfirmOrderResponse {
+  initialize: function (msg?: Partial<CancelOrderRequest>): CancelOrderRequest {
     return {
-      orderId: "",
-      status: "",
+      order: "",
       ...msg,
     };
   },
@@ -453,14 +836,11 @@ export const ConfirmOrderResponseJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ConfirmOrderResponse>,
+    msg: PartialDeep<CancelOrderRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.orderId) {
-      json["orderId"] = msg.orderId;
-    }
-    if (msg.status) {
-      json["status"] = msg.status;
+    if (msg.order) {
+      json["order"] = msg.order;
     }
     return json;
   },
@@ -469,47 +849,41 @@ export const ConfirmOrderResponseJSON = {
    * @private
    */
   _readMessage: function (
-    msg: ConfirmOrderResponse,
+    msg: CancelOrderRequest,
     json: any,
-  ): ConfirmOrderResponse {
-    const _orderId_ = json["orderId"] ?? json["order_id"];
-    if (_orderId_) {
-      msg.orderId = _orderId_;
-    }
-    const _status_ = json["status"];
-    if (_status_) {
-      msg.status = _status_;
+  ): CancelOrderRequest {
+    const _order_ = json["order"];
+    if (_order_) {
+      msg.order = _order_;
     }
     return msg;
   },
 };
 
-export const RetrieveMyOrderRequestJSON = {
+export const RefundOrderRequestJSON = {
   /**
-   * Serializes RetrieveMyOrderRequest to JSON.
+   * Serializes RefundOrderRequest to JSON.
    */
-  encode: function (msg: PartialDeep<RetrieveMyOrderRequest>): string {
-    return JSON.stringify(RetrieveMyOrderRequestJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<RefundOrderRequest>): string {
+    return JSON.stringify(RefundOrderRequestJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes RetrieveMyOrderRequest from JSON.
+   * Deserializes RefundOrderRequest from JSON.
    */
-  decode: function (json: string): RetrieveMyOrderRequest {
-    return RetrieveMyOrderRequestJSON._readMessage(
-      RetrieveMyOrderRequestJSON.initialize(),
+  decode: function (json: string): RefundOrderRequest {
+    return RefundOrderRequestJSON._readMessage(
+      RefundOrderRequestJSON.initialize(),
       JSON.parse(json),
     );
   },
 
   /**
-   * Initializes RetrieveMyOrderRequest with all fields set to their default value.
+   * Initializes RefundOrderRequest with all fields set to their default value.
    */
-  initialize: function (
-    msg?: Partial<RetrieveMyOrderRequest>,
-  ): RetrieveMyOrderRequest {
+  initialize: function (msg?: Partial<RefundOrderRequest>): RefundOrderRequest {
     return {
-      name: "",
+      order: "",
       ...msg,
     };
   },
@@ -518,11 +892,11 @@ export const RetrieveMyOrderRequestJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<RetrieveMyOrderRequest>,
+    msg: PartialDeep<RefundOrderRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.name) {
-      json["name"] = msg.name;
+    if (msg.order) {
+      json["order"] = msg.order;
     }
     return json;
   },
@@ -531,12 +905,12 @@ export const RetrieveMyOrderRequestJSON = {
    * @private
    */
   _readMessage: function (
-    msg: RetrieveMyOrderRequest,
+    msg: RefundOrderRequest,
     json: any,
-  ): RetrieveMyOrderRequest {
-    const _name_ = json["name"];
-    if (_name_) {
-      msg.name = _name_;
+  ): RefundOrderRequest {
+    const _order_ = json["order"];
+    if (_order_) {
+      msg.order = _order_;
     }
     return msg;
   },
