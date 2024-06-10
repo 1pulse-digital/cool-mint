@@ -45,6 +45,7 @@ export const UserNav = (props: { role: Role }) => {
   const router = useRouter()
   const user = useUser()
   const fallback = generateFallbackName(user?.displayName, user?.email)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -80,7 +81,10 @@ export const UserNav = (props: { role: Role }) => {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLogout}>
+        <DropdownMenuItem onClick={()=> {
+            router.push("/login")
+            handleLogout
+          }}>
           Logout
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
