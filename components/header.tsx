@@ -33,10 +33,7 @@ const navigationItems = [
     name: "Classes",
     href: "/classes",
   },
-  {
-    name: "Café",
-    href: "/cafe",
-  },
+  
   {
     name: "News",
     href: "/news",
