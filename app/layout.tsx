@@ -29,8 +29,11 @@ export default function RootLayout({
       >
         <UserProvider>
           <div className="flex flex-col h-full">
+
             <Header />
-            {children}
+            <main className="flex-grow">
+              {children}
+            </main>
             <Footer />
           </div>
           
