@@ -10,72 +10,66 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import signIn from "@/lib/firebase/auth/sign-in"
+import resetPassword from "@/lib/firebase/auth/reset-password"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FirebaseError } from "firebase/app"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8, "Password must be at least 8 characters"),
 })
 
-type LoginFormValues = z.infer<typeof schema>
+type RegisterFormValues = z.infer<typeof schema>
 
-export const LoginForm = () => {
+interface MyFormEvent extends React.FormEvent<HTMLFormElement> {
+  nativeEvent: Event & {submitter: HTMLElement};
+}
+
+export const ResetPasswordForm = () => {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const redirect = searchParams.get("redirect") || '/'
+  const [resetSuccess, setResetSuccess] = useState(false)
 
-  const form = useForm<LoginFormValues>({
+  const form = useForm<RegisterFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: ""},
     mode: "onChange",
   })
 
-  const onSubmit: SubmitHandler<LoginFormValues> = async (
-    values: LoginFormValues,
+  const onSubmit: SubmitHandler<RegisterFormValues> = async (
+    values: RegisterFormValues,
   ) => {
     try {
-      const response = await signIn(values.email, values.password)
+      const response = await resetPassword(values.email)
       if (response.error === null) {
-        router.push(redirect)
+        setResetSuccess(true)
       } else {
         toast.error(response.error.message)
       }
     } catch (error) {
-      console.error("Error signing in:", error)
+      console.error("Error resetting password:", error)
 
       if (error instanceof FirebaseError) {
         console.error("Firebase error:", error.code, error.message)
-
         toast.error(`Firebase error: ${error.code} - ${error.message}`)
       } else {
         console.error("Unknown error:", error)
-
         toast.error("An error occurred. Please try again later.")
       }
-      // Handle other errors
     }
-  }
-
-
-  interface MyFormEvent extends React.FormEvent<HTMLFormElement> {
-    nativeEvent: Event & {submitter: HTMLElement};
   }
 
   return (
     <Form {...form}>
       <form onSubmit={(e: MyFormEvent) => {
           e.preventDefault()
-          if (e.nativeEvent["submitter"].id === "signIn") {
+          if (e.nativeEvent.submitter.id === "back") {
+            router.push("/login")
+          } else {
             form.handleSubmit(onSubmit)()
-          } else if (e.nativeEvent["submitter"].id === "forgotPassword") {
-            router.push("/reset")
           }
-
         }} className="space-y-4">
         <FormField
           control={form.control}
@@ -96,27 +90,11 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="password"
-                  type="password"
-                  {...field}
-                  autoComplete="current-password"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button id="signIn" className="w-full">Sign In</Button>
-        <Button id="forgotPassword" variant="secondary" className="w-full">Forgot Password</Button>
-        
+        {resetSuccess ? (
+          <Button id="back" className="w-full">Go Back</Button>
+        ) : (
+          <Button id="reset" className="w-full">Reset</Button>
+        )}
       </form>
     </Form>
   )
