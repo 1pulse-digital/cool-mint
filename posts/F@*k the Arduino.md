@@ -34,16 +34,18 @@ So if an Arduino is so flexible, powerful, and inexpensive, how is it that they 
 <br/><br/>
 Let’s use an example that we can all relate to (this one doesn’t involve Henry’s mom or a car guard): automatic hands-free taps in public restrooms. You place your hands underneath the tap and the tap automatically turns on. Likewise, it turns off when you remove your hands. An infrared sensor picks up your hand in front of it and a signal is triggered. In theory, you could:
 <br/><br/>
-Use an Arduino to detect the signal on one of the digital pins and use a simple “if/else” coding statement to either open or close the electronic water valve. The valve may need to be triggered with an external voltage source through a relay.
-OR
-<br/><br/>
-Couple the signal wire of the infrared sensor to the trigger pin of the relay, and the water valve would be connected between the common and normally open pin of the relay. By placing your hands under the sensor, it would trigger the relay and open the water valve. By moving your hands away, the sensor would trigger the relay to change and the valve would close.
-“Both of these solutions would work, of course, but a typical public bathroom has at least five taps and, if you were to go the Arduino route, you’d have to purchase and program one for each tap. But if you go back to basics and use a relay, it’s a simpler and cheaper way of doing the same thing.”
-<br/><br/>
-“Often established electro-mechanical solutions are better than a computer or microcontroller-based ones,” Henry adds.
-<br/><br/>
-“I have great respect for the people who develop, maintain and manufacture the Arduino microcontrollers and I certainly don’t wish to anger the Arduino gods. I simply want to remind all the die-hard Makers out there that a microcontroller-based solution is not always the best,” says Henry.
-<br/><br/>
+
+- Use an Arduino to detect the signal on one of the digital pins and use a simple “if/else” coding statement to either open or close the electronic water valve. The valve may need to be triggered with an external voltage source through a relay.<br/><br/>
+  OR
+  <br/><br/>
+
+- Couple the signal wire of the infrared sensor to the trigger pin of the relay, and the water valve would be connected between the common and normally open pin of the relay. By placing your hands under the sensor, it would trigger the relay and open the water valve. By moving your hands away, the sensor would trigger the relay to change and the valve would close.
+  “Both of these solutions would work, of course, but a typical public bathroom has at least five taps and, if you were to go the Arduino route, you’d have to purchase and program one for each tap. But if you go back to basics and use a relay, it’s a simpler and cheaper way of doing the same thing.”
+  <br/><br/>
+  “Often established electro-mechanical solutions are better than a computer or microcontroller-based ones,” Henry adds.
+  <br/><br/>
+  “I have great respect for the people who develop, maintain and manufacture the Arduino microcontrollers and I certainly don’t wish to anger the Arduino gods. I simply want to remind all the die-hard Makers out there that a microcontroller-based solution is not always the best,” says Henry.
+  <br/><br/>
 
 <img src="/icons/image-4.webp" alt="F@*k the Arduino" style="width: 100%; height: 100%;" />
 

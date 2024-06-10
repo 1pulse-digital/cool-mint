@@ -27,16 +27,16 @@ This year, the makerspace is set to be the dominant force in the country’s Mak
 “It’s going to be a manufacturing Mecca,” adds Henry. “It won’t be a Builder’s Warehouse special; if you have big dreams, and want to play with the big boys – or girls – this is it.” The new makerspace – which will still have more or less the same membership fee structure – comes with a bunch of features, like:
 <br/><br/>
 
-Seven studios<br/><br/>
-Four dedicated workshop spaces<br/><br/>
-Metal fabrication workshop<br/><br/>
-Woodworking workshop<br/><br/>
-Engineering workshop<br/><br/>
-Assembly workshop<br/><br/>
-Private storage<br/><br/>
-Spray booth<br/><br/>
-Fully industrial, manufacturing-quality machines<br/><br/>
-Dedicated 460 amps, three-phase power
+- Seven studios
+- Four dedicated workshop spaces
+  - Metal fabrication workshop
+  - Woodworking workshop
+  - Engineering workshop
+  - Assembly workshop
+- Private storage
+- Spray booth
+- Fully industrial, manufacturing-quality machines
+- Dedicated 460 amps, three-phase power
 
 <br/><br/>
 Just like with the current space, training is available on all the machines, along with plenty of other members who are willing to show you the ropes, or simply bounce ideas off of.
