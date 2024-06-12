@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import IndustrialMachineTools from "@/components/base/IndustrialMachineTools";
-import Button from "@/components/base/button";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
 import { listMachines } from "./actions";
+import { Spinner } from "@/components/ui/spinner";
 
 export default async function Page() {
   const response = await listMachines({
     filter: "",
-    pageSize: 10,
+    pageSize: 100,
     pageToken: "",
   });
   return (
@@ -37,12 +37,14 @@ export default async function Page() {
             </p>
           </div>
           <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10 2xl:px-0">
-            <IndustrialMachineTools machines={response.Machines} />
-            <div className="pb-16 text-center">
+            <Suspense fallback={<Spinner/>}>
+              <IndustrialMachineTools machines={response.Machines} />
+            </Suspense>
+            {/* <div className="pb-16 text-center">
               <Link href="/">
                 <Button color={"primary"}>Learn More</Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
