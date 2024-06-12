@@ -1,17 +1,23 @@
+"use client"
+
 import React from "react";
 import Tour from "@/components/base/tour";
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
+import dayjs from "dayjs";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import HeaderTitle from "@/components/base/headerTitle";
 import GetInTouch from "@/components/base/getInTouch";
+var localizedFormat = require('dayjs/plugin/localizedFormat')
+dayjs.extend(localizedFormat)
 
 const BookTour = () => {
+  const tourDayFormat = "YYYY-MM-DD"
+  const [tourDay, setTourDay] = React.useState(dayjs().format(tourDayFormat))
   return (
     <div className={"bg-background lg:py-20"}>
       <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
@@ -30,56 +36,68 @@ const BookTour = () => {
 
           <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
             <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
-            Book a Tour<span className="text-primary">.</span>
+              Book a Tour<span className="text-primary">.</span>
             </h1>
             <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground 2xl:px-60">
-            Interested in learning more about Made in Workshop? 
-            Come visit our facility at<span className="text-primary"> 10 Naaf Street, Strydompark, Randburg</span>  and take a tour with one of our team members.
+              Interested in learning more about Made in Workshop?
+              Come visit our facility at<span className="text-primary"> 10 Naaf Street, Strydompark, Randburg</span>  and take a tour with one of our team members.
             </p>
           </div>
         </div>
         <div className="py-10 lg:px-52">
-          <Tabs defaultValue="monday">
+          <Tabs defaultValue={tourDay}
+            onValueChange={(value) => setTourDay(value)}
+          >
             <div className="lg:pb-16">
               <Carousel className="mx-3 pt-3">
                 <CarouselContent className="">
                   <CarouselItem>
                     <TabsList className="h-18 grid w-full grid-cols-7 bg-[#27272A] py-2 text-foreground">
-                      <TabsTrigger value="monday" className="ml-2 p-5">
-                        Mon
-                      </TabsTrigger>
-                      <TabsTrigger value="tuesday" className="p-5">
-                        Tue
-                      </TabsTrigger>
-                      <TabsTrigger value="wednesday" className="p-5">
-                        Wed
-                      </TabsTrigger>
-                      <TabsTrigger value="thursday" className="p-5">
-                        Thur
-                      </TabsTrigger>
-                      <TabsTrigger value="friday" className="mr-2 p-5">
-                        Fri
-                      </TabsTrigger>
-                      <TabsTrigger value="saturday" className="mr-2 p-5">
-                        Sat
-                      </TabsTrigger>
-                      <TabsTrigger value="sunday" className="mr-2 p-5">
-                        Sun
-                      </TabsTrigger>
+                      {/* Days of the week */
+                        (() => {
+                          let rows = []
+                          let className = "p-5"
+                          for (let i = 0; i < 7; i++) {
+                            if (dayjs().add(i, 'day').format('ddd') === "Sun") {
+                              rows.push(
+                                <TabsTrigger
+                                  disabled
+                                  key={i}
+                                  value={dayjs().add(i, 'day').format(tourDayFormat)}
+                                  className={className}
+                                >
+                                  {dayjs().add(i, 'day').format('ddd')}
+                                </TabsTrigger>
+                              );
+                            } else {
+                              rows.push(
+                                <TabsTrigger
+                                  key={i}
+                                  value={dayjs().add(i, 'day').format(tourDayFormat)}
+                                  className={className}
+                                >
+                                  {dayjs().add(i, 'day').format('ddd')}
+                                </TabsTrigger>
+                              );
+                            }
+                          }
+                          return rows
+                        })()
+                      }
                     </TabsList>
                   </CarouselItem>
                 </CarouselContent>
               </Carousel>
             </div>
 
-            {/* Monday */}
+            {/* Day 1 */}
             <TabsContent
               className="bg-background font-helvetica"
-              value="monday"
+              value={dayjs().format(tourDayFormat)}
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  {dayjs(tourDay).format("ll")}
                 </CardTitle>
                 <Tour
                   starttime="10:00"
@@ -139,15 +157,15 @@ const BookTour = () => {
               </Card>
             </TabsContent>
 
-       {/*  Tuesday start */}
+            {/*  Day 2 */}
 
-        <TabsContent
+            <TabsContent
               className="bg-background font-helvetica"
-              value="tuesday"
+              value={dayjs().add(1, 'day').format(tourDayFormat)}
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  January
                 </CardTitle>
                 <Tour
                   starttime="10:00"
@@ -156,6 +174,7 @@ const BookTour = () => {
                 />
               </Card>
             </TabsContent>
+
             <TabsContent
               className="bg-background font-helvetica"
               value="tuesday"
@@ -214,8 +233,8 @@ const BookTour = () => {
               value="wednesday"
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  January
                 </CardTitle>
                 <Tour
                   starttime="10:00"
@@ -276,15 +295,15 @@ const BookTour = () => {
             </TabsContent>
 
 
-             {/*  Thursday start */}
+            {/*  Thursday start */}
 
-             <TabsContent
+            <TabsContent
               className="bg-background font-helvetica"
               value="thursday"
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  January
                 </CardTitle>
                 <Tour
                   starttime="10:00"
@@ -345,15 +364,15 @@ const BookTour = () => {
             </TabsContent>
 
 
-              {/*  Friday start */}
+            {/*  Friday start */}
 
-              <TabsContent
+            <TabsContent
               className="bg-background font-helvetica"
               value="friday"
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  January
                 </CardTitle>
                 <Tour
                   starttime="10:00"
@@ -413,15 +432,15 @@ const BookTour = () => {
               </Card>
             </TabsContent>
 
-               {/*  Saturday start */}
+            {/*  Saturday start */}
 
-               <TabsContent
+            <TabsContent
               className="bg-background font-helvetica"
               value="saturday"
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  January
                 </CardTitle>
                 <Tour
                   starttime="10:00"
@@ -481,15 +500,15 @@ const BookTour = () => {
               </Card>
             </TabsContent>
 
-                {/*  Sunday */}
-         
-                <TabsContent
+            {/*  Sunday */}
+
+            <TabsContent
               className="bg-background font-helvetica"
               value="sunday"
             >
               <Card className="border-0 bg-background">
-              <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                 January
+                <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                  January
                 </CardTitle>
                 <Tour
                   starttime="10:00"
