@@ -28,7 +28,8 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
       <Tabs defaultValue={defaultCategory} className="bg-background">
         <div className="px-6 pb-10 sm:mx-8 md:mx-8 lg:px-20 2xl:mx-96 xl:mx-40">
         <p className="py-3 text-center text-xs text-muted-foreground">Filter by</p>
-          <TabsList className="grid w-full grid-cols-3 bg-[#27272A] px-2 text-foreground">
+        {/* TODO: This machine filter by list should be made dynamic */}
+          <TabsList className="grid w-full grid-cols-4 bg-[#27272A] px-2 text-foreground">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category}>
                 {category}
