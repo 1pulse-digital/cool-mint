@@ -574,7 +574,7 @@ export const AddToCartRequestJSON = {
    * @private
    */
   _readMessage: function (msg: AddToCartRequest, json: any): AddToCartRequest {
-    const _eTag_ = json["eTag"];
+    const _eTag_ = json["eTag"] ?? json["e_tag"];
     if (_eTag_) {
       msg.eTag = _eTag_;
     }
@@ -652,7 +652,7 @@ export const RemoveFromCartRequestJSON = {
     msg: RemoveFromCartRequest,
     json: any,
   ): RemoveFromCartRequest {
-    const _eTag_ = json["eTag"];
+    const _eTag_ = json["eTag"] ?? json["e_tag"];
     if (_eTag_) {
       msg.eTag = _eTag_;
     }

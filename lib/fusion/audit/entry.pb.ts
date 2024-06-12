@@ -16,7 +16,7 @@ export interface Entry {
   modifiedBy: string;
   version: bigint;
   uid: string;
-  etag: string;
+  eTag: string;
 }
 
 //========================================//
@@ -55,7 +55,7 @@ export const Entry = {
       modifiedBy: "",
       version: 0n,
       uid: "",
-      etag: "",
+      eTag: "",
       ...msg,
     };
   },
@@ -85,8 +85,8 @@ export const Entry = {
     if (msg.uid) {
       writer.writeString(7, msg.uid);
     }
-    if (msg.etag) {
-      writer.writeString(6, msg.etag);
+    if (msg.eTag) {
+      writer.writeString(6, msg.eTag);
     }
     return writer;
   },
@@ -123,7 +123,7 @@ export const Entry = {
           break;
         }
         case 6: {
-          msg.etag = reader.readString();
+          msg.eTag = reader.readString();
           break;
         }
         default: {
@@ -166,7 +166,7 @@ export const EntryJSON = {
       modifiedBy: "",
       version: 0n,
       uid: "",
-      etag: "",
+      eTag: "",
       ...msg,
     };
   },
@@ -194,8 +194,8 @@ export const EntryJSON = {
     if (msg.uid) {
       json["uid"] = msg.uid;
     }
-    if (msg.etag) {
-      json["etag"] = msg.etag;
+    if (msg.eTag) {
+      json["eTag"] = msg.eTag;
     }
     return json;
   },
@@ -204,19 +204,19 @@ export const EntryJSON = {
    * @private
    */
   _readMessage: function (msg: Entry, json: any): Entry {
-    const _dateCreated_ = json["dateCreated"];
+    const _dateCreated_ = json["dateCreated"] ?? json["date_created"];
     if (_dateCreated_) {
       msg.dateCreated = _dateCreated_;
     }
-    const _dateModified_ = json["dateModified"];
+    const _dateModified_ = json["dateModified"] ?? json["date_modified"];
     if (_dateModified_) {
       msg.dateModified = _dateModified_;
     }
-    const _createdBy_ = json["createdBy"];
+    const _createdBy_ = json["createdBy"] ?? json["created_by"];
     if (_createdBy_) {
       msg.createdBy = _createdBy_;
     }
-    const _modifiedBy_ = json["modifiedBy"];
+    const _modifiedBy_ = json["modifiedBy"] ?? json["modified_by"];
     if (_modifiedBy_) {
       msg.modifiedBy = _modifiedBy_;
     }
@@ -228,9 +228,9 @@ export const EntryJSON = {
     if (_uid_) {
       msg.uid = _uid_;
     }
-    const _etag_ = json["etag"];
-    if (_etag_) {
-      msg.etag = _etag_;
+    const _eTag_ = json["eTag"] ?? json["e_tag"];
+    if (_eTag_) {
+      msg.eTag = _eTag_;
     }
     return msg;
   },

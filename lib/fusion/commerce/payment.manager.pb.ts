@@ -24,7 +24,7 @@ export interface GeneratePaymentIdentifierRequest {
   emailAddress: string;
   cellNumber: string;
   mPaymentId: string;
-  amount: number;
+  amount: bigint;
   itemName: string;
   itemDescription: string;
 }
@@ -153,7 +153,7 @@ export const GeneratePaymentIdentifierRequest = {
       emailAddress: "",
       cellNumber: "",
       mPaymentId: "",
-      amount: 0,
+      amount: 0n,
       itemName: "",
       itemDescription: "",
       ...msg,
@@ -192,7 +192,7 @@ export const GeneratePaymentIdentifierRequest = {
       writer.writeString(8, msg.mPaymentId);
     }
     if (msg.amount) {
-      writer.writeFloat(9, msg.amount);
+      writer.writeInt64String(9, msg.amount.toString() as any);
     }
     if (msg.itemName) {
       writer.writeString(10, msg.itemName);
@@ -246,7 +246,7 @@ export const GeneratePaymentIdentifierRequest = {
           break;
         }
         case 9: {
-          msg.amount = reader.readFloat();
+          msg.amount = BigInt(reader.readInt64String());
           break;
         }
         case 10: {
@@ -380,7 +380,7 @@ export const GeneratePaymentIdentifierRequestJSON = {
       emailAddress: "",
       cellNumber: "",
       mPaymentId: "",
-      amount: 0,
+      amount: 0n,
       itemName: "",
       itemDescription: "",
       ...msg,
@@ -419,7 +419,7 @@ export const GeneratePaymentIdentifierRequestJSON = {
       json["mPaymentId"] = msg.mPaymentId;
     }
     if (msg.amount) {
-      json["amount"] = msg.amount;
+      json["amount"] = String(msg.amount);
     }
     if (msg.itemName) {
       json["itemName"] = msg.itemName;
@@ -471,7 +471,7 @@ export const GeneratePaymentIdentifierRequestJSON = {
     }
     const _amount_ = json["amount"];
     if (_amount_) {
-      msg.amount = protoscript.parseDouble(_amount_);
+      msg.amount = BigInt(_amount_);
     }
     const _itemName_ = json["itemName"] ?? json["item_name"];
     if (_itemName_) {

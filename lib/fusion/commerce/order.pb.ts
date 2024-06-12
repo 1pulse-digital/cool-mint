@@ -11,23 +11,16 @@ import * as auditEntry from "../audit/entry.pb";
 //                 Types                  //
 //========================================//
 
-export type OrderStatus =
-  | "Pending"
-  | "Processing"
-  | "OnHold"
-  | "Completed"
-  | "Cancelled"
-  | "Refunded"
-  | "Failed";
-
 export interface Order {
   /**
-   * Name is {userID}/{orderNumber}
+   * Name is orders/{orderNumber}
    */
   name: string;
   uid: string;
   auditEntry: auditEntry.Entry;
+  status: Order.Status;
   number: bigint;
+  lineItems: LineItem[];
   total: bigint;
   discountTotal: bigint;
   shippingTotal: bigint;
@@ -37,7 +30,15 @@ export interface Order {
   transactionID: string;
   datePaid: string;
   dateCompleted: string;
-  lineItems: LineItem[];
+  description: string;
+}
+
+export declare namespace Order {
+  export type Status =
+    | "STATUS_UNSPECIFIED"
+    | "PENDING"
+    | "COMPLETED"
+    | "CANCELLED";
 }
 
 export interface LineItem {
@@ -81,80 +82,6 @@ export interface BillingAddress {
 //        Protobuf Encode / Decode        //
 //========================================//
 
-export const OrderStatus = {
-  Pending: "Pending",
-  Processing: "Processing",
-  OnHold: "OnHold",
-  Completed: "Completed",
-  Cancelled: "Cancelled",
-  Refunded: "Refunded",
-  Failed: "Failed",
-  /**
-   * @private
-   */
-  _fromInt: function (i: number): OrderStatus {
-    switch (i) {
-      case 0: {
-        return "Pending";
-      }
-      case 1: {
-        return "Processing";
-      }
-      case 2: {
-        return "OnHold";
-      }
-      case 3: {
-        return "Completed";
-      }
-      case 4: {
-        return "Cancelled";
-      }
-      case 5: {
-        return "Refunded";
-      }
-      case 6: {
-        return "Failed";
-      }
-      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
-      default: {
-        return i as unknown as OrderStatus;
-      }
-    }
-  },
-  /**
-   * @private
-   */
-  _toInt: function (i: OrderStatus): number {
-    switch (i) {
-      case "Pending": {
-        return 0;
-      }
-      case "Processing": {
-        return 1;
-      }
-      case "OnHold": {
-        return 2;
-      }
-      case "Completed": {
-        return 3;
-      }
-      case "Cancelled": {
-        return 4;
-      }
-      case "Refunded": {
-        return 5;
-      }
-      case "Failed": {
-        return 6;
-      }
-      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
-      default: {
-        return i as unknown as number;
-      }
-    }
-  },
-} as const;
-
 export const Order = {
   /**
    * Serializes Order to protobuf.
@@ -184,7 +111,9 @@ export const Order = {
       name: "",
       uid: "",
       auditEntry: auditEntry.Entry.initialize(),
+      status: Order.Status._fromInt(0),
       number: 0n,
+      lineItems: [],
       total: 0n,
       discountTotal: 0n,
       shippingTotal: 0n,
@@ -194,7 +123,7 @@ export const Order = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
-      lineItems: [],
+      description: "",
       ...msg,
     };
   },
@@ -215,8 +144,18 @@ export const Order = {
     if (msg.auditEntry) {
       writer.writeMessage(3, msg.auditEntry, auditEntry.Entry._writeMessage);
     }
+    if (msg.status && Order.Status._toInt(msg.status)) {
+      writer.writeEnum(4, Order.Status._toInt(msg.status));
+    }
     if (msg.number) {
       writer.writeInt64String(5, msg.number.toString() as any);
+    }
+    if (msg.lineItems?.length) {
+      writer.writeRepeatedMessage(
+        6,
+        msg.lineItems as any,
+        LineItem._writeMessage,
+      );
     }
     if (msg.total) {
       writer.writeInt64String(7, msg.total.toString() as any);
@@ -245,12 +184,8 @@ export const Order = {
     if (msg.dateCompleted) {
       writer.writeString(15, msg.dateCompleted);
     }
-    if (msg.lineItems?.length) {
-      writer.writeRepeatedMessage(
-        6,
-        msg.lineItems as any,
-        LineItem._writeMessage,
-      );
+    if (msg.description) {
+      writer.writeString(16, msg.description);
     }
     return writer;
   },
@@ -274,8 +209,18 @@ export const Order = {
           reader.readMessage(msg.auditEntry, auditEntry.Entry._readMessage);
           break;
         }
+        case 4: {
+          msg.status = Order.Status._fromInt(reader.readEnum());
+          break;
+        }
         case 5: {
           msg.number = BigInt(reader.readInt64String());
+          break;
+        }
+        case 6: {
+          const m = LineItem.initialize();
+          reader.readMessage(m, LineItem._readMessage);
+          msg.lineItems.push(m);
           break;
         }
         case 7: {
@@ -314,10 +259,8 @@ export const Order = {
           msg.dateCompleted = reader.readString();
           break;
         }
-        case 6: {
-          const m = LineItem.initialize();
-          reader.readMessage(m, LineItem._readMessage);
-          msg.lineItems.push(m);
+        case 16: {
+          msg.description = reader.readString();
           break;
         }
         default: {
@@ -328,6 +271,59 @@ export const Order = {
     }
     return msg;
   },
+
+  Status: {
+    STATUS_UNSPECIFIED: "STATUS_UNSPECIFIED",
+    PENDING: "PENDING",
+    COMPLETED: "COMPLETED",
+    CANCELLED: "CANCELLED",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): Order.Status {
+      switch (i) {
+        case 0: {
+          return "STATUS_UNSPECIFIED";
+        }
+        case 1: {
+          return "PENDING";
+        }
+        case 4: {
+          return "COMPLETED";
+        }
+        case 5: {
+          return "CANCELLED";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as Order.Status;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: Order.Status): number {
+      switch (i) {
+        case "STATUS_UNSPECIFIED": {
+          return 0;
+        }
+        case "PENDING": {
+          return 1;
+        }
+        case "COMPLETED": {
+          return 4;
+        }
+        case "CANCELLED": {
+          return 5;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };
 
 export const LineItem = {
@@ -690,80 +686,6 @@ export const BillingAddress = {
 //          JSON Encode / Decode          //
 //========================================//
 
-export const OrderStatusJSON = {
-  Pending: "Pending",
-  Processing: "Processing",
-  OnHold: "OnHold",
-  Completed: "Completed",
-  Cancelled: "Cancelled",
-  Refunded: "Refunded",
-  Failed: "Failed",
-  /**
-   * @private
-   */
-  _fromInt: function (i: number): OrderStatus {
-    switch (i) {
-      case 0: {
-        return "Pending";
-      }
-      case 1: {
-        return "Processing";
-      }
-      case 2: {
-        return "OnHold";
-      }
-      case 3: {
-        return "Completed";
-      }
-      case 4: {
-        return "Cancelled";
-      }
-      case 5: {
-        return "Refunded";
-      }
-      case 6: {
-        return "Failed";
-      }
-      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
-      default: {
-        return i as unknown as OrderStatus;
-      }
-    }
-  },
-  /**
-   * @private
-   */
-  _toInt: function (i: OrderStatus): number {
-    switch (i) {
-      case "Pending": {
-        return 0;
-      }
-      case "Processing": {
-        return 1;
-      }
-      case "OnHold": {
-        return 2;
-      }
-      case "Completed": {
-        return 3;
-      }
-      case "Cancelled": {
-        return 4;
-      }
-      case "Refunded": {
-        return 5;
-      }
-      case "Failed": {
-        return 6;
-      }
-      // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
-      default: {
-        return i as unknown as number;
-      }
-    }
-  },
-} as const;
-
 export const OrderJSON = {
   /**
    * Serializes Order to JSON.
@@ -787,7 +709,9 @@ export const OrderJSON = {
       name: "",
       uid: "",
       auditEntry: auditEntry.EntryJSON.initialize(),
+      status: Order.Status._fromInt(0),
       number: 0n,
+      lineItems: [],
       total: 0n,
       discountTotal: 0n,
       shippingTotal: 0n,
@@ -797,7 +721,7 @@ export const OrderJSON = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
-      lineItems: [],
+      description: "",
       ...msg,
     };
   },
@@ -819,8 +743,14 @@ export const OrderJSON = {
         json["auditEntry"] = _auditEntry_;
       }
     }
+    if (msg.status && OrderJSON.Status._toInt(msg.status)) {
+      json["status"] = msg.status;
+    }
     if (msg.number) {
       json["number"] = String(msg.number);
+    }
+    if (msg.lineItems?.length) {
+      json["lineItems"] = msg.lineItems.map(LineItemJSON._writeMessage);
     }
     if (msg.total) {
       json["total"] = String(msg.total);
@@ -857,8 +787,8 @@ export const OrderJSON = {
     if (msg.dateCompleted) {
       json["dateCompleted"] = msg.dateCompleted;
     }
-    if (msg.lineItems?.length) {
-      json["lineItems"] = msg.lineItems.map(LineItemJSON._writeMessage);
+    if (msg.description) {
+      json["description"] = msg.description;
     }
     return json;
   },
@@ -879,9 +809,21 @@ export const OrderJSON = {
     if (_auditEntry_) {
       auditEntry.EntryJSON._readMessage(msg.auditEntry, _auditEntry_);
     }
+    const _status_ = json["status"];
+    if (_status_) {
+      msg.status = Order.Status._fromInt(_status_);
+    }
     const _number_ = json["number"];
     if (_number_) {
       msg.number = BigInt(_number_);
+    }
+    const _lineItems_ = json["lineItems"];
+    if (_lineItems_) {
+      for (const item of _lineItems_) {
+        const m = LineItemJSON.initialize();
+        LineItemJSON._readMessage(m, item);
+        msg.lineItems.push(m);
+      }
     }
     const _total_ = json["total"];
     if (_total_) {
@@ -919,16 +861,65 @@ export const OrderJSON = {
     if (_dateCompleted_) {
       msg.dateCompleted = _dateCompleted_;
     }
-    const _lineItems_ = json["lineItems"];
-    if (_lineItems_) {
-      for (const item of _lineItems_) {
-        const m = LineItemJSON.initialize();
-        LineItemJSON._readMessage(m, item);
-        msg.lineItems.push(m);
-      }
+    const _description_ = json["description"];
+    if (_description_) {
+      msg.description = _description_;
     }
     return msg;
   },
+
+  Status: {
+    STATUS_UNSPECIFIED: "STATUS_UNSPECIFIED",
+    PENDING: "PENDING",
+    COMPLETED: "COMPLETED",
+    CANCELLED: "CANCELLED",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): Order.Status {
+      switch (i) {
+        case 0: {
+          return "STATUS_UNSPECIFIED";
+        }
+        case 1: {
+          return "PENDING";
+        }
+        case 4: {
+          return "COMPLETED";
+        }
+        case 5: {
+          return "CANCELLED";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as Order.Status;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: Order.Status): number {
+      switch (i) {
+        case "STATUS_UNSPECIFIED": {
+          return 0;
+        }
+        case "PENDING": {
+          return 1;
+        }
+        case "COMPLETED": {
+          return 4;
+        }
+        case "CANCELLED": {
+          return 5;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };
 
 export const LineItemJSON = {

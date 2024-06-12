@@ -12,7 +12,7 @@ import * as auditEntry from "../audit/entry.pb";
 //                 Types                  //
 //========================================//
 
-export type MachineCategory = "Woodwork" | "Metalwork" | "Engineering";
+export type MachineCategory = "Woodwork" | "Metalwork" | "Engineering" | "CNC";
 
 export interface MachineAttribute {
   name: string;
@@ -37,7 +37,15 @@ export interface Machine {
 export const MachineCategory = {
   Woodwork: "Woodwork",
   Metalwork: "Metalwork",
+  /**
+   * DISCUSS: Shouldn't cnc be a sub section of engineering?
+   */
   Engineering: "Engineering",
+  /**
+   * Computer Numerical Control
+   * DISCUSS: Should we use the full name
+   */
+  CNC: "CNC",
   /**
    * @private
    */
@@ -51,6 +59,9 @@ export const MachineCategory = {
       }
       case 2: {
         return "Engineering";
+      }
+      case 3: {
+        return "CNC";
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
@@ -71,6 +82,9 @@ export const MachineCategory = {
       }
       case "Engineering": {
         return 2;
+      }
+      case "CNC": {
+        return 3;
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
@@ -299,7 +313,15 @@ export const Machine = {
 export const MachineCategoryJSON = {
   Woodwork: "Woodwork",
   Metalwork: "Metalwork",
+  /**
+   * DISCUSS: Shouldn't cnc be a sub section of engineering?
+   */
   Engineering: "Engineering",
+  /**
+   * Computer Numerical Control
+   * DISCUSS: Should we use the full name
+   */
+  CNC: "CNC",
   /**
    * @private
    */
@@ -313,6 +335,9 @@ export const MachineCategoryJSON = {
       }
       case 2: {
         return "Engineering";
+      }
+      case 3: {
+        return "CNC";
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
@@ -333,6 +358,9 @@ export const MachineCategoryJSON = {
       }
       case "Engineering": {
         return 2;
+      }
+      case "CNC": {
+        return 3;
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {

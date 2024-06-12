@@ -12,12 +12,15 @@ import * as auditEntry from "../audit/entry.pb";
 //========================================//
 
 export interface Cart {
+  /**
+   * Resouce name of the cart, e.g., "carts/{cart_id}"
+   * {cart_id} = "m"+sha256(userID)[:62]
+   */
   name: string;
   uid: string;
   auditEntry: auditEntry.Entry;
   userId: string;
   items: CartItem[];
-  status: string;
 }
 
 export interface CartItem {
@@ -26,7 +29,7 @@ export interface CartItem {
    */
   product: string;
   /**
-   * displayName is the product.displayName
+   * display_name is the product.display_name
    */
   displayName: string;
   price: bigint;
@@ -69,7 +72,6 @@ export const Cart = {
       auditEntry: auditEntry.Entry.initialize(),
       userId: "",
       items: [],
-      status: "",
       ...msg,
     };
   },
@@ -95,9 +97,6 @@ export const Cart = {
     }
     if (msg.items?.length) {
       writer.writeRepeatedMessage(5, msg.items as any, CartItem._writeMessage);
-    }
-    if (msg.status) {
-      writer.writeString(6, msg.status);
     }
     return writer;
   },
@@ -129,10 +128,6 @@ export const Cart = {
           const m = CartItem.initialize();
           reader.readMessage(m, CartItem._readMessage);
           msg.items.push(m);
-          break;
-        }
-        case 6: {
-          msg.status = reader.readString();
           break;
         }
         default: {
@@ -274,7 +269,6 @@ export const CartJSON = {
       auditEntry: auditEntry.EntryJSON.initialize(),
       userId: "",
       items: [],
-      status: "",
       ...msg,
     };
   },
@@ -302,9 +296,6 @@ export const CartJSON = {
     if (msg.items?.length) {
       json["items"] = msg.items.map(CartItemJSON._writeMessage);
     }
-    if (msg.status) {
-      json["status"] = msg.status;
-    }
     return json;
   },
 
@@ -320,7 +311,7 @@ export const CartJSON = {
     if (_uid_) {
       msg.uid = _uid_;
     }
-    const _auditEntry_ = json["auditEntry"];
+    const _auditEntry_ = json["auditEntry"] ?? json["audit_entry"];
     if (_auditEntry_) {
       auditEntry.EntryJSON._readMessage(msg.auditEntry, _auditEntry_);
     }
@@ -335,10 +326,6 @@ export const CartJSON = {
         CartItemJSON._readMessage(m, item);
         msg.items.push(m);
       }
-    }
-    const _status_ = json["status"];
-    if (_status_) {
-      msg.status = _status_;
     }
     return msg;
   },
@@ -409,7 +396,7 @@ export const CartItemJSON = {
     if (_product_) {
       msg.product = _product_;
     }
-    const _displayName_ = json["displayName"];
+    const _displayName_ = json["displayName"] ?? json["display_name"];
     if (_displayName_) {
       msg.displayName = _displayName_;
     }
