@@ -6,6 +6,7 @@ import type { ByteSource, PartialDeep } from "protoscript";
 import * as protoscript from "protoscript";
 
 import * as auditEntry from "../audit/entry.pb";
+import * as mediaObject from "../media/object.pb";
 
 //========================================//
 //                 Types                  //
@@ -35,6 +36,7 @@ export interface CartItem {
   price: bigint;
   quantity: bigint;
   sku: string;
+  thumbnail: mediaObject.Object;
 }
 
 //========================================//
@@ -171,6 +173,7 @@ export const CartItem = {
       price: 0n,
       quantity: 0n,
       sku: "",
+      thumbnail: mediaObject.Object.initialize(),
       ...msg,
     };
   },
@@ -196,6 +199,9 @@ export const CartItem = {
     }
     if (msg.sku) {
       writer.writeString(5, msg.sku);
+    }
+    if (msg.thumbnail) {
+      writer.writeMessage(6, msg.thumbnail, mediaObject.Object._writeMessage);
     }
     return writer;
   },
@@ -228,6 +234,10 @@ export const CartItem = {
         }
         case 5: {
           msg.sku = reader.readString();
+          break;
+        }
+        case 6: {
+          reader.readMessage(msg.thumbnail, mediaObject.Object._readMessage);
           break;
         }
         default: {
@@ -359,6 +369,7 @@ export const CartItemJSON = {
       price: 0n,
       quantity: 0n,
       sku: "",
+      thumbnail: mediaObject.ObjectJSON.initialize(),
       ...msg,
     };
   },
@@ -384,6 +395,12 @@ export const CartItemJSON = {
     }
     if (msg.sku) {
       json["sku"] = msg.sku;
+    }
+    if (msg.thumbnail) {
+      const _thumbnail_ = mediaObject.ObjectJSON._writeMessage(msg.thumbnail);
+      if (Object.keys(_thumbnail_).length > 0) {
+        json["thumbnail"] = _thumbnail_;
+      }
     }
     return json;
   },
@@ -411,6 +428,10 @@ export const CartItemJSON = {
     const _sku_ = json["sku"];
     if (_sku_) {
       msg.sku = _sku_;
+    }
+    const _thumbnail_ = json["thumbnail"];
+    if (_thumbnail_) {
+      mediaObject.ObjectJSON._readMessage(msg.thumbnail, _thumbnail_);
     }
     return msg;
   },

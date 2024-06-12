@@ -5,6 +5,8 @@
 import type { ByteSource, PartialDeep } from "protoscript";
 import * as protoscript from "protoscript";
 
+import * as mediaGallery from "../media/gallery.pb";
+
 //========================================//
 //                 Types                  //
 //========================================//
@@ -50,6 +52,7 @@ export interface Product {
    */
   reservedQuantity: bigint;
   variants: Variant[];
+  gallery: mediaGallery.Gallery;
 }
 
 /**
@@ -61,6 +64,7 @@ export interface Variant {
   displayName: string;
   description: string;
   sku: string;
+  gallery: mediaGallery.Gallery;
 }
 
 //========================================//
@@ -150,6 +154,7 @@ export const Product = {
       stockQuantity: 0n,
       reservedQuantity: 0n,
       variants: [],
+      gallery: mediaGallery.Gallery.initialize(),
       ...msg,
     };
   },
@@ -203,6 +208,9 @@ export const Product = {
         msg.variants as any,
         Variant._writeMessage,
       );
+    }
+    if (msg.gallery) {
+      writer.writeMessage(14, msg.gallery, mediaGallery.Gallery._writeMessage);
     }
     return writer;
   },
@@ -271,6 +279,10 @@ export const Product = {
           msg.variants.push(m);
           break;
         }
+        case 14: {
+          reader.readMessage(msg.gallery, mediaGallery.Gallery._readMessage);
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -312,6 +324,7 @@ export const Variant = {
       displayName: "",
       description: "",
       sku: "",
+      gallery: mediaGallery.Gallery.initialize(),
       ...msg,
     };
   },
@@ -337,6 +350,9 @@ export const Variant = {
     }
     if (msg.sku) {
       writer.writeString(5, msg.sku);
+    }
+    if (msg.gallery) {
+      writer.writeMessage(6, msg.gallery, mediaGallery.Gallery._writeMessage);
     }
     return writer;
   },
@@ -369,6 +385,10 @@ export const Variant = {
         }
         case 5: {
           msg.sku = reader.readString();
+          break;
+        }
+        case 6: {
+          reader.readMessage(msg.gallery, mediaGallery.Gallery._readMessage);
           break;
         }
         default: {
@@ -462,6 +482,7 @@ export const ProductJSON = {
       stockQuantity: 0n,
       reservedQuantity: 0n,
       variants: [],
+      gallery: mediaGallery.GalleryJSON.initialize(),
       ...msg,
     };
   },
@@ -509,6 +530,12 @@ export const ProductJSON = {
     }
     if (msg.variants?.length) {
       json["variants"] = msg.variants.map(VariantJSON._writeMessage);
+    }
+    if (msg.gallery) {
+      const _gallery_ = mediaGallery.GalleryJSON._writeMessage(msg.gallery);
+      if (Object.keys(_gallery_).length > 0) {
+        json["gallery"] = _gallery_;
+      }
     }
     return json;
   },
@@ -573,6 +600,10 @@ export const ProductJSON = {
         msg.variants.push(m);
       }
     }
+    const _gallery_ = json["gallery"];
+    if (_gallery_) {
+      mediaGallery.GalleryJSON._readMessage(msg.gallery, _gallery_);
+    }
     return msg;
   },
 };
@@ -602,6 +633,7 @@ export const VariantJSON = {
       displayName: "",
       description: "",
       sku: "",
+      gallery: mediaGallery.GalleryJSON.initialize(),
       ...msg,
     };
   },
@@ -625,6 +657,12 @@ export const VariantJSON = {
     }
     if (msg.sku) {
       json["sku"] = msg.sku;
+    }
+    if (msg.gallery) {
+      const _gallery_ = mediaGallery.GalleryJSON._writeMessage(msg.gallery);
+      if (Object.keys(_gallery_).length > 0) {
+        json["gallery"] = _gallery_;
+      }
     }
     return json;
   },
@@ -652,6 +690,10 @@ export const VariantJSON = {
     const _sku_ = json["sku"];
     if (_sku_) {
       msg.sku = _sku_;
+    }
+    const _gallery_ = json["gallery"];
+    if (_gallery_) {
+      mediaGallery.GalleryJSON._readMessage(msg.gallery, _gallery_);
     }
     return msg;
   },
