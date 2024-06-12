@@ -34,9 +34,9 @@ const Cart: React.FC = async () => {
         </div>
         <div className="grid justify-center">
           <div>
-            <ShoppingCart cart={cart} />
+            <ShoppingCart />
           </div>
-          <div>
+          {/* <div>
             <div className="grid md:flex md:space-x-32">
               <div className="flex place-items-center space-x-2 sm:space-x-10 2xl:space-x-1">
                 <div className="bg-grey-500 flex space-x-6">
@@ -108,7 +108,7 @@ const Cart: React.FC = async () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="sm:flex sm:space-x-6">
             <div>
               <Link href="/login">
