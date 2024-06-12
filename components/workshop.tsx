@@ -1,5 +1,7 @@
 import { addToCart } from "@/app/actions"
+import { myCart } from "@/app/cart/actions"
 import { Button } from "@/components/ui/button"
+import { Cart } from "@/lib/fusion/commerce/cart.pb"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { moneyFormatter } from "@/lib/util/money-formatter"
@@ -20,9 +22,12 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   // learnMoreLink,
 }) => {
   const handleAddToCart = async () => {
+    const cart = await myCart({})
     await addToCart({
-      productName: session.product,
+      eTag: cart.auditEntry.eTag,
+      product: session.product,
       quantity: 1n,
+      variant: "",
     })
     toast.success("Added to cart")
   }

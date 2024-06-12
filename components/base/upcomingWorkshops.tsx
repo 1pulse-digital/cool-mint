@@ -83,7 +83,10 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
                     <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
                       {format(new Date(session.date), "MMM do")}
                     </CardTitle>
-                    <WorkshopItem masterClass={masterClass} session={session} />
+                    <WorkshopItem
+                      masterClass={masterClass}
+                      session={session}
+                    />
                   </Card>
                 )
               })}
@@ -94,4 +97,3 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
     </div>
   )
 }
-

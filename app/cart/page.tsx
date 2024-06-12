@@ -10,7 +10,6 @@ import { ShoppingCart } from "./components/cart"
 const Cart: React.FC = async () => {
   // TODO: redirect to login if not logged in (DONE by middleware.ts?)
   const cart = await myCart({})
-  console.log("cart", cart)
 
   return (
     <div className={"py-20"}>

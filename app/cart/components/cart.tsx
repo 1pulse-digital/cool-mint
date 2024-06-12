@@ -13,7 +13,7 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({ cart }) => {
         <ShoppingCartItem
           key={idx}
           price={item.price}
-          productName={item.productName}
+          productName={item.product}
           quantity={item.quantity}
         />
       ))}
