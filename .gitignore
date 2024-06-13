@@ -12,7 +12,7 @@
 /.venv/
 
 # Ignore environment-specific files
-.env
+# .env
 .env.local
 .env.*.local
 
