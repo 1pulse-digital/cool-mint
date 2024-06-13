@@ -10,11 +10,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
-  console.log("token is set", token)
-
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: "/cart/:path*",
+  matcher: ["/cart/:path*", "/checkout/:path*"],
 }
