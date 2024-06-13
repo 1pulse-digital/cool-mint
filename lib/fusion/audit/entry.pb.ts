@@ -15,8 +15,8 @@ export interface Entry {
   createdBy: string;
   modifiedBy: string;
   version: bigint;
-  uid: string;
   eTag: string;
+  uid: string;
 }
 
 //========================================//
@@ -54,8 +54,8 @@ export const Entry = {
       createdBy: "",
       modifiedBy: "",
       version: 0n,
-      uid: "",
       eTag: "",
+      uid: "",
       ...msg,
     };
   },
@@ -82,11 +82,11 @@ export const Entry = {
     if (msg.version) {
       writer.writeInt64String(5, msg.version.toString() as any);
     }
-    if (msg.uid) {
-      writer.writeString(7, msg.uid);
-    }
     if (msg.eTag) {
       writer.writeString(6, msg.eTag);
+    }
+    if (msg.uid) {
+      writer.writeString(7, msg.uid);
     }
     return writer;
   },
@@ -118,12 +118,12 @@ export const Entry = {
           msg.version = BigInt(reader.readInt64String());
           break;
         }
-        case 7: {
-          msg.uid = reader.readString();
-          break;
-        }
         case 6: {
           msg.eTag = reader.readString();
+          break;
+        }
+        case 7: {
+          msg.uid = reader.readString();
           break;
         }
         default: {
@@ -165,8 +165,8 @@ export const EntryJSON = {
       createdBy: "",
       modifiedBy: "",
       version: 0n,
-      uid: "",
       eTag: "",
+      uid: "",
       ...msg,
     };
   },
@@ -191,11 +191,11 @@ export const EntryJSON = {
     if (msg.version) {
       json["version"] = String(msg.version);
     }
-    if (msg.uid) {
-      json["uid"] = msg.uid;
-    }
     if (msg.eTag) {
       json["eTag"] = msg.eTag;
+    }
+    if (msg.uid) {
+      json["uid"] = msg.uid;
     }
     return json;
   },
@@ -224,13 +224,13 @@ export const EntryJSON = {
     if (_version_) {
       msg.version = BigInt(_version_);
     }
-    const _uid_ = json["uid"];
-    if (_uid_) {
-      msg.uid = _uid_;
-    }
     const _eTag_ = json["eTag"] ?? json["e_tag"];
     if (_eTag_) {
       msg.eTag = _eTag_;
+    }
+    const _uid_ = json["uid"];
+    if (_uid_) {
+      msg.uid = _uid_;
     }
     return msg;
   },
