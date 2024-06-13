@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/1pulse-digital/cool-mint/compare/v0.8.2...v0.8.3) (2024-06-13)
+
+
+### Bug Fixes
+
+* set the API url as a next public env var ([9e21484](https://github.com/1pulse-digital/cool-mint/commit/9e21484cab60e31a23a4249d4ade4a4a28b533f1))
+
 ## [0.8.2](https://github.com/1pulse-digital/cool-mint/compare/v0.8.1...v0.8.2) (2024-06-13)
 
 
