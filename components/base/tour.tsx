@@ -1,19 +1,33 @@
+"use client"
 import React from "react";
+
 import Link from "next/link";
 import { BookingButton } from "./button";
+import { useRouter } from "next/navigation";
+import dayjs from "dayjs";
 
 interface TourProps {
-
+  tourDay?: string;
   starttime: string;
   endtime: string;
   linkUrl: string;
 }
 
 const Tour: React.FC<TourProps> = ({
+  tourDay = dayjs().format("YYYY-MM-DD"),
   starttime,
   endtime,
   linkUrl,
 }) => {
+  const router = useRouter();
+
+  const params = new URLSearchParams();
+  params.append("tourDay", tourDay);
+  params.append("startTime", starttime);
+  params.append("endTime", endtime);
+
+  const redirect2 = `/bookingConfirmation?${params.toString()}`;
+
   const isLastItem = !linkUrl;
   return (
     <div className="bg-background">
@@ -26,13 +40,13 @@ const Tour: React.FC<TourProps> = ({
           <div className="grid grid-cols-2 space-x-4">
 
             <div className="pt-1">{starttime} - {endtime}</div>
-            <div className="grid justify-end items-end"><Link href={linkUrl}>
-              <BookingButton color="primary">Book</BookingButton></Link></div>
+            <div className="grid justify-end items-end">
+                <BookingButton onClick={()=>router.push(redirect2)} color="primary">Book</BookingButton>
+            </div>
           </div>
           <div className="pt-4 lg:block w-full pb-2">
             <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
-
         </div>
       </div>
     </div>

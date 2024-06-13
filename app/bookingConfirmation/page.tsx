@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import Button, {
@@ -8,7 +9,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import GetInTouch from "@/components/base/getInTouch";
+import { useSearchParams } from "next/navigation";
+
 const BookingConfirmation = () => {
+  const searchParams = useSearchParams()
+  const tourDay = searchParams.get("tourDay")
+  const startTime = searchParams.get("startTime")
+  const endTime = searchParams.get("endTime")
+
   return (
     <div className="bg-background">
       <div className={"bg-background px-8 py-12 md:mx-20 xl:mx-40 2xl:mx-80"}>
@@ -45,7 +53,6 @@ const BookingConfirmation = () => {
                   placeholder="Name"
                   className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
-                /
               </div>
             </div>
 
@@ -60,7 +67,6 @@ const BookingConfirmation = () => {
                   placeholder="surname"
                   className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
-                /
               </div>
             </div>
 
@@ -75,7 +81,6 @@ const BookingConfirmation = () => {
                   placeholder="Email"
                   className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
-                /
               </div>
             </div>
 
@@ -90,7 +95,6 @@ const BookingConfirmation = () => {
                   placeholder="Tel"
                   className="block w-full placeholder:text-xs text-foreground"
                 ></Input>
-                /
               </div>
             </div>
           </div>
@@ -104,72 +108,72 @@ const BookingConfirmation = () => {
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-1 bg-background font-helvetica text-[14px] text-foreground space-y-2">
-    {/* Checkbox Set 1 */}
-    <div className="flex items-center space-x-2">
-      <Checkbox id="workshops" />
-      <label
-        htmlFor="workshops"
-        className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Workshops
-      </label>
-    </div>
+              {/* Checkbox Set 1 */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="workshops" />
+                <label
+                  htmlFor="workshops"
+                  className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Workshops
+                </label>
+              </div>
 
-    {/* Checkbox Set 2 */}
-    <div className="flex items-center space-x-2">
-      <Checkbox id="woodwork" />
-      <label
-        htmlFor="woodwork"
-        className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Woodwork
-      </label>
-    </div>
+              {/* Checkbox Set 2 */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="woodwork" />
+                <label
+                  htmlFor="woodwork"
+                  className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Woodwork
+                </label>
+              </div>
 
-    {/* Checkbox Set 3 */}
-    <div className="flex items-center space-x-2">
-      <Checkbox id="metalwork" />
-      <label
-        htmlFor="metalwork"
-        className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Metalwork
-      </label>
-    </div>
+              {/* Checkbox Set 3 */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="metalwork" />
+                <label
+                  htmlFor="metalwork"
+                  className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Metalwork
+                </label>
+              </div>
 
-    {/* Checkbox Set 4 */}
-    <div className="flex items-center space-x-2">
-      <Checkbox id="cnc" />
-      <label
-        htmlFor="cnc"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        CNC
-      </label>
-    </div>
+              {/* Checkbox Set 4 */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="cnc" />
+                <label
+                  htmlFor="cnc"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  CNC
+                </label>
+              </div>
 
-    {/* Checkbox Set 5 */}
-    <div className="flex items-center space-x-2">
-      <Checkbox id="engineering" />
-      <label
-        htmlFor="engineering"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Engineering
-      </label>
-    </div>
+              {/* Checkbox Set 5 */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="engineering" />
+                <label
+                  htmlFor="engineering"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Engineering
+                </label>
+              </div>
 
-    {/* Checkbox Set 6 */}
-    <div className="flex items-center space-x-2">
-      <Checkbox id="memberships" />
-      <label
-        htmlFor="memberships"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Memberships
-      </label>
-    </div>
-  </div>
+              {/* Checkbox Set 6 */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="memberships" />
+                <label
+                  htmlFor="memberships"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Memberships
+                </label>
+              </div>
+            </div>
           </div>
           <p
             className={
@@ -191,7 +195,7 @@ const BookingConfirmation = () => {
                 <p
                   className={"text-start font-helvetica text-[16px] font-bold"}
                 >
-                  27 January 2024
+                  {tourDay}
                 </p>
               </div>
             </div>
@@ -200,7 +204,7 @@ const BookingConfirmation = () => {
                 <span className={"font-helvetica font-bold"}>Time:</span>
               </div>
               <div>
-                <span className={"font-helvetica font-bold"}>9:00 am</span>
+                <span className={"font-helvetica font-bold"}>{startTime} - {endTime}</span>
               </div>
             </div>
             <div className="flex flex-row space-x-2 py-1 text-[16px] text-muted-foreground">
@@ -211,7 +215,7 @@ const BookingConfirmation = () => {
               </div>
               <div>
                 <span className={"font-helvetica text-[16px] font-bold"}>
-                  2.5 hours
+                  30 minutes
                 </span>
               </div>
             </div>
