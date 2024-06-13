@@ -1,5 +1,57 @@
 # Changelog
 
+## [0.8.0](https://github.com/1pulse-digital/cool-mint/compare/v0.7.0...v0.8.0) (2024-06-13)
+
+
+### Features
+
+* :art: Added radix packages for data table (Orders) ([dc6ec41](https://github.com/1pulse-digital/cool-mint/commit/dc6ec4173ea755f9ddd64f33b8796e16286919e1))
+* :art: Added useful ui components from shadcn for data table ([16d0a75](https://github.com/1pulse-digital/cool-mint/commit/16d0a75832d0babc915fbb373c62aaf84a9b982b))
+* :art: Forward parameters to booking confirmation ([b2920a9](https://github.com/1pulse-digital/cool-mint/commit/b2920a91cb5df42c6d86dfd295d73baaf75bff2f))
+* :construction: Added retrieve definitions from proto files for orders ([4b11767](https://github.com/1pulse-digital/cool-mint/commit/4b117676a9e7dafc92fb3febb1ef989fd3e80145))
+* add breadcrumb component ([6fcffb6](https://github.com/1pulse-digital/cool-mint/commit/6fcffb623877f948af68c67ce99ff5a1ea5c5445))
+* add user-nav component ([8876821](https://github.com/1pulse-digital/cool-mint/commit/887682181be34bbaadf7d353fe569eec25bd0a1c))
+* Added booktour dynamics, Added cnc machine ([0dc55ae](https://github.com/1pulse-digital/cool-mint/commit/0dc55ae84613411f72b74319dd793a515760c10e))
+* Added password reset flow. ([4e551c6](https://github.com/1pulse-digital/cool-mint/commit/4e551c6e6a6055958362f14e295055f176bd54f8))
+* Added shadcn ui data table ([a91c29b](https://github.com/1pulse-digital/cool-mint/commit/a91c29b8e27290ebe76a8a992de919ca974a14cd))
+* Added todos, cleanup code, added orders columns ([da6eaa1](https://github.com/1pulse-digital/cool-mint/commit/da6eaa150c6ebce78196268ca55dcb90e1ea31ac))
+* Added tour booking actions and dynamic page ([d34e02f](https://github.com/1pulse-digital/cool-mint/commit/d34e02fa97bf40ea07492da32e1f47672fc0a245))
+* checkout ([559f52b](https://github.com/1pulse-digital/cool-mint/commit/559f52bc164fd38c0fbed2392ef764b5ef055302))
+* enable login and register ([04e97b1](https://github.com/1pulse-digital/cool-mint/commit/04e97b19cdb24c82a8a480e544c558d35af883a3))
+* enable redirect after login to get back to where you were ([f30ff24](https://github.com/1pulse-digital/cool-mint/commit/f30ff24ff71f9cb80a0a2a00d6f755ff1c48e92f))
+* redirect to login on authorized route ([fc39432](https://github.com/1pulse-digital/cool-mint/commit/fc394329166493e8fb773bfc1ec806418985a459))
+* remove from shopping cart ([50cd52f](https://github.com/1pulse-digital/cool-mint/commit/50cd52f42c37c04dab1113cebc20ad21643897cc))
+* update the avatar menu options ([5a5f594](https://github.com/1pulse-digital/cool-mint/commit/5a5f5943b878f957320c81ea633b2cdf6e592d65))
+* wrap machines in suspense and add spinner component ([e6279ac](https://github.com/1pulse-digital/cool-mint/commit/e6279acf68c8eb951a4cc2f8056c9fe6c03764f2))
+
+
+### Bug Fixes
+
+* :lipstick: Centered login card ([44f38f4](https://github.com/1pulse-digital/cool-mint/commit/44f38f41a4536786e88ad70cc8a5fdd3f8a97054))
+* cleanup the auth layout ([24d9e63](https://github.com/1pulse-digital/cool-mint/commit/24d9e63806fe7bc30e0960e6c465f0514b762658))
+* don't redirect after logout ([9ba7c66](https://github.com/1pulse-digital/cool-mint/commit/9ba7c66d53add81e894e852632a3944dc93ab882))
+* don't redirect to admin after login ([3f75d5b](https://github.com/1pulse-digital/cool-mint/commit/3f75d5bdf08fda3b04de7b2e36b473a1adf331cc))
+* don't redirect to login when logging out ([436e430](https://github.com/1pulse-digital/cool-mint/commit/436e430b0cacc2e75ad6171e1cee9c22259b9739))
+* fix footer bug that keeps hugging content ([a88d6f0](https://github.com/1pulse-digital/cool-mint/commit/a88d6f01af5d46137707b0d45f75fe33df12b8ef))
+* fix the 404 page ([da9b2fe](https://github.com/1pulse-digital/cool-mint/commit/da9b2fe3a9fec09f393368213d814c2dc61cc946))
+* fix the height layout issue ([1b0785b](https://github.com/1pulse-digital/cool-mint/commit/1b0785bfa8a9859f16a94fe82987f0fceb06d814))
+* Fixed hydration issue of div inside paragraph tag ([bcb110e](https://github.com/1pulse-digital/cool-mint/commit/bcb110e2bf766e71f2c32ad8cc9660a3a6f1ddef))
+* match cart path correctly ([3f1f383](https://github.com/1pulse-digital/cool-mint/commit/3f1f383068ae1074fb0fac7087016cccaffe5815))
+* Remove confusing "learn more" button ([691fd2b](https://github.com/1pulse-digital/cool-mint/commit/691fd2bf4ed4a482d31eca97f8fa7776d4004524))
+* remove redundent class ([4e3539f](https://github.com/1pulse-digital/cool-mint/commit/4e3539f54d53d72c129185596888561b6ea91949))
+* remove weird link ([289ca95](https://github.com/1pulse-digital/cool-mint/commit/289ca95e60a24924ea128976d79f34816460cec3))
+* restrict access to checkout ([7266689](https://github.com/1pulse-digital/cool-mint/commit/72666892ee44f43df5db60fec624cef35209bba4))
+* set default Authorization header ([b179fab](https://github.com/1pulse-digital/cool-mint/commit/b179fabc3526eb715f220da8b1e55b0c67861122))
+* set h-screen on body ([261a493](https://github.com/1pulse-digital/cool-mint/commit/261a49360929c8dd1ee27f216b8ed7d70a56bd18))
+* shopping cart components and fetching ([ce97064](https://github.com/1pulse-digital/cool-mint/commit/ce97064a83ca41e48cbe7223613a26a896916e7c))
+* signOut logic ([644577b](https://github.com/1pulse-digital/cool-mint/commit/644577b81d14c4ae8fbe6ebe5b855decdbf2e52d))
+* update all shadcn components ([49f6484](https://github.com/1pulse-digital/cool-mint/commit/49f648482527b9cd036b87a6452f8d04c7200568))
+* update auth actions ([e9f6cf3](https://github.com/1pulse-digital/cool-mint/commit/e9f6cf39b24fea2aba0a284570e3cff477bffd91))
+* use correct shadcn variables for tailwind ([2f8bca8](https://github.com/1pulse-digital/cool-mint/commit/2f8bca8f5892d1727f92fa1fb81c60d43bd2f736))
+* use new add to cart ([589b547](https://github.com/1pulse-digital/cool-mint/commit/589b547ccb74cb409bbae0f5a46b03bad0e45c90))
+* use product linked to session to add to cart ([1d5bfd1](https://github.com/1pulse-digital/cool-mint/commit/1d5bfd1efd7335756e68e703d432abb64e8bc6a1))
+* use the correct button ([78105b4](https://github.com/1pulse-digital/cool-mint/commit/78105b40e870bd6cc1e5dc8728ccf56d1f173c94))
+
 ## [0.7.0](https://github.com/1pulse-digital/cool-mint/compare/v0.6.0...v0.7.0) (2024-05-16)
 
 
