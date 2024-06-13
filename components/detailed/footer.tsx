@@ -1,13 +1,12 @@
-"use client";
-import React from "react";
-import Button from "../base/button";
-import Link from "next/link";
+"use client"
+import React from "react"
+import Button from "../base/button"
+import Link from "next/link"
 //import ScrollToTop from "react-scroll-to-top";
-
 
 export const Footer = () => {
   return (
-    <div >
+    <div>
       <div>
         <hr className="mx-8 h-[1px] flex-grow border-0 bg-[#A1A1AA] lg:flex xl:flex 2xl:mx-28"></hr>
       </div>
@@ -28,7 +27,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 grid-cols-1 space-x-0 px-0 pt-10 sm:space-x-0 md:pt-0 lg:space-x-0">
+        <div className="grid grid-cols-1 space-x-0 px-0 pt-10 sm:grid-cols-3 sm:space-x-0 md:pt-0 lg:space-x-0">
           <div>
             <div className="pb-5">
               <p className="pb-2 font-helvetica text-BodyText font-bold text-muted-foreground">
@@ -114,25 +113,12 @@ export const Footer = () => {
               </Link>
             </div>
           </div>
-          <div>
-            <div className="py-4 pt-6 sm:pt-0">
-              <div className="font-helvetica text-BodyText font-bold text-muted-foreground">
-                Legal
-              </div>
-              <Link href="/privacyPolicy">
-                <p className="py-2 text-xs">Privacy Policy</p>
-              </Link>
-              <Link href="/termsConditions">
-                <p className="text-xs">Terms and Conditions</p>
-              </Link>
-            </div>
-          </div>
           <div className="sm:px-1">
-            <div className="py-4 pt-5 sm:pt-0">
+            <div className="py-2 pt-5 sm:pt-0">
               <p className="font-helvetica text-BodyText font-bold text-muted-foreground">
                 Follow Us
               </p>
-              <div className="flex flex-row space-x-2 py-2 place-items-center">
+              <div className="flex flex-row place-items-center space-x-2 py-2">
                 <div>
                   <Link
                     href="https://www.facebook.com/madeinworkshop/"
@@ -156,7 +142,6 @@ export const Footer = () => {
                     <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
                   </svg>
                 </div>
-
                 <div>
                   <Link
                     href="https://www.instagram.com/accounts/login/?next=%2Fmade_in_workshop_za%2F"
@@ -198,15 +183,52 @@ export const Footer = () => {
                     href="https://za.linkedin.com/company/made-in-workshop"
                     target="_blank"
                   >
-                     <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-4"
-        fill="#FDBB11"
-        viewBox="0 0 24 24"
-      >
-        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-      </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      fill="#FDBB11"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                    </svg>
                   </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="py-4 pt-6 sm:pt-0">
+              <div className="font-helvetica text-BodyText font-bold text-muted-foreground">
+                Legal
+              </div>
+              <Link href="/privacyPolicy">
+                <p className="py-2 text-xs">Privacy Policy</p>
+              </Link>
+              <Link href="/termsConditions">
+                <p className="text-xs">Terms and Conditions</p>
+              </Link>
+            </div>
+          </div>
+          <div>
+            <div className="pb-5">
+              <p className="pb-1 font-helvetica text-BodyText font-bold text-muted-foreground">
+                Operating Hours
+              </p>
+              <div>
+                <div>
+                  <p className="inline-flex text-[12px]">
+                    Monday - Friday : 0800hrs - 1730hrs
+                  </p>
+                </div>
+                <div>
+                  <p className="inline-flex text-[12px]">
+                    Saturday : 0900hrs - 1530hrs
+                  </p>
+                </div>
+                <div>
+                  <p className="inline-flex text-[12px]">
+                    Sunday and Public holidays : Closed
+                  </p>
                 </div>
               </div>
             </div>
@@ -250,5 +272,5 @@ export const Footer = () => {
         />
       </div> */}
     </div>
-  );
-};
+  )
+}
