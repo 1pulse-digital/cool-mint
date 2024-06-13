@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.2](https://github.com/1pulse-digital/cool-mint/compare/v0.8.1...v0.8.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* auto redirect to cart after adding a class ([1549915](https://github.com/1pulse-digital/cool-mint/commit/15499151686784fbc92cd6837e3756e2c7a2796e))
+* set the API url as a next public env var ([01c3967](https://github.com/1pulse-digital/cool-mint/commit/01c396760f29db2c644e43bf45a7880ce26fbe0b))
+
 ## [0.8.1](https://github.com/1pulse-digital/cool-mint/compare/v0.8.0...v0.8.1) (2024-06-13)
 
 
