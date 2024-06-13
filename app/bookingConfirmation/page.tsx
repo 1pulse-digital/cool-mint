@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React from "react";
 import Button, {
-  SmallButton,
   SmallButtonOrange,
 } from "@/components/base/button";
 import { Input } from "@/components/ui/input";
@@ -10,12 +9,44 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import GetInTouch from "@/components/base/getInTouch";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { bookTour } from "./actions";
+import dayjs from "dayjs";
 
 const BookingConfirmation = () => {
+  const router = useRouter();
+
+  const params = new URLSearchParams()
+
   const searchParams = useSearchParams()
   const tourDay = searchParams.get("tourDay")
   const startTime = searchParams.get("startTime")
   const endTime = searchParams.get("endTime")
+  params.append("tourDay",tourDay??dayjs().format("YYYY-MM-DD"))
+
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
+
+  const handleBooking = async () => {
+
+    if (tourDay != null && startTime != null){
+      try {
+        const response = await bookTour({
+            time: dayjs(tourDay + startTime).format("YYYY-MM-DD HH:mm"),
+            tourist: {
+              displayName: firstName + " " + lastName,
+              email: email,
+              phone: phoneNumber,
+              interests: []
+          }
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }
 
   return (
     <div className="bg-background">
@@ -52,6 +83,9 @@ const BookingConfirmation = () => {
                   id="name"
                   placeholder="Name"
                   className="block w-full placeholder:text-xs text-foreground"
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
                 ></Input>
               </div>
             </div>
@@ -66,6 +100,9 @@ const BookingConfirmation = () => {
                   id="surname"
                   placeholder="surname"
                   className="block w-full placeholder:text-xs text-foreground"
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
                 ></Input>
               </div>
             </div>
@@ -80,6 +117,9 @@ const BookingConfirmation = () => {
                   id="email"
                   placeholder="Email"
                   className="block w-full placeholder:text-xs text-foreground"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 ></Input>
               </div>
             </div>
@@ -92,8 +132,11 @@ const BookingConfirmation = () => {
                 <Input
                   type="tel"
                   id="tel"
-                  placeholder="Tel"
+                  placeholder="Phone Number"
                   className="block w-full placeholder:text-xs text-foreground"
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
                 ></Input>
               </div>
             </div>
@@ -110,7 +153,10 @@ const BookingConfirmation = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-1 bg-background font-helvetica text-[14px] text-foreground space-y-2">
               {/* Checkbox Set 1 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="workshops" />
+                <Checkbox id="workshops" onChange={(e) => {
+                  // This does nothing
+                  console.warn(e)
+                }} />
                 <label
                   htmlFor="workshops"
                   className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -215,7 +261,7 @@ const BookingConfirmation = () => {
               </div>
               <div>
                 <span className={"font-helvetica text-[16px] font-bold"}>
-                  30 minutes
+                  10 Naaf Street, Strydompark, Randburg, Johanneburg 2169
                 </span>
               </div>
             </div>
@@ -223,11 +269,14 @@ const BookingConfirmation = () => {
         </div>
         <div className="flex space-x-10 pt-10">
           <div className="w-80">
-            <Link href="/confirmedBooking">
-              <Button color="primary" className="w-full ">
-                Confirm
-              </Button>
-            </Link>
+            <Button color="primary" className="w-full"
+              onClick={()=> {
+                handleBooking()
+                router.push(`/bookingConfirmation?${params.toString()}`)
+              }}
+            >
+              Confirm
+            </Button>
           </div>
           <div className="flex items-center justify-center font-bold">
             <Link href="/about">
