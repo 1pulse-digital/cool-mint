@@ -1,13 +1,14 @@
 "use client"
 import React from "react";
 
-import Link from "next/link";
 import { BookingButton } from "./button";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
+import { propagateServerField } from "next/dist/server/lib/render-server";
 
 interface TourProps {
   tourDay?: string;
+  available: boolean;
   starttime: string;
   endtime: string;
   linkUrl: string;
@@ -15,6 +16,7 @@ interface TourProps {
 
 const Tour: React.FC<TourProps> = ({
   tourDay = dayjs().format("YYYY-MM-DD"),
+  available,
   starttime,
   endtime,
   linkUrl,
@@ -41,7 +43,7 @@ const Tour: React.FC<TourProps> = ({
 
             <div className="pt-1">{starttime} - {endtime}</div>
             <div className="grid justify-end items-end">
-                <BookingButton onClick={()=>router.push(redirect2)} color="primary">Book</BookingButton>
+                <BookingButton disabled={!available} onClick={()=>router.push(redirect2)} color="primary">Book</BookingButton>
             </div>
           </div>
           <div className="pt-4 lg:block w-full pb-2">

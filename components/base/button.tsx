@@ -130,19 +130,21 @@ export const BookingButton = (props: ButtonProps) => {
   const isDisabled = props.disabled;
 
   const colorClassname = cn(
+    { "bg-gray-400 text-gray-700 cursor-not-allowed": isDisabled },
+
     { "bg-primary text-[#2A2A2A]": isPrimary },
-    { "hover:bg-secondary": (isPrimary && !isDisabled) },
+    { "hover:bg-secondary hover:text-gray-400": (isPrimary && !isDisabled) },
 
     { "bg-[#FDBB10] border-secondary border-2 text-secondary": isSecondary },
     { "hover:bg-secondary hover:text-white": isSecondary && !isDisabled },
-  );
 
+  );
 
   const mergedClassname = tailshake(baseClassname, colorClassname, props.className);
   return (
     <button
       className={mergedClassname}
-      disabled={props.disabled}
+      disabled={isDisabled}
       onClick={props.onClick}>
       {props.children}
     </button>
