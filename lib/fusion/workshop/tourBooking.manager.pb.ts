@@ -17,7 +17,8 @@ import * as workshopTourBooking from "./tourBooking.pb";
 //========================================//
 
 export interface BookRequest {
-  booking: workshopTourBooking.TourBooking;
+  time: string;
+  tourist: workshopTourBooking.TourBooking.TouristDetails;
 }
 
 export interface BookResponse {
@@ -174,7 +175,8 @@ export const BookRequest = {
    */
   initialize: function (msg?: Partial<BookRequest>): BookRequest {
     return {
-      booking: workshopTourBooking.TourBooking.initialize(),
+      time: "",
+      tourist: workshopTourBooking.TourBooking.TouristDetails.initialize(),
       ...msg,
     };
   },
@@ -186,11 +188,14 @@ export const BookRequest = {
     msg: PartialDeep<BookRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.booking) {
+    if (msg.time) {
+      writer.writeString(1, msg.time);
+    }
+    if (msg.tourist) {
       writer.writeMessage(
-        1,
-        msg.booking,
-        workshopTourBooking.TourBooking._writeMessage,
+        2,
+        msg.tourist,
+        workshopTourBooking.TourBooking.TouristDetails._writeMessage,
       );
     }
     return writer;
@@ -207,9 +212,13 @@ export const BookRequest = {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
+          msg.time = reader.readString();
+          break;
+        }
+        case 2: {
           reader.readMessage(
-            msg.booking,
-            workshopTourBooking.TourBooking._readMessage,
+            msg.tourist,
+            workshopTourBooking.TourBooking.TouristDetails._readMessage,
           );
           break;
         }
@@ -544,7 +553,8 @@ export const BookRequestJSON = {
    */
   initialize: function (msg?: Partial<BookRequest>): BookRequest {
     return {
-      booking: workshopTourBooking.TourBookingJSON.initialize(),
+      time: "",
+      tourist: workshopTourBooking.TourBookingJSON.TouristDetails.initialize(),
       ...msg,
     };
   },
@@ -556,12 +566,16 @@ export const BookRequestJSON = {
     msg: PartialDeep<BookRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.booking) {
-      const _booking_ = workshopTourBooking.TourBookingJSON._writeMessage(
-        msg.booking,
-      );
-      if (Object.keys(_booking_).length > 0) {
-        json["booking"] = _booking_;
+    if (msg.time) {
+      json["time"] = msg.time;
+    }
+    if (msg.tourist) {
+      const _tourist_ =
+        workshopTourBooking.TourBookingJSON.TouristDetails._writeMessage(
+          msg.tourist,
+        );
+      if (Object.keys(_tourist_).length > 0) {
+        json["tourist"] = _tourist_;
       }
     }
     return json;
@@ -571,9 +585,16 @@ export const BookRequestJSON = {
    * @private
    */
   _readMessage: function (msg: BookRequest, json: any): BookRequest {
-    const _booking_ = json["booking"];
-    if (_booking_) {
-      workshopTourBooking.TourBookingJSON._readMessage(msg.booking, _booking_);
+    const _time_ = json["time"];
+    if (_time_) {
+      msg.time = _time_;
+    }
+    const _tourist_ = json["tourist"];
+    if (_tourist_) {
+      workshopTourBooking.TourBookingJSON.TouristDetails._readMessage(
+        msg.tourist,
+        _tourist_,
+      );
     }
     return msg;
   },
