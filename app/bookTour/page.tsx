@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import Tour from "@/components/base/tour";
 import Link from "next/link";
@@ -12,12 +10,19 @@ import {
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GetInTouch from "@/components/base/getInTouch";
+import { listTourBookings } from "./actions";
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
-const BookTour = () => {
+const BookTour = async () => {
   const tourDayFormat = "YYYY-MM-DD"
-  const [tourDay, setTourDay] = React.useState(dayjs().format(tourDayFormat))
+
+  const response = await listTourBookings({
+    filter: "",
+    pageSize: 100,
+    pageToken: "",
+  })
+
   return (
     <div className={"bg-background lg:py-20"}>
       <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
@@ -45,9 +50,7 @@ const BookTour = () => {
           </div>
         </div>
         <div className="py-10 lg:px-52">
-          <Tabs defaultValue={tourDay}
-            onValueChange={(value) => setTourDay(value)}
-          >
+          <Tabs defaultValue={dayjs().format(tourDayFormat)}>
             <div className="lg:pb-16">
               <Carousel className="mx-3 pt-3">
                 <CarouselContent className="">
@@ -90,483 +93,39 @@ const BookTour = () => {
               </Carousel>
             </div>
 
-            {/* Day 1 */}
-            <TabsContent
-              className="bg-background font-helvetica"
-              value={dayjs().format(tourDayFormat)}
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  {dayjs(tourDay).format("ll")}
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="monday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="monday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="monday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="monday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            {/*  Day 2 */}
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value={dayjs().add(1, 'day').format(tourDayFormat)}
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  January
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="tuesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="tuesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="tuesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="tuesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            {/*  Wednesday start */}
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="wednesday"
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  January
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="wednesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="wednesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="wednesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="wednesday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-
-            {/*  Thursday start */}
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="thursday"
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  January
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="thursday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="thursday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="thursday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="thursday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-
-            {/*  Friday start */}
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="friday"
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  January
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="friday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="friday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="friday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="friday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            {/*  Saturday start */}
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="saturday"
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  January
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="saturday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="saturday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="saturday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="saturday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            {/*  Sunday */}
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="sunday"
-            >
-              <Card className="border-0 bg-background">
-                <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                  January
-                </CardTitle>
-                <Tour
-                  starttime="10:00"
-                  endtime="10:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="sunday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="11:00"
-                  endtime="11:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="sunday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="13:00"
-                  endtime="13:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="sunday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="14:00"
-                  endtime="14:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
-
-            <TabsContent
-              className="bg-background font-helvetica"
-              value="sunday"
-            >
-              <Card className="border-0 bg-background">
-                <Tour
-                  starttime="15:00"
-                  endtime="15:30"
-                  linkUrl="/bookingConfirmation"
-                />
-              </Card>
-            </TabsContent>
+            {
+              response.TourBookings.map((tour) => {
+                return (
+                  <TabsContent
+                    className="bg-background font-helvetica"
+                    value={tour.tourDay}
+                    key={tour.tourDay}
+                  >
+                    <Card className="border-0 bg-background">
+                      <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                        {dayjs(tour.tourDay).format("ll")}
+                      </CardTitle>
+                      {
+                        tour.bookingSlots.map((slot) => {
+                          const milliseconds = Number(slot.startTime.seconds) * 1000 + slot.startTime.nanos / 1000000
+                          const startTime = dayjs(milliseconds).format("HH:mm")
+                          const endTime = dayjs(milliseconds).add(slot.duration, 'minutes').format("HH:mm")
+                          return (
+                            <Tour
+                              tourDay={tour.tourDay}
+                              starttime={startTime}
+                              endtime={endTime}
+                              linkUrl="/bookingConfirmation"
+                              key={startTime}
+                            />
+                          )
+                        })
+                      }
+                    </Card>
+                  </TabsContent>
+                )
+              })
+            }
           </Tabs>
         </div>
       </div>
