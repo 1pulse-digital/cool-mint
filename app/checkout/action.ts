@@ -1,10 +1,9 @@
 import {
-    PlaceOrder,
-    PlaceOrderRequest,
-    PlaceOrderResponse,
+  PlaceOrder,
+  PlaceOrderRequest,
+  PlaceOrderResponse,
 } from "@/lib/fusion/commerce/order.manager.pb"
 import { initTransport } from "@/lib/transport"
-import { revalidateTag } from "next/cache"
 import { TwirpError } from "twirpscript"
 import { authHeader } from "../actions"
 
