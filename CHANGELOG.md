@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.4](https://github.com/1pulse-digital/cool-mint/compare/v0.8.3...v0.8.4) (2024-06-13)
+
+
+### Bug Fixes
+
+* added-operating-hours ([#37](https://github.com/1pulse-digital/cool-mint/issues/37)) ([5a6f079](https://github.com/1pulse-digital/cool-mint/commit/5a6f079f1d7f54976d8fe341c8afcbab8aeb34c0))
+
 ## [0.8.3](https://github.com/1pulse-digital/cool-mint/compare/v0.8.2...v0.8.3) (2024-06-13)
 
 
