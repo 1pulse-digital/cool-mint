@@ -1,9 +1,7 @@
 "use client"
 import Link from "next/link";
 import React from "react";
-import Button, {
-  SmallButtonOrange,
-} from "@/components/base/button";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -269,7 +267,7 @@ const BookingConfirmation = () => {
         </div>
         <div className="flex space-x-10 pt-10">
           <div className="w-80">
-            <Button color="primary" className="w-full"
+            <Button variant="default" className="w-full"
               onClick={()=> {
                 handleBooking()
                 router.push(`/bookingConfirmation?${params.toString()}`)
@@ -280,8 +278,9 @@ const BookingConfirmation = () => {
           </div>
           <div className="flex items-center justify-center font-bold">
             <Link href="/about">
-              <SmallButtonOrange color="primary">
-                Learn More
+            
+            <Button variant="ghost" className="text-primary">
+              Learn More
                 <svg
                   className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
                   aria-hidden="true"
@@ -297,7 +296,7 @@ const BookingConfirmation = () => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </SmallButtonOrange>
+            </Button>
             </Link>
           </div>
         </div>

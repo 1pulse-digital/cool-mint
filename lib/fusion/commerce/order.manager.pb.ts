@@ -18,9 +18,11 @@ import * as commerceOrder from "./order.pb";
 
 export interface PlaceOrderRequest {
   /**
-   * eTag is the auditEntry.Etag value, used to ensure the cart is not modified, (in another session forr example)
+   * eTag is the auditEntry.Etag value, used to ensure the cart is not modified, (in another session for example)
    */
   eTag: string;
+  billingAddress: commerceOrder.BillingAddress;
+  shippingAddress: commerceOrder.Address;
 }
 
 export interface PlaceOrderResponse {
@@ -296,6 +298,8 @@ export const PlaceOrderRequest = {
   initialize: function (msg?: Partial<PlaceOrderRequest>): PlaceOrderRequest {
     return {
       eTag: "",
+      billingAddress: commerceOrder.BillingAddress.initialize(),
+      shippingAddress: commerceOrder.Address.initialize(),
       ...msg,
     };
   },
@@ -309,6 +313,20 @@ export const PlaceOrderRequest = {
   ): protoscript.BinaryWriter {
     if (msg.eTag) {
       writer.writeString(1, msg.eTag);
+    }
+    if (msg.billingAddress) {
+      writer.writeMessage(
+        2,
+        msg.billingAddress,
+        commerceOrder.BillingAddress._writeMessage,
+      );
+    }
+    if (msg.shippingAddress) {
+      writer.writeMessage(
+        3,
+        msg.shippingAddress,
+        commerceOrder.Address._writeMessage,
+      );
     }
     return writer;
   },
@@ -325,6 +343,20 @@ export const PlaceOrderRequest = {
       switch (field) {
         case 1: {
           msg.eTag = reader.readString();
+          break;
+        }
+        case 2: {
+          reader.readMessage(
+            msg.billingAddress,
+            commerceOrder.BillingAddress._readMessage,
+          );
+          break;
+        }
+        case 3: {
+          reader.readMessage(
+            msg.shippingAddress,
+            commerceOrder.Address._readMessage,
+          );
           break;
         }
         default: {
@@ -647,6 +679,8 @@ export const PlaceOrderRequestJSON = {
   initialize: function (msg?: Partial<PlaceOrderRequest>): PlaceOrderRequest {
     return {
       eTag: "",
+      billingAddress: commerceOrder.BillingAddressJSON.initialize(),
+      shippingAddress: commerceOrder.AddressJSON.initialize(),
       ...msg,
     };
   },
@@ -661,6 +695,22 @@ export const PlaceOrderRequestJSON = {
     if (msg.eTag) {
       json["eTag"] = msg.eTag;
     }
+    if (msg.billingAddress) {
+      const _billingAddress_ = commerceOrder.BillingAddressJSON._writeMessage(
+        msg.billingAddress,
+      );
+      if (Object.keys(_billingAddress_).length > 0) {
+        json["billingAddress"] = _billingAddress_;
+      }
+    }
+    if (msg.shippingAddress) {
+      const _shippingAddress_ = commerceOrder.AddressJSON._writeMessage(
+        msg.shippingAddress,
+      );
+      if (Object.keys(_shippingAddress_).length > 0) {
+        json["shippingAddress"] = _shippingAddress_;
+      }
+    }
     return json;
   },
 
@@ -674,6 +724,20 @@ export const PlaceOrderRequestJSON = {
     const _eTag_ = json["eTag"];
     if (_eTag_) {
       msg.eTag = _eTag_;
+    }
+    const _billingAddress_ = json["billingAddress"];
+    if (_billingAddress_) {
+      commerceOrder.BillingAddressJSON._readMessage(
+        msg.billingAddress,
+        _billingAddress_,
+      );
+    }
+    const _shippingAddress_ = json["shippingAddress"];
+    if (_shippingAddress_) {
+      commerceOrder.AddressJSON._readMessage(
+        msg.shippingAddress,
+        _shippingAddress_,
+      );
     }
     return msg;
   },
