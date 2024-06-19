@@ -8,6 +8,7 @@ import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { CalendarClock, Clock2, User } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
 
@@ -21,6 +22,8 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   session,
   // learnMoreLink,
 }) => {
+  const router = useRouter()
+
   const handleAddToCart = async () => {
     const cart = await myCart({})
     await addToCart({
@@ -30,6 +33,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
       variant: "",
     })
     toast.success("Added to cart")
+    router.push("/cart")
   }
 
   const date = new Date(session.date)

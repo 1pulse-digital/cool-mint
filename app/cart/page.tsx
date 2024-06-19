@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { myCart } from "./actions"
 import { ShoppingCart } from "./components/cart"
+import { Button } from "@/components/ui/button"
 
 const Cart: React.FC = async () => {
   // TODO: redirect to login if not logged in (DONE by middleware.ts?)
@@ -109,20 +110,14 @@ const Cart: React.FC = async () => {
               </div>
             </div>
           </div> */}
-          <div className="sm:flex sm:space-x-6">
-            <div>
-              <Link href="/login">
-                <LongButton color="secondary" className="mt-4 w-60">
-                  Proceed to Checkout
-                </LongButton>
+          <div className="flex mt-16">
+            <div className="grow">
+              <Link href="/checkout">
+                <Button>Proceed to Checkout</Button>
               </Link>
             </div>
-            <div className="items-start justify-start py-2 sm:items-center sm:justify-center">
               <Link href="/classes">
-                <SmallButtonOrange
-                  color="primary"
-                  className="font-helvetica font-bold"
-                >
+                <Button variant={"link"} className="text-lg font-semibold">
                   Continue Shopping
                   <svg
                     className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
@@ -139,9 +134,8 @@ const Cart: React.FC = async () => {
                       d="M1 5h12m0 0L9 1m4 4L9 9"
                     />
                   </svg>
-                </SmallButtonOrange>
+                </Button>
               </Link>
-            </div>
           </div>
         </div>
       </div>
