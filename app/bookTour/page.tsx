@@ -3,6 +3,7 @@ import Tour from "@/components/base/tour";
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
 import dayjs from "dayjs";
+import { format, parse } from 'date-fns'
 import {
   Carousel,
   CarouselContent,
@@ -10,19 +11,12 @@ import {
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GetInTouch from "@/components/base/getInTouch";
-import { listTourBookings } from "./actions";
+import { availableSlots } from "./actions";
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 const BookTour = async () => {
   const tourDayFormat = "YYYY-MM-DD"
-
-  const response = await listTourBookings({
-    filter: "",
-    pageSize: 100,
-    pageToken: "",
-  })
-
   return (
     <div className={"bg-background lg:py-20"}>
       <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
@@ -92,39 +86,44 @@ const BookTour = async () => {
                 </CarouselContent>
               </Carousel>
             </div>
-
             {
-              response.TourBookings.map((tour) => {
-                return (
-                  <TabsContent
-                    className="bg-background font-helvetica"
-                    value={tour.tourDay}
-                    key={tour.tourDay}
-                  >
-                    <Card className="border-0 bg-background">
-                      <CardTitle className="px-8 py-6 font-helvetica text-primary">
-                        {dayjs(tour.tourDay).format("ll")}
-                      </CardTitle>
-                      {
-                        tour.bookingSlots.map((slot) => {
-                          const milliseconds = Number(slot.startTime.seconds) * 1000 + slot.startTime.nanos / 1000000
-                          const startTime = dayjs(milliseconds).format("HH:mm")
-                          const endTime = dayjs(milliseconds).add(slot.duration, 'minutes').format("HH:mm")
-                          return (
-                            <Tour
-                              tourDay={tour.tourDay}
-                              starttime={startTime}
-                              endtime={endTime}
-                              linkUrl="/bookingConfirmation"
-                              key={startTime}
-                            />
-                          )
-                        })
-                      }
-                    </Card>
-                  </TabsContent>
-                )
-              })
+              (async () => {
+                const tabContent = []
+                for (let i = 0; i < 7; i++) {
+                  const res = await availableSlots({
+                    date: dayjs().add(i, "days").format(tourDayFormat)
+                  })
+                  tabContent.push(
+                    <TabsContent
+                      className="bg-background font-helvetica"
+                      value={dayjs().add(i, "days").format(tourDayFormat)}
+                    >
+                      <Card className="border-0 bg-background">
+                        <CardTitle className="px-8 py-6 font-helvetica text-primary">
+                          {dayjs().add(i, "days").format("ll")}
+                        </CardTitle>
+                        {
+                          res.slots.map((tourSlot) => {
+                            const startTime = dayjs(tourSlot.time).format("HH:mm")
+                            const endTime = dayjs(tourSlot.time).add(30, 'minutes').format("HH:mm")
+                            return (
+                              <Tour
+                                tourDay={dayjs().add(i, "days").format(tourDayFormat)}
+                                available={tourSlot.available}
+                                starttime={startTime}
+                                endtime={endTime}
+                                linkUrl="/bookingConfirmation"
+                                key={startTime}
+                              />
+                            )
+                          })
+                        }
+                      </Card>
+                    </TabsContent>
+                  )
+                }
+                return tabContent
+              })()
             }
           </Tabs>
         </div>
