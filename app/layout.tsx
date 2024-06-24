@@ -23,24 +23,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn("h-screen bg-background antialiased", inter.className, {
-          "debug-screens": isDev,
-        })}
+        className={cn(
+          "min-h-screen bg-background antialiased",
+          inter.className,
+          {
+            "debug-screens": isDev,
+          },
+        )}
       >
         <UserProvider>
-          <div className="flex flex-col h-full">
-
+          <div className="flex h-full w-full flex-col">
             <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
-          
-
           <Toaster />
         </UserProvider>
-        
       </body>
     </html>
   )
