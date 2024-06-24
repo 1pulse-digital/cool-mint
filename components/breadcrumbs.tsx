@@ -48,7 +48,7 @@ function CrumbItem({
 
 export function Breadcrumbs({ crumbs }: BreadcrumbsProps) {
   return (
-    <Breadcrumb className={"grid justify-center"}>
+    <Breadcrumb className={"grid justify-center mt-8"}>
       <BreadcrumbList className="text-xs text-foreground">
         {crumbs.map((crumb, index) => (
           <CrumbItem
