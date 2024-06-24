@@ -35,7 +35,7 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
   }
 
   return (
-    <div className="grid max-w-2xl font-medium md:justify-center">
+    <div className="grid max-h-screen max-w-2xl gap-4 overflow-y-auto font-medium md:justify-center">
       {cart.items.length === 0 && (
         <div className="text-center">Your cart is empty</div>
       )}
