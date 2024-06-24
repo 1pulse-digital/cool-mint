@@ -1,7 +1,8 @@
 import { Breadcrumbs } from "@/components/breadcrumbs"
+import HeaderTitle from "@/components/header-title"
+import Script from "next/script"
 import { myCart } from "../cart/actions"
 import { CheckoutForm } from "./components/checkout-form"
-import Script from "next/script"
 
 const CheckoutPage: React.FC = async () => {
   const cart = await myCart({})
@@ -9,16 +10,16 @@ const CheckoutPage: React.FC = async () => {
   return (
     <>
       <Script src="https://www.payfast.co.za/onsite/engine.js" />
-      <main className="px-8 ">
+      <div className="px-8">
         <Breadcrumbs
           crumbs={[
             { name: "Home", href: "/" },
             { name: "Checkout", href: "/checkout" },
           ]}
         />
-        <h1 className={"text-4xl font-bold"}>Checkout</h1>
+        <HeaderTitle>Checkout</HeaderTitle>
         <CheckoutForm cart={cart} />
-      </main>
+      </div>
     </>
   )
 }

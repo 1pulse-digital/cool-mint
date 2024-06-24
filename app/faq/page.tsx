@@ -1,9 +1,8 @@
-"use client";
-import React from "react";
-import { FAQAccordion } from "@/components/base/faqAccordion";
-import Link from "next/link";
-import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
+"use client"
+import { FAQAccordion } from "@/components/base/faqAccordion"
+import GetInTouch from "@/components/base/getInTouch"
+import HeaderTitle from "@/components/header-title"
+import Link from "next/link"
 
 const FAQ = () => {
   return (
@@ -25,7 +24,7 @@ const FAQ = () => {
           </div>
 
           <div>
-            <HeaderTitle title="FAQ" description="" />
+            <HeaderTitle>FAQ</HeaderTitle>
           </div>
         </div>
         <div>
@@ -36,7 +35,7 @@ const FAQ = () => {
         <GetInTouch />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FAQ;
+export default FAQ

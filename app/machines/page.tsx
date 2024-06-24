@@ -1,16 +1,17 @@
-import React, { Suspense } from "react";
-import IndustrialMachineTools from "@/components/base/IndustrialMachineTools";
-import Link from "next/link";
-import GetInTouch from "@/components/base/getInTouch";
-import { listMachines } from "./actions";
-import { Spinner } from "@/components/ui/spinner";
+import React, { Suspense } from "react"
+import IndustrialMachineTools from "@/components/base/IndustrialMachineTools"
+import Link from "next/link"
+import GetInTouch from "@/components/base/getInTouch"
+import { listMachines } from "./actions"
+import { Spinner } from "@/components/ui/spinner"
+import HeaderTitle from "@/components/header-title"
 
 export default async function Page() {
   const response = await listMachines({
     filter: "",
     pageSize: 100,
     pageToken: "",
-  });
+  })
   return (
     <div className={"bg-background py-10 sm:py-20"}>
       <div className="flex h-auto">
@@ -27,17 +28,20 @@ export default async function Page() {
             </Link>
           </div>
           <div className="px-6 sm:px-14 md:mx-16 lg:mx-48 xl:mx-40 2xl:px-52">
-            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
-            Industrial Tools & Machines<span className="text-primary">.</span>
-            </h1>
+            <HeaderTitle>Industrial Tools & Machines</HeaderTitle>
             <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground">
-            We hire a wide range of industrial machinery catering to all disciplines, such as woodworking, metalworking, engineering and CNC.  
-            Each machine is <span className="text-primary">maintained to the highest standard</span> ensuring constant efficiency and precision. 
-            Explore our range for hire and let us bring your project to life.
+              We hire a wide range of industrial machinery catering to all
+              disciplines, such as woodworking, metalworking, engineering and
+              CNC. Each machine is{" "}
+              <span className="text-primary">
+                maintained to the highest standard
+              </span>{" "}
+              ensuring constant efficiency and precision. Explore our range for
+              hire and let us bring your project to life.
             </p>
           </div>
           <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10 2xl:px-0">
-            <Suspense fallback={<Spinner/>}>
+            <Suspense fallback={<Spinner />}>
               <IndustrialMachineTools machines={response.Machines} />
             </Suspense>
             {/* <div className="pb-16 text-center">
@@ -52,5 +56,5 @@ export default async function Page() {
         <GetInTouch />
       </div>
     </div>
-  );
+  )
 }
