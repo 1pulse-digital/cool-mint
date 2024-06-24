@@ -67,7 +67,7 @@ export interface Address {
   address1: string;
   address2: string;
   city: string;
-  state: string;
+  province: string;
   postalCode: string;
   country: string;
 }
@@ -498,7 +498,7 @@ export const Address = {
       address1: "",
       address2: "",
       city: "",
-      state: "",
+      province: "",
       postalCode: "",
       country: "",
       ...msg,
@@ -530,8 +530,8 @@ export const Address = {
     if (msg.city) {
       writer.writeString(6, msg.city);
     }
-    if (msg.state) {
-      writer.writeString(7, msg.state);
+    if (msg.province) {
+      writer.writeString(7, msg.province);
     }
     if (msg.postalCode) {
       writer.writeString(8, msg.postalCode);
@@ -577,7 +577,7 @@ export const Address = {
           break;
         }
         case 7: {
-          msg.state = reader.readString();
+          msg.province = reader.readString();
           break;
         }
         case 8: {
@@ -1073,7 +1073,7 @@ export const AddressJSON = {
       address1: "",
       address2: "",
       city: "",
-      state: "",
+      province: "",
       postalCode: "",
       country: "",
       ...msg,
@@ -1103,8 +1103,8 @@ export const AddressJSON = {
     if (msg.city) {
       json["city"] = msg.city;
     }
-    if (msg.state) {
-      json["state"] = msg.state;
+    if (msg.province) {
+      json["province"] = msg.province;
     }
     if (msg.postalCode) {
       json["postalCode"] = msg.postalCode;
@@ -1143,9 +1143,9 @@ export const AddressJSON = {
     if (_city_) {
       msg.city = _city_;
     }
-    const _state_ = json["state"];
-    if (_state_) {
-      msg.state = _state_;
+    const _province_ = json["province"];
+    if (_province_) {
+      msg.province = _province_;
     }
     const _postalCode_ = json["postalCode"];
     if (_postalCode_) {

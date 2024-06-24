@@ -30,6 +30,12 @@ export interface PlaceOrderResponse {
   order: commerceOrder.Order;
 }
 
+export interface MyOrdersRequest {}
+
+export interface MyOrdersResponse {
+  orders: commerceOrder.Order[];
+}
+
 export interface ConfirmOrderRequest {
   /**
    * order is the order.name to confirm
@@ -70,6 +76,18 @@ export async function PlaceOrder(
     config,
   );
   return PlaceOrderResponse.decode(response);
+}
+
+export async function MyOrders(
+  myOrdersRequest: MyOrdersRequest,
+  config?: ClientConfiguration,
+): Promise<MyOrdersResponse> {
+  const response = await PBrequest(
+    "/commerce.OrderManager/MyOrders",
+    MyOrdersRequest.encode(myOrdersRequest),
+    config,
+  );
+  return MyOrdersResponse.decode(response);
 }
 
 /**
@@ -140,6 +158,18 @@ export async function PlaceOrderJSON(
   return PlaceOrderResponseJSON.decode(response);
 }
 
+export async function MyOrdersJSON(
+  myOrdersRequest: MyOrdersRequest,
+  config?: ClientConfiguration,
+): Promise<MyOrdersResponse> {
+  const response = await JSONrequest(
+    "/commerce.OrderManager/MyOrders",
+    MyOrdersRequestJSON.encode(myOrdersRequest),
+    config,
+  );
+  return MyOrdersResponseJSON.decode(response);
+}
+
 /**
  * ConfirmOrder confirms a pending order, and sets the order status to paid
  * The reserved stock will be used to update the product stock (reduce stock)
@@ -201,6 +231,10 @@ export interface OrderManager<Context = unknown> {
     placeOrderRequest: PlaceOrderRequest,
     context: Context,
   ) => Promise<PlaceOrderResponse> | PlaceOrderResponse;
+  MyOrders: (
+    myOrdersRequest: MyOrdersRequest,
+    context: Context,
+  ) => Promise<MyOrdersResponse> | MyOrdersResponse;
   /**
    * ConfirmOrder confirms a pending order, and sets the order status to paid
    * The reserved stock will be used to update the product stock (reduce stock)
@@ -235,6 +269,12 @@ export function createOrderManager<Context>(service: OrderManager<Context>) {
         handler: service.PlaceOrder,
         input: { protobuf: PlaceOrderRequest, json: PlaceOrderRequestJSON },
         output: { protobuf: PlaceOrderResponse, json: PlaceOrderResponseJSON },
+      },
+      MyOrders: {
+        name: "MyOrders",
+        handler: service.MyOrders,
+        input: { protobuf: MyOrdersRequest, json: MyOrdersRequestJSON },
+        output: { protobuf: MyOrdersResponse, json: MyOrdersResponseJSON },
       },
       ConfirmOrder: {
         name: "ConfirmOrder",
@@ -433,6 +473,125 @@ export const PlaceOrderResponse = {
         }
         case 2: {
           reader.readMessage(msg.order, commerceOrder.Order._readMessage);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const MyOrdersRequest = {
+  /**
+   * Serializes MyOrdersRequest to protobuf.
+   */
+  encode: function (_msg?: PartialDeep<MyOrdersRequest>): Uint8Array {
+    return new Uint8Array();
+  },
+
+  /**
+   * Deserializes MyOrdersRequest from protobuf.
+   */
+  decode: function (_bytes?: ByteSource): MyOrdersRequest {
+    return {};
+  },
+
+  /**
+   * Initializes MyOrdersRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<MyOrdersRequest>): MyOrdersRequest {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<MyOrdersRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    _msg: MyOrdersRequest,
+    _reader: protoscript.BinaryReader,
+  ): MyOrdersRequest {
+    return _msg;
+  },
+};
+
+export const MyOrdersResponse = {
+  /**
+   * Serializes MyOrdersResponse to protobuf.
+   */
+  encode: function (msg: PartialDeep<MyOrdersResponse>): Uint8Array {
+    return MyOrdersResponse._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes MyOrdersResponse from protobuf.
+   */
+  decode: function (bytes: ByteSource): MyOrdersResponse {
+    return MyOrdersResponse._readMessage(
+      MyOrdersResponse.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes MyOrdersResponse with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<MyOrdersResponse>): MyOrdersResponse {
+    return {
+      orders: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<MyOrdersResponse>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.orders?.length) {
+      writer.writeRepeatedMessage(
+        1,
+        msg.orders as any,
+        commerceOrder.Order._writeMessage,
+      );
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: MyOrdersResponse,
+    reader: protoscript.BinaryReader,
+  ): MyOrdersResponse {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          const m = commerceOrder.Order.initialize();
+          reader.readMessage(m, commerceOrder.Order._readMessage);
+          msg.orders.push(m);
           break;
         }
         default: {
@@ -805,6 +964,104 @@ export const PlaceOrderResponseJSON = {
     const _order_ = json["order"];
     if (_order_) {
       commerceOrder.OrderJSON._readMessage(msg.order, _order_);
+    }
+    return msg;
+  },
+};
+
+export const MyOrdersRequestJSON = {
+  /**
+   * Serializes MyOrdersRequest to JSON.
+   */
+  encode: function (_msg?: PartialDeep<MyOrdersRequest>): string {
+    return "{}";
+  },
+
+  /**
+   * Deserializes MyOrdersRequest from JSON.
+   */
+  decode: function (_json?: string): MyOrdersRequest {
+    return {};
+  },
+
+  /**
+   * Initializes MyOrdersRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<MyOrdersRequest>): MyOrdersRequest {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<MyOrdersRequest>,
+  ): Record<string, unknown> {
+    return {};
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (msg: MyOrdersRequest, _json: any): MyOrdersRequest {
+    return msg;
+  },
+};
+
+export const MyOrdersResponseJSON = {
+  /**
+   * Serializes MyOrdersResponse to JSON.
+   */
+  encode: function (msg: PartialDeep<MyOrdersResponse>): string {
+    return JSON.stringify(MyOrdersResponseJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes MyOrdersResponse from JSON.
+   */
+  decode: function (json: string): MyOrdersResponse {
+    return MyOrdersResponseJSON._readMessage(
+      MyOrdersResponseJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes MyOrdersResponse with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<MyOrdersResponse>): MyOrdersResponse {
+    return {
+      orders: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<MyOrdersResponse>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.orders?.length) {
+      json["orders"] = msg.orders.map(commerceOrder.OrderJSON._writeMessage);
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (msg: MyOrdersResponse, json: any): MyOrdersResponse {
+    const _orders_ = json["orders"];
+    if (_orders_) {
+      for (const item of _orders_) {
+        const m = commerceOrder.OrderJSON.initialize();
+        commerceOrder.OrderJSON._readMessage(m, item);
+        msg.orders.push(m);
+      }
     }
     return msg;
   },
