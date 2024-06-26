@@ -5,7 +5,7 @@ interface HeaderTitleProps {
   description?: string
 }
 
-const HeaderTitle: React.FC<HeaderTitleProps> = ({ children, description }) => {
+export const HeaderTitle: React.FC<HeaderTitleProps> = ({ children, description }) => {
   return (
     <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
       <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">

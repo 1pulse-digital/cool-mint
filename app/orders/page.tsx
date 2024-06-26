@@ -2,7 +2,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { myOrders } from "./actions"
 import { DataTable } from "./data-table"
 import { columns } from "./columns"
-import { PageSubTitle, PageTitle } from "@/components/page-title"
+import { HeaderTitle } from "@/components/header-title"
 
 export default async function Page() {
   const response = await myOrders({})
@@ -15,8 +15,7 @@ export default async function Page() {
           { name: "Orders", href: "/orders" },
         ]}
       />
-      <PageTitle>Order History</PageTitle>
-      <PageSubTitle>Your recent orders</PageSubTitle>
+      <HeaderTitle description="Your recent orders">Order History</HeaderTitle>
       {/* <h1 className="text-4xl font-bold">Order History</h1> */}
       {/* <span>Your recent orders</span> */}
       <DataTable columns={columns} data={response.orders} />
