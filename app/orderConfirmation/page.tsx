@@ -2,11 +2,11 @@ import Button, {
   LongButton,
   SmallButton,
   SmallButtonOrange,
-} from "@/components/base/button";
-import Link from "next/link";
-import OrderConfirmed from "@/components/base/orderConfirmed";
-import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/header-title";
+} from "@/components/base/button"
+import Link from "next/link"
+import OrderConfirmed from "@/components/base/orderConfirmed"
+import GetInTouch from "@/components/base/getInTouch"
+import HeaderTitle from "@/components/header-title"
 
 const OrderConfirmation: React.FC = () => {
   return (
@@ -25,10 +25,8 @@ const OrderConfirmation: React.FC = () => {
         </div>
 
         <div>
-       <HeaderTitle title="Order Confirmation"
-        description=""
-      />
-      </div>
+          <HeaderTitle>Order Confirmation</HeaderTitle>
+        </div>
         <div className="flex items-center justify-center py-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +92,7 @@ const OrderConfirmation: React.FC = () => {
         <GetInTouch />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OrderConfirmation;
+export default OrderConfirmation
