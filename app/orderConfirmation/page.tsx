@@ -6,7 +6,7 @@ import Button, {
 import Link from "next/link";
 import OrderConfirmed from "@/components/base/orderConfirmed";
 import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
+import HeaderTitle from "@/components/header-title";
 
 const OrderConfirmation: React.FC = () => {
   return (

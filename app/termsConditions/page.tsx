@@ -1,7 +1,7 @@
 import React from "react";
 import GetInTouch from "@/components/base/getInTouch";
 import Link from "next/link";
-import HeaderTitle from "@/components/base/headerTitle";
+import HeaderTitle from "@/components/header-title";
 
 const TermsConditions = () => {
   return (

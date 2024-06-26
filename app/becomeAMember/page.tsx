@@ -3,7 +3,7 @@ import Button, {
 } from "@/components/base/button";
 import Link from "next/link";
 import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/base/headerTitle";
+import HeaderTitle from "@/components/header-title";
 
 const BecomeAMember: React.FC = () => {
   return (
