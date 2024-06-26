@@ -45,9 +45,6 @@ const OrderConfirmation: React.FC = () => {
           <OrderConfirmed />
         </div>
       </div>
-      {/* <div className="py-4">
-<hr className="flex-grow h-[1px] bg-muted-foreground border-0"></hr>
-</div> */}
       <div className="sm:flex sm:justify-center sm:space-x-52">
         <div className="">
           <Link href="/workshops">
