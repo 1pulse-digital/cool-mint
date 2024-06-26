@@ -33,7 +33,7 @@ const addressSchema = z.object({
   address1: z.string(),
   address2: z.string(),
   city: z.string(),
-  state: z.string(),
+  province: z.string(),
   postalCode: z.string(),
   country: z.string(),
 })
@@ -71,7 +71,7 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
     if (user && user.email) {
       form.setValue("billingAddress.email", user.email)
     }
-  }, [user])
+  }, [user, form])
 
   const onSubmit: SubmitHandler<CheckoutFormValues> = async (
     values: CheckoutFormValues,
