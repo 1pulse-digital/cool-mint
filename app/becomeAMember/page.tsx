@@ -1,9 +1,7 @@
-import Button, {
-  SmallButtonOrange,
-} from "@/components/base/button";
-import Link from "next/link";
-import GetInTouch from "@/components/base/getInTouch";
-import HeaderTitle from "@/components/header-title";
+import Button, { SmallButtonOrange } from "@/components/base/button"
+import Link from "next/link"
+import GetInTouch from "@/components/base/getInTouch"
+import HeaderTitle from "@/components/header-title"
 
 const BecomeAMember: React.FC = () => {
   return (
@@ -22,11 +20,10 @@ const BecomeAMember: React.FC = () => {
             </Link>
           </div>
           <div>
-       <HeaderTitle title="Become a Member"
-        description=" Membership registrations are done at Made in Workshop and includes a
-        tour of the facilities."
-      />
-      </div>
+            <HeaderTitle description="Membership registrations are done at Made in Workshop and includes a tour of the facilities.">
+              Become a Member
+            </HeaderTitle>
+          </div>
           <div className="text-center 2xl:mx-72">
             <p
               className={
@@ -111,7 +108,7 @@ const BecomeAMember: React.FC = () => {
         <GetInTouch />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BecomeAMember;
+export default BecomeAMember
