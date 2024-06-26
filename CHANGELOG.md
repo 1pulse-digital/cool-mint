@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.9.0](https://github.com/1pulse-digital/cool-mint/compare/v0.8.4...v0.9.0) (2024-06-26)
+
+
+### Features
+
+* add sheets component ([16763df](https://github.com/1pulse-digital/cool-mint/commit/16763dfc97f28a45091049c8db4f7c738b0f3c22))
+
+
+### Bug Fixes
+
+* add top margin to breadcrumbs by default ([225ac36](https://github.com/1pulse-digital/cool-mint/commit/225ac36e46468bcef6cd466cc04e1ba666beaa96))
+* enable cart item list scrolling ([80d94de](https://github.com/1pulse-digital/cool-mint/commit/80d94debdea8709e1ff9604fc9661918aa040a83))
+* full width layout and full screen height ([37be075](https://github.com/1pulse-digital/cool-mint/commit/37be075e7e85382a7401dd550dac75ed38ee248b))
+* load my orders ([27a7b9b](https://github.com/1pulse-digital/cool-mint/commit/27a7b9b45735ac000d80b3be5db6c63526f9efe0))
+* rebuild the header component ([b81d7fb](https://github.com/1pulse-digital/cool-mint/commit/b81d7fb664ecb7b7f523daeac24c5ada2dcbe2f6))
+
 ## [0.8.4](https://github.com/1pulse-digital/cool-mint/compare/v0.8.3...v0.8.4) (2024-06-13)
 
 
