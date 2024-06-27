@@ -32,9 +32,12 @@ export default function RootLayout({
         )}
       >
         <UserProvider>
-          <div className="flex h-full w-full flex-col">
-            <Header />
-            <main className="flex-grow">{children}</main>
+          <div className="flex h-full min-h-screen w-full flex-col">
+            <div className="flex h-full min-h-screen w-full flex-col">
+              <Header />
+              <main className="grid grow">{children}</main>
+            </div>
+            {/* we always want the footer below the fold */}
             <Footer />
           </div>
           <Toaster />
