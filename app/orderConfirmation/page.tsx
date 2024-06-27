@@ -1,12 +1,8 @@
-import Button, {
-  LongButton,
-  SmallButton,
-  SmallButtonOrange,
-} from "@/components/base/button"
-import Link from "next/link"
-import OrderConfirmed from "@/components/base/orderConfirmed"
+import Button from "@/components/base/button"
 import GetInTouch from "@/components/base/getInTouch"
+import OrderConfirmed from "@/components/base/orderConfirmed"
 import HeaderTitle from "@/components/header-title"
+import Link from "next/link"
 
 const OrderConfirmation: React.FC = () => {
   return (
