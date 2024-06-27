@@ -9,7 +9,13 @@ import * as protoscript from "protoscript";
 //                 Types                  //
 //========================================//
 
-export type Role = "NONE" | "GUEST" | "MEMBER" | "ADMIN" | "SUPER_ADMIN";
+export type Role =
+  | "NONE"
+  | "GUEST"
+  | "MEMBER"
+  | "ADMIN"
+  | "SUPER_ADMIN"
+  | "SYSTEM";
 
 export interface required {}
 
@@ -23,6 +29,7 @@ export const Role = {
   MEMBER: "MEMBER",
   ADMIN: "ADMIN",
   SUPER_ADMIN: "SUPER_ADMIN",
+  SYSTEM: "SYSTEM",
   /**
    * @private
    */
@@ -42,6 +49,9 @@ export const Role = {
       }
       case 99: {
         return "SUPER_ADMIN";
+      }
+      case 100: {
+        return "SYSTEM";
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
@@ -68,6 +78,9 @@ export const Role = {
       }
       case "SUPER_ADMIN": {
         return 99;
+      }
+      case "SYSTEM": {
+        return 100;
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
@@ -132,6 +145,7 @@ export const RoleJSON = {
   MEMBER: "MEMBER",
   ADMIN: "ADMIN",
   SUPER_ADMIN: "SUPER_ADMIN",
+  SYSTEM: "SYSTEM",
   /**
    * @private
    */
@@ -151,6 +165,9 @@ export const RoleJSON = {
       }
       case 99: {
         return "SUPER_ADMIN";
+      }
+      case 100: {
+        return "SYSTEM";
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
@@ -177,6 +194,9 @@ export const RoleJSON = {
       }
       case "SUPER_ADMIN": {
         return 99;
+      }
+      case "SYSTEM": {
+        return 100;
       }
       // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
       default: {
