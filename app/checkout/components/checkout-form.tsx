@@ -15,7 +15,7 @@ import { toast } from "sonner"
 import { z } from "zod"
 
 import { Cart } from "@/lib/fusion/commerce/cart.pb"
-import { placeOrder } from "../action"
+import { placeOrder } from "../actions"
 import { Input } from "@/components/ui/input"
 import { useUser } from "@/contexts/user"
 import { Button } from "@/components/ui/button"

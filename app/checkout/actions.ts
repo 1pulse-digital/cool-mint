@@ -19,8 +19,8 @@ export async function placeOrder(
     return response
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
-      throw new Error(`place order failed: ${e.msg}`)
+      throw new Error(e.msg)
     }
-    throw e
+    throw new Error("Failed to place order")
   }
 }
