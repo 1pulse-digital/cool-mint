@@ -25,3 +25,5 @@ const CheckoutPage: React.FC = async () => {
 }
 
 export default CheckoutPage
+
+export const dynamic = "force-dynamic"
