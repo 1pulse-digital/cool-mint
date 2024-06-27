@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.11.0](https://github.com/1pulse-digital/cool-mint/compare/v0.10.0...v0.11.0) (2024-06-27)
+
+
+### Features
+
+* add auth header constructor helper and remove initTransport() duplication ([d9cfffa](https://github.com/1pulse-digital/cool-mint/commit/d9cfffa3a3b82e4344645ee88ff404d098e62aaf))
+
+
+### Bug Fixes
+
+* :construction: comment out the redirect after login since it's breaking the build ([5b7de06](https://github.com/1pulse-digital/cool-mint/commit/5b7de0694f4249989b6c714777531e174fb1f7fd))
+* force checkout to be dynamic ([42338a2](https://github.com/1pulse-digital/cool-mint/commit/42338a2e74aa1618a16e1364f7b4daac139d1353))
+* force orders to by dynamic ([b1d6767](https://github.com/1pulse-digital/cool-mint/commit/b1d6767c1d137122a7fe7b7fc246cc63f97716a6))
+* Home page no longer async ([2893532](https://github.com/1pulse-digital/cool-mint/commit/28935327270f999ebaf2bc862e1b2308d8bb64fe))
+* remove auth headers in upcoming sessions fetch ([42fc283](https://github.com/1pulse-digital/cool-mint/commit/42fc283fbbed9905d33de2bcf6595edebddb3711))
+* remove cart fetch on page load ([07af2a1](https://github.com/1pulse-digital/cool-mint/commit/07af2a150bdb35ec1785c20c013108204eb4965f))
+
 ## [0.10.0](https://github.com/1pulse-digital/cool-mint/compare/v0.9.0...v0.10.0) (2024-06-27)
 
 
