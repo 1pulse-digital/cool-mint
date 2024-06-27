@@ -1,11 +1,11 @@
-import React from 'react';
-import { Ring } from 'react-css-spinners'
+import React from "react"
+import { Ring } from "react-css-spinners"
 
 const Loading = () => {
-    return (
-        <div className="bg-background flex justify-center items-center h-screen">
-            <Ring color='#A1A1AA'/>
-        </div>
-    );
-};
-export default Loading;
+  return (
+    <div className="grid w-full place-content-center">
+      <Ring color="#A1A1AA" />
+    </div>
+  )
+}
+export default Loading
