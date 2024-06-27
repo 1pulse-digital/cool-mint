@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.10.0](https://github.com/1pulse-digital/cool-mint/compare/v0.9.0...v0.10.0) (2024-06-27)
+
+
+### Features
+
+* add a login prompt and error parsing ([c6da2e0](https://github.com/1pulse-digital/cool-mint/commit/c6da2e0f0f3d07c7edf207ab01f90ce1c48c6575))
+* add error boundary ([5cb4ec5](https://github.com/1pulse-digital/cool-mint/commit/5cb4ec5a911c529b7bb95b235564b13ab187336f))
+* use Suspense streaming for upcoming sessions ([ba73714](https://github.com/1pulse-digital/cool-mint/commit/ba73714cb34090ab8f9acabe2c87e960cd60e6e6))
+
+
+### Bug Fixes
+
+* add orders as protected route and fix redirect ([fde4b51](https://github.com/1pulse-digital/cool-mint/commit/fde4b5177721a57c6f3445e7d41f723455b725fd))
+* change forgot password url ([45d1ff2](https://github.com/1pulse-digital/cool-mint/commit/45d1ff240022b581b8683980408051448de01373))
+* error message ([de0d2df](https://github.com/1pulse-digital/cool-mint/commit/de0d2dfaba0462efabe0167a433078f556c4d789))
+* error message ([5b866bf](https://github.com/1pulse-digital/cool-mint/commit/5b866bfa0b5eecd4e0b7123f74a7f5a0b418c64a))
+* filename ([5054adc](https://github.com/1pulse-digital/cool-mint/commit/5054adcfc13a8e74bd47da69d18b167001b68f72))
+* handle auth redirect in user context ([dc1523d](https://github.com/1pulse-digital/cool-mint/commit/dc1523d70a73b73c04d02016d2e308aff7623722))
+* improved the user nav and add login button ([23a664b](https://github.com/1pulse-digital/cool-mint/commit/23a664ba5a3c8b4ab8b1c94aebd69ea96eba26f1))
+* layout ([6e50fc9](https://github.com/1pulse-digital/cool-mint/commit/6e50fc99c3e2a39d20e664da00fba67a4c531af9))
+* layout ([9d4b7b4](https://github.com/1pulse-digital/cool-mint/commit/9d4b7b499f05502b2998dd0f76a638c21845eb4b))
+* loader layout ([c6d8f38](https://github.com/1pulse-digital/cool-mint/commit/c6d8f38a53950b6e6cd5713dab44d66ccd4b2807))
+* page load speed ([0f74ba5](https://github.com/1pulse-digital/cool-mint/commit/0f74ba531a9015b8181b1bb53fdb044643438ce9))
+* streamline the setting of token cookie and toasts ([a16fb2b](https://github.com/1pulse-digital/cool-mint/commit/a16fb2bf685b42348cb0b4dfaea88c413575018c))
+* use no Auth header when no cookie is set ([60ca2ae](https://github.com/1pulse-digital/cool-mint/commit/60ca2aeca9309e883b4e717fd7090957c4ebad24))
+* user context and auth redirects ([01dbc72](https://github.com/1pulse-digital/cool-mint/commit/01dbc72cb18866f3df02a168e48a417e9912a04f))
+
 ## [0.9.0](https://github.com/1pulse-digital/cool-mint/compare/v0.8.4...v0.9.0) (2024-06-26)
 
 
