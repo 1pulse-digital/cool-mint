@@ -1,9 +1,14 @@
 "use server"
+
 import { initTransport } from "@/lib/transport"
 import { TwirpError } from "twirpscript"
 
 import { authHeader } from "@/app/actions"
-import { UpcomingSessionResponse, UpcomingSessions, UpcomingSessionsRequest } from "@/lib/fusion/masterClass/session.manager.pb"
+import {
+  UpcomingSessionResponse,
+  UpcomingSessions,
+  UpcomingSessionsRequest,
+} from "@/lib/fusion/masterClass/session.manager.pb"
 
 initTransport()
 
@@ -16,9 +21,8 @@ export async function upcomingSessions(
     })
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
-      console.error(`upcomingSessions`, e)
-      throw new Error(`upcomingSessions: ${e.code}: ${e.msg}`)
+      throw new Error(e.msg)
     }
-    throw e
+    throw new Error("Failed to fetch upcoming sessions")
   }
 }
