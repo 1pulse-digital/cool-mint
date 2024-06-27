@@ -25,7 +25,7 @@ const schema = z.object({
 type RegisterFormValues = z.infer<typeof schema>
 
 interface MyFormEvent extends React.FormEvent<HTMLFormElement> {
-  nativeEvent: Event & {submitter: HTMLElement};
+  nativeEvent: Event & { submitter: HTMLElement }
 }
 
 export const ResetPasswordForm = () => {
@@ -34,7 +34,7 @@ export const ResetPasswordForm = () => {
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { email: ""},
+    defaultValues: { email: "" },
     mode: "onChange",
   })
 
@@ -45,6 +45,7 @@ export const ResetPasswordForm = () => {
       const response = await resetPassword(values.email)
       if (response.error === null) {
         setResetSuccess(true)
+        toast.success("Password reset email sent.")
       } else {
         toast.error(response.error.message)
       }
@@ -62,40 +63,53 @@ export const ResetPasswordForm = () => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={(e: MyFormEvent) => {
-          e.preventDefault()
-          if (e.nativeEvent.submitter.id === "back") {
-            router.push("/login")
-          } else {
-            form.handleSubmit(onSubmit)()
-          }
-        }} className="space-y-4">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="user@example.com"
-                  type="email"
-                  autoComplete="username"
-                  {...field}
-                />
-              </FormControl>
+    <div>
+      <h1 className="py-4 text-center text-3xl font-bold text-foreground md:text-start">
+        {resetSuccess ? "Reset email sent" : "Forgot Password"}
+      </h1>
+      {!resetSuccess ? (
+        <Form {...form}>
+          <form
+            onSubmit={(e: MyFormEvent) => {
+              e.preventDefault()
+              if (e.nativeEvent.submitter.id === "back") {
+                router.push("/login")
+              } else {
+                form.handleSubmit(onSubmit)()
+              }
+            }}
+            className="space-y-4"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="user@example.com"
+                      type="email"
+                      autoComplete="username"
+                      {...field}
+                    />
+                  </FormControl>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        {resetSuccess ? (
-          <Button id="back" className="w-full">Go Back</Button>
-        ) : (
-          <Button id="reset" className="w-full">Reset</Button>
-        )}
-      </form>
-    </Form>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button id="reset" className="w-full">
+              Reset
+            </Button>
+          </form>
+        </Form>
+      ) : (
+        <Button id="reset" className="w-full" onClick={() => router.back()}>
+          Back
+        </Button>
+      )}
+    </div>
   )
 }
