@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
 
   if (!token) {
     const loginUrl = new URL("/login", request.url)
-    loginUrl.searchParams.set("redirect", request.nextUrl.pathname)
+    loginUrl.searchParams.set("redirect", request.nextUrl.pathname.slice(1))
     return NextResponse.redirect(loginUrl)
   }
 
@@ -14,5 +14,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/cart/:path*", "/checkout/:path*"],
+  matcher: ["/cart/:path*", "/checkout/:path*", "/orders/:path*"],
 }
