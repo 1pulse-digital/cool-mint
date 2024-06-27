@@ -41,7 +41,6 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
           const filteredMachines = machines.filter((machine) =>
             machine.categories.includes(category),
           )
-          console.log(`machines in category ${category}:`, filteredMachines)
           return (
             <TabsContent
               key={category}
