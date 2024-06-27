@@ -14,9 +14,9 @@ export const useUser = () => useContext(UserContext)
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
   const [user, setUser] = useState<User | null>(null)
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const redirect = searchParams.get("redirect") ?? ""
+  // const router = useRouter()
+  // const searchParams = useSearchParams()
+  // const redirect = searchParams.get("redirect") ?? ""
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(async (user) => {
@@ -27,7 +27,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(user)
         if (!hasLoggedIn) {
           toast.success("Signed in.")
-          router.push("/" + redirect)
+          // router.push("/" + redirect)
         }
       } else {
         // don't take the user to /login automatically
