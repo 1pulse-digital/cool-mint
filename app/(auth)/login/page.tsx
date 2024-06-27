@@ -5,8 +5,8 @@ import { LoginForm } from "./components/form"
 
 const Page = () => {
   return (
-    <div className="grid place-content-center py-12">
-      <h1  className="pb-4 text-center text-3xl font-bold text-foreground md:text-start">
+    <div className="grid place-content-center">
+      <h1 className="pb-4 text-center text-3xl font-bold text-foreground md:text-start">
         Login
       </h1>
       <div className="flex min-w-[360px] items-center gap-4">
