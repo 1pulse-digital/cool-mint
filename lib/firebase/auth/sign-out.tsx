@@ -1,9 +1,8 @@
 "use client"
-import { handleLogout } from "@/app/actions"
+
 import firebase_app from "../config"
 
-import { AuthError, getAuth, signOut as firebaseSignOut } from "firebase/auth"
-import { toast } from "sonner"
+import { AuthError, signOut as firebaseSignOut, getAuth } from "firebase/auth"
 
 const auth = getAuth(firebase_app)
 
@@ -11,12 +10,10 @@ interface SignOutResult {
   error: AuthError | Error | null
 }
 
-export default async function signOut(msg?: string): Promise<SignOutResult> {
+export default async function signOut(): Promise<SignOutResult> {
   let error: AuthError | Error | null = null
   try {
-    await handleLogout()
     await firebaseSignOut(auth)
-    toast.success(msg ?? "You have been signed out.")
   } catch (e) {
     error = e as AuthError | Error
   }
