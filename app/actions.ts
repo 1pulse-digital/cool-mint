@@ -16,10 +16,9 @@ export async function addToCart(request: AddToCartRequest): Promise<Cart> {
     })
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
-      console.error(`add to cart`, e)
-      throw new Error(`add to cart: ${e.msg}`)
+      throw new Error(e.msg)
     }
-    throw e
+    throw new Error("Failed to add to cart")
   }
 }
 
@@ -37,15 +36,18 @@ export async function handleLogin(tokenResult: IdTokenResult) {
 
 // handleLogout will clear the token cookie and
 export async function handleLogout() {
-  cookies().set("token", "", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    maxAge: 0,
-    path: "/",
-  })
+  cookies().delete("token")
 }
 
 export async function authHeader(): Promise<Record<string, string>> {
-  const token = cookies().get("token")?.value ?? "made-in-workshop"
+  if (!cookies().has("token")) {
+    return {}
+  }
+
+  const token = cookies().get("token")?.value
+  if (!token) {
+    return {}
+  }
+
   return { Authorization: `Bearer ${token}` }
 }
