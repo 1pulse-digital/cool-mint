@@ -27,7 +27,7 @@ type LoginFormValues = z.infer<typeof schema>
 export const LoginForm = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirect = searchParams.get("redirect") || '/'
+  const redirect = searchParams.get("redirect") || "/"
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(schema),
@@ -41,7 +41,7 @@ export const LoginForm = () => {
     try {
       const response = await signIn(values.email, values.password)
       if (response.error === null) {
-        router.push(redirect)
+        // redirect handled by user context
       } else {
         toast.error(response.error.message)
       }
@@ -61,22 +61,23 @@ export const LoginForm = () => {
     }
   }
 
-
   interface MyFormEvent extends React.FormEvent<HTMLFormElement> {
-    nativeEvent: Event & {submitter: HTMLElement};
+    nativeEvent: Event & { submitter: HTMLElement }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={(e: MyFormEvent) => {
+      <form
+        onSubmit={(e: MyFormEvent) => {
           e.preventDefault()
           if (e.nativeEvent["submitter"].id === "signIn") {
             form.handleSubmit(onSubmit)()
           } else if (e.nativeEvent["submitter"].id === "forgotPassword") {
             router.push("/reset")
           }
-
-        }} className="space-y-4">
+        }}
+        className="space-y-4"
+      >
         <FormField
           control={form.control}
           name="email"
@@ -114,9 +115,12 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button id="signIn" className="w-full">Sign In</Button>
-        <Button id="forgotPassword" variant="secondary" className="w-full">Forgot Password</Button>
-        
+        <Button id="signIn" className="w-full">
+          Sign In
+        </Button>
+        <Button id="forgotPassword" variant="secondary" className="w-full">
+          Forgot Password
+        </Button>
       </form>
     </Form>
   )
