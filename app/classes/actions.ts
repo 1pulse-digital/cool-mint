@@ -16,9 +16,7 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
-    return await UpcomingSessions(request, {
-      headers: await authHeader(),
-    })
+    return await UpcomingSessions(request, {})
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
       throw new Error(e.msg)
