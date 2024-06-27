@@ -1,8 +1,8 @@
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { myOrders } from "./actions"
-import { DataTable } from "./data-table"
-import { columns } from "./columns"
 import { HeaderTitle } from "@/components/header-title"
+import { myOrders } from "./actions"
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
 
 export default async function Page() {
   const response = await myOrders({})
@@ -20,3 +20,5 @@ export default async function Page() {
     </div>
   )
 }
+
+export const dynamic = "force-dynamic"
