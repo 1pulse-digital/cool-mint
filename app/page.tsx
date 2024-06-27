@@ -1,14 +1,12 @@
-import React from "react"
-import Hero from "@/components/hero"
 import { HeroImages } from "@/components/base/heroImages"
 import { Community } from "@/components/community"
-import { UpcomingWorkshops } from "@/components/base/upcomingWorkshops"
-import Offerings from "@/components/offerings"
+import Hero from "@/components/hero"
+import { Suspense } from "react"
 import GetInTouch from "@/components/base/getInTouch"
-import { upcomingSessions } from "./classes/actions"
+import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
+import Offerings from "@/components/offerings"
 
 export default async function Page() {
-  const response = await upcomingSessions({})
   return (
     <div className="bg-background">
       <div className="font-helvetica lg:px-10 2xl:px-32">
@@ -46,7 +44,9 @@ export default async function Page() {
             </div>
           </div>
         </div>
-        <UpcomingWorkshops masterClasses={response.masterClasses} sessions={response.sessions} />
+        <Suspense fallback={<UpcomingClassesLoader />}>
+          <UpcomingClasses />
+        </Suspense>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
