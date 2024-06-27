@@ -1,8 +1,14 @@
 import { client, RpcTransport } from "twirpscript"
 
+export const authHeaders = (token?: string): Record<string, string> => {
+  if (!token) {
+    return {}
+  }
+
+  return { Authorization: `Bearer ${token}` }
+}
 
 export const transport = (tags: string[]): RpcTransport => {
-  initTransport()
   return (url, opts) => {
     return fetch(url, {
       ...opts,
