@@ -16,15 +16,12 @@ import type { ClientConfiguration } from "twirpscript";
 //========================================//
 
 export interface GeneratePaymentIdentifierRequest {
-  returnUrl: string;
-  cancelUrl: string;
-  notifyUrl: string;
   nameFirst: string;
   nameLast: string;
   emailAddress: string;
   cellNumber: string;
   mPaymentId: string;
-  amount: bigint;
+  amount: number;
   itemName: string;
   itemDescription: string;
 }
@@ -42,6 +39,14 @@ export interface NotifyRequest {
   amountGross: number;
   amountFee: number;
   amountNet: number;
+  nameFirst: string;
+  nameLast: string;
+  emailAddress: string;
+  cellNumber: string;
+  merchantId: string;
+  token: string;
+  billingDate: string;
+  signature: string;
 }
 
 export interface NotifyResponse {}
@@ -192,15 +197,12 @@ export const GeneratePaymentIdentifierRequest = {
     msg?: Partial<GeneratePaymentIdentifierRequest>,
   ): GeneratePaymentIdentifierRequest {
     return {
-      returnUrl: "",
-      cancelUrl: "",
-      notifyUrl: "",
       nameFirst: "",
       nameLast: "",
       emailAddress: "",
       cellNumber: "",
       mPaymentId: "",
-      amount: 0n,
+      amount: 0,
       itemName: "",
       itemDescription: "",
       ...msg,
@@ -214,15 +216,6 @@ export const GeneratePaymentIdentifierRequest = {
     msg: PartialDeep<GeneratePaymentIdentifierRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.returnUrl) {
-      writer.writeString(1, msg.returnUrl);
-    }
-    if (msg.cancelUrl) {
-      writer.writeString(2, msg.cancelUrl);
-    }
-    if (msg.notifyUrl) {
-      writer.writeString(3, msg.notifyUrl);
-    }
     if (msg.nameFirst) {
       writer.writeString(4, msg.nameFirst);
     }
@@ -239,7 +232,7 @@ export const GeneratePaymentIdentifierRequest = {
       writer.writeString(8, msg.mPaymentId);
     }
     if (msg.amount) {
-      writer.writeInt64String(9, msg.amount.toString() as any);
+      writer.writeDouble(9, msg.amount);
     }
     if (msg.itemName) {
       writer.writeString(10, msg.itemName);
@@ -260,18 +253,6 @@ export const GeneratePaymentIdentifierRequest = {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
-        case 1: {
-          msg.returnUrl = reader.readString();
-          break;
-        }
-        case 2: {
-          msg.cancelUrl = reader.readString();
-          break;
-        }
-        case 3: {
-          msg.notifyUrl = reader.readString();
-          break;
-        }
         case 4: {
           msg.nameFirst = reader.readString();
           break;
@@ -293,7 +274,7 @@ export const GeneratePaymentIdentifierRequest = {
           break;
         }
         case 9: {
-          msg.amount = BigInt(reader.readInt64String());
+          msg.amount = reader.readDouble();
           break;
         }
         case 10: {
@@ -420,6 +401,14 @@ export const NotifyRequest = {
       amountGross: 0,
       amountFee: 0,
       amountNet: 0,
+      nameFirst: "",
+      nameLast: "",
+      emailAddress: "",
+      cellNumber: "",
+      merchantId: "",
+      token: "",
+      billingDate: "",
+      signature: "",
       ...msg,
     };
   },
@@ -447,13 +436,37 @@ export const NotifyRequest = {
       writer.writeString(5, msg.itemDescription);
     }
     if (msg.amountGross) {
-      writer.writeFloat(6, msg.amountGross);
+      writer.writeDouble(6, msg.amountGross);
     }
     if (msg.amountFee) {
-      writer.writeFloat(7, msg.amountFee);
+      writer.writeDouble(7, msg.amountFee);
     }
     if (msg.amountNet) {
-      writer.writeFloat(8, msg.amountNet);
+      writer.writeDouble(8, msg.amountNet);
+    }
+    if (msg.nameFirst) {
+      writer.writeString(9, msg.nameFirst);
+    }
+    if (msg.nameLast) {
+      writer.writeString(10, msg.nameLast);
+    }
+    if (msg.emailAddress) {
+      writer.writeString(11, msg.emailAddress);
+    }
+    if (msg.cellNumber) {
+      writer.writeString(12, msg.cellNumber);
+    }
+    if (msg.merchantId) {
+      writer.writeString(13, msg.merchantId);
+    }
+    if (msg.token) {
+      writer.writeString(14, msg.token);
+    }
+    if (msg.billingDate) {
+      writer.writeString(15, msg.billingDate);
+    }
+    if (msg.signature) {
+      writer.writeString(16, msg.signature);
     }
     return writer;
   },
@@ -489,15 +502,47 @@ export const NotifyRequest = {
           break;
         }
         case 6: {
-          msg.amountGross = reader.readFloat();
+          msg.amountGross = reader.readDouble();
           break;
         }
         case 7: {
-          msg.amountFee = reader.readFloat();
+          msg.amountFee = reader.readDouble();
           break;
         }
         case 8: {
-          msg.amountNet = reader.readFloat();
+          msg.amountNet = reader.readDouble();
+          break;
+        }
+        case 9: {
+          msg.nameFirst = reader.readString();
+          break;
+        }
+        case 10: {
+          msg.nameLast = reader.readString();
+          break;
+        }
+        case 11: {
+          msg.emailAddress = reader.readString();
+          break;
+        }
+        case 12: {
+          msg.cellNumber = reader.readString();
+          break;
+        }
+        case 13: {
+          msg.merchantId = reader.readString();
+          break;
+        }
+        case 14: {
+          msg.token = reader.readString();
+          break;
+        }
+        case 15: {
+          msg.billingDate = reader.readString();
+          break;
+        }
+        case 16: {
+          msg.signature = reader.readString();
           break;
         }
         default: {
@@ -588,15 +633,12 @@ export const GeneratePaymentIdentifierRequestJSON = {
     msg?: Partial<GeneratePaymentIdentifierRequest>,
   ): GeneratePaymentIdentifierRequest {
     return {
-      returnUrl: "",
-      cancelUrl: "",
-      notifyUrl: "",
       nameFirst: "",
       nameLast: "",
       emailAddress: "",
       cellNumber: "",
       mPaymentId: "",
-      amount: 0n,
+      amount: 0,
       itemName: "",
       itemDescription: "",
       ...msg,
@@ -610,15 +652,6 @@ export const GeneratePaymentIdentifierRequestJSON = {
     msg: PartialDeep<GeneratePaymentIdentifierRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.returnUrl) {
-      json["returnUrl"] = msg.returnUrl;
-    }
-    if (msg.cancelUrl) {
-      json["cancelUrl"] = msg.cancelUrl;
-    }
-    if (msg.notifyUrl) {
-      json["notifyUrl"] = msg.notifyUrl;
-    }
     if (msg.nameFirst) {
       json["nameFirst"] = msg.nameFirst;
     }
@@ -635,7 +668,7 @@ export const GeneratePaymentIdentifierRequestJSON = {
       json["mPaymentId"] = msg.mPaymentId;
     }
     if (msg.amount) {
-      json["amount"] = String(msg.amount);
+      json["amount"] = msg.amount;
     }
     if (msg.itemName) {
       json["itemName"] = msg.itemName;
@@ -653,18 +686,6 @@ export const GeneratePaymentIdentifierRequestJSON = {
     msg: GeneratePaymentIdentifierRequest,
     json: any,
   ): GeneratePaymentIdentifierRequest {
-    const _returnUrl_ = json["returnUrl"] ?? json["return_url"];
-    if (_returnUrl_) {
-      msg.returnUrl = _returnUrl_;
-    }
-    const _cancelUrl_ = json["cancelUrl"] ?? json["cancel_url"];
-    if (_cancelUrl_) {
-      msg.cancelUrl = _cancelUrl_;
-    }
-    const _notifyUrl_ = json["notifyUrl"] ?? json["notify_url"];
-    if (_notifyUrl_) {
-      msg.notifyUrl = _notifyUrl_;
-    }
     const _nameFirst_ = json["nameFirst"] ?? json["name_first"];
     if (_nameFirst_) {
       msg.nameFirst = _nameFirst_;
@@ -687,7 +708,7 @@ export const GeneratePaymentIdentifierRequestJSON = {
     }
     const _amount_ = json["amount"];
     if (_amount_) {
-      msg.amount = BigInt(_amount_);
+      msg.amount = protoscript.parseDouble(_amount_);
     }
     const _itemName_ = json["itemName"] ?? json["item_name"];
     if (_itemName_) {
@@ -795,6 +816,14 @@ export const NotifyRequestJSON = {
       amountGross: 0,
       amountFee: 0,
       amountNet: 0,
+      nameFirst: "",
+      nameLast: "",
+      emailAddress: "",
+      cellNumber: "",
+      merchantId: "",
+      token: "",
+      billingDate: "",
+      signature: "",
       ...msg,
     };
   },
@@ -829,6 +858,30 @@ export const NotifyRequestJSON = {
     }
     if (msg.amountNet) {
       json["amountNet"] = msg.amountNet;
+    }
+    if (msg.nameFirst) {
+      json["nameFirst"] = msg.nameFirst;
+    }
+    if (msg.nameLast) {
+      json["nameLast"] = msg.nameLast;
+    }
+    if (msg.emailAddress) {
+      json["emailAddress"] = msg.emailAddress;
+    }
+    if (msg.cellNumber) {
+      json["cellNumber"] = msg.cellNumber;
+    }
+    if (msg.merchantId) {
+      json["merchantId"] = msg.merchantId;
+    }
+    if (msg.token) {
+      json["token"] = msg.token;
+    }
+    if (msg.billingDate) {
+      json["billingDate"] = msg.billingDate;
+    }
+    if (msg.signature) {
+      json["signature"] = msg.signature;
     }
     return json;
   },
@@ -869,6 +922,38 @@ export const NotifyRequestJSON = {
     const _amountNet_ = json["amountNet"] ?? json["amount_net"];
     if (_amountNet_) {
       msg.amountNet = protoscript.parseDouble(_amountNet_);
+    }
+    const _nameFirst_ = json["nameFirst"] ?? json["name_first"];
+    if (_nameFirst_) {
+      msg.nameFirst = _nameFirst_;
+    }
+    const _nameLast_ = json["nameLast"] ?? json["name_last"];
+    if (_nameLast_) {
+      msg.nameLast = _nameLast_;
+    }
+    const _emailAddress_ = json["emailAddress"] ?? json["email_address"];
+    if (_emailAddress_) {
+      msg.emailAddress = _emailAddress_;
+    }
+    const _cellNumber_ = json["cellNumber"] ?? json["cell_number"];
+    if (_cellNumber_) {
+      msg.cellNumber = _cellNumber_;
+    }
+    const _merchantId_ = json["merchantId"] ?? json["merchant_id"];
+    if (_merchantId_) {
+      msg.merchantId = _merchantId_;
+    }
+    const _token_ = json["token"];
+    if (_token_) {
+      msg.token = _token_;
+    }
+    const _billingDate_ = json["billingDate"] ?? json["billing_date"];
+    if (_billingDate_) {
+      msg.billingDate = _billingDate_;
+    }
+    const _signature_ = json["signature"];
+    if (_signature_) {
+      msg.signature = _signature_;
     }
     return msg;
   },
