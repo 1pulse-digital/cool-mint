@@ -1,17 +1,12 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { useUser } from "@/contexts/user"
-import { Role } from "@/lib/fusion/auth/role.pb"
 import { cn } from "@/lib/utils"
-import {
-  Menu,
-  ShoppingCart
-} from "lucide-react"
+import { Menu, ShoppingCart } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import logo from "../images/miw-logo.webp"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { UserNav } from "./user-nav"
@@ -51,7 +46,6 @@ const navigationItems = [
     href: "/contact",
   },
 ]
-
 
 const Facebook = () => (
   <svg
@@ -93,26 +87,13 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   const [open, setOpen] = useState(false)
-  const [role, setRole] = useState<Role>(Role.NONE)
   const close = () => setOpen(false)
-  const user = useUser()
-
   const pathname = usePathname()
-  useEffect(() => {
-    if (!user) {
-      setRole(Role.NONE)
-      return
-    }
-    user.getIdTokenResult().then((idToken) => {
-      const role = (idToken.claims["role"] as Role) || Role.NONE
-      setRole(role)
-    })
-  }, [user])
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-      <nav className="hidden grow flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        <Link href="/" className="flex w-[160px] items-center gap-2 p-4">
+      <nav className="hidden grow flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-4 md:text-sm lg:gap-6">
+        <Link href="/" className="flex w-[140px] lg:w-[160px] items-center gap-2 lg:p-4">
           <Image src={logo} alt="Logo" />
           <span className="sr-only">Made In Workshop</span>
         </Link>
@@ -199,7 +180,7 @@ const Header: React.FC<HeaderProps> = () => {
       </div>
       <div className="ml-auto flex items-center gap-4 md:gap-2 lg:gap-4">
         {/* Socials */}
-        <div className="hidden gap-2 md:flex">
+        <div className="hidden gap-2 lg:flex">
           <Link
             className="border-primary hover:border-t"
             href="https://www.facebook.com/madeinworkshop/"
@@ -222,10 +203,7 @@ const Header: React.FC<HeaderProps> = () => {
             <Linkedin />
           </Link>
         </div>
-        <Link className="border-primary md:ml-4" href="/cart">
-          <ShoppingCart className="h-5 w-5 hover:text-primary" />
-        </Link>
-        {<UserNav role={role} />}
+        <UserNav />
       </div>
     </header>
   )
