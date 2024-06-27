@@ -1,12 +1,9 @@
-import Link from "next/link"
-import React from "react"
-import {UpcomingWorkshops} from "@/components/base/upcomingWorkshops"
 import GetInTouch from "@/components/base/getInTouch"
-import { upcomingSessions } from "./actions"
+import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
+import Link from "next/link"
+import { Suspense } from "react"
 
 export default async function Page() {
-  const response = await upcomingSessions({})
-
   return (
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
@@ -42,7 +39,9 @@ export default async function Page() {
           </div>
         </div>
         <div className="lg:mx-20 xl:mx-40">
-          <UpcomingWorkshops sessions={response.sessions} masterClasses={response.masterClasses} />
+          <Suspense fallback={<UpcomingClassesLoader />}>
+            <UpcomingClasses />
+          </Suspense>
         </div>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
