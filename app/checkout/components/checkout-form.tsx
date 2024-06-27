@@ -82,7 +82,6 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
         eTag: cart.auditEntry.eTag,
         shippingAddress: Address.initialize(),
       })
-      console.log(response)
       window.payfast_do_onsite_payment({ uuid: response.paymentID })
     } catch (error) {
       if (error instanceof Error) {
