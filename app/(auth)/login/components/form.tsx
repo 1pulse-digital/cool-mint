@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import signIn from "@/lib/firebase/auth/sign-in"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FirebaseError } from "firebase/app"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
@@ -26,8 +26,6 @@ type LoginFormValues = z.infer<typeof schema>
 
 export const LoginForm = () => {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const redirect = searchParams.get("redirect") || "/"
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(schema),
@@ -73,7 +71,7 @@ export const LoginForm = () => {
           if (e.nativeEvent["submitter"].id === "signIn") {
             form.handleSubmit(onSubmit)()
           } else if (e.nativeEvent["submitter"].id === "forgotPassword") {
-            router.push("/reset")
+            router.push("/reset-password")
           }
         }}
         className="space-y-4"
