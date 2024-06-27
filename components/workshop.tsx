@@ -1,9 +1,11 @@
 import { addToCart } from "@/app/actions"
 import { myCart } from "@/app/cart/actions"
 import { Button } from "@/components/ui/button"
+import { useUser } from "@/contexts/user"
 import { Cart } from "@/lib/fusion/commerce/cart.pb"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
+import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { CalendarClock, Clock2, User } from "lucide-react"
@@ -23,17 +25,30 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   // learnMoreLink,
 }) => {
   const router = useRouter()
+  const user = useUser()
 
   const handleAddToCart = async () => {
-    const cart = await myCart({})
-    await addToCart({
-      eTag: cart.auditEntry.eTag,
-      product: session.product,
-      quantity: 1n,
-      variant: "",
-    })
-    toast.success("Added to cart")
-    router.push("/cart")
+    // ensure the user is logged in
+    if (!user) {
+      toast("Please sign up or login to book your spot")
+      return
+    }
+
+    // get the latest version of the cart
+    try {
+      const cart = await myCart({})
+      await addToCart({
+        eTag: cart.auditEntry.eTag,
+        product: session.product,
+        quantity: 1n,
+        variant: "",
+      })
+      toast.success("Added to cart")
+      router.push("/cart")
+    } catch (e: unknown) {
+      toast.error("Failed to add to cart: " + parseError(e))
+      console.error("Add to cart failed:", e)
+    }
   }
 
   const date = new Date(session.date)
