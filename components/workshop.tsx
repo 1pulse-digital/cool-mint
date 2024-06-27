@@ -9,7 +9,6 @@ import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { CalendarClock, Clock2, User } from "lucide-react"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
@@ -51,6 +50,10 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
     }
   }
 
+  const handleShowClass = () => {
+    router.push(`/class/${masterClass.displayName}`)
+  }
+
   const date = new Date(session.date)
   const day = format(date, "eee")
   const stamp = format(date, "h:mm a")
@@ -59,11 +62,20 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
       <span className="text-2xl font-bold text-foreground">{day}</span>
       <div className="grow">
         <div className="flex w-full flex-row flex-wrap">
-          <Link href={"https://google.co.za"}>
+          <Button variant="ghost" size="sm"
+            onClick={(e) => {
+              console.log("Show class")
+              handleShowClass()
+            }}>
             <div className="text-xl font-bold text-muted-foreground">
               {masterClass.displayName}
             </div>
-          </Link>
+          </Button>
+          {/* <Link href={"https://google.co.za"}>
+            <div className="text-xl font-bold text-muted-foreground">
+              {masterClass.displayName}
+            </div>
+          </Link> */}
           <div className="w-full pb-2 pt-4 lg:block">
             <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
