@@ -16,7 +16,14 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
-    return await UpcomingSessions(request, {})
+    return await UpcomingSessions(request, {
+      // Prevent caching
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    })
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
       throw new Error(e.msg)
