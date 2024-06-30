@@ -63,7 +63,7 @@ export async function GeneratePaymentIdentifier(
   config?: ClientConfiguration,
 ): Promise<GeneratePaymentIdentifierResponse> {
   const response = await PBrequest(
-    "/commerce.PaymentService/GeneratePaymentIdentifier",
+    "/payfast.PaymentService/GeneratePaymentIdentifier",
     GeneratePaymentIdentifierRequest.encode(generatePaymentIdentifierRequest),
     config,
   );
@@ -75,7 +75,7 @@ export async function HandleNotify(
   config?: ClientConfiguration,
 ): Promise<NotifyResponse> {
   const response = await PBrequest(
-    "/commerce.PaymentService/HandleNotify",
+    "/payfast.PaymentService/HandleNotify",
     NotifyRequest.encode(notifyRequest),
     config,
   );
@@ -94,7 +94,7 @@ export async function GeneratePaymentIdentifierJSON(
   config?: ClientConfiguration,
 ): Promise<GeneratePaymentIdentifierResponse> {
   const response = await JSONrequest(
-    "/commerce.PaymentService/GeneratePaymentIdentifier",
+    "/payfast.PaymentService/GeneratePaymentIdentifier",
     GeneratePaymentIdentifierRequestJSON.encode(
       generatePaymentIdentifierRequest,
     ),
@@ -108,7 +108,7 @@ export async function HandleNotifyJSON(
   config?: ClientConfiguration,
 ): Promise<NotifyResponse> {
   const response = await JSONrequest(
-    "/commerce.PaymentService/HandleNotify",
+    "/payfast.PaymentService/HandleNotify",
     NotifyRequestJSON.encode(notifyRequest),
     config,
   );
@@ -139,7 +139,7 @@ export function createPaymentService<Context>(
   service: PaymentService<Context>,
 ) {
   return {
-    name: "commerce.PaymentService",
+    name: "payfast.PaymentService",
     methods: {
       GeneratePaymentIdentifier: {
         name: "GeneratePaymentIdentifier",
