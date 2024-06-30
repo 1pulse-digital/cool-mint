@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/1pulse-digital/cool-mint/compare/v0.11.0...v0.11.1) (2024-06-30)
+
+
+### Bug Fixes
+
+* upcoming sessions should not be chached ([144d73d](https://github.com/1pulse-digital/cool-mint/commit/144d73d34c5947c2444278f9f8869107aaecce70))
+
 ## [0.11.0](https://github.com/1pulse-digital/cool-mint/compare/v0.10.0...v0.11.0) (2024-06-27)
 
 
