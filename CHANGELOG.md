@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.0](https://github.com/1pulse-digital/cool-mint/compare/v0.11.1...v0.12.0) (2024-07-01)
+
+
+### Features
+
+* **bookTour:** Added disabled button styling ([03aa560](https://github.com/1pulse-digital/cool-mint/commit/03aa560004c6ff326a63fd1f4a7e924157e49e07))
+
+
+### Bug Fixes
+
+* **bookTour:** Fixed time slots rendering ([a71612c](https://github.com/1pulse-digital/cool-mint/commit/a71612c3a022b464c711ab38f49c692c956b990e))
+
 ## [0.11.1](https://github.com/1pulse-digital/cool-mint/compare/v0.11.0...v0.11.1) (2024-06-30)
 
 
