@@ -95,6 +95,7 @@ const BookTour = async () => {
                   })
                   tabContent.push(
                     <TabsContent
+                      key={i}
                       className="bg-background font-helvetica"
                       value={dayjs().add(i, "days").format(tourDayFormat)}
                     >
@@ -104,16 +105,16 @@ const BookTour = async () => {
                         </CardTitle>
                         {
                           res.slots.map((tourSlot) => {
-                            const startTime = dayjs(tourSlot.time).format("HH:mm")
-                            const endTime = dayjs(tourSlot.time).add(30, 'minutes').format("HH:mm")
+                            const slotSplit = tourSlot.time.split(":")
+                            const endTime = `${slotSplit[0]}:30`// DURATION IS HARD CODED
                             return (
                               <Tour
                                 tourDay={dayjs().add(i, "days").format(tourDayFormat)}
                                 available={tourSlot.available}
-                                starttime={startTime}
+                                starttime={tourSlot.time}
                                 endtime={endTime}
                                 linkUrl="/bookingConfirmation"
-                                key={startTime}
+                                key={tourSlot.time}
                               />
                             )
                           })
