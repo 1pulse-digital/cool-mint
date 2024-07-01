@@ -16,7 +16,6 @@ export async function availableSlots(
     })
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
-      console.error("availableSlots",e)
       throw new Error(`availableSlots: ${e.code}: ${e.msg}`)
     }
     throw e
