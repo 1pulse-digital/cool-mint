@@ -25,12 +25,7 @@ export interface BookResponse {
   tourTime: string;
 }
 
-export interface AvailableSlotsRequest {
-  /**
-   * FORMAT: YYYY-MM-DD
-   */
-  date: string;
-}
+export interface AvailableSlotsRequest {}
 
 export interface AvailableSlotsResponse {
   slots: AvailableSlotsResponse.Slot[];
@@ -304,21 +299,15 @@ export const AvailableSlotsRequest = {
   /**
    * Serializes AvailableSlotsRequest to protobuf.
    */
-  encode: function (msg: PartialDeep<AvailableSlotsRequest>): Uint8Array {
-    return AvailableSlotsRequest._writeMessage(
-      msg,
-      new protoscript.BinaryWriter(),
-    ).getResultBuffer();
+  encode: function (_msg?: PartialDeep<AvailableSlotsRequest>): Uint8Array {
+    return new Uint8Array();
   },
 
   /**
    * Deserializes AvailableSlotsRequest from protobuf.
    */
-  decode: function (bytes: ByteSource): AvailableSlotsRequest {
-    return AvailableSlotsRequest._readMessage(
-      AvailableSlotsRequest.initialize(),
-      new protoscript.BinaryReader(bytes),
-    );
+  decode: function (_bytes?: ByteSource): AvailableSlotsRequest {
+    return {};
   },
 
   /**
@@ -328,7 +317,6 @@ export const AvailableSlotsRequest = {
     msg?: Partial<AvailableSlotsRequest>,
   ): AvailableSlotsRequest {
     return {
-      date: "",
       ...msg,
     };
   },
@@ -337,12 +325,9 @@ export const AvailableSlotsRequest = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<AvailableSlotsRequest>,
+    _msg: PartialDeep<AvailableSlotsRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.date) {
-      writer.writeString(1, msg.date);
-    }
     return writer;
   },
 
@@ -350,23 +335,10 @@ export const AvailableSlotsRequest = {
    * @private
    */
   _readMessage: function (
-    msg: AvailableSlotsRequest,
-    reader: protoscript.BinaryReader,
+    _msg: AvailableSlotsRequest,
+    _reader: protoscript.BinaryReader,
   ): AvailableSlotsRequest {
-    while (reader.nextField()) {
-      const field = reader.getFieldNumber();
-      switch (field) {
-        case 1: {
-          msg.date = reader.readString();
-          break;
-        }
-        default: {
-          reader.skipField();
-          break;
-        }
-      }
-    }
-    return msg;
+    return _msg;
   },
 };
 
@@ -657,18 +629,15 @@ export const AvailableSlotsRequestJSON = {
   /**
    * Serializes AvailableSlotsRequest to JSON.
    */
-  encode: function (msg: PartialDeep<AvailableSlotsRequest>): string {
-    return JSON.stringify(AvailableSlotsRequestJSON._writeMessage(msg));
+  encode: function (_msg?: PartialDeep<AvailableSlotsRequest>): string {
+    return "{}";
   },
 
   /**
    * Deserializes AvailableSlotsRequest from JSON.
    */
-  decode: function (json: string): AvailableSlotsRequest {
-    return AvailableSlotsRequestJSON._readMessage(
-      AvailableSlotsRequestJSON.initialize(),
-      JSON.parse(json),
-    );
+  decode: function (_json?: string): AvailableSlotsRequest {
+    return {};
   },
 
   /**
@@ -678,7 +647,6 @@ export const AvailableSlotsRequestJSON = {
     msg?: Partial<AvailableSlotsRequest>,
   ): AvailableSlotsRequest {
     return {
-      date: "",
       ...msg,
     };
   },
@@ -687,13 +655,9 @@ export const AvailableSlotsRequestJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<AvailableSlotsRequest>,
+    _msg: PartialDeep<AvailableSlotsRequest>,
   ): Record<string, unknown> {
-    const json: Record<string, unknown> = {};
-    if (msg.date) {
-      json["date"] = msg.date;
-    }
-    return json;
+    return {};
   },
 
   /**
@@ -701,12 +665,8 @@ export const AvailableSlotsRequestJSON = {
    */
   _readMessage: function (
     msg: AvailableSlotsRequest,
-    json: any,
+    _json: any,
   ): AvailableSlotsRequest {
-    const _date_ = json["date"];
-    if (_date_) {
-      msg.date = _date_;
-    }
     return msg;
   },
 };
