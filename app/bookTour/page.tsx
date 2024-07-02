@@ -3,7 +3,6 @@ import Tour from "@/components/base/tour";
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
 import dayjs from "dayjs";
-import { format, parse } from 'date-fns'
 import {
   Carousel,
   CarouselContent,
@@ -104,7 +103,7 @@ const BookTour = async () => {
                           {dayjs().add(i, "days").format("ll")}
                         </CardTitle>
                         {
-                          res.slots.map((tourSlot) => {
+                          res.slots.map((tourSlot: {time: string, available: boolean}) => {
                             const slotSplit = tourSlot.time.split(":")
                             const endTime = `${slotSplit[0]}:30`// DURATION IS HARD CODED
                             return (

@@ -20,29 +20,38 @@ const BookingConfirmation = () => {
   const tourDay = searchParams.get("tourDay")
   const startTime = searchParams.get("startTime")
   const endTime = searchParams.get("endTime")
-  params.append("tourDay",tourDay??dayjs().format("YYYY-MM-DD"))
+  params.append("tourDay", tourDay ?? dayjs().format("YYYY-MM-DD"))
 
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
+  const [interests, setInterests] = React.useState<string[]>([])
 
   const handleBooking = async () => {
 
-    if (tourDay != null && startTime != null){
+    if (tourDay != null && startTime != null) {
       try {
         const response = await bookTour({
-            time: dayjs(tourDay + startTime).format("YYYY-MM-DD HH:mm"),
-            tourist: {
-              displayName: firstName + " " + lastName,
-              email: email,
-              phone: phoneNumber,
-              interests: []
+          time: dayjs(tourDay + startTime).format("YYYY-MM-DD HH:mm"),
+          tourist: {
+            displayName: firstName + " " + lastName,
+            email: email,
+            phone: phoneNumber,
+            interests: interests
           }
         })
       } catch (error) {
         console.error(error)
       }
+    }
+  }
+
+  const handleInterests = (checked: boolean, interest: string) => {
+    if (checked) {
+      interests.includes(interest) ? interests : setInterests([...interests, interest])
+    } else {
+      interests.includes(interest) ? setInterests(interests.filter((item) => item !== interest)) : interests
     }
   }
 
@@ -151,10 +160,10 @@ const BookingConfirmation = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-1 bg-background font-helvetica text-[14px] text-foreground space-y-2">
               {/* Checkbox Set 1 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="workshops" onChange={(e) => {
-                  // This does nothing
-                  console.warn(e)
-                }} />
+                <Checkbox id="workshops"
+                  onCheckedChange={(e: boolean) => {
+                    handleInterests(e, "workshops")
+                  }} />
                 <label
                   htmlFor="workshops"
                   className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -165,7 +174,12 @@ const BookingConfirmation = () => {
 
               {/* Checkbox Set 2 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="woodwork" />
+                <Checkbox id="woodwork"
+                  onCheckedChange={(e: boolean) => {
+                    handleInterests(e, "woodwork")
+                  }}
+                />
+
                 <label
                   htmlFor="woodwork"
                   className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -176,7 +190,12 @@ const BookingConfirmation = () => {
 
               {/* Checkbox Set 3 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="metalwork" />
+                <Checkbox id="metalwork"
+
+                  onCheckedChange={(e: boolean) => {
+                    handleInterests(e, "metalwork")
+                  }}
+                />
                 <label
                   htmlFor="metalwork"
                   className="text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -187,7 +206,11 @@ const BookingConfirmation = () => {
 
               {/* Checkbox Set 4 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="cnc" />
+                <Checkbox id="cnc"
+                  onCheckedChange={(e: boolean) => {
+                    handleInterests(e, "cnc")
+                  }}
+                />
                 <label
                   htmlFor="cnc"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -198,7 +221,11 @@ const BookingConfirmation = () => {
 
               {/* Checkbox Set 5 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="engineering" />
+                <Checkbox id="engineering"
+                  onCheckedChange={(e: boolean) => {
+                    handleInterests(e, "engineering")
+                  }}
+                />
                 <label
                   htmlFor="engineering"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -209,7 +236,11 @@ const BookingConfirmation = () => {
 
               {/* Checkbox Set 6 */}
               <div className="flex items-center space-x-2">
-                <Checkbox id="memberships" />
+                <Checkbox id="memberships"
+                  onCheckedChange={(e: boolean) => {
+                    handleInterests(e, "memberships")
+                  }}
+                />
                 <label
                   htmlFor="memberships"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -268,7 +299,7 @@ const BookingConfirmation = () => {
         <div className="flex space-x-10 pt-10">
           <div className="w-80">
             <Button variant="default" className="w-full"
-              onClick={()=> {
+              onClick={() => {
                 handleBooking()
                 router.push(`/bookingConfirmation?${params.toString()}`)
               }}
@@ -278,9 +309,9 @@ const BookingConfirmation = () => {
           </div>
           <div className="flex items-center justify-center font-bold">
             <Link href="/about">
-            
-            <Button variant="ghost" className="text-primary">
-              Learn More
+
+              <Button variant="ghost" className="text-primary">
+                Learn More
                 <svg
                   className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
                   aria-hidden="true"
@@ -296,7 +327,7 @@ const BookingConfirmation = () => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-            </Button>
+              </Button>
             </Link>
           </div>
         </div>
