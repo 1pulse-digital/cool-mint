@@ -1,10 +1,18 @@
+"use client"
 import React from "react";
 import Button, {
   SmallButtonOrange,
 } from "@/components/base/button";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const ConfirmedBooking: React.FC = () => {
+  const searchParams = useSearchParams()
+  const tourDay = searchParams.get("tourDay")
+  const startTime = searchParams.get("startTime")
+
+  // TODO: Think about an add to calendar button
+  // -> npm install add-to-calendar-button
   return (
     <div className={"bg-background py-20"}>
       <div className="grid content-center items-center justify-center px-8 font-helvetica">
@@ -54,7 +62,7 @@ const ConfirmedBooking: React.FC = () => {
                   "text-start font-helvetica text-[16px] font-bold text-foreground"
                 }
               >
-                27 January 2024
+               {tourDay}
               </span>
             </div>
           </div>
@@ -65,7 +73,7 @@ const ConfirmedBooking: React.FC = () => {
               </div>
               <div className="">
                 <span className={"font-helvetica font-bold text-foreground"}>
-                  9:00 am
+                  {startTime}
                 </span>
               </div>
             </div>

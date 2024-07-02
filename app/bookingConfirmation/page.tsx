@@ -21,6 +21,7 @@ const BookingConfirmation = () => {
   const startTime = searchParams.get("startTime")
   const endTime = searchParams.get("endTime")
   params.append("tourDay", tourDay ?? dayjs().format("YYYY-MM-DD"))
+  params.append("startTime", startTime ?? "10:00" )
 
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
@@ -29,7 +30,6 @@ const BookingConfirmation = () => {
   const [interests, setInterests] = React.useState<string[]>([])
 
   const handleBooking = async () => {
-
     if (tourDay != null && startTime != null) {
       try {
         const response = await bookTour({
@@ -301,7 +301,7 @@ const BookingConfirmation = () => {
             <Button variant="default" className="w-full"
               onClick={() => {
                 handleBooking()
-                router.push(`/bookingConfirmation?${params.toString()}`)
+                router.push(`/confirmedBooking?${params.toString()}`)
               }}
             >
               Confirm
