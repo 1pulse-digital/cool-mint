@@ -1,61 +1,58 @@
 "use client"
-import React from "react";
+import React from "react"
 
-import { BookingButton } from "./button";
-import { useRouter } from "next/navigation";
-import dayjs from "dayjs";
+import { AvailableSlotsResponse } from "@/lib/fusion/workshop/tourBooking.manager.pb"
+import { addMinutes, format, formatISO, formatRFC3339 } from "date-fns"
+import { useRouter } from "next/navigation"
+import { BookingButton } from "./button"
 
 interface TourProps {
-  tourDay?: string;
-  available: boolean;
-  starttime: string;
-  endtime: string;
-  linkUrl: string;
+  slot: AvailableSlotsResponse.Slot
 }
 
-const Tour: React.FC<TourProps> = ({
-  tourDay = dayjs().format("YYYY-MM-DD"),
-  available,
-  starttime,
-  endtime,
-  linkUrl,
-}) => {
-  const router = useRouter();
+const Tour: React.FC<TourProps> = ({ slot }) => {
+  const router = useRouter()
 
-  const params = new URLSearchParams();
-  params.append("tourDay", tourDay);
-  params.append("startTime", starttime);
-  params.append("endTime", endtime);
+  const slotTime = new Date(slot.time)
+  const startTime = slotTime
+  const endTime = addMinutes(startTime, 30)
+  const params = new URLSearchParams()
+  params.append("time", slotTime.toISOString())
 
-  const redirect = `/bookingConfirmation?${params.toString()}`;
-
-  const isLastItem = !linkUrl;
+  const redirect = `/booking-confirmation?${params.toString()}`
+  console.log(slot.time, { redirect })
   return (
     <div className="bg-background">
       <div className={"px-8"}>
-        <span className={"text-BodyText text-primary text-start font-helvetica font-bold "}>
-          <span>
-          </span>
+        <span
+          className={
+            "text-start font-helvetica text-BodyText font-bold text-primary "
+          }
+        >
+          <span></span>
         </span>
         <div className="text-foreground">
           <div className="grid grid-cols-2 space-x-4">
-
-            <div className="pt-1">{starttime} - {endtime}</div>
-            <div className="grid justify-end items-end">
+            <div className="pt-1">
+              {format(startTime, "HH:mm")} - {format(endTime, "HH:mm")}
+            </div>
+            <div className="grid items-end justify-end">
               <BookingButton
-                disabled={!available}
+                disabled={!slot.available}
                 onClick={() => router.push(redirect)}
-                color={available ? "primary" : "secondary"}
-              >Book</BookingButton>
+                color={slot.available ? "primary" : "secondary"}
+              >
+                Book
+              </BookingButton>
             </div>
           </div>
-          <div className="pt-4 lg:block w-full pb-2">
+          <div className="w-full pb-2 pt-4 lg:block">
             <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Tour;
+export default Tour
