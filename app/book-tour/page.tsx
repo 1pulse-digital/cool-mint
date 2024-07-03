@@ -17,17 +17,10 @@ var localizedFormat = require("dayjs/plugin/localizedFormat")
 dayjs.extend(localizedFormat)
 
 const BookTour = async () => {
-  const tourDayFormat = "yyyy-MM-dd"
-  // const today = format(new Date(), tourDayFormat)
-  // console.log({today})
-
   const { slots } = await availableSlots({})
   const days = slots
     .map((slot) => format(new Date(slot.time), "EEE"))
     .filter((day, index, self) => self.indexOf(day) === index)
-
-  console.log({ slots })
-  console.log({ days })
 
   return (
     <div className={"px-8"}>
