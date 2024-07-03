@@ -89,7 +89,7 @@ const BookTour = async () => {
               (async () => {
                 const tabContent = []
                 for (let i = 0; i < 7; i++) {
-                  const res = await availableSlots({
+                  const availableSlotsResponse = await availableSlots({
                     date: dayjs().add(i, "days").format(tourDayFormat)
                   })
                   tabContent.push(
@@ -103,7 +103,7 @@ const BookTour = async () => {
                           {dayjs().add(i, "days").format("ll")}
                         </CardTitle>
                         {
-                          res.slots.map((tourSlot: {time: string, available: boolean}) => {
+                          availableSlotsResponse.slots.map((tourSlot: {time: string, available: boolean}) => {
                             const slotSplit = tourSlot.time.split(":")
                             const endTime = `${slotSplit[0]}:30`// DURATION IS HARD CODED
                             return (

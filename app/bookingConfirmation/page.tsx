@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { bookTour } from "./actions";
 import dayjs from "dayjs";
+import { toast } from "sonner";
 
 const BookingConfirmation = () => {
   const router = useRouter();
@@ -41,8 +42,10 @@ const BookingConfirmation = () => {
             interests: interests
           }
         })
+        toast.success("Tour booked successfully")
       } catch (error) {
         console.error(error)
+        toast.error("Failed to book tour")
       }
     }
   }
