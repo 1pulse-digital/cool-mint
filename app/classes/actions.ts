@@ -17,10 +17,8 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
-    cookies().getAll() // force no-cache
-    return await UpcomingSessions(request, {
-      // Prevent caching
-    })
+    cookies().getAll() // read cookies to prevent cache
+    return await UpcomingSessions(request, {})
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
       throw new Error(e.msg)
