@@ -14,13 +14,13 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
 
-import { Cart } from "@/lib/fusion/commerce/cart.pb"
-import { placeOrder } from "../actions"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useUser } from "@/contexts/user"
-import { Button } from "@/components/ui/button"
+import { Cart } from "@/lib/fusion/commerce/cart.pb"
 import { Address, BillingAddress } from "@/lib/fusion/commerce/order.pb"
 import { useEffect } from "react"
+import { placeOrder } from "../actions"
 
 interface CheckoutFormProps {
   cart: Cart
@@ -29,22 +29,18 @@ interface CheckoutFormProps {
 const addressSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
-  company: z.string(),
   address1: z.string(),
-  address2: z.string(),
+  address2: z.string().optional(),
   city: z.string(),
-  province: z.string(),
   postalCode: z.string(),
-  country: z.string(),
 })
 
 const schema = z.object({
   billingAddress: z.object({
     address: addressSchema,
     email: z.string(),
-    phone: z.string(),
+    phone: z.string().optional(),
   }),
-  //   shippingAddress: addressSchema,
 })
 
 type CheckoutFormValues = z.infer<typeof schema>
@@ -61,9 +57,7 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      billingAddress: BillingAddress.initialize(),
-    },
+    defaultValues: {},
     mode: "onChange",
   })
 
@@ -78,11 +72,12 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
   ) => {
     try {
       const response = await placeOrder({
-        billingAddress: values.billingAddress,
+        billingAddress: normaliseBillingAddress(values.billingAddress),
         eTag: cart.auditEntry.eTag,
         shippingAddress: Address.initialize(),
       })
-      window.payfast_do_onsite_payment({ uuid: response.paymentID })
+      toast.success(`Order placed, proceeding to payment...`)
+      window.payfast_do_onsite_payment({ uuid: reswhaonse.paymentID })
     } catch (error) {
       if (error instanceof Error) {
         toast.error(`Failed to place order: ${error.message}`)
@@ -94,25 +89,156 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="billingAddress.email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormDescription>Your email address</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="container space-y-4"
+      >
+        <div className="grid gap-2 lg:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="billingAddress.email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" {...field} />
+                </FormControl>
+                <FormDescription>Your email address</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone</FormLabel>
+                <FormControl>
+                  <Input type="tel" {...field} />
+                </FormControl>
+                <FormDescription>Your telephone number</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.address.firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>First name</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.address.lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last name</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="grid gap-2">
+          <FormField
+            control={form.control}
+            name="billingAddress.address.address1"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Address Line 1</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.address.address2"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Address Line 2</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.address.city"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>City</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.address.postalCode"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Postal Code</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <Button size={"sm"} type="submit">
           Place Order
         </Button>
       </form>
     </Form>
   )
+}
+
+// we need to normalise the address before sending it to the server because the phone number is actuallly optional but the generated typescript code doesn't know that
+function normaliseBillingAddress(billingAddress: {
+  address: {
+    firstName: string
+    lastName: string
+    address1: string
+    city: string
+    postalCode: string
+    address2?: string | undefined
+  }
+  email: string
+  phone?: string | undefined
+}): BillingAddress {
+  return {
+    ...billingAddress,
+    address: normaliseAddress(billingAddress.address),
+    phone: billingAddress.phone || "-",
+  }
+}
+
+// we need to normalise the address before sending it to the server because the address2 field is actuallly optional but the generated typescript code doesn't know that
+function normaliseAddress(address: {
+  firstName: string
+  lastName: string
+  address1: string
+  city: string
+  postalCode: string
+  address2?: string | undefined
+}): Address {
+  return { ...address, address2: address.address2 || "-" }
 }
