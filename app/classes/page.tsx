@@ -50,3 +50,6 @@ export default function Page() {
     </div>
   )
 }
+
+// TODO: Figure out how to remove this
+export const dynamic = "force-dynamic"
