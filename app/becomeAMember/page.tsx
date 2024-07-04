@@ -67,7 +67,7 @@ const BecomeAMember: React.FC = () => {
                   OR{" "}
                 </p>
               </div>
-              <Link href="/bookTour">
+              <Link href="/book-tour">
                 <div className="py-2">
                   {" "}
                   <Button

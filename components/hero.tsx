@@ -43,7 +43,7 @@ const Hero = () => {
             </Link>
           </div>
           <div>
-            <Link href="/bookTour">
+            <Link href="/book-tour">
               <SmallButton color="primary">
                 Book a Tour
                 <svg

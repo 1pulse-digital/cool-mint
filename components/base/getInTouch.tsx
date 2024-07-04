@@ -22,7 +22,7 @@ const GetInTouch = () => {
           </Link>
         </div>
         <div>
-          <Link href="/bookTour">
+          <Link href="/book-tour">
             <SquareButton color="primary">
               Book a Tour
               <svg
