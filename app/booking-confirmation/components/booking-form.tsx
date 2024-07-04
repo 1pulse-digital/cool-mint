@@ -21,6 +21,7 @@ import { bookTour } from "../actions"
 import { Checkbox } from "@/components/ui/checkbox"
 import { addMinutes, format } from "date-fns"
 import Link from "next/link"
+import { useRouter, useSearchParams } from "next/navigation"
 
 interface BookingFormProps {
   booking: TourBooking
@@ -50,6 +51,11 @@ const schema = z.object({
 type BookingFormValues = z.infer<typeof schema>
 
 export const BookingForm = ({ booking }: BookingFormProps) => {
+
+  const searchParams = useSearchParams()
+    const redirect = `/confirmedBooking?${searchParams.toString()}`
+    const router = useRouter()
+
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -92,6 +98,7 @@ export const BookingForm = ({ booking }: BookingFormProps) => {
         },
       })
       toast.success("Booking successful")
+      router.push(redirect)
     } catch (error) {
       if (error instanceof Error) {
         toast.error(`Failed to make booking: ${error.message}`)

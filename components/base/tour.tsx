@@ -20,7 +20,7 @@ const Tour: React.FC<TourProps> = ({ slot }) => {
   params.append("time", slotTime.toISOString())
 
   const redirect = `/booking-confirmation?${params.toString()}`
-  console.log(slot.time, { redirect })
+
   return (
     <div className="bg-background">
       <div className={"px-8"}>
