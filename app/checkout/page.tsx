@@ -3,6 +3,7 @@ import HeaderTitle from "@/components/header-title"
 import Script from "next/script"
 import { myCart } from "../cart/actions"
 import { CheckoutForm } from "./components/checkout-form"
+import { OrderSummary } from "./components/order-summary"
 
 const CheckoutPage: React.FC = async () => {
   const cart = await myCart({})
@@ -18,7 +19,14 @@ const CheckoutPage: React.FC = async () => {
           ]}
         />
         <HeaderTitle>Checkout</HeaderTitle>
-        <CheckoutForm cart={cart} />
+        <div className="flex flex-col-reverse md:flex-row mb-8">
+          <div className="md:grow">
+            <CheckoutForm cart={cart} />
+          </div>
+          <div className={"flex justify-center"}>
+            <OrderSummary cart={cart} />
+          </div>
+        </div>
       </div>
     </>
   )
