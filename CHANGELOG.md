@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.12.0](https://github.com/1pulse-digital/cool-mint/compare/v0.11.1...v0.12.0) (2024-07-04)
+
+
+### Features
+
+* add order summary component ([e055e14](https://github.com/1pulse-digital/cool-mint/commit/e055e1408bc1b6b7782a2cb3072785070fd68b8a))
+* add order summary to checkout page ([0aae9ec](https://github.com/1pulse-digital/cool-mint/commit/0aae9ec743470937b21665ac78d7832b24f3cfb1))
+* **bookTour:** Added confirmed booking redirect ([30ae68f](https://github.com/1pulse-digital/cool-mint/commit/30ae68f0a54b2bc04b687bddd5aef2e9fce0a21b))
+* **bookTour:** Added disabled button styling ([03aa560](https://github.com/1pulse-digital/cool-mint/commit/03aa560004c6ff326a63fd1f4a7e924157e49e07))
+* **bookTour:** Added interests to booking flow ([976147b](https://github.com/1pulse-digital/cool-mint/commit/976147b3c04c1101a31baf18829586f5dd55cfc8))
+* **bookTour:** Added tour booking toasts and minor cleanup ([e0b63c5](https://github.com/1pulse-digital/cool-mint/commit/e0b63c5c83f0aca3ede76db7760e33b31a0f7040))
+
+
+### Bug Fixes
+
+* **bookTour:** Fixed time slots rendering ([a71612c](https://github.com/1pulse-digital/cool-mint/commit/a71612c3a022b464c711ab38f49c692c956b990e))
+* checkout form validation ([44e2903](https://github.com/1pulse-digital/cool-mint/commit/44e2903296aa5d258284a3d70a7d34da39911890))
+* force dynamic rendering ([bc4d8c4](https://github.com/1pulse-digital/cool-mint/commit/bc4d8c4e20d7338a9442c8f07b3681a77d60da06))
+* typo on response parsing ([3ca2b58](https://github.com/1pulse-digital/cool-mint/commit/3ca2b58b869d61dcbb6d7dda76af6c97c920792f))
+* upcoing sessions never cached ([2d06588](https://github.com/1pulse-digital/cool-mint/commit/2d06588fb27086dfe890ae2955a374a36cb19186))
+
 ## [0.11.1](https://github.com/1pulse-digital/cool-mint/compare/v0.11.0...v0.11.1) (2024-06-30)
 
 
