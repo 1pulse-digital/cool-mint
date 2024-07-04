@@ -26,7 +26,7 @@ const ConfirmedBooking: React.FC = () => {
         <Breadcrumbs
           crumbs={[
             { name: "Home", href: "/" },
-            { name: "Booking Confirmed", href: "/confirmedBooking" },
+            { name: "Booking Confirmed", href: "/confirmed-booking" },
           ]}
         />
         <HeaderTitle>Booking Confirmed</HeaderTitle>

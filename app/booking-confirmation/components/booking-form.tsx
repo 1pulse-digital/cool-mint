@@ -53,7 +53,7 @@ type BookingFormValues = z.infer<typeof schema>
 export const BookingForm = ({ booking }: BookingFormProps) => {
 
   const searchParams = useSearchParams()
-    const redirect = `/confirmedBooking?${searchParams.toString()}`
+    const redirect = `/confirmed-booking?${searchParams.toString()}`
     const router = useRouter()
 
   const form = useForm<BookingFormValues>({
