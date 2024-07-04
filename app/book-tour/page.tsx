@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import dayjs from "dayjs"
-import Link from "next/link"
 import { availableSlots } from "./actions"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import HeaderTitle from "@/components/header-title"
