@@ -77,7 +77,7 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
         shippingAddress: Address.initialize(),
       })
       toast.success(`Order placed, proceeding to payment...`)
-      window.payfast_do_onsite_payment({ uuid: reswhaonse.paymentID })
+      window.payfast_do_onsite_payment({ uuid: response.paymentID })
     } catch (error) {
       if (error instanceof Error) {
         toast.error(`Failed to place order: ${error.message}`)
