@@ -1,13 +1,35 @@
-import React, { Suspense } from "react"
+import React, { cache, Suspense, use } from "react"
 import IndustrialMachineTools from "@/components/base/IndustrialMachineTools"
 import Link from "next/link"
 import GetInTouch from "@/components/base/getInTouch"
 import { listMachines } from "./actions"
 import { Spinner } from "@/components/ui/spinner"
 import HeaderTitle from "@/components/header-title"
+import { ListMachinesResponse } from "@/lib/fusion/workshop/machine.repository.sky.pb"
+
+// cache is an experimental hook that lets you cache the result of a data fetch or computation
+// https://react.dev/reference/react/cache
+
+// cache the list machines method
+const llistMachines = cache(listMachines)
+
+// Attempting: https://react.dev/reference/rsc/server-components
+// Create a separate component to use the SWR hook
+const MachinesList = ({listMachines}: any): React.JSX.Element => {
+
+// use is a React API that lets you read the value of a resource like a Promise or context.
+// https://react.dev/reference/react/use
+// the use-hook is used to handle the list machines procedure call. 
+// This is used to create an promise on the server component and await it on the client.
+ const response: ListMachinesResponse = use(listMachines)
+  return (
+    <IndustrialMachineTools machines={response.Machines} />
+  );
+};
 
 export default async function Page() {
-  const response = await listMachines({
+  // 
+  const response = llistMachines({
     filter: "",
     pageSize: 100,
     pageToken: "",
@@ -42,7 +64,8 @@ export default async function Page() {
           </div>
           <div className="text-center sm:px-6 sm:pt-10 md:px-20 lg:px-10 2xl:px-0">
             <Suspense fallback={<Spinner />}>
-              <IndustrialMachineTools machines={response.Machines} />
+              {/* <IndustrialMachineTools machines={data.Machines} /> */}
+              <MachinesList listMachines={response}/>
             </Suspense>
             {/* <div className="pb-16 text-center">
               <Link href="/">

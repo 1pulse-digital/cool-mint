@@ -5,9 +5,15 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { UpcomingWorkshops } from "./base/upcomingWorkshops"
 import { Card, CardTitle } from "./ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
+import { cache } from "react"
+
+const getUpcomingSessions = cache(async () => {
+  const response = await upcomingSessions({})
+  return response
+})
 
 export const UpcomingClasses = async () => {
-  const response = await upcomingSessions({})
+  const response = await getUpcomingSessions()
   return (
     <UpcomingWorkshops
       masterClasses={response.masterClasses}
