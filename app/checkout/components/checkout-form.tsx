@@ -21,6 +21,7 @@ import { Cart } from "@/lib/fusion/commerce/cart.pb"
 import { Address, BillingAddress } from "@/lib/fusion/commerce/order.pb"
 import { useEffect } from "react"
 import { placeOrder } from "../actions"
+import { useRouter } from "next/navigation"
 
 interface CheckoutFormProps {
   cart: Cart
@@ -45,15 +46,9 @@ const schema = z.object({
 
 type CheckoutFormValues = z.infer<typeof schema>
 
-// tell TypeScript that the payfast_do_onsite_payment function is available on the window object
-declare global {
-  interface Window {
-    payfast_do_onsite_payment: (options: { uuid: string }) => void
-  }
-}
-
 export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
   const user = useUser()
+  const router = useRouter()
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(schema),
@@ -77,7 +72,8 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
         shippingAddress: Address.initialize(),
       })
       toast.success(`Order placed, proceeding to payment...`)
-      window.payfast_do_onsite_payment({ uuid: response.paymentID })
+      // redirect to the payment page
+      router.push(response.redirectUrl)
     } catch (error) {
       if (error instanceof Error) {
         toast.error(`Failed to place order: ${error.message}`)
