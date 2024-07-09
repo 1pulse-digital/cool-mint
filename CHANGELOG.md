@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/1pulse-digital/cool-mint/compare/v0.12.0...v0.13.0) (2024-07-09)
+
+
+### Features
+
+* switch from Payfast to Yoco ([f65e0b6](https://github.com/1pulse-digital/cool-mint/commit/f65e0b60aae56eec6529af27a69502e569d5f95d))
+
 ## [0.12.0](https://github.com/1pulse-digital/cool-mint/compare/v0.11.1...v0.12.0) (2024-07-04)
 
 
