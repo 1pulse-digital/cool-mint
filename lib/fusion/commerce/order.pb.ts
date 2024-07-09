@@ -18,18 +18,51 @@ export interface Order {
   name: string;
   uid: string;
   auditEntry: auditEntry.Entry;
+  /**
+   * order status
+   */
   status: Order.Status;
+  /**
+   * the order number
+   */
   number: bigint;
+  /**
+   * product ids
+   */
   lineItems: LineItem[];
+  /**
+   * grand total in cents
+   */
   total: bigint;
+  /**
+   * total discound amount in cents
+   */
   discountTotal: bigint;
+  /**
+   * total shipping amount in cents
+   */
   shippingTotal: bigint;
+  /**
+   * user who this order belongs to
+   */
   userID: string;
   billingAddress: BillingAddress;
   shippingAddress: Address;
+  /**
+   * payment gateway transaction id
+   */
   transactionID: string;
+  /**
+   * date paid
+   */
   datePaid: string;
+  /**
+   * date completed
+   */
   dateCompleted: string;
+  /**
+   * order description
+   */
   description: string;
 }
 
