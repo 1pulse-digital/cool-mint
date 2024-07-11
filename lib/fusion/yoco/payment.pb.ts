@@ -20,6 +20,7 @@ export interface Payment {
   customer: string;
   error: Payment.Error;
   mode: string;
+  metadata: Record<string, Payment.Metadata["value"] | undefined>;
 }
 
 export declare namespace Payment {
@@ -32,6 +33,11 @@ export declare namespace Payment {
     type: string;
     code: string;
     description: string;
+  }
+
+  interface Metadata {
+    key: string;
+    value: string;
   }
 }
 
@@ -83,6 +89,7 @@ export const Payment = {
       customer: "",
       error: Payment.Error.initialize(),
       mode: "",
+      metadata: {},
       ...msg,
     };
   },
@@ -127,6 +134,16 @@ export const Payment = {
     }
     if (msg.mode) {
       writer.writeString(10, msg.mode);
+    }
+    if (msg.metadata) {
+      writer.writeRepeatedMessage(
+        11,
+        Object.entries(msg.metadata).map(([key, value]) => ({
+          key: key as any,
+          value: value as any,
+        })) as any,
+        Payment.Metadata._writeMessage,
+      );
     }
     return writer;
   },
@@ -182,6 +199,12 @@ export const Payment = {
         }
         case 10: {
           msg.mode = reader.readString();
+          break;
+        }
+        case 11: {
+          const map = {} as Payment.Metadata;
+          reader.readMessage(map, Payment.Metadata._readMessage);
+          msg.metadata[map.key.toString()] = map.value;
           break;
         }
         default: {
@@ -356,6 +379,51 @@ export const Payment = {
       return msg;
     },
   },
+
+  Metadata: {
+    /**
+     * @private
+     */
+    _writeMessage: function (
+      msg: PartialDeep<Payment.Metadata>,
+      writer: protoscript.BinaryWriter,
+    ): protoscript.BinaryWriter {
+      if (msg.key) {
+        writer.writeString(1, msg.key);
+      }
+      if (msg.value) {
+        writer.writeString(2, msg.value);
+      }
+      return writer;
+    },
+
+    /**
+     * @private
+     */
+    _readMessage: function (
+      msg: Payment.Metadata,
+      reader: protoscript.BinaryReader,
+    ): Payment.Metadata {
+      while (reader.nextField()) {
+        const field = reader.getFieldNumber();
+        switch (field) {
+          case 1: {
+            msg.key = reader.readString();
+            break;
+          }
+          case 2: {
+            msg.value = reader.readString();
+            break;
+          }
+          default: {
+            reader.skipField();
+            break;
+          }
+        }
+      }
+      return msg;
+    },
+  },
 };
 
 export const Card = {
@@ -489,6 +557,7 @@ export const PaymentJSON = {
       customer: "",
       error: PaymentJSON.Error.initialize(),
       mode: "",
+      metadata: {},
       ...msg,
     };
   },
@@ -536,6 +605,17 @@ export const PaymentJSON = {
     }
     if (msg.mode) {
       json["mode"] = msg.mode;
+    }
+    if (msg.metadata) {
+      const _metadata_ = Object.fromEntries(
+        Object.entries(msg.metadata)
+          .map(([key, value]) => ({ key: key as any, value: value as any }))
+          .map(PaymentJSON.Metadata._writeMessage)
+          .map(({ key, value }) => [key, value]),
+      );
+      if (Object.keys(_metadata_).length > 0) {
+        json["metadata"] = _metadata_;
+      }
     }
     return json;
   },
@@ -586,6 +666,15 @@ export const PaymentJSON = {
     const _mode_ = json["mode"];
     if (_mode_) {
       msg.mode = _mode_;
+    }
+    const _metadata_ = json["metadata"];
+    if (_metadata_) {
+      msg.metadata = Object.fromEntries(
+        Object.entries(_metadata_)
+          .map(([key, value]) => ({ key: key as any, value: value as any }))
+          .map(PaymentJSON.Metadata._readMessage)
+          .map(({ key, value }) => [key, value]),
+      );
     }
     return msg;
   },
@@ -725,6 +814,42 @@ export const PaymentJSON = {
       const _description_ = json["description"];
       if (_description_) {
         msg.description = _description_;
+      }
+      return msg;
+    },
+  },
+
+  Metadata: {
+    /**
+     * @private
+     */
+    _writeMessage: function (
+      msg: PartialDeep<Payment.Metadata>,
+    ): Record<string, unknown> {
+      const json: Record<string, unknown> = {};
+      if (msg.key) {
+        json["key"] = msg.key;
+      }
+      if (msg.value) {
+        json["value"] = msg.value;
+      }
+      return json;
+    },
+
+    /**
+     * @private
+     */
+    _readMessage: function (
+      msg: Payment.Metadata,
+      json: any,
+    ): Payment.Metadata {
+      const _key_ = json["key"];
+      if (_key_) {
+        msg.key = _key_;
+      }
+      const _value_ = json["value"];
+      if (_value_) {
+        msg.value = _value_;
       }
       return msg;
     },
