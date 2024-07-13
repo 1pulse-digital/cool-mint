@@ -1,15 +1,12 @@
 import GetInTouch from "@/components/base/getInTouch"
 import { Breadcrumbs } from "@/components/breadcrumbs"
+import HeaderTitle from "@/components/header-title"
 import { Button } from "@/components/ui/button"
 import { MoveLeft } from "lucide-react"
 import Link from "next/link"
-import { myCart } from "./actions"
 import { ShoppingCart } from "./components/cart"
-import HeaderTitle from "@/components/header-title"
 
 const Cart: React.FC = async () => {
-  const cart = await myCart({})
-
   return (
     <div className={"px-8"}>
       <Breadcrumbs

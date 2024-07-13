@@ -9,6 +9,7 @@ import {
   UpcomingSessions,
   UpcomingSessionsRequest,
 } from "@/lib/fusion/masterClass/session.manager.pb"
+import { cookies } from "next/headers"
 
 initTransport()
 
@@ -16,9 +17,8 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
-    return await UpcomingSessions(request, {
-      headers: await authHeader(),
-    })
+    cookies().getAll() // read cookies to prevent cache
+    return await UpcomingSessions(request, {})
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
       throw new Error(e.msg)

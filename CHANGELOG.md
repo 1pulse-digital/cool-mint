@@ -1,5 +1,57 @@
 # Changelog
 
+## [0.13.0](https://github.com/1pulse-digital/cool-mint/compare/v0.12.0...v0.13.0) (2024-07-09)
+
+
+### Features
+
+* switch from Payfast to Yoco ([f65e0b6](https://github.com/1pulse-digital/cool-mint/commit/f65e0b60aae56eec6529af27a69502e569d5f95d))
+
+## [0.12.0](https://github.com/1pulse-digital/cool-mint/compare/v0.11.1...v0.12.0) (2024-07-04)
+
+
+### Features
+
+* add order summary component ([e055e14](https://github.com/1pulse-digital/cool-mint/commit/e055e1408bc1b6b7782a2cb3072785070fd68b8a))
+* add order summary to checkout page ([0aae9ec](https://github.com/1pulse-digital/cool-mint/commit/0aae9ec743470937b21665ac78d7832b24f3cfb1))
+* **bookTour:** Added confirmed booking redirect ([30ae68f](https://github.com/1pulse-digital/cool-mint/commit/30ae68f0a54b2bc04b687bddd5aef2e9fce0a21b))
+* **bookTour:** Added disabled button styling ([03aa560](https://github.com/1pulse-digital/cool-mint/commit/03aa560004c6ff326a63fd1f4a7e924157e49e07))
+* **bookTour:** Added interests to booking flow ([976147b](https://github.com/1pulse-digital/cool-mint/commit/976147b3c04c1101a31baf18829586f5dd55cfc8))
+* **bookTour:** Added tour booking toasts and minor cleanup ([e0b63c5](https://github.com/1pulse-digital/cool-mint/commit/e0b63c5c83f0aca3ede76db7760e33b31a0f7040))
+
+
+### Bug Fixes
+
+* **bookTour:** Fixed time slots rendering ([a71612c](https://github.com/1pulse-digital/cool-mint/commit/a71612c3a022b464c711ab38f49c692c956b990e))
+* checkout form validation ([44e2903](https://github.com/1pulse-digital/cool-mint/commit/44e2903296aa5d258284a3d70a7d34da39911890))
+* force dynamic rendering ([bc4d8c4](https://github.com/1pulse-digital/cool-mint/commit/bc4d8c4e20d7338a9442c8f07b3681a77d60da06))
+* typo on response parsing ([3ca2b58](https://github.com/1pulse-digital/cool-mint/commit/3ca2b58b869d61dcbb6d7dda76af6c97c920792f))
+* upcoing sessions never cached ([2d06588](https://github.com/1pulse-digital/cool-mint/commit/2d06588fb27086dfe890ae2955a374a36cb19186))
+
+## [0.11.1](https://github.com/1pulse-digital/cool-mint/compare/v0.11.0...v0.11.1) (2024-06-30)
+
+
+### Bug Fixes
+
+* upcoming sessions should not be chached ([144d73d](https://github.com/1pulse-digital/cool-mint/commit/144d73d34c5947c2444278f9f8869107aaecce70))
+
+## [0.11.0](https://github.com/1pulse-digital/cool-mint/compare/v0.10.0...v0.11.0) (2024-06-27)
+
+
+### Features
+
+* add auth header constructor helper and remove initTransport() duplication ([d9cfffa](https://github.com/1pulse-digital/cool-mint/commit/d9cfffa3a3b82e4344645ee88ff404d098e62aaf))
+
+
+### Bug Fixes
+
+* :construction: comment out the redirect after login since it's breaking the build ([5b7de06](https://github.com/1pulse-digital/cool-mint/commit/5b7de0694f4249989b6c714777531e174fb1f7fd))
+* force checkout to be dynamic ([42338a2](https://github.com/1pulse-digital/cool-mint/commit/42338a2e74aa1618a16e1364f7b4daac139d1353))
+* force orders to by dynamic ([b1d6767](https://github.com/1pulse-digital/cool-mint/commit/b1d6767c1d137122a7fe7b7fc246cc63f97716a6))
+* Home page no longer async ([2893532](https://github.com/1pulse-digital/cool-mint/commit/28935327270f999ebaf2bc862e1b2308d8bb64fe))
+* remove auth headers in upcoming sessions fetch ([42fc283](https://github.com/1pulse-digital/cool-mint/commit/42fc283fbbed9905d33de2bcf6595edebddb3711))
+* remove cart fetch on page load ([07af2a1](https://github.com/1pulse-digital/cool-mint/commit/07af2a150bdb35ec1785c20c013108204eb4965f))
+
 ## [0.10.0](https://github.com/1pulse-digital/cool-mint/compare/v0.9.0...v0.10.0) (2024-06-27)
 
 

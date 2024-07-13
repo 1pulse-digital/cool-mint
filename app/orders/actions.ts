@@ -1,10 +1,14 @@
 "use server"
 
-import { transport } from "@/lib/transport"
+import { authHeaders, transport } from "@/lib/transport"
 import { TwirpError } from "twirpscript"
 
-import { authHeader } from "@/app/actions"
-import { MyOrders, MyOrdersRequest, MyOrdersResponse } from "@/lib/fusion/commerce/order.manager.pb"
+import {
+  MyOrders,
+  MyOrdersRequest,
+  MyOrdersResponse,
+} from "@/lib/fusion/commerce/order.manager.pb"
+import { cookies } from "next/headers"
 
 export async function myOrders(
   request: MyOrdersRequest,
@@ -12,7 +16,7 @@ export async function myOrders(
   try {
     const response = await MyOrders(request, {
       rpcTransport: transport(["orders"]),
-      headers: await authHeader(),
+      headers: authHeaders(cookies().get("token")?.value),
     })
     return response
   } catch (e: unknown) {

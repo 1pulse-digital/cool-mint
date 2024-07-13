@@ -18,52 +18,20 @@ export interface TourBooking {
   name: string;
   uid: string;
   auditEntry: auditEntry.Entry;
-  /**
-   * DISCUSS: We should add common types we use
-   * OR import the google types
-   * The date of the tour
-   * Format: YYYY-MM-DD
-   */
-  tourDay: string;
-  /**
-   * Available slots
-   */
-  bookingSlots: TourBooking.BookingSlot[];
+  time: string;
+  duration: number;
+  status: TourBooking.Status;
+  tourist: TourBooking.TouristDetails;
 }
 
 export declare namespace TourBooking {
-  export type BookingStatus =
+  export type Status =
     | "BOOKING_STATUS_UNSPECIFIED"
     | "CONFIRMED"
     | "PENDING"
     | "CANCELLED"
     | "REJECTED"
     | "COMPLETED";
-
-  export interface BookingSlot {
-    /**
-     * Start time in miliseconds
-     */
-    startTime: protoscript.Timestamp;
-    /**
-     * Duration in minutes.
-     * Uint16 max value = 65535
-     */
-    duration: number;
-    /**
-     * The name of the guide doing the tour
-     * We could default this.
-     */
-    guideEmail: string;
-    /**
-     * The mailing address of the person booking the tour
-     */
-    touristDetails: TourBooking.TouristDetails;
-    /**
-     * The status of the booking
-     */
-    status: TourBooking.BookingStatus;
-  }
 
   export interface TouristDetails {
     /**
@@ -118,8 +86,10 @@ export const TourBooking = {
       name: "",
       uid: "",
       auditEntry: auditEntry.Entry.initialize(),
-      tourDay: "",
-      bookingSlots: [],
+      time: "",
+      duration: 0,
+      status: TourBooking.Status._fromInt(0),
+      tourist: TourBooking.TouristDetails.initialize(),
       ...msg,
     };
   },
@@ -140,14 +110,20 @@ export const TourBooking = {
     if (msg.auditEntry) {
       writer.writeMessage(3, msg.auditEntry, auditEntry.Entry._writeMessage);
     }
-    if (msg.tourDay) {
-      writer.writeString(4, msg.tourDay);
+    if (msg.time) {
+      writer.writeString(4, msg.time);
     }
-    if (msg.bookingSlots?.length) {
-      writer.writeRepeatedMessage(
-        5,
-        msg.bookingSlots as any,
-        TourBooking.BookingSlot._writeMessage,
+    if (msg.duration) {
+      writer.writeInt32(5, msg.duration);
+    }
+    if (msg.status && TourBooking.Status._toInt(msg.status)) {
+      writer.writeEnum(6, TourBooking.Status._toInt(msg.status));
+    }
+    if (msg.tourist) {
+      writer.writeMessage(
+        7,
+        msg.tourist,
+        TourBooking.TouristDetails._writeMessage,
       );
     }
     return writer;
@@ -176,13 +152,22 @@ export const TourBooking = {
           break;
         }
         case 4: {
-          msg.tourDay = reader.readString();
+          msg.time = reader.readString();
           break;
         }
         case 5: {
-          const m = TourBooking.BookingSlot.initialize();
-          reader.readMessage(m, TourBooking.BookingSlot._readMessage);
-          msg.bookingSlots.push(m);
+          msg.duration = reader.readInt32();
+          break;
+        }
+        case 6: {
+          msg.status = TourBooking.Status._fromInt(reader.readEnum());
+          break;
+        }
+        case 7: {
+          reader.readMessage(
+            msg.tourist,
+            TourBooking.TouristDetails._readMessage,
+          );
           break;
         }
         default: {
@@ -194,7 +179,7 @@ export const TourBooking = {
     return msg;
   },
 
-  BookingStatus: {
+  Status: {
     /**
      * Unspecified status
      */
@@ -222,7 +207,7 @@ export const TourBooking = {
     /**
      * @private
      */
-    _fromInt: function (i: number): TourBooking.BookingStatus {
+    _fromInt: function (i: number): TourBooking.Status {
       switch (i) {
         case 0: {
           return "BOOKING_STATUS_UNSPECIFIED";
@@ -244,14 +229,14 @@ export const TourBooking = {
         }
         // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
         default: {
-          return i as unknown as TourBooking.BookingStatus;
+          return i as unknown as TourBooking.Status;
         }
       }
     },
     /**
      * @private
      */
-    _toInt: function (i: TourBooking.BookingStatus): number {
+    _toInt: function (i: TourBooking.Status): number {
       switch (i) {
         case "BOOKING_STATUS_UNSPECIFIED": {
           return 0;
@@ -278,122 +263,6 @@ export const TourBooking = {
       }
     },
   } as const,
-
-  BookingSlot: {
-    /**
-     * Serializes TourBooking.BookingSlot to protobuf.
-     */
-    encode: function (msg: PartialDeep<TourBooking.BookingSlot>): Uint8Array {
-      return TourBooking.BookingSlot._writeMessage(
-        msg,
-        new protoscript.BinaryWriter(),
-      ).getResultBuffer();
-    },
-
-    /**
-     * Deserializes TourBooking.BookingSlot from protobuf.
-     */
-    decode: function (bytes: ByteSource): TourBooking.BookingSlot {
-      return TourBooking.BookingSlot._readMessage(
-        TourBooking.BookingSlot.initialize(),
-        new protoscript.BinaryReader(bytes),
-      );
-    },
-
-    /**
-     * Initializes TourBooking.BookingSlot with all fields set to their default value.
-     */
-    initialize: function (
-      msg?: Partial<TourBooking.BookingSlot>,
-    ): TourBooking.BookingSlot {
-      return {
-        startTime: protoscript.Timestamp.initialize(),
-        duration: 0,
-        guideEmail: "",
-        touristDetails: TourBooking.TouristDetails.initialize(),
-        status: TourBooking.BookingStatus._fromInt(0),
-        ...msg,
-      };
-    },
-
-    /**
-     * @private
-     */
-    _writeMessage: function (
-      msg: PartialDeep<TourBooking.BookingSlot>,
-      writer: protoscript.BinaryWriter,
-    ): protoscript.BinaryWriter {
-      if (msg.startTime) {
-        writer.writeMessage(
-          1,
-          msg.startTime,
-          protoscript.Timestamp._writeMessage,
-        );
-      }
-      if (msg.duration) {
-        writer.writeUint32(2, msg.duration);
-      }
-      if (msg.guideEmail) {
-        writer.writeString(3, msg.guideEmail);
-      }
-      if (msg.touristDetails) {
-        writer.writeMessage(
-          4,
-          msg.touristDetails,
-          TourBooking.TouristDetails._writeMessage,
-        );
-      }
-      if (msg.status && TourBooking.BookingStatus._toInt(msg.status)) {
-        writer.writeEnum(6, TourBooking.BookingStatus._toInt(msg.status));
-      }
-      return writer;
-    },
-
-    /**
-     * @private
-     */
-    _readMessage: function (
-      msg: TourBooking.BookingSlot,
-      reader: protoscript.BinaryReader,
-    ): TourBooking.BookingSlot {
-      while (reader.nextField()) {
-        const field = reader.getFieldNumber();
-        switch (field) {
-          case 1: {
-            reader.readMessage(
-              msg.startTime,
-              protoscript.Timestamp._readMessage,
-            );
-            break;
-          }
-          case 2: {
-            msg.duration = reader.readUint32();
-            break;
-          }
-          case 3: {
-            msg.guideEmail = reader.readString();
-            break;
-          }
-          case 4: {
-            reader.readMessage(
-              msg.touristDetails,
-              TourBooking.TouristDetails._readMessage,
-            );
-            break;
-          }
-          case 6: {
-            msg.status = TourBooking.BookingStatus._fromInt(reader.readEnum());
-            break;
-          }
-          default: {
-            reader.skipField();
-            break;
-          }
-        }
-      }
-      return msg;
-    },
-  },
 
   TouristDetails: {
     /**
@@ -522,8 +391,10 @@ export const TourBookingJSON = {
       name: "",
       uid: "",
       auditEntry: auditEntry.EntryJSON.initialize(),
-      tourDay: "",
-      bookingSlots: [],
+      time: "",
+      duration: 0,
+      status: TourBooking.Status._fromInt(0),
+      tourist: TourBookingJSON.TouristDetails.initialize(),
       ...msg,
     };
   },
@@ -547,13 +418,22 @@ export const TourBookingJSON = {
         json["auditEntry"] = _auditEntry_;
       }
     }
-    if (msg.tourDay) {
-      json["tourDay"] = msg.tourDay;
+    if (msg.time) {
+      json["time"] = msg.time;
     }
-    if (msg.bookingSlots?.length) {
-      json["bookingSlots"] = msg.bookingSlots.map(
-        TourBookingJSON.BookingSlot._writeMessage,
+    if (msg.duration) {
+      json["duration"] = msg.duration;
+    }
+    if (msg.status && TourBookingJSON.Status._toInt(msg.status)) {
+      json["status"] = msg.status;
+    }
+    if (msg.tourist) {
+      const _tourist_ = TourBookingJSON.TouristDetails._writeMessage(
+        msg.tourist,
       );
+      if (Object.keys(_tourist_).length > 0) {
+        json["tourist"] = _tourist_;
+      }
     }
     return json;
   },
@@ -574,22 +454,26 @@ export const TourBookingJSON = {
     if (_auditEntry_) {
       auditEntry.EntryJSON._readMessage(msg.auditEntry, _auditEntry_);
     }
-    const _tourDay_ = json["tourDay"];
-    if (_tourDay_) {
-      msg.tourDay = _tourDay_;
+    const _time_ = json["time"];
+    if (_time_) {
+      msg.time = _time_;
     }
-    const _bookingSlots_ = json["bookingSlots"];
-    if (_bookingSlots_) {
-      for (const item of _bookingSlots_) {
-        const m = TourBookingJSON.BookingSlot.initialize();
-        TourBookingJSON.BookingSlot._readMessage(m, item);
-        msg.bookingSlots.push(m);
-      }
+    const _duration_ = json["duration"];
+    if (_duration_) {
+      msg.duration = protoscript.parseNumber(_duration_);
+    }
+    const _status_ = json["status"];
+    if (_status_) {
+      msg.status = TourBooking.Status._fromInt(_status_);
+    }
+    const _tourist_ = json["tourist"];
+    if (_tourist_) {
+      TourBookingJSON.TouristDetails._readMessage(msg.tourist, _tourist_);
     }
     return msg;
   },
 
-  BookingStatus: {
+  Status: {
     /**
      * Unspecified status
      */
@@ -617,7 +501,7 @@ export const TourBookingJSON = {
     /**
      * @private
      */
-    _fromInt: function (i: number): TourBooking.BookingStatus {
+    _fromInt: function (i: number): TourBooking.Status {
       switch (i) {
         case 0: {
           return "BOOKING_STATUS_UNSPECIFIED";
@@ -639,14 +523,14 @@ export const TourBookingJSON = {
         }
         // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
         default: {
-          return i as unknown as TourBooking.BookingStatus;
+          return i as unknown as TourBooking.Status;
         }
       }
     },
     /**
      * @private
      */
-    _toInt: function (i: TourBooking.BookingStatus): number {
+    _toInt: function (i: TourBooking.Status): number {
       switch (i) {
         case "BOOKING_STATUS_UNSPECIFIED": {
           return 0;
@@ -673,104 +557,6 @@ export const TourBookingJSON = {
       }
     },
   } as const,
-
-  BookingSlot: {
-    /**
-     * Serializes TourBooking.BookingSlot to JSON.
-     */
-    encode: function (msg: PartialDeep<TourBooking.BookingSlot>): string {
-      return JSON.stringify(TourBookingJSON.BookingSlot._writeMessage(msg));
-    },
-
-    /**
-     * Deserializes TourBooking.BookingSlot from JSON.
-     */
-    decode: function (json: string): TourBooking.BookingSlot {
-      return TourBookingJSON.BookingSlot._readMessage(
-        TourBookingJSON.BookingSlot.initialize(),
-        JSON.parse(json),
-      );
-    },
-
-    /**
-     * Initializes TourBooking.BookingSlot with all fields set to their default value.
-     */
-    initialize: function (
-      msg?: Partial<TourBooking.BookingSlot>,
-    ): TourBooking.BookingSlot {
-      return {
-        startTime: protoscript.TimestampJSON.initialize(),
-        duration: 0,
-        guideEmail: "",
-        touristDetails: TourBookingJSON.TouristDetails.initialize(),
-        status: TourBooking.BookingStatus._fromInt(0),
-        ...msg,
-      };
-    },
-
-    /**
-     * @private
-     */
-    _writeMessage: function (
-      msg: PartialDeep<TourBooking.BookingSlot>,
-    ): Record<string, unknown> {
-      const json: Record<string, unknown> = {};
-      if (msg.startTime && msg.startTime.seconds && msg.startTime.nanos) {
-        json["startTime"] = protoscript.serializeTimestamp(msg.startTime);
-      }
-      if (msg.duration) {
-        json["duration"] = msg.duration;
-      }
-      if (msg.guideEmail) {
-        json["guideEmail"] = msg.guideEmail;
-      }
-      if (msg.touristDetails) {
-        const _touristDetails_ = TourBookingJSON.TouristDetails._writeMessage(
-          msg.touristDetails,
-        );
-        if (Object.keys(_touristDetails_).length > 0) {
-          json["touristDetails"] = _touristDetails_;
-        }
-      }
-      if (msg.status && TourBookingJSON.BookingStatus._toInt(msg.status)) {
-        json["status"] = msg.status;
-      }
-      return json;
-    },
-
-    /**
-     * @private
-     */
-    _readMessage: function (
-      msg: TourBooking.BookingSlot,
-      json: any,
-    ): TourBooking.BookingSlot {
-      const _startTime_ = json["startTime"];
-      if (_startTime_) {
-        msg.startTime = protoscript.parseTimestamp(_startTime_);
-      }
-      const _duration_ = json["duration"];
-      if (_duration_) {
-        msg.duration = protoscript.parseNumber(_duration_);
-      }
-      const _guideEmail_ = json["guideEmail"];
-      if (_guideEmail_) {
-        msg.guideEmail = _guideEmail_;
-      }
-      const _touristDetails_ = json["touristDetails"];
-      if (_touristDetails_) {
-        TourBookingJSON.TouristDetails._readMessage(
-          msg.touristDetails,
-          _touristDetails_,
-        );
-      }
-      const _status_ = json["status"];
-      if (_status_) {
-        msg.status = TourBooking.BookingStatus._fromInt(_status_);
-      }
-      return msg;
-    },
-  },
 
   TouristDetails: {
     /**

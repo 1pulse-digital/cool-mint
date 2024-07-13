@@ -3,7 +3,7 @@ import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 import Link from "next/link"
 import { Suspense } from "react"
 
-export default async function Page() {
+export default function Page() {
   return (
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
@@ -50,3 +50,6 @@ export default async function Page() {
     </div>
   )
 }
+
+// TODO: Figure out how to remove this
+export const dynamic = "force-dynamic"

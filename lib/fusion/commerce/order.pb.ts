@@ -18,18 +18,51 @@ export interface Order {
   name: string;
   uid: string;
   auditEntry: auditEntry.Entry;
+  /**
+   * order status
+   */
   status: Order.Status;
+  /**
+   * the order number
+   */
   number: bigint;
+  /**
+   * product ids
+   */
   lineItems: LineItem[];
+  /**
+   * grand total in cents
+   */
   total: bigint;
+  /**
+   * total discound amount in cents
+   */
   discountTotal: bigint;
+  /**
+   * total shipping amount in cents
+   */
   shippingTotal: bigint;
+  /**
+   * user who this order belongs to
+   */
   userID: string;
   billingAddress: BillingAddress;
   shippingAddress: Address;
+  /**
+   * payment gateway transaction id
+   */
   transactionID: string;
+  /**
+   * date paid
+   */
   datePaid: string;
+  /**
+   * date completed
+   */
   dateCompleted: string;
+  /**
+   * order description
+   */
   description: string;
 }
 
@@ -63,13 +96,16 @@ export interface LineItem {
 export interface Address {
   firstName: string;
   lastName: string;
-  company: string;
+  /**
+   * string company = 3;
+   */
   address1: string;
   address2: string;
   city: string;
-  province: string;
+  /**
+   * string province = 7;
+   */
   postalCode: string;
-  country: string;
 }
 
 export interface BillingAddress {
@@ -494,13 +530,10 @@ export const Address = {
     return {
       firstName: "",
       lastName: "",
-      company: "",
       address1: "",
       address2: "",
       city: "",
-      province: "",
       postalCode: "",
-      country: "",
       ...msg,
     };
   },
@@ -518,9 +551,6 @@ export const Address = {
     if (msg.lastName) {
       writer.writeString(2, msg.lastName);
     }
-    if (msg.company) {
-      writer.writeString(3, msg.company);
-    }
     if (msg.address1) {
       writer.writeString(4, msg.address1);
     }
@@ -530,14 +560,8 @@ export const Address = {
     if (msg.city) {
       writer.writeString(6, msg.city);
     }
-    if (msg.province) {
-      writer.writeString(7, msg.province);
-    }
     if (msg.postalCode) {
       writer.writeString(8, msg.postalCode);
-    }
-    if (msg.country) {
-      writer.writeString(9, msg.country);
     }
     return writer;
   },
@@ -560,10 +584,6 @@ export const Address = {
           msg.lastName = reader.readString();
           break;
         }
-        case 3: {
-          msg.company = reader.readString();
-          break;
-        }
         case 4: {
           msg.address1 = reader.readString();
           break;
@@ -576,16 +596,8 @@ export const Address = {
           msg.city = reader.readString();
           break;
         }
-        case 7: {
-          msg.province = reader.readString();
-          break;
-        }
         case 8: {
           msg.postalCode = reader.readString();
-          break;
-        }
-        case 9: {
-          msg.country = reader.readString();
           break;
         }
         default: {
@@ -1069,13 +1081,10 @@ export const AddressJSON = {
     return {
       firstName: "",
       lastName: "",
-      company: "",
       address1: "",
       address2: "",
       city: "",
-      province: "",
       postalCode: "",
-      country: "",
       ...msg,
     };
   },
@@ -1091,9 +1100,6 @@ export const AddressJSON = {
     if (msg.lastName) {
       json["lastName"] = msg.lastName;
     }
-    if (msg.company) {
-      json["company"] = msg.company;
-    }
     if (msg.address1) {
       json["address1"] = msg.address1;
     }
@@ -1103,14 +1109,8 @@ export const AddressJSON = {
     if (msg.city) {
       json["city"] = msg.city;
     }
-    if (msg.province) {
-      json["province"] = msg.province;
-    }
     if (msg.postalCode) {
       json["postalCode"] = msg.postalCode;
-    }
-    if (msg.country) {
-      json["country"] = msg.country;
     }
     return json;
   },
@@ -1127,10 +1127,6 @@ export const AddressJSON = {
     if (_lastName_) {
       msg.lastName = _lastName_;
     }
-    const _company_ = json["company"];
-    if (_company_) {
-      msg.company = _company_;
-    }
     const _address1_ = json["address1"];
     if (_address1_) {
       msg.address1 = _address1_;
@@ -1143,17 +1139,9 @@ export const AddressJSON = {
     if (_city_) {
       msg.city = _city_;
     }
-    const _province_ = json["province"];
-    if (_province_) {
-      msg.province = _province_;
-    }
     const _postalCode_ = json["postalCode"];
     if (_postalCode_) {
       msg.postalCode = _postalCode_;
-    }
-    const _country_ = json["country"];
-    if (_country_) {
-      msg.country = _country_;
     }
     return msg;
   },

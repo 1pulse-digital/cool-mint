@@ -14,6 +14,7 @@ import { Cart } from "@/lib/fusion/commerce/cart.pb"
 initTransport()
 
 export async function myCart(request: MyCartRequest): Promise<Cart> {
+  // TODO: Can we use the ETAG as a cache key?
   try {
     return await MyCart(request, {
       headers: await authHeader(),

@@ -26,8 +26,8 @@ export interface PlaceOrderRequest {
 }
 
 export interface PlaceOrderResponse {
-  paymentID: string;
   order: commerceOrder.Order;
+  redirectUrl: string;
 }
 
 export interface MyOrdersRequest {}
@@ -435,8 +435,8 @@ export const PlaceOrderResponse = {
    */
   initialize: function (msg?: Partial<PlaceOrderResponse>): PlaceOrderResponse {
     return {
-      paymentID: "",
       order: commerceOrder.Order.initialize(),
+      redirectUrl: "",
       ...msg,
     };
   },
@@ -448,11 +448,11 @@ export const PlaceOrderResponse = {
     msg: PartialDeep<PlaceOrderResponse>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.paymentID) {
-      writer.writeString(1, msg.paymentID);
-    }
     if (msg.order) {
-      writer.writeMessage(2, msg.order, commerceOrder.Order._writeMessage);
+      writer.writeMessage(1, msg.order, commerceOrder.Order._writeMessage);
+    }
+    if (msg.redirectUrl) {
+      writer.writeString(2, msg.redirectUrl);
     }
     return writer;
   },
@@ -468,11 +468,11 @@ export const PlaceOrderResponse = {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          msg.paymentID = reader.readString();
+          reader.readMessage(msg.order, commerceOrder.Order._readMessage);
           break;
         }
         case 2: {
-          reader.readMessage(msg.order, commerceOrder.Order._readMessage);
+          msg.redirectUrl = reader.readString();
           break;
         }
         default: {
@@ -925,8 +925,8 @@ export const PlaceOrderResponseJSON = {
    */
   initialize: function (msg?: Partial<PlaceOrderResponse>): PlaceOrderResponse {
     return {
-      paymentID: "",
       order: commerceOrder.OrderJSON.initialize(),
+      redirectUrl: "",
       ...msg,
     };
   },
@@ -938,14 +938,14 @@ export const PlaceOrderResponseJSON = {
     msg: PartialDeep<PlaceOrderResponse>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.paymentID) {
-      json["paymentID"] = msg.paymentID;
-    }
     if (msg.order) {
       const _order_ = commerceOrder.OrderJSON._writeMessage(msg.order);
       if (Object.keys(_order_).length > 0) {
         json["order"] = _order_;
       }
+    }
+    if (msg.redirectUrl) {
+      json["redirectUrl"] = msg.redirectUrl;
     }
     return json;
   },
@@ -957,13 +957,13 @@ export const PlaceOrderResponseJSON = {
     msg: PlaceOrderResponse,
     json: any,
   ): PlaceOrderResponse {
-    const _paymentID_ = json["paymentID"];
-    if (_paymentID_) {
-      msg.paymentID = _paymentID_;
-    }
     const _order_ = json["order"];
     if (_order_) {
       commerceOrder.OrderJSON._readMessage(msg.order, _order_);
+    }
+    const _redirectUrl_ = json["redirectUrl"];
+    if (_redirectUrl_) {
+      msg.redirectUrl = _redirectUrl_;
     }
     return msg;
   },

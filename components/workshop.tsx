@@ -35,6 +35,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
 
     // get the latest version of the cart
     try {
+      // TODO: only get the latest version if the add to cart fails on etag mismatch, not every time we click the button
       const cart = await myCart({})
       await addToCart({
         eTag: cart.auditEntry.eTag,

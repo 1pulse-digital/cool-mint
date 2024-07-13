@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
 import { Footer } from "@/components/detailed/footer"
 import Header from "@/components/header"
-import { Toaster } from "sonner"
 import { UserProvider } from "@/contexts/user"
 import { cn } from "@/lib/utils"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { Toaster } from "sonner"
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 const isDev = process?.env.NODE_ENV === "development"

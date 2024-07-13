@@ -1,11 +1,10 @@
 "use server"
 
 import { upcomingSessions } from "@/app/classes/actions"
-import { UpcomingWorkshops } from "./base/upcomingWorkshops"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
+import { UpcomingWorkshops } from "./base/upcomingWorkshops"
 import { Card, CardTitle } from "./ui/card"
-import { format } from "date-fns"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 
 export const UpcomingClasses = async () => {
   const response = await upcomingSessions({})
@@ -35,7 +34,9 @@ export const UpcomingClassesLoader = () => {
           <TabsContent value={"loading"} className="px-10">
             <Card className="border-0 bg-background">
               <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                <span className="animate-pulse">Looking for upcoming classes...</span>
+                <span className="animate-pulse">
+                  Looking for upcoming classes...
+                </span>
               </CardTitle>
               <Skeleton className="h-[100px] w-full" />
             </Card>

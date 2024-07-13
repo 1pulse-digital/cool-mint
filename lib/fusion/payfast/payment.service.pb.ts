@@ -49,8 +49,6 @@ export interface NotifyRequest {
   signature: string;
 }
 
-export interface NotifyResponse {}
-
 //========================================//
 //     PaymentService Protobuf Client     //
 //========================================//
@@ -63,7 +61,7 @@ export async function GeneratePaymentIdentifier(
   config?: ClientConfiguration,
 ): Promise<GeneratePaymentIdentifierResponse> {
   const response = await PBrequest(
-    "/commerce.PaymentService/GeneratePaymentIdentifier",
+    "/payfast.PaymentService/GeneratePaymentIdentifier",
     GeneratePaymentIdentifierRequest.encode(generatePaymentIdentifierRequest),
     config,
   );
@@ -73,13 +71,13 @@ export async function GeneratePaymentIdentifier(
 export async function HandleNotify(
   notifyRequest: NotifyRequest,
   config?: ClientConfiguration,
-): Promise<NotifyResponse> {
+): Promise<protoscript.Empty> {
   const response = await PBrequest(
-    "/commerce.PaymentService/HandleNotify",
+    "/payfast.PaymentService/HandleNotify",
     NotifyRequest.encode(notifyRequest),
     config,
   );
-  return NotifyResponse.decode(response);
+  return protoscript.Empty.decode(response);
 }
 
 //========================================//
@@ -94,7 +92,7 @@ export async function GeneratePaymentIdentifierJSON(
   config?: ClientConfiguration,
 ): Promise<GeneratePaymentIdentifierResponse> {
   const response = await JSONrequest(
-    "/commerce.PaymentService/GeneratePaymentIdentifier",
+    "/payfast.PaymentService/GeneratePaymentIdentifier",
     GeneratePaymentIdentifierRequestJSON.encode(
       generatePaymentIdentifierRequest,
     ),
@@ -106,13 +104,13 @@ export async function GeneratePaymentIdentifierJSON(
 export async function HandleNotifyJSON(
   notifyRequest: NotifyRequest,
   config?: ClientConfiguration,
-): Promise<NotifyResponse> {
+): Promise<protoscript.Empty> {
   const response = await JSONrequest(
-    "/commerce.PaymentService/HandleNotify",
+    "/payfast.PaymentService/HandleNotify",
     NotifyRequestJSON.encode(notifyRequest),
     config,
   );
-  return NotifyResponseJSON.decode(response);
+  return protoscript.EmptyJSON.decode(response);
 }
 
 //========================================//
@@ -132,14 +130,14 @@ export interface PaymentService<Context = unknown> {
   HandleNotify: (
     notifyRequest: NotifyRequest,
     context: Context,
-  ) => Promise<NotifyResponse> | NotifyResponse;
+  ) => Promise<protoscript.Empty> | protoscript.Empty;
 }
 
 export function createPaymentService<Context>(
   service: PaymentService<Context>,
 ) {
   return {
-    name: "commerce.PaymentService",
+    name: "payfast.PaymentService",
     methods: {
       GeneratePaymentIdentifier: {
         name: "GeneratePaymentIdentifier",
@@ -157,7 +155,7 @@ export function createPaymentService<Context>(
         name: "HandleNotify",
         handler: service.HandleNotify,
         input: { protobuf: NotifyRequest, json: NotifyRequestJSON },
-        output: { protobuf: NotifyResponse, json: NotifyResponseJSON },
+        output: { protobuf: protoscript.Empty, json: protoscript.EmptyJSON },
       },
     },
   } as const;
@@ -555,51 +553,6 @@ export const NotifyRequest = {
   },
 };
 
-export const NotifyResponse = {
-  /**
-   * Serializes NotifyResponse to protobuf.
-   */
-  encode: function (_msg?: PartialDeep<NotifyResponse>): Uint8Array {
-    return new Uint8Array();
-  },
-
-  /**
-   * Deserializes NotifyResponse from protobuf.
-   */
-  decode: function (_bytes?: ByteSource): NotifyResponse {
-    return {};
-  },
-
-  /**
-   * Initializes NotifyResponse with all fields set to their default value.
-   */
-  initialize: function (msg?: Partial<NotifyResponse>): NotifyResponse {
-    return {
-      ...msg,
-    };
-  },
-
-  /**
-   * @private
-   */
-  _writeMessage: function (
-    _msg: PartialDeep<NotifyResponse>,
-    writer: protoscript.BinaryWriter,
-  ): protoscript.BinaryWriter {
-    return writer;
-  },
-
-  /**
-   * @private
-   */
-  _readMessage: function (
-    _msg: NotifyResponse,
-    _reader: protoscript.BinaryReader,
-  ): NotifyResponse {
-    return _msg;
-  },
-};
-
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
@@ -955,47 +908,6 @@ export const NotifyRequestJSON = {
     if (_signature_) {
       msg.signature = _signature_;
     }
-    return msg;
-  },
-};
-
-export const NotifyResponseJSON = {
-  /**
-   * Serializes NotifyResponse to JSON.
-   */
-  encode: function (_msg?: PartialDeep<NotifyResponse>): string {
-    return "{}";
-  },
-
-  /**
-   * Deserializes NotifyResponse from JSON.
-   */
-  decode: function (_json?: string): NotifyResponse {
-    return {};
-  },
-
-  /**
-   * Initializes NotifyResponse with all fields set to their default value.
-   */
-  initialize: function (msg?: Partial<NotifyResponse>): NotifyResponse {
-    return {
-      ...msg,
-    };
-  },
-
-  /**
-   * @private
-   */
-  _writeMessage: function (
-    _msg: PartialDeep<NotifyResponse>,
-  ): Record<string, unknown> {
-    return {};
-  },
-
-  /**
-   * @private
-   */
-  _readMessage: function (msg: NotifyResponse, _json: any): NotifyResponse {
     return msg;
   },
 };
