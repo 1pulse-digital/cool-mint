@@ -11,7 +11,7 @@ import dayjs from "dayjs"
 import { availableSlots } from "./actions"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import HeaderTitle from "@/components/header-title"
-import { add, addMinutes, format } from "date-fns"
+import { format } from "date-fns"
 var localizedFormat = require("dayjs/plugin/localizedFormat")
 dayjs.extend(localizedFormat)
 

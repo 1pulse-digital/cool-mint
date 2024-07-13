@@ -6,6 +6,8 @@ import matter from 'gray-matter';
 import path from "path";
 import Markdown from "markdown-to-jsx";
 import GetInTouch from "@/components/base/getInTouch";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import HeaderTitle from "@/components/header-title";
 
 interface PostPageProps {
   params: {
@@ -56,24 +58,15 @@ const PostPage = async (props: PostPageProps) => {
       <div className="grid items-center justify-center px-8 sm:px-4 2xl:mx-40">
         <div className={"grid content-center font-helvetica sm:p-10 "}>
           <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-foreground">
-            <Link href="/">
-              <div>
-                Home
-                <span className="px-1">|</span>
-              </div>
-            </Link>
-
-            <Link href="/news">
-              <div className="">
-                News <span className="px-1">|</span>{" "}
-              </div>
-            </Link>
-            <Link href="/news">
-              <div className="text-primary">
-                {content.title}
-              </div>
-            </Link>
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "News", href: "/news" },
+              { name: content.title, href: "/news" },
+            ]}
+          />
           </div>
+
           <h1
             className={
               "text-start font-helvetica text-headings font-bold leading-tight text-foreground"
@@ -82,6 +75,9 @@ const PostPage = async (props: PostPageProps) => {
             {content.title}
             <span className="leading-snug text-primary">.</span>
           </h1>
+          <HeaderTitle >
+            {content.title}
+          </HeaderTitle>
           <div className="row flex space-x-4 pb-8">
             <span className="inline-flex items-center py-1 text-xs text-foreground">
               <svg

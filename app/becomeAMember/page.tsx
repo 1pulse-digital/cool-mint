@@ -2,28 +2,22 @@ import Button, { SmallButtonOrange } from "@/components/base/button"
 import Link from "next/link"
 import GetInTouch from "@/components/base/getInTouch"
 import HeaderTitle from "@/components/header-title"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 const BecomeAMember: React.FC = () => {
   return (
     <div className="bg-background">
       <div className={"px-8 py-20"}>
         <div className={"grid content-center font-helvetica"}>
-          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
-            <Link href="/">
-              <div>
-                Home
-                <span className="px-1">|</span>
-              </div>
-            </Link>
-            <Link href="/news">
-              <div className="text-primary">Become a member</div>
-            </Link>
-          </div>
-          <div>
-            <HeaderTitle description="Membership registrations are done at Made in Workshop and includes a tour of the facilities.">
-              Become a Member
-            </HeaderTitle>
-          </div>
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Become a member", href: "/news" },
+            ]}
+          />
+          <HeaderTitle description="Membership registrations are done at Made in Workshop and includes a tour of the facilities.">
+            Become a Member
+          </HeaderTitle>
           <div className="text-center 2xl:mx-72">
             <p
               className={

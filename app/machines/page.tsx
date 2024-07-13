@@ -5,6 +5,8 @@ import GetInTouch from "@/components/base/getInTouch"
 import { listMachines } from "./actions"
 import { Spinner } from "@/components/ui/spinner"
 import HeaderTitle from "@/components/header-title"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export default async function Page() {
   const response = await listMachines({
@@ -16,17 +18,12 @@ export default async function Page() {
     <div className={"bg-background py-10 sm:py-20"}>
       <div className="flex h-auto">
         <div className={"grid content-center font-helvetica"}>
-          <div className="inline-flex items-center justify-center font-helvetica text-xs font-normal text-foreground">
-            <Link href="/">
-              <div>
-                Home
-                <span className="px-1">|</span>
-              </div>
-            </Link>
-            <Link href="/machines">
-              <div className="text-primary">Machines</div>
-            </Link>
-          </div>
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Machines", href: "/machines" },
+            ]}
+          />
           <div className="px-6 sm:px-14 md:mx-16 lg:mx-48 xl:mx-40 2xl:px-52">
             <HeaderTitle>Industrial Tools & Machines</HeaderTitle>
             <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground">

@@ -1,6 +1,7 @@
 "use client"
 import { FAQAccordion } from "@/components/base/faqAccordion"
 import GetInTouch from "@/components/base/getInTouch"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import HeaderTitle from "@/components/header-title"
 import Link from "next/link"
 
@@ -9,23 +10,13 @@ const FAQ = () => {
     <div className="bg-background py-10 sm:py-20">
       <div>
         <div className="font-helvetaica grid content-center px-8">
-          <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
-            <div>
-              <Link href="/">
-                Home
-                <span className="px-1">|</span>
-              </Link>
-            </div>
-            <div>
-              <Link href="/faq" className="text-primary">
-                FAQ&apos;s
-              </Link>
-            </div>
-          </div>
-
-          <div>
-            <HeaderTitle>FAQ</HeaderTitle>
-          </div>
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "FAQ", href: "/faq" },
+            ]}
+          />
+          <HeaderTitle>FAQ</HeaderTitle>
         </div>
         <div>
           <FAQAccordion />

@@ -1,7 +1,7 @@
 import React from "react"
 import { TeamCarousel } from "@/components/base/teamCarousel"
-import Link from "next/link"
 import GetInTouch from "@/components/base/getInTouch"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 const About = () => {
   return (
@@ -9,17 +9,12 @@ const About = () => {
       <div className="lg:px-48 xl:px-40 2xl:mx-40">
         <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-14 sm:py-20 md:h-screen md:px-10">
           <div className={"grid content-center font-helvetica"}>
-            <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
-              <Link href="/">
-                <div>
-                  Home
-                  <span className="px-1">|</span>
-                </div>
-              </Link>
-              <Link href="/about">
-                <div className="text-primary">About</div>
-              </Link>
-            </div>
+            <Breadcrumbs
+              crumbs={[
+                { name: "Home", href: "/" },
+                { name: "About", href: "/about" },
+              ]}
+            />
             <div className="md:px-12 lg:px-0">
               <h1
                 className={
@@ -50,7 +45,7 @@ const About = () => {
                 that comes to life when these resources are combined with the
                 community we&apos;ve built. We are a{" "}
                 <span className="text-primary">collective </span>
-                 dedicated to innovation, a place where{" "}
+                dedicated to innovation, a place where{" "}
                 <span className="text-primary">creativity is nurtured</span>,
                 and a makerspace community that welcomes anyone driven to
                 create.
