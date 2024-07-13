@@ -75,9 +75,6 @@ const PostPage = async (props: PostPageProps) => {
             {content.title}
             <span className="leading-snug text-primary">.</span>
           </h1>
-          <HeaderTitle >
-            {content.title}
-          </HeaderTitle>
           <div className="row flex space-x-4 pb-8">
             <span className="inline-flex items-center py-1 text-xs text-foreground">
               <svg
