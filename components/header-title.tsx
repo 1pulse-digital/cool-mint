@@ -2,7 +2,7 @@ import React from "react"
 
 interface HeaderTitleProps {
   children: React.ReactNode
-  description?: string
+  description?: string | React.ReactNode
 }
 
 export const HeaderTitle: React.FC<HeaderTitleProps> = ({ children, description }) => {
