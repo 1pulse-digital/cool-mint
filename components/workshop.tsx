@@ -52,7 +52,8 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   }
 
   const handleShowClass = () => {
-    router.push(`/class/${masterClass.displayName}`)
+    // TODO: Forward class information from the list
+    router.push(`/classes/${masterClass.displayName.toLocaleLowerCase()}`)
   }
 
   const date = new Date(session.date)

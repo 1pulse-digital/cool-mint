@@ -7,7 +7,6 @@ import path from "path";
 import Markdown from "markdown-to-jsx";
 import GetInTouch from "@/components/base/getInTouch";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import HeaderTitle from "@/components/header-title";
 
 interface PostPageProps {
   params: {
