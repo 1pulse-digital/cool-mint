@@ -9,6 +9,8 @@ import { upperFirst } from "lodash"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image"
+import { moneyFormatter } from "@/lib/util/money-formatter"
+import { getMasterClass } from "../actions";
 
 interface ClassPageProps {
   params: {
@@ -16,25 +18,15 @@ interface ClassPageProps {
   },
 }
 
-export default function Page(props: ClassPageProps) {
+export default async function Page(props: ClassPageProps) {
   const slug = props.params.slug;
   const decodedSlug = decodeURIComponent(slug);
+  const requestFriendlySlug = decodedSlug.replace(" ", "-").toLowerCase();
   const styledSlug = upperFirst(decodedSlug);
 
-  const masterClass: MasterClass = {
-    name: "",
-    uid: "",
-    displayName: styledSlug,
-    standardPrice: BigInt(1500),
-    salePrice: BigInt(1000),
-    duration: 3,
-    presenter: "Philippe Starck",
-    maxAttendees: 20,
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    shortDescription: "Lorem ipsum dolor sit amet",
-    tags: ["engineering", "cnc"],
-    gallery: mediaGallery.Gallery.initialize(),
-  }
+  const masterClass: MasterClass = await getMasterClass({
+    name: "masterClasses/"+requestFriendlySlug,
+  })
 
   return (
     <>
@@ -63,8 +55,8 @@ export default function Page(props: ClassPageProps) {
             </div>
           </div>
           <div className="flex flex-col items-center py-10">
-            <div className="text-4xl font-semibold text-primary mb-2">R {masterClass.standardPrice.toString()}</div>
-            <div className="text-base text-foreground-light mb-6">Max {masterClass.maxAttendees} pax per session</div>
+            <div className="text-4xl font-semibold text-primary mb-2">{moneyFormatter.format(masterClass.standardPrice/100n)}</div>
+            <div className="text-base text-foreground-light mb-6">Max {masterClass.maxAttendees} max per session</div>
           </div>
           <div className="text-center max-w-2xl mx-auto text-foreground">
             <p>{masterClass.description}</p>
