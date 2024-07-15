@@ -2,7 +2,6 @@
 
 import { initTransport } from "@/lib/transport"
 import { TwirpError } from "twirpscript"
-
 import { authHeader } from "@/app/actions"
 import {
   UpcomingSessionResponse,
@@ -19,6 +18,7 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
+    // TODO: Why was cookies gotten here? Why did we want to prevent cache?
     // cookies().getAll() // read cookies to prevent cache
     return await UpcomingSessions(request, {})
   } catch (e: unknown) {
