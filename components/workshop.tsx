@@ -2,7 +2,6 @@ import { addToCart } from "@/app/actions"
 import { myCart } from "@/app/cart/actions"
 import { Button } from "@/components/ui/button"
 import { useUser } from "@/contexts/user"
-import { Cart } from "@/lib/fusion/commerce/cart.pb"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { parseError } from "@/lib/util/error"
@@ -52,7 +51,6 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   }
 
   const handleShowClass = () => {
-    // TODO: Forward class information from the list
     router.push(`/classes/${masterClass.displayName.toLocaleLowerCase()}`)
   }
 
