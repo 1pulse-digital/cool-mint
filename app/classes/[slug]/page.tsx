@@ -2,15 +2,13 @@
 import GetInTouch from "@/components/base/getInTouch"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import HeaderTitle from "@/components/header-title"
-import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb";
-import * as mediaGallery from "../../../lib/fusion/media/gallery.pb";
 import { Clock, UserRound } from "lucide-react";
 import { upperFirst } from "lodash"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image"
 import { moneyFormatter } from "@/lib/util/money-formatter"
-import { getMasterClass } from "../actions";
+import { getMasterClass, upcomingSessions } from "../actions";
 import { notFound } from "next/navigation";
 
 interface ClassPageProps {
@@ -19,8 +17,8 @@ interface ClassPageProps {
   },
 }
 
-export default async function Page(props: ClassPageProps) {
-  const slug = props.params.slug;
+export default async function Page({ params }: ClassPageProps) {
+  const { slug } = params;
   const decodedSlug = decodeURIComponent(slug);
   const requestFriendlySlug = decodedSlug.replace(" ", "-").toLowerCase();
   const styledSlug = upperFirst(decodedSlug);
@@ -55,7 +53,7 @@ export default async function Page(props: ClassPageProps) {
           <div className="flex justify-center items-center text-xl mt-2 space-x-4">
             <div className="flex items-center space-x-2">
               <Clock className="text-primary" />
-              <span>{masterClass.duration} Hours</span>
+              <span>{masterClass.duration} Minutes</span>
             </div>
             <div className="flex items-center space-x-2">
               <UserRound className="text-primary" />
@@ -64,14 +62,14 @@ export default async function Page(props: ClassPageProps) {
           </div>
           <div className="flex flex-col items-center py-10">
             <div className="text-4xl font-semibold text-primary mb-2">{moneyFormatter.format(masterClass.standardPrice / 100n)}</div>
-            <div className="text-base text-foreground-light mb-6">Max {masterClass.maxAttendees} max per session</div>
+            <div className="text-base text-foreground-light mb-6">Max {masterClass.maxAttendees} per session</div>
           </div>
           <div className="text-center max-w-2xl mx-auto text-foreground">
             <p>{masterClass.description}</p>
             <p className="text-sm text-foreground-light font-bold mt-4">*Please note that this class is not a tradesman qualification.</p>
           </div>
         </div>
-        {masterClass.gallery.images.length != 0 ??
+        {masterClass.gallery.images.length !== 0 ??
           <div className="flex justify-center items-center max-w-2xl mx-auto text-foreground">
             <Carousel className="w-full max-w-xs">
               <CarouselContent>
@@ -106,4 +104,18 @@ export default async function Page(props: ClassPageProps) {
       </div>
     </>
   )
+}
+
+export async function generateStaticParams(): Promise<{ params: { slug: string } }[]> {
+  try {
+    const { masterClasses } = await upcomingSessions({})
+    return masterClasses.map((masterClass) => ({
+      params: {
+        slug: masterClass.displayName.toLowerCase().replace(/\s+/g, '-'),
+      }
+    }))
+  } catch (error) {
+    console.error("Failed to generate static params:", error)
+    return [] 
+  }
 }
