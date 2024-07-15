@@ -18,7 +18,7 @@ export default async function  Page() {
 
           <HeaderTitle
             description={
-              <p>
+              <>
                 Our classes are geared towards{" "}
                 <span className="text-primary">empowering and training</span>{" "}
                 individuals to grow their skills and learn new ones. We embrace
@@ -28,7 +28,7 @@ export default async function  Page() {
                 tools and machinery. Master fundamental manufacturing skills,
                 learn about safety and upskill yourself and team through our
                 hands-on learning experiences.
-              </p>
+              </>
             }
           >
             Upcoming Classes
