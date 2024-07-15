@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { getMasterClass } from "../actions";
+import { notFound } from "next/navigation";
 
 interface ClassPageProps {
   params: {
@@ -24,9 +25,16 @@ export default async function Page(props: ClassPageProps) {
   const requestFriendlySlug = decodedSlug.replace(" ", "-").toLowerCase();
   const styledSlug = upperFirst(decodedSlug);
 
-  const masterClass: MasterClass = await getMasterClass({
-    name: "masterClasses/"+requestFriendlySlug,
-  })
+  const masterClass = await getMasterClass({
+    name: "masterClasses/" + requestFriendlySlug,
+  }).catch(error => {
+    console.error("Failed to fetch master class:", error);
+    notFound();
+  });
+
+  if (!masterClass) {
+    notFound();
+  }
 
   return (
     <>
@@ -55,7 +63,7 @@ export default async function Page(props: ClassPageProps) {
             </div>
           </div>
           <div className="flex flex-col items-center py-10">
-            <div className="text-4xl font-semibold text-primary mb-2">{moneyFormatter.format(masterClass.standardPrice/100n)}</div>
+            <div className="text-4xl font-semibold text-primary mb-2">{moneyFormatter.format(masterClass.standardPrice / 100n)}</div>
             <div className="text-base text-foreground-light mb-6">Max {masterClass.maxAttendees} max per session</div>
           </div>
           <div className="text-center max-w-2xl mx-auto text-foreground">
