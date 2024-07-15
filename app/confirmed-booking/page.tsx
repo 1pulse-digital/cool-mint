@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import { addMinutes, format } from "date-fns";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import HeaderTitle from "@/components/header-title";
+import { Check } from "lucide-react";
 
 const ConfirmedBooking: React.FC = () => {
   const searchParams = useSearchParams()
@@ -31,20 +32,7 @@ const ConfirmedBooking: React.FC = () => {
         />
         <HeaderTitle>Booking Confirmed</HeaderTitle>
         <div className="flex items-center justify-center py-4 text-[#ADFA1C]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="h-12 w-40"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 12.75 6 6 9-13.5"
-            />
-          </svg>
+          <Check size={50} />
         </div>
         <div className="grid content-center items-center place-items-center">
           <div className="">

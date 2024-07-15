@@ -21,14 +21,13 @@ export default function Page(props: ClassPageProps) {
   const decodedSlug = decodeURIComponent(slug);
   const styledSlug = upperFirst(decodedSlug);
 
-
   const masterClass: MasterClass = {
     name: "",
     uid: "",
     displayName: styledSlug,
     standardPrice: BigInt(1500),
     salePrice: BigInt(1000),
-    duration: 30,
+    duration: 3,
     presenter: "Philippe Starck",
     maxAttendees: 20,
     description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
