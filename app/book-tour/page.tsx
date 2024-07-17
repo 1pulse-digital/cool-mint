@@ -29,34 +29,21 @@ const BookTour = async () => {
           { name: "Book a Tour", href: "/book-tour" },
         ]}
       />
-      <HeaderTitle>Book a Tour</HeaderTitle>
-      <p className=" font-helvetica text-BodyText font-normal text-muted-foreground 2xl:px-60">
-        Interested in learning more about Made in Workshop? Come visit our
-        facility at
-        <span className="text-primary">
-          {" "}
-          10 Naaf Street, Strydompark, Randburg
-        </span>{" "}
-        and take a tour with one of our team members.
-      </p>
+      <HeaderTitle
+        description={
+          <p>
+            Interested in learning more about Made in Workshop? Come visit our
+            facility at
+            <span className="text-primary">
+              {" "}
+              10 Naaf Street, Strydompark, Randburg
+            </span>{" "}
+            and take a tour with one of our team members.
+          </p>
+        }
+      >Book a Tour</HeaderTitle>
 
       <div className="sm:mx-20 md:mx-16 lg:mx-2 xl:mx-16 2xl:pb-20">
-        <div className={"font-helvetaica grid content-center px-6"}>
-          <div className="px-6 md:mx-16 lg:mx-40 xl:mx-60 2xl:mx-40">
-            <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
-              Book a Tour<span className="text-primary">.</span>
-            </h1>
-            <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground 2xl:px-60">
-              Interested in learning more about Made in Workshop? Come visit our
-              facility at
-              <span className="text-primary">
-                {" "}
-                10 Naaf Street, Strydompark, Randburg
-              </span>{" "}
-              and take a tour with one of our team members.
-            </p>
-          </div>
-        </div>
         <div className="py-10 lg:px-52">
           <Tabs defaultValue={days[0]}>
             <div className="lg:pb-16">
