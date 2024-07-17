@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Button, {
   SmallButtonOrange,
 } from "@/components/base/button";
@@ -9,6 +9,8 @@ import { addMinutes, format } from "date-fns";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import HeaderTitle from "@/components/header-title";
 import { Check } from "lucide-react";
+import { AddToCalendarButton, atcb_action } from 'add-to-calendar-button-react';
+import dayjs from "dayjs";
 
 const ConfirmedBooking: React.FC = () => {
   const searchParams = useSearchParams()
@@ -17,10 +19,31 @@ const ConfirmedBooking: React.FC = () => {
   const bookingDay = format(bookingTime, "EEEE, MMMM d, yyyy")
   const startTime = format(bookingTime, "HH:mm")
   const endTime = format(addMinutes(bookingTime, 30), "HH:mm")
-  
-  // TODO: Think about an add to calendar button
-  // TODO: Refactor and add component
-  // -> npm install add-to-calendar-button
+  const location = "10 Naaf Street, Strydompark, Randburg, Johanneburg 2169"
+
+  const addToCalendarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // This effect runs after the component mounts
+    // It ensures that the AddToCalendarButton is properly initialized
+    if (addToCalendarRef.current) {
+      // You might need to call a method on the AddToCalendarButton instance here
+      // to initialize it, depending on how the third-party library works
+      atcb_action({}, addToCalendarRef.current);
+    }
+  }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (addToCalendarRef.current) {
+      // Find the button element within the AddToCalendarButton component
+      const addToCalendarButton = addToCalendarRef.current.querySelector('button');
+      if (addToCalendarButton) {
+        addToCalendarButton.click(); // Programmatically click the button
+      }
+    }
+  };
+
   return (
     <div className={"bg-background py-20"}>
       <div className="grid content-center items-center justify-center px-8 font-helvetica">
@@ -80,7 +103,7 @@ const ConfirmedBooking: React.FC = () => {
                   target="_blank"
                 >
                   <div className="flex flex-wrap items-center text-[16px]">
-                    10 Naaf Street, Strydompark, Randburg, Johanneburg 2169
+                    {location}
                   </div>
                 </Link>
               </div>
@@ -88,13 +111,20 @@ const ConfirmedBooking: React.FC = () => {
           </div>
           <div className="pt-10">
             <div className="mb-20 items-start justify-start py-4 text-center sm:text-start md:flex md:space-x-8 lg:justify-start lg:px-0">
+              {/* TODO: BYOB: Build your own button */}
               <Link href="/">
-                <div className="">
-
-                  <Button color="primary" className="w-80 ">
-                    Add to calendar
-                  </Button>
-                </div>
+                <AddToCalendarButton
+                  label="Add to calendar"
+                  name="Workshop Tour"
+                  startDate={dayjs(bookingTime).format("YYYY-MM-DD")}
+                  startTime={startTime}
+                  endTime={endTime}
+                  options={['Apple', 'Google', 'Yahoo', 'iCal']}
+                  timeZone="Africa/Johannesburg"
+                  location={location}
+                  // TODO Description to be discussed
+                  description="Workshop Tour at Made In Workshop"
+                />
               </Link>
               <div className="flex items-center justify-center">
                 <Link href="/">
