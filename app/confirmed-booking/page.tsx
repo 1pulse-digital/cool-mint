@@ -1,6 +1,6 @@
 "use client"
-import React, { useEffect, useRef } from "react";
-import Button, {
+import React from "react";
+import {
   SmallButtonOrange,
 } from "@/components/base/button";
 import Link from "next/link";
@@ -9,40 +9,17 @@ import { addMinutes, format } from "date-fns";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import HeaderTitle from "@/components/header-title";
 import { Check } from "lucide-react";
-import { AddToCalendarButton, atcb_action } from 'add-to-calendar-button-react';
-import dayjs from "dayjs";
+import { AddToCalendarButton } from 'add-to-calendar-button-react';
 
 const ConfirmedBooking: React.FC = () => {
   const searchParams = useSearchParams()
   const bookingTime = new Date(searchParams.get("time") || "")
 
   const bookingDay = format(bookingTime, "EEEE, MMMM d, yyyy")
+  const bookingCalendarDay = format(bookingTime, "yyyy-MM-dd")
   const startTime = format(bookingTime, "HH:mm")
   const endTime = format(addMinutes(bookingTime, 30), "HH:mm")
   const location = "10 Naaf Street, Strydompark, Randburg, Johanneburg 2169"
-
-  const addToCalendarRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // This effect runs after the component mounts
-    // It ensures that the AddToCalendarButton is properly initialized
-    if (addToCalendarRef.current) {
-      // You might need to call a method on the AddToCalendarButton instance here
-      // to initialize it, depending on how the third-party library works
-      atcb_action({}, addToCalendarRef.current);
-    }
-  }, []);
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (addToCalendarRef.current) {
-      // Find the button element within the AddToCalendarButton component
-      const addToCalendarButton = addToCalendarRef.current.querySelector('button');
-      if (addToCalendarButton) {
-        addToCalendarButton.click(); // Programmatically click the button
-      }
-    }
-  };
 
   return (
     <div className={"bg-background py-20"}>
@@ -116,7 +93,7 @@ const ConfirmedBooking: React.FC = () => {
                 <AddToCalendarButton
                   label="Add to calendar"
                   name="Workshop Tour"
-                  startDate={dayjs(bookingTime).format("YYYY-MM-DD")}
+                  startDate={bookingCalendarDay}
                   startTime={startTime}
                   endTime={endTime}
                   options={['Apple', 'Google', 'Yahoo', 'iCal']}
