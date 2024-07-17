@@ -16,6 +16,7 @@ type Crumb = {
 
 interface BreadcrumbsProps {
   crumbs: Crumb[]
+  className?: string
 }
 
 function CrumbItem({
@@ -46,9 +47,9 @@ function CrumbItem({
   )
 }
 
-export function Breadcrumbs({ crumbs }: BreadcrumbsProps) {
+export function Breadcrumbs({ crumbs, className }: BreadcrumbsProps) {
   return (
-    <Breadcrumb className={"grid justify-center mt-8"}>
+    <Breadcrumb className={cn("grid justify-center mt-8",className)}>
       <BreadcrumbList className="text-xs text-foreground">
         {crumbs.map((crumb, index) => (
           <CrumbItem

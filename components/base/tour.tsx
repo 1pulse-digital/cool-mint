@@ -2,9 +2,10 @@
 import React from "react"
 
 import { AvailableSlotsResponse } from "@/lib/fusion/workshop/tourBooking.manager.pb"
-import { addMinutes, format, formatISO, formatRFC3339 } from "date-fns"
+import { addMinutes, format  } from "date-fns"
 import { useRouter } from "next/navigation"
 import { BookingButton } from "./button"
+import { Button } from "@/components/ui/button"
 
 interface TourProps {
   slot: AvailableSlotsResponse.Slot
@@ -37,13 +38,14 @@ const Tour: React.FC<TourProps> = ({ slot }) => {
               {format(startTime, "HH:mm")} - {format(endTime, "HH:mm")}
             </div>
             <div className="grid items-end justify-end">
-              <BookingButton
+              <Button
                 disabled={!slot.available}
                 onClick={() => router.push(redirect)}
-                color={slot.available ? "primary" : "secondary"}
+                variant={slot.available ? "default" : "secondary"}
+                className="w-24"
               >
-                Book
-              </BookingButton>
+                {slot.available ? "Book" : "Booked"}
+              </Button>
             </div>
           </div>
           <div className="w-full pb-2 pt-4 lg:block">

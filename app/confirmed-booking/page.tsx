@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import Button, {
+import {
   SmallButtonOrange,
 } from "@/components/base/button";
 import Link from "next/link";
@@ -8,18 +8,19 @@ import { useSearchParams } from "next/navigation";
 import { addMinutes, format } from "date-fns";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import HeaderTitle from "@/components/header-title";
+import { Check } from "lucide-react";
+import { AddToCalendarButton } from 'add-to-calendar-button-react';
 
 const ConfirmedBooking: React.FC = () => {
   const searchParams = useSearchParams()
   const bookingTime = new Date(searchParams.get("time") || "")
 
   const bookingDay = format(bookingTime, "EEEE, MMMM d, yyyy")
+  const bookingCalendarDay = format(bookingTime, "yyyy-MM-dd")
   const startTime = format(bookingTime, "HH:mm")
   const endTime = format(addMinutes(bookingTime, 30), "HH:mm")
-  
-  // TODO: Think about an add to calendar button
-  // TODO: Refactor and add component
-  // -> npm install add-to-calendar-button
+  const location = "10 Naaf Street, Strydompark, Randburg, Johanneburg 2169"
+
   return (
     <div className={"bg-background py-20"}>
       <div className="grid content-center items-center justify-center px-8 font-helvetica">
@@ -31,20 +32,7 @@ const ConfirmedBooking: React.FC = () => {
         />
         <HeaderTitle>Booking Confirmed</HeaderTitle>
         <div className="flex items-center justify-center py-4 text-[#ADFA1C]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="h-12 w-40"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 12.75 6 6 9-13.5"
-            />
-          </svg>
+          <Check size={50} />
         </div>
         <div className="grid content-center items-center place-items-center">
           <div className="">
@@ -92,7 +80,7 @@ const ConfirmedBooking: React.FC = () => {
                   target="_blank"
                 >
                   <div className="flex flex-wrap items-center text-[16px]">
-                    10 Naaf Street, Strydompark, Randburg, Johanneburg 2169
+                    {location}
                   </div>
                 </Link>
               </div>
@@ -100,13 +88,20 @@ const ConfirmedBooking: React.FC = () => {
           </div>
           <div className="pt-10">
             <div className="mb-20 items-start justify-start py-4 text-center sm:text-start md:flex md:space-x-8 lg:justify-start lg:px-0">
+              {/* TODO: BYOB: Build your own button */}
               <Link href="/">
-                <div className="">
-
-                  <Button color="primary" className="w-80 ">
-                    Add to calendar
-                  </Button>
-                </div>
+                <AddToCalendarButton
+                  label="Add to calendar"
+                  name="Workshop Tour"
+                  startDate={bookingCalendarDay}
+                  startTime={startTime}
+                  endTime={endTime}
+                  options={['Apple', 'Google', 'Yahoo', 'iCal']}
+                  timeZone="Africa/Johannesburg"
+                  location={location}
+                  // TODO Description to be discussed
+                  description="Workshop Tour at Made In Workshop"
+                />
               </Link>
               <div className="flex items-center justify-center">
                 <Link href="/">

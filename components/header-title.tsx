@@ -2,7 +2,7 @@ import React from "react"
 
 interface HeaderTitleProps {
   children: React.ReactNode
-  description?: string
+  description?: string | React.ReactNode
 }
 
 export const HeaderTitle: React.FC<HeaderTitleProps> = ({ children, description }) => {
@@ -12,9 +12,9 @@ export const HeaderTitle: React.FC<HeaderTitleProps> = ({ children, description 
         {children}
         <span className="text-primary">.</span>
       </h1>
-      <p className="text-center font-helvetica text-BodyText font-normal text-muted-foreground 2xl:px-60">
+      <div className="text-center font-helvetica text-BodyText font-normal text-muted-foreground 2xl:px-60">
         {description}
-      </p>
+      </div>
     </div>
   )
 }

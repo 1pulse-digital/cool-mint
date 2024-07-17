@@ -5,7 +5,10 @@ import Link from "next/link";
 import BlogWidget from "@/components/detailed/blogWidget";
 import Button from "@/components/base/button";
 import GetInTouch from "@/components/base/getInTouch";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
+// TODO: Cleanup, where is this used?
+// Seems like a hardcoded endpoint for demo purposes?
 const NewsTitle = () => {
   return (
     <div className={"bg-background"}>
@@ -20,23 +23,13 @@ const NewsTitle = () => {
       <div className="grid items-center justify-center px-8 sm:px-4 2xl:mx-40">
         <div className={"grid content-center font-helvetica sm:p-10 "}>
           <div className="inline-flex flex-wrap items-start justify-start pb-4 font-helvetica text-xs font-normal text-foreground">
-            <Link href="/">
-              <div>
-                Home
-                <span className="px-1">|</span>
-              </div>
-            </Link>
-
-            <Link href="/news">
-              <div className="">
-                News <span className="px-1">|</span>{" "}
-              </div>
-            </Link>
-            <Link href="/news">
-              <div className="text-primary">
-                Small Business Showcase Made in Workshop
-              </div>
-            </Link>
+            <Breadcrumbs
+              crumbs={[
+                { name: "Home", href: "/" },
+                { name: "News", href: "/news" },
+                { name: "Small Business Showcase Made in Workshop", href: "/news" },
+              ]}
+            />
           </div>
           <h1
             className={

@@ -1,5 +1,7 @@
 import { ContactForm } from "@/components/base/contactForm"
 import GetInTouch from "@/components/base/getInTouch"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import HeaderTitle from "@/components/header-title"
 import Link from "next/link"
 import React from "react"
 
@@ -9,23 +11,23 @@ const Contact = () => {
       <div className="grid grid-cols-1 py-10 sm:px-12 sm:py-20 lg:grid-cols-2 lg:space-x-10 lg:px-12 xl:px-32 2xl:px-52">
         <div className="sm:px-0 lg:mr-10 xl:mr-16 2xl:mr-32">
           <div className={"px-6 font-helvetica sm:px-0 md:px-0"}>
-            <div className="inline-flex justify-center font-helvetica text-xs font-normal text-foreground">
-              <Link href="/">
-                <div>
-                  Home
-                  <span className="px-1">|</span>
-                </div>
-              </Link>
-              <Link href="/contact">
-                <div className="text-primary">Contact</div>
-              </Link>
-            </div>
-            <div className="text-start ">
+            <Breadcrumbs
+              className="justify-start"
+              crumbs={[
+                { name: "Home", href: "/" },
+                { name: "Contact", href: "/contact" },
+              ]}
+            />
+            <div className="text-start">
               <h1 className="text-headings font-bold  text-foreground">
                 Contact Us<span className="text-primary">.</span>
               </h1>
             </div>
-            <div></div>
+
+
+            {/* <HeaderTitle>
+              Contact Us
+            </HeaderTitle> */}
             <div>
               <div className="flex-col items-start justify-start space-y-2 py-8 text-foreground sm:space-x-0 sm:py-6">
                 <div>
