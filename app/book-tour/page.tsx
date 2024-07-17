@@ -7,13 +7,10 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import dayjs from "dayjs"
 import { availableSlots } from "./actions"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import HeaderTitle from "@/components/header-title"
 import { format } from "date-fns"
-var localizedFormat = require("dayjs/plugin/localizedFormat")
-dayjs.extend(localizedFormat)
 
 const BookTour = async () => {
   const { slots } = await availableSlots({})

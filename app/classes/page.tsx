@@ -4,7 +4,7 @@ import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 import HeaderTitle from "@/components/header-title"
 import { Suspense } from "react"
 
-export default async function  Page() {
+export default async function Page() {
   return (
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
