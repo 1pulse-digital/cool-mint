@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/1pulse-digital/cool-mint/compare/v0.13.0...v0.14.0) (2024-07-17)
+
+
+### Features
+
+* add individual classes page ([c2256da](https://github.com/1pulse-digital/cool-mint/commit/c2256da87bd7a0577a219de4320f2c19ce4f58e3))
+
 ## [0.13.0](https://github.com/1pulse-digital/cool-mint/compare/v0.12.0...v0.13.0) (2024-07-09)
 
 
