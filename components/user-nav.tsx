@@ -14,11 +14,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useUser } from "@/contexts/user"
 import signOut from "@/lib/firebase/auth/sign-out"
-import { Role } from "@/lib/fusion/auth/role.pb"
 import { CreditCard, ShoppingCart, User } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { MouseEventHandler, useEffect, useState } from "react"
+import { MouseEventHandler } from "react"
+import { Badge } from "./ui/badge"
 
 // generateAvatarFallback generates a 2-letter fallback for the user's avatar
 export const generateFallbackName = (
@@ -65,11 +65,21 @@ export const UserNav = () => {
     )
   }
 
+
+  const cartCount = 12
+
   return (
     <>
-      <Link className="border-primary md:ml-4" href="/cart">
-        <ShoppingCart className="h-5 w-5 hover:text-primary" />
-      </Link>
+      <div className="relative inline-block md:ml-4">
+        <Link className="border-primary block" href="/cart">
+          <ShoppingCart className="h-5 w-5 hover:text-primary" />
+          <Badge className="absolute -top-4 -right-4 justify-center text-xs text-secondary rounded-full h-5 w-5 background-primary"
+            variant="default"
+          >
+            {cartCount}
+          </Badge>
+        </Link>
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
