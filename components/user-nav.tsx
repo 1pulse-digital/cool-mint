@@ -19,6 +19,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { MouseEventHandler } from "react"
 import { Badge } from "./ui/badge"
+import { useCart } from "@/contexts/cart"
 
 // generateAvatarFallback generates a 2-letter fallback for the user's avatar
 export const generateFallbackName = (
@@ -45,6 +46,7 @@ const handleLogout: MouseEventHandler<HTMLDivElement> = async (e) => {
 export const UserNav = () => {
   const router = useRouter()
   const user = useUser()
+  const cartContext = useCart()
   const fallback = generateFallbackName(user?.displayName, user?.email)
   const pathname = usePathname()
 
@@ -65,19 +67,18 @@ export const UserNav = () => {
     )
   }
 
-
-  const cartCount = 12
-
   return (
     <>
       <div className="relative inline-block md:ml-4">
         <Link className="border-primary block" href="/cart">
           <ShoppingCart className="h-5 w-5 hover:text-primary" />
-          <Badge className="absolute -top-4 -right-4 justify-center text-xs text-secondary rounded-full h-5 w-5 background-primary"
-            variant="default"
-          >
-            {cartCount}
-          </Badge>
+          {(cartContext.amount > 0) && (
+            <Badge className="absolute -top-4 -right-4 justify-center text-xs text-secondary rounded-full h-5 w-5 background-primary"
+              variant="default"
+            >
+              {cartContext.amount}
+            </Badge>
+          )}
         </Link>
       </div>
       <DropdownMenu>
