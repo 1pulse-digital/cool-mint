@@ -4,8 +4,6 @@ import { CartItem } from "@/lib/fusion/commerce/cart.pb"
 import { Trash } from "lucide-react"
 import Image from "next/image"
 import React from "react"
-import { removeFromCart } from "../actions"
-import { toast } from "sonner"
 
 interface ShoppingCartItemProps {
   item: CartItem
