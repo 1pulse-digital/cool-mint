@@ -26,9 +26,6 @@ export interface Order {
    * the order number
    */
   number: bigint;
-  /**
-   * product ids
-   */
   lineItems: LineItem[];
   /**
    * grand total in cents
@@ -60,10 +57,6 @@ export interface Order {
    * date completed
    */
   dateCompleted: string;
-  /**
-   * order description
-   */
-  description: string;
 }
 
 export declare namespace Order {
@@ -96,9 +89,7 @@ export interface LineItem {
 export interface Address {
   firstName: string;
   lastName: string;
-  /**
-   * string company = 3;
-   */
+  company: string;
   address1: string;
   address2: string;
   city: string;
@@ -112,6 +103,7 @@ export interface BillingAddress {
   address: Address;
   phone: string;
   email: string;
+  taxNumber: string;
 }
 
 //========================================//
@@ -159,7 +151,6 @@ export const Order = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
-      description: "",
       ...msg,
     };
   },
@@ -219,9 +210,6 @@ export const Order = {
     }
     if (msg.dateCompleted) {
       writer.writeString(15, msg.dateCompleted);
-    }
-    if (msg.description) {
-      writer.writeString(16, msg.description);
     }
     return writer;
   },
@@ -293,10 +281,6 @@ export const Order = {
         }
         case 15: {
           msg.dateCompleted = reader.readString();
-          break;
-        }
-        case 16: {
-          msg.description = reader.readString();
           break;
         }
         default: {
@@ -530,6 +514,7 @@ export const Address = {
     return {
       firstName: "",
       lastName: "",
+      company: "",
       address1: "",
       address2: "",
       city: "",
@@ -550,6 +535,9 @@ export const Address = {
     }
     if (msg.lastName) {
       writer.writeString(2, msg.lastName);
+    }
+    if (msg.company) {
+      writer.writeString(3, msg.company);
     }
     if (msg.address1) {
       writer.writeString(4, msg.address1);
@@ -582,6 +570,10 @@ export const Address = {
         }
         case 2: {
           msg.lastName = reader.readString();
+          break;
+        }
+        case 3: {
+          msg.company = reader.readString();
           break;
         }
         case 4: {
@@ -639,6 +631,7 @@ export const BillingAddress = {
       address: Address.initialize(),
       phone: "",
       email: "",
+      taxNumber: "",
       ...msg,
     };
   },
@@ -658,6 +651,9 @@ export const BillingAddress = {
     }
     if (msg.email) {
       writer.writeString(3, msg.email);
+    }
+    if (msg.taxNumber) {
+      writer.writeString(4, msg.taxNumber);
     }
     return writer;
   },
@@ -682,6 +678,10 @@ export const BillingAddress = {
         }
         case 3: {
           msg.email = reader.readString();
+          break;
+        }
+        case 4: {
+          msg.taxNumber = reader.readString();
           break;
         }
         default: {
@@ -733,7 +733,6 @@ export const OrderJSON = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
-      description: "",
       ...msg,
     };
   },
@@ -798,9 +797,6 @@ export const OrderJSON = {
     }
     if (msg.dateCompleted) {
       json["dateCompleted"] = msg.dateCompleted;
-    }
-    if (msg.description) {
-      json["description"] = msg.description;
     }
     return json;
   },
@@ -872,10 +868,6 @@ export const OrderJSON = {
     const _dateCompleted_ = json["dateCompleted"];
     if (_dateCompleted_) {
       msg.dateCompleted = _dateCompleted_;
-    }
-    const _description_ = json["description"];
-    if (_description_) {
-      msg.description = _description_;
     }
     return msg;
   },
@@ -1081,6 +1073,7 @@ export const AddressJSON = {
     return {
       firstName: "",
       lastName: "",
+      company: "",
       address1: "",
       address2: "",
       city: "",
@@ -1099,6 +1092,9 @@ export const AddressJSON = {
     }
     if (msg.lastName) {
       json["lastName"] = msg.lastName;
+    }
+    if (msg.company) {
+      json["company"] = msg.company;
     }
     if (msg.address1) {
       json["address1"] = msg.address1;
@@ -1126,6 +1122,10 @@ export const AddressJSON = {
     const _lastName_ = json["lastName"];
     if (_lastName_) {
       msg.lastName = _lastName_;
+    }
+    const _company_ = json["company"];
+    if (_company_) {
+      msg.company = _company_;
     }
     const _address1_ = json["address1"];
     if (_address1_) {
@@ -1173,6 +1173,7 @@ export const BillingAddressJSON = {
       address: AddressJSON.initialize(),
       phone: "",
       email: "",
+      taxNumber: "",
       ...msg,
     };
   },
@@ -1196,6 +1197,9 @@ export const BillingAddressJSON = {
     if (msg.email) {
       json["email"] = msg.email;
     }
+    if (msg.taxNumber) {
+      json["taxNumber"] = msg.taxNumber;
+    }
     return json;
   },
 
@@ -1214,6 +1218,10 @@ export const BillingAddressJSON = {
     const _email_ = json["email"];
     if (_email_) {
       msg.email = _email_;
+    }
+    const _taxNumber_ = json["taxNumber"];
+    if (_taxNumber_) {
+      msg.taxNumber = _taxNumber_;
     }
     return msg;
   },
