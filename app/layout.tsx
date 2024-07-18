@@ -6,6 +6,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
 import "./globals.css"
+import { CartProvider } from "@/contexts/cart"
 
 const inter = Inter({ subsets: ["latin"] })
 const isDev = process?.env.NODE_ENV === "development"
@@ -32,15 +33,17 @@ export default function RootLayout({
         )}
       >
         <UserProvider>
-          <div className="flex h-full min-h-screen w-full flex-col">
+          <CartProvider>
             <div className="flex h-full min-h-screen w-full flex-col">
-              <Header />
-              <main className="grid grow">{children}</main>
+              <div className="flex h-full min-h-screen w-full flex-col">
+                <Header />
+                <main className="grid grow">{children}</main>
+              </div>
+              {/* we always want the footer below the fold */}
+              <Footer />
             </div>
-            {/* we always want the footer below the fold */}
-            <Footer />
-          </div>
-          <Toaster />
+            <Toaster />
+          </CartProvider>
         </UserProvider>
       </body>
     </html>

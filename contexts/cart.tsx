@@ -1,11 +1,27 @@
-import { Cart } from "@/lib/fusion/commerce/cart.pb";
-import { createContext, useContext } from "react";
+"use client"
 
-const CartContext = createContext({} as Cart | null)
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-export const useCart = () => useContext(CartContext)
+interface CartContextType {
+  amount: number;
+  setAmount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const CartAmountContext = createContext<CartContextType | undefined>(undefined);
+
+export const useCart = () => {
+  const context = useContext(CartAmountContext);
+  if (context === undefined) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
+};
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-    
-    return <CartContext.Provider value={null}>{children}</CartContext.Provider>
-}
+  const [amount, setAmount] = useState<number>(0);
+  return (
+    <CartAmountContext.Provider value={{ amount, setAmount }}>
+      {children}
+    </CartAmountContext.Provider>
+  );
+};
