@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.15.0](https://github.com/1pulse-digital/cool-mint/compare/v0.14.0...v0.15.0) (2024-07-19)
+
+
+### Features
+
+* Added cart badge ([#54](https://github.com/1pulse-digital/cool-mint/issues/54)) ([a625d03](https://github.com/1pulse-digital/cool-mint/commit/a625d03c5c3523d12b19d077d6fbb1d1cfb63674))
+
+
+### Bug Fixes
+
+* Individual classes page ([#55](https://github.com/1pulse-digital/cool-mint/issues/55)) ([82692de](https://github.com/1pulse-digital/cool-mint/commit/82692ded910f8461b7878790e541954b74bbe6c6))
+
 ## [0.14.0](https://github.com/1pulse-digital/cool-mint/compare/v0.13.0...v0.14.0) (2024-07-17)
 
 
