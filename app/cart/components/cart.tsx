@@ -5,12 +5,14 @@ import React, { useEffect } from "react"
 import { ShoppingCartItem } from "./cart-item"
 import { myCart, removeFromCart } from "../actions"
 import { toast } from "sonner"
+import { useCart } from "@/contexts/cart"
 
 interface ShoppingCartProps {}
 
 export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
   const [cart, setCart] = React.useState<Cart>()
 
+  const cartContext = useCart()
   useEffect(() => {
     myCart({}).then((cart) => setCart(cart))
   }, [])
@@ -29,6 +31,13 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
       toast.error("Failed to remove item from cart")
     }
   }
+
+  useEffect(() => {
+    if (!cart) {
+      return
+    }
+    cartContext.setAmount(cart.items.length || 0)
+  }, [cart, cartContext])
 
   if (!cart) {
     return <div>Loading...</div>

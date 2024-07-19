@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useUser } from "@/contexts/user"
 import signOut from "@/lib/firebase/auth/sign-out"
-import { Role } from "@/lib/fusion/auth/role.pb"
 import { CreditCard, ShoppingCart, User } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { MouseEventHandler, useEffect, useState } from "react"
+import { MouseEventHandler } from "react"
+import { Badge } from "./ui/badge"
+import { useCart } from "@/contexts/cart"
 
 // generateAvatarFallback generates a 2-letter fallback for the user's avatar
 export const generateFallbackName = (
@@ -45,6 +46,7 @@ const handleLogout: MouseEventHandler<HTMLDivElement> = async (e) => {
 export const UserNav = () => {
   const router = useRouter()
   const user = useUser()
+  const cartContext = useCart()
   const fallback = generateFallbackName(user?.displayName, user?.email)
   const pathname = usePathname()
 
@@ -67,9 +69,18 @@ export const UserNav = () => {
 
   return (
     <>
-      <Link className="border-primary md:ml-4" href="/cart">
-        <ShoppingCart className="h-5 w-5 hover:text-primary" />
-      </Link>
+      <div className="relative inline-block md:ml-4">
+        <Link className="border-primary block" href="/cart">
+          <ShoppingCart className="h-5 w-5 hover:text-primary" />
+          {(cartContext.amount > 0) && (
+            <Badge className="absolute -top-4 -right-4 justify-center text-xs text-secondary rounded-full h-5 w-5 background-primary"
+              variant="default"
+            >
+              {cartContext.amount}
+            </Badge>
+          )}
+        </Link>
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">

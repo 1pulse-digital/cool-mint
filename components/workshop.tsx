@@ -1,6 +1,7 @@
 import { addToCart } from "@/app/actions"
 import { myCart } from "@/app/cart/actions"
 import { Button } from "@/components/ui/button"
+import { useCart } from "@/contexts/cart"
 import { useUser } from "@/contexts/user"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
@@ -24,6 +25,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
 }) => {
   const router = useRouter()
   const user = useUser()
+  const cartContext = useCart()
 
   const handleAddToCart = async () => {
     // ensure the user is logged in
@@ -42,6 +44,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
         quantity: 1n,
         variant: "",
       })
+      cartContext.setAmount(cart.items.length + 1)
       toast.success("Added to cart")
       router.push("/cart")
     } catch (e: unknown) {
