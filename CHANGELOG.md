@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.1](https://github.com/1pulse-digital/cool-mint/compare/v0.15.0...v0.15.1) (2024-07-19)
+
+
+### Bug Fixes
+
+* Added thumbnail image to individual class ([0c5dffa](https://github.com/1pulse-digital/cool-mint/commit/0c5dffadd2ae6a3b70716bb9102d10eb1ec62ff3))
+
 ## [0.15.0](https://github.com/1pulse-digital/cool-mint/compare/v0.14.0...v0.15.0) (2024-07-19)
 
 
