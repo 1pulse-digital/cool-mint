@@ -11,11 +11,16 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { notFound } from "next/navigation"
 
 
 export default async function Page() {
 
   const posts = await getPosts()
+
+  if (!posts) {
+    notFound()
+  }
 
   return (
     <div className={"bg-background py-10"}>

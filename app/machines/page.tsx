@@ -1,11 +1,9 @@
 import React, { Suspense } from "react"
 import IndustrialMachineTools from "@/components/base/IndustrialMachineTools"
-import Link from "next/link"
 import GetInTouch from "@/components/base/getInTouch"
 import { listMachines } from "./actions"
 import { Spinner } from "@/components/ui/spinner"
 import HeaderTitle from "@/components/header-title"
-import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export default async function Page() {

@@ -18,8 +18,7 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
-    // TODO: Why was cookies gotten here? Why did we want to prevent cache?
-    // cookies().getAll() // read cookies to prevent cache
+    cookies().getAll() // read cookies to prevent cache
     return await UpcomingSessions(request, {})
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
@@ -36,7 +35,7 @@ export async function getMasterClass(
 ): Promise<MasterClass> {
   try {
     return await GetMasterClass(request, {
-      headers: await authHeader(),
+      headers: await authHeader(), // this calls cookies and makes components using it not be able to SSG
     })
   } catch (e: unknown) {
     if (e instanceof TwirpError) {

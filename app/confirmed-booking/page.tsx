@@ -89,7 +89,6 @@ const ConfirmedBooking: React.FC = () => {
           <div className="pt-10">
             <div className="mb-20 items-start justify-start py-4 text-center sm:text-start md:flex md:space-x-8 lg:justify-start lg:px-0">
               {/* TODO: BYOB: Build your own button */}
-              <Link href="/">
                 <AddToCalendarButton
                   label="Add to calendar"
                   name="Workshop Tour"
@@ -102,7 +101,6 @@ const ConfirmedBooking: React.FC = () => {
                   // TODO Description to be discussed
                   description="Workshop Tour at Made In Workshop"
                 />
-              </Link>
               <div className="flex items-center justify-center">
                 <Link href="/">
                   <SmallButtonOrange color="primary">

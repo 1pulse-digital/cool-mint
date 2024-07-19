@@ -106,16 +106,22 @@ export default async function Page({ params }: ClassPageProps) {
   )
 }
 
-export async function generateStaticParams(): Promise<{ params: { slug: string } }[]> {
-  try {
-    const { masterClasses } = await upcomingSessions({})
-    return masterClasses.map((masterClass) => ({
-      params: {
-        slug: masterClass.displayName.toLowerCase().replace(/\s+/g, '-'),
-      }
-    }))
-  } catch (error) {
-    console.error("Failed to generate static params:", error)
-    return [] 
-  }
-}
+export const dynamic = "force-dynamic"
+
+// TODO: FIGURE THIS OUT. THE STATIC SITE GENERATION WORKS BUT THE CACHE KEEPS KRONNING AROUND
+// export async function generateStaticParams() {
+//   try {
+//     const { masterClasses } = await upcomingSessions({})
+//     return await Promise.all(masterClasses.map(async (masterClass) => {
+//       const slug = masterClass.displayName.toLowerCase().replace(/\s+/g, '-');
+//       const fullMasterClass = await getMasterClass({ name: "masterClasses/" + slug });
+//       return { 
+//         slug,
+//         masterClass: fullMasterClass 
+//       };
+//     }));
+//   } catch (error) {
+//     console.error("Failed to generate static params:", error)
+//     return [] 
+//   }
+// }
