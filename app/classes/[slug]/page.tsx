@@ -69,29 +69,29 @@ export default async function Page({ params }: ClassPageProps) {
             <p className="text-sm text-foreground-light font-bold mt-4">*Please note that this class is not a tradesman qualification.</p>
           </div>
         </div>
-        {masterClass.gallery.images.length !== 0 ??
+        {masterClass.gallery.thumbnail.url.length !== 0 &&
           <div className="flex justify-center items-center max-w-2xl mx-auto text-foreground">
             <Carousel className="w-full max-w-xs">
               <CarouselContent>
-                {masterClass.gallery.images.map((item, index) => (
-                  <CarouselItem key={index}>
+                {/* {masterClass.gallery.images.map((item, index) => ( */}
+                  <CarouselItem key={1}>
                     <div className="p-1">
                       <Card>
                         <CardContent className="flex aspect-square items-center justify-center p-6">
-                          <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
+                          <div className="">
                             <Image
-                              src={item.url}
+                              src={masterClass.gallery.thumbnail.url}
                               alt={"Gallery Image"}
-                              className="rounded-lg"
-                              width="600"
-                              height="600"
+                              className="rounded-lg "
+                              width="400"
+                              height="400"
                             />
                           </div>
                         </CardContent>
                       </Card>
                     </div>
                   </CarouselItem>
-                ))}
+                {/* ))} */}
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
