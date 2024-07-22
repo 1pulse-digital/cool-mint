@@ -33,6 +33,10 @@ export interface CartItem {
    * display_name is the product.display_name
    */
   displayName: string;
+  /**
+   * price is the price of the product
+   * including tax if product is taxable
+   */
   price: bigint;
   quantity: bigint;
   sku: string;
@@ -201,7 +205,7 @@ export const CartItem = {
       writer.writeString(5, msg.sku);
     }
     if (msg.thumbnail) {
-      writer.writeMessage(6, msg.thumbnail, mediaObject.Object._writeMessage);
+      writer.writeMessage(7, msg.thumbnail, mediaObject.Object._writeMessage);
     }
     return writer;
   },
@@ -236,7 +240,7 @@ export const CartItem = {
           msg.sku = reader.readString();
           break;
         }
-        case 6: {
+        case 7: {
           reader.readMessage(msg.thumbnail, mediaObject.Object._readMessage);
           break;
         }

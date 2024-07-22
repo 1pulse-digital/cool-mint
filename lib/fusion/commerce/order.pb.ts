@@ -28,9 +28,10 @@ export interface Order {
   number: bigint;
   lineItems: LineItem[];
   /**
-   * grand total in cents
+   * grand total in cents (Includes shipping, taxes, discounts)
    */
   total: bigint;
+  totalTax: bigint;
   /**
    * total discound amount in cents
    */
@@ -83,6 +84,10 @@ export interface LineItem {
   total: bigint;
   totalTax: bigint;
   sku: string;
+  /**
+   * Product price in cents
+   * Include tax if taxable
+   */
   price: bigint;
 }
 
@@ -143,6 +148,7 @@ export const Order = {
       number: 0n,
       lineItems: [],
       total: 0n,
+      totalTax: 0n,
       discountTotal: 0n,
       shippingTotal: 0n,
       userID: "",
@@ -186,6 +192,9 @@ export const Order = {
     }
     if (msg.total) {
       writer.writeInt64String(7, msg.total.toString() as any);
+    }
+    if (msg.totalTax) {
+      writer.writeInt64String(16, msg.totalTax.toString() as any);
     }
     if (msg.discountTotal) {
       writer.writeInt64String(8, msg.discountTotal.toString() as any);
@@ -249,6 +258,10 @@ export const Order = {
         }
         case 7: {
           msg.total = BigInt(reader.readInt64String());
+          break;
+        }
+        case 16: {
+          msg.totalTax = BigInt(reader.readInt64String());
           break;
         }
         case 8: {
@@ -725,6 +738,7 @@ export const OrderJSON = {
       number: 0n,
       lineItems: [],
       total: 0n,
+      totalTax: 0n,
       discountTotal: 0n,
       shippingTotal: 0n,
       userID: "",
@@ -765,6 +779,9 @@ export const OrderJSON = {
     }
     if (msg.total) {
       json["total"] = String(msg.total);
+    }
+    if (msg.totalTax) {
+      json["totalTax"] = String(msg.totalTax);
     }
     if (msg.discountTotal) {
       json["discountTotal"] = String(msg.discountTotal);
@@ -836,6 +853,10 @@ export const OrderJSON = {
     const _total_ = json["total"];
     if (_total_) {
       msg.total = BigInt(_total_);
+    }
+    const _totalTax_ = json["totalTax"];
+    if (_totalTax_) {
+      msg.totalTax = BigInt(_totalTax_);
     }
     const _discountTotal_ = json["discountTotal"];
     if (_discountTotal_) {
