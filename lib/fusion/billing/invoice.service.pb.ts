@@ -19,19 +19,14 @@ export interface GenerateInvoiceRequest {
   order: string;
 }
 
-export interface GenerateInvoiceResponse {
-  url: string;
-}
+export interface GenerateInvoiceResponse {}
 
 //========================================//
 //     InvoiceService Protobuf Client     //
 //========================================//
 
 /**
- * GenerateInvoice will generate a PDF invoice and upload it to cloud storage.
- * The invoice can be downloaded using the URL provided in the response.
- * If an invoice already exists for the order, no new invoice will be generated,
- * but the existing invoice URL will be returned.
+ * GenerateInvoice will generate a PDF invoice and mail it to the billing email address.
  */
 export async function GenerateInvoice(
   generateInvoiceRequest: GenerateInvoiceRequest,
@@ -45,30 +40,12 @@ export async function GenerateInvoice(
   return GenerateInvoiceResponse.decode(response);
 }
 
-/**
- * GenerateMyInvoice should ensure the given order belongs to the authenticated user, and under the hood call GenerateInvoice.
- */
-export async function GenerateMyInvoice(
-  generateInvoiceRequest: GenerateInvoiceRequest,
-  config?: ClientConfiguration,
-): Promise<GenerateInvoiceResponse> {
-  const response = await PBrequest(
-    "/billing.InvoiceService/GenerateMyInvoice",
-    GenerateInvoiceRequest.encode(generateInvoiceRequest),
-    config,
-  );
-  return GenerateInvoiceResponse.decode(response);
-}
-
 //========================================//
 //       InvoiceService JSON Client       //
 //========================================//
 
 /**
- * GenerateInvoice will generate a PDF invoice and upload it to cloud storage.
- * The invoice can be downloaded using the URL provided in the response.
- * If an invoice already exists for the order, no new invoice will be generated,
- * but the existing invoice URL will be returned.
+ * GenerateInvoice will generate a PDF invoice and mail it to the billing email address.
  */
 export async function GenerateInvoiceJSON(
   generateInvoiceRequest: GenerateInvoiceRequest,
@@ -82,40 +59,15 @@ export async function GenerateInvoiceJSON(
   return GenerateInvoiceResponseJSON.decode(response);
 }
 
-/**
- * GenerateMyInvoice should ensure the given order belongs to the authenticated user, and under the hood call GenerateInvoice.
- */
-export async function GenerateMyInvoiceJSON(
-  generateInvoiceRequest: GenerateInvoiceRequest,
-  config?: ClientConfiguration,
-): Promise<GenerateInvoiceResponse> {
-  const response = await JSONrequest(
-    "/billing.InvoiceService/GenerateMyInvoice",
-    GenerateInvoiceRequestJSON.encode(generateInvoiceRequest),
-    config,
-  );
-  return GenerateInvoiceResponseJSON.decode(response);
-}
-
 //========================================//
 //             InvoiceService             //
 //========================================//
 
 export interface InvoiceService<Context = unknown> {
   /**
-   * GenerateInvoice will generate a PDF invoice and upload it to cloud storage.
-   * The invoice can be downloaded using the URL provided in the response.
-   * If an invoice already exists for the order, no new invoice will be generated,
-   * but the existing invoice URL will be returned.
+   * GenerateInvoice will generate a PDF invoice and mail it to the billing email address.
    */
   GenerateInvoice: (
-    generateInvoiceRequest: GenerateInvoiceRequest,
-    context: Context,
-  ) => Promise<GenerateInvoiceResponse> | GenerateInvoiceResponse;
-  /**
-   * GenerateMyInvoice should ensure the given order belongs to the authenticated user, and under the hood call GenerateInvoice.
-   */
-  GenerateMyInvoice: (
     generateInvoiceRequest: GenerateInvoiceRequest,
     context: Context,
   ) => Promise<GenerateInvoiceResponse> | GenerateInvoiceResponse;
@@ -130,18 +82,6 @@ export function createInvoiceService<Context>(
       GenerateInvoice: {
         name: "GenerateInvoice",
         handler: service.GenerateInvoice,
-        input: {
-          protobuf: GenerateInvoiceRequest,
-          json: GenerateInvoiceRequestJSON,
-        },
-        output: {
-          protobuf: GenerateInvoiceResponse,
-          json: GenerateInvoiceResponseJSON,
-        },
-      },
-      GenerateMyInvoice: {
-        name: "GenerateMyInvoice",
-        handler: service.GenerateMyInvoice,
         input: {
           protobuf: GenerateInvoiceRequest,
           json: GenerateInvoiceRequestJSON,
@@ -233,21 +173,15 @@ export const GenerateInvoiceResponse = {
   /**
    * Serializes GenerateInvoiceResponse to protobuf.
    */
-  encode: function (msg: PartialDeep<GenerateInvoiceResponse>): Uint8Array {
-    return GenerateInvoiceResponse._writeMessage(
-      msg,
-      new protoscript.BinaryWriter(),
-    ).getResultBuffer();
+  encode: function (_msg?: PartialDeep<GenerateInvoiceResponse>): Uint8Array {
+    return new Uint8Array();
   },
 
   /**
    * Deserializes GenerateInvoiceResponse from protobuf.
    */
-  decode: function (bytes: ByteSource): GenerateInvoiceResponse {
-    return GenerateInvoiceResponse._readMessage(
-      GenerateInvoiceResponse.initialize(),
-      new protoscript.BinaryReader(bytes),
-    );
+  decode: function (_bytes?: ByteSource): GenerateInvoiceResponse {
+    return {};
   },
 
   /**
@@ -257,7 +191,6 @@ export const GenerateInvoiceResponse = {
     msg?: Partial<GenerateInvoiceResponse>,
   ): GenerateInvoiceResponse {
     return {
-      url: "",
       ...msg,
     };
   },
@@ -266,12 +199,9 @@ export const GenerateInvoiceResponse = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<GenerateInvoiceResponse>,
+    _msg: PartialDeep<GenerateInvoiceResponse>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.url) {
-      writer.writeString(1, msg.url);
-    }
     return writer;
   },
 
@@ -279,23 +209,10 @@ export const GenerateInvoiceResponse = {
    * @private
    */
   _readMessage: function (
-    msg: GenerateInvoiceResponse,
-    reader: protoscript.BinaryReader,
+    _msg: GenerateInvoiceResponse,
+    _reader: protoscript.BinaryReader,
   ): GenerateInvoiceResponse {
-    while (reader.nextField()) {
-      const field = reader.getFieldNumber();
-      switch (field) {
-        case 1: {
-          msg.url = reader.readString();
-          break;
-        }
-        default: {
-          reader.skipField();
-          break;
-        }
-      }
-    }
-    return msg;
+    return _msg;
   },
 };
 
@@ -365,18 +282,15 @@ export const GenerateInvoiceResponseJSON = {
   /**
    * Serializes GenerateInvoiceResponse to JSON.
    */
-  encode: function (msg: PartialDeep<GenerateInvoiceResponse>): string {
-    return JSON.stringify(GenerateInvoiceResponseJSON._writeMessage(msg));
+  encode: function (_msg?: PartialDeep<GenerateInvoiceResponse>): string {
+    return "{}";
   },
 
   /**
    * Deserializes GenerateInvoiceResponse from JSON.
    */
-  decode: function (json: string): GenerateInvoiceResponse {
-    return GenerateInvoiceResponseJSON._readMessage(
-      GenerateInvoiceResponseJSON.initialize(),
-      JSON.parse(json),
-    );
+  decode: function (_json?: string): GenerateInvoiceResponse {
+    return {};
   },
 
   /**
@@ -386,7 +300,6 @@ export const GenerateInvoiceResponseJSON = {
     msg?: Partial<GenerateInvoiceResponse>,
   ): GenerateInvoiceResponse {
     return {
-      url: "",
       ...msg,
     };
   },
@@ -395,13 +308,9 @@ export const GenerateInvoiceResponseJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<GenerateInvoiceResponse>,
+    _msg: PartialDeep<GenerateInvoiceResponse>,
   ): Record<string, unknown> {
-    const json: Record<string, unknown> = {};
-    if (msg.url) {
-      json["url"] = msg.url;
-    }
-    return json;
+    return {};
   },
 
   /**
@@ -409,12 +318,8 @@ export const GenerateInvoiceResponseJSON = {
    */
   _readMessage: function (
     msg: GenerateInvoiceResponse,
-    json: any,
+    _json: any,
   ): GenerateInvoiceResponse {
-    const _url_ = json["url"];
-    if (_url_) {
-      msg.url = _url_;
-    }
     return msg;
   },
 };

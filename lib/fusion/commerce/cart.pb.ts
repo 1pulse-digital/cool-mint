@@ -205,7 +205,7 @@ export const CartItem = {
       writer.writeString(5, msg.sku);
     }
     if (msg.thumbnail) {
-      writer.writeMessage(7, msg.thumbnail, mediaObject.Object._writeMessage);
+      writer.writeMessage(6, msg.thumbnail, mediaObject.Object._writeMessage);
     }
     return writer;
   },
@@ -240,7 +240,7 @@ export const CartItem = {
           msg.sku = reader.readString();
           break;
         }
-        case 7: {
+        case 6: {
           reader.readMessage(msg.thumbnail, mediaObject.Object._readMessage);
           break;
         }
