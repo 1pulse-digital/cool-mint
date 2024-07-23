@@ -33,6 +33,10 @@ export interface CartItem {
    * display_name is the product.display_name
    */
   displayName: string;
+  /**
+   * price is the price of the product
+   * including tax if product is taxable
+   */
   price: bigint;
   quantity: bigint;
   sku: string;

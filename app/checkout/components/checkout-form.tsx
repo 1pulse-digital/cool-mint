@@ -30,6 +30,7 @@ interface CheckoutFormProps {
 const addressSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
+  company: z.string().optional(),
   address1: z.string(),
   address2: z.string().optional(),
   city: z.string(),
@@ -40,6 +41,7 @@ const schema = z.object({
   billingAddress: z.object({
     address: addressSchema,
     email: z.string(),
+    taxNumber: z.string().optional(),
     phone: z.string().optional(),
   }),
 })
@@ -113,11 +115,12 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
                 <FormControl>
                   <Input type="tel" {...field} />
                 </FormControl>
-                <FormDescription>Your telephone number</FormDescription>
+                <FormDescription>(Optional) Your telephone number</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="billingAddress.address.firstName"
@@ -140,6 +143,40 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="grid gap-2 lg:py-4 lg:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="billingAddress.address.company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>
+                  (Optional) Your company name
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="billingAddress.taxNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tax Number</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>
+                  (Optional) Your registered VAT number
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -207,11 +244,12 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
   )
 }
 
-// we need to normalise the address before sending it to the server because the phone number is actuallly optional but the generated typescript code doesn't know that
+// we need to normalise the address before sending it to the server because the some of the fields are optional, but the generated typescript code doesn't know that
 function normaliseBillingAddress(billingAddress: {
   address: {
     firstName: string
     lastName: string
+    company?: string | undefined
     address1: string
     city: string
     postalCode: string
@@ -219,22 +257,29 @@ function normaliseBillingAddress(billingAddress: {
   }
   email: string
   phone?: string | undefined
+  taxNumber?: string | undefined
 }): BillingAddress {
   return {
     ...billingAddress,
     address: normaliseAddress(billingAddress.address),
     phone: billingAddress.phone || "-",
+    taxNumber: billingAddress.taxNumber || "-",
   }
 }
 
-// we need to normalise the address before sending it to the server because the address2 field is actuallly optional but the generated typescript code doesn't know that
+// we need to normalise the address before sending it to the server because the some of the fields are optional, but the generated typescript code doesn't know that
 function normaliseAddress(address: {
   firstName: string
   lastName: string
+  company?: string
   address1: string
   city: string
   postalCode: string
   address2?: string | undefined
 }): Address {
-  return { ...address, address2: address.address2 || "-" }
+  return {
+    ...address,
+    address2: address.address2 || "-",
+    company: address.company || "",
+  }
 }

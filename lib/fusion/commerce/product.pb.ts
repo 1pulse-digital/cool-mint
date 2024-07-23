@@ -33,14 +33,18 @@ export interface Product {
   sku: string;
   /**
    * price is the current price of the product
+   * this is the price the customer will pay
+   * it may or may not include discounts and tax; depending on the taxStatus
    */
   price: bigint;
   /**
    * regularPrice is the regular price of the product, i.e when it is not on sale
+   * this is always Excl. tax
    */
   regularPrice: bigint;
   /**
    * salePrice is the price of the product when it is on sale
+   * this is always Excl. tax
    */
   salePrice: bigint;
   /**
@@ -53,6 +57,13 @@ export interface Product {
   reservedQuantity: bigint;
   variants: Variant[];
   gallery: mediaGallery.Gallery;
+  taxStatus: Product.TaxStatus;
+  onSaleFrom: string;
+  onSaleTo: string;
+}
+
+export declare namespace Product {
+  export type TaxStatus = "TAX_STATUS_TAXABLE" | "TAX_STATUS_NONE";
 }
 
 /**
@@ -155,6 +166,9 @@ export const Product = {
       reservedQuantity: 0n,
       variants: [],
       gallery: mediaGallery.Gallery.initialize(),
+      taxStatus: Product.TaxStatus._fromInt(0),
+      onSaleFrom: "",
+      onSaleTo: "",
       ...msg,
     };
   },
@@ -211,6 +225,15 @@ export const Product = {
     }
     if (msg.gallery) {
       writer.writeMessage(14, msg.gallery, mediaGallery.Gallery._writeMessage);
+    }
+    if (msg.taxStatus && Product.TaxStatus._toInt(msg.taxStatus)) {
+      writer.writeEnum(15, Product.TaxStatus._toInt(msg.taxStatus));
+    }
+    if (msg.onSaleFrom) {
+      writer.writeString(16, msg.onSaleFrom);
+    }
+    if (msg.onSaleTo) {
+      writer.writeString(17, msg.onSaleTo);
     }
     return writer;
   },
@@ -283,6 +306,18 @@ export const Product = {
           reader.readMessage(msg.gallery, mediaGallery.Gallery._readMessage);
           break;
         }
+        case 15: {
+          msg.taxStatus = Product.TaxStatus._fromInt(reader.readEnum());
+          break;
+        }
+        case 16: {
+          msg.onSaleFrom = reader.readString();
+          break;
+        }
+        case 17: {
+          msg.onSaleTo = reader.readString();
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -291,6 +326,45 @@ export const Product = {
     }
     return msg;
   },
+
+  TaxStatus: {
+    TAX_STATUS_TAXABLE: "TAX_STATUS_TAXABLE",
+    TAX_STATUS_NONE: "TAX_STATUS_NONE",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): Product.TaxStatus {
+      switch (i) {
+        case 0: {
+          return "TAX_STATUS_TAXABLE";
+        }
+        case 1: {
+          return "TAX_STATUS_NONE";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as Product.TaxStatus;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: Product.TaxStatus): number {
+      switch (i) {
+        case "TAX_STATUS_TAXABLE": {
+          return 0;
+        }
+        case "TAX_STATUS_NONE": {
+          return 1;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };
 
 export const Variant = {
@@ -483,6 +557,9 @@ export const ProductJSON = {
       reservedQuantity: 0n,
       variants: [],
       gallery: mediaGallery.GalleryJSON.initialize(),
+      taxStatus: Product.TaxStatus._fromInt(0),
+      onSaleFrom: "",
+      onSaleTo: "",
       ...msg,
     };
   },
@@ -536,6 +613,15 @@ export const ProductJSON = {
       if (Object.keys(_gallery_).length > 0) {
         json["gallery"] = _gallery_;
       }
+    }
+    if (msg.taxStatus && ProductJSON.TaxStatus._toInt(msg.taxStatus)) {
+      json["taxStatus"] = msg.taxStatus;
+    }
+    if (msg.onSaleFrom) {
+      json["onSaleFrom"] = msg.onSaleFrom;
+    }
+    if (msg.onSaleTo) {
+      json["onSaleTo"] = msg.onSaleTo;
     }
     return json;
   },
@@ -604,8 +690,59 @@ export const ProductJSON = {
     if (_gallery_) {
       mediaGallery.GalleryJSON._readMessage(msg.gallery, _gallery_);
     }
+    const _taxStatus_ = json["taxStatus"];
+    if (_taxStatus_) {
+      msg.taxStatus = Product.TaxStatus._fromInt(_taxStatus_);
+    }
+    const _onSaleFrom_ = json["onSaleFrom"];
+    if (_onSaleFrom_) {
+      msg.onSaleFrom = _onSaleFrom_;
+    }
+    const _onSaleTo_ = json["onSaleTo"];
+    if (_onSaleTo_) {
+      msg.onSaleTo = _onSaleTo_;
+    }
     return msg;
   },
+
+  TaxStatus: {
+    TAX_STATUS_TAXABLE: "TAX_STATUS_TAXABLE",
+    TAX_STATUS_NONE: "TAX_STATUS_NONE",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): Product.TaxStatus {
+      switch (i) {
+        case 0: {
+          return "TAX_STATUS_TAXABLE";
+        }
+        case 1: {
+          return "TAX_STATUS_NONE";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as Product.TaxStatus;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: Product.TaxStatus): number {
+      switch (i) {
+        case "TAX_STATUS_TAXABLE": {
+          return 0;
+        }
+        case "TAX_STATUS_NONE": {
+          return 1;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };
 
 export const VariantJSON = {
