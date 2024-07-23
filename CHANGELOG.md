@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/1pulse-digital/cool-mint/compare/v0.15.1...v0.16.0) (2024-07-23)
+
+
+### Features
+
+* add tax number to checkout ([#56](https://github.com/1pulse-digital/cool-mint/issues/56)) ([ce9fc69](https://github.com/1pulse-digital/cool-mint/commit/ce9fc6955d158d0f7cea0e9fe4e5e45b122077e9))
+
 ## [0.15.1](https://github.com/1pulse-digital/cool-mint/compare/v0.15.0...v0.15.1) (2024-07-19)
 
 
