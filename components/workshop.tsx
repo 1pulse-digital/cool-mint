@@ -57,9 +57,13 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
     router.push(`/classes/${masterClass.displayName.toLocaleLowerCase()}`)
   }
 
+
   const date = new Date(session.date)
   const day = format(date, "eee")
   const stamp = format(date, "h:mm a")
+  const spotsLeft = masterClass.maxAttendees - session.confirmedAttendees
+
+  console.warn(spotsLeft)
   return (
     <div className="flex w-full gap-x-4">
       <span className="text-2xl font-bold text-foreground">{day}</span>
@@ -106,7 +110,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
           {moneyFormatter.format(masterClass.standardPrice / 100n)}
         </p>
         <p className="py-1 text-base text-foreground">
-          {masterClass.maxAttendees - session.confirmedAttendees} Spots Left
+          {(spotsLeft === 0) ? "Sold Out":`${spotsLeft} Spot${(spotsLeft>1)?"s":""} Left`}
         </p>
         <div className="w-40 py-5">
           <Button onClick={handleAddToCart}>Book a Spot</Button>
