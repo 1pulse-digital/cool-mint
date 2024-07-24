@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.17.0](https://github.com/1pulse-digital/cool-mint/compare/v0.16.0...v0.17.0) (2024-07-24)
+
+
+### Features
+
+* add basic order summary dialog to my orders ([5e102b3](https://github.com/1pulse-digital/cool-mint/commit/5e102b34420a0d7b56cf919b4a6e5405eb59240a))
+
+
+### Bug Fixes
+
+* Cleanup the my orders view ([23cb94b](https://github.com/1pulse-digital/cool-mint/commit/23cb94bdae8f59a0cd25892562c4ed43a433385b))
+* Fix the user nave ([e8151fe](https://github.com/1pulse-digital/cool-mint/commit/e8151fea914125189e303f2fa9cefda1dc01b513))
+
 ## [0.16.0](https://github.com/1pulse-digital/cool-mint/compare/v0.15.1...v0.16.0) (2024-07-23)
 
 
