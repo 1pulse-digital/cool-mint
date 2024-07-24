@@ -16,7 +16,11 @@ export default async function Page() {
         ]}
       />
       <HeaderTitle description="Your recent orders">Order History</HeaderTitle>
-      <DataTable columns={columns} data={response.orders} />
+      <DataTable
+        initialSorting={[{ id: "number", desc: true }]}
+        columns={columns}
+        data={response.orders}
+      />
     </div>
   )
 }

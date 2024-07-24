@@ -23,13 +23,14 @@ export interface Session {
    */
   date: string;
   /**
-   * Confirmed attendees
-   */
-  confirmedAttendees: number;
-  /**
    * Product is the linked product for the session
    */
   product: string;
+  /**
+   * Confirmed attendees
+   */
+  confirmedAttendees: number;
+  attendees: string[];
 }
 
 //========================================//
@@ -66,8 +67,9 @@ export const Session = {
       uid: "",
       parent: "",
       date: "",
-      confirmedAttendees: 0,
       product: "",
+      confirmedAttendees: 0,
+      attendees: [],
       ...msg,
     };
   },
@@ -91,11 +93,14 @@ export const Session = {
     if (msg.date) {
       writer.writeString(4, msg.date);
     }
-    if (msg.confirmedAttendees) {
-      writer.writeInt32(5, msg.confirmedAttendees);
-    }
     if (msg.product) {
-      writer.writeString(6, msg.product);
+      writer.writeString(5, msg.product);
+    }
+    if (msg.confirmedAttendees) {
+      writer.writeInt32(6, msg.confirmedAttendees);
+    }
+    if (msg.attendees?.length) {
+      writer.writeRepeatedString(7, msg.attendees);
     }
     return writer;
   },
@@ -127,11 +132,15 @@ export const Session = {
           break;
         }
         case 5: {
-          msg.confirmedAttendees = reader.readInt32();
+          msg.product = reader.readString();
           break;
         }
         case 6: {
-          msg.product = reader.readString();
+          msg.confirmedAttendees = reader.readInt32();
+          break;
+        }
+        case 7: {
+          msg.attendees.push(reader.readString());
           break;
         }
         default: {
@@ -172,8 +181,9 @@ export const SessionJSON = {
       uid: "",
       parent: "",
       date: "",
-      confirmedAttendees: 0,
       product: "",
+      confirmedAttendees: 0,
+      attendees: [],
       ...msg,
     };
   },
@@ -195,11 +205,14 @@ export const SessionJSON = {
     if (msg.date) {
       json["date"] = msg.date;
     }
+    if (msg.product) {
+      json["product"] = msg.product;
+    }
     if (msg.confirmedAttendees) {
       json["confirmedAttendees"] = msg.confirmedAttendees;
     }
-    if (msg.product) {
-      json["product"] = msg.product;
+    if (msg.attendees?.length) {
+      json["attendees"] = msg.attendees;
     }
     return json;
   },
@@ -224,13 +237,17 @@ export const SessionJSON = {
     if (_date_) {
       msg.date = _date_;
     }
+    const _product_ = json["product"];
+    if (_product_) {
+      msg.product = _product_;
+    }
     const _confirmedAttendees_ = json["confirmedAttendees"];
     if (_confirmedAttendees_) {
       msg.confirmedAttendees = protoscript.parseNumber(_confirmedAttendees_);
     }
-    const _product_ = json["product"];
-    if (_product_) {
-      msg.product = _product_;
+    const _attendees_ = json["attendees"];
+    if (_attendees_) {
+      msg.attendees = _attendees_;
     }
     return msg;
   },
