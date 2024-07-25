@@ -1,6 +1,6 @@
 "use server"
 
-import { authHeaders, transport } from "@/lib/transport"
+import { authHeaders, initTransport, transport } from "@/lib/transport"
 import { TwirpError } from "twirpscript"
 
 import {
@@ -9,6 +9,8 @@ import {
   MyOrdersResponse,
 } from "@/lib/fusion/commerce/order.manager.pb"
 import { cookies } from "next/headers"
+
+initTransport()
 
 export async function myOrders(
   request: MyOrdersRequest,
