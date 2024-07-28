@@ -81,8 +81,7 @@ export const ContactForm = () => {
         const request: SendEmailRequest = {
             sender: {
                 name: `${values.firstName} ${values.lastName}`,
-                // email: values.email,
-                email: "daniella@1pulse.co.za",
+                email: values.email,
 
             },
             subject: "Contact Form Submission",
@@ -92,8 +91,7 @@ export const ContactForm = () => {
             },
             recipient: {
                 name: "Made In Workshop",
-                // email: "info@madeinworkshop.co.za",
-                email: "mcgeer.devan@gmail.com" // TESTING
+                email: "info@madeinworkshop.co.za",
             },
             attachment: [],
         }
