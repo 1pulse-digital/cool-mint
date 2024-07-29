@@ -71,17 +71,26 @@ export const ContactForm = () => {
             .join(", ");
 
         // Build the email body
-        const plainTextContent = `Message: ${values.message}\n\nInterests: ${interests}`;
+
+        const plainTextContent = `
+            Name: ${values.firstName} ${values.lastName}
+            Email: ${values.email}
+            Contact Number: ${values.contactNumber}
+            Interests: ${interests}
+            Message: ${values.message}
+            Newsletter Subscription: ${values.newsletter ? 'Yes' : 'No'}
+        `;
+
         const htmlContent = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <h2>Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${values.firstName} ${values.lastName}</p>
-        <p><strong>Contact Number:</strong> ${values.contactNumber}</p>
-        <p><strong>Interests:</strong> ${interests}</p>
-        <p><strong>Message:</strong></p>
-        <p>${values.message}</p>
-        <p><strong>Newsletter Subscription:</strong> ${values.newsletter ? 'Yes' : 'No'}</p>
-        </div>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                <h2>Contact Form Submission</h2>
+                <p><strong>Name:</strong> ${values.firstName} ${values.lastName}</p>
+                <p><strong>Contact Number:</strong> ${values.contactNumber}</p>
+                <p><strong>Interests:</strong> ${interests}</p>
+                <p><strong>Message:</strong></p>
+                <p>${values.message}</p>
+                <p><strong>Newsletter Subscription:</strong> ${values.newsletter ? 'Yes' : 'No'}</p>
+            </div>
         `;
 
         const request: SendEmailRequest = {
