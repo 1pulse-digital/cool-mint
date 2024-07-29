@@ -73,10 +73,16 @@ export const ContactForm = () => {
         // Build the email body
         const plainTextContent = `Message: ${values.message}\n\nInterests: ${interests}`;
         const htmlContent = `
-      <p><strong>Message:</strong> ${values.message}</p>
-      <p><strong>Tel:</strong> ${values.contactNumber}</p>
-      <p><strong>Interests:</strong> ${interests}</p>
-    `;
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${values.firstName} ${values.lastName}</p>
+        <p><strong>Contact Number:</strong> ${values.contactNumber}</p>
+        <p><strong>Interests:</strong> ${interests}</p>
+        <p><strong>Message:</strong></p>
+        <p>${values.message}</p>
+        <p><strong>Newsletter Subscription:</strong> ${values.newsletter ? 'Yes' : 'No'}</p>
+        </div>
+        `;
 
         const request: SendEmailRequest = {
             sender: {
