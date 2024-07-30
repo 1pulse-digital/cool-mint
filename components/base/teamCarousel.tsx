@@ -6,9 +6,7 @@ import jesse from "../../images/team/Jesse.jpg"
 import siza from "../../images/team/Ciza.jpg"
 import deneo from "../../images/team/Deneo.jpg"
 import ericsson from "../../images/team/Ericsson.jpg"
-import nomonde from "../../images/team/Nomonde.jpg"
 import charles from "../../images/team/Charles.jpg"
-
 import { Card } from "@/components/ui/card"
 import {
   Carousel,
@@ -62,11 +60,7 @@ export function TeamCarousel() {
       alt: "deneo",
       src: deneo,
     },
-    {
-      name: "nomonde",
-      alt: "nomonde",
-      src: nomonde,
-    },
+    
     {
       name: "charles",
       alt: "charles",
@@ -126,7 +120,7 @@ export function TeamCarousel() {
                 </CarouselItem>
                 <CarouselItem>
                   <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                    {[6, 7, 0].map((item) => (
+                    {[6, 0, 1].map((item) => (
                       <TabsTrigger key={item} value={items[item].name}>
                         <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
                           <Image
@@ -342,45 +336,6 @@ export function TeamCarousel() {
                     consistently in a state of controlled chaos, she is the
                     constant force resetting and rearranging to ensure all
                     members have a clean and tidy environment for making.
-                  </span>
-                </div>
-              </div>
-            </Card>
-          </TabsContent>
-
-          {/* Nomonde Nenene */}
-
-          <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
-            value="nomonde"
-          >
-            <Card className="border-0 bg-background">
-              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 md:rounded-l-lg">
-                  <Image
-                    src={nomonde}
-                    alt="nomonde"
-                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
-                    style={{
-                      objectFit: "cover",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  />
-                </div>
-                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
-                    Nomonde Nenene
-                  </h3>
-                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                    Café Chef
-                  </span>
-                  <span className="text-start font-helvetica text-Body font-normal text-muted-foreground">
-                    Nomonde, the culinary artist behind the scenes at the café,
-                    effortlessly manoeuvres among pots and pans with graceful
-                    efficiency. During our lunchtime rush, her calm approach
-                    ensures all orders are hot and waiting for their midday
-                    pick-up.
                   </span>
                 </div>
               </div>
