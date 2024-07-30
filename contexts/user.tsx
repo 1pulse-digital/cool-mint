@@ -4,7 +4,7 @@ import { handleLogin, handleLogout } from "@/app/actions"
 import { onAuthStateChanged } from "@/lib/firebase/auth/state-changed"
 import { User } from "firebase/auth"
 import { useRouter, useSearchParams } from "next/navigation"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, Suspense, useContext, useEffect, useState } from "react"
 import { toast } from "sonner"
 
 const UserContext = createContext({} as User | null)
@@ -14,9 +14,6 @@ export const useUser = () => useContext(UserContext)
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
   const [user, setUser] = useState<User | null>(null)
-  // const router = useRouter()
-  // const searchParams = useSearchParams()
-  // const redirect = searchParams.get("redirect") ?? ""
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(async (user) => {
@@ -27,7 +24,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(user)
         if (!hasLoggedIn) {
           toast.success("Signed in.")
-          // router.push("/" + redirect)
         }
       } else {
         // don't take the user to /login automatically
@@ -41,5 +37,25 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return () => unsubscribe()
   }, [])
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>
+  return (
+    <UserContext.Provider value={user}>
+      <Suspense>
+        <Redirector user={user} />
+      </Suspense>
+      {children}
+    </UserContext.Provider>
+  )
+}
+
+const Redirector = ({ user }: { user: User | null }) => {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirect = searchParams.get("redirect") ?? ""
+
+  useEffect(() => {
+    if (user && redirect) {
+      router.push("/" + redirect)
+    }
+  }, [user])
+  return null
 }
