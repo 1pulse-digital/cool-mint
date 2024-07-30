@@ -5,7 +5,6 @@ interface OrderSummaryProps {
   cart: Cart
 }
 
-
 import {
   Card,
   CardContent,
@@ -63,8 +62,9 @@ export const OrderSummary = ({ cart }: OrderSummaryProps) => {
           </div>
           <Separator className="my-4" />
         </CardContent>
-        <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
-          <div className="text-xs text-muted-foreground">Made in Workshop</div>
+        <CardFooter className="flex items-center text-nowrap border-t bg-muted/50 px-6 py-3 text-xs text-muted-foreground">
+          <span className="grow">Made in Workshop</span>
+          <span className="font-bold">All prices are inclusive of VAT</span>
         </CardFooter>
       </Card>
     </div>

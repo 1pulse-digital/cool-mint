@@ -24,7 +24,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle
+  DialogTitle,
 } from "@/components/ui/dialog"
 
 import { MoneyField } from "@/components/money-field"
@@ -152,8 +152,9 @@ export function DataTable<TData, TValue>({
           </div>
           <Separator className="my-4" />
           <DialogFooter>
-            <div className="text-xs text-muted-foreground">
-              Made in Workshop
+            <div className="flex w-full items-center text-nowrap text-xs text-muted-foreground">
+              <span className="grow">Made in Workshop</span>
+              <span className="font-bold">All prices are inclusive of VAT</span>
             </div>
           </DialogFooter>
         </DialogContent>
