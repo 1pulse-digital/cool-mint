@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.17.1](https://github.com/1pulse-digital/cool-mint/compare/v0.17.0...v0.17.1) (2024-07-30)
+
+
+### Bug Fixes
+
+* Add prices are inclusive of VAT text ([3e8a207](https://github.com/1pulse-digital/cool-mint/commit/3e8a207e1ed81a103c5a6fdfa25311ad916e9c88))
+* handle redirect after login ([6970820](https://github.com/1pulse-digital/cool-mint/commit/69708202458f17da8d76109001229ebf4316aba2))
+* remove nomonde nenene ([#61](https://github.com/1pulse-digital/cool-mint/issues/61)) ([b6323c2](https://github.com/1pulse-digital/cool-mint/commit/b6323c2a0efa28779401af0efa41e0e43f599ac2))
+
 ## [0.17.0](https://github.com/1pulse-digital/cool-mint/compare/v0.16.0...v0.17.0) (2024-07-24)
 
 
