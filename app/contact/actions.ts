@@ -2,19 +2,20 @@
 import { initTransport } from "@/lib/transport"
 import { TwirpError } from "twirpscript"
 import { authHeader } from "../actions"
-import { SendEmail, SendEmailRequest } from "@/lib/fusion/workshop/email.service.pb"
+import { ContactUs, ContactUsRequest } from "@/lib/fusion/workshop/contact.service.pb"
 
 initTransport()
 
-export async function sendContactEmail(request: SendEmailRequest) {
+
+export const contactUsSubmit = async (request: ContactUsRequest) => {
     try {
-        return await SendEmail(request, {
+        return await ContactUs(request, {
             headers: await authHeader(),
         })
     } catch (e: unknown) {
         if (e instanceof TwirpError) {
-            console.error("sendContactEmail", e)
-            throw new Error(`sendContactEmail: ${e.code}: ${e.msg}`)
+            console.error("contactUs", e)
+            throw new Error(`contactUs: ${e.code}: ${e.msg}`)
         }
     }
 }

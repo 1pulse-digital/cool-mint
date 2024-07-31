@@ -17,8 +17,8 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { sendContactEmail } from "../actions";
-import { SendEmailRequest } from "@/lib/fusion/workshop/email.service.pb";
+import { ContactUsRequest } from "@/lib/fusion/workshop/contact.service.pb";
+import { contactUsSubmit } from "../actions";
 
 const interestsSchema = z.object({
     workshops: z.boolean().optional(),
@@ -68,50 +68,21 @@ export const ContactForm = () => {
         const interests = Object.entries(values.interests)
             .filter(([_, value]) => value)
             .map(([key]) => key)
-            .join(", ");
 
         // Build the email body
-
-        const plainTextContent = `
-            Name: ${values.firstName} ${values.lastName}
-            Email: ${values.email}
-            Contact Number: ${values.contactNumber}
-            Interests: ${interests}
-            Message: ${values.message}
-            Newsletter Subscription: ${values.newsletter ? 'Yes' : 'No'}
-        `;
-
-        const htmlContent = `
-            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-                <h2>Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${values.firstName} ${values.lastName}</p>
-                <p><strong>Contact Number:</strong> ${values.contactNumber}</p>
-                <p><strong>Interests:</strong> ${interests}</p>
-                <p><strong>Message:</strong></p>
-                <p>${values.message}</p>
-                <p><strong>Newsletter Subscription:</strong> ${values.newsletter ? 'Yes' : 'No'}</p>
-            </div>
-        `;
-
-        const request: SendEmailRequest = {
-            sender: {
-                name: `${values.firstName} ${values.lastName}`,
+        const request: ContactUsRequest = {
+            customer: {
+                firstName: values.firstName,
+                lastName: values.lastName,
                 email: values.email,
-
+                contactNumber: values.contactNumber,
+                interests: interests,
+                message: values.message,
+                newsletter: values.newsletter? true : false,
             },
-            subject: "Contact Form Submission",
-            body: {
-                text: plainTextContent,
-                html: htmlContent
-            },
-            recipient: {
-                name: "Made In Workshop",
-                email: "info@madeinworkshop.co.za",
-            },
-            attachment: [],
         }
         try {
-            await sendContactEmail(request);
+            await contactUsSubmit(request);
             toast.success("Form submitted successfully");
             setEmailSent(true)
         } catch (e) {
