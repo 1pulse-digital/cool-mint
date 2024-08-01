@@ -52,28 +52,44 @@ export const UserNav = () => {
 
   if (!user) {
     return (
-      <Button
-        onClick={() => {
-          const loginUrl = new URL("/login", window.location.origin)
-          if (pathname !== "/") {
-            loginUrl.searchParams.set("redirect", pathname.slice(1))
-          }
-          router.push(loginUrl.toString())
-        }}
-        size={"sm"}
-      >
-        Login
-      </Button>
+      <div className="flex gap-2">
+        <Button
+          onClick={() => {
+            const loginUrl = new URL("/login", window.location.origin)
+            if (pathname !== "/") {
+              loginUrl.searchParams.set("redirect", pathname.slice(1))
+            }
+            router.push(loginUrl.toString())
+          }}
+          size={"sm"}
+        >
+          Login
+        </Button>
+        <Button
+          variant={"outline"}
+          onClick={() => {
+            const registerURL = new URL("/register", window.location.origin)
+            if (pathname !== "/") {
+              registerURL.searchParams.set("redirect", pathname.slice(1))
+            }
+            router.push(registerURL.toString())
+          }}
+          size={"sm"}
+        >
+          Sign Up
+        </Button>
+      </div>
     )
   }
 
   return (
     <>
       <div className="relative inline-block md:ml-4">
-        <Link className="border-primary block" href="/cart">
+        <Link className="block border-primary" href="/cart">
           <ShoppingCart className="h-5 w-5 hover:text-primary" />
-          {(cartContext.amount > 0) && (
-            <Badge className="absolute -top-4 -right-4 justify-center text-xs text-secondary rounded-full h-5 w-5 background-primary"
+          {cartContext.amount > 0 && (
+            <Badge
+              className="background-primary absolute -right-4 -top-4 h-5 w-5 justify-center rounded-full text-xs text-secondary"
               variant="default"
             >
               {cartContext.amount}
