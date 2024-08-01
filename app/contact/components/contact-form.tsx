@@ -21,7 +21,7 @@ import { SubmitInquiryRequest } from "@/lib/fusion/workshop/contact.service.pb";
 import { submitInquiry } from "../actions";
 
 const interestsSchema = z.object({
-    workshops: z.boolean().optional(),
+    classes: z.boolean().optional(),
     woodwork: z.boolean().optional(),
     metalwork: z.boolean().optional(),
     cnc: z.boolean().optional(),
@@ -51,7 +51,7 @@ export const ContactForm = () => {
             email: "",
             contactNumber: "",
             interests: {
-                workshops: false,
+                classes: false,
                 woodwork: false,
                 metalwork: false,
                 cnc: false,
@@ -160,7 +160,7 @@ export const ContactForm = () => {
                             </p>
 
                             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                                {["workshops", "woodwork", "metalwork", "cnc", "engineering", "memberships"].map((interest) => (
+                                {["classes", "woodwork", "metalwork", "cnc", "engineering", "memberships"].map((interest) => (
                                     <FormField
                                         key={interest}
                                         control={form.control}

@@ -51,10 +51,9 @@ const schema = z.object({
 type BookingFormValues = z.infer<typeof schema>
 
 export const BookingForm = ({ booking }: BookingFormProps) => {
-
   const searchParams = useSearchParams()
-    const redirect = `/confirmed-booking?${searchParams.toString()}`
-    const router = useRouter()
+  const redirect = `/confirmed-booking?${searchParams.toString()}`
+  const router = useRouter()
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(schema),
@@ -182,7 +181,7 @@ export const BookingForm = ({ booking }: BookingFormProps) => {
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel className="border">Workshops</FormLabel>
+                <FormLabel className="border">Classes</FormLabel>
               </FormItem>
             )}
           />
