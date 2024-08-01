@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
@@ -57,7 +57,7 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
 
         <div className="px-0 xl:px-0 2xl:px-40">
           {Array.from(sessionMap.keys()).map((month) => (
-            <TabsContent key={month} value={month} className="px-10">
+            <TabsContent key={month} value={month} className="space-y-8 px-10">
               {sessionMap.get(month)?.map((session) => {
                 const masterClass = masterClasses.find(
                   (masterClass) => session.parent === masterClass.name,
@@ -68,9 +68,6 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
                 }
                 return (
                   <Card className="border-0 bg-background" key={session.name}>
-                    <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
-                      {format(new Date(session.date), "MMM do")}
-                    </CardTitle>
                     <WorkshopItem masterClass={masterClass} session={session} />
                   </Card>
                 )
