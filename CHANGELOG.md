@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.19.1](https://github.com/1pulse-digital/cool-mint/compare/v0.19.0...v0.19.1) (2024-08-01)
+
+
+### Bug Fixes
+
+* Cleanup workshop style and show sold out ([b5d4ec1](https://github.com/1pulse-digital/cool-mint/commit/b5d4ec19063fde7092b6fd13929227b906ddd4dc))
+* CNC in caps ([b09c611](https://github.com/1pulse-digital/cool-mint/commit/b09c6111bebbc22332c43ef3487850537e03dcca))
+* Improve workshop styles ([485cb5f](https://github.com/1pulse-digital/cool-mint/commit/485cb5fca4a77149f38e5df9d98f7e195d4fa632))
+
 ## [0.19.0](https://github.com/1pulse-digital/cool-mint/compare/v0.18.0...v0.19.0) (2024-08-01)
 
 
