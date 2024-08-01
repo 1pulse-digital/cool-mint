@@ -160,7 +160,7 @@ export const ContactForm = () => {
                             </p>
 
                             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                                {["classes", "woodwork", "metalwork", "cnc", "engineering", "memberships"].map((interest) => (
+                                {["classes", "woodwork", "metalwork", "CNC", "engineering", "memberships"].map((interest) => (
                                     <FormField
                                         key={interest}
                                         control={form.control}
