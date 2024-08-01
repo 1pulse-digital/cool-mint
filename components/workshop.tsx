@@ -34,7 +34,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
         action: {
           label: "Login",
           onClick: () => router.push("/login"),
-        }
+        },
       })
       return
     }
@@ -65,46 +65,47 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const date = new Date(session.date)
   const day = format(date, "eee")
   const stamp = format(date, "h:mm a")
+  const soldOut = session.confirmedAttendees >= masterClass.maxAttendees
   return (
     <div className="flex w-full gap-x-4">
-      <span className="text-2xl font-bold text-foreground">{day}</span>
       <div className="grow">
-        <div className="flex w-full flex-row flex-wrap">
-          <Button variant="ghost" size="sm"
+        <div className="w-full">
+          <span className="inline-flex items-center text-start text-primary">
+            {format(new Date(session.date), "eeee, dd MMM")}
+          </span>
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={(e) => {
-              console.log("Show class")
               handleShowClass()
-            }}>
-            <div className="text-xl font-bold text-muted-foreground">
-              {masterClass.displayName}
-            </div>
+            }}
+            className="text-xl font-bold text-muted-foreground"
+          >
+            {masterClass.displayName}
           </Button>
-          {/* <Link href={"https://google.co.za"}>
-            <div className="text-xl font-bold text-muted-foreground">
-              {masterClass.displayName}
+        </div>
+        <div className="w-full py-4">
+          <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
+        </div>
+        <div className="pl-4">
+          <div className="flex space-x-4 text-xs text-foreground">
+            <div className="flex space-x-2">
+              <CalendarClock size={16} className="text-primary" />
+              <p>{stamp}</p>
             </div>
-          </Link> */}
-          <div className="w-full pb-2 pt-4 lg:block">
-            <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
+            <div className="flex space-x-2">
+              <Clock2 size={16} className="text-primary" />
+              <p>{masterClass.duration / 60} hours</p>
+            </div>
+            <div className="flex space-x-2">
+              <User size={16} className="text-primary" />
+              <p>{masterClass.presenter}</p>
+            </div>
           </div>
+          <p className="py-2 text-sm font-normal text-white sm:text-base">
+            {masterClass.description}
+          </p>
         </div>
-        <div className="flex space-x-4 text-xs text-foreground">
-          <div className="flex space-x-2">
-            <CalendarClock size={16} className="text-primary" />
-            <p>{stamp}</p>
-          </div>
-          <div className="flex space-x-2">
-            <Clock2 size={16} className="text-primary" />
-            <p>{masterClass.duration / 60} hours</p>
-          </div>
-          <div className="flex space-x-2">
-            <User size={16} className="text-primary" />
-            <p>{masterClass.presenter}</p>
-          </div>
-        </div>
-        <p className="py-2 text-sm font-normal text-white sm:text-base">
-          {masterClass.description}
-        </p>
       </div>
       <div className="ml-4">
         <p className="text- pt-4 font-bold text-primary lg:pt-0">
@@ -114,12 +115,12 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
           {masterClass.maxAttendees - session.confirmedAttendees} Spots Left
         </p>
         <div className="w-40 py-5">
-          <Button onClick={handleAddToCart}>Book a Spot</Button>
+          {soldOut ? (
+            <span className="font-bold text-muted">Sold Out</span>
+          ) : (
+            <Button onClick={handleAddToCart}>Book a Spot</Button>
+          )}
         </div>
-        {/* <ButtonGroupWorkshops */}
-        {/* bookLink={"https://www.google.com"} */}
-        {/* // learnMoreLink={learnMoreLink} */}
-        {/* /> */}
       </div>
     </div>
   )
