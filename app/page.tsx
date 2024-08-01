@@ -23,13 +23,9 @@ export default async function Page() {
           <div>
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
-          <Community />
-          <div>
-            <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
-          </div>
           <div className="px-8 font-medium text-primary sm:px-4 md:px-8 md:text-left">
             <div className="pt-28 text-center">
-              <h1 className="text-headings font-bold  text-foreground">
+              <h1 id="upcoming-sessions" className="text-headings font-bold  text-foreground">
                 Upcoming Classes<span className="text-primary">.</span>
               </h1>
               <p className="text-BodyText font-normal text-muted-foreground lg:px-40 xl:px-40 2xl:px-40">
@@ -43,10 +39,16 @@ export default async function Page() {
               </p>
             </div>
           </div>
+          <div >
+            <Suspense fallback={<UpcomingClassesLoader />}>
+              <UpcomingClasses />
+            </Suspense>
+          </div>
+          <div>
+            <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
+          </div>
+          <Community />
         </div>
-        <Suspense fallback={<UpcomingClassesLoader />}>
-          <UpcomingClasses />
-        </Suspense>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
@@ -54,7 +56,6 @@ export default async function Page() {
     </div>
   )
 }
-
 
 // TODO: Figure out how to remove this
 export const dynamic = "force-dynamic"

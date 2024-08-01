@@ -69,7 +69,7 @@ const Hero = () => {
       <div>
         <div className="hidden sm:block">
           <div className="absolute inset-x-0 bottom-10 flex animate-bounce justify-center">
-            <Link href="/#whyus">
+            <Link href="#upcoming-sessions" scroll={true}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
