@@ -44,7 +44,7 @@ export default async function Page() {
               <UpcomingClasses />
             </Suspense>
           </div>
-          <div>
+          <div className="py-32">
             <hr className="h-[1px] flex-grow border-0 bg-[#A1A1AA]"></hr>
           </div>
           <Community />
