@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.19.0](https://github.com/1pulse-digital/cool-mint/compare/v0.18.0...v0.19.0) (2024-08-01)
+
+
+### Features
+
+* add login button in popup ([aa4ce50](https://github.com/1pulse-digital/cool-mint/commit/aa4ce5069f7986e4a6bdf704cd6ca8e114499899))
+* add signup button ([9fa31a9](https://github.com/1pulse-digital/cool-mint/commit/9fa31a9df7b6af1697ae84a8c6a794de97a1347c))
+
+
+### Bug Fixes
+
+* add y-padding ([74b1dd3](https://github.com/1pulse-digital/cool-mint/commit/74b1dd3a7189d84a3275a77dcf7073016f5ef1fc))
+* change label of workshops to classes ([6f7f393](https://github.com/1pulse-digital/cool-mint/commit/6f7f393f56a073e76e23a28c8ee50605e52a0968))
+* Jump to classes section and swap sections around ([5a87f80](https://github.com/1pulse-digital/cool-mint/commit/5a87f809041d87f8955e4df10ce811b271bf9d1e))
+* Update the MIW Cafe to Shop ([cd580bf](https://github.com/1pulse-digital/cool-mint/commit/cd580bfb4b4eeb39212371f6b6d043a65eb370b4))
+* use cursor-pointer ([b2981bb](https://github.com/1pulse-digital/cool-mint/commit/b2981bb4c6ff545cb9a7650ac392832b8576babc))
+
 ## [0.18.0](https://github.com/1pulse-digital/cool-mint/compare/v0.17.1...v0.18.0) (2024-08-01)
 
 
