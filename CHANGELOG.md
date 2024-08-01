@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/1pulse-digital/cool-mint/compare/v0.17.1...v0.18.0) (2024-08-01)
+
+
+### Features
+
+* Contact us page now sends interest emails ([#62](https://github.com/1pulse-digital/cool-mint/issues/62)) ([f2acad6](https://github.com/1pulse-digital/cool-mint/commit/f2acad6b76401f10e376e77a469a5cfe914482ca))
+
 ## [0.17.1](https://github.com/1pulse-digital/cool-mint/compare/v0.17.0...v0.17.1) (2024-07-30)
 
 
