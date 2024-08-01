@@ -30,7 +30,12 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const handleAddToCart = async () => {
     // ensure the user is logged in
     if (!user) {
-      toast("Please sign up or login to book your spot")
+      toast("Please login to book your spot", {
+        action: {
+          label: "Login",
+          onClick: () => router.push("/login"),
+        }
+      })
       return
     }
 
