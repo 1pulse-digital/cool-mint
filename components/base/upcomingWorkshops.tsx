@@ -43,19 +43,7 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
     <div className="py-1 font-medium text-primary">
       <Tabs defaultValue={defaultMonth}>
         <div className="mt-10">
-          {/* Filtering by category */}
-
-          {/* <div className="mx-10 sm:px-20 md:px-40 xl:px-28 2xl:px-60"> */}
-          {/* <p className="text-center text-xs text-muted-foreground">Filter by</p> */}
-          {/* <TabsList className="my-6 grid w-full grid-cols-3 bg-[#27272A] px-2 text-foreground">
-              <TabsTrigger value="january woodwork">Woodwork</TabsTrigger>
-              <TabsTrigger value="february">Metalwork</TabsTrigger>
-              <TabsTrigger value="march">Engineering</TabsTrigger>
-            </TabsList> */}
-          {/* </div> */}
-
           {/* Filtering by month */}
-
           <div className="mx-2 pb-16 sm:px-4  xl:px-0 2xl:px-0">
             <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-foreground">
               {Array.from(sessionMap.keys()).map((month) => (
@@ -83,10 +71,7 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
                     <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
                       {format(new Date(session.date), "MMM do")}
                     </CardTitle>
-                    <WorkshopItem
-                      masterClass={masterClass}
-                      session={session}
-                    />
+                    <WorkshopItem masterClass={masterClass} session={session} />
                   </Card>
                 )
               })}
