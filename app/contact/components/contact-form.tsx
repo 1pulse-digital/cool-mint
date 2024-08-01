@@ -17,8 +17,8 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { ContactUsRequest } from "@/lib/fusion/workshop/contact.service.pb";
-import { contactUsSubmit } from "../actions";
+import { SubmitInquiryRequest } from "@/lib/fusion/workshop/contact.service.pb";
+import { submitInquiry } from "../actions";
 
 const interestsSchema = z.object({
     workshops: z.boolean().optional(),
@@ -32,7 +32,7 @@ const interestsSchema = z.object({
 const formSchema = z.object({
     firstName: z.string().min(1, "First name is required"),
     lastName: z.string().min(1, "Last name is required"),
-    email: z.string().email("Invalid email address"),
+    email: z.string().email("Invalid email address").toLowerCase(),
     contactNumber: z.string().min(1, "Contact number is required"),
     interests: interestsSchema,
     message: z.string().min(1, "Message is required"),
@@ -70,7 +70,7 @@ export const ContactForm = () => {
             .map(([key]) => key)
 
         // Build the email body
-        const request: ContactUsRequest = {
+        const request: SubmitInquiryRequest = {
             customer: {
                 firstName: values.firstName,
                 lastName: values.lastName,
@@ -82,7 +82,7 @@ export const ContactForm = () => {
             },
         }
         try {
-            await contactUsSubmit(request);
+            await submitInquiry(request);
             toast.success("Form submitted successfully");
             setEmailSent(true)
         } catch (e) {

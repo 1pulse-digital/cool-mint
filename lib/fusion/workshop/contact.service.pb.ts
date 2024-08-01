@@ -15,11 +15,11 @@ import type { ClientConfiguration } from "twirpscript";
 //                 Types                  //
 //========================================//
 
-export interface ContactUsRequest {
+export interface SubmitInquiryRequest {
   customer: Customer;
 }
 
-export interface ContactUsResponse {
+export interface SubmitInquiryResponse {
   message: string;
 }
 
@@ -40,16 +40,16 @@ export interface Customer {
 /**
  * Contact us will be a service to manage contact us form submissions
  */
-export async function ContactUs(
-  contactUsRequest: ContactUsRequest,
+export async function SubmitInquiry(
+  submitInquiryRequest: SubmitInquiryRequest,
   config?: ClientConfiguration,
-): Promise<ContactUsResponse> {
+): Promise<SubmitInquiryResponse> {
   const response = await PBrequest(
-    "/workshop.ContactService/ContactUs",
-    ContactUsRequest.encode(contactUsRequest),
+    "/workshop.ContactService/SubmitInquiry",
+    SubmitInquiryRequest.encode(submitInquiryRequest),
     config,
   );
-  return ContactUsResponse.decode(response);
+  return SubmitInquiryResponse.decode(response);
 }
 
 //========================================//
@@ -59,16 +59,16 @@ export async function ContactUs(
 /**
  * Contact us will be a service to manage contact us form submissions
  */
-export async function ContactUsJSON(
-  contactUsRequest: ContactUsRequest,
+export async function SubmitInquiryJSON(
+  submitInquiryRequest: SubmitInquiryRequest,
   config?: ClientConfiguration,
-): Promise<ContactUsResponse> {
+): Promise<SubmitInquiryResponse> {
   const response = await JSONrequest(
-    "/workshop.ContactService/ContactUs",
-    ContactUsRequestJSON.encode(contactUsRequest),
+    "/workshop.ContactService/SubmitInquiry",
+    SubmitInquiryRequestJSON.encode(submitInquiryRequest),
     config,
   );
-  return ContactUsResponseJSON.decode(response);
+  return SubmitInquiryResponseJSON.decode(response);
 }
 
 //========================================//
@@ -79,10 +79,10 @@ export interface ContactService<Context = unknown> {
   /**
    * Contact us will be a service to manage contact us form submissions
    */
-  ContactUs: (
-    contactUsRequest: ContactUsRequest,
+  SubmitInquiry: (
+    submitInquiryRequest: SubmitInquiryRequest,
     context: Context,
-  ) => Promise<ContactUsResponse> | ContactUsResponse;
+  ) => Promise<SubmitInquiryResponse> | SubmitInquiryResponse;
 }
 
 export function createContactService<Context>(
@@ -91,11 +91,17 @@ export function createContactService<Context>(
   return {
     name: "workshop.ContactService",
     methods: {
-      ContactUs: {
-        name: "ContactUs",
-        handler: service.ContactUs,
-        input: { protobuf: ContactUsRequest, json: ContactUsRequestJSON },
-        output: { protobuf: ContactUsResponse, json: ContactUsResponseJSON },
+      SubmitInquiry: {
+        name: "SubmitInquiry",
+        handler: service.SubmitInquiry,
+        input: {
+          protobuf: SubmitInquiryRequest,
+          json: SubmitInquiryRequestJSON,
+        },
+        output: {
+          protobuf: SubmitInquiryResponse,
+          json: SubmitInquiryResponseJSON,
+        },
       },
     },
   } as const;
@@ -105,31 +111,33 @@ export function createContactService<Context>(
 //        Protobuf Encode / Decode        //
 //========================================//
 
-export const ContactUsRequest = {
+export const SubmitInquiryRequest = {
   /**
-   * Serializes ContactUsRequest to protobuf.
+   * Serializes SubmitInquiryRequest to protobuf.
    */
-  encode: function (msg: PartialDeep<ContactUsRequest>): Uint8Array {
-    return ContactUsRequest._writeMessage(
+  encode: function (msg: PartialDeep<SubmitInquiryRequest>): Uint8Array {
+    return SubmitInquiryRequest._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes ContactUsRequest from protobuf.
+   * Deserializes SubmitInquiryRequest from protobuf.
    */
-  decode: function (bytes: ByteSource): ContactUsRequest {
-    return ContactUsRequest._readMessage(
-      ContactUsRequest.initialize(),
+  decode: function (bytes: ByteSource): SubmitInquiryRequest {
+    return SubmitInquiryRequest._readMessage(
+      SubmitInquiryRequest.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes ContactUsRequest with all fields set to their default value.
+   * Initializes SubmitInquiryRequest with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ContactUsRequest>): ContactUsRequest {
+  initialize: function (
+    msg?: Partial<SubmitInquiryRequest>,
+  ): SubmitInquiryRequest {
     return {
       customer: Customer.initialize(),
       ...msg,
@@ -140,7 +148,7 @@ export const ContactUsRequest = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ContactUsRequest>,
+    msg: PartialDeep<SubmitInquiryRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
     if (msg.customer) {
@@ -153,9 +161,9 @@ export const ContactUsRequest = {
    * @private
    */
   _readMessage: function (
-    msg: ContactUsRequest,
+    msg: SubmitInquiryRequest,
     reader: protoscript.BinaryReader,
-  ): ContactUsRequest {
+  ): SubmitInquiryRequest {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
@@ -173,31 +181,33 @@ export const ContactUsRequest = {
   },
 };
 
-export const ContactUsResponse = {
+export const SubmitInquiryResponse = {
   /**
-   * Serializes ContactUsResponse to protobuf.
+   * Serializes SubmitInquiryResponse to protobuf.
    */
-  encode: function (msg: PartialDeep<ContactUsResponse>): Uint8Array {
-    return ContactUsResponse._writeMessage(
+  encode: function (msg: PartialDeep<SubmitInquiryResponse>): Uint8Array {
+    return SubmitInquiryResponse._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes ContactUsResponse from protobuf.
+   * Deserializes SubmitInquiryResponse from protobuf.
    */
-  decode: function (bytes: ByteSource): ContactUsResponse {
-    return ContactUsResponse._readMessage(
-      ContactUsResponse.initialize(),
+  decode: function (bytes: ByteSource): SubmitInquiryResponse {
+    return SubmitInquiryResponse._readMessage(
+      SubmitInquiryResponse.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes ContactUsResponse with all fields set to their default value.
+   * Initializes SubmitInquiryResponse with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ContactUsResponse>): ContactUsResponse {
+  initialize: function (
+    msg?: Partial<SubmitInquiryResponse>,
+  ): SubmitInquiryResponse {
     return {
       message: "",
       ...msg,
@@ -208,7 +218,7 @@ export const ContactUsResponse = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ContactUsResponse>,
+    msg: PartialDeep<SubmitInquiryResponse>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
     if (msg.message) {
@@ -221,9 +231,9 @@ export const ContactUsResponse = {
    * @private
    */
   _readMessage: function (
-    msg: ContactUsResponse,
+    msg: SubmitInquiryResponse,
     reader: protoscript.BinaryReader,
-  ): ContactUsResponse {
+  ): SubmitInquiryResponse {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
@@ -361,28 +371,30 @@ export const Customer = {
 //          JSON Encode / Decode          //
 //========================================//
 
-export const ContactUsRequestJSON = {
+export const SubmitInquiryRequestJSON = {
   /**
-   * Serializes ContactUsRequest to JSON.
+   * Serializes SubmitInquiryRequest to JSON.
    */
-  encode: function (msg: PartialDeep<ContactUsRequest>): string {
-    return JSON.stringify(ContactUsRequestJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<SubmitInquiryRequest>): string {
+    return JSON.stringify(SubmitInquiryRequestJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes ContactUsRequest from JSON.
+   * Deserializes SubmitInquiryRequest from JSON.
    */
-  decode: function (json: string): ContactUsRequest {
-    return ContactUsRequestJSON._readMessage(
-      ContactUsRequestJSON.initialize(),
+  decode: function (json: string): SubmitInquiryRequest {
+    return SubmitInquiryRequestJSON._readMessage(
+      SubmitInquiryRequestJSON.initialize(),
       JSON.parse(json),
     );
   },
 
   /**
-   * Initializes ContactUsRequest with all fields set to their default value.
+   * Initializes SubmitInquiryRequest with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ContactUsRequest>): ContactUsRequest {
+  initialize: function (
+    msg?: Partial<SubmitInquiryRequest>,
+  ): SubmitInquiryRequest {
     return {
       customer: CustomerJSON.initialize(),
       ...msg,
@@ -393,7 +405,7 @@ export const ContactUsRequestJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ContactUsRequest>,
+    msg: PartialDeep<SubmitInquiryRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
     if (msg.customer) {
@@ -408,7 +420,10 @@ export const ContactUsRequestJSON = {
   /**
    * @private
    */
-  _readMessage: function (msg: ContactUsRequest, json: any): ContactUsRequest {
+  _readMessage: function (
+    msg: SubmitInquiryRequest,
+    json: any,
+  ): SubmitInquiryRequest {
     const _customer_ = json["customer"];
     if (_customer_) {
       CustomerJSON._readMessage(msg.customer, _customer_);
@@ -417,28 +432,30 @@ export const ContactUsRequestJSON = {
   },
 };
 
-export const ContactUsResponseJSON = {
+export const SubmitInquiryResponseJSON = {
   /**
-   * Serializes ContactUsResponse to JSON.
+   * Serializes SubmitInquiryResponse to JSON.
    */
-  encode: function (msg: PartialDeep<ContactUsResponse>): string {
-    return JSON.stringify(ContactUsResponseJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<SubmitInquiryResponse>): string {
+    return JSON.stringify(SubmitInquiryResponseJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes ContactUsResponse from JSON.
+   * Deserializes SubmitInquiryResponse from JSON.
    */
-  decode: function (json: string): ContactUsResponse {
-    return ContactUsResponseJSON._readMessage(
-      ContactUsResponseJSON.initialize(),
+  decode: function (json: string): SubmitInquiryResponse {
+    return SubmitInquiryResponseJSON._readMessage(
+      SubmitInquiryResponseJSON.initialize(),
       JSON.parse(json),
     );
   },
 
   /**
-   * Initializes ContactUsResponse with all fields set to their default value.
+   * Initializes SubmitInquiryResponse with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ContactUsResponse>): ContactUsResponse {
+  initialize: function (
+    msg?: Partial<SubmitInquiryResponse>,
+  ): SubmitInquiryResponse {
     return {
       message: "",
       ...msg,
@@ -449,7 +466,7 @@ export const ContactUsResponseJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ContactUsResponse>,
+    msg: PartialDeep<SubmitInquiryResponse>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
     if (msg.message) {
@@ -462,9 +479,9 @@ export const ContactUsResponseJSON = {
    * @private
    */
   _readMessage: function (
-    msg: ContactUsResponse,
+    msg: SubmitInquiryResponse,
     json: any,
-  ): ContactUsResponse {
+  ): SubmitInquiryResponse {
     const _message_ = json["message"];
     if (_message_) {
       msg.message = _message_;
