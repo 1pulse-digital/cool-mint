@@ -92,8 +92,8 @@ const Offerings: React.FC = () => {
         </div>
         <div className="lg:px-4">
           <OfferingItem
-            title="MIW Café"
-            description="Need a break or a place to brainstorm? Our café is the perfect spot to recharge, meet fellow makers, or enjoy a good cup of coffee."
+            title="MIW Shop"
+            description="Looking for delicious snacks and unique products? Visit our shop to find a variety of items and connect with fellow makers."
             linkText="Learn More"
             linkUrl="/cafe"
             ImageSrc="/icons/cafe.png"
