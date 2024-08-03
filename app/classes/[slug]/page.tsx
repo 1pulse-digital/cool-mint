@@ -8,7 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image"
 import { moneyFormatter } from "@/lib/util/money-formatter"
-import { getMasterClass, upcomingSessions } from "../actions";
+import { getMasterClass } from "../actions";
 import { notFound } from "next/navigation";
 
 interface ClassPageProps {
