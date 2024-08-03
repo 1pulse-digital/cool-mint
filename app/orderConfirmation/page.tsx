@@ -1,13 +1,60 @@
+"use client"
 import Button from "@/components/base/button"
 import GetInTouch from "@/components/base/getInTouch"
-import OrderConfirmed from "@/components/base/orderConfirmed"
+import OrderConfirmedItem from "./components/orderConfirmed"
 import HeaderTitle from "@/components/header-title"
+import { MoneyField } from "@/components/money-field"
+import { Check } from "lucide-react"
 import Link from "next/link"
+import { notFound, useSearchParams } from "next/navigation"
+import { myOrders } from "../orders/actions"
+import { useEffect, useState, useCallback } from "react"
+import { Order } from "@/lib/fusion/commerce/order.pb"
+import { Spinner } from "@/components/ui/spinner"
 
 const OrderConfirmation: React.FC = () => {
+  const params = useSearchParams();
+  const [order, setOrder] = useState<Order | undefined>(Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }));
+  const [loading, setLoading] = useState(true);
+  const orderNumber = params.get("order_number");
+
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await myOrders({});
+      const myOrder = response.orders.find(
+        (order) => order.status === "COMPLETED" && order.name.includes(orderNumber ?? "")
+      );
+      setOrder(myOrder);
+    } catch (error) {
+      console.error("Failed to fetch order:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [orderNumber]);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchData();
+  }, [fetchData]);
+
+  useEffect(() => {
+    if (!loading && !order) {
+      console.warn("order not found");
+      setOrder(Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }));
+    }
+  }, [loading, order]);
+
+  if (loading) {
+    return <Spinner/>;
+  }
+
+  if (!order) {
+    notFound()
+  }
+
   return (
     <div className={"bg-background px-8 py-20"}>
-      <div className="grid content-center items-center text-center font-helvetica sm:p-10">
+      <div className="grid content-center items-center text-center font-heletica sm:p-10">
         <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
@@ -15,7 +62,7 @@ const OrderConfirmation: React.FC = () => {
               <span className="px-1">|</span>
             </div>
           </Link>
-          <Link href="/orderConfirmation">
+          <Link href="/order-confirmation">
             <div className="text-primary">Order Confirmation</div>
           </Link>
         </div>
@@ -24,21 +71,23 @@ const OrderConfirmation: React.FC = () => {
           <HeaderTitle>Order Confirmation</HeaderTitle>
         </div>
         <div className="flex items-center justify-center py-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="#ADFA1C"
-            className="h-14 w-20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <Check size={100} color="#ADFA1C" />
         </div>
         <div className="grid items-center justify-center">
-          <OrderConfirmed />
+          {/* TODO: Add line items */}
+          {order?.lineItems.map((item) => {
+            console.warn("item", item)
+            return <OrderConfirmedItem
+              imageSrc="/icons/banner.webp"
+              date={order.dateCompleted}
+              name={item.productDisplayName}
+              time={"3 hours"}
+              price={item.price}
+              confirm={order.status}
+              quantity={item.quantity.toString()}
+            />
+          })}
+          {/* <OrderConfirmed /> */}
         </div>
       </div>
       <div className="sm:flex sm:justify-center sm:space-x-52">
@@ -63,21 +112,21 @@ const OrderConfirmation: React.FC = () => {
                 "text-start font-helvetica text-[25px] font-bold text-primary"
               }
             >
-              R1,500.00
+              <MoneyField value={BigInt(order?.total ?? 0)} />
             </span>
           </div>
 
           <div className="pb-14 text-[16px]  text-primary ">
             <div>
               <span className={"font-helvetica font-bold line-through"}>
-                R1,700.00
+                <MoneyField value={BigInt(order?.total ?? 0) + BigInt(order?.discountTotal ?? 0)} />
               </span>
             </div>
           </div>
         </div>
         <div className="xs:block grid hidden">
           <Link href="/workshops">
-            <Button color="primary">Back to Workshops1</Button>
+            <Button color="primary">Back to Workshops</Button>
           </Link>
         </div>
       </div>
