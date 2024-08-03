@@ -74,20 +74,17 @@ const OrderConfirmation: React.FC = () => {
           <Check size={100} color="#ADFA1C" />
         </div>
         <div className="grid items-center justify-center">
-          {/* TODO: Add line items */}
           {order?.lineItems.map((item) => {
-            console.warn("item", item)
             return <OrderConfirmedItem
               imageSrc="/icons/banner.webp"
               date={order.dateCompleted}
               name={item.productDisplayName}
-              time={"3 hours"}
+              time={"3 hours"} // REVIEWER: Do we need to call the get product here? To get the actual product details
               price={item.price}
               confirm={order.status}
               quantity={item.quantity.toString()}
             />
           })}
-          {/* <OrderConfirmed /> */}
         </div>
       </div>
       <div className="sm:flex sm:justify-center sm:space-x-52">
