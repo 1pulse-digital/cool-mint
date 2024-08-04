@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.20.0](https://github.com/1pulse-digital/cool-mint/compare/v0.19.1...v0.20.0) (2024-08-04)
+
+
+### Features
+
+* add coupons ([86f904f](https://github.com/1pulse-digital/cool-mint/commit/86f904fa63bdfe6762b41ae387ce932c898afcd1))
+* new order confirmation page ([#68](https://github.com/1pulse-digital/cool-mint/issues/68)) ([5641d2a](https://github.com/1pulse-digital/cool-mint/commit/5641d2a871e36fbb43c3b09f52d364fb918048a1))
+
+
+### Bug Fixes
+
+* correctly redirect after login ([693dd2a](https://github.com/1pulse-digital/cool-mint/commit/693dd2ae3a93b23dd1bd2c81a8b2bd5aa518f4af))
+* Hide link URL if empty ([60298c0](https://github.com/1pulse-digital/cool-mint/commit/60298c0e1e22e38d76a216bfdae93b4c0b0b437d))
+* redirect to #upcoming-sessions when on home ([04d7979](https://github.com/1pulse-digital/cool-mint/commit/04d7979214cdafbb8a5f28ff3fe1f929aed02e8d))
+* Remove breadcrumps ([3a43694](https://github.com/1pulse-digital/cool-mint/commit/3a436942152f5d5ce8da28f12ffdaa33873a6277))
+* Sort machines alphabetically ([a0ae9a1](https://github.com/1pulse-digital/cool-mint/commit/a0ae9a1b983cdb9f7f1822f9d76bd8aa9210023b))
+
 ## [0.19.1](https://github.com/1pulse-digital/cool-mint/compare/v0.19.0...v0.19.1) (2024-08-01)
 
 
