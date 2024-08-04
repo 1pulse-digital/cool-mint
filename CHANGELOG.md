@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.2](https://github.com/1pulse-digital/cool-mint/compare/v0.20.1...v0.20.2) (2024-08-04)
+
+
+### Bug Fixes
+
+* Back to classes link ([01279f4](https://github.com/1pulse-digital/cool-mint/commit/01279f416cbdd32d7927cd77ebcf3cc4c62a4796))
+
 ## [0.20.1](https://github.com/1pulse-digital/cool-mint/compare/v0.20.0...v0.20.1) (2024-08-04)
 
 
