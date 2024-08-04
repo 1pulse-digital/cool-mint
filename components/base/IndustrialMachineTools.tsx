@@ -14,6 +14,16 @@ interface IndustrialMachineToolsProps {
 const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
   const { machines } = props
 
+  machines.sort((a: Machine, b: Machine) => {
+    if (a.displayName > b.displayName) {
+      return 1
+    } else if (b.displayName > a.displayName) {
+      return -1
+    } else {
+      return 0
+    }
+  })
+
   // get all the categories of all machines and remove duplicates
   const categories = Array.from(
     new Set(machines.flatMap((machine) => machine.categories)),
@@ -28,7 +38,7 @@ const IndustrialMachineTools = (props: IndustrialMachineToolsProps) => {
       <Tabs defaultValue={defaultCategory} className="bg-background">
         <div className="px-6 pb-10 sm:mx-8 md:mx-8 lg:px-20 2xl:mx-96 xl:mx-40">
         <p className="py-3 text-center text-xs text-muted-foreground">Filter by</p>
-        {/* TODO: This machine filter by list should be made dynamic */}
+          {/* TODO: This machine filter by list should be made dynamic */}
           <TabsList className="grid w-full grid-cols-4 bg-[#27272A] px-2 text-foreground">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category}>
