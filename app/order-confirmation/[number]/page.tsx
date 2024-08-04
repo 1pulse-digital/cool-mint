@@ -1,58 +1,22 @@
-"use client"
 import Button from "@/components/base/button"
 import GetInTouch from "@/components/base/getInTouch"
-import OrderConfirmedItem from "./components/orderConfirmed"
 import HeaderTitle from "@/components/header-title"
 import { MoneyField } from "@/components/money-field"
+import { Skeleton } from "@/components/ui/skeleton"
 import { Check } from "lucide-react"
 import Link from "next/link"
-import { notFound, useSearchParams } from "next/navigation"
-import { myOrders } from "../orders/actions"
-import { useEffect, useState, Suspense } from "react"
-import { Order } from "@/lib/fusion/commerce/order.pb"
-import { Spinner } from "@/components/ui/spinner"
-import { Skeleton } from "@/components/ui/skeleton"
+import { notFound } from "next/navigation"
+import { Suspense } from "react"
+import { myOrders } from "../../orders/actions"
+import OrderConfirmedItem from "./components/orderConfirmed"
 
-const OrderConfirmation: React.FC = () => {
-  const params = useSearchParams()
-  const [order, setOrder] = useState<Order | undefined>(
-    Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }),
+export default async function Page({ params }: { params: { number: string } }) {
+  const { number: orderNumber } = params
+  const response = await myOrders({})
+  const order = response.orders.find(
+    (order) =>
+      order.status === "COMPLETED" && order.name.includes(orderNumber ?? ""),
   )
-  const [loading, setLoading] = useState(true)
-  const orderNumber = params.get("order_number")
-
-  useEffect(() => {
-    setLoading(true)
-    const fetchData = async () => {
-      try {
-        const response = await myOrders({})
-        const myOrder = response.orders.find(
-          (order) =>
-            order.status === "COMPLETED" &&
-            order.name.includes(orderNumber ?? ""),
-        )
-        setOrder(myOrder)
-      } catch (error) {
-        console.error("Failed to fetch order:", error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [orderNumber])
-
-  useEffect(() => {
-    if (!loading && order === undefined) {
-      console.warn("order not found")
-      setOrder(
-        Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }),
-      )
-    }
-  }, [loading, order])
-
-  if (loading) {
-    return <Spinner />
-  }
 
   if (!order) {
     notFound()
@@ -146,5 +110,3 @@ const OrderConfirmation: React.FC = () => {
     </div>
   )
 }
-
-export default OrderConfirmation
