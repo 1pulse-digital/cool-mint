@@ -14,38 +14,44 @@ import { Spinner } from "@/components/ui/spinner"
 import { Skeleton } from "@/components/ui/skeleton"
 
 const OrderConfirmation: React.FC = () => {
-  const params = useSearchParams();
-  const [order, setOrder] = useState<Order | undefined>(Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }));
-  const [loading, setLoading] = useState(true);
-  const orderNumber = params.get("order_number");
+  const params = useSearchParams()
+  const [order, setOrder] = useState<Order | undefined>(
+    Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }),
+  )
+  const [loading, setLoading] = useState(true)
+  const orderNumber = params.get("order_number")
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     const fetchData = async () => {
       try {
-        const response = await myOrders({});
+        const response = await myOrders({})
         const myOrder = response.orders.find(
-          (order) => order.status === "COMPLETED" && order.name.includes(orderNumber ?? "")
-        );
-        setOrder(myOrder);
+          (order) =>
+            order.status === "COMPLETED" &&
+            order.name.includes(orderNumber ?? ""),
+        )
+        setOrder(myOrder)
       } catch (error) {
-        console.error("Failed to fetch order:", error);
+        console.error("Failed to fetch order:", error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
-    fetchData();
-  }, [orderNumber]);
+    }
+    fetchData()
+  }, [orderNumber])
 
   useEffect(() => {
     if (!loading && order === undefined) {
-      console.warn("order not found");
-      setOrder(Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }));
+      console.warn("order not found")
+      setOrder(
+        Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }),
+      )
     }
-  }, [loading, order]);
+  }, [loading, order])
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (!order) {
@@ -54,7 +60,7 @@ const OrderConfirmation: React.FC = () => {
 
   return (
     <div className={"bg-background px-8 py-20"}>
-      <div className="grid content-center items-center text-center font-heletica sm:p-10">
+      <div className="font-heletica grid content-center items-center text-center sm:p-10">
         <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
@@ -77,7 +83,7 @@ const OrderConfirmation: React.FC = () => {
           {order?.lineItems.map((item, idx) => {
             return (
               <div key={idx}>
-                <Suspense fallback={<Skeleton/>}>
+                <Suspense fallback={<Skeleton />}>
                   <OrderConfirmedItem
                     name={item.productDisplayName}
                     price={item.price}
@@ -118,7 +124,12 @@ const OrderConfirmation: React.FC = () => {
           <div className="pb-14 text-[16px]  text-primary ">
             <div>
               <span className={"font-helvetica font-bold line-through"}>
-                <MoneyField value={BigInt(order?.total ?? 0) + BigInt(order?.discountTotal ?? 0)} />
+                <MoneyField
+                  value={
+                    BigInt(order?.total ?? 0) +
+                    BigInt(order?.discountTotal ?? 0)
+                  }
+                />
               </span>
             </div>
           </div>
