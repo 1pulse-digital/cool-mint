@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.20.1](https://github.com/1pulse-digital/cool-mint/compare/v0.20.0...v0.20.1) (2024-08-04)
+
+
+### Bug Fixes
+
+* change wording on calendar ([bbd85f0](https://github.com/1pulse-digital/cool-mint/commit/bbd85f0203b4d2bf790df566b58a562fe8f26c0a))
+* Don't auto redirect always after sign in ([e90db5f](https://github.com/1pulse-digital/cool-mint/commit/e90db5f9537c62b8419c73bbbf1838388b1e0362))
+* order confirmation page ([3e71072](https://github.com/1pulse-digital/cool-mint/commit/3e71072addaf24e9436673e85526519acb9d6769))
+
 ## [0.20.0](https://github.com/1pulse-digital/cool-mint/compare/v0.19.1...v0.20.0) (2024-08-04)
 
 
