@@ -55,6 +55,8 @@ const Redirector = ({ user }: { user: User | null }) => {
   useEffect(() => {
     if (user && redirect) {
       router.push("/" + redirect)
+    } else if (user) {
+      router.push("/")
     }
   }, [user])
   return null

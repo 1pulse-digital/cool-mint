@@ -9,7 +9,7 @@ import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { CalendarClock, Clock2, User } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
 import { Spinner } from "./ui/spinner"
@@ -27,15 +27,21 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const router = useRouter()
   const user = useUser()
   const cartContext = useCart()
+  const pathname = usePathname()
   const [loading, setLoadding] = React.useState(false)
 
   const handleAddToCart = async () => {
     // ensure the user is logged in
     if (!user) {
+      const loginUrl = new URL("/login", window.location.origin)
+      if (pathname !== "/") {
+        loginUrl.searchParams.set("redirect", pathname.slice(1))
+      }
+
       toast("Please login to book your spot", {
         action: {
           label: "Login",
-          onClick: () => router.push("/login"),
+          onClick: () => router.push(loginUrl.toString()),
         },
       })
       return
@@ -116,16 +122,23 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
           {moneyFormatter.format(masterClass.standardPrice / 100n)}
         </p>
         <p className="py-1 text-base text-foreground">
-          {Math.max(masterClass.maxAttendees - session.confirmedAttendees,0)} Spots Left
+          {Math.max(masterClass.maxAttendees - session.confirmedAttendees, 0)}{" "}
+          Spots Left
         </p>
         <div className="w-40 py-5">
           {soldOut ? (
             <span className="font-bold text-muted">Sold Out</span>
           ) : (
-            <Button onClick={handleAddToCart} disabled={loading} className="relative pr-4">
-            Book a Spot
-            {loading && <Spinner className="text-background w-4 h-4 top-0 right-0 absolute" />}
-          </Button>
+            <Button
+              onClick={handleAddToCart}
+              disabled={loading}
+              className="relative pr-4"
+            >
+              Book a Spot
+              {loading && (
+                <Spinner className="absolute right-0 top-0 h-4 w-4 text-background" />
+              )}
+            </Button>
           )}
         </div>
       </div>
