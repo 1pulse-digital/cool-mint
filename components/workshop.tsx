@@ -36,6 +36,8 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
       const loginUrl = new URL("/login", window.location.origin)
       if (pathname !== "/") {
         loginUrl.searchParams.set("redirect", pathname.slice(1))
+      } else {
+        loginUrl.searchParams.set("redirect", "#upcoming-sessions")
       }
 
       toast("Please login to book your spot", {
