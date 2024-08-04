@@ -1,14 +1,14 @@
-import React from "react";
-import Link from "next/link";
-import { SquareButton } from "./base/button";
-import Image from "next/image";
+import React from "react"
+import Link from "next/link"
+import { SquareButton } from "./base/button"
+import Image from "next/image"
 
 interface OfferingItemProps {
-  title: string;
-  description: string;
-  linkText: string;
-  linkUrl: string;
-  ImageSrc: string;
+  title: string
+  description: string
+  linkText?: string
+  linkUrl?: string
+  ImageSrc: string
 }
 
 const OfferingItem: React.FC<OfferingItemProps> = ({
@@ -23,35 +23,39 @@ const OfferingItem: React.FC<OfferingItemProps> = ({
       <Image src={ImageSrc} alt={title} height={30} width={110} />
     </div>
     <div className="text-start">
-      <p className="font-helvetica text-xl font-bold text-muted-foreground">{title}</p>
+      <p className="font-helvetica text-xl font-bold text-muted-foreground">
+        {title}
+      </p>
       <p className="font-helvetica text-Body font-normal text-foreground">
         {description}
       </p>
       <span>
-        <Link href={linkUrl}>
-          <SquareButton color="primary">
-            {linkText}
-            <svg
-              className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
-          </SquareButton>
-        </Link>
+        {linkUrl && (
+          <Link href={linkUrl}>
+            <SquareButton color="primary">
+              {linkText}
+              <svg
+                className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </SquareButton>
+          </Link>
+        )}
       </span>
     </div>
   </div>
-);
+)
 
 const Offerings: React.FC = () => {
   return (
@@ -95,13 +99,13 @@ const Offerings: React.FC = () => {
             title="MIW Shop"
             description="Looking for delicious snacks and unique products? Visit our shop to find a variety of items and connect with fellow makers."
             linkText="Learn More"
-            linkUrl="/cafe"
+            // linkUrl="/cafe"
             ImageSrc="/icons/cafe.png"
           />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Offerings;
+export default Offerings
