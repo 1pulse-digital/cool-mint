@@ -61,8 +61,8 @@ export default async function Page({ params }: { params: { number: string } }) {
       </div>
       <div className="sm:flex sm:justify-center sm:space-x-52">
         <div className="">
-          <Link href="/workshops">
-            <Button color="primary">Back to Workshops</Button>
+          <Link href="/classes">
+            <Button color="primary">Back to Classes</Button>
           </Link>
         </div>
         <div className="sm:flex-col">
