@@ -3,7 +3,7 @@
 import { handleLogin, handleLogout } from "@/app/actions"
 import { onAuthStateChanged } from "@/lib/firebase/auth/state-changed"
 import { User } from "firebase/auth"
-import { useRouter, useSearchParams } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { createContext, Suspense, useContext, useEffect, useState } from "react"
 import { toast } from "sonner"
 
@@ -51,11 +51,12 @@ const Redirector = ({ user }: { user: User | null }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirect = searchParams.get("redirect") ?? ""
+  const pathname = usePathname()
 
   useEffect(() => {
     if (user && redirect) {
       router.push("/" + redirect)
-    } else if (user) {
+    } else if (user && (pathname === "/login" || pathname === "/register")) {
       router.push("/")
     }
   }, [user])
