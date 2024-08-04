@@ -55,7 +55,7 @@ const config = {
       },
       fontSize: {
         'headings': '2.5rem', 
-        'BodyText': '1.25rem', 
+        'BodyText': '1.1rem', 
         'Body': '1rem', 
       },
       fontFamily: {

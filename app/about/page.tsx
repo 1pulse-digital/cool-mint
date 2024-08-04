@@ -9,16 +9,10 @@ const About = () => {
       <div className="lg:px-48 xl:px-40 2xl:mx-40">
         <div className="relative -mt-20 flex h-auto flex-col justify-center px-8 py-32 text-center text-primary sm:px-14 sm:py-20 md:h-screen md:px-10">
           <div className={"grid content-center font-helvetica"}>
-            <Breadcrumbs
-              crumbs={[
-                { name: "Home", href: "/" },
-                { name: "About", href: "/about" },
-              ]}
-            />
             <div className="md:px-12 lg:px-0">
               <h1
                 className={
-                  "py-1 text-center font-helvetica text-headings font-bold text-foreground pb-3"
+                  "py-1 pb-3 text-center font-helvetica text-headings font-bold text-foreground"
                 }
               >
                 Where it all began
@@ -36,19 +30,17 @@ const About = () => {
                 ever-growing makerspace community. Our evolution has been deeply
                 influenced by the diverse individuals who&apos;ve joined us,
                 moulding our space into an essential resource and a hub of{" "}
-                <span className="text-primary">creativity</span> and{" "}
-                <span className="text-primary">collaboration</span>.
+                creativity and collaboration.
                 <br />
                 <br />
                 At our core, we believe that we&apos;re not just about providing
                 tools, machines, or space. We represent the spark of inspiration
                 that comes to life when these resources are combined with the
-                community we&apos;ve built. We are a{" "}
-                <span className="text-primary">collective </span>
-                dedicated to innovation, a place where{" "}
-                <span className="text-primary">creativity is nurtured</span>,
-                and a makerspace community that welcomes anyone driven to
-                create.
+                community we&apos;ve built. <span className="text-primary">We are a
+                collective 
+                dedicated to innovation, a place where creativity is nurtured</span>,
+                and a makerspace community <span className="text-primary">that welcomes anyone driven to
+                create.</span>
               </p>
             </div>
           </div>

@@ -9,12 +9,12 @@ export default async function Page() {
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
         <div className={"grid content-center px-8 font-helvetica"}>
-          <Breadcrumbs
+          {/* <Breadcrumbs
             crumbs={[
               { name: "Home", href: "/" },
               { name: "Classes", href: "/classes" },
             ]}
-          />
+          /> */}
 
           <HeaderTitle
             description={

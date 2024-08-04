@@ -25,7 +25,7 @@ export default async function Page() {
   return (
     <div className={"bg-background py-10"}>
       <div className={"grid content-center font-helvetica sm:p-10"}>
-        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
+        {/* <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
           <Link href="/">
             <div>
               Home
@@ -35,7 +35,7 @@ export default async function Page() {
           <Link href="/news">
             <div className="text-primary">News</div>
           </Link>
-        </div>
+        </div> */}
         <div className="px-6 sm:px-2 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-0">
           <h1 className="py-4 text-center font-helvetica text-headings font-bold leading-tight text-foreground">
             News<span className="text-primary">.</span>

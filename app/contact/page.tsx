@@ -12,13 +12,13 @@ const Contact = () => {
       <div className="grid grid-cols-1 py-10 sm:px-12 sm:py-20 lg:grid-cols-2 lg:space-x-10 lg:px-12 xl:px-32 2xl:px-52">
         <div className="sm:px-0 lg:mr-10 xl:mr-16 2xl:mr-32">
           <div className={"px-6 font-helvetica sm:px-0 md:px-0"}>
-            <Breadcrumbs
+            {/* <Breadcrumbs
               className="justify-start"
               crumbs={[
                 { name: "Home", href: "/" },
                 { name: "Contact", href: "/contact" },
               ]}
-            />
+            /> */}
             <div className="text-start">
               <h1 className="text-headings font-bold  text-foreground">
                 Contact Us<span className="text-primary">.</span>

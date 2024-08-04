@@ -10,12 +10,12 @@ const FAQ = () => {
     <div className="bg-background py-10 sm:py-20">
       <div>
         <div className="font-helvetaica grid content-center px-8">
-          <Breadcrumbs
+          {/* <Breadcrumbs
             crumbs={[
               { name: "Home", href: "/" },
               { name: "FAQ", href: "/faq" },
             ]}
-          />
+          /> */}
           <HeaderTitle>FAQ</HeaderTitle>
         </div>
         <div>
