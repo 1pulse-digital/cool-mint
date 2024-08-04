@@ -8,10 +8,10 @@ import { Check } from "lucide-react"
 import Link from "next/link"
 import { notFound, useSearchParams } from "next/navigation"
 import { myOrders } from "../orders/actions"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { Order } from "@/lib/fusion/commerce/order.pb"
 import { Spinner } from "@/components/ui/spinner"
-import { GetProductRequest } from "@/lib/fusion/masterClass/session.manager.pb"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const OrderConfirmation: React.FC = () => {
   const params = useSearchParams();
@@ -75,18 +75,15 @@ const OrderConfirmation: React.FC = () => {
         </div>
         <div className="grid items-center justify-center">
           {order?.lineItems.map((item, idx) => {
-            // await GetProductRequest
             return (
               <div key={idx}>
-                <OrderConfirmedItem
-                  imageSrc="/icons/banner.webp"
-                  date={order.dateCompleted}
-                  name={item.productDisplayName}
-                  time={"3 hours"} // REVIEWER: Do we need to call the get product here? To get the actual product details
-                  price={item.price}
-                  confirm={order.status}
-                  quantity={item.quantity.toString()}
-                />
+                <Suspense fallback={<Skeleton/>}>
+                  <OrderConfirmedItem
+                    name={item.productDisplayName}
+                    price={item.price}
+                    confirm={order.status}
+                  />
+                </Suspense>
               </div>
             )
           })}
