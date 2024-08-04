@@ -11,6 +11,7 @@ import { myOrders } from "../orders/actions"
 import { useEffect, useState, useCallback } from "react"
 import { Order } from "@/lib/fusion/commerce/order.pb"
 import { Spinner } from "@/components/ui/spinner"
+import { GetProductRequest } from "@/lib/fusion/masterClass/session.manager.pb"
 
 const OrderConfirmation: React.FC = () => {
   const params = useSearchParams();
@@ -18,34 +19,33 @@ const OrderConfirmation: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const orderNumber = params.get("order_number");
 
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await myOrders({});
-      const myOrder = response.orders.find(
-        (order) => order.status === "COMPLETED" && order.name.includes(orderNumber ?? "")
-      );
-      setOrder(myOrder);
-    } catch (error) {
-      console.error("Failed to fetch order:", error);
-    } finally {
-      setLoading(false);
-    }
+  useEffect(() => {
+    setLoading(true);
+    const fetchData = async () => {
+      try {
+        const response = await myOrders({});
+        const myOrder = response.orders.find(
+          (order) => order.status === "COMPLETED" && order.name.includes(orderNumber ?? "")
+        );
+        setOrder(myOrder);
+      } catch (error) {
+        console.error("Failed to fetch order:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, [orderNumber]);
 
   useEffect(() => {
-    setLoading(true);
-    fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    if (!loading && !order) {
+    if (!loading && order === undefined) {
       console.warn("order not found");
       setOrder(Order.initialize({ number: BigInt(0), status: Order.Status.PENDING }));
     }
   }, [loading, order]);
 
   if (loading) {
-    return <Spinner/>;
+    return <Spinner />;
   }
 
   if (!order) {
@@ -74,16 +74,21 @@ const OrderConfirmation: React.FC = () => {
           <Check size={100} color="#ADFA1C" />
         </div>
         <div className="grid items-center justify-center">
-          {order?.lineItems.map((item) => {
-            return <OrderConfirmedItem
-              imageSrc="/icons/banner.webp"
-              date={order.dateCompleted}
-              name={item.productDisplayName}
-              time={"3 hours"} // REVIEWER: Do we need to call the get product here? To get the actual product details
-              price={item.price}
-              confirm={order.status}
-              quantity={item.quantity.toString()}
-            />
+          {order?.lineItems.map((item, idx) => {
+            // await GetProductRequest
+            return (
+              <div key={idx}>
+                <OrderConfirmedItem
+                  imageSrc="/icons/banner.webp"
+                  date={order.dateCompleted}
+                  name={item.productDisplayName}
+                  time={"3 hours"} // REVIEWER: Do we need to call the get product here? To get the actual product details
+                  price={item.price}
+                  confirm={order.status}
+                  quantity={item.quantity.toString()}
+                />
+              </div>
+            )
           })}
         </div>
       </div>
