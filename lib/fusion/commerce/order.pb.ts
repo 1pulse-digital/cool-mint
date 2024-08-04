@@ -33,7 +33,7 @@ export interface Order {
   total: bigint;
   totalTax: bigint;
   /**
-   * total discound amount in cents
+   * total discount amount in cents
    */
   discountTotal: bigint;
   /**
@@ -58,6 +58,7 @@ export interface Order {
    * date completed
    */
   dateCompleted: string;
+  coupons: Order.Coupon[];
 }
 
 export declare namespace Order {
@@ -66,6 +67,17 @@ export declare namespace Order {
     | "PENDING"
     | "COMPLETED"
     | "CANCELLED";
+
+  /**
+   * coupons applied to this order
+   */
+  export interface Coupon {
+    name: string;
+    code: string;
+    discountText: string;
+    amount: bigint;
+    type: string;
+  }
 }
 
 export interface LineItem {
@@ -157,6 +169,7 @@ export const Order = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
+      coupons: [],
       ...msg,
     };
   },
@@ -219,6 +232,13 @@ export const Order = {
     }
     if (msg.dateCompleted) {
       writer.writeString(15, msg.dateCompleted);
+    }
+    if (msg.coupons?.length) {
+      writer.writeRepeatedMessage(
+        17,
+        msg.coupons as any,
+        Order.Coupon._writeMessage,
+      );
     }
     return writer;
   },
@@ -296,6 +316,12 @@ export const Order = {
           msg.dateCompleted = reader.readString();
           break;
         }
+        case 17: {
+          const m = Order.Coupon.initialize();
+          reader.readMessage(m, Order.Coupon._readMessage);
+          msg.coupons.push(m);
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -357,6 +383,106 @@ export const Order = {
       }
     },
   } as const,
+
+  Coupon: {
+    /**
+     * Serializes Order.Coupon to protobuf.
+     */
+    encode: function (msg: PartialDeep<Order.Coupon>): Uint8Array {
+      return Order.Coupon._writeMessage(
+        msg,
+        new protoscript.BinaryWriter(),
+      ).getResultBuffer();
+    },
+
+    /**
+     * Deserializes Order.Coupon from protobuf.
+     */
+    decode: function (bytes: ByteSource): Order.Coupon {
+      return Order.Coupon._readMessage(
+        Order.Coupon.initialize(),
+        new protoscript.BinaryReader(bytes),
+      );
+    },
+
+    /**
+     * Initializes Order.Coupon with all fields set to their default value.
+     */
+    initialize: function (msg?: Partial<Order.Coupon>): Order.Coupon {
+      return {
+        name: "",
+        code: "",
+        discountText: "",
+        amount: 0n,
+        type: "",
+        ...msg,
+      };
+    },
+
+    /**
+     * @private
+     */
+    _writeMessage: function (
+      msg: PartialDeep<Order.Coupon>,
+      writer: protoscript.BinaryWriter,
+    ): protoscript.BinaryWriter {
+      if (msg.name) {
+        writer.writeString(1, msg.name);
+      }
+      if (msg.code) {
+        writer.writeString(2, msg.code);
+      }
+      if (msg.discountText) {
+        writer.writeString(3, msg.discountText);
+      }
+      if (msg.amount) {
+        writer.writeInt64String(4, msg.amount.toString() as any);
+      }
+      if (msg.type) {
+        writer.writeString(5, msg.type);
+      }
+      return writer;
+    },
+
+    /**
+     * @private
+     */
+    _readMessage: function (
+      msg: Order.Coupon,
+      reader: protoscript.BinaryReader,
+    ): Order.Coupon {
+      while (reader.nextField()) {
+        const field = reader.getFieldNumber();
+        switch (field) {
+          case 1: {
+            msg.name = reader.readString();
+            break;
+          }
+          case 2: {
+            msg.code = reader.readString();
+            break;
+          }
+          case 3: {
+            msg.discountText = reader.readString();
+            break;
+          }
+          case 4: {
+            msg.amount = BigInt(reader.readInt64String());
+            break;
+          }
+          case 5: {
+            msg.type = reader.readString();
+            break;
+          }
+          default: {
+            reader.skipField();
+            break;
+          }
+        }
+      }
+      return msg;
+    },
+  },
 };
 
 export const LineItem = {
@@ -747,6 +873,7 @@ export const OrderJSON = {
       transactionID: "",
       datePaid: "",
       dateCompleted: "",
+      coupons: [],
       ...msg,
     };
   },
@@ -814,6 +941,9 @@ export const OrderJSON = {
     }
     if (msg.dateCompleted) {
       json["dateCompleted"] = msg.dateCompleted;
+    }
+    if (msg.coupons?.length) {
+      json["coupons"] = msg.coupons.map(OrderJSON.Coupon._writeMessage);
     }
     return json;
   },
@@ -890,6 +1020,14 @@ export const OrderJSON = {
     if (_dateCompleted_) {
       msg.dateCompleted = _dateCompleted_;
     }
+    const _coupons_ = json["coupons"];
+    if (_coupons_) {
+      for (const item of _coupons_) {
+        const m = OrderJSON.Coupon.initialize();
+        OrderJSON.Coupon._readMessage(m, item);
+        msg.coupons.push(m);
+      }
+    }
     return msg;
   },
 
@@ -945,6 +1083,91 @@ export const OrderJSON = {
       }
     },
   } as const,
+
+  Coupon: {
+    /**
+     * Serializes Order.Coupon to JSON.
+     */
+    encode: function (msg: PartialDeep<Order.Coupon>): string {
+      return JSON.stringify(OrderJSON.Coupon._writeMessage(msg));
+    },
+
+    /**
+     * Deserializes Order.Coupon from JSON.
+     */
+    decode: function (json: string): Order.Coupon {
+      return OrderJSON.Coupon._readMessage(
+        OrderJSON.Coupon.initialize(),
+        JSON.parse(json),
+      );
+    },
+
+    /**
+     * Initializes Order.Coupon with all fields set to their default value.
+     */
+    initialize: function (msg?: Partial<Order.Coupon>): Order.Coupon {
+      return {
+        name: "",
+        code: "",
+        discountText: "",
+        amount: 0n,
+        type: "",
+        ...msg,
+      };
+    },
+
+    /**
+     * @private
+     */
+    _writeMessage: function (
+      msg: PartialDeep<Order.Coupon>,
+    ): Record<string, unknown> {
+      const json: Record<string, unknown> = {};
+      if (msg.name) {
+        json["name"] = msg.name;
+      }
+      if (msg.code) {
+        json["code"] = msg.code;
+      }
+      if (msg.discountText) {
+        json["discountText"] = msg.discountText;
+      }
+      if (msg.amount) {
+        json["amount"] = String(msg.amount);
+      }
+      if (msg.type) {
+        json["type"] = msg.type;
+      }
+      return json;
+    },
+
+    /**
+     * @private
+     */
+    _readMessage: function (msg: Order.Coupon, json: any): Order.Coupon {
+      const _name_ = json["name"];
+      if (_name_) {
+        msg.name = _name_;
+      }
+      const _code_ = json["code"];
+      if (_code_) {
+        msg.code = _code_;
+      }
+      const _discountText_ = json["discountText"];
+      if (_discountText_) {
+        msg.discountText = _discountText_;
+      }
+      const _amount_ = json["amount"];
+      if (_amount_) {
+        msg.amount = BigInt(_amount_);
+      }
+      const _type_ = json["type"];
+      if (_type_) {
+        msg.type = _type_;
+      }
+      return msg;
+    },
+  },
 };
 
 export const LineItemJSON = {

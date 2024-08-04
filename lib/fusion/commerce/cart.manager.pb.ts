@@ -16,6 +16,20 @@ import * as commerceCart from "./cart.pb";
 //                 Types                  //
 //========================================//
 
+export interface ApplyCouponRequest {
+  /**
+   * The coupon code to apply
+   */
+  code: string;
+}
+
+export interface RemoveCouponRequest {
+  /**
+   * The coupon (name) to remove
+   */
+  coupon: string;
+}
+
 export interface AddToCartRequest {
   eTag: string;
   /**
@@ -103,6 +117,36 @@ export async function MyCart(
   return commerceCart.Cart.decode(response);
 }
 
+/**
+ * ApplyCoupon applies the coupon to the user's cart, but does not persist the coupon
+ */
+export async function ApplyCoupon(
+  applyCouponRequest: ApplyCouponRequest,
+  config?: ClientConfiguration,
+): Promise<commerceCart.Cart> {
+  const response = await PBrequest(
+    "/commerce.CartManager/ApplyCoupon",
+    ApplyCouponRequest.encode(applyCouponRequest),
+    config,
+  );
+  return commerceCart.Cart.decode(response);
+}
+
+/**
+ * RemoveCoupon removes the coupon from the user's cart
+ */
+export async function RemoveCoupon(
+  removeCouponRequest: RemoveCouponRequest,
+  config?: ClientConfiguration,
+): Promise<commerceCart.Cart> {
+  const response = await PBrequest(
+    "/commerce.CartManager/RemoveCoupon",
+    RemoveCouponRequest.encode(removeCouponRequest),
+    config,
+  );
+  return commerceCart.Cart.decode(response);
+}
+
 //========================================//
 //        CartManager JSON Client         //
 //========================================//
@@ -167,6 +211,36 @@ export async function MyCartJSON(
   return commerceCart.CartJSON.decode(response);
 }
 
+/**
+ * ApplyCoupon applies the coupon to the user's cart, but does not persist the coupon
+ */
+export async function ApplyCouponJSON(
+  applyCouponRequest: ApplyCouponRequest,
+  config?: ClientConfiguration,
+): Promise<commerceCart.Cart> {
+  const response = await JSONrequest(
+    "/commerce.CartManager/ApplyCoupon",
+    ApplyCouponRequestJSON.encode(applyCouponRequest),
+    config,
+  );
+  return commerceCart.CartJSON.decode(response);
+}
+
+/**
+ * RemoveCoupon removes the coupon from the user's cart
+ */
+export async function RemoveCouponJSON(
+  removeCouponRequest: RemoveCouponRequest,
+  config?: ClientConfiguration,
+): Promise<commerceCart.Cart> {
+  const response = await JSONrequest(
+    "/commerce.CartManager/RemoveCoupon",
+    RemoveCouponRequestJSON.encode(removeCouponRequest),
+    config,
+  );
+  return commerceCart.CartJSON.decode(response);
+}
+
 //========================================//
 //              CartManager               //
 //========================================//
@@ -204,6 +278,20 @@ export interface CartManager<Context = unknown> {
     myCartRequest: MyCartRequest,
     context: Context,
   ) => Promise<commerceCart.Cart> | commerceCart.Cart;
+  /**
+   * ApplyCoupon applies the coupon to the user's cart, but does not persist the coupon
+   */
+  ApplyCoupon: (
+    applyCouponRequest: ApplyCouponRequest,
+    context: Context,
+  ) => Promise<commerceCart.Cart> | commerceCart.Cart;
+  /**
+   * RemoveCoupon removes the coupon from the user's cart
+   */
+  RemoveCoupon: (
+    removeCouponRequest: RemoveCouponRequest,
+    context: Context,
+  ) => Promise<commerceCart.Cart> | commerceCart.Cart;
 }
 
 export function createCartManager<Context>(service: CartManager<Context>) {
@@ -237,6 +325,18 @@ export function createCartManager<Context>(service: CartManager<Context>) {
         input: { protobuf: MyCartRequest, json: MyCartRequestJSON },
         output: { protobuf: commerceCart.Cart, json: commerceCart.CartJSON },
       },
+      ApplyCoupon: {
+        name: "ApplyCoupon",
+        handler: service.ApplyCoupon,
+        input: { protobuf: ApplyCouponRequest, json: ApplyCouponRequestJSON },
+        output: { protobuf: commerceCart.Cart, json: commerceCart.CartJSON },
+      },
+      RemoveCoupon: {
+        name: "RemoveCoupon",
+        handler: service.RemoveCoupon,
+        input: { protobuf: RemoveCouponRequest, json: RemoveCouponRequestJSON },
+        output: { protobuf: commerceCart.Cart, json: commerceCart.CartJSON },
+      },
     },
   } as const;
 }
@@ -244,6 +344,144 @@ export function createCartManager<Context>(service: CartManager<Context>) {
 //========================================//
 //        Protobuf Encode / Decode        //
 //========================================//
+
+export const ApplyCouponRequest = {
+  /**
+   * Serializes ApplyCouponRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<ApplyCouponRequest>): Uint8Array {
+    return ApplyCouponRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes ApplyCouponRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): ApplyCouponRequest {
+    return ApplyCouponRequest._readMessage(
+      ApplyCouponRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes ApplyCouponRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<ApplyCouponRequest>): ApplyCouponRequest {
+    return {
+      code: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<ApplyCouponRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.code) {
+      writer.writeString(1, msg.code);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: ApplyCouponRequest,
+    reader: protoscript.BinaryReader,
+  ): ApplyCouponRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.code = reader.readString();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const RemoveCouponRequest = {
+  /**
+   * Serializes RemoveCouponRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<RemoveCouponRequest>): Uint8Array {
+    return RemoveCouponRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes RemoveCouponRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): RemoveCouponRequest {
+    return RemoveCouponRequest._readMessage(
+      RemoveCouponRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes RemoveCouponRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<RemoveCouponRequest>,
+  ): RemoveCouponRequest {
+    return {
+      coupon: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<RemoveCouponRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.coupon) {
+      writer.writeString(1, msg.coupon);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: RemoveCouponRequest,
+    reader: protoscript.BinaryReader,
+  ): RemoveCouponRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.coupon = reader.readString();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
 
 export const AddToCartRequest = {
   /**
@@ -516,6 +754,120 @@ export const MyCartRequest = {
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
+
+export const ApplyCouponRequestJSON = {
+  /**
+   * Serializes ApplyCouponRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<ApplyCouponRequest>): string {
+    return JSON.stringify(ApplyCouponRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes ApplyCouponRequest from JSON.
+   */
+  decode: function (json: string): ApplyCouponRequest {
+    return ApplyCouponRequestJSON._readMessage(
+      ApplyCouponRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes ApplyCouponRequest with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<ApplyCouponRequest>): ApplyCouponRequest {
+    return {
+      code: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<ApplyCouponRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.code) {
+      json["code"] = msg.code;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: ApplyCouponRequest,
+    json: any,
+  ): ApplyCouponRequest {
+    const _code_ = json["code"];
+    if (_code_) {
+      msg.code = _code_;
+    }
+    return msg;
+  },
+};
+
+export const RemoveCouponRequestJSON = {
+  /**
+   * Serializes RemoveCouponRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<RemoveCouponRequest>): string {
+    return JSON.stringify(RemoveCouponRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes RemoveCouponRequest from JSON.
+   */
+  decode: function (json: string): RemoveCouponRequest {
+    return RemoveCouponRequestJSON._readMessage(
+      RemoveCouponRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes RemoveCouponRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<RemoveCouponRequest>,
+  ): RemoveCouponRequest {
+    return {
+      coupon: "",
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<RemoveCouponRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.coupon) {
+      json["coupon"] = msg.coupon;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: RemoveCouponRequest,
+    json: any,
+  ): RemoveCouponRequest {
+    const _coupon_ = json["coupon"];
+    if (_coupon_) {
+      msg.coupon = _coupon_;
+    }
+    return msg;
+  },
+};
 
 export const AddToCartRequestJSON = {
   /**

@@ -15,6 +15,73 @@ export interface Coupon {
   name: string;
   uid: string;
   auditEntry: auditEntry.Entry;
+  code: string;
+  amount: bigint;
+  discountType: Coupon.Type;
+  /**
+   * Coupon description.
+   */
+  description: string;
+  /**
+   * The date the coupon expires, in RFC3339 format.
+   */
+  dateExpires: string;
+  /**
+   * Number of times the coupon has been used already.
+   */
+  usageCount: number;
+  /**
+   * If true, the coupon can only be used individually. Other applied coupons will be removed from the cart. Default is false.
+   */
+  individualUse: boolean;
+  /**
+   * How many times the coupon can be used in total.
+   */
+  usageLimit: number;
+  /**
+   * How many times the coupon can be used per customer.
+   */
+  usageLimitPerUser: number;
+  /**
+   * Minimum order amount that needs to be in the cart before coupon applies.
+   */
+  minimumAmount: bigint;
+  /**
+   * Maximum order amount allowed when using the coupon.
+   */
+  maximumAmount: bigint;
+  /**
+   * List of email addresses that can use this coupon.
+   */
+  emailRestrictions: string[];
+  /**
+   * List of user names (or guest email addresses) that have used the coupon.
+   */
+  usedBy: string[];
+  /**
+   * If true, this coupon will not be applied to items that have sale prices. Default is false.
+   */
+  excludeSaleItems: boolean;
+  /**
+   * List of category names the coupon does not apply to.
+   */
+  excludeProductCategories: string;
+  /**
+   * List of category names the coupon applies to.
+   */
+  productCategories: string[];
+  /**
+   * If true and if the free shipping method requires a coupon, this coupon will enable free shipping. Default is false.
+   */
+  freeShipping: boolean;
+}
+
+export declare namespace Coupon {
+  export type Type =
+    | "TYPE_UNSPECIFIED"
+    | "PERCENTAGE"
+    | "FIXED_CART"
+    | "FIXED_PRODUCT";
 }
 
 //========================================//
@@ -50,6 +117,23 @@ export const Coupon = {
       name: "",
       uid: "",
       auditEntry: auditEntry.Entry.initialize(),
+      code: "",
+      amount: 0n,
+      discountType: Coupon.Type._fromInt(0),
+      description: "",
+      dateExpires: "",
+      usageCount: 0,
+      individualUse: false,
+      usageLimit: 0,
+      usageLimitPerUser: 0,
+      minimumAmount: 0n,
+      maximumAmount: 0n,
+      emailRestrictions: [],
+      usedBy: [],
+      excludeSaleItems: false,
+      excludeProductCategories: "",
+      productCategories: [],
+      freeShipping: false,
       ...msg,
     };
   },
@@ -69,6 +153,57 @@ export const Coupon = {
     }
     if (msg.auditEntry) {
       writer.writeMessage(3, msg.auditEntry, auditEntry.Entry._writeMessage);
+    }
+    if (msg.code) {
+      writer.writeString(4, msg.code);
+    }
+    if (msg.amount) {
+      writer.writeInt64String(5, msg.amount.toString() as any);
+    }
+    if (msg.discountType && Coupon.Type._toInt(msg.discountType)) {
+      writer.writeEnum(6, Coupon.Type._toInt(msg.discountType));
+    }
+    if (msg.description) {
+      writer.writeString(7, msg.description);
+    }
+    if (msg.dateExpires) {
+      writer.writeString(8, msg.dateExpires);
+    }
+    if (msg.usageCount) {
+      writer.writeInt32(9, msg.usageCount);
+    }
+    if (msg.individualUse) {
+      writer.writeBool(10, msg.individualUse);
+    }
+    if (msg.usageLimit) {
+      writer.writeInt32(13, msg.usageLimit);
+    }
+    if (msg.usageLimitPerUser) {
+      writer.writeInt32(14, msg.usageLimitPerUser);
+    }
+    if (msg.minimumAmount) {
+      writer.writeInt64String(15, msg.minimumAmount.toString() as any);
+    }
+    if (msg.maximumAmount) {
+      writer.writeInt64String(16, msg.maximumAmount.toString() as any);
+    }
+    if (msg.emailRestrictions?.length) {
+      writer.writeRepeatedString(17, msg.emailRestrictions);
+    }
+    if (msg.usedBy?.length) {
+      writer.writeRepeatedString(18, msg.usedBy);
+    }
+    if (msg.excludeSaleItems) {
+      writer.writeBool(19, msg.excludeSaleItems);
+    }
+    if (msg.excludeProductCategories) {
+      writer.writeString(20, msg.excludeProductCategories);
+    }
+    if (msg.productCategories?.length) {
+      writer.writeRepeatedString(21, msg.productCategories);
+    }
+    if (msg.freeShipping) {
+      writer.writeBool(22, msg.freeShipping);
     }
     return writer;
   },
@@ -95,6 +230,74 @@ export const Coupon = {
           reader.readMessage(msg.auditEntry, auditEntry.Entry._readMessage);
           break;
         }
+        case 4: {
+          msg.code = reader.readString();
+          break;
+        }
+        case 5: {
+          msg.amount = BigInt(reader.readInt64String());
+          break;
+        }
+        case 6: {
+          msg.discountType = Coupon.Type._fromInt(reader.readEnum());
+          break;
+        }
+        case 7: {
+          msg.description = reader.readString();
+          break;
+        }
+        case 8: {
+          msg.dateExpires = reader.readString();
+          break;
+        }
+        case 9: {
+          msg.usageCount = reader.readInt32();
+          break;
+        }
+        case 10: {
+          msg.individualUse = reader.readBool();
+          break;
+        }
+        case 13: {
+          msg.usageLimit = reader.readInt32();
+          break;
+        }
+        case 14: {
+          msg.usageLimitPerUser = reader.readInt32();
+          break;
+        }
+        case 15: {
+          msg.minimumAmount = BigInt(reader.readInt64String());
+          break;
+        }
+        case 16: {
+          msg.maximumAmount = BigInt(reader.readInt64String());
+          break;
+        }
+        case 17: {
+          msg.emailRestrictions.push(reader.readString());
+          break;
+        }
+        case 18: {
+          msg.usedBy.push(reader.readString());
+          break;
+        }
+        case 19: {
+          msg.excludeSaleItems = reader.readBool();
+          break;
+        }
+        case 20: {
+          msg.excludeProductCategories = reader.readString();
+          break;
+        }
+        case 21: {
+          msg.productCategories.push(reader.readString());
+          break;
+        }
+        case 22: {
+          msg.freeShipping = reader.readBool();
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -103,6 +306,72 @@ export const Coupon = {
     }
     return msg;
   },
+
+  Type: {
+    TYPE_UNSPECIFIED: "TYPE_UNSPECIFIED",
+    /**
+     * A percentage discount for selected products only.
+     * For example, if the cart contains three (3) t-shirts @ $20 each = $60, a coupon for 10% off applies a discount of $6.
+     */
+    PERCENTAGE: "PERCENTAGE",
+    /**
+     * A fixed total discount for the entire cart.
+     * For example, if the cart contains three (3) t-shirts @ $20 each = $60, a coupon for $10 off gives a discount of $10.
+     */
+    FIXED_CART: "FIXED_CART",
+    /**
+     * A fixed total discount for selected products only.
+     * Customers receive a set amount of discount per item.
+     * For example, three (3) t-shirts @ $20 each with a coupon for $10 off applies a discount of $30.
+     */
+    FIXED_PRODUCT: "FIXED_PRODUCT",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): Coupon.Type {
+      switch (i) {
+        case 0: {
+          return "TYPE_UNSPECIFIED";
+        }
+        case 1: {
+          return "PERCENTAGE";
+        }
+        case 2: {
+          return "FIXED_CART";
+        }
+        case 3: {
+          return "FIXED_PRODUCT";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as Coupon.Type;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: Coupon.Type): number {
+      switch (i) {
+        case "TYPE_UNSPECIFIED": {
+          return 0;
+        }
+        case "PERCENTAGE": {
+          return 1;
+        }
+        case "FIXED_CART": {
+          return 2;
+        }
+        case "FIXED_PRODUCT": {
+          return 3;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };
 
 //========================================//
@@ -132,6 +401,23 @@ export const CouponJSON = {
       name: "",
       uid: "",
       auditEntry: auditEntry.EntryJSON.initialize(),
+      code: "",
+      amount: 0n,
+      discountType: Coupon.Type._fromInt(0),
+      description: "",
+      dateExpires: "",
+      usageCount: 0,
+      individualUse: false,
+      usageLimit: 0,
+      usageLimitPerUser: 0,
+      minimumAmount: 0n,
+      maximumAmount: 0n,
+      emailRestrictions: [],
+      usedBy: [],
+      excludeSaleItems: false,
+      excludeProductCategories: "",
+      productCategories: [],
+      freeShipping: false,
       ...msg,
     };
   },
@@ -153,6 +439,57 @@ export const CouponJSON = {
         json["auditEntry"] = _auditEntry_;
       }
     }
+    if (msg.code) {
+      json["code"] = msg.code;
+    }
+    if (msg.amount) {
+      json["amount"] = String(msg.amount);
+    }
+    if (msg.discountType && CouponJSON.Type._toInt(msg.discountType)) {
+      json["discountType"] = msg.discountType;
+    }
+    if (msg.description) {
+      json["description"] = msg.description;
+    }
+    if (msg.dateExpires) {
+      json["dateExpires"] = msg.dateExpires;
+    }
+    if (msg.usageCount) {
+      json["usageCount"] = msg.usageCount;
+    }
+    if (msg.individualUse) {
+      json["individualUse"] = msg.individualUse;
+    }
+    if (msg.usageLimit) {
+      json["usageLimit"] = msg.usageLimit;
+    }
+    if (msg.usageLimitPerUser) {
+      json["usageLimitPerUser"] = msg.usageLimitPerUser;
+    }
+    if (msg.minimumAmount) {
+      json["minimumAmount"] = String(msg.minimumAmount);
+    }
+    if (msg.maximumAmount) {
+      json["maximumAmount"] = String(msg.maximumAmount);
+    }
+    if (msg.emailRestrictions?.length) {
+      json["emailRestrictions"] = msg.emailRestrictions;
+    }
+    if (msg.usedBy?.length) {
+      json["usedBy"] = msg.usedBy;
+    }
+    if (msg.excludeSaleItems) {
+      json["excludeSaleItems"] = msg.excludeSaleItems;
+    }
+    if (msg.excludeProductCategories) {
+      json["excludeProductCategories"] = msg.excludeProductCategories;
+    }
+    if (msg.productCategories?.length) {
+      json["productCategories"] = msg.productCategories;
+    }
+    if (msg.freeShipping) {
+      json["freeShipping"] = msg.freeShipping;
+    }
     return json;
   },
 
@@ -172,6 +509,140 @@ export const CouponJSON = {
     if (_auditEntry_) {
       auditEntry.EntryJSON._readMessage(msg.auditEntry, _auditEntry_);
     }
+    const _code_ = json["code"];
+    if (_code_) {
+      msg.code = _code_;
+    }
+    const _amount_ = json["amount"];
+    if (_amount_) {
+      msg.amount = BigInt(_amount_);
+    }
+    const _discountType_ = json["discountType"];
+    if (_discountType_) {
+      msg.discountType = Coupon.Type._fromInt(_discountType_);
+    }
+    const _description_ = json["description"];
+    if (_description_) {
+      msg.description = _description_;
+    }
+    const _dateExpires_ = json["dateExpires"];
+    if (_dateExpires_) {
+      msg.dateExpires = _dateExpires_;
+    }
+    const _usageCount_ = json["usageCount"];
+    if (_usageCount_) {
+      msg.usageCount = protoscript.parseNumber(_usageCount_);
+    }
+    const _individualUse_ = json["individualUse"];
+    if (_individualUse_) {
+      msg.individualUse = _individualUse_;
+    }
+    const _usageLimit_ = json["usageLimit"];
+    if (_usageLimit_) {
+      msg.usageLimit = protoscript.parseNumber(_usageLimit_);
+    }
+    const _usageLimitPerUser_ = json["usageLimitPerUser"];
+    if (_usageLimitPerUser_) {
+      msg.usageLimitPerUser = protoscript.parseNumber(_usageLimitPerUser_);
+    }
+    const _minimumAmount_ = json["minimumAmount"];
+    if (_minimumAmount_) {
+      msg.minimumAmount = BigInt(_minimumAmount_);
+    }
+    const _maximumAmount_ = json["maximumAmount"];
+    if (_maximumAmount_) {
+      msg.maximumAmount = BigInt(_maximumAmount_);
+    }
+    const _emailRestrictions_ = json["emailRestrictions"];
+    if (_emailRestrictions_) {
+      msg.emailRestrictions = _emailRestrictions_;
+    }
+    const _usedBy_ = json["usedBy"];
+    if (_usedBy_) {
+      msg.usedBy = _usedBy_;
+    }
+    const _excludeSaleItems_ = json["excludeSaleItems"];
+    if (_excludeSaleItems_) {
+      msg.excludeSaleItems = _excludeSaleItems_;
+    }
+    const _excludeProductCategories_ = json["excludeProductCategories"];
+    if (_excludeProductCategories_) {
+      msg.excludeProductCategories = _excludeProductCategories_;
+    }
+    const _productCategories_ = json["productCategories"];
+    if (_productCategories_) {
+      msg.productCategories = _productCategories_;
+    }
+    const _freeShipping_ = json["freeShipping"];
+    if (_freeShipping_) {
+      msg.freeShipping = _freeShipping_;
+    }
     return msg;
   },
+
+  Type: {
+    TYPE_UNSPECIFIED: "TYPE_UNSPECIFIED",
+    /**
+     * A percentage discount for selected products only.
+     * For example, if the cart contains three (3) t-shirts @ $20 each = $60, a coupon for 10% off applies a discount of $6.
+     */
+    PERCENTAGE: "PERCENTAGE",
+    /**
+     * A fixed total discount for the entire cart.
+     * For example, if the cart contains three (3) t-shirts @ $20 each = $60, a coupon for $10 off gives a discount of $10.
+     */
+    FIXED_CART: "FIXED_CART",
+    /**
+     * A fixed total discount for selected products only.
+     * Customers receive a set amount of discount per item.
+     * For example, three (3) t-shirts @ $20 each with a coupon for $10 off applies a discount of $30.
+     */
+    FIXED_PRODUCT: "FIXED_PRODUCT",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): Coupon.Type {
+      switch (i) {
+        case 0: {
+          return "TYPE_UNSPECIFIED";
+        }
+        case 1: {
+          return "PERCENTAGE";
+        }
+        case 2: {
+          return "FIXED_CART";
+        }
+        case 3: {
+          return "FIXED_PRODUCT";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as Coupon.Type;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: Coupon.Type): number {
+      switch (i) {
+        case "TYPE_UNSPECIFIED": {
+          return 0;
+        }
+        case "PERCENTAGE": {
+          return 1;
+        }
+        case "FIXED_CART": {
+          return 2;
+        }
+        case "FIXED_PRODUCT": {
+          return 3;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };

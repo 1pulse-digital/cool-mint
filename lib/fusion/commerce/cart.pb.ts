@@ -22,6 +22,22 @@ export interface Cart {
   auditEntry: auditEntry.Entry;
   userId: string;
   items: CartItem[];
+  /**
+   * total discount amount in cents
+   */
+  discountTotal: bigint;
+  coupons: Cart.Coupon[];
+}
+
+export declare namespace Cart {
+  /**
+   * coupons is a list of coupon codes applied to the cart
+   */
+  export interface Coupon {
+    name: string;
+    code: string;
+    discountText: string;
+  }
 }
 
 export interface CartItem {
@@ -78,6 +94,8 @@ export const Cart = {
       auditEntry: auditEntry.Entry.initialize(),
       userId: "",
       items: [],
+      discountTotal: 0n,
+      coupons: [],
       ...msg,
     };
   },
@@ -103,6 +121,16 @@ export const Cart = {
     }
     if (msg.items?.length) {
       writer.writeRepeatedMessage(5, msg.items as any, CartItem._writeMessage);
+    }
+    if (msg.discountTotal) {
+      writer.writeInt64String(7, msg.discountTotal.toString() as any);
+    }
+    if (msg.coupons?.length) {
+      writer.writeRepeatedMessage(
+        8,
+        msg.coupons as any,
+        Cart.Coupon._writeMessage,
+      );
     }
     return writer;
   },
@@ -136,6 +164,16 @@ export const Cart = {
           msg.items.push(m);
           break;
         }
+        case 7: {
+          msg.discountTotal = BigInt(reader.readInt64String());
+          break;
+        }
+        case 8: {
+          const m = Cart.Coupon.initialize();
+          reader.readMessage(m, Cart.Coupon._readMessage);
+          msg.coupons.push(m);
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -143,6 +181,90 @@ export const Cart = {
       }
     }
     return msg;
+  },
+
+  Coupon: {
+    /**
+     * Serializes Cart.Coupon to protobuf.
+     */
+    encode: function (msg: PartialDeep<Cart.Coupon>): Uint8Array {
+      return Cart.Coupon._writeMessage(
+        msg,
+        new protoscript.BinaryWriter(),
+      ).getResultBuffer();
+    },
+
+    /**
+     * Deserializes Cart.Coupon from protobuf.
+     */
+    decode: function (bytes: ByteSource): Cart.Coupon {
+      return Cart.Coupon._readMessage(
+        Cart.Coupon.initialize(),
+        new protoscript.BinaryReader(bytes),
+      );
+    },
+
+    /**
+     * Initializes Cart.Coupon with all fields set to their default value.
+     */
+    initialize: function (msg?: Partial<Cart.Coupon>): Cart.Coupon {
+      return {
+        name: "",
+        code: "",
+        discountText: "",
+        ...msg,
+      };
+    },
+
+    /**
+     * @private
+     */
+    _writeMessage: function (
+      msg: PartialDeep<Cart.Coupon>,
+      writer: protoscript.BinaryWriter,
+    ): protoscript.BinaryWriter {
+      if (msg.name) {
+        writer.writeString(1, msg.name);
+      }
+      if (msg.code) {
+        writer.writeString(2, msg.code);
+      }
+      if (msg.discountText) {
+        writer.writeString(3, msg.discountText);
+      }
+      return writer;
+    },
+
+    /**
+     * @private
+     */
+    _readMessage: function (
+      msg: Cart.Coupon,
+      reader: protoscript.BinaryReader,
+    ): Cart.Coupon {
+      while (reader.nextField()) {
+        const field = reader.getFieldNumber();
+        switch (field) {
+          case 1: {
+            msg.name = reader.readString();
+            break;
+          }
+          case 2: {
+            msg.code = reader.readString();
+            break;
+          }
+          case 3: {
+            msg.discountText = reader.readString();
+            break;
+          }
+          default: {
+            reader.skipField();
+            break;
+          }
+        }
+      }
+      return msg;
+    },
   },
 };
 
@@ -283,6 +405,8 @@ export const CartJSON = {
       auditEntry: auditEntry.EntryJSON.initialize(),
       userId: "",
       items: [],
+      discountTotal: 0n,
+      coupons: [],
       ...msg,
     };
   },
@@ -309,6 +433,12 @@ export const CartJSON = {
     }
     if (msg.items?.length) {
       json["items"] = msg.items.map(CartItemJSON._writeMessage);
+    }
+    if (msg.discountTotal) {
+      json["discountTotal"] = String(msg.discountTotal);
+    }
+    if (msg.coupons?.length) {
+      json["coupons"] = msg.coupons.map(CartJSON.Coupon._writeMessage);
     }
     return json;
   },
@@ -341,7 +471,88 @@ export const CartJSON = {
         msg.items.push(m);
       }
     }
+    const _discountTotal_ = json["discountTotal"];
+    if (_discountTotal_) {
+      msg.discountTotal = BigInt(_discountTotal_);
+    }
+    const _coupons_ = json["coupons"];
+    if (_coupons_) {
+      for (const item of _coupons_) {
+        const m = CartJSON.Coupon.initialize();
+        CartJSON.Coupon._readMessage(m, item);
+        msg.coupons.push(m);
+      }
+    }
     return msg;
+  },
+
+  Coupon: {
+    /**
+     * Serializes Cart.Coupon to JSON.
+     */
+    encode: function (msg: PartialDeep<Cart.Coupon>): string {
+      return JSON.stringify(CartJSON.Coupon._writeMessage(msg));
+    },
+
+    /**
+     * Deserializes Cart.Coupon from JSON.
+     */
+    decode: function (json: string): Cart.Coupon {
+      return CartJSON.Coupon._readMessage(
+        CartJSON.Coupon.initialize(),
+        JSON.parse(json),
+      );
+    },
+
+    /**
+     * Initializes Cart.Coupon with all fields set to their default value.
+     */
+    initialize: function (msg?: Partial<Cart.Coupon>): Cart.Coupon {
+      return {
+        name: "",
+        code: "",
+        discountText: "",
+        ...msg,
+      };
+    },
+
+    /**
+     * @private
+     */
+    _writeMessage: function (
+      msg: PartialDeep<Cart.Coupon>,
+    ): Record<string, unknown> {
+      const json: Record<string, unknown> = {};
+      if (msg.name) {
+        json["name"] = msg.name;
+      }
+      if (msg.code) {
+        json["code"] = msg.code;
+      }
+      if (msg.discountText) {
+        json["discountText"] = msg.discountText;
+      }
+      return json;
+    },
+
+    /**
+     * @private
+     */
+    _readMessage: function (msg: Cart.Coupon, json: any): Cart.Coupon {
+      const _name_ = json["name"];
+      if (_name_) {
+        msg.name = _name_;
+      }
+      const _code_ = json["code"];
+      if (_code_) {
+        msg.code = _code_;
+      }
+      const _discountText_ = json["discountText"];
+      if (_discountText_) {
+        msg.discountText = _discountText_;
+      }
+      return msg;
+    },
   },
 };
 

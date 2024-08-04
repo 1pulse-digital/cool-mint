@@ -1,18 +1,16 @@
 "use client"
 
-import { Cart, CartItem } from "@/lib/fusion/commerce/cart.pb"
-import React, { useEffect } from "react"
-import { ShoppingCartItem } from "./cart-item"
-import { myCart, removeFromCart } from "../actions"
-import { toast } from "sonner"
 import { useCart } from "@/contexts/cart"
+import { CartItem } from "@/lib/fusion/commerce/cart.pb"
+import React, { useEffect } from "react"
+import { toast } from "sonner"
+import { myCart, removeFromCart } from "../actions"
+import { ShoppingCartItem } from "./cart-item"
 
 interface ShoppingCartProps {}
 
 export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
-  const [cart, setCart] = React.useState<Cart>()
-
-  const cartContext = useCart()
+  const { cart, setCart, setAmount } = useCart()
   useEffect(() => {
     myCart({}).then((cart) => setCart(cart))
   }, [])
@@ -36,8 +34,8 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
     if (!cart) {
       return
     }
-    cartContext.setAmount(cart.items.length || 0)
-  }, [cart, cartContext])
+    setAmount(cart.items.length || 0)
+  }, [cart, setAmount])
 
   if (!cart) {
     return <div>Loading...</div>

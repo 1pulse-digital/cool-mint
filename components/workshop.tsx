@@ -12,6 +12,7 @@ import { CalendarClock, Clock2, User } from "lucide-react"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
+import { Spinner } from "./ui/spinner"
 
 interface WorkshopProps {
   masterClass: MasterClass
@@ -26,6 +27,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const router = useRouter()
   const user = useUser()
   const cartContext = useCart()
+  const [loading, setLoadding] = React.useState(false)
 
   const handleAddToCart = async () => {
     // ensure the user is logged in
@@ -42,6 +44,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
     // get the latest version of the cart
     try {
       // TODO: only get the latest version if the add to cart fails on etag mismatch, not every time we click the button
+      setLoadding(true)
       const cart = await myCart({})
       await addToCart({
         eTag: cart.auditEntry.eTag,
@@ -49,10 +52,12 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
         quantity: 1n,
         variant: "",
       })
+      setLoadding(false)
       cartContext.setAmount(cart.items.length + 1)
       toast.success("Added to cart")
       router.push("/cart")
     } catch (e: unknown) {
+      setLoadding(false)
       toast.error("Failed to add to cart: " + parseError(e))
       console.error("Add to cart failed:", e)
     }
@@ -63,7 +68,6 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   }
 
   const date = new Date(session.date)
-  const day = format(date, "eee")
   const stamp = format(date, "h:mm a")
   const soldOut = session.confirmedAttendees >= masterClass.maxAttendees
   return (
@@ -103,7 +107,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
             </div>
           </div>
           <p className="py-2 text-sm font-normal text-white sm:text-base">
-            {masterClass.description}
+            {masterClass.shortDescription}
           </p>
         </div>
       </div>
@@ -112,13 +116,16 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
           {moneyFormatter.format(masterClass.standardPrice / 100n)}
         </p>
         <p className="py-1 text-base text-foreground">
-          {masterClass.maxAttendees - session.confirmedAttendees} Spots Left
+          {Math.max(masterClass.maxAttendees - session.confirmedAttendees,0)} Spots Left
         </p>
         <div className="w-40 py-5">
           {soldOut ? (
             <span className="font-bold text-muted">Sold Out</span>
           ) : (
-            <Button onClick={handleAddToCart}>Book a Spot</Button>
+            <Button onClick={handleAddToCart} disabled={loading} className="relative pr-4">
+            Book a Spot
+            {loading && <Spinner className="text-background w-4 h-4 top-0 right-0 absolute" />}
+          </Button>
           )}
         </div>
       </div>

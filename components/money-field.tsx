@@ -10,6 +10,11 @@ export const moneyFormatter = Intl.NumberFormat("en-ZA", {
   maximumFractionDigits: 2,
 })
 
-export const MoneyField: React.FC<{ value: bigint }> = ({ value }) => (
-  <span>{moneyFormatter.format(value / 100n)}</span>
+export const MoneyField: React.FC<{ value: bigint; className?: string }> = ({
+  value,
+  className,
+}) => (
+  <span className={className}>
+    {moneyFormatter.format(Number(value) / 100)}
+  </span>
 )

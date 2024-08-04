@@ -145,6 +145,12 @@ export function DataTable<TData, TValue>({
             </ul>
             <Separator className="my-2" />
             <ul className="grid gap-3">
+              {selectedRow && selectedRow.discountTotal > 0n && (
+                <li className="flex items-center justify-between font-semibold">
+                  <span className="text-muted-foreground">Discount</span>
+                  <MoneyField value={-selectedRow.discountTotal} className="text-primary" />
+                </li>
+              )}
               <li className="flex items-center justify-between font-semibold">
                 <span className="text-muted-foreground">Total</span>
                 <MoneyField value={total} />
@@ -152,6 +158,25 @@ export function DataTable<TData, TValue>({
             </ul>
           </div>
           <Separator className="my-4" />
+          {selectedRow && selectedRow.coupons.length > 0 && (
+            <>
+              <div className="font-semibold">Coupons</div>
+              <ul className="flex flex-col gap-2">
+                {selectedRow.coupons.map((item) => (
+                  <li
+                    key={item.name}
+                    className="flex grow items-center  space-x-2"
+                  >
+                    <span className="text-muted-foreground">{item.code}</span>
+                    <span className="grow italic text-muted-foreground">
+                      {item.discountText}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Separator className="my-4" />
+            </>
+          )}
           <DialogFooter>
             <div className="flex w-full items-center text-nowrap text-xs text-muted-foreground">
               <span className="grow">Made in Workshop</span>

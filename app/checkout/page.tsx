@@ -1,12 +1,9 @@
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import HeaderTitle from "@/components/header-title"
-import { myCart } from "../cart/actions"
 import { CheckoutForm } from "./components/checkout-form"
 import { OrderSummary } from "./components/order-summary"
 
 const CheckoutPage: React.FC = async () => {
-  const cart = await myCart({})
-
   return (
     <div className="px-8">
       <Breadcrumbs
@@ -18,10 +15,10 @@ const CheckoutPage: React.FC = async () => {
       <HeaderTitle>Checkout</HeaderTitle>
       <div className="mb-8 flex flex-col-reverse md:flex-row">
         <div className="md:grow">
-          <CheckoutForm cart={cart} />
+          <CheckoutForm />
         </div>
         <div className={"flex justify-center"}>
-          <OrderSummary cart={cart} />
+          <OrderSummary />
         </div>
       </div>
     </div>

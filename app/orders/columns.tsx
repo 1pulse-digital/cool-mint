@@ -25,6 +25,10 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => <MoneyField value={row.original.total} />,
   },
   {
+    header: "Discount",
+    cell: ({ row }) => <MoneyField value={row.original.discountTotal} />,
+  },
+  {
     header: "Date Created",
     cell: ({ row }) =>
       format(new Date(row.original.auditEntry.dateCreated), "yyyy-MM-dd HH:mm"),

@@ -16,16 +16,16 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Spinner } from "@/components/ui/spinner"
+import { useCart } from "@/contexts/cart"
 import { useUser } from "@/contexts/user"
-import { Cart } from "@/lib/fusion/commerce/cart.pb"
 import { Address, BillingAddress } from "@/lib/fusion/commerce/order.pb"
+import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { placeOrder } from "../actions"
-import { useRouter } from "next/navigation"
+import { myCart } from "@/app/cart/actions"
 
-interface CheckoutFormProps {
-  cart: Cart
-}
+interface CheckoutFormProps {}
 
 const addressSchema = z.object({
   firstName: z.string(),
@@ -48,15 +48,24 @@ const schema = z.object({
 
 type CheckoutFormValues = z.infer<typeof schema>
 
-export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
+export const CheckoutForm = ({}: CheckoutFormProps) => {
   const user = useUser()
   const router = useRouter()
+  const { cart, setCart } = useCart()
+
+  useEffect(() => {
+    myCart({}).then((cart) => setCart(cart))
+  }, [])
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {},
     mode: "onChange",
   })
+
+  const {
+    formState: { isLoading, isSubmitting },
+  } = form
 
   useEffect(() => {
     if (user && user.email) {
@@ -84,6 +93,8 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
       }
     }
   }
+
+  const loading = isLoading || isSubmitting
 
   return (
     <Form {...form}>
@@ -115,7 +126,9 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
                 <FormControl>
                   <Input type="tel" {...field} />
                 </FormControl>
-                <FormDescription>(Optional) Your telephone number</FormDescription>
+                <FormDescription>
+                  (Optional) Your telephone number
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -148,7 +161,7 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
             )}
           />
         </div>
-        <div className="grid gap-2 lg:py-4 lg:grid-cols-2">
+        <div className="grid gap-2 lg:grid-cols-2 lg:py-4">
           <FormField
             control={form.control}
             name="billingAddress.address.company"
@@ -158,9 +171,7 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormDescription>
-                  (Optional) Your company name
-                </FormDescription>
+                <FormDescription>(Optional) Your company name</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -236,8 +247,16 @@ export const CheckoutForm = ({ cart }: CheckoutFormProps) => {
             )}
           />
         </div>
-        <Button size={"sm"} type="submit">
+        <Button
+          size={"sm"}
+          type="submit"
+          disabled={loading}
+          className="relative pr-4"
+        >
           Place Order
+          {loading && (
+            <Spinner className="absolute right-0 top-0 h-4 w-4 text-background" />
+          )}
         </Button>
       </form>
     </Form>
