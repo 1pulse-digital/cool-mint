@@ -91,7 +91,7 @@ const ConfirmedBooking: React.FC = () => {
               {/* TODO: BYOB: Build your own button */}
                 <AddToCalendarButton
                   label="Add to calendar"
-                  name="Workshop Tour"
+                  name="Tour of Made in Workshop"
                   startDate={bookingCalendarDay}
                   startTime={startTime}
                   endTime={endTime}
@@ -99,7 +99,7 @@ const ConfirmedBooking: React.FC = () => {
                   timeZone="Africa/Johannesburg"
                   location={location}
                   // TODO Description to be discussed
-                  description="Workshop Tour at Made In Workshop"
+                  description="Thank you for booking a workshop Tour at Made In Workshop. Please visit www.madeinworkshop.co.za for more information."
                 />
               <div className="flex items-center justify-center">
                 <Link href="/">
