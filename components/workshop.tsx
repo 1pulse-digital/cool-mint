@@ -9,6 +9,7 @@ import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { CalendarClock, Clock2, User } from "lucide-react"
+import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
@@ -30,6 +31,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const pathname = usePathname()
   const [loading, setLoadding] = React.useState(false)
 
+  // TODO: Move this into a hook/context so that it can be reused
   const handleAddToCart = async () => {
     // ensure the user is logged in
     if (!user) {
@@ -71,9 +73,8 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
     }
   }
 
-  const handleShowClass = () => {
-    router.push(`/classes/${masterClass.displayName.toLocaleLowerCase()}`)
-  }
+  // TODO: remap behind the scenes with nexts js server side route
+  const url = masterClass.name.replace("masterClasses/", "classes/")
 
   const date = new Date(session.date)
   const stamp = format(date, "h:mm a")
@@ -85,16 +86,15 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
           <span className="inline-flex items-center text-start text-primary">
             {format(new Date(session.date), "eeee, dd MMM")}
           </span>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={(e) => {
-              handleShowClass()
-            }}
-            className="text-xl font-bold text-muted-foreground"
-          >
-            {masterClass.displayName}
-          </Button>
+          <Link href={url}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xl font-bold text-muted-foreground"
+            >
+              {masterClass.displayName}
+            </Button>
+          </Link>
         </div>
         <div className="w-full py-4">
           <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
