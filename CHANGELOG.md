@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.21.0](https://github.com/1pulse-digital/cool-mint/compare/v0.20.2...v0.21.0) (2024-08-05)
+
+
+### Features
+
+* book a spot from the individual class page ([ac663f9](https://github.com/1pulse-digital/cool-mint/commit/ac663f9f9ddba9da8a861532785da07201f7d3e9))
+
+
+### Bug Fixes
+
+* fix mobile responsiveness and update footer ([29f1b00](https://github.com/1pulse-digital/cool-mint/commit/29f1b0023da1f3ed0c284f25a5c5c40f4d4039e2))
+* Fix the classes/[slug] page ([a57e584](https://github.com/1pulse-digital/cool-mint/commit/a57e584eceb18ca2d98e728d84225df03e2535b1))
+* fix typo in footer and team carousel ([1632a3d](https://github.com/1pulse-digital/cool-mint/commit/1632a3d01e51612de9f782a4a83d1b401f9131d8))
+* Remove the breadcrumb ([1c78e55](https://github.com/1pulse-digital/cool-mint/commit/1c78e5503b25d6751ad613e1bd3321c6b32d2763))
+* Update the order confirmation page ([082c3dd](https://github.com/1pulse-digital/cool-mint/commit/082c3dd09773f93ed61c57eff0bfbefdbe91a31c))
+
 ## [0.20.2](https://github.com/1pulse-digital/cool-mint/compare/v0.20.1...v0.20.2) (2024-08-04)
 
 
