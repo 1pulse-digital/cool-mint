@@ -14,6 +14,8 @@ import { Clock, UserRound } from "lucide-react"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { getMasterClass } from "../actions"
+import { Suspense } from "react"
+import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 
 interface ClassPageProps {
   params: {
@@ -100,6 +102,11 @@ export default async function Page({ params }: ClassPageProps) {
             </Carousel>
           </div>
         )}
+        <div className="px-8">
+          <Suspense fallback={<UpcomingClassesLoader />}>
+            <UpcomingClasses masterClass={masterClass.name}/>
+          </Suspense>
+        </div>
         <div className="py-20 lg:px-8 2xl:px-24">
           <GetInTouch />
         </div>

@@ -6,10 +6,23 @@ import { UpcomingWorkshops } from "./base/upcomingWorkshops"
 import { Card, CardTitle } from "./ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 
-export const UpcomingClasses = async () => {
+export const UpcomingClasses = async ({
+  masterClass,
+}: {
+  masterClass?: string
+}) => {
   const response = await upcomingSessions({})
+  if (masterClass) {
+    response.masterClasses = response.masterClasses.filter(
+      (item) => item.name === masterClass,
+    )
+    response.sessions = response.sessions.filter(
+      (item) => item.parent === masterClass,
+    )
+  }
   return (
     <UpcomingWorkshops
+      single={masterClass ? true : false}
       masterClasses={response.masterClasses}
       sessions={response.sessions}
     />

@@ -1,6 +1,6 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
+import { Card, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
@@ -9,18 +9,16 @@ import React from "react"
 import { WorkshopItem } from "../workshop"
 
 interface UpcomingWorkshopsProps {
+  single: boolean
   sessions: Session[]
   masterClasses: MasterClass[]
 }
 
 export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
+  single,
   masterClasses,
   sessions,
 }) => {
-  // const dates = sessions.map((session) => session.date)
-  // const months = dates.map((dateS) => format(new Date(dateS), "MMMM"))
-  // const categories = masterClasses.map((masterClass) => masterClass.tags)
-
   // Create a map to store sessions grouped by month
   const sessionMap = new Map<string, Session[]>()
   let defaultMonth: string = ""
@@ -56,6 +54,11 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
         </div>
 
         <div className="px-0 xl:px-0 2xl:px-40">
+          {single && (
+            <CardTitle className="mb-4 text-foreground">
+              {masterClasses[0].displayName}
+            </CardTitle>
+          )}
           {Array.from(sessionMap.keys()).map((month) => (
             <TabsContent key={month} value={month} className="space-y-8 px-10">
               {sessionMap.get(month)?.map((session) => {
@@ -68,7 +71,11 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
                 }
                 return (
                   <Card className="border-0 bg-background" key={session.name}>
-                    <WorkshopItem masterClass={masterClass} session={session} />
+                    <WorkshopItem
+                      single={single}
+                      masterClass={masterClass}
+                      session={session}
+                    />
                   </Card>
                 )
               })}

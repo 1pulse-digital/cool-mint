@@ -18,9 +18,11 @@ import { Spinner } from "./ui/spinner"
 interface WorkshopProps {
   masterClass: MasterClass
   session: Session
+  single: boolean
 }
 
 export const WorkshopItem: React.FC<WorkshopProps> = ({
+  single,
   masterClass,
   session,
   // learnMoreLink,
@@ -80,21 +82,23 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const stamp = format(date, "h:mm a")
   const soldOut = session.confirmedAttendees >= masterClass.maxAttendees
   return (
-    <div className="flex flex-col sm:flex-row w-full gap-x-4 ">
+    <div className="flex w-full flex-col gap-x-4 sm:flex-row ">
       <div className="grow">
         <div className="w-full">
           <span className="inline-flex items-center text-start text-primary">
             {format(new Date(session.date), "eeee, dd MMM")}
           </span>
-          <Link href={url}>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-xl font-bold text-muted-foreground"
-            >
-              {masterClass.displayName}
-            </Button>
-          </Link>
+          {!single && (
+            <Link href={url}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xl font-bold text-muted-foreground"
+              >
+                {masterClass.displayName}
+              </Button>
+            </Link>
+          )}
         </div>
         <div className="w-full py-4">
           <hr className="h-[1px] w-full  flex-grow border-0 bg-[#A1A1AA]"></hr>
