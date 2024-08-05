@@ -20,12 +20,6 @@ interface OrderConfirmationProps {
   order: Order
 }
 
-interface OrderConfirmedProps {
-  name: string
-  price: bigint
-  confirm: string
-}
-
 export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
   order,
 }) => {
@@ -37,9 +31,11 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
       >
         <div
           id="title"
-          className="text-lg font-semibold flex leading-none tracking-tight"
+          className="flex text-lg font-semibold leading-none tracking-tight"
         >
-          <span className="grow">Order {order.number.toString().padStart(6,"0")}</span>
+          <span className="grow">
+            Order {order.number.toString().padStart(6, "0")}
+          </span>
           <span>{order.status}</span>
           {/* Order {order.number.toString().padStart(6, "0")} {order.status} */}
         </div>
@@ -80,6 +76,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           </li>
         </ul>
       </div>
+      ˝
       <Separator className="my-4" />
       {order.coupons.length > 0 && (
         <>
@@ -109,54 +106,3 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
     </div>
   )
 }
-
-const OrderConfirmedItem: React.FC<OrderConfirmedProps> = async ({
-  name,
-  price,
-  confirm,
-}) => {
-  const masterClass = await getMasterClass({
-    name: "masterClasses/" + name.toLowerCase().replace(/\s+/g, "-"),
-  })
-
-  return (
-    <div className="flex space-x-2 rounded-2xl py-6 font-helvetica text-sm">
-      <Image
-        src={masterClass.gallery.thumbnail.url}
-        alt={title}
-        height={80}
-        width={65}
-        className="rounded-xl"
-      />
-      <div></div>
-      <div className="text-start">
-        <span className="font-helvetica text-xl font-bold text-foreground">
-          {masterClass.displayName}
-        </span>
-        <div className="row sm:flex sm:space-x-32">
-          <div className="space-x-4">
-            <span className="inline-flex items-center py-1 text-xs text-foreground">
-              <Clock className="mr-2 h-4 w-4 text-yellow-500" />
-              {masterClass.duration / 60} hours
-            </span>
-            <span className="inline-flex py-1 text-xs text-foreground">
-              <Users className="mr-2 h-4 w-4 text-yellow-500" />
-              QTY: {masterClass.maxAttendees}
-            </span>
-          </div>
-          <div>
-            <MoneyField value={price} />
-            <Badge
-              variant="outline"
-              className="mt-1 border-none text-[#ADFA1C]"
-            >
-              {confirm}
-            </Badge>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default OrderConfirmedItem

@@ -1,17 +1,16 @@
 import Button from "@/components/base/button"
 import GetInTouch from "@/components/base/getInTouch"
 import HeaderTitle from "@/components/header-title"
-import { MoneyField } from "@/components/money-field"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Order } from "@/lib/fusion/commerce/order.pb"
 import { Check, Loader } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { myOrders } from "../../orders/actions"
-import OrderConfirmedItem, {
+import {
   OrderConfirmation,
 } from "./components/orderConfirmed"
-import { Order } from "@/lib/fusion/commerce/order.pb"
 
 export default async function Page({ params }: { params: { number: string } }) {
   const { number: orderNumber } = params
