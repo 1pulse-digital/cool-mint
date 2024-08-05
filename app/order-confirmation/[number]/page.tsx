@@ -3,19 +3,21 @@ import GetInTouch from "@/components/base/getInTouch"
 import HeaderTitle from "@/components/header-title"
 import { MoneyField } from "@/components/money-field"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Check } from "lucide-react"
+import { Check, Loader } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { myOrders } from "../../orders/actions"
-import OrderConfirmedItem from "./components/orderConfirmed"
+import OrderConfirmedItem, {
+  OrderConfirmation,
+} from "./components/orderConfirmed"
+import { Order } from "@/lib/fusion/commerce/order.pb"
 
 export default async function Page({ params }: { params: { number: string } }) {
   const { number: orderNumber } = params
   const response = await myOrders({})
   const order = response.orders.find(
-    (order) =>
-      order.status === "COMPLETED" && order.name.includes(orderNumber ?? ""),
+    (order) => order.number == BigInt(orderNumber),
   )
 
   if (!order) {
@@ -25,84 +27,36 @@ export default async function Page({ params }: { params: { number: string } }) {
   return (
     <div className={"bg-background px-8 py-20"}>
       <div className="font-heletica grid content-center items-center text-center sm:p-10">
-        <div className="inline-flex justify-center  font-helvetica text-xs font-normal text-foreground">
-          <Link href="/">
-            <div>
-              Home
-              <span className="px-1">|</span>
-            </div>
-          </Link>
-          <Link href="/order-confirmation">
-            <div className="text-primary">Order Confirmation</div>
-          </Link>
-        </div>
-
         <div>
           <HeaderTitle>Order Confirmation</HeaderTitle>
         </div>
         <div className="flex items-center justify-center py-4">
-          <Check size={100} color="#ADFA1C" />
+          {order.status === Order.Status.PENDING && (
+            <Skeleton className="flex h-32 w-32 items-center justify-center space-x-2">
+              <span>{order.status}</span>
+              <Loader className="h-4 w-4 animate-pulse" />
+            </Skeleton>
+          )}
+          {order.status === Order.Status.COMPLETED && (
+            <Check className="h-32 w-32" color="#ADFA1C" />
+          )}
         </div>
-        <div className="grid items-center justify-center">
+        <div className="flex">
           {order?.lineItems.map((item, idx) => {
             return (
-              <div key={idx}>
+              <div className="w-full" key={idx}>
                 <Suspense fallback={<Skeleton />}>
-                  <OrderConfirmedItem
-                    name={item.productDisplayName}
-                    price={item.price}
-                    confirm={order.status}
-                  />
+                  <OrderConfirmation order={order} />
                 </Suspense>
               </div>
             )
           })}
         </div>
       </div>
-      <div className="sm:flex sm:justify-center sm:space-x-52">
-        <div className="">
-          <Link href="/classes">
-            <Button color="primary">Back to Classes</Button>
-          </Link>
-        </div>
-        <div className="sm:flex-col">
-          <div>
-            <span
-              className={
-                "text-start font-helvetica text-BodyText font-bold text-muted-foreground"
-              }
-            >
-              Total:
-            </span>
-          </div>
-          <div>
-            <span
-              className={
-                "text-start font-helvetica text-[25px] font-bold text-primary"
-              }
-            >
-              <MoneyField value={BigInt(order?.total ?? 0)} />
-            </span>
-          </div>
-
-          <div className="pb-14 text-[16px]  text-primary ">
-            <div>
-              <span className={"font-helvetica font-bold line-through"}>
-                <MoneyField
-                  value={
-                    BigInt(order?.total ?? 0) +
-                    BigInt(order?.discountTotal ?? 0)
-                  }
-                />
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="xs:block grid hidden">
-          <Link href="/workshops">
-            <Button color="primary">Back to Workshops</Button>
-          </Link>
-        </div>
+      <div className="flex justify-center mt-8 sm:mt-0">
+        <Link href="/classes">
+          <Button color="primary">Back to Classes</Button>
+        </Link>
       </div>
       <div className="py-20 lg:px-8 2xl:px-24">
         <GetInTouch />

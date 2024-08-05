@@ -5,11 +5,109 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users } from "lucide-react"
 import { MoneyField } from "@/components/money-field"
 import { getMasterClass } from "@/app/classes/actions"
+import { Order } from "@/lib/fusion/commerce/order.pb"
+import {
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { format } from "date-fns"
+import { Separator } from "@/components/ui/separator"
+
+interface OrderConfirmationProps {
+  order: Order
+}
 
 interface OrderConfirmedProps {
   name: string
   price: bigint
   confirm: string
+}
+
+export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
+  order,
+}) => {
+  return (
+    <div className="container">
+      <div
+        id="header"
+        className="flex flex-col space-y-3 text-center sm:text-left"
+      >
+        <div
+          id="title"
+          className="text-lg font-semibold flex leading-none tracking-tight"
+        >
+          <span className="grow">Order {order.number.toString().padStart(6,"0")}</span>
+          <span>{order.status}</span>
+          {/* Order {order.number.toString().padStart(6, "0")} {order.status} */}
+        </div>
+        <div id="description" className="text-sm text-muted-foreground">
+          Date: {format(new Date(order.auditEntry.dateCreated), "MMMM d, yyyy")}
+        </div>
+      </div>
+      <div className="grid gap-3">
+        <div className="font-semibold">Order Details</div>
+        <ul className="grid gap-3">
+          {order.lineItems.map((item) => (
+            <li
+              key={item.product}
+              className="flex items-center justify-between"
+            >
+              <span className="text-muted-foreground">
+                {item.productDisplayName} x{" "}
+                <span>{item.quantity.toString()}</span>
+              </span>
+              <MoneyField value={item.price * item.quantity} />
+            </li>
+          ))}
+        </ul>
+        <Separator className="my-2" />
+        <ul className="grid gap-3">
+          {order && order.discountTotal > 0n && (
+            <li className="flex items-center justify-between font-semibold">
+              <span className="text-muted-foreground">Discount</span>
+              <MoneyField
+                value={-order.discountTotal}
+                className="text-primary"
+              />
+            </li>
+          )}
+          <li className="flex items-center justify-between font-semibold">
+            <span className="text-muted-foreground">Total</span>
+            <MoneyField value={order.total} />
+          </li>
+        </ul>
+      </div>
+      <Separator className="my-4" />
+      {order.coupons.length > 0 && (
+        <>
+          <div className="font-semibold">Coupons</div>
+          <ul className="flex flex-col gap-2">
+            {order.coupons.map((item) => (
+              <li key={item.name} className="flex grow items-center  space-x-2">
+                <span className="text-muted-foreground">{item.code}</span>
+                <span className="grow italic text-muted-foreground">
+                  {item.discountText}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <Separator className="my-4" />
+        </>
+      )}
+      <div
+        id="footer"
+        className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"
+      >
+        <div className="flex w-full items-center text-nowrap text-xs text-muted-foreground">
+          <span className="grow text-start">Made in Workshop</span>
+          <span className="font-bold">All prices are inclusive of VAT</span>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 const OrderConfirmedItem: React.FC<OrderConfirmedProps> = async ({
@@ -41,10 +139,6 @@ const OrderConfirmedItem: React.FC<OrderConfirmedProps> = async ({
               <Clock className="mr-2 h-4 w-4 text-yellow-500" />
               {masterClass.duration / 60} hours
             </span>
-            {/* <span className="text-foreground text-xs py-1 inline-flex items-center">
-            <Calendar className="w-4 h-4 mr-2 text-yellow-500" />
-            {masterClass.SESSION_TIME } 
-          </span> */}
             <span className="inline-flex py-1 text-xs text-foreground">
               <Users className="mr-2 h-4 w-4 text-yellow-500" />
               QTY: {masterClass.maxAttendees}
