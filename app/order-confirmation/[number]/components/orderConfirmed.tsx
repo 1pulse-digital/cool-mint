@@ -1,20 +1,8 @@
-import React from "react"
-import { title } from "process"
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Users } from "lucide-react"
 import { MoneyField } from "@/components/money-field"
-import { getMasterClass } from "@/app/classes/actions"
-import { Order } from "@/lib/fusion/commerce/order.pb"
-import {
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
-import { format } from "date-fns"
 import { Separator } from "@/components/ui/separator"
+import { Order } from "@/lib/fusion/commerce/order.pb"
+import { format } from "date-fns"
+import React from "react"
 
 interface OrderConfirmationProps {
   order: Order
