@@ -80,7 +80,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   const stamp = format(date, "h:mm a")
   const soldOut = session.confirmedAttendees >= masterClass.maxAttendees
   return (
-    <div className="flex w-full gap-x-4">
+    <div className="flex flex-col sm:flex-row w-full gap-x-4 ">
       <div className="grow">
         <div className="w-full">
           <span className="inline-flex items-center text-start text-primary">
@@ -119,7 +119,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
           </p>
         </div>
       </div>
-      <div className="ml-4">
+      <div className=" ml-4">
         <p className="text- pt-4 font-bold text-primary lg:pt-0">
           {moneyFormatter.format(masterClass.standardPrice / 100n)}
         </p>

@@ -240,11 +240,11 @@ export const Footer = () => {
           © 2024 Made in Workshop.
         </div>
         <Link
-          href="https://www.1pulse.digital/"
+          href="https://bit.ly/3YwsXsa"
           target="_blank"
           className="text-foreground hover:text-primary"
         >
-          <p>Web Design and Development by 1Pulse Digital</p>
+          <p>UI/UX Design and Web Development by <strong>1Pulse Digital</strong></p>
         </Link>
 
         {/* Scroll to Top */}
