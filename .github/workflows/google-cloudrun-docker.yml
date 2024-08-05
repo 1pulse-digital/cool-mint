@@ -52,7 +52,7 @@ env:
   PROJECT_ID: "made-in-workshop"
   GAR_LOCATION: "africa-south1"
   SERVICE: "cool-mint"
-  REGION: "africa-south1"
+  REGION: "europe-west1"
 
 jobs:
   deploy:
