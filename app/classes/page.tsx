@@ -1,5 +1,4 @@
 import GetInTouch from "@/components/base/getInTouch"
-import { Breadcrumbs } from "@/components/breadcrumbs"
 import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 import HeaderTitle from "@/components/header-title"
 import { Suspense } from "react"
@@ -9,13 +8,6 @@ export default async function Page() {
     <div className={"bg-background"}>
       <div className="grid grid-cols-1 py-10 sm:py-20">
         <div className={"grid content-center px-8 font-helvetica"}>
-          {/* <Breadcrumbs
-            crumbs={[
-              { name: "Home", href: "/" },
-              { name: "Classes", href: "/classes" },
-            ]}
-          /> */}
-
           <HeaderTitle
             description={
               <>
@@ -33,7 +25,6 @@ export default async function Page() {
           >
             Upcoming Classes
           </HeaderTitle>
-
         </div>
         <div className="lg:mx-20 xl:mx-40">
           <Suspense fallback={<UpcomingClassesLoader />}>
