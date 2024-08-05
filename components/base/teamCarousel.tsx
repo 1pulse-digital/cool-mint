@@ -325,7 +325,7 @@ export function TeamCarousel() {
                 </div>
                 <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
                   <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
-                    Deneo (Surname)
+                    Deneo Mosana
                   </h3>
                   <span className="py-2 pb-6 font-helvetica text-sm text-primary">
                     Workshop Caretaker
