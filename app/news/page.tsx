@@ -315,11 +315,11 @@ export default async function Page() {
             </Tabs>
           </div>
         </div>
-        <div className="py-6 text-center sm:py-8 md:py-10 lg:py-8">
+        {/* <div className="py-6 text-center sm:py-8 md:py-10 lg:py-8">
         <Link href="/">
         <Button color={"primary"}>Learn More</Button>
         </Link>
-        </div>
+        </div> */}
        </div>
       <div className="py-10 sm:py-20 lg:px-8 2xl:px-24">
       <GetInTouch />
