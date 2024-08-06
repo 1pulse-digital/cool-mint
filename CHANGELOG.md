@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.1](https://github.com/1pulse-digital/cool-mint/compare/v0.21.0...v0.21.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* Fix the home farm article image ([02938dc](https://github.com/1pulse-digital/cool-mint/commit/02938dc823589cfe1206f71c2235e9bf30928625))
+
 ## [0.21.0](https://github.com/1pulse-digital/cool-mint/compare/v0.20.2...v0.21.0) (2024-08-05)
 
 
