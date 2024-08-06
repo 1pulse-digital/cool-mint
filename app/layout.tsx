@@ -7,6 +7,7 @@ import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
 import "./globals.css"
 import { CartProvider } from "@/contexts/cart"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 const inter = Inter({ subsets: ["latin"] })
 const isDev = process?.env.NODE_ENV === "development"
@@ -46,6 +47,7 @@ export default function RootLayout({
           </CartProvider>
         </UserProvider>
       </body>
+      <GoogleAnalytics gaId="G-CKHPE5XL4R" />
     </html>
   )
 }
