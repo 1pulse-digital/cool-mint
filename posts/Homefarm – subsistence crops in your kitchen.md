@@ -3,7 +3,7 @@ title: Homefarm – subsistence crops in your kitchen
 description: Michael Currin wants people living in concrete jungles to become more food independent, so he developed a smart appliance to do just that.
 date: October 25, 2019
 author: Henry Levine
-imageUrl: /icons/Homefarm – subsistence crops in your kitchen.jpeg
+imageUrl: /icons/Homefarm-subsistence-crops-in-your-kitchen.jpeg
 categories: News
 filter: news
 ---
