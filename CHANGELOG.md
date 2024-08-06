@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.0](https://github.com/1pulse-digital/cool-mint/compare/v0.21.2...v0.22.0) (2024-08-06)
+
+
+### Features
+
+* Add Google Analytics tracking code ([c057a18](https://github.com/1pulse-digital/cool-mint/commit/c057a18b953b12c2afdf9efb6e450a67826a1de9))
+
 ## [0.21.2](https://github.com/1pulse-digital/cool-mint/compare/v0.21.1...v0.21.2) (2024-08-06)
 
 
