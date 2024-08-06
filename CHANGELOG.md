@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.2](https://github.com/1pulse-digital/cool-mint/compare/v0.21.1...v0.21.2) (2024-08-06)
+
+
+### Bug Fixes
+
+* remove 'Load More' button on News page ([4f24471](https://github.com/1pulse-digital/cool-mint/commit/4f24471c80810aa3a30683c049fa53b051f61dba))
+
 ## [0.21.1](https://github.com/1pulse-digital/cool-mint/compare/v0.21.0...v0.21.1) (2024-08-06)
 
 
