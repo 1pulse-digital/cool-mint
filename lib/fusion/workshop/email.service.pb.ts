@@ -16,11 +16,12 @@ import type { ClientConfiguration } from "twirpscript";
 //========================================//
 
 export interface SendEmailRequest {
-  sender: Mailer;
   /**
    * Should support multiple recipients in the future
    */
-  recipient: Mailer;
+  to: EmailAddress[];
+  cc: EmailAddress[];
+  bcc: EmailAddress[];
   subject: string;
   body: EmailBody;
   attachment: Attachment[];
@@ -30,7 +31,7 @@ export interface SendEmailResponse {
   message: string;
 }
 
-export interface Mailer {
+export interface EmailAddress {
   name: string;
   email: string;
 }
@@ -148,8 +149,9 @@ export const SendEmailRequest = {
    */
   initialize: function (msg?: Partial<SendEmailRequest>): SendEmailRequest {
     return {
-      sender: Mailer.initialize(),
-      recipient: Mailer.initialize(),
+      to: [],
+      cc: [],
+      bcc: [],
       subject: "",
       body: EmailBody.initialize(),
       attachment: [],
@@ -164,21 +166,28 @@ export const SendEmailRequest = {
     msg: PartialDeep<SendEmailRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.sender) {
-      writer.writeMessage(1, msg.sender, Mailer._writeMessage);
+    if (msg.to?.length) {
+      writer.writeRepeatedMessage(2, msg.to as any, EmailAddress._writeMessage);
     }
-    if (msg.recipient) {
-      writer.writeMessage(2, msg.recipient, Mailer._writeMessage);
+    if (msg.cc?.length) {
+      writer.writeRepeatedMessage(3, msg.cc as any, EmailAddress._writeMessage);
+    }
+    if (msg.bcc?.length) {
+      writer.writeRepeatedMessage(
+        4,
+        msg.bcc as any,
+        EmailAddress._writeMessage,
+      );
     }
     if (msg.subject) {
-      writer.writeString(3, msg.subject);
+      writer.writeString(5, msg.subject);
     }
     if (msg.body) {
-      writer.writeMessage(4, msg.body, EmailBody._writeMessage);
+      writer.writeMessage(6, msg.body, EmailBody._writeMessage);
     }
     if (msg.attachment?.length) {
       writer.writeRepeatedMessage(
-        5,
+        7,
         msg.attachment as any,
         Attachment._writeMessage,
       );
@@ -196,23 +205,33 @@ export const SendEmailRequest = {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
-        case 1: {
-          reader.readMessage(msg.sender, Mailer._readMessage);
-          break;
-        }
         case 2: {
-          reader.readMessage(msg.recipient, Mailer._readMessage);
+          const m = EmailAddress.initialize();
+          reader.readMessage(m, EmailAddress._readMessage);
+          msg.to.push(m);
           break;
         }
         case 3: {
-          msg.subject = reader.readString();
+          const m = EmailAddress.initialize();
+          reader.readMessage(m, EmailAddress._readMessage);
+          msg.cc.push(m);
           break;
         }
         case 4: {
-          reader.readMessage(msg.body, EmailBody._readMessage);
+          const m = EmailAddress.initialize();
+          reader.readMessage(m, EmailAddress._readMessage);
+          msg.bcc.push(m);
           break;
         }
         case 5: {
+          msg.subject = reader.readString();
+          break;
+        }
+        case 6: {
+          reader.readMessage(msg.body, EmailBody._readMessage);
+          break;
+        }
+        case 7: {
           const m = Attachment.initialize();
           reader.readMessage(m, Attachment._readMessage);
           msg.attachment.push(m);
@@ -296,31 +315,31 @@ export const SendEmailResponse = {
   },
 };
 
-export const Mailer = {
+export const EmailAddress = {
   /**
-   * Serializes Mailer to protobuf.
+   * Serializes EmailAddress to protobuf.
    */
-  encode: function (msg: PartialDeep<Mailer>): Uint8Array {
-    return Mailer._writeMessage(
+  encode: function (msg: PartialDeep<EmailAddress>): Uint8Array {
+    return EmailAddress._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes Mailer from protobuf.
+   * Deserializes EmailAddress from protobuf.
    */
-  decode: function (bytes: ByteSource): Mailer {
-    return Mailer._readMessage(
-      Mailer.initialize(),
+  decode: function (bytes: ByteSource): EmailAddress {
+    return EmailAddress._readMessage(
+      EmailAddress.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes Mailer with all fields set to their default value.
+   * Initializes EmailAddress with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<Mailer>): Mailer {
+  initialize: function (msg?: Partial<EmailAddress>): EmailAddress {
     return {
       name: "",
       email: "",
@@ -332,7 +351,7 @@ export const Mailer = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<Mailer>,
+    msg: PartialDeep<EmailAddress>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
     if (msg.name) {
@@ -348,9 +367,9 @@ export const Mailer = {
    * @private
    */
   _readMessage: function (
-    msg: Mailer,
+    msg: EmailAddress,
     reader: protoscript.BinaryReader,
-  ): Mailer {
+  ): EmailAddress {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
@@ -559,8 +578,9 @@ export const SendEmailRequestJSON = {
    */
   initialize: function (msg?: Partial<SendEmailRequest>): SendEmailRequest {
     return {
-      sender: MailerJSON.initialize(),
-      recipient: MailerJSON.initialize(),
+      to: [],
+      cc: [],
+      bcc: [],
       subject: "",
       body: EmailBodyJSON.initialize(),
       attachment: [],
@@ -575,17 +595,14 @@ export const SendEmailRequestJSON = {
     msg: PartialDeep<SendEmailRequest>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.sender) {
-      const _sender_ = MailerJSON._writeMessage(msg.sender);
-      if (Object.keys(_sender_).length > 0) {
-        json["sender"] = _sender_;
-      }
+    if (msg.to?.length) {
+      json["to"] = msg.to.map(EmailAddressJSON._writeMessage);
     }
-    if (msg.recipient) {
-      const _recipient_ = MailerJSON._writeMessage(msg.recipient);
-      if (Object.keys(_recipient_).length > 0) {
-        json["recipient"] = _recipient_;
-      }
+    if (msg.cc?.length) {
+      json["cc"] = msg.cc.map(EmailAddressJSON._writeMessage);
+    }
+    if (msg.bcc?.length) {
+      json["bcc"] = msg.bcc.map(EmailAddressJSON._writeMessage);
     }
     if (msg.subject) {
       json["subject"] = msg.subject;
@@ -606,13 +623,29 @@ export const SendEmailRequestJSON = {
    * @private
    */
   _readMessage: function (msg: SendEmailRequest, json: any): SendEmailRequest {
-    const _sender_ = json["sender"];
-    if (_sender_) {
-      MailerJSON._readMessage(msg.sender, _sender_);
+    const _to_ = json["to"];
+    if (_to_) {
+      for (const item of _to_) {
+        const m = EmailAddressJSON.initialize();
+        EmailAddressJSON._readMessage(m, item);
+        msg.to.push(m);
+      }
     }
-    const _recipient_ = json["recipient"];
-    if (_recipient_) {
-      MailerJSON._readMessage(msg.recipient, _recipient_);
+    const _cc_ = json["cc"];
+    if (_cc_) {
+      for (const item of _cc_) {
+        const m = EmailAddressJSON.initialize();
+        EmailAddressJSON._readMessage(m, item);
+        msg.cc.push(m);
+      }
+    }
+    const _bcc_ = json["bcc"];
+    if (_bcc_) {
+      for (const item of _bcc_) {
+        const m = EmailAddressJSON.initialize();
+        EmailAddressJSON._readMessage(m, item);
+        msg.bcc.push(m);
+      }
     }
     const _subject_ = json["subject"];
     if (_subject_) {
@@ -690,25 +723,28 @@ export const SendEmailResponseJSON = {
   },
 };
 
-export const MailerJSON = {
+export const EmailAddressJSON = {
   /**
-   * Serializes Mailer to JSON.
+   * Serializes EmailAddress to JSON.
    */
-  encode: function (msg: PartialDeep<Mailer>): string {
-    return JSON.stringify(MailerJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<EmailAddress>): string {
+    return JSON.stringify(EmailAddressJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes Mailer from JSON.
+   * Deserializes EmailAddress from JSON.
    */
-  decode: function (json: string): Mailer {
-    return MailerJSON._readMessage(MailerJSON.initialize(), JSON.parse(json));
+  decode: function (json: string): EmailAddress {
+    return EmailAddressJSON._readMessage(
+      EmailAddressJSON.initialize(),
+      JSON.parse(json),
+    );
   },
 
   /**
-   * Initializes Mailer with all fields set to their default value.
+   * Initializes EmailAddress with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<Mailer>): Mailer {
+  initialize: function (msg?: Partial<EmailAddress>): EmailAddress {
     return {
       name: "",
       email: "",
@@ -719,7 +755,9 @@ export const MailerJSON = {
   /**
    * @private
    */
-  _writeMessage: function (msg: PartialDeep<Mailer>): Record<string, unknown> {
+  _writeMessage: function (
+    msg: PartialDeep<EmailAddress>,
+  ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
     if (msg.name) {
       json["name"] = msg.name;
@@ -733,7 +771,7 @@ export const MailerJSON = {
   /**
    * @private
    */
-  _readMessage: function (msg: Mailer, json: any): Mailer {
+  _readMessage: function (msg: EmailAddress, json: any): EmailAddress {
     const _name_ = json["name"];
     if (_name_) {
       msg.name = _name_;
