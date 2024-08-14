@@ -1,5 +1,4 @@
 "use client"
-import { Cart } from "@/lib/fusion/commerce/cart.pb"
 
 import {
   Card,
@@ -11,16 +10,16 @@ import {
 } from "@/components/ui/card"
 
 import { MoneyField } from "@/components/money-field"
-import { Separator } from "@/components/ui/separator"
-import { format } from "date-fns"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { applyCoupon, removeCoupon } from "../actions"
-import { useState } from "react"
-import { toast } from "sonner"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner"
 import { useCart } from "@/contexts/cart"
+import { format } from "date-fns"
 import { Trash } from "lucide-react"
+import { useState } from "react"
+import { toast } from "sonner"
+import { applyCoupon, removeCoupon } from "../actions"
 
 interface OrderSummaryProps {}
 
