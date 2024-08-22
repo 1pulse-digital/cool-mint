@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.1](https://github.com/1pulse-digital/cool-mint/compare/v0.23.0...v0.23.1) (2024-08-22)
+
+
+### Bug Fixes
+
+* Switch MS Clarity to 1Pulse account ([8abfe30](https://github.com/1pulse-digital/cool-mint/commit/8abfe30a08768605562ae8aef3a7931ec27cb190))
+
 ## [0.23.0](https://github.com/1pulse-digital/cool-mint/compare/v0.22.0...v0.23.0) (2024-08-22)
 
 
