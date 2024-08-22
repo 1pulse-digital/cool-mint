@@ -42,8 +42,8 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
       <Tabs defaultValue={defaultMonth}>
         <div className="mt-10">
           {/* Filtering by month */}
-          <div className="mx-2 pb-16 sm:px-4  xl:px-0 2xl:px-0">
-            <TabsList className="h-18 grid w-full grid-cols-5 bg-[#27272A] px-2 py-2 text-foreground">
+          <div className="mx-2 pb-16 sm:px-4 xl:px-0 2xl:px-0">
+            <TabsList className="h-18 grid w-full gap-2 grid-cols-4 sm:grid-cols-5 bg-[#27272A] py-2 text-foreground">
               {Array.from(sessionMap.keys()).map((month) => (
                 <TabsTrigger key={month} value={month} className="p-5">
                   {month}
