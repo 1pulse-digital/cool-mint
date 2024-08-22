@@ -61,24 +61,29 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
           )}
           {Array.from(sessionMap.keys()).map((month) => (
             <TabsContent key={month} value={month} className="space-y-8 px-10">
-              {sessionMap.get(month)?.map((session) => {
-                const masterClass = masterClasses.find(
-                  (masterClass) => session.parent === masterClass.name,
-                )
-                if (masterClass === undefined) {
-                  console.error("Master class not found for session", session)
-                  return null
-                }
-                return (
-                  <Card className="border-0 bg-background" key={session.name}>
-                    <WorkshopItem
-                      single={single}
-                      masterClass={masterClass}
-                      session={session}
-                    />
-                  </Card>
-                )
-              })}
+              {sessionMap
+                .get(month)
+                ?.sort((a, b) => {
+                  return new Date(a.date).getTime() - new Date(b.date).getTime()
+                })
+                .map((session) => {
+                  const masterClass = masterClasses.find(
+                    (masterClass) => session.parent === masterClass.name,
+                  )
+                  if (masterClass === undefined) {
+                    console.error("Master class not found for session", session)
+                    return null
+                  }
+                  return (
+                    <Card className="border-0 bg-background" key={session.name}>
+                      <WorkshopItem
+                        single={single}
+                        masterClass={masterClass}
+                        session={session}
+                      />
+                    </Card>
+                  )
+                })}
             </TabsContent>
           ))}
         </div>
