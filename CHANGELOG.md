@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.23.0](https://github.com/1pulse-digital/cool-mint/compare/v0.22.0...v0.23.0) (2024-08-22)
+
+
+### Features
+
+* Add Microsoft Clarity ([5e8364c](https://github.com/1pulse-digital/cool-mint/commit/5e8364cd45198a83e84db446803229b6878b3db1))
+
+
+### Bug Fixes
+
+* Fix mobile styling of class months selector ([11f7af9](https://github.com/1pulse-digital/cool-mint/commit/11f7af9ac25e8684372dfd800482bf65c7c407d9))
+* Sort upcoming sessions by date ([aef86f9](https://github.com/1pulse-digital/cool-mint/commit/aef86f925cf57dd2d8db70caa15fd1a171ca67f1))
+
 ## [0.22.0](https://github.com/1pulse-digital/cool-mint/compare/v0.21.2...v0.22.0) (2024-08-06)
 
 
