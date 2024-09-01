@@ -49,6 +49,18 @@ export interface MasterClass {
    */
   tags: string[];
   gallery: mediaGallery.Gallery;
+  /**
+   * Difficulty rating of the master class
+   */
+  difficulty: MasterClass.Difficulty;
+}
+
+export declare namespace MasterClass {
+  export type Difficulty =
+    | "UNSPECIFIED"
+    | "BEGINNER"
+    | "INTERMEDIATE"
+    | "ADVANCED";
 }
 
 //========================================//
@@ -93,6 +105,7 @@ export const MasterClass = {
       shortDescription: "",
       tags: [],
       gallery: mediaGallery.Gallery.initialize(),
+      difficulty: MasterClass.Difficulty._fromInt(0),
       ...msg,
     };
   },
@@ -139,6 +152,9 @@ export const MasterClass = {
     }
     if (msg.gallery) {
       writer.writeMessage(12, msg.gallery, mediaGallery.Gallery._writeMessage);
+    }
+    if (msg.difficulty && MasterClass.Difficulty._toInt(msg.difficulty)) {
+      writer.writeEnum(13, MasterClass.Difficulty._toInt(msg.difficulty));
     }
     return writer;
   },
@@ -201,6 +217,10 @@ export const MasterClass = {
           reader.readMessage(msg.gallery, mediaGallery.Gallery._readMessage);
           break;
         }
+        case 13: {
+          msg.difficulty = MasterClass.Difficulty._fromInt(reader.readEnum());
+          break;
+        }
         default: {
           reader.skipField();
           break;
@@ -209,6 +229,59 @@ export const MasterClass = {
     }
     return msg;
   },
+
+  Difficulty: {
+    UNSPECIFIED: "UNSPECIFIED",
+    BEGINNER: "BEGINNER",
+    INTERMEDIATE: "INTERMEDIATE",
+    ADVANCED: "ADVANCED",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): MasterClass.Difficulty {
+      switch (i) {
+        case 0: {
+          return "UNSPECIFIED";
+        }
+        case 1: {
+          return "BEGINNER";
+        }
+        case 2: {
+          return "INTERMEDIATE";
+        }
+        case 3: {
+          return "ADVANCED";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as MasterClass.Difficulty;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: MasterClass.Difficulty): number {
+      switch (i) {
+        case "UNSPECIFIED": {
+          return 0;
+        }
+        case "BEGINNER": {
+          return 1;
+        }
+        case "INTERMEDIATE": {
+          return 2;
+        }
+        case "ADVANCED": {
+          return 3;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };
 
 //========================================//
@@ -250,6 +323,7 @@ export const MasterClassJSON = {
       shortDescription: "",
       tags: [],
       gallery: mediaGallery.GalleryJSON.initialize(),
+      difficulty: MasterClass.Difficulty._fromInt(0),
       ...msg,
     };
   },
@@ -299,6 +373,9 @@ export const MasterClassJSON = {
       if (Object.keys(_gallery_).length > 0) {
         json["gallery"] = _gallery_;
       }
+    }
+    if (msg.difficulty && MasterClassJSON.Difficulty._toInt(msg.difficulty)) {
+      json["difficulty"] = msg.difficulty;
     }
     return json;
   },
@@ -355,6 +432,63 @@ export const MasterClassJSON = {
     if (_gallery_) {
       mediaGallery.GalleryJSON._readMessage(msg.gallery, _gallery_);
     }
+    const _difficulty_ = json["difficulty"];
+    if (_difficulty_) {
+      msg.difficulty = MasterClass.Difficulty._fromInt(_difficulty_);
+    }
     return msg;
   },
+
+  Difficulty: {
+    UNSPECIFIED: "UNSPECIFIED",
+    BEGINNER: "BEGINNER",
+    INTERMEDIATE: "INTERMEDIATE",
+    ADVANCED: "ADVANCED",
+    /**
+     * @private
+     */
+    _fromInt: function (i: number): MasterClass.Difficulty {
+      switch (i) {
+        case 0: {
+          return "UNSPECIFIED";
+        }
+        case 1: {
+          return "BEGINNER";
+        }
+        case 2: {
+          return "INTERMEDIATE";
+        }
+        case 3: {
+          return "ADVANCED";
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as MasterClass.Difficulty;
+        }
+      }
+    },
+    /**
+     * @private
+     */
+    _toInt: function (i: MasterClass.Difficulty): number {
+      switch (i) {
+        case "UNSPECIFIED": {
+          return 0;
+        }
+        case "BEGINNER": {
+          return 1;
+        }
+        case "INTERMEDIATE": {
+          return 2;
+        }
+        case "ADVANCED": {
+          return 3;
+        }
+        // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
+        default: {
+          return i as unknown as number;
+        }
+      }
+    },
+  } as const,
 };

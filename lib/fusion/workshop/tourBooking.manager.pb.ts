@@ -38,6 +38,12 @@ export declare namespace AvailableSlotsResponse {
   }
 }
 
+export interface UpcomingToursRequest {}
+
+export interface UpcomingToursResponse {
+  tours: workshopTourBooking.TourBooking[];
+}
+
 //========================================//
 //   TourBookingManager Protobuf Client   //
 //========================================//
@@ -64,6 +70,18 @@ export async function AvailableSlots(
     config,
   );
   return AvailableSlotsResponse.decode(response);
+}
+
+export async function UpcomingTours(
+  upcomingToursRequest: UpcomingToursRequest,
+  config?: ClientConfiguration,
+): Promise<UpcomingToursResponse> {
+  const response = await PBrequest(
+    "/workshop.TourBookingManager/UpcomingTours",
+    UpcomingToursRequest.encode(upcomingToursRequest),
+    config,
+  );
+  return UpcomingToursResponse.decode(response);
 }
 
 //========================================//
@@ -94,6 +112,18 @@ export async function AvailableSlotsJSON(
   return AvailableSlotsResponseJSON.decode(response);
 }
 
+export async function UpcomingToursJSON(
+  upcomingToursRequest: UpcomingToursRequest,
+  config?: ClientConfiguration,
+): Promise<UpcomingToursResponse> {
+  const response = await JSONrequest(
+    "/workshop.TourBookingManager/UpcomingTours",
+    UpcomingToursRequestJSON.encode(upcomingToursRequest),
+    config,
+  );
+  return UpcomingToursResponseJSON.decode(response);
+}
+
 //========================================//
 //           TourBookingManager           //
 //========================================//
@@ -110,6 +140,10 @@ export interface TourBookingManager<Context = unknown> {
     availableSlotsRequest: AvailableSlotsRequest,
     context: Context,
   ) => Promise<AvailableSlotsResponse> | AvailableSlotsResponse;
+  UpcomingTours: (
+    upcomingToursRequest: UpcomingToursRequest,
+    context: Context,
+  ) => Promise<UpcomingToursResponse> | UpcomingToursResponse;
 }
 
 export function createTourBookingManager<Context>(
@@ -134,6 +168,18 @@ export function createTourBookingManager<Context>(
         output: {
           protobuf: AvailableSlotsResponse,
           json: AvailableSlotsResponseJSON,
+        },
+      },
+      UpcomingTours: {
+        name: "UpcomingTours",
+        handler: service.UpcomingTours,
+        input: {
+          protobuf: UpcomingToursRequest,
+          json: UpcomingToursRequestJSON,
+        },
+        output: {
+          protobuf: UpcomingToursResponse,
+          json: UpcomingToursResponseJSON,
         },
       },
     },
@@ -498,6 +544,129 @@ export const AvailableSlotsResponse = {
   },
 };
 
+export const UpcomingToursRequest = {
+  /**
+   * Serializes UpcomingToursRequest to protobuf.
+   */
+  encode: function (_msg?: PartialDeep<UpcomingToursRequest>): Uint8Array {
+    return new Uint8Array();
+  },
+
+  /**
+   * Deserializes UpcomingToursRequest from protobuf.
+   */
+  decode: function (_bytes?: ByteSource): UpcomingToursRequest {
+    return {};
+  },
+
+  /**
+   * Initializes UpcomingToursRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<UpcomingToursRequest>,
+  ): UpcomingToursRequest {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<UpcomingToursRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    _msg: UpcomingToursRequest,
+    _reader: protoscript.BinaryReader,
+  ): UpcomingToursRequest {
+    return _msg;
+  },
+};
+
+export const UpcomingToursResponse = {
+  /**
+   * Serializes UpcomingToursResponse to protobuf.
+   */
+  encode: function (msg: PartialDeep<UpcomingToursResponse>): Uint8Array {
+    return UpcomingToursResponse._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes UpcomingToursResponse from protobuf.
+   */
+  decode: function (bytes: ByteSource): UpcomingToursResponse {
+    return UpcomingToursResponse._readMessage(
+      UpcomingToursResponse.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes UpcomingToursResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<UpcomingToursResponse>,
+  ): UpcomingToursResponse {
+    return {
+      tours: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<UpcomingToursResponse>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.tours?.length) {
+      writer.writeRepeatedMessage(
+        1,
+        msg.tours as any,
+        workshopTourBooking.TourBooking._writeMessage,
+      );
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: UpcomingToursResponse,
+    reader: protoscript.BinaryReader,
+  ): UpcomingToursResponse {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          const m = workshopTourBooking.TourBooking.initialize();
+          reader.readMessage(m, workshopTourBooking.TourBooking._readMessage);
+          msg.tours.push(m);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
@@ -798,5 +967,115 @@ export const AvailableSlotsResponseJSON = {
       }
       return msg;
     },
+  },
+};
+
+export const UpcomingToursRequestJSON = {
+  /**
+   * Serializes UpcomingToursRequest to JSON.
+   */
+  encode: function (_msg?: PartialDeep<UpcomingToursRequest>): string {
+    return "{}";
+  },
+
+  /**
+   * Deserializes UpcomingToursRequest from JSON.
+   */
+  decode: function (_json?: string): UpcomingToursRequest {
+    return {};
+  },
+
+  /**
+   * Initializes UpcomingToursRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<UpcomingToursRequest>,
+  ): UpcomingToursRequest {
+    return {
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    _msg: PartialDeep<UpcomingToursRequest>,
+  ): Record<string, unknown> {
+    return {};
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: UpcomingToursRequest,
+    _json: any,
+  ): UpcomingToursRequest {
+    return msg;
+  },
+};
+
+export const UpcomingToursResponseJSON = {
+  /**
+   * Serializes UpcomingToursResponse to JSON.
+   */
+  encode: function (msg: PartialDeep<UpcomingToursResponse>): string {
+    return JSON.stringify(UpcomingToursResponseJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes UpcomingToursResponse from JSON.
+   */
+  decode: function (json: string): UpcomingToursResponse {
+    return UpcomingToursResponseJSON._readMessage(
+      UpcomingToursResponseJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes UpcomingToursResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<UpcomingToursResponse>,
+  ): UpcomingToursResponse {
+    return {
+      tours: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<UpcomingToursResponse>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.tours?.length) {
+      json["tours"] = msg.tours.map(
+        workshopTourBooking.TourBookingJSON._writeMessage,
+      );
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: UpcomingToursResponse,
+    json: any,
+  ): UpcomingToursResponse {
+    const _tours_ = json["tours"];
+    if (_tours_) {
+      for (const item of _tours_) {
+        const m = workshopTourBooking.TourBookingJSON.initialize();
+        workshopTourBooking.TourBookingJSON._readMessage(m, item);
+        msg.tours.push(m);
+      }
+    }
+    return msg;
   },
 };
