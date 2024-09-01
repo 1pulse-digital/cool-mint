@@ -8,7 +8,7 @@ import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
-import { CalendarClock, Clock2, User } from "lucide-react"
+import { CalendarClock, Clock2, User, Scale3D } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
@@ -117,6 +117,12 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
               <User size={16} className="text-primary" />
               <p>{masterClass.presenter}</p>
             </div>
+            {masterClass.difficulty !== MasterClass.Difficulty.UNSPECIFIED && (
+              <div className="flex space-x-2">
+                <Scale3D size={16} className="text-primary" />
+                <p>{masterClass.difficulty}</p>
+              </div>
+            )}
           </div>
           <p className="py-2 text-sm font-normal text-white sm:text-base">
             {masterClass.shortDescription}
