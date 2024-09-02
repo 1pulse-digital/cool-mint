@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.0](https://github.com/1pulse-digital/cool-mint/compare/v0.23.1...v0.24.0) (2024-09-02)
+
+
+### Features
+
+* Add workshop difficulty label ([a9bb7c7](https://github.com/1pulse-digital/cool-mint/commit/a9bb7c7954f407750f113c0c0365e880823f9653))
+
 ## [0.23.1](https://github.com/1pulse-digital/cool-mint/compare/v0.23.0...v0.23.1) (2024-08-22)
 
 
