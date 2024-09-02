@@ -48,20 +48,21 @@ export interface NumberOfToursResponse {
   change: string;
 }
 
-export interface ClassSalesRequest {}
+export interface SalesOverviewRequest {}
 
-export interface ClassSalesResponse {
-  sales: ClassSalesResponse.ClassSale[];
+export interface SalesOverviewResponse {
+  records: SalesOverviewResponse.Record[];
 }
 
-export declare namespace ClassSalesResponse {
-  export interface ClassSale {
-    customerName: string;
-    className: string;
-    classDisplayName: string;
+export declare namespace SalesOverviewResponse {
+  export interface Record {
+    firstName: string;
+    lastName: string;
+    product: string;
+    productDisplayName: string;
     date: string;
-    amount: bigint;
-    orderNumber: string;
+    total: bigint;
+    orderNumber: bigint;
   }
 }
 
@@ -151,7 +152,8 @@ export async function NumberOfTours(
 }
 
 /**
- * ClassSales returns a list of the most recent class sales, each record contains:
+ * SalesOverview returns a list of the 5 most recent COMPLETED orders, each record contains:
+ * In the case of multiple line items, a response record is returned for each line item
  * - customer name
  * - class name
  * - class display name
@@ -159,16 +161,16 @@ export async function NumberOfTours(
  * - amount
  * - order number
  */
-export async function ClassSales(
-  classSalesRequest: ClassSalesRequest,
+export async function SalesOverview(
+  salesOverviewRequest: SalesOverviewRequest,
   config?: ClientConfiguration,
-): Promise<ClassSalesResponse> {
+): Promise<SalesOverviewResponse> {
   const response = await PBrequest(
-    "/analytics.AnalyticsService/ClassSales",
-    ClassSalesRequest.encode(classSalesRequest),
+    "/analytics.AnalyticsService/SalesOverview",
+    SalesOverviewRequest.encode(salesOverviewRequest),
     config,
   );
-  return ClassSalesResponse.decode(response);
+  return SalesOverviewResponse.decode(response);
 }
 
 /**
@@ -274,7 +276,8 @@ export async function NumberOfToursJSON(
 }
 
 /**
- * ClassSales returns a list of the most recent class sales, each record contains:
+ * SalesOverview returns a list of the 5 most recent COMPLETED orders, each record contains:
+ * In the case of multiple line items, a response record is returned for each line item
  * - customer name
  * - class name
  * - class display name
@@ -282,16 +285,16 @@ export async function NumberOfToursJSON(
  * - amount
  * - order number
  */
-export async function ClassSalesJSON(
-  classSalesRequest: ClassSalesRequest,
+export async function SalesOverviewJSON(
+  salesOverviewRequest: SalesOverviewRequest,
   config?: ClientConfiguration,
-): Promise<ClassSalesResponse> {
+): Promise<SalesOverviewResponse> {
   const response = await JSONrequest(
-    "/analytics.AnalyticsService/ClassSales",
-    ClassSalesRequestJSON.encode(classSalesRequest),
+    "/analytics.AnalyticsService/SalesOverview",
+    SalesOverviewRequestJSON.encode(salesOverviewRequest),
     config,
   );
-  return ClassSalesResponseJSON.decode(response);
+  return SalesOverviewResponseJSON.decode(response);
 }
 
 /**
@@ -366,7 +369,8 @@ export interface AnalyticsService<Context = unknown> {
     context: Context,
   ) => Promise<NumberOfToursResponse> | NumberOfToursResponse;
   /**
-   * ClassSales returns a list of the most recent class sales, each record contains:
+   * SalesOverview returns a list of the 5 most recent COMPLETED orders, each record contains:
+   * In the case of multiple line items, a response record is returned for each line item
    * - customer name
    * - class name
    * - class display name
@@ -374,10 +378,10 @@ export interface AnalyticsService<Context = unknown> {
    * - amount
    * - order number
    */
-  ClassSales: (
-    classSalesRequest: ClassSalesRequest,
+  SalesOverview: (
+    salesOverviewRequest: SalesOverviewRequest,
     context: Context,
-  ) => Promise<ClassSalesResponse> | ClassSalesResponse;
+  ) => Promise<SalesOverviewResponse> | SalesOverviewResponse;
   /**
    * ClassOverview returns a list of all classes, each record contains:
    * - class name
@@ -453,11 +457,17 @@ export function createAnalyticsService<Context>(
           json: NumberOfToursResponseJSON,
         },
       },
-      ClassSales: {
-        name: "ClassSales",
-        handler: service.ClassSales,
-        input: { protobuf: ClassSalesRequest, json: ClassSalesRequestJSON },
-        output: { protobuf: ClassSalesResponse, json: ClassSalesResponseJSON },
+      SalesOverview: {
+        name: "SalesOverview",
+        handler: service.SalesOverview,
+        input: {
+          protobuf: SalesOverviewRequest,
+          json: SalesOverviewRequestJSON,
+        },
+        output: {
+          protobuf: SalesOverviewResponse,
+          json: SalesOverviewResponseJSON,
+        },
       },
       ClassOverview: {
         name: "ClassOverview",
@@ -1023,25 +1033,27 @@ export const NumberOfToursResponse = {
   },
 };
 
-export const ClassSalesRequest = {
+export const SalesOverviewRequest = {
   /**
-   * Serializes ClassSalesRequest to protobuf.
+   * Serializes SalesOverviewRequest to protobuf.
    */
-  encode: function (_msg?: PartialDeep<ClassSalesRequest>): Uint8Array {
+  encode: function (_msg?: PartialDeep<SalesOverviewRequest>): Uint8Array {
     return new Uint8Array();
   },
 
   /**
-   * Deserializes ClassSalesRequest from protobuf.
+   * Deserializes SalesOverviewRequest from protobuf.
    */
-  decode: function (_bytes?: ByteSource): ClassSalesRequest {
+  decode: function (_bytes?: ByteSource): SalesOverviewRequest {
     return {};
   },
 
   /**
-   * Initializes ClassSalesRequest with all fields set to their default value.
+   * Initializes SalesOverviewRequest with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ClassSalesRequest>): ClassSalesRequest {
+  initialize: function (
+    msg?: Partial<SalesOverviewRequest>,
+  ): SalesOverviewRequest {
     return {
       ...msg,
     };
@@ -1051,7 +1063,7 @@ export const ClassSalesRequest = {
    * @private
    */
   _writeMessage: function (
-    _msg: PartialDeep<ClassSalesRequest>,
+    _msg: PartialDeep<SalesOverviewRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
     return writer;
@@ -1061,40 +1073,42 @@ export const ClassSalesRequest = {
    * @private
    */
   _readMessage: function (
-    _msg: ClassSalesRequest,
+    _msg: SalesOverviewRequest,
     _reader: protoscript.BinaryReader,
-  ): ClassSalesRequest {
+  ): SalesOverviewRequest {
     return _msg;
   },
 };
 
-export const ClassSalesResponse = {
+export const SalesOverviewResponse = {
   /**
-   * Serializes ClassSalesResponse to protobuf.
+   * Serializes SalesOverviewResponse to protobuf.
    */
-  encode: function (msg: PartialDeep<ClassSalesResponse>): Uint8Array {
-    return ClassSalesResponse._writeMessage(
+  encode: function (msg: PartialDeep<SalesOverviewResponse>): Uint8Array {
+    return SalesOverviewResponse._writeMessage(
       msg,
       new protoscript.BinaryWriter(),
     ).getResultBuffer();
   },
 
   /**
-   * Deserializes ClassSalesResponse from protobuf.
+   * Deserializes SalesOverviewResponse from protobuf.
    */
-  decode: function (bytes: ByteSource): ClassSalesResponse {
-    return ClassSalesResponse._readMessage(
-      ClassSalesResponse.initialize(),
+  decode: function (bytes: ByteSource): SalesOverviewResponse {
+    return SalesOverviewResponse._readMessage(
+      SalesOverviewResponse.initialize(),
       new protoscript.BinaryReader(bytes),
     );
   },
 
   /**
-   * Initializes ClassSalesResponse with all fields set to their default value.
+   * Initializes SalesOverviewResponse with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ClassSalesResponse>): ClassSalesResponse {
+  initialize: function (
+    msg?: Partial<SalesOverviewResponse>,
+  ): SalesOverviewResponse {
     return {
-      sales: [],
+      records: [],
       ...msg,
     };
   },
@@ -1103,14 +1117,14 @@ export const ClassSalesResponse = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ClassSalesResponse>,
+    msg: PartialDeep<SalesOverviewResponse>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
-    if (msg.sales?.length) {
+    if (msg.records?.length) {
       writer.writeRepeatedMessage(
         1,
-        msg.sales as any,
-        ClassSalesResponse.ClassSale._writeMessage,
+        msg.records as any,
+        SalesOverviewResponse.Record._writeMessage,
       );
     }
     return writer;
@@ -1120,16 +1134,16 @@ export const ClassSalesResponse = {
    * @private
    */
   _readMessage: function (
-    msg: ClassSalesResponse,
+    msg: SalesOverviewResponse,
     reader: protoscript.BinaryReader,
-  ): ClassSalesResponse {
+  ): SalesOverviewResponse {
     while (reader.nextField()) {
       const field = reader.getFieldNumber();
       switch (field) {
         case 1: {
-          const m = ClassSalesResponse.ClassSale.initialize();
-          reader.readMessage(m, ClassSalesResponse.ClassSale._readMessage);
-          msg.sales.push(m);
+          const m = SalesOverviewResponse.Record.initialize();
+          reader.readMessage(m, SalesOverviewResponse.Record._readMessage);
+          msg.records.push(m);
           break;
         }
         default: {
@@ -1141,42 +1155,43 @@ export const ClassSalesResponse = {
     return msg;
   },
 
-  ClassSale: {
+  Record: {
     /**
-     * Serializes ClassSalesResponse.ClassSale to protobuf.
+     * Serializes SalesOverviewResponse.Record to protobuf.
      */
     encode: function (
-      msg: PartialDeep<ClassSalesResponse.ClassSale>,
+      msg: PartialDeep<SalesOverviewResponse.Record>,
     ): Uint8Array {
-      return ClassSalesResponse.ClassSale._writeMessage(
+      return SalesOverviewResponse.Record._writeMessage(
         msg,
         new protoscript.BinaryWriter(),
       ).getResultBuffer();
     },
 
     /**
-     * Deserializes ClassSalesResponse.ClassSale from protobuf.
+     * Deserializes SalesOverviewResponse.Record from protobuf.
      */
-    decode: function (bytes: ByteSource): ClassSalesResponse.ClassSale {
-      return ClassSalesResponse.ClassSale._readMessage(
-        ClassSalesResponse.ClassSale.initialize(),
+    decode: function (bytes: ByteSource): SalesOverviewResponse.Record {
+      return SalesOverviewResponse.Record._readMessage(
+        SalesOverviewResponse.Record.initialize(),
         new protoscript.BinaryReader(bytes),
       );
     },
 
     /**
-     * Initializes ClassSalesResponse.ClassSale with all fields set to their default value.
+     * Initializes SalesOverviewResponse.Record with all fields set to their default value.
      */
     initialize: function (
-      msg?: Partial<ClassSalesResponse.ClassSale>,
-    ): ClassSalesResponse.ClassSale {
+      msg?: Partial<SalesOverviewResponse.Record>,
+    ): SalesOverviewResponse.Record {
       return {
-        customerName: "",
-        className: "",
-        classDisplayName: "",
+        firstName: "",
+        lastName: "",
+        product: "",
+        productDisplayName: "",
         date: "",
-        amount: 0n,
-        orderNumber: "",
+        total: 0n,
+        orderNumber: 0n,
         ...msg,
       };
     },
@@ -1185,26 +1200,29 @@ export const ClassSalesResponse = {
      * @private
      */
     _writeMessage: function (
-      msg: PartialDeep<ClassSalesResponse.ClassSale>,
+      msg: PartialDeep<SalesOverviewResponse.Record>,
       writer: protoscript.BinaryWriter,
     ): protoscript.BinaryWriter {
-      if (msg.customerName) {
-        writer.writeString(1, msg.customerName);
+      if (msg.firstName) {
+        writer.writeString(1, msg.firstName);
       }
-      if (msg.className) {
-        writer.writeString(2, msg.className);
+      if (msg.lastName) {
+        writer.writeString(2, msg.lastName);
       }
-      if (msg.classDisplayName) {
-        writer.writeString(3, msg.classDisplayName);
+      if (msg.product) {
+        writer.writeString(3, msg.product);
+      }
+      if (msg.productDisplayName) {
+        writer.writeString(4, msg.productDisplayName);
       }
       if (msg.date) {
-        writer.writeString(4, msg.date);
+        writer.writeString(5, msg.date);
       }
-      if (msg.amount) {
-        writer.writeInt64String(5, msg.amount.toString() as any);
+      if (msg.total) {
+        writer.writeInt64String(6, msg.total.toString() as any);
       }
       if (msg.orderNumber) {
-        writer.writeString(6, msg.orderNumber);
+        writer.writeInt64String(7, msg.orderNumber.toString() as any);
       }
       return writer;
     },
@@ -1213,34 +1231,38 @@ export const ClassSalesResponse = {
      * @private
      */
     _readMessage: function (
-      msg: ClassSalesResponse.ClassSale,
+      msg: SalesOverviewResponse.Record,
       reader: protoscript.BinaryReader,
-    ): ClassSalesResponse.ClassSale {
+    ): SalesOverviewResponse.Record {
       while (reader.nextField()) {
         const field = reader.getFieldNumber();
         switch (field) {
           case 1: {
-            msg.customerName = reader.readString();
+            msg.firstName = reader.readString();
             break;
           }
           case 2: {
-            msg.className = reader.readString();
+            msg.lastName = reader.readString();
             break;
           }
           case 3: {
-            msg.classDisplayName = reader.readString();
+            msg.product = reader.readString();
             break;
           }
           case 4: {
-            msg.date = reader.readString();
+            msg.productDisplayName = reader.readString();
             break;
           }
           case 5: {
-            msg.amount = BigInt(reader.readInt64String());
+            msg.date = reader.readString();
             break;
           }
           case 6: {
-            msg.orderNumber = reader.readString();
+            msg.total = BigInt(reader.readInt64String());
+            break;
+          }
+          case 7: {
+            msg.orderNumber = BigInt(reader.readInt64String());
             break;
           }
           default: {
@@ -2083,25 +2105,27 @@ export const NumberOfToursResponseJSON = {
   },
 };
 
-export const ClassSalesRequestJSON = {
+export const SalesOverviewRequestJSON = {
   /**
-   * Serializes ClassSalesRequest to JSON.
+   * Serializes SalesOverviewRequest to JSON.
    */
-  encode: function (_msg?: PartialDeep<ClassSalesRequest>): string {
+  encode: function (_msg?: PartialDeep<SalesOverviewRequest>): string {
     return "{}";
   },
 
   /**
-   * Deserializes ClassSalesRequest from JSON.
+   * Deserializes SalesOverviewRequest from JSON.
    */
-  decode: function (_json?: string): ClassSalesRequest {
+  decode: function (_json?: string): SalesOverviewRequest {
     return {};
   },
 
   /**
-   * Initializes ClassSalesRequest with all fields set to their default value.
+   * Initializes SalesOverviewRequest with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ClassSalesRequest>): ClassSalesRequest {
+  initialize: function (
+    msg?: Partial<SalesOverviewRequest>,
+  ): SalesOverviewRequest {
     return {
       ...msg,
     };
@@ -2111,7 +2135,7 @@ export const ClassSalesRequestJSON = {
    * @private
    */
   _writeMessage: function (
-    _msg: PartialDeep<ClassSalesRequest>,
+    _msg: PartialDeep<SalesOverviewRequest>,
   ): Record<string, unknown> {
     return {};
   },
@@ -2120,37 +2144,39 @@ export const ClassSalesRequestJSON = {
    * @private
    */
   _readMessage: function (
-    msg: ClassSalesRequest,
+    msg: SalesOverviewRequest,
     _json: any,
-  ): ClassSalesRequest {
+  ): SalesOverviewRequest {
     return msg;
   },
 };
 
-export const ClassSalesResponseJSON = {
+export const SalesOverviewResponseJSON = {
   /**
-   * Serializes ClassSalesResponse to JSON.
+   * Serializes SalesOverviewResponse to JSON.
    */
-  encode: function (msg: PartialDeep<ClassSalesResponse>): string {
-    return JSON.stringify(ClassSalesResponseJSON._writeMessage(msg));
+  encode: function (msg: PartialDeep<SalesOverviewResponse>): string {
+    return JSON.stringify(SalesOverviewResponseJSON._writeMessage(msg));
   },
 
   /**
-   * Deserializes ClassSalesResponse from JSON.
+   * Deserializes SalesOverviewResponse from JSON.
    */
-  decode: function (json: string): ClassSalesResponse {
-    return ClassSalesResponseJSON._readMessage(
-      ClassSalesResponseJSON.initialize(),
+  decode: function (json: string): SalesOverviewResponse {
+    return SalesOverviewResponseJSON._readMessage(
+      SalesOverviewResponseJSON.initialize(),
       JSON.parse(json),
     );
   },
 
   /**
-   * Initializes ClassSalesResponse with all fields set to their default value.
+   * Initializes SalesOverviewResponse with all fields set to their default value.
    */
-  initialize: function (msg?: Partial<ClassSalesResponse>): ClassSalesResponse {
+  initialize: function (
+    msg?: Partial<SalesOverviewResponse>,
+  ): SalesOverviewResponse {
     return {
-      sales: [],
+      records: [],
       ...msg,
     };
   },
@@ -2159,12 +2185,12 @@ export const ClassSalesResponseJSON = {
    * @private
    */
   _writeMessage: function (
-    msg: PartialDeep<ClassSalesResponse>,
+    msg: PartialDeep<SalesOverviewResponse>,
   ): Record<string, unknown> {
     const json: Record<string, unknown> = {};
-    if (msg.sales?.length) {
-      json["sales"] = msg.sales.map(
-        ClassSalesResponseJSON.ClassSale._writeMessage,
+    if (msg.records?.length) {
+      json["records"] = msg.records.map(
+        SalesOverviewResponseJSON.Record._writeMessage,
       );
     }
     return json;
@@ -2174,53 +2200,54 @@ export const ClassSalesResponseJSON = {
    * @private
    */
   _readMessage: function (
-    msg: ClassSalesResponse,
+    msg: SalesOverviewResponse,
     json: any,
-  ): ClassSalesResponse {
-    const _sales_ = json["sales"];
-    if (_sales_) {
-      for (const item of _sales_) {
-        const m = ClassSalesResponseJSON.ClassSale.initialize();
-        ClassSalesResponseJSON.ClassSale._readMessage(m, item);
-        msg.sales.push(m);
+  ): SalesOverviewResponse {
+    const _records_ = json["records"];
+    if (_records_) {
+      for (const item of _records_) {
+        const m = SalesOverviewResponseJSON.Record.initialize();
+        SalesOverviewResponseJSON.Record._readMessage(m, item);
+        msg.records.push(m);
       }
     }
     return msg;
   },
 
-  ClassSale: {
+  Record: {
     /**
-     * Serializes ClassSalesResponse.ClassSale to JSON.
+     * Serializes SalesOverviewResponse.Record to JSON.
      */
-    encode: function (msg: PartialDeep<ClassSalesResponse.ClassSale>): string {
+    encode: function (msg: PartialDeep<SalesOverviewResponse.Record>): string {
       return JSON.stringify(
-        ClassSalesResponseJSON.ClassSale._writeMessage(msg),
+        SalesOverviewResponseJSON.Record._writeMessage(msg),
       );
     },
 
     /**
-     * Deserializes ClassSalesResponse.ClassSale from JSON.
+     * Deserializes SalesOverviewResponse.Record from JSON.
      */
-    decode: function (json: string): ClassSalesResponse.ClassSale {
-      return ClassSalesResponseJSON.ClassSale._readMessage(
-        ClassSalesResponseJSON.ClassSale.initialize(),
+    decode: function (json: string): SalesOverviewResponse.Record {
+      return SalesOverviewResponseJSON.Record._readMessage(
+        SalesOverviewResponseJSON.Record.initialize(),
         JSON.parse(json),
       );
     },
 
     /**
-     * Initializes ClassSalesResponse.ClassSale with all fields set to their default value.
+     * Initializes SalesOverviewResponse.Record with all fields set to their default value.
      */
     initialize: function (
-      msg?: Partial<ClassSalesResponse.ClassSale>,
-    ): ClassSalesResponse.ClassSale {
+      msg?: Partial<SalesOverviewResponse.Record>,
+    ): SalesOverviewResponse.Record {
       return {
-        customerName: "",
-        className: "",
-        classDisplayName: "",
+        firstName: "",
+        lastName: "",
+        product: "",
+        productDisplayName: "",
         date: "",
-        amount: 0n,
-        orderNumber: "",
+        total: 0n,
+        orderNumber: 0n,
         ...msg,
       };
     },
@@ -2229,26 +2256,29 @@ export const ClassSalesResponseJSON = {
      * @private
      */
     _writeMessage: function (
-      msg: PartialDeep<ClassSalesResponse.ClassSale>,
+      msg: PartialDeep<SalesOverviewResponse.Record>,
     ): Record<string, unknown> {
       const json: Record<string, unknown> = {};
-      if (msg.customerName) {
-        json["customerName"] = msg.customerName;
+      if (msg.firstName) {
+        json["firstName"] = msg.firstName;
       }
-      if (msg.className) {
-        json["className"] = msg.className;
+      if (msg.lastName) {
+        json["lastName"] = msg.lastName;
       }
-      if (msg.classDisplayName) {
-        json["classDisplayName"] = msg.classDisplayName;
+      if (msg.product) {
+        json["product"] = msg.product;
+      }
+      if (msg.productDisplayName) {
+        json["productDisplayName"] = msg.productDisplayName;
       }
       if (msg.date) {
         json["date"] = msg.date;
       }
-      if (msg.amount) {
-        json["amount"] = String(msg.amount);
+      if (msg.total) {
+        json["total"] = String(msg.total);
       }
       if (msg.orderNumber) {
-        json["orderNumber"] = msg.orderNumber;
+        json["orderNumber"] = String(msg.orderNumber);
       }
       return json;
     },
@@ -2257,33 +2287,37 @@ export const ClassSalesResponseJSON = {
      * @private
      */
     _readMessage: function (
-      msg: ClassSalesResponse.ClassSale,
+      msg: SalesOverviewResponse.Record,
       json: any,
-    ): ClassSalesResponse.ClassSale {
-      const _customerName_ = json["customerName"] ?? json["customer_name"];
-      if (_customerName_) {
-        msg.customerName = _customerName_;
+    ): SalesOverviewResponse.Record {
+      const _firstName_ = json["firstName"] ?? json["first_name"];
+      if (_firstName_) {
+        msg.firstName = _firstName_;
       }
-      const _className_ = json["className"] ?? json["class_name"];
-      if (_className_) {
-        msg.className = _className_;
+      const _lastName_ = json["lastName"] ?? json["last_name"];
+      if (_lastName_) {
+        msg.lastName = _lastName_;
       }
-      const _classDisplayName_ =
-        json["classDisplayName"] ?? json["class_display_name"];
-      if (_classDisplayName_) {
-        msg.classDisplayName = _classDisplayName_;
+      const _product_ = json["product"];
+      if (_product_) {
+        msg.product = _product_;
+      }
+      const _productDisplayName_ =
+        json["productDisplayName"] ?? json["product_display_name"];
+      if (_productDisplayName_) {
+        msg.productDisplayName = _productDisplayName_;
       }
       const _date_ = json["date"];
       if (_date_) {
         msg.date = _date_;
       }
-      const _amount_ = json["amount"];
-      if (_amount_) {
-        msg.amount = BigInt(_amount_);
+      const _total_ = json["total"];
+      if (_total_) {
+        msg.total = BigInt(_total_);
       }
       const _orderNumber_ = json["orderNumber"] ?? json["order_number"];
       if (_orderNumber_) {
-        msg.orderNumber = _orderNumber_;
+        msg.orderNumber = BigInt(_orderNumber_);
       }
       return msg;
     },
