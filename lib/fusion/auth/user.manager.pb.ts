@@ -56,6 +56,16 @@ export interface UpdateUserRequest {
   updateMask: protoscript.FieldMask;
 }
 
+export interface UpdateMyUserRequest {
+  displayName: string;
+  phoneNumber: string;
+  photoURL: string;
+  /**
+   * The list of fields to be updated.
+   */
+  updateMask: protoscript.FieldMask;
+}
+
 export interface DeleteUserRequest {
   name: string;
 }
@@ -158,6 +168,18 @@ export async function SetUserPassword(
   return protoscript.Empty.decode(response);
 }
 
+export async function UpdateMyUser(
+  updateMyUserRequest: UpdateMyUserRequest,
+  config?: ClientConfiguration,
+): Promise<authUser.User> {
+  const response = await PBrequest(
+    "/auth.UserManager/UpdateMyUser",
+    UpdateMyUserRequest.encode(updateMyUserRequest),
+    config,
+  );
+  return authUser.User.decode(response);
+}
+
 //========================================//
 //        UserManager JSON Client         //
 //========================================//
@@ -246,6 +268,18 @@ export async function SetUserPasswordJSON(
   return protoscript.EmptyJSON.decode(response);
 }
 
+export async function UpdateMyUserJSON(
+  updateMyUserRequest: UpdateMyUserRequest,
+  config?: ClientConfiguration,
+): Promise<authUser.User> {
+  const response = await JSONrequest(
+    "/auth.UserManager/UpdateMyUser",
+    UpdateMyUserRequestJSON.encode(updateMyUserRequest),
+    config,
+  );
+  return authUser.UserJSON.decode(response);
+}
+
 //========================================//
 //              UserManager               //
 //========================================//
@@ -283,6 +317,10 @@ export interface UserManager<Context = unknown> {
     setUserPasswordRequest: SetUserPasswordRequest,
     context: Context,
   ) => Promise<protoscript.Empty> | protoscript.Empty;
+  UpdateMyUser: (
+    updateMyUserRequest: UpdateMyUserRequest,
+    context: Context,
+  ) => Promise<authUser.User> | authUser.User;
 }
 
 export function createUserManager<Context>(service: UserManager<Context>) {
@@ -333,6 +371,12 @@ export function createUserManager<Context>(service: UserManager<Context>) {
           json: SetUserPasswordRequestJSON,
         },
         output: { protobuf: protoscript.Empty, json: protoscript.EmptyJSON },
+      },
+      UpdateMyUser: {
+        name: "UpdateMyUser",
+        handler: service.UpdateMyUser,
+        input: { protobuf: UpdateMyUserRequest, json: UpdateMyUserRequestJSON },
+        output: { protobuf: authUser.User, json: authUser.UserJSON },
       },
     },
   } as const;
@@ -703,6 +747,107 @@ export const UpdateUserRequest = {
           break;
         }
         case 2: {
+          reader.readMessage(
+            msg.updateMask,
+            protoscript.FieldMask._readMessage,
+          );
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const UpdateMyUserRequest = {
+  /**
+   * Serializes UpdateMyUserRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<UpdateMyUserRequest>): Uint8Array {
+    return UpdateMyUserRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes UpdateMyUserRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): UpdateMyUserRequest {
+    return UpdateMyUserRequest._readMessage(
+      UpdateMyUserRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes UpdateMyUserRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<UpdateMyUserRequest>,
+  ): UpdateMyUserRequest {
+    return {
+      displayName: "",
+      phoneNumber: "",
+      photoURL: "",
+      updateMask: protoscript.FieldMask.initialize(),
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<UpdateMyUserRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.displayName) {
+      writer.writeString(1, msg.displayName);
+    }
+    if (msg.phoneNumber) {
+      writer.writeString(2, msg.phoneNumber);
+    }
+    if (msg.photoURL) {
+      writer.writeString(3, msg.photoURL);
+    }
+    if (msg.updateMask) {
+      writer.writeMessage(
+        4,
+        msg.updateMask,
+        protoscript.FieldMask._writeMessage,
+      );
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: UpdateMyUserRequest,
+    reader: protoscript.BinaryReader,
+  ): UpdateMyUserRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.displayName = reader.readString();
+          break;
+        }
+        case 2: {
+          msg.phoneNumber = reader.readString();
+          break;
+        }
+        case 3: {
+          msg.photoURL = reader.readString();
+          break;
+        }
+        case 4: {
           reader.readMessage(
             msg.updateMask,
             protoscript.FieldMask._readMessage,
@@ -1249,6 +1394,93 @@ export const UpdateUserRequestJSON = {
     const _user_ = json["user"];
     if (_user_) {
       authUser.UserJSON._readMessage(msg.user, _user_);
+    }
+    const _updateMask_ = json["updateMask"] ?? json["update_mask"];
+    if (_updateMask_) {
+      protoscript.FieldMaskJSON._readMessage(msg.updateMask, _updateMask_);
+    }
+    return msg;
+  },
+};
+
+export const UpdateMyUserRequestJSON = {
+  /**
+   * Serializes UpdateMyUserRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<UpdateMyUserRequest>): string {
+    return JSON.stringify(UpdateMyUserRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes UpdateMyUserRequest from JSON.
+   */
+  decode: function (json: string): UpdateMyUserRequest {
+    return UpdateMyUserRequestJSON._readMessage(
+      UpdateMyUserRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes UpdateMyUserRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<UpdateMyUserRequest>,
+  ): UpdateMyUserRequest {
+    return {
+      displayName: "",
+      phoneNumber: "",
+      photoURL: "",
+      updateMask: protoscript.FieldMaskJSON.initialize(),
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<UpdateMyUserRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.displayName) {
+      json["displayName"] = msg.displayName;
+    }
+    if (msg.phoneNumber) {
+      json["phoneNumber"] = msg.phoneNumber;
+    }
+    if (msg.photoURL) {
+      json["photoURL"] = msg.photoURL;
+    }
+    if (msg.updateMask) {
+      const _updateMask_ = protoscript.FieldMaskJSON._writeMessage(
+        msg.updateMask,
+      );
+      if (Object.keys(_updateMask_).length > 0) {
+        json["updateMask"] = _updateMask_;
+      }
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: UpdateMyUserRequest,
+    json: any,
+  ): UpdateMyUserRequest {
+    const _displayName_ = json["displayName"];
+    if (_displayName_) {
+      msg.displayName = _displayName_;
+    }
+    const _phoneNumber_ = json["phoneNumber"];
+    if (_phoneNumber_) {
+      msg.phoneNumber = _phoneNumber_;
+    }
+    const _photoURL_ = json["photoURL"];
+    if (_photoURL_) {
+      msg.photoURL = _photoURL_;
     }
     const _updateMask_ = json["updateMask"] ?? json["update_mask"];
     if (_updateMask_) {

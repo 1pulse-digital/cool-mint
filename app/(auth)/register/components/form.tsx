@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { PhoneInputField } from "@/components/ui/phone-input"
 import signUp from "@/lib/firebase/auth/sign-up"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FirebaseError } from "firebase/app"
@@ -18,6 +19,8 @@ import { toast } from "sonner"
 import { z } from "zod"
 const schema = z.object({
   email: z.string().email(),
+  phoneNumber: z.string(),
+  displayName: z.string(),
   password: z.string().min(8, "Password must be at least 8 characters"),
 })
 
@@ -34,7 +37,12 @@ export const RegisterForm = () => {
     values: RegisterFormValues,
   ) => {
     try {
-      const response = await signUp(values.email, values.password)
+      const response = await signUp(
+        values.email,
+        values.password,
+        values.displayName,
+        values.phoneNumber,
+      )
       if (response.error === null) {
         // do nothing, the auth state will be updated automatically
       } else {
@@ -59,6 +67,32 @@ export const RegisterForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="displayName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Full Name</FormLabel>
+              <FormControl>
+                <Input placeholder="" autoComplete="given-name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="phoneNumber"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone Number</FormLabel>
+              <FormControl>
+                <PhoneInputField name={field.name} placeholder="" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="email"
@@ -89,13 +123,14 @@ export const RegisterForm = () => {
                   placeholder="password"
                   type="password"
                   {...field}
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+
         <Button className="w-full">Sign Up</Button>
       </form>
     </Form>

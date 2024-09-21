@@ -12,9 +12,11 @@ const UserContext = createContext({} as User | null)
 export const useUser = () => useContext(UserContext)
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  // TODO: why do we need to track this state again? Is it because of the message being displayed twice?
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
   const [user, setUser] = useState<User | null>(null)
 
+  // listen to firebase auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(async (user) => {
       if (user) {
