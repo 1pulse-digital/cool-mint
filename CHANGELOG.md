@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.25.0](https://github.com/1pulse-digital/cool-mint/compare/v0.24.0...v0.25.0) (2024-09-26)
+
+
+### Features
+
+* Capture user name and phone during signup ([5d68cc9](https://github.com/1pulse-digital/cool-mint/commit/5d68cc9b1b188f3ea8f7ceac28de86410efc63a6))
+
+
+### Bug Fixes
+
+* Add a login/register page image ([b9e3110](https://github.com/1pulse-digital/cool-mint/commit/b9e3110dbde302d2215af11a92780d7d3c12a5d2))
+
 ## [0.24.0](https://github.com/1pulse-digital/cool-mint/compare/v0.23.1...v0.24.0) (2024-09-02)
 
 
