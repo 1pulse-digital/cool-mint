@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.2](https://github.com/1pulse-digital/cool-mint/compare/v0.25.1...v0.25.2) (2024-10-23)
+
+
+### Bug Fixes
+
+* Sort the upcoming classes' months correctly ([2302b15](https://github.com/1pulse-digital/cool-mint/commit/2302b15f9cf455c025f30584a3fafe21ef32a266))
+
 ## [0.25.1](https://github.com/1pulse-digital/cool-mint/compare/v0.25.0...v0.25.1) (2024-10-23)
 
 
