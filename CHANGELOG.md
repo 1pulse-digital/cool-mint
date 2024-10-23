@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.1](https://github.com/1pulse-digital/cool-mint/compare/v0.25.0...v0.25.1) (2024-10-23)
+
+
+### Bug Fixes
+
+* set the button to disabled to prevent double booking ([f1b891a](https://github.com/1pulse-digital/cool-mint/commit/f1b891acb8fc637e638956ad9a4a5a06733954d4))
+
 ## [0.25.0](https://github.com/1pulse-digital/cool-mint/compare/v0.24.0...v0.25.0) (2024-09-26)
 
 
