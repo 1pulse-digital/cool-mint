@@ -78,6 +78,7 @@ export declare namespace ClassOverviewResponse {
     date: string;
     totalSeats: number;
     numberSold: number;
+    session: string;
   }
 }
 
@@ -1435,6 +1436,7 @@ export const ClassOverviewResponse = {
         date: "",
         totalSeats: 0,
         numberSold: 0,
+        session: "",
         ...msg,
       };
     },
@@ -1457,6 +1459,9 @@ export const ClassOverviewResponse = {
       }
       if (msg.numberSold) {
         writer.writeInt32(4, msg.numberSold);
+      }
+      if (msg.session) {
+        writer.writeString(5, msg.session);
       }
       return writer;
     },
@@ -1485,6 +1490,10 @@ export const ClassOverviewResponse = {
           }
           case 4: {
             msg.numberSold = reader.readInt32();
+            break;
+          }
+          case 5: {
+            msg.session = reader.readString();
             break;
           }
           default: {
@@ -2466,6 +2475,7 @@ export const ClassOverviewResponseJSON = {
         date: "",
         totalSeats: 0,
         numberSold: 0,
+        session: "",
         ...msg,
       };
     },
@@ -2488,6 +2498,9 @@ export const ClassOverviewResponseJSON = {
       }
       if (msg.numberSold) {
         json["numberSold"] = msg.numberSold;
+      }
+      if (msg.session) {
+        json["session"] = msg.session;
       }
       return json;
     },
@@ -2514,6 +2527,10 @@ export const ClassOverviewResponseJSON = {
       const _numberSold_ = json["numberSold"] ?? json["number_sold"];
       if (_numberSold_) {
         msg.numberSold = protoscript.parseNumber(_numberSold_);
+      }
+      const _session_ = json["session"];
+      if (_session_) {
+        msg.session = _session_;
       }
       return msg;
     },
