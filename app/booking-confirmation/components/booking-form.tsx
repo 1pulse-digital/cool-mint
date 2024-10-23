@@ -15,13 +15,14 @@ import { toast } from "sonner"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { TourBooking } from "@/lib/fusion/workshop/tourBooking.pb"
-import { bookTour } from "../actions"
-import { Checkbox } from "@/components/ui/checkbox"
 import { addMinutes, format } from "date-fns"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useState } from "react"
+import { bookTour } from "../actions"
 
 interface BookingFormProps {
   booking: TourBooking
@@ -51,6 +52,7 @@ const schema = z.object({
 type BookingFormValues = z.infer<typeof schema>
 
 export const BookingForm = ({ booking }: BookingFormProps) => {
+  const [loading, setLoading] = useState(false)
   const searchParams = useSearchParams()
   const redirect = `/confirmed-booking?${searchParams.toString()}`
   const router = useRouter()
@@ -80,13 +82,13 @@ export const BookingForm = ({ booking }: BookingFormProps) => {
     values: BookingFormValues,
   ) => {
     try {
+      setLoading(true)
       const interests: (keyof Interests)[] = []
       for (const key in values.tourist.interests) {
         if (values.tourist.interests[key as keyof Interests]) {
           interests.push(key as keyof Interests)
         }
       }
-      console.log("booking the tour", { values, interests })
       const response = await bookTour({
         time: booking.time,
         tourist: {
@@ -98,7 +100,9 @@ export const BookingForm = ({ booking }: BookingFormProps) => {
       })
       toast.success("Booking successful")
       router.push(redirect)
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       if (error instanceof Error) {
         toast.error(`Failed to make booking: ${error.message}`)
       } else {
@@ -320,7 +324,7 @@ export const BookingForm = ({ booking }: BookingFormProps) => {
             </div>
           </div>
         </div>
-        <Button size={"sm"} type="submit">
+        <Button disabled={loading} size={"sm"} type="submit">
           Submit
         </Button>
       </form>
