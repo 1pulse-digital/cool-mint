@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.0](https://github.com/1pulse-digital/cool-mint/compare/v0.25.2...v0.26.0) (2024-12-05)
+
+
+### Features
+
+* Add products and BOGO discount to coupons ([9270b3a](https://github.com/1pulse-digital/cool-mint/commit/9270b3a0a9b1e6b4d4391b394cd1c70c6dca4e0b))
+
 ## [0.25.2](https://github.com/1pulse-digital/cool-mint/compare/v0.25.1...v0.25.2) (2024-10-23)
 
 
