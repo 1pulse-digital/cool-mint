@@ -35,6 +35,10 @@ export interface Coupon {
    */
   individualUse: boolean;
   /**
+   * List of product names the coupon can be used on.
+   */
+  products: string[];
+  /**
    * How many times the coupon can be used in total.
    */
   usageLimit: number;
@@ -81,7 +85,8 @@ export declare namespace Coupon {
     | "TYPE_UNSPECIFIED"
     | "PERCENTAGE"
     | "FIXED_CART"
-    | "FIXED_PRODUCT";
+    | "FIXED_PRODUCT"
+    | "BOGO_PERCENTAGE";
 }
 
 //========================================//
@@ -124,6 +129,7 @@ export const Coupon = {
       dateExpires: "",
       usageCount: 0,
       individualUse: false,
+      products: [],
       usageLimit: 0,
       usageLimitPerUser: 0,
       minimumAmount: 0n,
@@ -174,6 +180,9 @@ export const Coupon = {
     }
     if (msg.individualUse) {
       writer.writeBool(10, msg.individualUse);
+    }
+    if (msg.products?.length) {
+      writer.writeRepeatedString(11, msg.products);
     }
     if (msg.usageLimit) {
       writer.writeInt32(13, msg.usageLimit);
@@ -258,6 +267,10 @@ export const Coupon = {
           msg.individualUse = reader.readBool();
           break;
         }
+        case 11: {
+          msg.products.push(reader.readString());
+          break;
+        }
         case 13: {
           msg.usageLimit = reader.readInt32();
           break;
@@ -326,6 +339,11 @@ export const Coupon = {
      */
     FIXED_PRODUCT: "FIXED_PRODUCT",
     /**
+     * A percentage discount applied to a second product in a "Buy One, Get One" promotion.
+     * For example, if the customer buys two (2) t-shirts @ $20 each, a coupon for "Buy One, Get One 50% Off" applies a discount of $10 on the second t-shirt.
+     */
+    BOGO_PERCENTAGE: "BOGO_PERCENTAGE",
+    /**
      * @private
      */
     _fromInt: function (i: number): Coupon.Type {
@@ -341,6 +359,9 @@ export const Coupon = {
         }
         case 3: {
           return "FIXED_PRODUCT";
+        }
+        case 4: {
+          return "BOGO_PERCENTAGE";
         }
         // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
         default: {
@@ -364,6 +385,9 @@ export const Coupon = {
         }
         case "FIXED_PRODUCT": {
           return 3;
+        }
+        case "BOGO_PERCENTAGE": {
+          return 4;
         }
         // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
         default: {
@@ -408,6 +432,7 @@ export const CouponJSON = {
       dateExpires: "",
       usageCount: 0,
       individualUse: false,
+      products: [],
       usageLimit: 0,
       usageLimitPerUser: 0,
       minimumAmount: 0n,
@@ -459,6 +484,9 @@ export const CouponJSON = {
     }
     if (msg.individualUse) {
       json["individualUse"] = msg.individualUse;
+    }
+    if (msg.products?.length) {
+      json["products"] = msg.products;
     }
     if (msg.usageLimit) {
       json["usageLimit"] = msg.usageLimit;
@@ -537,6 +565,10 @@ export const CouponJSON = {
     if (_individualUse_) {
       msg.individualUse = _individualUse_;
     }
+    const _products_ = json["products"];
+    if (_products_) {
+      msg.products = _products_;
+    }
     const _usageLimit_ = json["usageLimit"];
     if (_usageLimit_) {
       msg.usageLimit = protoscript.parseNumber(_usageLimit_);
@@ -599,6 +631,11 @@ export const CouponJSON = {
      */
     FIXED_PRODUCT: "FIXED_PRODUCT",
     /**
+     * A percentage discount applied to a second product in a "Buy One, Get One" promotion.
+     * For example, if the customer buys two (2) t-shirts @ $20 each, a coupon for "Buy One, Get One 50% Off" applies a discount of $10 on the second t-shirt.
+     */
+    BOGO_PERCENTAGE: "BOGO_PERCENTAGE",
+    /**
      * @private
      */
     _fromInt: function (i: number): Coupon.Type {
@@ -614,6 +651,9 @@ export const CouponJSON = {
         }
         case 3: {
           return "FIXED_PRODUCT";
+        }
+        case 4: {
+          return "BOGO_PERCENTAGE";
         }
         // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
         default: {
@@ -637,6 +677,9 @@ export const CouponJSON = {
         }
         case "FIXED_PRODUCT": {
           return 3;
+        }
+        case "BOGO_PERCENTAGE": {
+          return 4;
         }
         // unknown values are preserved as numbers. this occurs when new enum values are introduced and the generated code is out of date.
         default: {
