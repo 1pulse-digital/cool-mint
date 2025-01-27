@@ -6,6 +6,7 @@ import React, { useEffect } from "react"
 import { toast } from "sonner"
 import { myCart, removeFromCart } from "../actions"
 import { ShoppingCartItem } from "./cart-item"
+import { addToCart } from "@/app/actions"
 
 interface ShoppingCartProps {}
 
@@ -18,7 +19,7 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
   const handleRemoveItem = (item: CartItem) => async () => {
     try {
       const updatedCart = await removeFromCart({
-        eTag: cart?.auditEntry.eTag || "",
+        eTag: cart.auditEntry.eTag || "",
         product: item.product,
         quantity: item.quantity,
       })
@@ -30,11 +31,46 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
     }
   }
 
+  const handleIncreaseQuantity = (item: CartItem) => async () => {
+    try {
+      const updatedCart = await addToCart({
+        eTag: cart.auditEntry.eTag,
+        product: item.product,
+        quantity: 1n,
+        variant: "",
+      })
+      setCart(updatedCart)
+      toast.success("Item removed from cart")
+    } catch (e) {
+      console.error(e)
+      toast.error("Failed to increase quantity")
+    }
+  }
+
+  const handleDecreaseQuantity = (item: CartItem) => async () => {
+    try {
+      const updatedCart = await removeFromCart({
+        eTag: cart.auditEntry.eTag || "",
+        product: item.product,
+        quantity: 1n,
+      })
+      setCart(updatedCart)
+      toast.success("Item added to from cart")
+    } catch (e) {
+      console.error(e)
+      toast.error("Failed to increase quantity")
+    }
+  }
+
   useEffect(() => {
     if (!cart) {
       return
     }
-    setAmount(cart.items.length || 0)
+    const amount = cart.items.reduce(
+      (acc, item) => acc + Number(item.quantity),
+      0,
+    )
+    setAmount(amount)
   }, [cart, setAmount])
 
   if (!cart) {
@@ -51,6 +87,8 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
           key={item.product}
           item={item}
           handleRemove={handleRemoveItem(item)}
+          handleDecreaseQuantity={handleDecreaseQuantity(item)}
+          handleIncreaseQuantity={handleIncreaseQuantity(item)}
         />
       ))}
     </div>
