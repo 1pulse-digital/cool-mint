@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.27.0](https://github.com/1pulse-digital/cool-mint/compare/v0.26.0...v0.27.0) (2025-01-27)
+
+
+### Features
+
+* Update your cart quantity ([60e6355](https://github.com/1pulse-digital/cool-mint/commit/60e635504cece545e943b5f11b5d93faefc1d8a4))
+
+
+### Bug Fixes
+
+* Cart label now show total quantity in cart ([0351feb](https://github.com/1pulse-digital/cool-mint/commit/0351feb31cdfacb01ebc0c8baa9c448a62f5ae13))
+* Remove the old cart quantity ([dfcd5d1](https://github.com/1pulse-digital/cool-mint/commit/dfcd5d1cb8bc3acd5b3535506d9879ee8a8653ab))
+
 ## [0.26.0](https://github.com/1pulse-digital/cool-mint/compare/v0.25.2...v0.26.0) (2024-12-05)
 
 
