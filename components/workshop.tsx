@@ -65,7 +65,11 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
         variant: "",
       })
       setLoadding(false)
-      cartContext.setAmount(cart.items.length + 1)
+      const amount = cart.items.reduce(
+        (acc, item) => acc + Number(item.quantity),
+        0,
+      )
+      cartContext.setAmount(amount + 1)
       toast.success("Added to cart")
       router.push("/cart")
     } catch (e: unknown) {
