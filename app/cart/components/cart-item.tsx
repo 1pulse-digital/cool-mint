@@ -44,7 +44,6 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
           className="w-14"
         />
         <Button onClick={handleIncreaseQuantity}>+</Button>
-        <span className="text-nowrap">{" x " + item.quantity.toString()}</span>
         <Button variant={"destructive"} size={"sm"} onClick={handleRemove}>
           <Trash size={16} className="" />
         </Button>
