@@ -75,32 +75,34 @@ export default function PricingTable() {
       <div className="mx-auto grid items-start gap-6 px-0 md:grid-cols-2 lg:max-w-none lg:grid-cols-3">
         {/* Pricing tab 1 */}
         <PricingTab
-          planName="Monthly Membership"
-          price="8358 to R10999"
-          planDescription="The monthly membership is our premium offering, providing everything you and your team need to bring ambitious projects to life."
+          popular={true}
+          planName="3 Day Membership"
+          price="1899"
+          planDescription="The three-day membership is crafted for enthusiasts exploring their creativity and working on personal projects."
           features={[
-            "Dedicated Storage and Workspace",
-            "Access for 3 Members",
-            "R499 Joining Fee for First-Time Members",
+            "No Storage",
+            "R499 Joining Fee for First-Time Member",
+            "3-Day Access Valid Over 1 Month",
+            "Can be used by multiple users simutanueously",
             "Unlimited Access to Tools and Machines",
+            "No dispatch or receiving",
             "Protected from Load Shedding",
-            "Dispatch and Goods Receiving Services",
           ]}
-          planIdeal="Ideal for small teams and serious makers committed to making their mark."
+          planIdeal="Ideal for first timers and startups."
         />
 
         {/* Pricing tab 2 */}
         <PricingTab
-          popular={true}
           planName="15 Day Membership"
-          price="4992"
+          price="6699"
           planDescription="Tailored for freelancers who require flexibility and access to professional tools without the commitment of a full-time space."
           features={[
             "No Storage",
             "R499 Joining Fee for First-Time Members",
             "15-Day Access Valid Over 2 Months",
-            "Multi-user Access",
+            "Can be used by multiple users simutanueously",
             "Unlimited Access to Tools and Machines",
+            "No dispach or receiving",
             "Protected from Load Shedding",
           ]}
           planIdeal="Perfect for freelancers who need a professional workspace on a part-time basis."
@@ -108,20 +110,21 @@ export default function PricingTable() {
 
         {/* Pricing tab 3 */}
         <PricingTab
-          planName="3 Day Membership"
-          price="1507"
-          planDescription="The three-day membership is crafted for enthusiasts exploring their creativity and working on personal projects."
+          planName="30 Days Membership"
+          price="7999"
+          planDescription="The monthly membership is our premium offering, providing everything you and your team need to bring ambitious projects to life."
           features={[
-            "No Storage",
-            "R499 Joining Fee for First-Time Member",
-            "3-Day Access Valid Over 1 Month",
-            "Multi-user Access",
+            "Dedicated Storage and Workspace",
+            "R499 Joining Fee for First-Time Members",
+            "30 days vaild of 3 months",
+            "Can be used by multiple user simutanueously",
             "Unlimited Access to Tools and Machines",
+            "Dispatch and Goods Receiving Services",
             "Protected from Load Shedding",
           ]}
-          planIdeal="Ideal for hobbyists seeking a supportive environment to explore new projects."
+          planIdeal="Ideal for small teams and serious makers committed to making their mark."
         />
       </div>
     </div>
-  );
+  )
 }
