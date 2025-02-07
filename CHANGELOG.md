@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.1](https://github.com/1pulse-digital/cool-mint/compare/v0.27.0...v0.27.1) (2025-02-07)
+
+
+### Bug Fixes
+
+* Update copy and pricing ([#84](https://github.com/1pulse-digital/cool-mint/issues/84)) ([781875c](https://github.com/1pulse-digital/cool-mint/commit/781875c15592dd87cae3af41e80a021df9ba4657))
+
 ## [0.27.0](https://github.com/1pulse-digital/cool-mint/compare/v0.26.0...v0.27.0) (2025-01-27)
 
 
