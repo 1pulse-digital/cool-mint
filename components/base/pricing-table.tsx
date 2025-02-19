@@ -114,7 +114,7 @@ export default function PricingTable() {
           price="7999"
           planDescription="The monthly membership is our premium offering, providing everything you and your team need to bring ambitious projects to life."
           features={[
-            "Dedicated Storage and Workspace",
+            "No Storage",
             "R499 Joining Fee for First-Time Members",
             "30 days vaild of 3 months",
             "Can be used by multiple user simutanueously",
