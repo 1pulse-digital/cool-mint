@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.2](https://github.com/1pulse-digital/cool-mint/compare/v0.27.1...v0.27.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* Change 30 day membership to no storage ([f1c19d2](https://github.com/1pulse-digital/cool-mint/commit/f1c19d20e36e51d480e258d93d4513e44f961941))
+
 ## [0.27.1](https://github.com/1pulse-digital/cool-mint/compare/v0.27.0...v0.27.1) (2025-02-07)
 
 
