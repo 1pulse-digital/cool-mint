@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.3](https://github.com/1pulse-digital/cool-mint/compare/v0.27.2...v0.27.3) (2025-02-25)
+
+
+### Bug Fixes
+
+* remove old blogs and sort blogs from newest to oldest ([#88](https://github.com/1pulse-digital/cool-mint/issues/88)) ([ec76ef3](https://github.com/1pulse-digital/cool-mint/commit/ec76ef387d5c19b5288766f36f758253247e8a05))
+
 ## [0.27.2](https://github.com/1pulse-digital/cool-mint/compare/v0.27.1...v0.27.2) (2025-02-19)
 
 
