@@ -82,6 +82,7 @@ export default async function Page() {
               <div className="grid w-full space-x-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
                 {posts
                   .filter((post) => post.filter === "news")
+                  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .map((post) => (
                     <div key={post.slug}>
                       <TabsContent
@@ -159,6 +160,7 @@ export default async function Page() {
                   ))}
                 {posts
                   .filter((post) => post.filter === "events")
+                  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .map((post) => (
                     <div key={post.slug}>
                       <TabsContent
@@ -236,6 +238,7 @@ export default async function Page() {
                   ))}
                 {posts
                   .filter((post) => post.filter === "diy")
+                  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .map((post) => (
                     <div key={post.slug}>
                       <TabsContent
