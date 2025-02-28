@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.4](https://github.com/1pulse-digital/cool-mint/compare/v0.27.3...v0.27.4) (2025-02-28)
+
+
+### Bug Fixes
+
+* Fix the typo in notification message when updating cart quantity ([fbf075b](https://github.com/1pulse-digital/cool-mint/commit/fbf075b8c09cd3134ec2282d2d34acd4bea8ab80))
+
 ## [0.27.3](https://github.com/1pulse-digital/cool-mint/compare/v0.27.2...v0.27.3) (2025-02-25)
 
 
