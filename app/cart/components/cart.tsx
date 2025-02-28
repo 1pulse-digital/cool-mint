@@ -40,7 +40,7 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
         variant: "",
       })
       setCart(updatedCart)
-      toast.success("Item removed from cart")
+      toast.success("Item added to cart")
     } catch (e) {
       console.error(e)
       toast.error("Failed to increase quantity")
@@ -55,7 +55,7 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
         quantity: 1n,
       })
       setCart(updatedCart)
-      toast.success("Item added to from cart")
+      toast.success("Item removed from cart")
     } catch (e) {
       console.error(e)
       toast.error("Failed to increase quantity")
