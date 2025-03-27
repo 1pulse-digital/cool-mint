@@ -77,7 +77,6 @@ export default async function Page({ params }: ClassPageProps) {
           <div className="mx-auto flex max-w-2xl items-center justify-center text-foreground">
             <Carousel className="w-full max-w-xs">
               <CarouselContent>
-                {/* {masterClass.gallery.images.map((item, index) => ( */}
                 <CarouselItem key={1}>
                   <div className="p-1">
                     <Card>
@@ -95,7 +94,25 @@ export default async function Page({ params }: ClassPageProps) {
                     </Card>
                   </div>
                 </CarouselItem>
-                {/* ))} */}
+                {masterClass.gallery.images.map((item, index) => (
+                  <CarouselItem key={index + 2}>
+                    <div className="p-1">
+                      <Card>
+                        <CardContent className="flex aspect-square items-center justify-center p-6">
+                          <div className="">
+                            <Image
+                              src={item.url}
+                              alt={"Gallery Image"}
+                              className="rounded-lg "
+                              width="400"
+                              height="400"
+                            />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
@@ -104,7 +121,7 @@ export default async function Page({ params }: ClassPageProps) {
         )}
         <div className="px-8">
           <Suspense fallback={<UpcomingClassesLoader />}>
-            <UpcomingClasses masterClass={masterClass.name}/>
+            <UpcomingClasses masterClass={masterClass.name} />
           </Suspense>
         </div>
         <div className="py-20 lg:px-8 2xl:px-24">
