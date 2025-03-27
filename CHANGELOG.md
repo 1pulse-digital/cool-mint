@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.5](https://github.com/1pulse-digital/cool-mint/compare/v0.27.4...v0.27.5) (2025-03-27)
+
+
+### Bug Fixes
+
+* Show thumbnail and galary images in classes carousel ([9a72630](https://github.com/1pulse-digital/cool-mint/commit/9a726300c887f975b7e3e8c2a4b563826a9dbcdb))
+
 ## [0.27.4](https://github.com/1pulse-digital/cool-mint/compare/v0.27.3...v0.27.4) (2025-02-28)
 
 
