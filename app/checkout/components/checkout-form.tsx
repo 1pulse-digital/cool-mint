@@ -37,12 +37,16 @@ const addressSchema = z.object({
   postalCode: z.string(),
 })
 
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
+
 const schema = z.object({
   billingAddress: z.object({
     address: addressSchema,
-    email: z.string(),
+    email: z.string().email(),
     taxNumber: z.string().optional(),
-    phone: z.string().optional(),
+    phone: z.string().regex(phoneRegex, "Invalid phone number"),
   }),
 })
 
@@ -126,9 +130,7 @@ export const CheckoutForm = ({}: CheckoutFormProps) => {
                 <FormControl>
                   <Input type="tel" {...field} />
                 </FormControl>
-                <FormDescription>
-                  (Optional) Your telephone number
-                </FormDescription>
+                <FormDescription>Your telephone number</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
