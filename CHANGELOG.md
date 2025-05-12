@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.6](https://github.com/1pulse-digital/cool-mint/compare/v0.27.5...v0.27.6) (2025-05-12)
+
+
+### Bug Fixes
+
+* Rebuild build cache ([96d5bf1](https://github.com/1pulse-digital/cool-mint/commit/96d5bf1b53a717fca2613607574ec027e0777620))
+
 ## [0.27.5](https://github.com/1pulse-digital/cool-mint/compare/v0.27.4...v0.27.5) (2025-03-27)
 
 
