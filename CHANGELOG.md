@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.7](https://github.com/1pulse-digital/cool-mint/compare/v0.27.6...v0.27.7) (2025-06-03)
+
+
+### Bug Fixes
+
+* require phone and email at checkout ([#95](https://github.com/1pulse-digital/cool-mint/issues/95)) ([03d2198](https://github.com/1pulse-digital/cool-mint/commit/03d21987b4a0ec39d7cc6536739deaecd32fd2e8))
+
 ## [0.27.6](https://github.com/1pulse-digital/cool-mint/compare/v0.27.5...v0.27.6) (2025-05-12)
 
 
