@@ -9,8 +9,6 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 export default async function Page() {
   const response = await listMachines({
     filter: "",
-    pageSize: 100,
-    pageToken: "",
   })
   return (
     <div className={"bg-background py-10 sm:py-20"}>
