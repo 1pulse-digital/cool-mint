@@ -26,27 +26,11 @@ export interface ListSessionsRequest {
    * Parent references a masterClass.name
    */
   parent: string;
-  /**
-   * The maximum number of items to return.
-   */
-  pageSize: number;
-  /**
-   * The next_page_token value returned from a previous List request, if any.
-   */
-  pageToken: string;
 }
 
 export interface ListSessionsResponse {
-  /**
-   * There will be a maximum number of records returned based on the page_size field in the request.
-   */
   Sessions: masterClassSession.Session[];
   total: bigint;
-  /**
-   * Token to retrieve the next page of results, or empty if there are no
-   * more results in the list.
-   */
-  nextPageToken: string;
 }
 
 export interface CreateSessionRequest {
@@ -340,8 +324,6 @@ export const ListSessionsRequest = {
     return {
       filter: "",
       parent: "",
-      pageSize: 0,
-      pageToken: "",
       ...msg,
     };
   },
@@ -358,12 +340,6 @@ export const ListSessionsRequest = {
     }
     if (msg.parent) {
       writer.writeString(2, msg.parent);
-    }
-    if (msg.pageSize) {
-      writer.writeInt32(3, msg.pageSize);
-    }
-    if (msg.pageToken) {
-      writer.writeString(4, msg.pageToken);
     }
     return writer;
   },
@@ -384,14 +360,6 @@ export const ListSessionsRequest = {
         }
         case 2: {
           msg.parent = reader.readString();
-          break;
-        }
-        case 3: {
-          msg.pageSize = reader.readInt32();
-          break;
-        }
-        case 4: {
-          msg.pageToken = reader.readString();
           break;
         }
         default: {
@@ -434,7 +402,6 @@ export const ListSessionsResponse = {
     return {
       Sessions: [],
       total: 0n,
-      nextPageToken: "",
       ...msg,
     };
   },
@@ -455,9 +422,6 @@ export const ListSessionsResponse = {
     }
     if (msg.total) {
       writer.writeInt64String(2, msg.total.toString() as any);
-    }
-    if (msg.nextPageToken) {
-      writer.writeString(3, msg.nextPageToken);
     }
     return writer;
   },
@@ -480,10 +444,6 @@ export const ListSessionsResponse = {
         }
         case 2: {
           msg.total = BigInt(reader.readInt64String());
-          break;
-        }
-        case 3: {
-          msg.nextPageToken = reader.readString();
           break;
         }
         default: {
@@ -842,8 +802,6 @@ export const ListSessionsRequestJSON = {
     return {
       filter: "",
       parent: "",
-      pageSize: 0,
-      pageToken: "",
       ...msg,
     };
   },
@@ -860,12 +818,6 @@ export const ListSessionsRequestJSON = {
     }
     if (msg.parent) {
       json["parent"] = msg.parent;
-    }
-    if (msg.pageSize) {
-      json["pageSize"] = msg.pageSize;
-    }
-    if (msg.pageToken) {
-      json["pageToken"] = msg.pageToken;
     }
     return json;
   },
@@ -884,14 +836,6 @@ export const ListSessionsRequestJSON = {
     const _parent_ = json["parent"];
     if (_parent_) {
       msg.parent = _parent_;
-    }
-    const _pageSize_ = json["pageSize"] ?? json["page_size"];
-    if (_pageSize_) {
-      msg.pageSize = protoscript.parseNumber(_pageSize_);
-    }
-    const _pageToken_ = json["pageToken"] ?? json["page_token"];
-    if (_pageToken_) {
-      msg.pageToken = _pageToken_;
     }
     return msg;
   },
@@ -924,7 +868,6 @@ export const ListSessionsResponseJSON = {
     return {
       Sessions: [],
       total: 0n,
-      nextPageToken: "",
       ...msg,
     };
   },
@@ -943,9 +886,6 @@ export const ListSessionsResponseJSON = {
     }
     if (msg.total) {
       json["total"] = String(msg.total);
-    }
-    if (msg.nextPageToken) {
-      json["nextPageToken"] = msg.nextPageToken;
     }
     return json;
   },
@@ -968,10 +908,6 @@ export const ListSessionsResponseJSON = {
     const _total_ = json["total"];
     if (_total_) {
       msg.total = BigInt(_total_);
-    }
-    const _nextPageToken_ = json["nextPageToken"] ?? json["next_page_token"];
-    if (_nextPageToken_) {
-      msg.nextPageToken = _nextPageToken_;
     }
     return msg;
   },

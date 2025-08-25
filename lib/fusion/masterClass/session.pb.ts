@@ -31,7 +31,6 @@ export interface Session {
    */
   confirmedAttendees: number;
   /**
-   * FIXME: Is this a security leak?
    * Attendees is a list of user ids
    */
   attendees: string[];

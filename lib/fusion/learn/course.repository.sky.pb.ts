@@ -22,27 +22,11 @@ export interface ListCoursesRequest {
    * TODO Generate the list of searchable fields for this comment
    */
   filter: string;
-  /**
-   * The maximum number of items to return.
-   */
-  pageSize: number;
-  /**
-   * The next_page_token value returned from a previous List request, if any.
-   */
-  pageToken: string;
 }
 
 export interface ListCoursesResponse {
-  /**
-   * There will be a maximum number of records returned based on the page_size field in the request.
-   */
   Courses: learnCourse.Course[];
   total: bigint;
-  /**
-   * Token to retrieve the next page of results, or empty if there are no
-   * more results in the list.
-   */
-  nextPageToken: string;
 }
 
 export interface CreateCourseRequest {
@@ -315,8 +299,6 @@ export const ListCoursesRequest = {
   initialize: function (msg?: Partial<ListCoursesRequest>): ListCoursesRequest {
     return {
       filter: "",
-      pageSize: 0,
-      pageToken: "",
       ...msg,
     };
   },
@@ -330,12 +312,6 @@ export const ListCoursesRequest = {
   ): protoscript.BinaryWriter {
     if (msg.filter) {
       writer.writeString(1, msg.filter);
-    }
-    if (msg.pageSize) {
-      writer.writeInt32(2, msg.pageSize);
-    }
-    if (msg.pageToken) {
-      writer.writeString(3, msg.pageToken);
     }
     return writer;
   },
@@ -352,14 +328,6 @@ export const ListCoursesRequest = {
       switch (field) {
         case 1: {
           msg.filter = reader.readString();
-          break;
-        }
-        case 2: {
-          msg.pageSize = reader.readInt32();
-          break;
-        }
-        case 3: {
-          msg.pageToken = reader.readString();
           break;
         }
         default: {
@@ -402,7 +370,6 @@ export const ListCoursesResponse = {
     return {
       Courses: [],
       total: 0n,
-      nextPageToken: "",
       ...msg,
     };
   },
@@ -423,9 +390,6 @@ export const ListCoursesResponse = {
     }
     if (msg.total) {
       writer.writeInt64String(2, msg.total.toString() as any);
-    }
-    if (msg.nextPageToken) {
-      writer.writeString(3, msg.nextPageToken);
     }
     return writer;
   },
@@ -448,10 +412,6 @@ export const ListCoursesResponse = {
         }
         case 2: {
           msg.total = BigInt(reader.readInt64String());
-          break;
-        }
-        case 3: {
-          msg.nextPageToken = reader.readString();
           break;
         }
         default: {
@@ -793,8 +753,6 @@ export const ListCoursesRequestJSON = {
   initialize: function (msg?: Partial<ListCoursesRequest>): ListCoursesRequest {
     return {
       filter: "",
-      pageSize: 0,
-      pageToken: "",
       ...msg,
     };
   },
@@ -809,12 +767,6 @@ export const ListCoursesRequestJSON = {
     if (msg.filter) {
       json["filter"] = msg.filter;
     }
-    if (msg.pageSize) {
-      json["pageSize"] = msg.pageSize;
-    }
-    if (msg.pageToken) {
-      json["pageToken"] = msg.pageToken;
-    }
     return json;
   },
 
@@ -828,14 +780,6 @@ export const ListCoursesRequestJSON = {
     const _filter_ = json["filter"];
     if (_filter_) {
       msg.filter = _filter_;
-    }
-    const _pageSize_ = json["pageSize"] ?? json["page_size"];
-    if (_pageSize_) {
-      msg.pageSize = protoscript.parseNumber(_pageSize_);
-    }
-    const _pageToken_ = json["pageToken"] ?? json["page_token"];
-    if (_pageToken_) {
-      msg.pageToken = _pageToken_;
     }
     return msg;
   },
@@ -868,7 +812,6 @@ export const ListCoursesResponseJSON = {
     return {
       Courses: [],
       total: 0n,
-      nextPageToken: "",
       ...msg,
     };
   },
@@ -885,9 +828,6 @@ export const ListCoursesResponseJSON = {
     }
     if (msg.total) {
       json["total"] = String(msg.total);
-    }
-    if (msg.nextPageToken) {
-      json["nextPageToken"] = msg.nextPageToken;
     }
     return json;
   },
@@ -910,10 +850,6 @@ export const ListCoursesResponseJSON = {
     const _total_ = json["total"];
     if (_total_) {
       msg.total = BigInt(_total_);
-    }
-    const _nextPageToken_ = json["nextPageToken"] ?? json["next_page_token"];
-    if (_nextPageToken_) {
-      msg.nextPageToken = _nextPageToken_;
     }
     return msg;
   },
