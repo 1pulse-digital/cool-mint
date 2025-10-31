@@ -2,7 +2,6 @@ import * as React from "react"
 import Image, { StaticImageData } from "next/image"
 import henry from "../../images/team/Henry.jpg"
 import joshua from "../../images/team/Josh.jpg"
-import jesse from "../../images/team/Jesse.jpg"
 import siza from "../../images/team/Ciza.jpg"
 import deneo from "../../images/team/Deneo.jpg"
 import ericsson from "../../images/team/Ericsson.jpg"
@@ -38,12 +37,6 @@ export function TeamCarousel() {
     },
 
     {
-      name: "jesse",
-      alt: "jesse",
-      src: jesse,
-    },
-
-    {
       name: "ericsson",
       alt: "ericsson",
       src: ericsson,
@@ -60,7 +53,7 @@ export function TeamCarousel() {
       alt: "deneo",
       src: deneo,
     },
-    
+
     {
       name: "charles",
       alt: "charles",
@@ -109,23 +102,6 @@ export function TeamCarousel() {
                           <Image
                             src={item.src}
                             alt={item.alt}
-                            className="rounded-lg"
-                            width="600"
-                            height="600"
-                          />
-                        </div>
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                </CarouselItem>
-                <CarouselItem>
-                  <TabsList className="space-x-2 bg-background sm:space-x-4 md:space-x-6 2xl:space-x-9">
-                    {[6, 0, 1].map((item) => (
-                      <TabsTrigger key={item} value={items[item].name}>
-                        <div className="pt-16 sm:pt-32 md:pt-44 lg:pt-52 xl:pt-72 2xl:pt-80">
-                          <Image
-                            src={items[item].src}
-                            alt={items[item].alt}
                             className="rounded-lg"
                             width="600"
                             height="600"
@@ -219,44 +195,6 @@ export function TeamCarousel() {
                     lies in positively impacting the daily lives of those around
                     him, whether through a witty remark or navigating complex
                     manufacturing strategies.
-                  </span>
-                </div>
-              </div>
-            </Card>
-          </TabsContent>
-
-          {/* Jesse Hutton */}
-
-          <TabsContent
-            className="mx-0 bg-background font-helvetica sm:mx-0 lg:px-20"
-            value="jesse"
-          >
-            <Card className="border-0 bg-background">
-              <div className="rounded-lg bg-[#2c3033] md:mx-2 md:flex lg:mx-0">
-                <div className="md:w-1/3 md:rounded-l-lg">
-                  <Image
-                    src={jesse}
-                    alt="jesse"
-                    className="h-full w-full rounded-t-lg object-cover md:rounded-lg"
-                    style={{
-                      objectFit: "cover",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  />
-                </div>
-                <div className="grid content-center rounded-lg bg-[#2c3033] px-8 py-8 font-helvetica sm:px-6 md:w-2/3">
-                  <h3 className="text-start font-helvetica text-BodyText font-semibold text-muted-foreground">
-                    Jesse Hutton
-                  </h3>
-                  <span className="py-2 pb-6 font-helvetica text-sm text-primary">
-                    Workshop Assistant
-                  </span>
-                  <span className="text-smfont-normal text-start font-helvetica text-muted-foreground sm:text-Body">
-                    Jesse is another full-time workshop assistant. As an
-                    accomplished amateur TIG welder, he is keen on learning more
-                    about making. His curious nature and eagerness to help make
-                    him an asset to all new and old members at Made In Workshop.
                   </span>
                 </div>
               </div>
