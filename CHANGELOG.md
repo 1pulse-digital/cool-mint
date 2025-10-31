@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.8](https://github.com/1pulse-digital/cool-mint/compare/v0.27.7...v0.27.8) (2025-10-31)
+
+
+### Bug Fixes
+
+* Remove Jesse ([#98](https://github.com/1pulse-digital/cool-mint/issues/98)) ([dcfadcd](https://github.com/1pulse-digital/cool-mint/commit/dcfadcd3f0b21510ada5114d96f1c801042d1b63))
+
 ## [0.27.7](https://github.com/1pulse-digital/cool-mint/compare/v0.27.6...v0.27.7) (2025-08-25)
 
 
