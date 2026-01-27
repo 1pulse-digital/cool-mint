@@ -59,18 +59,15 @@ export const LoginForm = () => {
     }
   }
 
-  interface MyFormEvent extends React.FormEvent<HTMLFormElement> {
-    nativeEvent: Event & { submitter: HTMLElement }
-  }
-
   return (
     <Form {...form}>
       <form
-        onSubmit={(e: MyFormEvent) => {
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault()
-          if (e.nativeEvent["submitter"].id === "signIn") {
+          const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLElement | null
+          if (submitter?.id === "signIn") {
             form.handleSubmit(onSubmit)()
-          } else if (e.nativeEvent["submitter"].id === "forgotPassword") {
+          } else if (submitter?.id === "forgotPassword") {
             router.push("/reset-password")
           }
         }}

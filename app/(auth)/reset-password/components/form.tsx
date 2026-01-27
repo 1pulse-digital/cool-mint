@@ -24,10 +24,6 @@ const schema = z.object({
 
 type RegisterFormValues = z.infer<typeof schema>
 
-interface MyFormEvent extends React.FormEvent<HTMLFormElement> {
-  nativeEvent: Event & { submitter: HTMLElement }
-}
-
 export const ResetPasswordForm = () => {
   const router = useRouter()
   const [resetSuccess, setResetSuccess] = useState(false)
@@ -70,9 +66,10 @@ export const ResetPasswordForm = () => {
       {!resetSuccess ? (
         <Form {...form}>
           <form
-            onSubmit={(e: MyFormEvent) => {
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
               e.preventDefault()
-              if (e.nativeEvent.submitter.id === "back") {
+              const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLElement | null
+              if (submitter?.id === "back") {
                 router.push("/login")
               } else {
                 form.handleSubmit(onSubmit)()

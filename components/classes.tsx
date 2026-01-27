@@ -1,5 +1,3 @@
-"use server"
-
 import { upcomingSessions } from "@/app/classes/actions"
 import { Skeleton } from "@/components/ui/skeleton"
 import { UpcomingWorkshops } from "./base/upcomingWorkshops"
