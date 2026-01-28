@@ -8,9 +8,9 @@
 
 @theme inline {
   --radius: 0.5rem;
-  --font-size-headings: 2.5rem;
-  --font-size-body-text: 1.1rem;
-  --font-size-body: 1rem;
+  --text-headings: 2.5rem;
+  --text-BodyText: 1.1rem;
+  --text-Body: 1rem;
   --font-family-helvetica: 'Helvetica', sans-serif;
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
