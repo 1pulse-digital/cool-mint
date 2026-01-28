@@ -19,7 +19,7 @@ function PricingTab(props: PricingTabProps) {
       <div className="relative flex flex-col rounded-2xl p-6 py-8 md:h-[400px] lg:h-[460px] xl:h-[400px] 2xl:h-96">
         {props.popular && (
           <div className="absolute right-0 top-0 -mt-4 mr-6">
-            <div className="inline-flex items-center rounded-full bg-foreground px-3 py-1.5 sm:text-Body text-sm font-semibold text-background shadow-sm shadow-slate-950/5">
+            <div className="inline-flex items-center rounded-full bg-foreground px-3 py-1.5 sm:text-Body text-sm font-semibold text-background shadow-xs shadow-slate-950/5">
               Most Popular
             </div>
           </div>
