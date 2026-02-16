@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.0](https://github.com/1pulse-digital/cool-mint/compare/v0.27.8...v0.28.0) (2026-02-16)
+
+
+### Features
+
+* add robots.txt generation ([#101](https://github.com/1pulse-digital/cool-mint/issues/101)) ([d889688](https://github.com/1pulse-digital/cool-mint/commit/d8896882e08584d1a63dd99bf188e0699c0f31b7))
+
 ## [0.27.8](https://github.com/1pulse-digital/cool-mint/compare/v0.27.7...v0.27.8) (2025-10-31)
 
 
