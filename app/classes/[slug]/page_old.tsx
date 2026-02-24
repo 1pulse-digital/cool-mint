@@ -16,9 +16,6 @@ import { notFound } from "next/navigation"
 import { getMasterClass } from "../actions"
 import { Suspense } from "react"
 import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
-import { Button } from "@/components/base/button"
-import loading from "@/app/loading"
-import { Spinner } from "@/components/ui/spinner"
 
 interface ClassPageProps {
   params: {
@@ -47,78 +44,7 @@ export default async function Page({ params }: ClassPageProps) {
   return (
     <>
       <div className={"bg-background"}>
-        <div className="grid grid-cols-1  ">
-          {/*  New code starts */}
-          <div className="grid grid-cols-2  sm:py-10 ">
-            <div className={"grid bg-yellow-400  font-helvetica"}>
-              <HeaderTitle>{masterClass.displayName}</HeaderTitle>
-              <div className="mx-auto max-w-2xl text-start text-foreground">
-                <p>{masterClass.shortDescription}</p>
-                <p className="text-foreground-light mt-4 text-sm font-bold">
-                  *Please note that this class is not a tradesman qualification.
-                </p>
-              </div>
-              <p>Your Instructor</p>
-              <div className="flex items-center space-x-2">
-                <UserRound className="text-primary" />
-                <span>{masterClass.presenter}</span>
-                <span className="text-foreground-light mt-4 text-sm font-bold">
-                  *Please note that this class is not a tradesman qualification.
-                </span>
-              </div>
-            </div>
-
-            <div
-              className={"grid content-center bg-slate-400 px-8 font-helvetica"}
-            >
-              <div className="mb-2 text-4xl font-semibold text-primary">
-                {moneyFormatter.format(masterClass.standardPrice / 100n)}
-              </div>
-              <div className="text-foreground-light mb-6 text-base">
-                Max {masterClass.maxAttendees} per session
-                <p>Difficulty: {masterClass.difficulty}</p>
-                <p>Duration: {masterClass.duration} Minutes</p>
-                <p>Location: </p>
-                <p>Availability:</p>
-              </div>
-            </div>
-          </div>
-          <div className="mx-auto max-w-7xl text-center text-foreground">
-            <p>{masterClass.description}</p>
-            <p className="text-foreground-light mt-4 text-sm font-bold">
-              *Please note that this class is not a tradesman qualification.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 px-20 py-10">
-            {" "}
-            <div className="">
-              <Image
-                src={masterClass.gallery.thumbnail.url}
-                alt={"Gallery Image"}
-                className="rounded-lg "
-                width="600"
-                height="400"
-              />
-            </div>
-            <div className="">
-              <Image
-                src={masterClass.gallery.thumbnail.url}
-                alt={"Gallery Image"}
-                className="rounded-lg "
-                width="600"
-                height="400"
-              />
-            </div>
-          </div>
-
-          <div className="px-8">
-            <Suspense fallback={<UpcomingClassesLoader />}>
-              <UpcomingClasses masterClass={masterClass.name} />
-            </Suspense>
-          </div>
-
-          {/*  New code ends */}
-
+        <div className="grid grid-cols-1 py-10 sm:py-20">
           <div className={"grid content-center px-8 font-helvetica"}>
             <HeaderTitle>{masterClass.displayName}</HeaderTitle>
           </div>
