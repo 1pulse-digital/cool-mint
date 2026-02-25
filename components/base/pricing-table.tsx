@@ -84,13 +84,13 @@ export default function PricingTable() {
           price="899"
           planDescription="The one day access is for the user who needs short term access to the workshop and machinery. CNC machines are excluded."
           features={[
-            "No Storage",
+            "No storage",
             "No joining fee",
-            "1-Day Access",
+            "1-day access",
             "Single user",
             "Limited access. No access to CNC machines",
             "No dispatch or receiving",
-            "Protected from Load Shedding",
+            "Protected from load shedding",
           ]}
           planIdeal="Ideal for that quick one day job. Hobbyist etc."
         />
@@ -104,13 +104,13 @@ enthusiasts exploring their creativity and
 working on personal projects. 3 days of
 access over one month."
           features={[
-            "No Storage",
-            "R499 Joining Fee for First-Time Member",
-            "3-Day Access Valid Over 1 Month",
+            "No storage",
+            "R499 joining fee for first-time members",
+            "3-day access valid over 1 month",
             "Single user",
-            "Unlimited Access to Tools and Machines",
+            "Unlimited access to tools and machines",
             "No dispatch or receiving",
-            "Protected from Load Shedding",
+            "Protected from load shedding",
           ]}
           planIdeal="Ideal for first timers and startups."
         />
@@ -124,13 +124,13 @@ flexibility and access to professional tools
 without the commitment of a full-time
 space. 15 days of access over 2 months."
           features={[
-            "No Storage",
-            "R499 Joining Fee for First-Time Members",
-            "15-Day Access Valid Over 2 Months",
-            "Can be used by multiple users simutanueously. One user equals one day",
-            "Unlimited Access to Tools and Machines",
-            "No dispach or receiving",
-            "Protected from Load Shedding",
+            "No storage",
+            "R499 joining fee for first-time members",
+            "15-day access valid over 2 months",
+            "Can be used by multiple users simultaneously. One user equals one day",
+            "Unlimited access to tools and machines",
+            "No dispatch or receiving",
+            "Protected from load shedding",
           ]}
           planIdeal="Perfect for freelancers or teams who need
 a professional workspace on a part-time
@@ -147,13 +147,13 @@ you and your team need to bring
 ambitious projects to life. 30 days
 access over 3 months."
           features={[
-            "No Storage",
-            "R499 Joining Fee for First-Time Members",
-            "30-Day Access Vaild over 3 months",
-            "Can be used by multiple user simutanueously. One user equals one day",
-            "Unlimited Access to Tools and Machines",
-            "Dispatch and Goods Receiving Services",
-            "Protected from Load Shedding",
+            "No storage",
+            "R499 joining fee for first-time members",
+            "30-day access valid over 3 months",
+            "Can be used by multiple users simultaneously. One user equals one day",
+            "Unlimited access to tools and machines",
+            "Dispatch and goods receiving services",
+            "Protected from load shedding",
           ]}
           planIdeal="Ideal for small teams and serious
 makers committed to making their mark."
