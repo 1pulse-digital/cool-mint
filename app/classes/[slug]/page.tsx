@@ -1,28 +1,11 @@
 import GetInTouch from "@/components/base/getInTouch"
-import HeaderTitle from "@/components/header-title"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { BookingCard } from "@/components/booking-card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { moneyFormatter } from "@/lib/util/money-formatter"
-import {
-  BarChart2,
-  Clock,
-  Link,
-  MapPin,
-  SignalHigh,
-  Tag,
-  UserRound,
-  Users,
-} from "lucide-react"
+import { SignalHigh, Tag } from "lucide-react"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { getMasterClass } from "../actions"
+import { getMasterClass, upcomingSessions } from "../actions"
 import { Suspense } from "react"
 import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 
@@ -50,11 +33,23 @@ export default async function Page({ params }: ClassPageProps) {
     )
   }
 
-  // Calculate spots filled (you can replace these with actual data)
-  const spotsFilled = 3
+  const { masterClasses, sessions } = await upcomingSessions({})
+  const relatedCourses = masterClasses
+    .filter((mc) => mc.name !== masterClass.name)
+    .slice(0, 4)
+
+  // Get the first available session for this masterclass
+  const masterClassSessions = sessions
+    .filter((s) => s.parent === masterClass.name)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+
+  const firstAvailableSession = masterClassSessions.find(
+    (s) => s.confirmedAttendees < masterClass.maxAttendees,
+  )
+
+  // Calculate spots filled based on the first available session
+  const spotsFilled = firstAvailableSession?.confirmedAttendees || 0
   const totalSpots = masterClass.maxAttendees || 6
-  const spotsRemaining = totalSpots - spotsFilled
-  const fillPercentage = (spotsFilled / totalSpots) * 100
 
   // Related classes tags
   const relatedTags = [
@@ -68,7 +63,7 @@ export default async function Page({ params }: ClassPageProps) {
   return (
     <>
       <div className={"bg-background"}>
-        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div className="mx-auto  px-6 py-12 lg:px-8 2xl:px-24">
           {/*  New code starts */}
           <div className="grid grid-cols-1 gap-8  lg:grid-cols-3 ">
             {/* Left Column - Class Details */}
@@ -136,95 +131,18 @@ export default async function Page({ params }: ClassPageProps) {
             </div>
             {/* Right Column - Booking Card */}
             <div className="lg:col-span-1">
-              <div
-                className={
-                  "rounded-lg border border-primary/10 bg-[#262626] px-6 py-6 font-helvetica"
-                }
-              >
-                {/* Price */}
-                <div className="mb-6">
-                  <span className="font-helvetica text-3xl font-bold text-primary">
-                    {moneyFormatter.format(masterClass.standardPrice / 100n)}
-                  </span>
-                  <p className="text-sm text-muted-foreground">per person</p>
-                </div>
-
-                {/* Class Details */}
-                <div className="space-y-4">
-                  {/* Difficulty */}
-                  <div className="flex items-start gap-3">
-                    <SignalHigh className="mt-0.5 h-5 w-5 text-primary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">
-                        Difficulty
-                      </p>
-                      <p className="font-helvetica font-medium normal-case text-foreground">
-                        {masterClass.difficulty}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Time */}
-                  <div className="flex items-start gap-3">
-                    <Clock className="mt-0.5 h-5 w-5 text-primary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">Time</p>
-                      <p className="font-helvetica font-medium text-foreground">
-                        {masterClass.duration} Minutes
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Location */}
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 text-primary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">Location</p>
-                      <p className="font-helvetica font-medium text-foreground">
-                        10 Naaf St, Strydompark, Randburg, 2169
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Availability */}
-                  <div className="flex items-start gap-3">
-                    <Users className="mt-0.5 h-5 w-5 text-primary" />
-                    <div className="flex-1">
-                      <p className="text-xs text-muted-foreground">
-                        Availability
-                      </p>
-                      <p className="font-helvetica font-medium text-foreground">
-                        {spotsFilled} / {totalSpots} spots filled
-                      </p>
-                      {/* Progress Bar */}
-                      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted">
-                        <div
-                          className="h-full rounded-full bg-primary transition-all"
-                          style={{ width: `${fillPercentage}%` }}
-                        />
-                      </div>
-                      <p className="mt-1 text-sm text-primary">
-                        {spotsRemaining} spots remaining
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <a href={`/classes/${slug}/book`}>
-                  <button className="mt-6 w-full rounded-lg bg-primary py-3 font-helvetica font-semibold text-background transition-colors hover:bg-primary/90">
-                    Reserve Your Spot
-                  </button>
-                </a>
-
-                {/* Cancellation Policy */}
-                <p className="mt-4 text-center text-xs  text-white/80">
-                  Free cancellation up to 48 hours before class
-                </p>
-              </div>
+              <BookingCard
+                displayName={masterClass.displayName}
+                standardPrice={masterClass.standardPrice}
+                difficulty={masterClass.difficulty}
+                duration={masterClass.duration}
+                maxAttendees={totalSpots}
+                spotsFilled={spotsFilled}
+                firstAvailableSession={firstAvailableSession}
+              />
             </div>
           </div>
-          <div className="mx-auto max-w-7xl py-10 text-start text-foreground">
+          <div className="mx-auto  py-10 text-start text-foreground">
             {/* Divider */}
             <hr className="my-6 border-muted-foreground/20" />
             <h2 className="py-3 font-helvetica text-lg font-bold text-muted-foreground">
@@ -236,116 +154,98 @@ export default async function Page({ params }: ClassPageProps) {
             </p>
           </div>
           {/* Class Images */}
-          <div className="grid grid-cols-2 px-20 py-10">
-            {" "}
-            <div className=" gap-3">
+          <div className="grid grid-cols-1 gap-4  py-10  md:grid-cols-2">
+            <div className="relative h-[480px] overflow-hidden rounded-lg">
               <Image
-                src={masterClass.gallery.thumbnail.url}
+                src={masterClass.gallery.images[0].url}
                 alt={"Gallery Image"}
-                className="rounded-lg "
-                width="600"
-                height="400"
+                className="object-cover"
+                fill
               />
             </div>
-            <div className="gap-3">
-              <Image
-                src={masterClass.gallery.thumbnail.url}
-                alt={"Gallery Image"}
-                className="rounded-lg "
-                width="600"
-                height="400"
-              />
-            </div>
+            {masterClass.gallery.images[1] && (
+              <div className="relative h-[480px] overflow-hidden rounded-lg">
+                <Image
+                  src={masterClass.gallery.images[1].url}
+                  alt={"Gallery Image"}
+                  className="object-cover"
+                  fill
+                />
+              </div>
+            )}
           </div>
 
-          <div className="px-8">
-            <Suspense fallback={<UpcomingClassesLoader />}>
-              <UpcomingClasses masterClass={masterClass.name} />
-            </Suspense>
+          {/* Divider */}
+          <hr className="my-6 border-muted-foreground/20" />
+
+          <div id="choose-date">
+            <h2 className="py-3 font-helvetica text-lg font-bold text-muted-foreground">
+              Choose Your Date
+            </h2>
           </div>
 
           {/*  New code ends */}
 
-          <div className={"grid content-center px-8 font-helvetica"}>
-            <HeaderTitle>{masterClass.displayName}</HeaderTitle>
+          <div className="">
+            <Suspense fallback={<UpcomingClassesLoader />}>
+              <UpcomingClasses masterClass={masterClass.name} />
+            </Suspense>
           </div>
-          <div className="mt-2 flex items-center justify-center space-x-4 text-xl">
-            <div className="flex items-center space-x-2">
-              <Clock className="text-primary" />
-              <span>{masterClass.duration} Minutes</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <UserRound className="text-primary" />
-              <span>{masterClass.presenter}</span>
-            </div>
+          {/* Divider */}
+          <hr className="my-6 border-muted-foreground/20" />
+
+          {/* Related courses */}
+          <div className="">
+            <h2 className="pt-6 font-helvetica text-lg font-bold text-muted-foreground">
+              You May Also Like
+            </h2>
           </div>
-          <div className="flex flex-col items-center py-10">
-            <div className="mb-2 text-4xl font-semibold text-primary">
-              {moneyFormatter.format(masterClass.standardPrice / 100n)}
-            </div>
-            <div className="text-foreground-light mb-6 text-base">
-              Max {masterClass.maxAttendees} per session
-            </div>
-          </div>
-          <div className="mx-auto max-w-2xl text-center text-foreground">
-            <p>{masterClass.description}</p>
-            <p className="text-foreground-light mt-4 text-sm font-bold">
-              *Please note that this class is not a tradesman qualification.
-            </p>
-          </div>
-        </div>
-        {masterClass.gallery.thumbnail.url.length !== 0 && (
-          <div className="mx-auto flex max-w-2xl items-center justify-center text-foreground">
-            <Carousel className="w-full max-w-xs">
-              <CarouselContent>
-                <CarouselItem key={1}>
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <div className="">
-                          <Image
-                            src={masterClass.gallery.thumbnail.url}
-                            alt={"Gallery Image"}
-                            className="rounded-lg "
-                            width="400"
-                            height="400"
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
+          <div className="grid grid-cols-1 gap-4 rounded-lg py-10 sm:grid-cols-2 lg:grid-cols-4">
+            {relatedCourses.map((course) => (
+              <a
+                key={course.name}
+                href={`/classes/${course.name.replace("masterClasses/", "")}`}
+              >
+                <div className="group cursor-pointer rounded-b-lg border-primary/10 bg-[#262626]">
+                  <div className="rounded-m relative h-[200px] overflow-hidden rounded-t-lg">
+                    <Image
+                      src={course.gallery.thumbnail.url}
+                      alt={course.displayName}
+                      className="object-cover transition-transform group-hover:scale-105"
+                      fill
+                    />
                   </div>
-                </CarouselItem>
-                {masterClass.gallery.images.map((item, index) => (
-                  <CarouselItem key={index + 2}>
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-6">
-                          <div className="">
-                            <Image
-                              src={item.url}
-                              alt={"Gallery Image"}
-                              className="rounded-lg "
-                              width="400"
-                              height="400"
-                            />
-                          </div>
-                        </CardContent>
-                      </Card>
+                  <div className="space-y-2 p-4">
+                    <h3 className="mt-3 font-helvetica font-semibold text-foreground">
+                      {course.displayName}
+                    </h3>
+                    <div className="mt-1 flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">
+                        {course.duration} Minutes
+                      </span>
+
+                      <span className="font-semibold text-primary">
+                        {moneyFormatter.format(course.standardPrice / 100n)}
+                      </span>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+                    <div className="flex items-start gap-3">
+                      <SignalHigh className="mt-0.5 h-5 w-5 text-muted-foreground" />
+                      <div>
+                        <p className="font-helvetica font-medium normal-case text-foreground">
+                          {masterClass.difficulty}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
           </div>
-        )}
-        <div className="px-8">
-          <Suspense fallback={<UpcomingClassesLoader />}>
-            <UpcomingClasses masterClass={masterClass.name} />
-          </Suspense>
+          {/* Divider */}
+          <hr className="my-6 border-muted-foreground/20" />
         </div>
-        <div className="py-20 lg:px-8 2xl:px-24">
+
+        <div className="pb-20 sm:pb-20 md:py-0 md:pb-20 lg:px-8 2xl:px-24">
           <GetInTouch />
         </div>
       </div>
