@@ -92,7 +92,7 @@ const Header: React.FC<HeaderProps> = () => {
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-      <nav className="hidden grow flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-4 md:text-sm lg:gap-6">
+      <nav className="hidden grow flex-col gap-6 text-lg font-medium lg:flex lg:flex-row lg:items-center lg:gap-4 lg:text-sm">
         <Link href="/" className="flex w-[140px] lg:w-[160px] items-center gap-2 lg:p-4">
           <Image src={logo} alt="Logo" />
           <span className="sr-only">Made In Workshop</span>
@@ -114,7 +114,7 @@ const Header: React.FC<HeaderProps> = () => {
       </nav>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+          <Button variant="outline" size="icon" className="shrink-0 lg:hidden">
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
@@ -169,10 +169,10 @@ const Header: React.FC<HeaderProps> = () => {
           </div>
         </SheetContent>
       </Sheet>
-      <div className="flex grow items-center justify-center md:hidden">
+      <div className="flex grow items-center justify-center lg:hidden">
         <Link
           href="/"
-          className="flex w-[160px] items-center gap-2 p-4 md:hidden"
+          className="flex w-[160px] items-center gap-2 p-4 lg:hidden"
         >
           <Image src={logo} alt="Logo" />
           <span className="sr-only">Made In Workshop</span>
