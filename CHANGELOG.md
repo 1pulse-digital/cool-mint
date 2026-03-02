@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.1](https://github.com/1pulse-digital/cool-mint/compare/v0.28.0...v0.28.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* Updated Membership Pricing ([#104](https://github.com/1pulse-digital/cool-mint/issues/104)) ([a6cb546](https://github.com/1pulse-digital/cool-mint/commit/a6cb546e9fc688fa64f3075bed0f63504cfcae03))
+
 ## [0.28.0](https://github.com/1pulse-digital/cool-mint/compare/v0.27.8...v0.28.0) (2026-02-16)
 
 
