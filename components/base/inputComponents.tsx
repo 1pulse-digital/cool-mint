@@ -33,7 +33,7 @@ export const InputComponent: React.FC<InputComponentProps> = ({ label, name, pla
             value={inputValue}
             placeholder={placeholder}
             onChange={handleInputChange}
-            className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-[#707070] focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"
+            className="placeholder:text-xs placeholder:px-3 placeholder:font-helvetica placeholder:text-white block w-full rounded-md border-0 border-amber-300 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-[#707070] focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6 bg-background"
           />
         </div>
       </div>

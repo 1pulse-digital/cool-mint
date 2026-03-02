@@ -12,6 +12,7 @@ export const transport = (tags: string[]): RpcTransport => {
   return (url, opts) => {
     return fetch(url, {
       ...opts,
+      body: opts.body as BodyInit | null | undefined,
       next: {
         tags,
       },

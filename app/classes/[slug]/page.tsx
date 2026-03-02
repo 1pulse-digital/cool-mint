@@ -18,13 +18,13 @@ import { Suspense } from "react"
 import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 
 interface ClassPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export default async function Page({ params }: ClassPageProps) {
-  const { slug } = params
+  const { slug } = await params
 
   const masterClass = await getMasterClass({
     name: "masterClasses/" + slug,

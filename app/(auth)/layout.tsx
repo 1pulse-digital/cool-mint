@@ -9,8 +9,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <Image
           src={miw}
           alt="Made in Workshop building"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
         />
       </div>
       {children}

@@ -12,8 +12,8 @@ import {
   OrderConfirmation,
 } from "./components/orderConfirmed"
 
-export default async function Page({ params }: { params: { number: string } }) {
-  const { number: orderNumber } = params
+export default async function Page({ params }: { params: Promise<{ number: string }> }) {
+  const { number: orderNumber } = await params
   const response = await myOrders({})
   const order = response.orders.find(
     (order) => order.number == BigInt(orderNumber),
