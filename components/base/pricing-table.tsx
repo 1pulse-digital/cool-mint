@@ -137,9 +137,9 @@ a professional workspace on a part-time
 basis."
         />
 
-        {/* Pricing tab 4 : 30 Days Membership */}
+        {/* Pricing tab 4 : 30 Day Membership */}
         <PricingTab
-          planName="30 Days Membership"
+          planName="30 Day Membership"
           price="8799"
           planDescription="The monthly membership is our
 premium offering, providing everything
