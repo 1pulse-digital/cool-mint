@@ -8,6 +8,7 @@ import { notFound } from "next/navigation"
 import { getMasterClass, upcomingSessions } from "../actions"
 import { Suspense } from "react"
 import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
+import miwLogo from "../../favicon.ico"
 
 interface ClassPageProps {
   params: {
@@ -51,20 +52,12 @@ export default async function Page({ params }: ClassPageProps) {
   const spotsFilled = firstAvailableSession?.confirmedAttendees || 0
   const totalSpots = masterClass.maxAttendees || 6
 
-  // Related classes tags
-  const relatedTags = [
-    "Metalwork",
-    "Introduction Class",
-    "CNC Plasma Cutter",
-    "Welding",
-    "Metal Fabrication",
-  ]
+  const relatedTags = masterClass.tags
 
   return (
     <>
       <div className={"bg-background"}>
         <div className="mx-auto  px-6 py-12 lg:px-8 2xl:px-24">
-          {/*  New code starts */}
           <div className="grid grid-cols-1 gap-8  lg:grid-cols-3 ">
             {/* Left Column - Class Details */}
             <div className={"text-start lg:col-span-2 "}>
@@ -93,10 +86,8 @@ export default async function Page({ params }: ClassPageProps) {
                     </span>
                   ))}
                 </div>
-
                 {/* Divider */}
                 <hr className="my-8 border-muted-foreground/20" />
-
                 {/* Instructor Section */}
                 <div>
                   <h2 className="font-helvetica text-lg font-bold text-muted-foreground">
@@ -106,13 +97,14 @@ export default async function Page({ params }: ClassPageProps) {
                     {/* Instructor Image */}
                     <div className="relative h-16 w-16 overflow-hidden rounded-full bg-muted">
                       <Image
-                        src={
-                          masterClass.gallery?.thumbnail?.url ||
-                          "/placeholder-avatar.jpg"
-                        }
+                        src={masterClass.presenterImage || miwLogo}
                         alt={masterClass.presenter || "Instructor"}
                         fill
-                        className="object-cover"
+                        className={
+                          masterClass.presenterImage
+                            ? "object-cover"
+                            : "object-contain p-2"
+                        }
                       />
                     </div>
                     {/* Instructor Info */}
@@ -120,10 +112,16 @@ export default async function Page({ params }: ClassPageProps) {
                       <h3 className="font-helvetica text-lg font-semibold text-foreground">
                         {masterClass.presenter || "Instructor Name"}
                       </h3>
-                      <p className="text-sm text-muted-foreground">CEO</p>
-                      <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                        Experienced instructor with expertise in this field.
-                      </p>
+                      {masterClass.presenterPosition && (
+                        <p className="text-sm text-muted-foreground">
+                          {masterClass.presenterPosition}
+                        </p>
+                      )}
+                      {masterClass.presenterBio && (
+                        <p className="mt-2 max-w-md text-sm text-muted-foreground">
+                          {masterClass.presenterBio}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -174,7 +172,6 @@ export default async function Page({ params }: ClassPageProps) {
               </div>
             )}
           </div>
-
           {/* Divider */}
           <hr className="my-6 border-muted-foreground/20" />
 
@@ -183,19 +180,15 @@ export default async function Page({ params }: ClassPageProps) {
               Choose Your Date
             </h2>
           </div>
-
-          {/*  New code ends */}
-
-          <div className="">
+          <div>
             <Suspense fallback={<UpcomingClassesLoader />}>
               <UpcomingClasses masterClass={masterClass.name} />
             </Suspense>
           </div>
           {/* Divider */}
           <hr className="my-6 border-muted-foreground/20" />
-
           {/* Related courses */}
-          <div className="">
+          <div>
             <h2 className="pt-6 font-helvetica text-lg font-bold text-muted-foreground">
               You May Also Like
             </h2>
@@ -244,7 +237,6 @@ export default async function Page({ params }: ClassPageProps) {
           {/* Divider */}
           <hr className="my-6 border-muted-foreground/20" />
         </div>
-
         <div className="pb-20 sm:pb-20 md:py-0 md:pb-20 lg:px-8 2xl:px-24">
           <GetInTouch />
         </div>
