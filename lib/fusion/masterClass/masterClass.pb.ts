@@ -53,6 +53,18 @@ export interface MasterClass {
    * Difficulty rating of the master class
    */
   difficulty: MasterClass.Difficulty;
+  /**
+   * PresenterPosition is the job title or role of the presenter
+   */
+  presenterPosition: string;
+  /**
+   * PresenterBio is a short biography of the presenter
+   */
+  presenterBio: string;
+  /**
+   * PresenterImage is the URL of the presenter's profile image
+   */
+  presenterImage: string;
 }
 
 export declare namespace MasterClass {
@@ -106,6 +118,9 @@ export const MasterClass = {
       tags: [],
       gallery: mediaGallery.Gallery.initialize(),
       difficulty: MasterClass.Difficulty._fromInt(0),
+      presenterPosition: "",
+      presenterBio: "",
+      presenterImage: "",
       ...msg,
     };
   },
@@ -155,6 +170,15 @@ export const MasterClass = {
     }
     if (msg.difficulty && MasterClass.Difficulty._toInt(msg.difficulty)) {
       writer.writeEnum(13, MasterClass.Difficulty._toInt(msg.difficulty));
+    }
+    if (msg.presenterPosition) {
+      writer.writeString(14, msg.presenterPosition);
+    }
+    if (msg.presenterBio) {
+      writer.writeString(15, msg.presenterBio);
+    }
+    if (msg.presenterImage) {
+      writer.writeString(16, msg.presenterImage);
     }
     return writer;
   },
@@ -219,6 +243,18 @@ export const MasterClass = {
         }
         case 13: {
           msg.difficulty = MasterClass.Difficulty._fromInt(reader.readEnum());
+          break;
+        }
+        case 14: {
+          msg.presenterPosition = reader.readString();
+          break;
+        }
+        case 15: {
+          msg.presenterBio = reader.readString();
+          break;
+        }
+        case 16: {
+          msg.presenterImage = reader.readString();
           break;
         }
         default: {
@@ -324,6 +360,9 @@ export const MasterClassJSON = {
       tags: [],
       gallery: mediaGallery.GalleryJSON.initialize(),
       difficulty: MasterClass.Difficulty._fromInt(0),
+      presenterPosition: "",
+      presenterBio: "",
+      presenterImage: "",
       ...msg,
     };
   },
@@ -376,6 +415,15 @@ export const MasterClassJSON = {
     }
     if (msg.difficulty && MasterClassJSON.Difficulty._toInt(msg.difficulty)) {
       json["difficulty"] = msg.difficulty;
+    }
+    if (msg.presenterPosition) {
+      json["presenterPosition"] = msg.presenterPosition;
+    }
+    if (msg.presenterBio) {
+      json["presenterBio"] = msg.presenterBio;
+    }
+    if (msg.presenterImage) {
+      json["presenterImage"] = msg.presenterImage;
     }
     return json;
   },
@@ -435,6 +483,18 @@ export const MasterClassJSON = {
     const _difficulty_ = json["difficulty"];
     if (_difficulty_) {
       msg.difficulty = MasterClass.Difficulty._fromInt(_difficulty_);
+    }
+    const _presenterPosition_ = json["presenterPosition"];
+    if (_presenterPosition_) {
+      msg.presenterPosition = _presenterPosition_;
+    }
+    const _presenterBio_ = json["presenterBio"];
+    if (_presenterBio_) {
+      msg.presenterBio = _presenterBio_;
+    }
+    const _presenterImage_ = json["presenterImage"];
+    if (_presenterImage_) {
+      msg.presenterImage = _presenterImage_;
     }
     return msg;
   },

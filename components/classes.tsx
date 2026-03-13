@@ -43,8 +43,8 @@ export const UpcomingClassesLoader = () => {
           </div>
         </div>
 
-        <div className="px-0 xl:px-0 2xl:px-40">
-          <TabsContent value={"loading"} className="px-10">
+        <div className="2xl: px-0 xl:px-0">
+          <TabsContent value={"loading"} className="">
             <Card className="border-0 bg-background">
               <CardTitle className="pb-8 text-start font-helvetica text-lg font-normal text-primary">
                 <span className="animate-pulse">
