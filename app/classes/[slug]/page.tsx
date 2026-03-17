@@ -152,26 +152,28 @@ export default async function Page({ params }: ClassPageProps) {
             </p>
           </div>
           {/* Class Images */}
-          <div className="grid grid-cols-1 gap-4  py-10  md:grid-cols-2">
-            <div className="relative h-[480px] overflow-hidden rounded-lg">
-              <Image
-                src={masterClass.gallery.images[0].url}
-                alt={"Gallery Image"}
-                className="object-cover"
-                fill
-              />
-            </div>
-            {masterClass.gallery.images[1] && (
+          {masterClass.gallery.images[0] && (
+            <div className="grid grid-cols-1 gap-4  py-10  md:grid-cols-2">
               <div className="relative h-[480px] overflow-hidden rounded-lg">
                 <Image
-                  src={masterClass.gallery.images[1].url}
+                  src={masterClass.gallery.images[0].url}
                   alt={"Gallery Image"}
                   className="object-cover"
                   fill
                 />
               </div>
-            )}
-          </div>
+              {masterClass.gallery.images[1] && (
+                <div className="relative h-[480px] overflow-hidden rounded-lg">
+                  <Image
+                    src={masterClass.gallery.images[1].url}
+                    alt={"Gallery Image"}
+                    className="object-cover"
+                    fill
+                  />
+                </div>
+              )}
+            </div>
+          )}
           {/* Divider */}
           <hr className="my-6 border-muted-foreground/20" />
 
@@ -225,7 +227,7 @@ export default async function Page({ params }: ClassPageProps) {
                       <SignalHigh className="mt-0.5 h-5 w-5 text-muted-foreground" />
                       <div>
                         <p className="font-helvetica font-medium normal-case text-foreground">
-                          {masterClass.difficulty}
+                          {course.difficulty}
                         </p>
                       </div>
                     </div>
