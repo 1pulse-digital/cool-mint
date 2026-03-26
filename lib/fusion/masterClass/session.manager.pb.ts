@@ -29,6 +29,22 @@ export interface GetProductRequest {
   name: string;
 }
 
+export interface GetRelatedClassesRequest {
+  /**
+   * Resource name of the master class to get related classes for
+   */
+  name: string;
+  /**
+   * Maximum number of related classes to return
+   */
+  limit: number;
+}
+
+export interface GetRelatedClassesResponse {
+  masterClasses: masterClassMasterClass.MasterClass[];
+  sessions: masterClassSession.Session[];
+}
+
 //========================================//
 //     SessionManager Protobuf Client     //
 //========================================//
@@ -62,6 +78,21 @@ export async function GetProduct(
     config,
   );
   return commerceProduct.Product.decode(response);
+}
+
+/**
+ * GetRelatedClasses returns related classes with their upcoming sessions
+ */
+export async function GetRelatedClasses(
+  getRelatedClassesRequest: GetRelatedClassesRequest,
+  config?: ClientConfiguration,
+): Promise<GetRelatedClassesResponse> {
+  const response = await PBrequest(
+    "/masterClass.SessionManager/GetRelatedClasses",
+    GetRelatedClassesRequest.encode(getRelatedClassesRequest),
+    config,
+  );
+  return GetRelatedClassesResponse.decode(response);
 }
 
 //========================================//
@@ -99,6 +130,21 @@ export async function GetProductJSON(
   return commerceProduct.ProductJSON.decode(response);
 }
 
+/**
+ * GetRelatedClasses returns related classes with their upcoming sessions
+ */
+export async function GetRelatedClassesJSON(
+  getRelatedClassesRequest: GetRelatedClassesRequest,
+  config?: ClientConfiguration,
+): Promise<GetRelatedClassesResponse> {
+  const response = await JSONrequest(
+    "/masterClass.SessionManager/GetRelatedClasses",
+    GetRelatedClassesRequestJSON.encode(getRelatedClassesRequest),
+    config,
+  );
+  return GetRelatedClassesResponseJSON.decode(response);
+}
+
 //========================================//
 //             SessionManager             //
 //========================================//
@@ -119,6 +165,13 @@ export interface SessionManager<Context = unknown> {
     getProductRequest: GetProductRequest,
     context: Context,
   ) => Promise<commerceProduct.Product> | commerceProduct.Product;
+  /**
+   * GetRelatedClasses returns related classes with their upcoming sessions
+   */
+  GetRelatedClasses: (
+    getRelatedClassesRequest: GetRelatedClassesRequest,
+    context: Context,
+  ) => Promise<GetRelatedClassesResponse> | GetRelatedClassesResponse;
 }
 
 export function createSessionManager<Context>(
@@ -146,6 +199,18 @@ export function createSessionManager<Context>(
         output: {
           protobuf: commerceProduct.Product,
           json: commerceProduct.ProductJSON,
+        },
+      },
+      GetRelatedClasses: {
+        name: "GetRelatedClasses",
+        handler: service.GetRelatedClasses,
+        input: {
+          protobuf: GetRelatedClassesRequest,
+          json: GetRelatedClassesRequestJSON,
+        },
+        output: {
+          protobuf: GetRelatedClassesResponse,
+          json: GetRelatedClassesResponseJSON,
         },
       },
     },
@@ -364,6 +429,177 @@ export const GetProductRequest = {
   },
 };
 
+export const GetRelatedClassesRequest = {
+  /**
+   * Serializes GetRelatedClassesRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesRequest>): Uint8Array {
+    return GetRelatedClassesRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes GetRelatedClassesRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): GetRelatedClassesRequest {
+    return GetRelatedClassesRequest._readMessage(
+      GetRelatedClassesRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesRequest>,
+  ): GetRelatedClassesRequest {
+    return {
+      name: "",
+      limit: 0,
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.name) {
+      writer.writeString(1, msg.name);
+    }
+    if (msg.limit) {
+      writer.writeInt32(2, msg.limit);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesRequest,
+    reader: protoscript.BinaryReader,
+  ): GetRelatedClassesRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.name = reader.readString();
+          break;
+        }
+        case 2: {
+          msg.limit = reader.readInt32();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const GetRelatedClassesResponse = {
+  /**
+   * Serializes GetRelatedClassesResponse to protobuf.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesResponse>): Uint8Array {
+    return GetRelatedClassesResponse._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes GetRelatedClassesResponse from protobuf.
+   */
+  decode: function (bytes: ByteSource): GetRelatedClassesResponse {
+    return GetRelatedClassesResponse._readMessage(
+      GetRelatedClassesResponse.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesResponse>,
+  ): GetRelatedClassesResponse {
+    return {
+      masterClasses: [],
+      sessions: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesResponse>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.masterClasses?.length) {
+      writer.writeRepeatedMessage(
+        1,
+        msg.masterClasses as any,
+        masterClassMasterClass.MasterClass._writeMessage,
+      );
+    }
+    if (msg.sessions?.length) {
+      writer.writeRepeatedMessage(
+        2,
+        msg.sessions as any,
+        masterClassSession.Session._writeMessage,
+      );
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesResponse,
+    reader: protoscript.BinaryReader,
+  ): GetRelatedClassesResponse {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          const m = masterClassMasterClass.MasterClass.initialize();
+          reader.readMessage(
+            m,
+            masterClassMasterClass.MasterClass._readMessage,
+          );
+          msg.masterClasses.push(m);
+          break;
+        }
+        case 2: {
+          const m = masterClassSession.Session.initialize();
+          reader.readMessage(m, masterClassSession.Session._readMessage);
+          msg.sessions.push(m);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
@@ -543,6 +779,150 @@ export const GetProductRequestJSON = {
     const _name_ = json["name"];
     if (_name_) {
       msg.name = _name_;
+    }
+    return msg;
+  },
+};
+
+export const GetRelatedClassesRequestJSON = {
+  /**
+   * Serializes GetRelatedClassesRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesRequest>): string {
+    return JSON.stringify(GetRelatedClassesRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes GetRelatedClassesRequest from JSON.
+   */
+  decode: function (json: string): GetRelatedClassesRequest {
+    return GetRelatedClassesRequestJSON._readMessage(
+      GetRelatedClassesRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesRequest>,
+  ): GetRelatedClassesRequest {
+    return {
+      name: "",
+      limit: 0,
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.name) {
+      json["name"] = msg.name;
+    }
+    if (msg.limit) {
+      json["limit"] = msg.limit;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesRequest,
+    json: any,
+  ): GetRelatedClassesRequest {
+    const _name_ = json["name"];
+    if (_name_) {
+      msg.name = _name_;
+    }
+    const _limit_ = json["limit"];
+    if (_limit_) {
+      msg.limit = protoscript.parseNumber(_limit_);
+    }
+    return msg;
+  },
+};
+
+export const GetRelatedClassesResponseJSON = {
+  /**
+   * Serializes GetRelatedClassesResponse to JSON.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesResponse>): string {
+    return JSON.stringify(GetRelatedClassesResponseJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes GetRelatedClassesResponse from JSON.
+   */
+  decode: function (json: string): GetRelatedClassesResponse {
+    return GetRelatedClassesResponseJSON._readMessage(
+      GetRelatedClassesResponseJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesResponse>,
+  ): GetRelatedClassesResponse {
+    return {
+      masterClasses: [],
+      sessions: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesResponse>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.masterClasses?.length) {
+      json["masterClasses"] = msg.masterClasses.map(
+        masterClassMasterClass.MasterClassJSON._writeMessage,
+      );
+    }
+    if (msg.sessions?.length) {
+      json["sessions"] = msg.sessions.map(
+        masterClassSession.SessionJSON._writeMessage,
+      );
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesResponse,
+    json: any,
+  ): GetRelatedClassesResponse {
+    const _masterClasses_ = json["masterClasses"] ?? json["master_classes"];
+    if (_masterClasses_) {
+      for (const item of _masterClasses_) {
+        const m = masterClassMasterClass.MasterClassJSON.initialize();
+        masterClassMasterClass.MasterClassJSON._readMessage(m, item);
+        msg.masterClasses.push(m);
+      }
+    }
+    const _sessions_ = json["sessions"];
+    if (_sessions_) {
+      for (const item of _sessions_) {
+        const m = masterClassSession.SessionJSON.initialize();
+        masterClassSession.SessionJSON._readMessage(m, item);
+        msg.sessions.push(m);
+      }
     }
     return msg;
   },

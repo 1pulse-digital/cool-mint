@@ -4,6 +4,9 @@ import { initTransport } from "@/lib/transport"
 import { TwirpError } from "twirpscript"
 import { authHeader } from "@/app/actions"
 import {
+  GetRelatedClasses,
+  GetRelatedClassesRequest,
+  GetRelatedClassesResponse,
   UpcomingSessionResponse,
   UpcomingSessions,
   UpcomingSessionsRequest,
@@ -25,6 +28,20 @@ export async function upcomingSessions(
       throw new Error(e.msg)
     }
     throw new Error("Failed to fetch upcoming sessions")
+  }
+}
+
+export async function getRelatedClasses(
+  request: GetRelatedClassesRequest,
+): Promise<GetRelatedClassesResponse> {
+  try {
+    cookies().getAll()
+    return await GetRelatedClasses(request, {})
+  } catch (e: unknown) {
+    if (e instanceof TwirpError) {
+      throw new Error(e.msg)
+    }
+    throw new Error("Failed to fetch related classes")
   }
 }
 
