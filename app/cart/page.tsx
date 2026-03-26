@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { MoveLeft } from "lucide-react"
 import Link from "next/link"
 import { ShoppingCart } from "./components/cart"
+import { CartRelatedClasses } from "./components/cart-related-classes"
 
 const Cart: React.FC = async () => {
   return (
@@ -19,6 +20,7 @@ const Cart: React.FC = async () => {
       <div className="flex justify-center">
         <ShoppingCart />
       </div>
+      <CartRelatedClasses />
       <div className="mt-16 flex justify-center">
         <div className="container flex justify-between">
           <Link href="/classes">
