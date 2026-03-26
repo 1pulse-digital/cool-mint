@@ -11,9 +11,11 @@ import { Clock, MapPin, SignalHigh, Users } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
+import { SessionPicker } from "./session-picker"
 import { Spinner } from "./ui/spinner"
 
 interface BookingCardProps {
+  masterClassName: string
   displayName: string
   standardPrice: bigint
   difficulty: string
@@ -24,6 +26,7 @@ interface BookingCardProps {
 }
 
 export const BookingCard: React.FC<BookingCardProps> = ({
+  masterClassName,
   displayName,
   standardPrice,
   difficulty,
@@ -37,6 +40,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
   const cartContext = useCart()
   const pathname = usePathname()
   const [loading, setLoading] = React.useState(false)
+  const [multiPickerOpen, setMultiPickerOpen] = React.useState(false)
 
   const spotsRemaining = maxAttendees - spotsFilled
   const fillPercentage = (spotsFilled / maxAttendees) * 100
@@ -180,10 +184,31 @@ export const BookingCard: React.FC<BookingCardProps> = ({
         </button>
       )}
 
+      {/* Multi-session booking */}
+      {!soldOut && (
+        <button
+          onClick={() => setMultiPickerOpen(true)}
+          className="mt-3 w-full text-center text-sm text-primary underline-offset-2 hover:underline"
+        >
+          Book multiple sessions
+        </button>
+      )}
+
       {/* Cancellation Policy */}
       <p className="mt-4 text-center text-xs text-white/80">
         Free cancellation up to 48 hours before class
       </p>
+
+      <SessionPicker
+        masterClassName={masterClassName}
+        masterClassDisplayName={displayName}
+        maxAttendees={maxAttendees}
+        standardPrice={standardPrice}
+        open={multiPickerOpen}
+        onOpenChange={setMultiPickerOpen}
+        multi
+        maxSelections={5}
+      />
     </div>
   )
 }
