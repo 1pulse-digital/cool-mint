@@ -4,6 +4,7 @@ import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { SignalHigh } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import React, { useState } from "react"
 import { Button } from "./ui/button"
 import { SessionPicker } from "./session-picker"
@@ -20,26 +21,28 @@ export const RelatedClassCard: React.FC<RelatedClassCardProps> = ({
   return (
     <>
       <div className="group rounded-b-lg border-primary/10 bg-[#262626]">
-        <a
+        <Link
           href={`/classes/${course.name.replace("masterClasses/", "")}`}
         >
           <div className="relative h-[160px] overflow-hidden rounded-t-lg">
-            <Image
-              src={course.gallery.thumbnail.url}
-              alt={course.displayName}
-              className="object-cover transition-transform group-hover:scale-105"
-              fill
-            />
+            {course.gallery?.thumbnail?.url && (
+              <Image
+                src={course.gallery.thumbnail.url}
+                alt={course.displayName}
+                className="object-cover transition-transform group-hover:scale-105"
+                fill
+              />
+            )}
           </div>
-        </a>
+        </Link>
         <div className="space-y-2 p-4">
-          <a
+          <Link
             href={`/classes/${course.name.replace("masterClasses/", "")}`}
           >
             <h3 className="mt-3 font-helvetica font-semibold text-foreground">
               {course.displayName}
             </h3>
-          </a>
+          </Link>
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">
               {course.duration} Minutes

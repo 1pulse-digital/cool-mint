@@ -71,8 +71,8 @@ export const BookingCard: React.FC<BookingCardProps> = ({
 
     try {
       setLoading(true)
-      const cart = await myCart({})
-      await addToCart({
+      let cart = await myCart({})
+      cart = await addToCart({
         eTag: cart.auditEntry.eTag,
         product: firstAvailableSession.product,
         quantity: 1n,
@@ -83,7 +83,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
         (acc, item) => acc + Number(item.quantity),
         0,
       )
-      cartContext.setAmount(amount + 1)
+      cartContext.setAmount(amount)
       toast.success("Added to cart")
       router.push("/cart")
     } catch (e: unknown) {

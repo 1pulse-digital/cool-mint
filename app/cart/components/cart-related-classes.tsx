@@ -4,7 +4,10 @@ import { useCart } from "@/contexts/cart"
 import { RelatedClassCard } from "@/components/related-class-card"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import React, { useEffect, useState } from "react"
-import { getRelatedClassesForCart } from "../actions"
+import {
+  upcomingSessions,
+  getRelatedClasses,
+} from "@/app/classes/actions"
 
 export const CartRelatedClasses: React.FC = () => {
   const { cart } = useCart()
@@ -17,8 +20,38 @@ export const CartRelatedClasses: React.FC = () => {
     }
 
     const products = cart.items.map((item) => item.product)
-    getRelatedClassesForCart({ products })
-      .then((classes) => setRelatedClasses(classes))
+
+    const fetchRelated = async () => {
+      const { sessions } = await upcomingSessions({})
+
+      const parentNames = new Set<string>()
+      for (const product of products) {
+        const session = sessions.find((s) => s.product === product)
+        if (session) {
+          parentNames.add(session.parent)
+        }
+      }
+
+      const seen = new Set<string>()
+      const related: MasterClass[] = []
+      for (const name of parentNames) {
+        try {
+          const response = await getRelatedClasses({ name, limit: 2 })
+          for (const mc of response.masterClasses) {
+            if (!seen.has(mc.name) && !parentNames.has(mc.name)) {
+              seen.add(mc.name)
+              related.push(mc)
+            }
+          }
+        } catch {
+          // Skip if related classes fetch fails for a class
+        }
+      }
+      return related
+    }
+
+    fetchRelated()
+      .then(setRelatedClasses)
       .catch((err) => {
         console.error("Failed to fetch related classes for cart:", err)
         setRelatedClasses([])
