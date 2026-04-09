@@ -22,7 +22,7 @@ export const CartRelatedClasses: React.FC = () => {
     const products = cart.items.map((item) => item.product)
 
     const fetchRelated = async () => {
-      const { sessions } = await upcomingSessions({})
+      const { sessions } = await upcomingSessions({ masterClass: "", user: "" })
 
       const parentNames = new Set<string>()
       for (const product of products) {

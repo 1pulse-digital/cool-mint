@@ -1,10 +1,10 @@
 "use client"
 
-import { addToCart } from "@/app/actions"
-import { myCart } from "@/app/cart/actions"
+import { bookSessions } from "@/app/classes/actions"
 import { useCart } from "@/contexts/cart"
 import { useUser } from "@/contexts/user"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
+import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { Clock, MapPin, SignalHigh, Users } from "lucide-react"
@@ -23,6 +23,7 @@ interface BookingCardProps {
   maxAttendees: number
   spotsFilled: number
   firstAvailableSession?: Session
+  sessionInfos?: SessionInfo[]
 }
 
 export const BookingCard: React.FC<BookingCardProps> = ({
@@ -34,6 +35,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
   maxAttendees,
   spotsFilled,
   firstAvailableSession,
+  sessionInfos,
 }) => {
   const router = useRouter()
   const user = useUser()
@@ -71,19 +73,25 @@ export const BookingCard: React.FC<BookingCardProps> = ({
 
     try {
       setLoading(true)
-      let cart = await myCart({})
-      cart = await addToCart({
-        eTag: cart.auditEntry.eTag,
-        product: firstAvailableSession.product,
-        quantity: 1n,
-        variant: "",
+      const response = await bookSessions({
+        items: [{ session: firstAvailableSession.name, quantity: 1 }],
       })
+
+      if (response.cart) {
+        const amount = response.cart.items.reduce(
+          (acc, item) => acc + Number(item.quantity),
+          0,
+        )
+        cartContext.setAmount(amount)
+      }
+
       setLoading(false)
-      const amount = cart.items.reduce(
-        (acc, item) => acc + Number(item.quantity),
-        0,
-      )
-      cartContext.setAmount(amount)
+
+      if (response.errors.length > 0) {
+        toast.error(response.errors[0].reason)
+        return
+      }
+
       toast.success("Added to cart")
       router.push("/cart")
     } catch (e: unknown) {
@@ -208,6 +216,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
         onOpenChange={setMultiPickerOpen}
         multi
         maxSelections={5}
+        sessionInfos={sessionInfos}
       />
     </div>
   )

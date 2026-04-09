@@ -11,6 +11,11 @@ import {
   UpcomingSessions,
   UpcomingSessionsRequest,
 } from "@/lib/fusion/masterClass/session.manager.pb"
+import {
+  BookSessions,
+  BookSessionsRequest,
+  BookSessionsResponse,
+} from "@/lib/fusion/masterClass/booking.manager.pb"
 import { cookies } from "next/headers"
 import { GetMasterClass, GetMasterClassRequest } from "@/lib/fusion/masterClass/masterClass.repository.sky.pb"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
@@ -59,5 +64,20 @@ export async function getMasterClass(
       throw new Error(`get${tag}: ${e.code}: ${request.name} - ${e.msg}`)
     }
     throw e
+  }
+}
+
+export async function bookSessions(
+  request: BookSessionsRequest,
+): Promise<BookSessionsResponse> {
+  try {
+    return await BookSessions(request, {
+      headers: await authHeader(),
+    })
+  } catch (e: unknown) {
+    if (e instanceof TwirpError) {
+      throw new Error(e.msg)
+    }
+    throw new Error("Failed to book sessions")
   }
 }

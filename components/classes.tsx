@@ -11,15 +11,7 @@ export const UpcomingClasses = async ({
 }: {
   masterClass?: string
 }) => {
-  const response = await upcomingSessions({})
-  if (masterClass) {
-    response.masterClasses = response.masterClasses.filter(
-      (item) => item.name === masterClass,
-    )
-    response.sessions = response.sessions.filter(
-      (item) => item.parent === masterClass,
-    )
-  }
+  const response = await upcomingSessions({ masterClass: masterClass ?? "", user: "" })
   return (
     <UpcomingWorkshops
       single={masterClass ? true : false}

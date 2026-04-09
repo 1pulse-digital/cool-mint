@@ -35,12 +35,15 @@ export default async function Page({ params }: ClassPageProps) {
     )
   }
 
-  const { sessions } = await upcomingSessions({})
+  const { sessions, sessionInfos } = await upcomingSessions({
+    masterClass: masterClass.name,
+    user: "",
+  })
 
-  // Get sessions for this masterclass
-  const masterClassSessions = sessions
-    .filter((s) => s.parent === masterClass.name)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  // Sessions are already filtered by masterClass on the backend
+  const masterClassSessions = sessions.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+  )
 
   const firstAvailableSession = masterClassSessions.find(
     (s) => s.confirmedAttendees < masterClass.maxAttendees,
@@ -134,6 +137,7 @@ export default async function Page({ params }: ClassPageProps) {
                 maxAttendees={totalSpots}
                 spotsFilled={spotsFilled}
                 firstAvailableSession={firstAvailableSession}
+                sessionInfos={sessionInfos}
               />
             </div>
           </div>

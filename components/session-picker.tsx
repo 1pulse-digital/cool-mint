@@ -1,12 +1,10 @@
 "use client"
 
-import { addToCart } from "@/app/actions"
-import { upcomingSessions } from "@/app/classes/actions"
-import { myCart } from "@/app/cart/actions"
+import { bookSessions, upcomingSessions } from "@/app/classes/actions"
 import { useCart } from "@/contexts/cart"
 import { useUser } from "@/contexts/user"
-import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
+import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { parseError } from "@/lib/util/error"
 import { Calendar, Clock, Users } from "lucide-react"
@@ -33,6 +31,7 @@ interface SessionPickerProps {
   onOpenChange: (open: boolean) => void
   multi?: boolean
   maxSelections?: number
+  sessionInfos?: SessionInfo[]
 }
 
 export const SessionPicker: React.FC<SessionPickerProps> = ({
@@ -44,6 +43,7 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
   onOpenChange,
   multi = false,
   maxSelections = 5,
+  sessionInfos,
 }) => {
   const router = useRouter()
   const user = useUser()
@@ -53,6 +53,10 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
   const [selected, setSelected] = useState<Session[]>([])
   const [loading, setLoading] = useState(false)
   const [fetching, setFetching] = useState(true)
+  const [fetchedInfos, setFetchedInfos] = useState<SessionInfo[]>([])
+
+  // Use prop if provided, otherwise use fetched infos
+  const infos = sessionInfos ?? fetchedInfos
 
   useEffect(() => {
     if (!open) {
@@ -60,13 +64,14 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
       return
     }
     setFetching(true)
-    upcomingSessions({}).then((response) => {
-      const filtered = response.sessions
-        .filter((s) => s.parent === masterClassName)
-        .sort(
-          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-        )
-      setSessions(filtered)
+    upcomingSessions({ masterClass: masterClassName, user: "" }).then((response) => {
+      const sorted = response.sessions.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+      )
+      setSessions(sorted)
+      if (response.sessionInfos.length > 0) {
+        setFetchedInfos(response.sessionInfos)
+      }
       setFetching(false)
     })
   }, [open, masterClassName])
@@ -100,29 +105,37 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
 
     try {
       setLoading(true)
-      let cart = await myCart({})
+      const response = await bookSessions({
+        items: selected.map((s) => ({ session: s.name, quantity: 1 })),
+      })
 
-      for (const session of selected) {
-        cart = await addToCart({
-          eTag: cart.auditEntry.eTag,
-          product: session.product,
-          quantity: 1n,
-          variant: "",
-        })
+      if (response.cart) {
+        const amount = response.cart.items.reduce(
+          (acc, item) => acc + Number(item.quantity),
+          0,
+        )
+        cartContext.setAmount(amount)
       }
 
-      const amount = cart.items.reduce(
-        (acc, item) => acc + Number(item.quantity),
-        0,
-      )
-      cartContext.setAmount(amount)
       setLoading(false)
       onOpenChange(false)
-      toast.success(
-        selected.length === 1
-          ? "Added to cart"
-          : `Added ${selected.length} sessions to cart`,
-      )
+
+      if (response.errors.length > 0 && response.booked.length > 0) {
+        toast.warning(
+          `Added ${response.booked.length} session${response.booked.length > 1 ? "s" : ""} to cart. ${response.errors.length} failed: ${response.errors.map((e) => e.reason).join(", ")}`,
+        )
+      } else if (response.errors.length > 0) {
+        toast.error(
+          response.errors.map((e) => e.reason).join(", "),
+        )
+        return
+      } else {
+        toast.success(
+          response.booked.length === 1
+            ? "Added to cart"
+            : `Added ${response.booked.length} sessions to cart`,
+        )
+      }
       router.push("/cart")
     } catch (e: unknown) {
       setLoading(false)
@@ -171,23 +184,28 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
         ) : (
           <div className="space-y-2">
             {sessions.map((session) => {
-              const isFull =
-                session.confirmedAttendees >= maxAttendees
+              const info = infos.find(
+                (si) => si.session === session.name,
+              )
+              const spotsLeft = info
+                ? info.availableSpots
+                : maxAttendees - session.confirmedAttendees
+              const isFull = spotsLeft <= 0
+              const isBooked = info?.isUserBooked ?? false
               const isSelected = selected.some(
                 (s) => s.name === session.name,
               )
-              const spotsLeft =
-                maxAttendees - session.confirmedAttendees
+              const isDisabled = isFull || isBooked
 
               return (
                 <button
                   key={session.name}
-                  disabled={isFull}
+                  disabled={isDisabled}
                   onClick={() => toggleSession(session)}
                   className={`w-full rounded-lg border p-3 text-left transition-colors ${
                     isSelected
                       ? "border-primary bg-primary/10"
-                      : isFull
+                      : isDisabled
                         ? "cursor-not-allowed border-muted/20 opacity-50"
                         : "border-muted/20 hover:border-primary/50"
                   }`}
@@ -196,7 +214,7 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
                     {multi && (
                       <Checkbox
                         checked={isSelected}
-                        disabled={isFull}
+                        disabled={isDisabled}
                         className="pointer-events-none"
                       />
                     )}
@@ -213,7 +231,11 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
                       </div>
                       <div className="mt-1 flex items-center gap-2">
                         <Users className="h-3 w-3 text-muted-foreground" />
-                        {isFull ? (
+                        {isBooked ? (
+                          <Badge variant="secondary" className="text-xs">
+                            Already Booked
+                          </Badge>
+                        ) : isFull ? (
                           <Badge variant="destructive" className="text-xs">
                             Full
                           </Badge>
