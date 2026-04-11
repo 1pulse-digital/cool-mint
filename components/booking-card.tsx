@@ -7,7 +7,8 @@ import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
-import { Clock, MapPin, SignalHigh, Users } from "lucide-react"
+import { format } from "date-fns"
+import { Calendar, Clock, MapPin, SignalHigh, Users } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
@@ -46,6 +47,9 @@ export const BookingCard: React.FC<BookingCardProps> = ({
 
   const spotsRemaining = maxAttendees - spotsFilled
   const fillPercentage = (spotsFilled / maxAttendees) * 100
+  const hasAdditionalSessions = sessionInfos
+    ? sessionInfos.some((si) => si.session !== firstAvailableSession?.name)
+    : false
 
   const handleReserveSpot = async () => {
     if (!firstAvailableSession) {
@@ -174,6 +178,19 @@ export const BookingCard: React.FC<BookingCardProps> = ({
         </div>
       </div>
 
+      {/* Next Session Date */}
+      {firstAvailableSession && (
+        <div className="mt-4 flex items-start gap-3">
+          <Calendar className="mt-0.5 h-5 w-5 text-primary" />
+          <div>
+            <p className="text-xs text-muted-foreground">Next Session</p>
+            <p className="font-helvetica font-medium text-foreground">
+              {format(new Date(firstAvailableSession.date), "EEEE, d MMMM yyyy 'at' HH:mm")}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* CTA Button */}
       {soldOut ? (
         <div className="mt-6 w-full rounded-lg bg-muted py-3 text-center font-helvetica font-semibold text-muted-foreground">
@@ -193,7 +210,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
       )}
 
       {/* Multi-session booking */}
-      {!soldOut && (
+      {!soldOut && hasAdditionalSessions && (
         <button
           onClick={() => setMultiPickerOpen(true)}
           className="mt-3 w-full text-center text-sm text-primary underline-offset-2 hover:underline"
