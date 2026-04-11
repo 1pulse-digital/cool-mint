@@ -110,11 +110,7 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
       })
 
       if (response.cart) {
-        const amount = response.cart.items.reduce(
-          (acc, item) => acc + Number(item.quantity),
-          0,
-        )
-        cartContext.setAmount(amount)
+        cartContext.setCart(response.cart)
       }
 
       setLoading(false)

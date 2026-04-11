@@ -20,8 +20,7 @@ const Cart: React.FC = async () => {
       <div className="flex justify-center">
         <ShoppingCart />
       </div>
-      <CartRelatedClasses />
-      <div className="mt-16 flex justify-center">
+      <div className="mt-8 flex justify-center">
         <div className="container flex justify-between">
           <Link href="/classes">
             <Button variant={"link"} className="text-lg font-semibold">
@@ -34,6 +33,7 @@ const Cart: React.FC = async () => {
           </Link>
         </div>
       </div>
+      <CartRelatedClasses />
       <div className="py-8 sm:py-20 lg:px-8 2xl:px-24">
         <GetInTouch />
       </div>
