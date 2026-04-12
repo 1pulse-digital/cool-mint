@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.0](https://github.com/1pulse-digital/cool-mint/compare/v0.28.2...v0.29.0) (2026-04-12)
+
+
+### Features
+
+* related classes, multi-session booking via BookSessions RPC ([#108](https://github.com/1pulse-digital/cool-mint/issues/108)) ([0de0115](https://github.com/1pulse-digital/cool-mint/commit/0de011571636a4b6eb18bd77e044ae932203823c))
+
 ## [0.28.2](https://github.com/1pulse-digital/cool-mint/compare/v0.28.1...v0.28.2) (2026-03-02)
 
 
