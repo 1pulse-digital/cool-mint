@@ -2,9 +2,25 @@ import { MoneyField } from "@/components/money-field"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CartItem } from "@/lib/fusion/commerce/cart.pb"
+import { format, parse } from "date-fns"
 import { Trash } from "lucide-react"
 import Image from "next/image"
 import React from "react"
+
+/**
+ * Extracts and formats a session date from a product name like
+ * "products/session-woodworking-101-2026-05-02-09-00"
+ */
+function extractSessionDate(productName: string): string | null {
+  const match = productName.match(/(\d{4}-\d{2}-\d{2}-\d{2}-\d{2})$/)
+  if (!match) return null
+  try {
+    const date = parse(match[1], "yyyy-MM-dd-HH-mm", new Date())
+    return format(date, "EEE, d MMM yyyy 'at' HH:mm")
+  } catch {
+    return null
+  }
+}
 
 interface ShoppingCartItemProps {
   item: CartItem
@@ -28,9 +44,16 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
         width={90}
         className="rounded-xl"
       />
-      <p className="grow text-xl ">
-        {item.displayName || item.product || "Product Name Not Available"}
-      </p>
+      <div className="grow">
+        <p className="text-xl">
+          {item.displayName || item.product || "Product Name Not Available"}
+        </p>
+        {extractSessionDate(item.product) && (
+          <p className="text-sm text-muted-foreground">
+            {extractSessionDate(item.product)}
+          </p>
+        )}
+      </div>
       <div className="flex w-[200px] flex-nowrap items-center justify-end gap-2 font-bold text-primary">
         <MoneyField value={item.price} />
         <Button onClick={handleDecreaseQuantity} disabled={item.quantity <= 1n}>

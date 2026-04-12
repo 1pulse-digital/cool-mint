@@ -3,11 +3,8 @@ import {
   Unsubscribe,
   User,
   onAuthStateChanged as firebaseOnAuthStateChanged,
-  getAuth
 } from "firebase/auth"
-import firebase_app from "../config"
-
-const auth = getAuth(firebase_app)
+import { auth } from "../config"
 
 export function onAuthStateChanged(
   nextOrObserver: NextOrObserver<User>,

@@ -1,5 +1,4 @@
-import { addToCart } from "@/app/actions"
-import { myCart } from "@/app/cart/actions"
+import { bookSessions } from "@/app/classes/actions"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/contexts/cart"
 import { useUser } from "@/contexts/user"
@@ -53,23 +52,27 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
       return
     }
 
-    // get the latest version of the cart
     try {
-      // TODO: only get the latest version if the add to cart fails on etag mismatch, not every time we click the button
       setLoadding(true)
-      const cart = await myCart({})
-      await addToCart({
-        eTag: cart.auditEntry.eTag,
-        product: session.product,
-        quantity: 1n,
-        variant: "",
+      const response = await bookSessions({
+        items: [{ session: session.name, quantity: 1 }],
       })
+
       setLoadding(false)
-      const amount = cart.items.reduce(
-        (acc, item) => acc + Number(item.quantity),
-        0,
-      )
-      cartContext.setAmount(amount + 1)
+
+      if (response.errors.length > 0) {
+        toast.error(response.errors[0].reason)
+        return
+      }
+
+      if (response.cart) {
+        const amount = response.cart.items.reduce(
+          (acc, item) => acc + Number(item.quantity),
+          0,
+        )
+        cartContext.setAmount(amount)
+      }
+
       toast.success("Added to cart")
       router.push("/cart")
     } catch (e: unknown) {

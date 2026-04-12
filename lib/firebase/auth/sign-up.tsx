@@ -1,15 +1,12 @@
 import {
   AuthError,
   createUserWithEmailAndPassword,
-  getAuth,
   UserCredential,
 } from "firebase/auth"
 
 import { UpdateMyUser } from "@/lib/fusion/auth/user.manager.pb"
-import firebase_app from "../config"
+import { auth } from "../config"
 import { initTransport } from "@/lib/transport"
-
-const auth = getAuth(firebase_app)
 
 interface SignUpResult {
   result: UserCredential | null

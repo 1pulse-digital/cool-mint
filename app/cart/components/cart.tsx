@@ -2,6 +2,7 @@
 
 import { useCart } from "@/contexts/cart"
 import { CartItem } from "@/lib/fusion/commerce/cart.pb"
+import { MoneyField } from "@/components/money-field"
 import React, { useEffect } from "react"
 import { toast } from "sonner"
 import { myCart, removeFromCart } from "../actions"
@@ -77,6 +78,11 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
     return <div>Loading...</div>
   }
 
+  const total = cart.items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0n,
+  )
+
   return (
     <div className="grid max-h-screen max-w-2xl gap-4 overflow-y-auto font-medium md:justify-center">
       {cart.items.length === 0 && (
@@ -91,6 +97,16 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = () => {
           handleIncreaseQuantity={handleIncreaseQuantity(item)}
         />
       ))}
+      {cart.items.length > 0 && (
+        <div className="flex justify-end border-t border-muted pt-4">
+          <div className="flex items-center gap-2 text-xl font-bold">
+            <span>Total:</span>
+            <span className="text-primary">
+              <MoneyField value={total} />
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

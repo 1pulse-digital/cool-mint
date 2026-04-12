@@ -1,10 +1,7 @@
 "use client"
 
-import firebase_app from "../config"
-
-import { AuthError, signOut as firebaseSignOut, getAuth } from "firebase/auth"
-
-const auth = getAuth(firebase_app)
+import { AuthError, signOut as firebaseSignOut } from "firebase/auth"
+import { auth } from "../config"
 
 interface SignOutResult {
   error: AuthError | Error | null

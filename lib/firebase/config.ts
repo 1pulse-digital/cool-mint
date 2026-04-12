@@ -1,4 +1,5 @@
 import { initializeApp, getApps } from "firebase/app"
+import { getAuth, connectAuthEmulator } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,5 +12,22 @@ const firebaseConfig = {
 
 let firebase_app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
+
+export const auth = getAuth(firebase_app)
+
+if (
+  typeof window !== "undefined" &&
+  process.env.NEXT_PUBLIC_FIREBASE_AUTH_EMULATOR_HOST
+) {
+  try {
+    connectAuthEmulator(
+      auth,
+      process.env.NEXT_PUBLIC_FIREBASE_AUTH_EMULATOR_HOST,
+      { disableWarnings: true },
+    )
+  } catch {
+    // Already connected (HMR re-evaluation)
+  }
+}
 
 export default firebase_app

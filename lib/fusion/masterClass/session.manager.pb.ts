@@ -18,15 +18,59 @@ import * as commerceProduct from "../commerce/product.pb";
 //                 Types                  //
 //========================================//
 
-export interface UpcomingSessionsRequest {}
+export interface UpcomingSessionsRequest {
+  /**
+   * optional: filter by parent masterClass name
+   */
+  masterClass: string;
+  /**
+   * "users/me" to check booking status for the authenticated user
+   */
+  user: string;
+}
 
 export interface UpcomingSessionResponse {
   sessions: masterClassSession.Session[];
   masterClasses: masterClassMasterClass.MasterClass[];
+  /**
+   * parallel to sessions[] — availability and booking info per session
+   */
+  sessionInfos: SessionInfo[];
+}
+
+export interface SessionInfo {
+  /**
+   * session resource name
+   */
+  session: string;
+  /**
+   * masterClass.maxAttendees - session.confirmedAttendees
+   */
+  availableSpots: number;
+  /**
+   * true if authenticated user is in session.attendees
+   */
+  isUserBooked: boolean;
 }
 
 export interface GetProductRequest {
   name: string;
+}
+
+export interface GetRelatedClassesRequest {
+  /**
+   * Resource name of the master class to get related classes for
+   */
+  name: string;
+  /**
+   * Maximum number of related classes to return
+   */
+  limit: number;
+}
+
+export interface GetRelatedClassesResponse {
+  masterClasses: masterClassMasterClass.MasterClass[];
+  sessions: masterClassSession.Session[];
 }
 
 //========================================//
@@ -64,6 +108,21 @@ export async function GetProduct(
   return commerceProduct.Product.decode(response);
 }
 
+/**
+ * GetRelatedClasses returns related classes with their upcoming sessions
+ */
+export async function GetRelatedClasses(
+  getRelatedClassesRequest: GetRelatedClassesRequest,
+  config?: ClientConfiguration,
+): Promise<GetRelatedClassesResponse> {
+  const response = await PBrequest(
+    "/masterClass.SessionManager/GetRelatedClasses",
+    GetRelatedClassesRequest.encode(getRelatedClassesRequest),
+    config,
+  );
+  return GetRelatedClassesResponse.decode(response);
+}
+
 //========================================//
 //       SessionManager JSON Client       //
 //========================================//
@@ -99,6 +158,21 @@ export async function GetProductJSON(
   return commerceProduct.ProductJSON.decode(response);
 }
 
+/**
+ * GetRelatedClasses returns related classes with their upcoming sessions
+ */
+export async function GetRelatedClassesJSON(
+  getRelatedClassesRequest: GetRelatedClassesRequest,
+  config?: ClientConfiguration,
+): Promise<GetRelatedClassesResponse> {
+  const response = await JSONrequest(
+    "/masterClass.SessionManager/GetRelatedClasses",
+    GetRelatedClassesRequestJSON.encode(getRelatedClassesRequest),
+    config,
+  );
+  return GetRelatedClassesResponseJSON.decode(response);
+}
+
 //========================================//
 //             SessionManager             //
 //========================================//
@@ -119,6 +193,13 @@ export interface SessionManager<Context = unknown> {
     getProductRequest: GetProductRequest,
     context: Context,
   ) => Promise<commerceProduct.Product> | commerceProduct.Product;
+  /**
+   * GetRelatedClasses returns related classes with their upcoming sessions
+   */
+  GetRelatedClasses: (
+    getRelatedClassesRequest: GetRelatedClassesRequest,
+    context: Context,
+  ) => Promise<GetRelatedClassesResponse> | GetRelatedClassesResponse;
 }
 
 export function createSessionManager<Context>(
@@ -148,6 +229,18 @@ export function createSessionManager<Context>(
           json: commerceProduct.ProductJSON,
         },
       },
+      GetRelatedClasses: {
+        name: "GetRelatedClasses",
+        handler: service.GetRelatedClasses,
+        input: {
+          protobuf: GetRelatedClassesRequest,
+          json: GetRelatedClassesRequestJSON,
+        },
+        output: {
+          protobuf: GetRelatedClassesResponse,
+          json: GetRelatedClassesResponseJSON,
+        },
+      },
     },
   } as const;
 }
@@ -160,15 +253,21 @@ export const UpcomingSessionsRequest = {
   /**
    * Serializes UpcomingSessionsRequest to protobuf.
    */
-  encode: function (_msg?: PartialDeep<UpcomingSessionsRequest>): Uint8Array {
-    return new Uint8Array();
+  encode: function (msg: PartialDeep<UpcomingSessionsRequest>): Uint8Array {
+    return UpcomingSessionsRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
   },
 
   /**
    * Deserializes UpcomingSessionsRequest from protobuf.
    */
-  decode: function (_bytes?: ByteSource): UpcomingSessionsRequest {
-    return {};
+  decode: function (bytes: ByteSource): UpcomingSessionsRequest {
+    return UpcomingSessionsRequest._readMessage(
+      UpcomingSessionsRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
   },
 
   /**
@@ -178,6 +277,8 @@ export const UpcomingSessionsRequest = {
     msg?: Partial<UpcomingSessionsRequest>,
   ): UpcomingSessionsRequest {
     return {
+      masterClass: "",
+      user: "",
       ...msg,
     };
   },
@@ -186,9 +287,15 @@ export const UpcomingSessionsRequest = {
    * @private
    */
   _writeMessage: function (
-    _msg: PartialDeep<UpcomingSessionsRequest>,
+    msg: PartialDeep<UpcomingSessionsRequest>,
     writer: protoscript.BinaryWriter,
   ): protoscript.BinaryWriter {
+    if (msg.masterClass) {
+      writer.writeString(1, msg.masterClass);
+    }
+    if (msg.user) {
+      writer.writeString(2, msg.user);
+    }
     return writer;
   },
 
@@ -196,10 +303,27 @@ export const UpcomingSessionsRequest = {
    * @private
    */
   _readMessage: function (
-    _msg: UpcomingSessionsRequest,
-    _reader: protoscript.BinaryReader,
+    msg: UpcomingSessionsRequest,
+    reader: protoscript.BinaryReader,
   ): UpcomingSessionsRequest {
-    return _msg;
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.masterClass = reader.readString();
+          break;
+        }
+        case 2: {
+          msg.user = reader.readString();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
   },
 };
 
@@ -233,6 +357,7 @@ export const UpcomingSessionResponse = {
     return {
       sessions: [],
       masterClasses: [],
+      sessionInfos: [],
       ...msg,
     };
   },
@@ -256,6 +381,13 @@ export const UpcomingSessionResponse = {
         2,
         msg.masterClasses as any,
         masterClassMasterClass.MasterClass._writeMessage,
+      );
+    }
+    if (msg.sessionInfos?.length) {
+      writer.writeRepeatedMessage(
+        3,
+        msg.sessionInfos as any,
+        SessionInfo._writeMessage,
       );
     }
     return writer;
@@ -284,6 +416,96 @@ export const UpcomingSessionResponse = {
             masterClassMasterClass.MasterClass._readMessage,
           );
           msg.masterClasses.push(m);
+          break;
+        }
+        case 3: {
+          const m = SessionInfo.initialize();
+          reader.readMessage(m, SessionInfo._readMessage);
+          msg.sessionInfos.push(m);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const SessionInfo = {
+  /**
+   * Serializes SessionInfo to protobuf.
+   */
+  encode: function (msg: PartialDeep<SessionInfo>): Uint8Array {
+    return SessionInfo._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes SessionInfo from protobuf.
+   */
+  decode: function (bytes: ByteSource): SessionInfo {
+    return SessionInfo._readMessage(
+      SessionInfo.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes SessionInfo with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<SessionInfo>): SessionInfo {
+    return {
+      session: "",
+      availableSpots: 0,
+      isUserBooked: false,
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<SessionInfo>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.session) {
+      writer.writeString(1, msg.session);
+    }
+    if (msg.availableSpots) {
+      writer.writeInt32(2, msg.availableSpots);
+    }
+    if (msg.isUserBooked) {
+      writer.writeBool(3, msg.isUserBooked);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: SessionInfo,
+    reader: protoscript.BinaryReader,
+  ): SessionInfo {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.session = reader.readString();
+          break;
+        }
+        case 2: {
+          msg.availableSpots = reader.readInt32();
+          break;
+        }
+        case 3: {
+          msg.isUserBooked = reader.readBool();
           break;
         }
         default: {
@@ -364,6 +586,177 @@ export const GetProductRequest = {
   },
 };
 
+export const GetRelatedClassesRequest = {
+  /**
+   * Serializes GetRelatedClassesRequest to protobuf.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesRequest>): Uint8Array {
+    return GetRelatedClassesRequest._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes GetRelatedClassesRequest from protobuf.
+   */
+  decode: function (bytes: ByteSource): GetRelatedClassesRequest {
+    return GetRelatedClassesRequest._readMessage(
+      GetRelatedClassesRequest.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesRequest>,
+  ): GetRelatedClassesRequest {
+    return {
+      name: "",
+      limit: 0,
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesRequest>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.name) {
+      writer.writeString(1, msg.name);
+    }
+    if (msg.limit) {
+      writer.writeInt32(2, msg.limit);
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesRequest,
+    reader: protoscript.BinaryReader,
+  ): GetRelatedClassesRequest {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          msg.name = reader.readString();
+          break;
+        }
+        case 2: {
+          msg.limit = reader.readInt32();
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
+export const GetRelatedClassesResponse = {
+  /**
+   * Serializes GetRelatedClassesResponse to protobuf.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesResponse>): Uint8Array {
+    return GetRelatedClassesResponse._writeMessage(
+      msg,
+      new protoscript.BinaryWriter(),
+    ).getResultBuffer();
+  },
+
+  /**
+   * Deserializes GetRelatedClassesResponse from protobuf.
+   */
+  decode: function (bytes: ByteSource): GetRelatedClassesResponse {
+    return GetRelatedClassesResponse._readMessage(
+      GetRelatedClassesResponse.initialize(),
+      new protoscript.BinaryReader(bytes),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesResponse>,
+  ): GetRelatedClassesResponse {
+    return {
+      masterClasses: [],
+      sessions: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesResponse>,
+    writer: protoscript.BinaryWriter,
+  ): protoscript.BinaryWriter {
+    if (msg.masterClasses?.length) {
+      writer.writeRepeatedMessage(
+        1,
+        msg.masterClasses as any,
+        masterClassMasterClass.MasterClass._writeMessage,
+      );
+    }
+    if (msg.sessions?.length) {
+      writer.writeRepeatedMessage(
+        2,
+        msg.sessions as any,
+        masterClassSession.Session._writeMessage,
+      );
+    }
+    return writer;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesResponse,
+    reader: protoscript.BinaryReader,
+  ): GetRelatedClassesResponse {
+    while (reader.nextField()) {
+      const field = reader.getFieldNumber();
+      switch (field) {
+        case 1: {
+          const m = masterClassMasterClass.MasterClass.initialize();
+          reader.readMessage(
+            m,
+            masterClassMasterClass.MasterClass._readMessage,
+          );
+          msg.masterClasses.push(m);
+          break;
+        }
+        case 2: {
+          const m = masterClassSession.Session.initialize();
+          reader.readMessage(m, masterClassSession.Session._readMessage);
+          msg.sessions.push(m);
+          break;
+        }
+        default: {
+          reader.skipField();
+          break;
+        }
+      }
+    }
+    return msg;
+  },
+};
+
 //========================================//
 //          JSON Encode / Decode          //
 //========================================//
@@ -372,15 +765,18 @@ export const UpcomingSessionsRequestJSON = {
   /**
    * Serializes UpcomingSessionsRequest to JSON.
    */
-  encode: function (_msg?: PartialDeep<UpcomingSessionsRequest>): string {
-    return "{}";
+  encode: function (msg: PartialDeep<UpcomingSessionsRequest>): string {
+    return JSON.stringify(UpcomingSessionsRequestJSON._writeMessage(msg));
   },
 
   /**
    * Deserializes UpcomingSessionsRequest from JSON.
    */
-  decode: function (_json?: string): UpcomingSessionsRequest {
-    return {};
+  decode: function (json: string): UpcomingSessionsRequest {
+    return UpcomingSessionsRequestJSON._readMessage(
+      UpcomingSessionsRequestJSON.initialize(),
+      JSON.parse(json),
+    );
   },
 
   /**
@@ -390,6 +786,8 @@ export const UpcomingSessionsRequestJSON = {
     msg?: Partial<UpcomingSessionsRequest>,
   ): UpcomingSessionsRequest {
     return {
+      masterClass: "",
+      user: "",
       ...msg,
     };
   },
@@ -398,9 +796,16 @@ export const UpcomingSessionsRequestJSON = {
    * @private
    */
   _writeMessage: function (
-    _msg: PartialDeep<UpcomingSessionsRequest>,
+    msg: PartialDeep<UpcomingSessionsRequest>,
   ): Record<string, unknown> {
-    return {};
+    const json: Record<string, unknown> = {};
+    if (msg.masterClass) {
+      json["masterClass"] = msg.masterClass;
+    }
+    if (msg.user) {
+      json["user"] = msg.user;
+    }
+    return json;
   },
 
   /**
@@ -408,8 +813,16 @@ export const UpcomingSessionsRequestJSON = {
    */
   _readMessage: function (
     msg: UpcomingSessionsRequest,
-    _json: any,
+    json: any,
   ): UpcomingSessionsRequest {
+    const _masterClass_ = json["masterClass"] ?? json["master_class"];
+    if (_masterClass_) {
+      msg.masterClass = _masterClass_;
+    }
+    const _user_ = json["user"];
+    if (_user_) {
+      msg.user = _user_;
+    }
     return msg;
   },
 };
@@ -441,6 +854,7 @@ export const UpcomingSessionResponseJSON = {
     return {
       sessions: [],
       masterClasses: [],
+      sessionInfos: [],
       ...msg,
     };
   },
@@ -460,6 +874,11 @@ export const UpcomingSessionResponseJSON = {
     if (msg.masterClasses?.length) {
       json["masterClasses"] = msg.masterClasses.map(
         masterClassMasterClass.MasterClassJSON._writeMessage,
+      );
+    }
+    if (msg.sessionInfos?.length) {
+      json["sessionInfos"] = msg.sessionInfos.map(
+        SessionInfoJSON._writeMessage,
       );
     }
     return json;
@@ -487,6 +906,83 @@ export const UpcomingSessionResponseJSON = {
         masterClassMasterClass.MasterClassJSON._readMessage(m, item);
         msg.masterClasses.push(m);
       }
+    }
+    const _sessionInfos_ = json["sessionInfos"] ?? json["session_infos"];
+    if (_sessionInfos_) {
+      for (const item of _sessionInfos_) {
+        const m = SessionInfoJSON.initialize();
+        SessionInfoJSON._readMessage(m, item);
+        msg.sessionInfos.push(m);
+      }
+    }
+    return msg;
+  },
+};
+
+export const SessionInfoJSON = {
+  /**
+   * Serializes SessionInfo to JSON.
+   */
+  encode: function (msg: PartialDeep<SessionInfo>): string {
+    return JSON.stringify(SessionInfoJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes SessionInfo from JSON.
+   */
+  decode: function (json: string): SessionInfo {
+    return SessionInfoJSON._readMessage(
+      SessionInfoJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes SessionInfo with all fields set to their default value.
+   */
+  initialize: function (msg?: Partial<SessionInfo>): SessionInfo {
+    return {
+      session: "",
+      availableSpots: 0,
+      isUserBooked: false,
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<SessionInfo>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.session) {
+      json["session"] = msg.session;
+    }
+    if (msg.availableSpots) {
+      json["availableSpots"] = msg.availableSpots;
+    }
+    if (msg.isUserBooked) {
+      json["isUserBooked"] = msg.isUserBooked;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (msg: SessionInfo, json: any): SessionInfo {
+    const _session_ = json["session"];
+    if (_session_) {
+      msg.session = _session_;
+    }
+    const _availableSpots_ = json["availableSpots"] ?? json["available_spots"];
+    if (_availableSpots_) {
+      msg.availableSpots = protoscript.parseNumber(_availableSpots_);
+    }
+    const _isUserBooked_ = json["isUserBooked"] ?? json["is_user_booked"];
+    if (_isUserBooked_) {
+      msg.isUserBooked = _isUserBooked_;
     }
     return msg;
   },
@@ -543,6 +1039,150 @@ export const GetProductRequestJSON = {
     const _name_ = json["name"];
     if (_name_) {
       msg.name = _name_;
+    }
+    return msg;
+  },
+};
+
+export const GetRelatedClassesRequestJSON = {
+  /**
+   * Serializes GetRelatedClassesRequest to JSON.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesRequest>): string {
+    return JSON.stringify(GetRelatedClassesRequestJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes GetRelatedClassesRequest from JSON.
+   */
+  decode: function (json: string): GetRelatedClassesRequest {
+    return GetRelatedClassesRequestJSON._readMessage(
+      GetRelatedClassesRequestJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesRequest with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesRequest>,
+  ): GetRelatedClassesRequest {
+    return {
+      name: "",
+      limit: 0,
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesRequest>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.name) {
+      json["name"] = msg.name;
+    }
+    if (msg.limit) {
+      json["limit"] = msg.limit;
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesRequest,
+    json: any,
+  ): GetRelatedClassesRequest {
+    const _name_ = json["name"];
+    if (_name_) {
+      msg.name = _name_;
+    }
+    const _limit_ = json["limit"];
+    if (_limit_) {
+      msg.limit = protoscript.parseNumber(_limit_);
+    }
+    return msg;
+  },
+};
+
+export const GetRelatedClassesResponseJSON = {
+  /**
+   * Serializes GetRelatedClassesResponse to JSON.
+   */
+  encode: function (msg: PartialDeep<GetRelatedClassesResponse>): string {
+    return JSON.stringify(GetRelatedClassesResponseJSON._writeMessage(msg));
+  },
+
+  /**
+   * Deserializes GetRelatedClassesResponse from JSON.
+   */
+  decode: function (json: string): GetRelatedClassesResponse {
+    return GetRelatedClassesResponseJSON._readMessage(
+      GetRelatedClassesResponseJSON.initialize(),
+      JSON.parse(json),
+    );
+  },
+
+  /**
+   * Initializes GetRelatedClassesResponse with all fields set to their default value.
+   */
+  initialize: function (
+    msg?: Partial<GetRelatedClassesResponse>,
+  ): GetRelatedClassesResponse {
+    return {
+      masterClasses: [],
+      sessions: [],
+      ...msg,
+    };
+  },
+
+  /**
+   * @private
+   */
+  _writeMessage: function (
+    msg: PartialDeep<GetRelatedClassesResponse>,
+  ): Record<string, unknown> {
+    const json: Record<string, unknown> = {};
+    if (msg.masterClasses?.length) {
+      json["masterClasses"] = msg.masterClasses.map(
+        masterClassMasterClass.MasterClassJSON._writeMessage,
+      );
+    }
+    if (msg.sessions?.length) {
+      json["sessions"] = msg.sessions.map(
+        masterClassSession.SessionJSON._writeMessage,
+      );
+    }
+    return json;
+  },
+
+  /**
+   * @private
+   */
+  _readMessage: function (
+    msg: GetRelatedClassesResponse,
+    json: any,
+  ): GetRelatedClassesResponse {
+    const _masterClasses_ = json["masterClasses"] ?? json["master_classes"];
+    if (_masterClasses_) {
+      for (const item of _masterClasses_) {
+        const m = masterClassMasterClass.MasterClassJSON.initialize();
+        masterClassMasterClass.MasterClassJSON._readMessage(m, item);
+        msg.masterClasses.push(m);
+      }
+    }
+    const _sessions_ = json["sessions"];
+    if (_sessions_) {
+      for (const item of _sessions_) {
+        const m = masterClassSession.SessionJSON.initialize();
+        masterClassSession.SessionJSON._readMessage(m, item);
+        msg.sessions.push(m);
+      }
     }
     return msg;
   },
