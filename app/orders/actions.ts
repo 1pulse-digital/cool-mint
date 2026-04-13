@@ -18,7 +18,7 @@ export async function myOrders(
   try {
     const response = await MyOrders(request, {
       rpcTransport: transport(["orders"]),
-      headers: authHeaders(cookies().get("token")?.value),
+      headers: authHeaders((await cookies()).get("token")?.value),
     })
     return response
   } catch (e: unknown) {

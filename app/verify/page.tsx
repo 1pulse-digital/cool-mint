@@ -40,7 +40,7 @@ const Login: React.FC = () => {
                   type="email"
                   id="email"
                   placeholder="Email"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
               </div>
@@ -55,7 +55,7 @@ const Login: React.FC = () => {
                   type="password"
                   id="password"
                   placeholder="*************"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
               </div>
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
                   type="password"
                   id="password"
                   placeholder="*************"
-                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 border-amber-300 bg-background py-1.5 text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-3 placeholder:font-helvetica placeholder:text-xs  placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:text-sm sm:leading-6"
                 ></Input>
                 /
               </div>
@@ -86,25 +86,25 @@ const Login: React.FC = () => {
                 type="text"
                 id="number"
                 placeholder="1"
-                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
+                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
               />
               <Input
                 type="text"
                 id="number"
                 placeholder="2"
-                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
+                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
               />
               <Input
                 type="text"
                 id="number"
                 placeholder="3"
-                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
+                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
               />
               <Input
                 type="text"
                 id="number"
                 placeholder="4"
-                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-sm ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
+                className="block h-20 w-16 rounded-md border-0 border-amber-300 bg-background py-1.5  text-foreground shadow-xs ring-1 ring-inset ring-[#707070] placeholder:px-4 placeholder:py-4 placeholder:font-helvetica placeholder:text-4xl placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-background sm:leading-6"
               />
             </div>
             <Link href="/">

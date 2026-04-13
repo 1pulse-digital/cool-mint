@@ -12,7 +12,7 @@ export interface ButtonProps {
 
 export const SmallButton = (props: ButtonProps) => {
 
-  const baseClassname = "whitespace-nowrap hover:text-primary text-[14px] sm:text-[16px] inline-flex items-center px-4 justify-center font-helvetica  py-3 border border-transparent rounded-full shadow-sm  font-bold ";
+  const baseClassname = "whitespace-nowrap hover:text-primary text-[14px] sm:text-[16px] inline-flex items-center px-4 justify-center font-helvetica  py-3 border border-transparent rounded-full shadow-xs  font-bold ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -69,7 +69,7 @@ export const SmallButtonOrange = (props: ButtonProps) => {
 };
 
 export const Button = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-4 md:px-8 py-2 shadow hover:shadow-sm text-[14px] sm:text-[16px] font-helvetica";
+  const baseClassname = "rounded-lg px-4 md:px-8 py-2 shadow-sm hover:shadow-xs text-[14px] sm:text-[16px] font-helvetica";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -96,7 +96,7 @@ export const Button = (props: ButtonProps) => {
 };
 
 export const HeaderButton = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-12 md:px-5 py-1 shadow hover:shadow-sm text-[10px] font-helvetica w-20 ";
+  const baseClassname = "rounded-lg px-12 md:px-5 py-1 shadow-sm hover:shadow-xs text-[10px] font-helvetica w-20 ";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -123,7 +123,7 @@ export const HeaderButton = (props: ButtonProps) => {
 };
 
 export const BookingButton = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow hover:shadow-sm text-[10px] font-helvetica";
+  const baseClassname = "rounded-lg px-12 md:px-5  py-1 shadow-sm hover:shadow-xs text-[10px] font-helvetica";
 
   const isPrimary = props.color === "primary";
   const isSecondary = props.color === "secondary";
@@ -153,7 +153,7 @@ export const BookingButton = (props: ButtonProps) => {
 
 
 export const LongButton = (props: ButtonProps) => {
-  const baseClassname = "rounded-lg px-4 md:px-5 py-2 shadow hover:shadow-sm text-[14px] font-helvetica disabled:opacity-60 whitespace-nowrap";
+  const baseClassname = "rounded-lg px-4 md:px-5 py-2 shadow-sm hover:shadow-xs text-[14px] font-helvetica disabled:opacity-60 whitespace-nowrap";
 
   const isPrimary = props.color === "secondary";
   const isSecondary = props.color === "secondary";
@@ -180,7 +180,7 @@ export const LongButton = (props: ButtonProps) => {
 
 
 export const SquareButton = (props: ButtonProps) => {
-// const baseClassname = "rounded-full px-4 md:px-10 py-3 shadow hover:shadow-sm text-lg disabled:opacity-60 whitespace-nowrap";
+// const baseClassname = "rounded-full px-4 md:px-10 py-3 shadow-sm hover:shadow-xs text-lg disabled:opacity-60 whitespace-nowrap";
    const baseClassname = "whitespace-nowrap hover:text-secondary text-[16px] inline-flex items-center justify-center font-helvetica  py-3 border border-none   font-bold ";
 
   const isPrimary = props.color === "primary";

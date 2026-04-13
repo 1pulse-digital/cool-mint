@@ -24,9 +24,9 @@ export async function addToCart(request: AddToCartRequest): Promise<Cart> {
 
 // handleLogin will set the token cookie
 export async function handleLogin(tokenResult: IdTokenResult) {
-  const expires = new Date(tokenResult.expirationTime).getTime()
-  const maxAge = Math.floor((expires - Date.now()) / 1000) - 30
-  cookies().set("token", tokenResult.token, {
+  const expires: number = new Date(tokenResult.expirationTime).getTime();
+  const maxAge: number = Math.floor((expires - Date.now()) / 1000) - 30;
+  (await cookies()).set("token", tokenResult.token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     maxAge: maxAge,
@@ -36,15 +36,16 @@ export async function handleLogin(tokenResult: IdTokenResult) {
 
 // handleLogout will clear the token cookie and
 export async function handleLogout() {
-  cookies().delete("token")
+  (await cookies()).delete("token")
 }
 
 export async function authHeader(): Promise<Record<string, string>> {
-  if (!cookies().has("token")) {
+  const cookieStore = await cookies()
+  if (!cookieStore.has("token")) {
     return {}
   }
 
-  const token = cookies().get("token")?.value
+  const token = cookieStore.get("token")?.value
   if (!token) {
     return {}
   }
