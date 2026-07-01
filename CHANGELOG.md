@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.2](https://github.com/1pulse-digital/cool-mint/compare/v0.29.1...v0.29.2) (2026-07-01)
+
+
+### Bug Fixes
+
+* run checkout actions server-side to fix cross-origin order failures ([#110](https://github.com/1pulse-digital/cool-mint/issues/110)) ([07a1c53](https://github.com/1pulse-digital/cool-mint/commit/07a1c5317793fc2e703008f791f3cd328aa8cef6))
+
 ## [0.29.1](https://github.com/1pulse-digital/cool-mint/compare/v0.29.0...v0.29.1) (2026-07-01)
 
 
