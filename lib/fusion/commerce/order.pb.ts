@@ -63,10 +63,7 @@ export interface Order {
 
 export declare namespace Order {
   export type Status =
-    | "STATUS_UNSPECIFIED"
-    | "PENDING"
-    | "COMPLETED"
-    | "CANCELLED";
+    "STATUS_UNSPECIFIED" | "PENDING" | "COMPLETED" | "CANCELLED";
 
   /**
    * coupons applied to this order

@@ -211,20 +211,17 @@ export interface TourBookingRepository<Context = unknown> {
     createTourBookingRequest: CreateTourBookingRequest,
     context: Context,
   ) =>
-    | Promise<workshopTourBooking.TourBooking>
-    | workshopTourBooking.TourBooking;
+    Promise<workshopTourBooking.TourBooking> | workshopTourBooking.TourBooking;
   GetTourBooking: (
     getTourBookingRequest: GetTourBookingRequest,
     context: Context,
   ) =>
-    | Promise<workshopTourBooking.TourBooking>
-    | workshopTourBooking.TourBooking;
+    Promise<workshopTourBooking.TourBooking> | workshopTourBooking.TourBooking;
   UpdateTourBooking: (
     updateTourBookingRequest: UpdateTourBookingRequest,
     context: Context,
   ) =>
-    | Promise<workshopTourBooking.TourBooking>
-    | workshopTourBooking.TourBooking;
+    Promise<workshopTourBooking.TourBooking> | workshopTourBooking.TourBooking;
   DeleteTourBooking: (
     deleteTourBookingRequest: DeleteTourBookingRequest,
     context: Context,

@@ -73,10 +73,7 @@ export interface MasterClass {
 
 export declare namespace MasterClass {
   export type Difficulty =
-    | "UNSPECIFIED"
-    | "BEGINNER"
-    | "INTERMEDIATE"
-    | "ADVANCED";
+    "UNSPECIFIED" | "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
 }
 
 //========================================//
