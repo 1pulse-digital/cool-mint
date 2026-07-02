@@ -10,12 +10,7 @@ import * as protoscript from "protoscript";
 //========================================//
 
 export type Role =
-  | "NONE"
-  | "GUEST"
-  | "MEMBER"
-  | "ADMIN"
-  | "SUPER_ADMIN"
-  | "SYSTEM";
+  "NONE" | "GUEST" | "MEMBER" | "ADMIN" | "SUPER_ADMIN" | "SYSTEM";
 
 export interface required {}
 
