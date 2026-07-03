@@ -10,6 +10,12 @@ describe("formatDuration", () => {
     expect(formatDuration(90)).toBe("1h 30m")
     expect(formatDuration(150)).toBe("2h 30m")
   })
+  it("does not zero-pad the minutes segment", () => {
+    expect(formatDuration(65)).toBe("1h 5m")
+  })
+  it("guards against NaN input", () => {
+    expect(formatDuration(NaN)).toBe("0m")
+  })
   it("formats sub-hour durations as minutes", () => {
     expect(formatDuration(45)).toBe("45m")
     expect(formatDuration(0)).toBe("0m")
