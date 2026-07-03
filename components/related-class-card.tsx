@@ -1,6 +1,7 @@
 "use client"
 
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
+import { formatDuration } from "@/lib/util/format-duration"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { SignalHigh } from "lucide-react"
 import Image from "next/image"
@@ -45,7 +46,7 @@ export const RelatedClassCard: React.FC<RelatedClassCardProps> = ({
           </Link>
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">
-              {course.duration} Minutes
+              {formatDuration(course.duration)}
             </span>
             <span className="font-semibold text-primary">
               {moneyFormatter.format(course.standardPrice / 100n)}

@@ -6,6 +6,7 @@ import { useUser } from "@/contexts/user"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { parseError } from "@/lib/util/error"
+import { formatDuration } from "@/lib/util/format-duration"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { Calendar, Clock, MapPin, SignalHigh, Users } from "lucide-react"
@@ -136,7 +137,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
           <div>
             <p className="text-xs text-muted-foreground">Time</p>
             <p className="font-helvetica font-medium text-foreground">
-              {duration} Minutes
+              {formatDuration(duration)}
             </p>
           </div>
         </div>

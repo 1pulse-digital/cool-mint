@@ -5,6 +5,7 @@ import { useUser } from "@/contexts/user"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { parseError } from "@/lib/util/error"
+import { formatDuration } from "@/lib/util/format-duration"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { format } from "date-fns"
 import { CalendarClock, Clock2, User, Scale3D } from "lucide-react"
@@ -118,7 +119,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
             </div>
             <div className="flex space-x-2">
               <Clock2 size={16} className="text-primary" />
-              <p>{masterClass.duration / 60} hours</p>
+              <p>{formatDuration(masterClass.duration)}</p>
             </div>
             <div className="flex space-x-2">
               <User size={16} className="text-primary" />
