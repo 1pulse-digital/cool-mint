@@ -99,10 +99,10 @@ export function ClassGallery({
                 key={"dot-" + image.url + i}
                 type="button"
                 aria-label={`Go to image ${i + 1}`}
-                aria-current={i === selected}
+                aria-current={i === selected ? "true" : undefined}
                 onClick={() => api?.scrollTo(i)}
                 className={cn(
-                  "h-2 w-2 rounded-full transition-colors",
+                  "h-2 w-2 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   i === selected ? "bg-primary" : "bg-muted-foreground/40",
                 )}
               />
