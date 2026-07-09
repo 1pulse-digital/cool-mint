@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { ClassGallery } from "@/components/class-gallery"
 
 const img = (n: number, desc = "") => ({
@@ -44,5 +45,18 @@ describe("ClassGallery", () => {
     expect(
       screen.getAllByRole("button", { name: /go to image/i }),
     ).toHaveLength(3)
+  })
+
+  it("opens a lightbox dialog when an image is clicked", async () => {
+    const user = userEvent.setup()
+    render(
+      <ClassGallery
+        images={[img(1, "A lathe"), img(2, "A chisel")]}
+        title="Woodworking 101"
+      />,
+    )
+    expect(screen.queryByRole("dialog")).toBeNull()
+    await user.click(screen.getAllByAltText("A lathe")[0])
+    expect(await screen.findByRole("dialog")).toBeInTheDocument()
   })
 })
