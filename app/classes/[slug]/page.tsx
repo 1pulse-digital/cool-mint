@@ -129,14 +129,12 @@ export default async function Page({ params }: ClassPageProps) {
             {/* Right Column - Booking Card */}
             <div className="lg:col-span-1">
               <BookingCard
-                masterClassName={masterClass.name}
-                displayName={masterClass.displayName}
                 standardPrice={masterClass.standardPrice}
                 difficulty={masterClass.difficulty}
                 duration={masterClass.duration}
                 maxAttendees={totalSpots}
                 spotsFilled={spotsFilled}
-                firstAvailableSession={firstAvailableSession}
+                sessions={masterClassSessions}
                 sessionInfos={sessionInfos}
               />
             </div>
