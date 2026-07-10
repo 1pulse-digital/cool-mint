@@ -17,13 +17,13 @@ import {
   spotsLeftFor,
   toggleSelection,
 } from "@/lib/util/session-selection"
-import { Calendar, Clock, Users } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Calendar, Check, Clock, Users } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "sonner"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
-import { Checkbox } from "./ui/checkbox"
 import { Spinner } from "./ui/spinner"
 
 interface InlineSessionSelectorProps {
@@ -136,6 +136,7 @@ export const InlineSessionSelector: React.FC<InlineSessionSelectorProps> = ({
                 key={session.name}
                 type="button"
                 disabled={isDisabled}
+                aria-pressed={isSelected}
                 onClick={() => toggleSession(session)}
                 className={`w-full rounded-lg border p-3 text-left transition-colors ${
                   isSelected
@@ -146,11 +147,17 @@ export const InlineSessionSelector: React.FC<InlineSessionSelectorProps> = ({
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Checkbox
-                    checked={isSelected}
-                    disabled={isDisabled}
-                    className="pointer-events-none"
-                  />
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border",
+                      isSelected
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-primary/50",
+                    )}
+                  >
+                    {isSelected && <Check className="h-3 w-3" />}
+                  </span>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-primary" />
