@@ -3,6 +3,8 @@ import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import {
   firstSelectableSession,
+  formatSessionDate,
+  formatSessionTime,
   infoForSession,
   isSessionBooked,
   isSessionFull,
@@ -111,5 +113,26 @@ describe("toggleSelection", () => {
     const five = [1, 2, 3, 4, 5].map((n) => session("s" + n))
     const result = toggleSelection(five, five[0], 5)
     expect(result.map((s) => s.name)).toEqual(["s2", "s3", "s4", "s5"])
+  })
+})
+
+describe("formatSessionTime", () => {
+  it("applies the Africa/Johannesburg (UTC+2) offset, not the runtime's local zone", () => {
+    // 07:00 UTC is 09:00 in SAST (UTC+2).
+    const result = formatSessionTime("2026-07-12T07:00:00Z")
+    expect(result).toContain("09")
+    expect(result).not.toContain("07")
+  })
+
+  it("rolls the time across midnight in SAST near a date boundary", () => {
+    // 23:30 UTC is 01:30 the following day in SAST.
+    expect(formatSessionTime("2026-07-12T23:30:00Z")).toContain("01")
+  })
+})
+
+describe("formatSessionDate", () => {
+  it("rolls the date forward when SAST has already crossed midnight", () => {
+    // 23:30 UTC on the 12th is 01:30 on the 13th in SAST.
+    expect(formatSessionDate("2026-07-12T23:30:00Z")).toContain("13")
   })
 })

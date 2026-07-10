@@ -9,6 +9,8 @@ import { parseError } from "@/lib/util/error"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import {
   firstSelectableSession,
+  formatSessionDate,
+  formatSessionTime,
   infoForSession,
   isSessionBooked,
   isSessionFull,
@@ -31,19 +33,6 @@ interface InlineSessionSelectorProps {
   sessionInfos?: SessionInfo[]
   maxSelections?: number
 }
-
-const formatDate = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString("en-ZA", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-  })
-
-const formatTime = (dateStr: string) =>
-  new Date(dateStr).toLocaleTimeString("en-ZA", {
-    hour: "2-digit",
-    minute: "2-digit",
-  })
 
 export const InlineSessionSelector: React.FC<InlineSessionSelectorProps> = ({
   maxAttendees,
@@ -166,11 +155,11 @@ export const InlineSessionSelector: React.FC<InlineSessionSelectorProps> = ({
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-primary" />
                       <span className="font-medium text-foreground">
-                        {formatDate(session.date)}
+                        {formatSessionDate(session.date)}
                       </span>
                       <Clock className="ml-2 h-4 w-4 text-primary" />
                       <span className="text-foreground">
-                        {formatTime(session.date)}
+                        {formatSessionTime(session.date)}
                       </span>
                     </div>
                     <div className="mt-1 flex items-center gap-2">

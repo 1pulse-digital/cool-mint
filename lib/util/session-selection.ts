@@ -58,3 +58,27 @@ export function toggleSelection(
   }
   return [...selected, session]
 }
+
+// Session date/time formatting is pinned to Africa/Johannesburg (SAST, UTC+2)
+// rather than left to the runtime's local timezone. This deployment is
+// South-Africa-only, and these components are server-rendered first (UTC on
+// Cloud Run) then hydrated client-side (SAST in the browser) — without an
+// explicit timeZone the two renders disagree and React throws a hydration
+// mismatch, or worse, briefly shows a time that's 2 hours off on a booking
+// decision.
+export function formatSessionDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-ZA", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: "Africa/Johannesburg",
+  })
+}
+
+export function formatSessionTime(dateStr: string): string {
+  return new Date(dateStr).toLocaleTimeString("en-ZA", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Africa/Johannesburg",
+  })
+}
