@@ -176,18 +176,22 @@ export default async function Page({ params }: ClassPageProps) {
             </div>
           )}
 
-          {/* Choose Your Date */}
-          <hr className="my-6 border-muted-foreground/20" />
-          <div id="choose-date">
-            <h2 className="py-3 font-helvetica text-lg font-bold text-muted-foreground">
-              Choose Your Date
-            </h2>
-          </div>
-          <div>
-            <Suspense fallback={<UpcomingClassesLoader />}>
-              <UpcomingClasses masterClass={masterClass.name} />
-            </Suspense>
-          </div>
+          {masterClassSessions.length > 0 && (
+            <>
+              {/* Choose Your Date */}
+              <hr className="my-6 border-muted-foreground/20" />
+              <div id="choose-date">
+                <h2 className="py-3 font-helvetica text-lg font-bold text-muted-foreground">
+                  Choose Your Date
+                </h2>
+              </div>
+              <div>
+                <Suspense fallback={<UpcomingClassesLoader />}>
+                  <UpcomingClasses masterClass={masterClass.name} />
+                </Suspense>
+              </div>
+            </>
+          )}
 
           {/* Related Classes */}
           <hr className="my-6 border-muted-foreground/20" />
