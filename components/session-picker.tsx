@@ -7,13 +7,20 @@ import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { moneyFormatter } from "@/lib/util/money-formatter"
 import { parseError } from "@/lib/util/error"
+import {
+  formatSessionDate,
+  formatSessionTime,
+  infoForSession,
+  isSessionBooked,
+  isSessionFull,
+  spotsLeftFor,
+} from "@/lib/util/session-selection"
 import { Calendar, Clock, Users } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { toast } from "sonner"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
-import { Checkbox } from "./ui/checkbox"
 import {
   Dialog,
   DialogContent,
@@ -29,8 +36,6 @@ interface SessionPickerProps {
   standardPrice: bigint
   open: boolean
   onOpenChange: (open: boolean) => void
-  multi?: boolean
-  maxSelections?: number
   sessionInfos?: SessionInfo[]
 }
 
@@ -41,8 +46,6 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
   standardPrice,
   open,
   onOpenChange,
-  multi = false,
-  maxSelections = 5,
   sessionInfos,
 }) => {
   const router = useRouter()
@@ -78,11 +81,9 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
 
   const toggleSession = (session: Session) => {
     if (selected.find((s) => s.name === session.name)) {
-      setSelected(selected.filter((s) => s.name !== session.name))
-    } else if (!multi) {
+      setSelected([])
+    } else {
       setSelected([session])
-    } else if (selected.length < maxSelections) {
-      setSelected([...selected, session])
     }
   }
 
@@ -139,33 +140,15 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
     }
   }
 
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr)
-    return date.toLocaleDateString("en-ZA", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-    })
-  }
-
-  const formatTime = (dateStr: string) => {
-    const date = new Date(dateStr)
-    return date.toLocaleTimeString("en-ZA", {
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-  }
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[80vh] overflow-y-auto bg-[#1a1a1a] sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="font-helvetica text-foreground">
-            {multi ? "Select Sessions" : "Choose a Date"}
+            Choose a Date
           </DialogTitle>
           <p className="text-sm text-muted-foreground">
             {masterClassDisplayName}
-            {multi && ` — select up to ${maxSelections}`}
           </p>
         </DialogHeader>
 
@@ -180,14 +163,10 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
         ) : (
           <div className="space-y-2">
             {sessions.map((session) => {
-              const info = infos.find(
-                (si) => si.session === session.name,
-              )
-              const spotsLeft = info
-                ? info.availableSpots
-                : maxAttendees - session.confirmedAttendees
-              const isFull = spotsLeft <= 0
-              const isBooked = info?.isUserBooked ?? false
+              const info = infoForSession(session, infos)
+              const spotsLeft = spotsLeftFor(session, info, maxAttendees)
+              const isFull = isSessionFull(session, info, maxAttendees)
+              const isBooked = isSessionBooked(info)
               const isSelected = selected.some(
                 (s) => s.name === session.name,
               )
@@ -207,22 +186,15 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    {multi && (
-                      <Checkbox
-                        checked={isSelected}
-                        disabled={isDisabled}
-                        className="pointer-events-none"
-                      />
-                    )}
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
                         <Calendar className="h-4 w-4 text-primary" />
                         <span className="font-medium text-foreground">
-                          {formatDate(session.date)}
+                          {formatSessionDate(session.date)}
                         </span>
                         <Clock className="ml-2 h-4 w-4 text-primary" />
                         <span className="text-foreground">
-                          {formatTime(session.date)}
+                          {formatSessionTime(session.date)}
                         </span>
                       </div>
                       <div className="mt-1 flex items-center gap-2">
@@ -242,7 +214,7 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
                         )}
                       </div>
                     </div>
-                    {isSelected && !multi && (
+                    {isSelected && (
                       <div className="text-sm font-semibold text-primary">
                         {moneyFormatter.format(standardPrice / 100n)}
                       </div>
@@ -256,27 +228,12 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
 
         {selected.length > 0 && (
           <div className="mt-4 space-y-3">
-            {multi && (
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">
-                  {selected.length} session{selected.length > 1 ? "s" : ""}{" "}
-                  selected
-                </span>
-                <span className="font-semibold text-primary">
-                  {moneyFormatter.format(
-                    (standardPrice * BigInt(selected.length)) / 100n,
-                  )}
-                </span>
-              </div>
-            )}
             <Button
               onClick={handleAddToCart}
               disabled={loading}
               className="relative w-full"
             >
-              {multi
-                ? `Add ${selected.length} Session${selected.length > 1 ? "s" : ""} to Cart`
-                : "Add to Cart"}
+              Add to Cart
               {loading && (
                 <Spinner className="absolute right-4 h-4 w-4 text-background" />
               )}
