@@ -4,7 +4,8 @@ import { Card, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
-import { format, formatDate } from "date-fns"
+import { sessionMonthKey } from "@/lib/util/session-selection"
+import { formatDate } from "date-fns"
 import React from "react"
 import { WorkshopItem } from "../workshop"
 
@@ -23,8 +24,9 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
   const sessionMap = new Map<string, Session[]>()
 
   sessions.forEach((session) => {
-    // Get the month of the session date
-    const yyyyMM = format(new Date(session.date), "yyyy-MM")
+    // Get the month of the session date, bucketed in SAST so a session near a
+    // UTC midnight boundary lands in the same month on the server and client.
+    const yyyyMM = sessionMonthKey(session.date)
 
     // Add the session to the corresponding month in the session map
     if (sessionMap.has(yyyyMM)) {
