@@ -129,14 +129,12 @@ export default async function Page({ params }: ClassPageProps) {
             {/* Right Column - Booking Card */}
             <div className="lg:col-span-1">
               <BookingCard
-                masterClassName={masterClass.name}
-                displayName={masterClass.displayName}
                 standardPrice={masterClass.standardPrice}
                 difficulty={masterClass.difficulty}
                 duration={masterClass.duration}
                 maxAttendees={totalSpots}
                 spotsFilled={spotsFilled}
-                firstAvailableSession={firstAvailableSession}
+                sessions={masterClassSessions}
                 sessionInfos={sessionInfos}
               />
             </div>
@@ -178,18 +176,22 @@ export default async function Page({ params }: ClassPageProps) {
             </div>
           )}
 
-          {/* Choose Your Date */}
-          <hr className="my-6 border-muted-foreground/20" />
-          <div id="choose-date">
-            <h2 className="py-3 font-helvetica text-lg font-bold text-muted-foreground">
-              Choose Your Date
-            </h2>
-          </div>
-          <div>
-            <Suspense fallback={<UpcomingClassesLoader />}>
-              <UpcomingClasses masterClass={masterClass.name} />
-            </Suspense>
-          </div>
+          {masterClassSessions.length > 0 && (
+            <>
+              {/* Choose Your Date */}
+              <hr className="my-6 border-muted-foreground/20" />
+              <div id="choose-date">
+                <h2 className="py-3 font-helvetica text-lg font-bold text-muted-foreground">
+                  Choose Your Date
+                </h2>
+              </div>
+              <div>
+                <Suspense fallback={<UpcomingClassesLoader />}>
+                  <UpcomingClasses masterClass={masterClass.name} />
+                </Suspense>
+              </div>
+            </>
+          )}
 
           {/* Related Classes */}
           <hr className="my-6 border-muted-foreground/20" />
