@@ -7,7 +7,10 @@ import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { parseError } from "@/lib/util/error"
 import { formatDuration } from "@/lib/util/format-duration"
 import { moneyFormatter } from "@/lib/util/money-formatter"
-import { format } from "date-fns"
+import {
+  formatSessionDate,
+  formatSessionTime,
+} from "@/lib/util/session-selection"
 import { CalendarClock, Clock2, User, Scale3D } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -86,15 +89,14 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
   // TODO: remap behind the scenes with nexts js server side route
   const url = masterClass.name.replace("masterClasses/", "classes/")
 
-  const date = new Date(session.date)
-  const stamp = format(date, "h:mm a")
+  const stamp = formatSessionTime(session.date)
   const soldOut = session.confirmedAttendees >= masterClass.maxAttendees
   return (
     <div className="flex w-full flex-col gap-x-4 sm:flex-row ">
       <div className="grow">
         <div className="w-full">
           <span className="inline-flex items-center text-start text-primary">
-            {format(new Date(session.date), "eeee, dd MMM")}
+            {formatSessionDate(session.date)}
           </span>
           {!single && (
             <Link href={url}>
