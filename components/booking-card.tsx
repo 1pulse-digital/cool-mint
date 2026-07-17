@@ -1,108 +1,34 @@
 "use client"
 
-import { bookSessions } from "@/app/classes/actions"
-import { useCart } from "@/contexts/cart"
-import { useUser } from "@/contexts/user"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
-import { parseError } from "@/lib/util/error"
 import { formatDuration } from "@/lib/util/format-duration"
 import { moneyFormatter } from "@/lib/util/money-formatter"
-import { format } from "date-fns"
-import { Calendar, Clock, MapPin, SignalHigh, Users } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
+import { Clock, MapPin, SignalHigh, Users } from "lucide-react"
 import React from "react"
-import { toast } from "sonner"
-import { SessionPicker } from "./session-picker"
-import { Spinner } from "./ui/spinner"
+import { InlineSessionSelector } from "./inline-session-selector"
 
 interface BookingCardProps {
-  masterClassName: string
-  displayName: string
   standardPrice: bigint
   difficulty: string
   duration: number
   maxAttendees: number
   spotsFilled: number
-  firstAvailableSession?: Session
+  sessions: Session[]
   sessionInfos?: SessionInfo[]
 }
 
 export const BookingCard: React.FC<BookingCardProps> = ({
-  masterClassName,
-  displayName,
   standardPrice,
   difficulty,
   duration,
   maxAttendees,
   spotsFilled,
-  firstAvailableSession,
+  sessions,
   sessionInfos,
 }) => {
-  const router = useRouter()
-  const user = useUser()
-  const cartContext = useCart()
-  const pathname = usePathname()
-  const [loading, setLoading] = React.useState(false)
-  const [multiPickerOpen, setMultiPickerOpen] = React.useState(false)
-
   const spotsRemaining = maxAttendees - spotsFilled
   const fillPercentage = (spotsFilled / maxAttendees) * 100
-  const hasAdditionalSessions = sessionInfos
-    ? sessionInfos.some((si) => si.session !== firstAvailableSession?.name)
-    : false
-
-  const handleReserveSpot = async () => {
-    if (!firstAvailableSession) {
-      toast.error("No available sessions")
-      return
-    }
-
-    // ensure the user is logged in
-    if (!user) {
-      const loginUrl = new URL("/login", window.location.origin)
-      if (pathname !== "/") {
-        loginUrl.searchParams.set("redirect", pathname.slice(1))
-      } else {
-        loginUrl.searchParams.set("redirect", "#upcoming-sessions")
-      }
-
-      toast("Please login to book your spot", {
-        action: {
-          label: "Login",
-          onClick: () => router.push(loginUrl.toString()),
-        },
-      })
-      return
-    }
-
-    try {
-      setLoading(true)
-      const response = await bookSessions({
-        items: [{ session: firstAvailableSession.name, quantity: 1 }],
-      })
-
-      if (response.cart) {
-        cartContext.setCart(response.cart)
-      }
-
-      setLoading(false)
-
-      if (response.errors.length > 0) {
-        toast.error(response.errors[0].reason)
-        return
-      }
-
-      toast.success("Added to cart")
-      router.push("/cart")
-    } catch (e: unknown) {
-      setLoading(false)
-      toast.error("Failed to add to cart: " + parseError(e))
-      console.error("Add to cart failed:", e)
-    }
-  }
-
-  const soldOut = !firstAvailableSession || spotsRemaining <= 0
 
   return (
     <div
@@ -175,63 +101,19 @@ export const BookingCard: React.FC<BookingCardProps> = ({
         </div>
       </div>
 
-      {/* Next Session Date */}
-      {firstAvailableSession && (
-        <div className="mt-4 flex items-start gap-3">
-          <Calendar className="mt-0.5 h-5 w-5 text-primary" />
-          <div>
-            <p className="text-xs text-muted-foreground">Next Session</p>
-            <p className="font-helvetica font-medium text-foreground">
-              {format(new Date(firstAvailableSession.date), "EEEE, d MMMM yyyy 'at' HH:mm")}
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* CTA Button */}
-      {soldOut ? (
-        <div className="mt-6 w-full rounded-lg bg-muted py-3 text-center font-helvetica font-semibold text-muted-foreground">
-          Sold Out
-        </div>
-      ) : (
-        <button
-          onClick={handleReserveSpot}
-          disabled={loading}
-          className="relative mt-6 w-full rounded-lg bg-primary py-3 font-helvetica font-semibold text-background transition-colors hover:bg-primary/90 disabled:opacity-70"
-        >
-          Reserve Your Spot
-          {loading && (
-            <Spinner className="absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-background" />
-          )}
-        </button>
-      )}
-
-      {/* Multi-session booking */}
-      {!soldOut && hasAdditionalSessions && (
-        <button
-          onClick={() => setMultiPickerOpen(true)}
-          className="mt-3 w-full text-center text-sm text-primary underline-offset-2 hover:underline"
-        >
-          Book multiple sessions
-        </button>
-      )}
+      {/* Inline session selection + booking CTA */}
+      <InlineSessionSelector
+        maxAttendees={maxAttendees}
+        standardPrice={standardPrice}
+        sessions={sessions}
+        sessionInfos={sessionInfos}
+        maxSelections={5}
+      />
 
       {/* Cancellation Policy */}
       <p className="mt-4 text-center text-xs text-white/80">
         Free cancellation up to 48 hours before class
       </p>
-
-      <SessionPicker
-        masterClassName={masterClassName}
-        masterClassDisplayName={displayName}
-        maxAttendees={maxAttendees}
-        standardPrice={standardPrice}
-        open={multiPickerOpen}
-        onOpenChange={setMultiPickerOpen}
-        multi
-        maxSelections={5}
-        sessionInfos={sessionInfos}
-      />
     </div>
   )
 }

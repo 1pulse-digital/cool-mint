@@ -60,7 +60,7 @@ export const UpcomingWorkshops: React.FC<UpcomingWorkshopsProps> = ({
         </div>
 
         <div className="px-0 xl:px-0 2xl:px-40">
-          {single && (
+          {single && masterClasses[0] && (
             <CardTitle className="mb-4 text-foreground">
               {masterClasses[0].displayName}
             </CardTitle>
