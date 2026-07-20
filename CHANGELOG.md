@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.30.0](https://github.com/1pulse-digital/cool-mint/compare/v0.29.2...v0.30.0) (2026-07-20)
+
+
+### Features
+
+* add click-to-zoom lightbox to the class gallery ([8fa9623](https://github.com/1pulse-digital/cool-mint/commit/8fa96238a0bf517fc9972215bf2ec53339d5b87a))
+* display "Free" for zero-price classes and support R0 checkout ([#122](https://github.com/1pulse-digital/cool-mint/issues/122)) ([231f702](https://github.com/1pulse-digital/cool-mint/commit/231f70218ad4884e77eae18eebed260007f4a62d))
+* display class duration in compact hours format ([#115](https://github.com/1pulse-digital/cool-mint/issues/115)) ([fe07a91](https://github.com/1pulse-digital/cool-mint/commit/fe07a916494ab6ad85a3d6968d204b3c2e6ab529))
+* inline session selection on the class page ([#118](https://github.com/1pulse-digital/cool-mint/issues/118)) ([07c2c91](https://github.com/1pulse-digital/cool-mint/commit/07c2c9106ad172193e00e9e2a0c5705cdf5a4812))
+* rebuild class gallery as a full-width carousel with pagination dots ([8fa9623](https://github.com/1pulse-digital/cool-mint/commit/8fa96238a0bf517fc9972215bf2ec53339d5b87a))
+
+
+### Bug Fixes
+
+* **deps:** bump vulnerable npm deps (non-major security updates) ([#123](https://github.com/1pulse-digital/cool-mint/issues/123)) ([4b98a5e](https://github.com/1pulse-digital/cool-mint/commit/4b98a5e256b68bf7040fde20eba8dd53d7b975eb))
+* render workshop card session time/date in SAST ([#119](https://github.com/1pulse-digital/cool-mint/issues/119)) ([ca6f126](https://github.com/1pulse-digital/cool-mint/commit/ca6f12682e97bf3b4b500a0a9e636af10c6ea7d3))
+
 ## [0.29.2](https://github.com/1pulse-digital/cool-mint/compare/v0.29.1...v0.29.2) (2026-07-01)
 
 
