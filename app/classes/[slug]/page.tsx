@@ -1,5 +1,6 @@
 import GetInTouch from "@/components/base/getInTouch"
 import { BookingCard } from "@/components/booking-card"
+import { ClassGallery } from "@/components/class-gallery"
 import { RelatedClasses } from "@/components/related-classes"
 import { Skeleton } from "@/components/ui/skeleton"
 import { moneyFormatter } from "@/lib/util/money-formatter"
@@ -153,28 +154,13 @@ export default async function Page({ params }: ClassPageProps) {
           </div>
 
           {/* Class Images */}
-          {masterClass.gallery.images[0] && (
-            <div className="grid grid-cols-1 gap-4 py-10 md:grid-cols-2">
-              <div className="relative h-[480px] overflow-hidden rounded-lg">
-                <Image
-                  src={masterClass.gallery.images[0].url}
-                  alt={"Gallery Image"}
-                  className="object-cover"
-                  fill
-                />
-              </div>
-              {masterClass.gallery.images[1] && (
-                <div className="relative h-[480px] overflow-hidden rounded-lg">
-                  <Image
-                    src={masterClass.gallery.images[1].url}
-                    alt={"Gallery Image"}
-                    className="object-cover"
-                    fill
-                  />
-                </div>
-              )}
-            </div>
-          )}
+          <ClassGallery
+            images={masterClass.gallery.images.map((i) => ({
+              url: i.url,
+              description: i.description,
+            }))}
+            title={masterClass.displayName}
+          />
 
           {masterClassSessions.length > 0 && (
             <>
