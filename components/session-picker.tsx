@@ -5,7 +5,7 @@ import { useCart } from "@/contexts/cart"
 import { useUser } from "@/contexts/user"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
-import { moneyFormatter } from "@/lib/util/money-formatter"
+import { formatPrice } from "@/lib/util/money-formatter"
 import { parseError } from "@/lib/util/error"
 import {
   formatSessionDate,
@@ -216,7 +216,7 @@ export const SessionPicker: React.FC<SessionPickerProps> = ({
                     </div>
                     {isSelected && (
                       <div className="text-sm font-semibold text-primary">
-                        {moneyFormatter.format(standardPrice / 100n)}
+                        {formatPrice(standardPrice)}
                       </div>
                     )}
                   </div>

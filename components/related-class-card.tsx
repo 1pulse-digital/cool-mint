@@ -2,7 +2,7 @@
 
 import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { formatDuration } from "@/lib/util/format-duration"
-import { moneyFormatter } from "@/lib/util/money-formatter"
+import { formatPrice } from "@/lib/util/money-formatter"
 import { SignalHigh } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -49,7 +49,7 @@ export const RelatedClassCard: React.FC<RelatedClassCardProps> = ({
               {formatDuration(course.duration)}
             </span>
             <span className="font-semibold text-primary">
-              {moneyFormatter.format(course.standardPrice / 100n)}
+              {formatPrice(course.standardPrice)}
             </span>
           </div>
           <div className="flex items-start gap-3">

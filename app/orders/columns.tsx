@@ -5,6 +5,7 @@ import { Order } from "@/lib/fusion/commerce/order.pb"
 import { format } from "date-fns"
 import { DataTableColumnHeader } from "@/components/base/data-table-column-header"
 import { MoneyField } from "@/components/money-field"
+import { moneyFormatter } from "@/lib/util/money-formatter"
 
 export const columns: ColumnDef<Order>[] = [
   {
@@ -26,7 +27,9 @@ export const columns: ColumnDef<Order>[] = [
   },
   {
     header: "Discount",
-    cell: ({ row }) => <MoneyField value={row.original.discountTotal} />,
+    cell: ({ row }) => (
+      <span>{moneyFormatter.format(Number(row.original.discountTotal) / 100)}</span>
+    ),
   },
   {
     header: "Date Created",

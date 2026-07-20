@@ -6,7 +6,7 @@ import { useUser } from "@/contexts/user"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { parseError } from "@/lib/util/error"
-import { moneyFormatter } from "@/lib/util/money-formatter"
+import { formatPrice } from "@/lib/util/money-formatter"
 import {
   firstSelectableSession,
   formatSessionDate,
@@ -200,9 +200,7 @@ export const InlineSessionSelector: React.FC<InlineSessionSelectorProps> = ({
               {selected.length} session{selected.length > 1 ? "s" : ""} selected
             </span>
             <span className="font-semibold text-primary">
-              {moneyFormatter.format(
-                (standardPrice * BigInt(selected.length)) / 100n,
-              )}
+              {formatPrice(standardPrice * BigInt(selected.length))}
             </span>
           </div>
           <Button
