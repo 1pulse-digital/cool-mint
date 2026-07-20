@@ -3,7 +3,7 @@
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { SessionInfo } from "@/lib/fusion/masterClass/session.manager.pb"
 import { formatDuration } from "@/lib/util/format-duration"
-import { moneyFormatter } from "@/lib/util/money-formatter"
+import { formatPrice } from "@/lib/util/money-formatter"
 import { Clock, MapPin, SignalHigh, Users } from "lucide-react"
 import React from "react"
 import { InlineSessionSelector } from "./inline-session-selector"
@@ -39,9 +39,11 @@ export const BookingCard: React.FC<BookingCardProps> = ({
       {/* Price */}
       <div className="mb-6">
         <span className="font-helvetica text-3xl font-bold text-primary">
-          {moneyFormatter.format(standardPrice / 100n)}
+          {formatPrice(standardPrice)}
         </span>
-        <p className="text-sm text-muted-foreground">per person</p>
+        {standardPrice !== 0n && (
+          <p className="text-sm text-muted-foreground">per person</p>
+        )}
       </div>
 
       {/* Class Details */}

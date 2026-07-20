@@ -6,7 +6,7 @@ import { MasterClass } from "@/lib/fusion/masterClass/masterClass.pb"
 import { Session } from "@/lib/fusion/masterClass/session.pb"
 import { parseError } from "@/lib/util/error"
 import { formatDuration } from "@/lib/util/format-duration"
-import { moneyFormatter } from "@/lib/util/money-formatter"
+import { formatPrice } from "@/lib/util/money-formatter"
 import {
   formatSessionDate,
   formatSessionTime,
@@ -141,7 +141,7 @@ export const WorkshopItem: React.FC<WorkshopProps> = ({
       </div>
       <div className=" ml-4">
         <p className="text- pt-4 font-bold text-primary lg:pt-0">
-          {moneyFormatter.format(masterClass.standardPrice / 100n)}
+          {formatPrice(masterClass.standardPrice)}
         </p>
         <p className="py-1 text-base text-foreground">
           {Math.max(masterClass.maxAttendees - session.confirmedAttendees, 0)}{" "}
