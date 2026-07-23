@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.0](https://github.com/1pulse-digital/cool-mint/compare/v0.30.0...v0.31.0) (2026-07-23)
+
+
+### Features
+
+* record sessions with @erick303/web-replay-sdk ([#124](https://github.com/1pulse-digital/cool-mint/issues/124)) ([9f9c856](https://github.com/1pulse-digital/cool-mint/commit/9f9c856a601bd06a95fd9b392e1462cf32aaf878))
+
 ## [0.30.0](https://github.com/1pulse-digital/cool-mint/compare/v0.29.2...v0.30.0) (2026-07-20)
 
 
