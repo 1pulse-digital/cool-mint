@@ -11,6 +11,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@erick303/web-replay-sdk": "^0.1.0",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "v1",
     "@hookform/resolvers": "^3.4.2",
