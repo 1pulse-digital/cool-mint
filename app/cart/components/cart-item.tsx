@@ -44,7 +44,7 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
         width={90}
         className="rounded-xl"
       />
-      <div className="grow">
+      <div className="min-w-0 grow">
         <p className="text-xl">
           {item.displayName || item.product || "Product Name Not Available"}
         </p>
@@ -54,7 +54,7 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
           </p>
         )}
       </div>
-      <div className="flex w-[200px] flex-nowrap items-center justify-end gap-2 font-bold text-primary">
+      <div className="flex shrink-0 flex-nowrap items-center justify-end gap-2 font-bold text-primary">
         <MoneyField value={item.price} />
         <Button onClick={handleDecreaseQuantity} disabled={item.quantity <= 1n}>
           -
