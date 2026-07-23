@@ -59,6 +59,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
+      packages: 'read'
 
     runs-on: ubuntu-latest
     steps:
@@ -83,8 +84,15 @@ jobs:
           registry: '${{ env.GAR_LOCATION }}-docker.pkg.dev'
 
       - name: Build and Push Container
+        env:
+          # Reads the @erick303/web-replay-sdk package from GitHub Packages during
+          # `npm ci`. GITHUB_TOKEN works because the package is public; if a read
+          # ever fails here, replace with a PAT secret that has read:packages.
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |-
-          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ github.sha }}" ./
+          docker build \
+            --secret id=node_auth_token,env=NODE_AUTH_TOKEN \
+            -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ github.sha }}" ./
           docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ github.sha }}"
 
       - name: Prepare tag

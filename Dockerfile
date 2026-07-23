@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM node:18-alpine AS base
 
 # Install dependencies only when needed
@@ -6,9 +7,14 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN \
+# Install dependencies based on the preferred package manager.
+# .npmrc maps the @erick303 scope to GitHub Packages; the node_auth_token
+# secret authenticates the install (GitHub's npm registry requires a token even
+# for public packages). Build with:
+#   docker build --secret id=node_auth_token,env=NODE_AUTH_TOKEN ./
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+RUN --mount=type=secret,id=node_auth_token \
+  export NODE_AUTH_TOKEN="$(cat /run/secrets/node_auth_token 2>/dev/null || true)"; \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \

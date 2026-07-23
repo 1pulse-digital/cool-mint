@@ -7,6 +7,7 @@ import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
 import "./globals.css"
 import { CartProvider } from "@/contexts/cart"
+import { ReplayInit } from "@/components/replay-init"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import Script from "next/script"
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         )}
       >
         <UserProvider>
+          <ReplayInit />
           <CartProvider>
             <div className="flex h-full min-h-screen w-full flex-col">
               <div className="flex h-full min-h-screen w-full flex-col">
