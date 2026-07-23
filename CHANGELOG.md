@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.1](https://github.com/1pulse-digital/cool-mint/compare/v0.31.0...v0.31.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* **cart:** stop price/controls overlapping item text ([#126](https://github.com/1pulse-digital/cool-mint/issues/126)) ([c52a68e](https://github.com/1pulse-digital/cool-mint/commit/c52a68e22ac18abf13397ed4e9054e486d55e15f))
+
 ## [0.31.0](https://github.com/1pulse-digital/cool-mint/compare/v0.30.0...v0.31.0) (2026-07-23)
 
 
