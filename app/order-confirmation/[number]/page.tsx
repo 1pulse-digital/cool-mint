@@ -12,7 +12,8 @@ import {
   OrderConfirmation,
 } from "./components/orderConfirmed"
 
-export default async function Page({ params }: { params: { number: string } }) {
+export default async function Page(props: { params: Promise<{ number: string }> }) {
+  const params = await props.params;
   const { number: orderNumber } = params
   const response = await myOrders({})
   const order = response.orders.find(

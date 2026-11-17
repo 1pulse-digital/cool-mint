@@ -70,7 +70,8 @@ export const ResetPasswordForm = () => {
       {!resetSuccess ? (
         <Form {...form}>
           <form
-            onSubmit={(e: MyFormEvent) => {
+            onSubmit={(event) => {
+              const e = event as MyFormEvent
               e.preventDefault()
               if (e.nativeEvent.submitter.id === "back") {
                 router.push("/login")

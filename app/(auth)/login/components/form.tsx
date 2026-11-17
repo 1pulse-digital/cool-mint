@@ -66,7 +66,8 @@ export const LoginForm = () => {
   return (
     <Form {...form}>
       <form
-        onSubmit={(e: MyFormEvent) => {
+        onSubmit={(event) => {
+          const e = event as MyFormEvent
           e.preventDefault()
           if (e.nativeEvent["submitter"].id === "signIn") {
             form.handleSubmit(onSubmit)()

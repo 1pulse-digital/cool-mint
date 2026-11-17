@@ -26,7 +26,7 @@ export async function upcomingSessions(
   request: UpcomingSessionsRequest,
 ): Promise<UpcomingSessionResponse> {
   try {
-    cookies().getAll() // read cookies to prevent cache
+    (await cookies()).getAll() // read cookies to prevent cache
     return await UpcomingSessions(request, {})
   } catch (e: unknown) {
     if (e instanceof TwirpError) {
@@ -40,7 +40,7 @@ export async function getRelatedClasses(
   request: GetRelatedClassesRequest,
 ): Promise<GetRelatedClassesResponse> {
   try {
-    cookies().getAll()
+    (await cookies()).getAll()
     return await GetRelatedClasses(request, {})
   } catch (e: unknown) {
     if (e instanceof TwirpError) {

@@ -9,9 +9,9 @@ import GetInTouch from "@/components/base/getInTouch";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const getPostContent = (slug: string) => {
@@ -36,7 +36,7 @@ const getPostContent = (slug: string) => {
 
 const PostPage = async (props: PostPageProps) => {
 
-  const slug = props.params.slug;
+  const slug = (await props.params).slug;
   const content = getPostContent(slug);
   const posts = await getPosts();
 

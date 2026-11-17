@@ -12,12 +12,13 @@ import { UpcomingClasses, UpcomingClassesLoader } from "@/components/classes"
 import miwLogo from "../../favicon.ico"
 
 interface ClassPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default async function Page({ params }: ClassPageProps) {
+export default async function Page(props: ClassPageProps) {
+  const params = await props.params;
   const { slug } = params
 
   const masterClass = await getMasterClass({
