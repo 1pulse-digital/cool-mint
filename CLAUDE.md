@@ -16,9 +16,11 @@ npm run dev        # dev server (next dev)
 npm run build      # production build (standalone output, for Docker/Cloud Run)
 npm start          # serve production build
 npm run lint       # ESLint (next/core-web-vitals)
+npm test           # Vitest (jsdom), files matching **/*.test.{ts,tsx}
+npx vitest run lib/util/format-price.test.ts   # a single test file
 ```
 
-There is **no test framework** configured. Formatting is Prettier (`.prettierrc`: no semicolons, `prettier-plugin-tailwindcss` auto-sorts classes).
+Formatting is Prettier (`.prettierrc`: no semicolons, `prettier-plugin-tailwindcss` auto-sorts classes).
 
 ## Architecture
 
