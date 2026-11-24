@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.2](https://github.com/1pulse-digital/cool-mint/compare/v0.31.1...v0.31.2) (2026-11-24)
+
+
+### Bug Fixes
+
+* upgrade next to 15.5.29 and react to 19 for security fixes ([#128](https://github.com/1pulse-digital/cool-mint/issues/128)) ([f96b009](https://github.com/1pulse-digital/cool-mint/commit/f96b009d86137deb8944fe34a69a7c385d14ee04))
+
 ## [0.31.1](https://github.com/1pulse-digital/cool-mint/compare/v0.31.0...v0.31.1) (2026-07-23)
 
 
